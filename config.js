@@ -10,7 +10,7 @@ window.JAHNTELLA_CONFIG = {
     instagram: "https://www.instagram.com/jahntella/",
     tiktok: "https://www.tiktok.com/@jahntella",
     youtube: "https://www.youtube.com/@jahntella",
-    spotify: "https://open.spotify.com/search/Jahntella",
+    spotify: "https://https://open.spotify.com/user/31alepncaablvd6ih4vd2pww6dku",
     email: "mailto:jahntella@gmail.com"
   },
 
