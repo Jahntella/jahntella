@@ -1,571 +1,385 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Jahntella — sweet hooks, big choruses, and good vibes. Discover the debut single Fun Dipp." />
-  <meta name="theme-color" content="#ff2aa1" />
-  <title>Jahntella | Official Website</title>
-  <style>
-    :root {
-      --pink: #ff2aa1;
-      --hot-pink: #ff4fbd;
-      --purple: #7b2cff;
-      --deep: #09000f;
-      --panel: rgba(20, 0, 30, 0.82);
-      --white: #fff8fd;
-      --muted: #e6cde0;
-      --line: rgba(255,255,255,.15);
-      --shadow: 0 18px 70px rgba(255, 42, 161, .28);
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      color: var(--white);
-      background:
-        radial-gradient(circle at 12% 15%, rgba(255, 42, 161, .28), transparent 30%),
-        radial-gradient(circle at 85% 20%, rgba(123, 44, 255, .24), transparent 32%),
-        linear-gradient(180deg, #07000c 0%, #120016 45%, #07000c 100%);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      overflow-x: hidden;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-
-    .sparkle {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        radial-gradient(circle, rgba(255,255,255,.9) 0 1px, transparent 1.5px),
-        radial-gradient(circle, rgba(255,79,189,.9) 0 1px, transparent 1.5px);
-      background-position: 0 0, 40px 55px;
-      background-size: 90px 90px, 120px 120px;
-      opacity: .16;
-      z-index: 0;
-    }
-
-    .site-shell { position: relative; z-index: 1; }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(18px);
-      background: rgba(8, 0, 12, .72);
-      border-bottom: 1px solid var(--line);
-    }
-
-    nav {
-      width: min(1160px, calc(100% - 32px));
-      margin: 0 auto;
-      min-height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .brand {
-      font-size: clamp(1.3rem, 2vw, 1.85rem);
-      font-weight: 800;
-      letter-spacing: .03em;
-      text-shadow: 0 0 18px rgba(255,42,161,.8);
-    }
-
-    .brand span { color: var(--hot-pink); }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      font-size: .92rem;
-      color: var(--muted);
-    }
-
-    .nav-links a:hover { color: white; }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 22px;
-      border-radius: 999px;
-      font-weight: 800;
-      letter-spacing: .02em;
-      border: 1px solid rgba(255,255,255,.18);
-      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-    }
-
-    .button:hover { transform: translateY(-2px); }
-
-    .button-primary {
-      background: linear-gradient(135deg, var(--pink), var(--purple));
-      box-shadow: 0 10px 32px rgba(255,42,161,.34);
-    }
-
-    .button-secondary { background: rgba(255,255,255,.08); }
-
-    .hero {
-      min-height: 82vh;
-      display: grid;
-      place-items: end center;
-      position: relative;
-      overflow: hidden;
-      background:
-        linear-gradient(90deg, rgba(5,0,9,.88) 0%, rgba(5,0,9,.56) 48%, rgba(5,0,9,.18) 100%),
-        url("assets/hero-banner.png") center/cover no-repeat;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0;
-      height: 38%;
-      background: linear-gradient(transparent, #09000f);
-    }
-
-    .hero-inner {
-      width: min(1160px, calc(100% - 32px));
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
-      padding: 90px 0 105px;
-    }
-
-    .eyebrow {
-      margin: 0 0 12px;
-      color: #ffc6ea;
-      font-size: .78rem;
-      font-weight: 900;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 0;
-      max-width: 720px;
-      font-size: clamp(4rem, 11vw, 8.5rem);
-      line-height: .82;
-      letter-spacing: -.07em;
-      text-transform: uppercase;
-      text-shadow: 0 0 30px rgba(255,42,161,.35);
-    }
-
-    .hero-copy {
-      max-width: 620px;
-      margin: 25px 0 0;
-      font-size: clamp(1.05rem, 2vw, 1.3rem);
-      color: #ffe6f5;
-      line-height: 1.6;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
-    }
-
-    .section {
-      width: min(1160px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 95px 0;
-    }
-
-    .section-heading {
-      max-width: 760px;
-      margin-bottom: 36px;
-    }
-
-    .section-heading h2 {
-      margin: 0 0 12px;
-      font-size: clamp(2.2rem, 5vw, 4.6rem);
-      letter-spacing: -.05em;
-      line-height: .95;
-    }
-
-    .section-heading p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 1.05rem;
-      line-height: 1.7;
-    }
-
-    .release-card {
-      display: grid;
-      grid-template-columns: minmax(280px, 470px) 1fr;
-      gap: clamp(32px, 6vw, 80px);
-      align-items: center;
-      padding: clamp(24px, 4vw, 46px);
-      border: 1px solid var(--line);
-      border-radius: 32px;
-      background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025));
-      box-shadow: var(--shadow);
-    }
-
-    .cover-wrap {
-      position: relative;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 24px 70px rgba(0,0,0,.48);
-    }
-
-    .cover-wrap::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 24px;
-      pointer-events: none;
-    }
-
-    .release-copy h3 {
-      margin: 0;
-      font-size: clamp(3rem, 7vw, 6rem);
-      letter-spacing: -.06em;
-      line-height: .9;
-    }
-
-    .release-copy .artist {
-      color: var(--hot-pink);
-      font-weight: 900;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      font-size: .82rem;
-      margin-bottom: 16px;
-    }
-
-    .release-copy p {
-      color: var(--muted);
-      font-size: 1.05rem;
-      line-height: 1.7;
-      max-width: 580px;
-    }
-
-    .platforms {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 24px 0;
-    }
-
-    .platform {
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.07);
-      border: 1px solid var(--line);
-      color: #fff1fa;
-      font-size: .9rem;
-      font-weight: 700;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: clamp(34px, 7vw, 90px);
-      align-items: center;
-    }
-
-    .profile {
-      aspect-ratio: 1;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 4px solid var(--pink);
-      box-shadow: 0 0 0 12px rgba(255,42,161,.09), var(--shadow);
-    }
-
-    .about-copy blockquote {
-      margin: 0 0 24px;
-      font-size: clamp(2rem, 4vw, 4rem);
-      font-weight: 900;
-      letter-spacing: -.05em;
-      line-height: 1.02;
-    }
-
-    .about-copy p {
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 1.05rem;
-    }
-
-    .social-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-    }
-
-    .social-card {
-      min-height: 130px;
-      padding: 24px;
-      border-radius: 22px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.055);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform .2s ease, background .2s ease;
-    }
-
-    .social-card:hover {
-      transform: translateY(-4px);
-      background: rgba(255,42,161,.11);
-    }
-
-    .social-card strong { font-size: 1.15rem; }
-    .social-card span { color: var(--muted); font-size: .9rem; }
-
-    .sweet-list {
-      text-align: center;
-      padding: clamp(36px, 7vw, 80px);
-      border-radius: 34px;
-      background:
-        radial-gradient(circle at top, rgba(255,79,189,.32), transparent 45%),
-        linear-gradient(145deg, rgba(123,44,255,.25), rgba(255,42,161,.14));
-      border: 1px solid rgba(255,255,255,.18);
-      box-shadow: var(--shadow);
-    }
-
-    .sweet-list h2 {
-      margin: 0;
-      font-size: clamp(2.5rem, 6vw, 5.4rem);
-      letter-spacing: -.06em;
-    }
-
-    .sweet-list p {
-      max-width: 650px;
-      margin: 16px auto 28px;
-      color: #ffe5f5;
-      line-height: 1.7;
-    }
-
-    .email-box {
-      width: min(620px, 100%);
-      margin: 0 auto;
-      display: flex;
-      gap: 10px;
-    }
-
-    .email-box input {
-      flex: 1;
-      min-width: 0;
-      min-height: 52px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.2);
-      background: rgba(0,0,0,.25);
-      color: white;
-      padding: 0 20px;
-      font: inherit;
-      outline: none;
-    }
-
-    .email-box input:focus { border-color: var(--hot-pink); }
-
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 42px 16px 55px;
-      text-align: center;
-      color: var(--muted);
-    }
-
-    .footer-logo {
-      width: min(420px, 90%);
-      margin: 0 auto 18px;
-      filter: drop-shadow(0 0 16px rgba(255,42,161,.35));
-    }
-
-    .fine-print { font-size: .82rem; margin-top: 18px; opacity: .7; }
-
-    @media (max-width: 820px) {
-      .nav-links a:not(.nav-cta) { display: none; }
-
-      .hero {
-        min-height: 76vh;
-        background-position: 65% center;
-      }
-
-      .hero-inner { padding-top: 160px; }
-
-      .release-card,
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .profile {
-        width: min(320px, 78vw);
-        margin: 0 auto;
-      }
-
-      .social-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 560px) {
-      h1 { font-size: clamp(3.4rem, 20vw, 5.4rem); }
-
-      .hero {
-        background-position: 68% center;
-      }
-
-      .hero-copy {
-        max-width: 92%;
-        font-size: 1rem;
-      }
-
-      .social-grid { grid-template-columns: 1fr; }
-
-      .email-box {
-        flex-direction: column;
-      }
-
-      .email-box .button { width: 100%; }
-
-      .section { padding: 72px 0; }
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09000f">
+  <meta name="description" content="Enter the official World of Jahntella — music, videos, merch, hidden surprises and The Sweet List.">
+  <meta property="og:title" content="Jahntella — The World of Sweet">
+  <meta property="og:description" content="Sweet hooks. Big choruses. Good vibes.">
+  <meta property="og:image" content="assets/jahntella-official-v1.png">
+  <title>Jahntella — The World of Sweet</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&family=Sacramento&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-  <div class="sparkle"></div>
+  <canvas id="sparkleCanvas" aria-hidden="true"></canvas>
+  <div class="cursor-aura" aria-hidden="true"></div>
 
-  <div class="site-shell">
-    <header>
-      <nav>
-        <a class="brand" href="#top">JAHN<span>TELLA</span></a>
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loader-logo">Jahntella♡</div>
+    <div class="loader-track"><span></span></div>
+    <p>Entering the World of Sweet...</p>
+  </div>
 
-        <div class="nav-links">
-          <a href="#music">Music</a>
-          <a href="#about">About</a>
-          <a href="#follow">Follow</a>
-          <a class="button button-primary nav-cta" href="mailto:jahntella@gmail.com">Contact</a>
+  <header class="site-header">
+    <a class="site-logo" href="#home" aria-label="Jahntella home">Jahntella<span>♡</span></a>
+
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteNav">
+      <span></span><span></span><span></span>
+      <b class="sr-only">Open navigation</b>
+    </button>
+
+    <nav id="siteNav" class="site-nav">
+      <a href="#music">Music</a>
+      <a href="#experience">Experience</a>
+      <a href="#merch">Merch</a>
+      <a href="#sweet-list">Sweet List</a>
+      <a href="#connect">Connect</a>
+    </nav>
+
+    <button class="header-bag" id="bagButton" aria-label="Open shopping bag">
+      Bag <span id="bagCount">0</span>
+    </button>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-glow hero-glow-one"></div>
+      <div class="hero-glow hero-glow-two"></div>
+
+      <div class="hero-copy reveal">
+        <p class="eyebrow">WELCOME TO THE WORLD OF SWEET</p>
+        <h1>
+          Sweet hooks.
+          <span>Big choruses.</span>
+          Good vibes.
+        </h1>
+        <p class="hero-description">
+          Meet Jahntella — a playful pop universe built from confidence, color,
+          unforgettable melodies and a little trouble.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="#music">Listen now</a>
+          <a class="button button-glass" href="#sweet-list">Join The Sweet List</a>
         </div>
-      </nav>
-    </header>
 
-    <main id="top">
-      <section class="hero">
-        <div class="hero-inner">
-          <p class="eyebrow">The Sweet Era Begins</p>
-          <h1>Jahntella</h1>
-          <p class="hero-copy">
-            Sweet hooks. Big choruses. Good vibes. Welcome to Jahntella’s neon-pop world—colorful, confident, playful, and just a little trouble.
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#music">Meet “Fun Dipp”</a>
-            <a class="button button-secondary" href="#follow">Follow Jahntella</a>
-          </div>
-        </div>
-      </section>
+        <div class="hero-socials" data-social-links></div>
+      </div>
 
-      <section class="section" id="music">
-        <div class="section-heading">
-          <p class="eyebrow">Debut Single</p>
-          <h2>Welcome to the sweet side of pop.</h2>
-          <p>
-            “Fun Dipp” introduces Jahntella with neon energy, playful confidence, and a chorus made for repeat.
-          </p>
+      <div class="hero-stage reveal">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+
+        <div class="portrait-frame">
+          <img src="assets/jahntella-official-v1.png" alt="Jahntella smiling and giving a peace sign">
         </div>
 
-        <article class="release-card">
-          <div class="cover-wrap">
-            <img src="assets/fun-dipp-cover.png" alt="Fun Dipp single artwork by Jahntella" />
-          </div>
+        <button class="floating-card floating-card-one easter-egg" data-secret="You found a hidden star! ⭐">
+          <span>✦</span> Stay Sweet
+        </button>
 
-          <div class="release-copy">
-            <div class="artist">Jahntella</div>
-            <h3>Fun Dipp</h3>
-            <p>
-              A candy-colored pop track with a cheeky twist. Streaming links will appear here as soon as the single is released.
-            </p>
+        <button class="floating-card floating-card-two easter-egg" data-secret="A little sweet. A little trouble. 💋">
+          A little sweet.<br>A little trouble.
+        </button>
 
-            <div class="platforms" aria-label="Planned streaming platforms">
-              <span class="platform">Spotify</span>
-              <span class="platform">Apple Music</span>
-              <span class="platform">YouTube Music</span>
-              <span class="platform">TikTok</span>
+        <button id="soundControl" class="sound-control" aria-pressed="false">
+          <span>♫</span> Sparkle sound: off
+        </button>
+      </div>
+
+      <a class="scroll-cue" href="#music">Scroll to enter <span>↓</span></a>
+    </section>
+
+    <section class="marquee" aria-label="Jahntella highlights">
+      <div class="marquee-track">
+        FUN DIPP ✦ PINK LIPS REMIX ✦ THE SWEET ERA ✦ STAY SWEET ✦
+        FUN DIPP ✦ PINK LIPS REMIX ✦ THE SWEET ERA ✦ STAY SWEET ✦
+      </div>
+    </section>
+
+    <section id="music" class="section music-section">
+      <header class="section-heading reveal">
+        <p class="eyebrow">THE SWEET ERA</p>
+        <h2>Press play on <em>something sweet.</em></h2>
+        <p>Choose a release, then open it on the music platform you love.</p>
+      </header>
+
+      <div class="vinyl-stage reveal">
+        <article class="release-panel active" data-release="fun-dipp">
+          <div class="record-wrap">
+            <div class="vinyl">
+              <img src="assets/fun-dipp-cover.png" alt="Fun Dipp artwork">
             </div>
-
-            <a class="button button-primary" href="mailto:jahntella@gmail.com?subject=Fun%20Dipp%20Updates">Get Release Updates</a>
+          </div>
+          <div class="release-copy">
+            <p class="release-label">DEBUT SINGLE</p>
+            <h3>Fun Dipp</h3>
+            <p>Bright dance-pop, playful confidence and a chorus built to stay in your head.</p>
+            <div class="release-actions">
+              <button class="button button-primary open-platforms" data-track="Fun Dipp">Listen everywhere</button>
+              <button class="button button-glass play-preview" data-preview="fun-dipp">Preview vibe</button>
+            </div>
           </div>
         </article>
-      </section>
 
-      <section class="section" id="about">
-        <div class="about-grid">
-          <img class="profile" src="assets/profile.png" alt="Jahntella artist portrait" />
-
-          <div class="about-copy">
-            <p class="eyebrow">Meet Jahntella</p>
-            <blockquote>“A little sweet. A little trouble.”</blockquote>
-            <p>
-              Jahntella is a pop artist bringing together catchy hooks, neon energy, and feel-good vibes with a playful twist.
-              Inspired by unforgettable nights, confidence, and a touch of nostalgia, her world is filled with glitter, pink lights,
-              memorable melodies, and big choruses.
-            </p>
-            <p>
-              Every release is designed to feel colorful, upbeat, and instantly recognizable. Welcome to the Sweet Era.
-            </p>
+        <article class="release-panel" data-release="pink-lips">
+          <div class="record-wrap">
+            <div class="vinyl">
+              <img src="assets/pink-lips-remix.png" alt="Pink Lips Remix artwork">
+            </div>
           </div>
+          <div class="release-copy">
+            <p class="release-label">REMIX</p>
+            <h3>Pink Lips Remix</h3>
+            <p>A glossy after-dark remix with brighter synths, bigger sparkle and extra attitude.</p>
+            <div class="release-actions">
+              <button class="button button-primary open-platforms" data-track="Pink Lips Remix">Listen everywhere</button>
+              <button class="button button-glass play-preview" data-preview="pink-lips">Preview vibe</button>
+            </div>
+          </div>
+        </article>
+
+        <div class="release-tabs" role="tablist" aria-label="Choose a release">
+          <button class="release-tab active" data-target="fun-dipp">
+            <img src="assets/fun-dipp-cover.png" alt="">
+            <span>Fun Dipp</span>
+          </button>
+          <button class="release-tab" data-target="pink-lips">
+            <img src="assets/pink-lips-remix.png" alt="">
+            <span>Pink Lips Remix</span>
+          </button>
         </div>
-      </section>
-
-      <section class="section" id="follow">
-        <div class="section-heading">
-          <p class="eyebrow">Join the World</p>
-          <h2>Follow the sparkle.</h2>
-          <p>Replace the placeholder links below with the final account URLs whenever you are ready.</p>
-        </div>
-
-        <div class="social-grid">
-          <a class="social-card" href="#" aria-label="Instagram">
-            <strong>Instagram</strong>
-            <span>@jahntellaofficial</span>
-          </a>
-          <a class="social-card" href="#" aria-label="TikTok">
-            <strong>TikTok</strong>
-            <span>@jahntellaofficial</span>
-          </a>
-          <a class="social-card" href="#" aria-label="YouTube">
-            <strong>YouTube</strong>
-            <span>Jahntella</span>
-          </a>
-          <a class="social-card" href="#" aria-label="Spotify">
-            <strong>Spotify</strong>
-            <span>Jahntella</span>
-          </a>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="sweet-list">
-          <p class="eyebrow">The Sweet List</p>
-          <h2>Get the first taste.</h2>
-          <p>
-            Be first to hear new music, see artwork, and get behind-the-scenes updates from Jahntella.
-            For now, this button opens an email to the official contact inbox.
-          </p>
-
-          <form class="email-box" action="mailto:jahntella@gmail.com" method="post" enctype="text/plain">
-            <input type="email" name="email" placeholder="Your email address" aria-label="Your email address" required />
-            <button class="button button-primary" type="submit">Join the Sweet List</button>
-          </form>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <img class="footer-logo" src="assets/logo.png" alt="Jahntella neon signature logo" />
-      <div>🍭 Stay Sweet. xo, Jahntella 💋</div>
-      <div style="margin-top:10px;">
-        <a href="mailto:jahntella@gmail.com">jahntella@gmail.com</a>
       </div>
-      <div class="fine-print">© 2026 Jahntella. All rights reserved.</div>
-    </footer>
-  </div>
+    </section>
+
+    <section id="experience" class="section experience-section">
+      <header class="section-heading centered reveal">
+        <p class="eyebrow">AN INTERACTIVE POP UNIVERSE</p>
+        <h2>Explore the <em>World of Jahntella.</em></h2>
+        <p>Tap the cards, discover details and collect hidden hearts.</p>
+      </header>
+
+      <div class="experience-grid">
+        <button class="experience-card large reveal easter-egg" data-secret="Joy is contagious. Confidence is kind. 💖">
+          <img src="assets/world-page.png" alt="">
+          <span class="experience-overlay">
+            <small>01</small>
+            <strong>Her World</strong>
+            <em>Color. Confidence. Creativity.</em>
+          </span>
+        </button>
+
+        <button class="experience-card reveal" data-modal="storyModal">
+          <img src="assets/book-cover.png" alt="">
+          <span class="experience-overlay">
+            <small>02</small>
+            <strong>The Creative Bible</strong>
+            <em>See how the world was built.</em>
+          </span>
+        </button>
+
+        <button class="experience-card reveal" data-modal="videoModal">
+          <img src="assets/youtube-banner.png" alt="">
+          <span class="experience-overlay">
+            <small>03</small>
+            <strong>Watch</strong>
+            <em>Videos, visualizers and Shorts.</em>
+          </span>
+        </button>
+
+        <button class="experience-card reveal easter-egg" data-secret="Hidden heart collected! 💗">
+          <div class="graphic-card">
+            <div class="giant-heart">♡</div>
+            <p>Find the hidden hearts across the site.</p>
+          </div>
+          <span class="experience-overlay">
+            <small>04</small>
+            <strong>Easter Eggs</strong>
+            <em>Look closer.</em>
+          </span>
+        </button>
+      </div>
+
+      <div class="heart-counter reveal">
+        Hidden hearts collected:
+        <strong id="heartCounter">0</strong>
+        <span>/ 4</span>
+      </div>
+    </section>
+
+    <section class="section manifesto-section">
+      <div class="manifesto-card reveal">
+        <div class="manifesto-copy">
+          <p class="eyebrow">THE JAHNTELLA PROMISE</p>
+          <h2>Leave people happier than they were <em>five minutes ago.</em></h2>
+          <p>
+            Every song. Every visual. Every fan interaction. The goal is simple:
+            create moments that feel joyful, welcoming and unforgettable.
+          </p>
+        </div>
+        <div class="manifesto-values">
+          <span><b>🍭</b> Sweet</span>
+          <span><b>✨</b> Creative</span>
+          <span><b>💖</b> Inclusive</span>
+          <span><b>🎶</b> Memorable</span>
+          <span><b>🌈</b> Colorful</span>
+          <span><b>👑</b> Confident</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="merch" class="section merch-section">
+      <header class="section-heading reveal">
+        <p class="eyebrow">THE SWEET SHOP</p>
+        <h2>Wear the <em>era.</em></h2>
+        <p>Interactive store preview ready to connect to Shopify, Fourthwall or Stripe.</p>
+      </header>
+
+      <div class="shop-toolbar reveal">
+        <div class="shop-filters" role="group" aria-label="Filter merchandise">
+          <button class="filter active" data-filter="all">All</button>
+          <button class="filter" data-filter="apparel">Apparel</button>
+          <button class="filter" data-filter="accessories">Accessories</button>
+          <button class="filter" data-filter="collectibles">Collectibles</button>
+        </div>
+      </div>
+
+      <div class="product-grid">
+        <article class="product-card reveal" data-category="apparel" data-name="Stay Sweet Hoodie" data-price="58">
+          <div class="product-image hoodie-art">
+            <span>Stay Sweet♡</span>
+            <button class="quick-look">Quick look</button>
+          </div>
+          <div class="product-info">
+            <div><h3>Stay Sweet Hoodie</h3><p>Soft pink · Unisex</p></div>
+            <strong>$58</strong>
+          </div>
+          <button class="add-to-bag">Add to bag</button>
+        </article>
+
+        <article class="product-card reveal" data-category="apparel" data-name="J Heart Signature Tee" data-price="32">
+          <div class="product-image tee-art">
+            <span>J♡</span>
+            <button class="quick-look">Quick look</button>
+          </div>
+          <div class="product-info">
+            <div><h3>J♡ Signature Tee</h3><p>Black · Pink neon print</p></div>
+            <strong>$32</strong>
+          </div>
+          <button class="add-to-bag">Add to bag</button>
+        </article>
+
+        <article class="product-card reveal" data-category="accessories" data-name="Heart Necklace" data-price="28">
+          <div class="product-image necklace-art">
+            <span>💖</span>
+            <button class="quick-look">Quick look</button>
+          </div>
+          <div class="product-info">
+            <div><h3>Heart Necklace</h3><p>Signature accessory</p></div>
+            <strong>$28</strong>
+          </div>
+          <button class="add-to-bag">Add to bag</button>
+        </article>
+
+        <article class="product-card reveal" data-category="collectibles" data-name="Sweet Era Poster" data-price="18">
+          <div class="product-image poster-art">
+            <span>THE<br>SWEET<br>ERA</span>
+            <button class="quick-look">Quick look</button>
+          </div>
+          <div class="product-info">
+            <div><h3>Sweet Era Poster</h3><p>18 × 24 inches</p></div>
+            <strong>$18</strong>
+          </div>
+          <button class="add-to-bag">Add to bag</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="sweet-list" class="section signup-section">
+      <div class="signup-card reveal">
+        <div class="signup-badge">♡</div>
+        <p class="eyebrow">JOIN THE SWEET LIST</p>
+        <h2>Be first in line for <em>everything sweet.</em></h2>
+        <p>Early music, secret drops, behind-the-scenes moments and fan-only surprises.</p>
+
+        <form id="sweetListForm">
+          <label class="sr-only" for="fanEmail">Email address</label>
+          <input id="fanEmail" type="email" placeholder="Your email address" required>
+          <button class="button button-primary" type="submit">Join now</button>
+        </form>
+
+        <p class="form-message" id="formMessage">No spam. Just sparkle.</p>
+      </div>
+    </section>
+
+    <section id="connect" class="section connect-section">
+      <header class="section-heading centered reveal">
+        <p class="eyebrow">FOLLOW THE STORY</p>
+        <h2>Meet Jahntella <em>everywhere.</em></h2>
+      </header>
+
+      <div class="social-grid reveal" data-social-cards></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-logo">Jahntella♡</div>
+    <p id="footerSignoff">🍭 Stay Sweet, xo, Jahntella 💋</p>
+    <div class="footer-links" data-social-links></div>
+    <p class="footer-credit">
+      Creative Direction by J.W. Hummel · © <span id="currentYear"></span> Jahntella
+    </p>
+  </footer>
+
+  <dialog class="site-dialog" id="platformDialog">
+    <button class="dialog-close" data-close-dialog aria-label="Close">×</button>
+    <p class="eyebrow">CHOOSE A PLATFORM</p>
+    <h2 id="platformTrack">Listen to Jahntella</h2>
+    <div class="platform-grid" data-music-links></div>
+  </dialog>
+
+  <dialog class="site-dialog story-dialog" id="storyModal">
+    <button class="dialog-close" data-close-dialog aria-label="Close">×</button>
+    <p class="eyebrow">THE OFFICIAL CREATIVE BIBLE</p>
+    <h2>The world behind <em>the music.</em></h2>
+    <img src="assets/book-cover.png" alt="Jahntella Creative Bible cover">
+    <p>
+      A collectible visual universe documenting Jahntella's mission, style,
+      music, values and future eras.
+    </p>
+  </dialog>
+
+  <dialog class="site-dialog" id="videoModal">
+    <button class="dialog-close" data-close-dialog aria-label="Close">×</button>
+    <p class="eyebrow">WATCH JAHNTELLA</p>
+    <h2>Videos and <em>visualizers.</em></h2>
+    <div class="video-placeholder">
+      <img src="assets/youtube-banner.png" alt="Jahntella video preview">
+      <a class="button button-primary" id="youtubeButton" target="_blank" rel="noopener">Open YouTube</a>
+    </div>
+  </dialog>
+
+  <aside class="bag-drawer" id="bagDrawer" aria-label="Shopping bag">
+    <button class="bag-close" id="bagClose" aria-label="Close bag">×</button>
+    <p class="eyebrow">THE SWEET SHOP</p>
+    <h2>Your bag</h2>
+    <div id="bagItems" class="bag-items"></div>
+    <div class="bag-total">
+      <span>Total</span>
+      <strong id="bagTotal">$0</strong>
+    </div>
+    <button class="button button-primary checkout-button" id="checkoutButton">Checkout preview</button>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
