@@ -551,7 +551,7 @@ a{text-decoration:none;color:inherit}
 .signup-section{
   background:
     linear-gradient(rgba(9,0,15,.38),rgba(9,0,15,.88)),
-    url("assets/youtube-banner.png") center/cover fixed;
+    url("youtube-banner.png") center/cover fixed;
 }
 .signup-card{
   position:relative;
