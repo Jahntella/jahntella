@@ -81,17 +81,35 @@
           <img src="jahntella-official-v1.png" alt="Jahntella smiling and giving a peace sign">
         </div>
 
-        <button class="floating-card floating-card-one easter-egg" data-secret="You found a hidden star! ⭐">
+        <button class="floating-card floating-card-one" data-secret="You found a hidden star! ⭐">
           <span>✦</span> Stay Sweet
         </button>
 
-        <button class="floating-card floating-card-two easter-egg" data-secret="A little sweet. A little trouble. 💋">
+        <button class="floating-card floating-card-two" data-secret="A little sweet. A little trouble. 💋">
           A little sweet.<br>A little trouble.
         </button>
 
-        <button id="soundControl" class="sound-control" aria-pressed="false">
-          <span>♫</span> Sparkle sound: off
+        <button id="soundControl" class="sound-control" type="button">
+          <span>✦</span> Play sparkle chimes
         </button>
+
+        <div class="hidden-star-field" aria-label="Hidden sparkle game">
+          <button class="hidden-star hidden-star-one" type="button"
+            aria-label="Hidden sparkle one" data-star-id="1"
+            data-secret="Sparkle 1 of 4 found! ⭐">✦</button>
+
+          <button class="hidden-star hidden-star-two" type="button"
+            aria-label="Hidden sparkle two" data-star-id="2"
+            data-secret="Sparkle 2 of 4 found! 💖">✧</button>
+
+          <button class="hidden-star hidden-star-three" type="button"
+            aria-label="Hidden sparkle three" data-star-id="3"
+            data-secret="Sparkle 3 of 4 found! 🍭">✦</button>
+
+          <button class="hidden-star hidden-star-four" type="button"
+            aria-label="Hidden sparkle four" data-star-id="4"
+            data-secret="Sparkle 4 of 4 found! ✨">✧</button>
+        </div>
       </div>
 
       <a class="scroll-cue" href="#music">Scroll to enter <span>↓</span></a>
@@ -167,7 +185,7 @@
       </header>
 
       <div class="experience-grid">
-        <button class="experience-card large reveal easter-egg" data-secret="Joy is contagious. Confidence is kind. 💖">
+        <button class="experience-card large reveal" data-secret="Joy is contagious. Confidence is kind. 💖">
           <img src="world-page.png" alt="">
           <span class="experience-overlay">
             <small>01</small>
@@ -194,7 +212,7 @@
           </span>
         </button>
 
-        <button class="experience-card reveal easter-egg" data-secret="Hidden heart collected! 💗">
+        <button class="experience-card reveal" data-secret="Hidden heart collected! 💗">
           <div class="graphic-card">
             <div class="giant-heart">♡</div>
             <p>Find the hidden hearts across the site.</p>
@@ -208,7 +226,7 @@
       </div>
 
       <div class="heart-counter reveal">
-        Hidden hearts collected:
+        Hidden sparkles collected:
         <strong id="heartCounter">0</strong>
         <span>/ 4</span>
       </div>

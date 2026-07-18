@@ -184,22 +184,32 @@ function showToast(message) {
   toastTimer = setTimeout(() => toast.classList.remove("show"), 2600);
 }
 
-// Easter eggs
+// Four-star landing-page game
 let foundHearts = 0;
-const discovered = new Set();
+const discoveredStars = new Set();
+const starCounter = document.getElementById("heartCounter");
 
-document.querySelectorAll(".easter-egg").forEach((item, index) => {
-  item.addEventListener("click", () => {
-    showToast(item.dataset.secret || "You found something sweet! 💖");
+document.querySelectorAll(".hidden-star").forEach((star) => {
+  star.addEventListener("click", () => {
+    const starId = star.dataset.starId;
 
-    if (!discovered.has(index)) {
-      discovered.add(index);
-      foundHearts += 1;
-      document.getElementById("heartCounter").textContent = foundHearts;
+    if (discoveredStars.has(starId)) return;
+
+    discoveredStars.add(starId);
+    foundHearts = discoveredStars.size;
+
+    if (starCounter) {
+      starCounter.textContent = String(foundHearts);
     }
 
+    star.classList.add("collected");
+    star.setAttribute("aria-disabled", "true");
+    showToast(star.dataset.secret || `Sparkle ${foundHearts} of 4 found! ✨`);
+
     if (foundHearts === 4) {
-      window.setTimeout(() => showToast("All hidden hearts collected. Welcome to the real Sweet List. ✨"), 500);
+      window.setTimeout(() => {
+        showToast("All 4 sparkles found — you unlocked extra sweetness! 🍭💖");
+      }, 650);
     }
   });
 });
@@ -258,42 +268,86 @@ document.querySelectorAll(".play-preview").forEach((button) => {
   });
 });
 
-// Ambient sparkle sound
-let ambientNodes = null;
-document.getElementById("soundControl").addEventListener("click", (event) => {
-  const button = event.currentTarget;
-
+// One-shot sparkle chimes — no continuous hum
+function ensureAudioContext() {
   if (!audioContext) {
     audioContext = new (window.AudioContext || window.webkitAudioContext)();
   }
 
-  if (ambientNodes) {
-    ambientNodes.oscillator.stop();
-    ambientNodes = null;
-    button.innerHTML = "<span>♫</span> Sparkle sound: off";
-    button.setAttribute("aria-pressed", "false");
-    return;
+  if (audioContext.state === "suspended") {
+    audioContext.resume();
   }
 
-  const oscillator = audioContext.createOscillator();
-  const gain = audioContext.createGain();
-  const filter = audioContext.createBiquadFilter();
+  return audioContext;
+}
 
-  oscillator.type = "sine";
-  oscillator.frequency.value = 523.25;
-  filter.type = "lowpass";
-  filter.frequency.value = 900;
-  gain.gain.value = 0.012;
+function playSparkleChime() {
+  const ctx = ensureAudioContext();
+  const now = ctx.currentTime;
 
-  oscillator.connect(filter);
-  filter.connect(gain);
-  gain.connect(audioContext.destination);
-  oscillator.start();
+  const master = ctx.createGain();
+  const delay = ctx.createDelay();
+  const feedback = ctx.createGain();
 
-  ambientNodes = { oscillator, gain, filter };
-  button.innerHTML = "<span>♫</span> Sparkle sound: on";
-  button.setAttribute("aria-pressed", "true");
-});
+  master.gain.setValueAtTime(0.0001, now);
+  master.gain.exponentialRampToValueAtTime(0.16, now + 0.025);
+  master.gain.exponentialRampToValueAtTime(0.0001, now + 1.55);
+
+  delay.delayTime.value = 0.16;
+  feedback.gain.value = 0.18;
+
+  master.connect(ctx.destination);
+  master.connect(delay);
+  delay.connect(feedback);
+  feedback.connect(delay);
+  delay.connect(ctx.destination);
+
+  const notes = [
+    { frequency: 783.99, start: 0.00, duration: 0.55 },
+    { frequency: 987.77, start: 0.13, duration: 0.62 },
+    { frequency: 1318.51, start: 0.29, duration: 0.78 }
+  ];
+
+  notes.forEach((note, index) => {
+    const oscillator = ctx.createOscillator();
+    const noteGain = ctx.createGain();
+
+    oscillator.type = index === 2 ? "sine" : "triangle";
+    oscillator.frequency.setValueAtTime(note.frequency, now + note.start);
+
+    noteGain.gain.setValueAtTime(0.0001, now + note.start);
+    noteGain.gain.exponentialRampToValueAtTime(
+      index === 2 ? 0.055 : 0.04,
+      now + note.start + 0.018
+    );
+    noteGain.gain.exponentialRampToValueAtTime(
+      0.0001,
+      now + note.start + note.duration
+    );
+
+    oscillator.connect(noteGain);
+    noteGain.connect(master);
+
+    oscillator.start(now + note.start);
+    oscillator.stop(now + note.start + note.duration + 0.05);
+  });
+}
+
+const soundControl = document.getElementById("soundControl");
+
+if (soundControl) {
+  soundControl.addEventListener("click", () => {
+    soundControl.classList.add("is-playing");
+    soundControl.innerHTML = "<span>✦</span> Sparkle chimes playing";
+
+    playSparkleChime();
+
+    window.setTimeout(() => {
+      soundControl.classList.remove("is-playing");
+      soundControl.innerHTML = "<span>✦</span> Play sparkle chimes";
+    }, 1700);
+  });
+}
 
 // Merch filtering
 document.querySelectorAll(".filter").forEach((button) => {

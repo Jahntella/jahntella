@@ -963,3 +963,159 @@ footer{
     grid-template-columns:1fr;
   }
 }
+
+
+/* =========================================================
+   SAFE PATCH: SPARKLE CHIMES + FOUR WORKING HIDDEN SPARKLES
+   ========================================================= */
+
+.sound-control{
+  transition:
+    transform .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease,
+    background .22s ease;
+}
+
+.sound-control:hover,
+.sound-control:focus-visible{
+  transform:translateY(-2px);
+  border-color:rgba(255,79,163,.75);
+  background:rgba(255,79,163,.12);
+  box-shadow:0 0 24px rgba(255,79,163,.18);
+  outline:none;
+}
+
+.sound-control.is-playing{
+  border-color:var(--pink);
+  color:var(--rose);
+  box-shadow:0 0 24px rgba(255,79,163,.28);
+}
+
+.hidden-star-field{
+  position:absolute;
+  inset:0;
+  z-index:8;
+  pointer-events:none;
+}
+
+.hidden-star{
+  position:absolute;
+  z-index:9;
+  display:grid;
+  place-items:center;
+  width:38px;
+  height:38px;
+  padding:0;
+  border:1px solid rgba(255,255,255,.20);
+  border-radius:50%;
+  color:#fff7fc;
+  background:rgba(9,0,15,.32);
+  backdrop-filter:blur(8px);
+  box-shadow:
+    0 0 16px rgba(255,79,163,.32),
+    inset 0 0 11px rgba(255,255,255,.08);
+  font-size:1.2rem;
+  line-height:1;
+  cursor:pointer;
+  pointer-events:auto;
+  opacity:.74;
+  animation:hiddenStarPulse 2.8s ease-in-out infinite;
+  transition:
+    opacity .25s ease,
+    transform .25s ease,
+    border-color .25s ease,
+    box-shadow .25s ease;
+}
+
+.hidden-star:hover,
+.hidden-star:focus-visible{
+  opacity:1;
+  transform:scale(1.16) rotate(12deg);
+  border-color:var(--pink);
+  box-shadow:
+    0 0 23px rgba(255,79,163,.70),
+    0 0 45px rgba(255,79,163,.24);
+  outline:none;
+}
+
+.hidden-star.collected{
+  opacity:0;
+  transform:scale(1.7) rotate(90deg);
+  pointer-events:none;
+}
+
+.hidden-star-one{
+  top:9%;
+  left:14%;
+  animation-delay:-.4s;
+}
+
+.hidden-star-two{
+  top:29%;
+  right:3%;
+  animation-delay:-1.5s;
+}
+
+.hidden-star-three{
+  left:4%;
+  bottom:28%;
+  animation-delay:-2.1s;
+}
+
+.hidden-star-four{
+  right:18%;
+  bottom:11%;
+  animation-delay:-.9s;
+}
+
+@keyframes hiddenStarPulse{
+  0%,100%{
+    opacity:.48;
+    filter:drop-shadow(0 0 4px rgba(255,79,163,.35));
+  }
+  50%{
+    opacity:1;
+    filter:drop-shadow(0 0 13px rgba(255,79,163,.85));
+  }
+}
+
+@media(max-width:680px){
+  .hidden-star{
+    width:42px;
+    height:42px;
+    opacity:.88;
+  }
+
+  .hidden-star-one{
+    top:4%;
+    left:5%;
+  }
+
+  .hidden-star-two{
+    top:23%;
+    right:1%;
+  }
+
+  .hidden-star-three{
+    left:2%;
+    bottom:23%;
+  }
+
+  .hidden-star-four{
+    right:7%;
+    bottom:7%;
+  }
+
+  .sound-control{
+    width:max-content;
+    max-width:90%;
+    white-space:nowrap;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hidden-star{
+    animation:none;
+  }
+}
