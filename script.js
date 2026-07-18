@@ -505,23 +505,21 @@ if (shootingStar) {
 
 
 
-// Sprint 2.6: Jahntella First Edition
-// IDENTITY LOCK: every card uses jahntella-master.png.
-// Preserve this exact face, warm honey-blonde hair, makeup, and recognizable identity.
-const JAHNTELLA_MASTER_REFERENCE = "jahntella-master.png";
+// VERSION 3.0: Official Jahntella First Edition Card Art
+// Each collectible now uses its own approved pose, outfit, setting, and finished card design.
 const SWEET_SURPRISES = [
-  {id:"fun-dipp-001",number:"001",title:"Fun Dipp",subtitle:"Candy-Coated Confidence",category:"Music Moment",icon:"🍭",rarity:"Ultra Rare",photo:"jahntella-master.png",photoPosition:"50% 47%",photoZoom:1.00,theme:"neon",a:"#ff2b91",b:"#5726d9",trait:"Candy-Coated Confidence",lore:"The song that opened Sweetville after dark—neon confidence, one irresistible hook, and just enough mystery.",quote:"Every unforgettable night begins with one brave step."},
-  {id:"pink-lips-002",number:"002",title:"Pink Lips",subtitle:"Gloss & Attitude",category:"Fashion Moment",icon:"💋",rarity:"Ultra Rare",photo:"jahntella-master.png",photoPosition:"58% 41%",photoZoom:1.16,theme:"pink",a:"#ff4f9e",b:"#a6006f",trait:"Gloss & Attitude",lore:"A signature Sweet Era collectible inspired by bold color, fearless style, and the confidence to leave a lasting impression.",quote:"Leave a little sparkle everywhere you go."},
-  {id:"neon-dreams-003",number:"003",title:"Neon Dreams",subtitle:"City Lights After Midnight",category:"Neon Lounge",icon:"🌙",rarity:"Rare",photo:"jahntella-master.png",photoPosition:"43% 43%",photoZoom:1.11,theme:"purple",a:"#7028e4",b:"#171753",trait:"Midnight Imagination",lore:"When Sweetville sleeps, the Neon Lounge glows. This card belongs to dreamers who hear music in the city lights.",quote:"The night gets brighter when you bring your own glow."},
-  {id:"sweetville-founder-004",number:"004",title:"Sweetville Founder",subtitle:"First Edition",category:"Founder Collection",icon:"👑",rarity:"Legendary",photo:"jahntella-master.png",photoPosition:"51% 39%",photoZoom:1.06,theme:"gold",a:"#f2b53b",b:"#9a245e",trait:"Here From The Beginning",lore:"Awarded to the early Sweeties who explored the world while its streets, songs, and secrets were still being built.",quote:"You did not just visit the story—you became part of its beginning."},
-  {id:"late-night-latte-005",number:"005",title:"Late Night Latte",subtitle:"Extra Sparkle",category:"Pink Café",icon:"☕",rarity:"Common",photo:"jahntella-master.png",photoPosition:"62% 48%",photoZoom:1.18,theme:"cafe",a:"#d8688c",b:"#6d3159",trait:"Cozy Confidence",lore:"A warm Pink Café favorite for slow nights, big ideas, and conversations that last one song longer than planned.",quote:"Rest is sweet. So is starting again."},
-  {id:"golden-hoop-006",number:"006",title:"Golden Hoop",subtitle:"Signature Shine",category:"Jahntella Lore",icon:"✨",rarity:"Rare",photo:"jahntella-master.png",photoPosition:"46% 42%",photoZoom:1.14,theme:"gold",a:"#e5ad31",b:"#ad396f",trait:"Perfect Pop Instinct",lore:"Sweetville legend says Jahntella can hear a perfect hook before her golden hoops finish their first swing.",quote:"Trust the rhythm that feels like you."},
-  {id:"bubblegum-pop-007",number:"007",title:"Bubblegum Pop",subtitle:"Bright, Bold, Unapologetic",category:"Sweet Era",icon:"🫧",rarity:"Common",photo:"jahntella-master.png",photoPosition:"55% 52%",photoZoom:1.22,theme:"bubblegum",a:"#ff66b3",b:"#45a6d9",trait:"Instant Joy",lore:"A bright burst of melody and color made for singing too loudly, laughing too hard, and turning ordinary moments into memories.",quote:"Joy does not need permission."},
-  {id:"after-hours-008",number:"008",title:"After Hours",subtitle:"Keep A Little Mystery",category:"Neon Lounge",icon:"🪩",rarity:"Legendary",photo:"jahntella-master.png",photoPosition:"39% 43%",photoZoom:1.10,theme:"midnight",a:"#190d4f",b:"#d22291",trait:"Velvet-Rope Energy",lore:"The rarest Neon Lounge energy: own the dance floor, keep it cute, and always leave a little mystery behind.",quote:"Be unforgettable without explaining everything."},
-  {id:"sparkle-lake-009",number:"009",title:"Sparkle Lake Wish",subtitle:"One Brave Step",category:"Sweetville Location",icon:"⭐",rarity:"Common",photo:"jahntella-master.png",photoPosition:"50% 36%",photoZoom:1.04,theme:"lake",a:"#288bc9",b:"#8d4de7",trait:"Hope In Motion",lore:"The water glows whenever a visitor makes a wish and follows it with one honest, brave step.",quote:"A wish becomes a path when you move toward it."},
-  {id:"vip-pass-010",number:"010",title:"VIP Pass",subtitle:"The Velvet Rope Moved",category:"Neon Lounge",icon:"🎟️",rarity:"Rare",photo:"jahntella-master.png",photoPosition:"60% 45%",photoZoom:1.15,theme:"vip",a:"#8d1b72",b:"#29104f",trait:"All-Access Confidence",lore:"A private pass into Sweetville after dark. The bass is already shaking the walls, and your name is on the list.",quote:"Walk in like the room was waiting for you."},
-  {id:"creative-note-011",number:"011",title:"Creative Director's Note",subtitle:"Build The World",category:"Behind The Scenes",icon:"✍️",rarity:"Rare",photo:"jahntella-master.png",photoPosition:"44% 40%",photoZoom:1.12,theme:"editorial",a:"#303030",b:"#a31462",trait:"Vision Into Reality",lore:"A reminder from behind the curtain: every detail, color, lyric, and dream becomes real one thoughtful decision at a time.",quote:"Do not just imagine the world. Build it."},
-  {id:"original-sweetie-012",number:"012",title:"Original Sweetie",subtitle:"Stay Sweet",category:"First Edition",icon:"💖",rarity:"Legendary",photo:"jahntella-master.png",photoPosition:"50% 45%",photoZoom:1.02,theme:"rainbow",a:"#ff3f9b",b:"#6338e4",trait:"Sweetness With Strength",lore:"The final card in the First Edition set celebrates fans who bring confidence, kindness, curiosity, and heart into Sweetville.",quote:"Sweetness is not weakness. It is your superpower."}
+  {id:"fun-dipp-001",number:"001",title:"Fun Dipp",subtitle:"Candy-Coated Confidence",category:"Music Moment",icon:"🍭",rarity:"Ultra Rare",photo:"jahntella-card-001.jpg",theme:"official-card",a:"#ff2b91",b:"#5726d9",trait:"Candy-Coated Confidence",lore:"The song that opened Sweetville after dark—neon confidence, one irresistible hook, and just enough mystery.",quote:"Every unforgettable night begins with one brave step."},
+  {id:"pink-lips-002",number:"002",title:"Pink Lips",subtitle:"Gloss & Attitude",category:"Fashion Moment",icon:"💋",rarity:"Ultra Rare",photo:"jahntella-card-002.jpg",theme:"official-card",a:"#ff4f9e",b:"#a6006f",trait:"Gloss & Attitude",lore:"A signature Sweet Era collectible inspired by bold color, fearless style, and the confidence to leave a lasting impression.",quote:"Leave a little sparkle everywhere you go."},
+  {id:"neon-dreams-003",number:"003",title:"Neon Dreams",subtitle:"City Lights After Midnight",category:"Neon Lounge",icon:"🌙",rarity:"Rare",photo:"jahntella-card-003.jpg",theme:"official-card",a:"#7028e4",b:"#171753",trait:"Midnight Imagination",lore:"When Sweetville sleeps, the Neon Lounge glows. This card belongs to dreamers who hear music in the city lights.",quote:"The night gets brighter when you bring your own glow."},
+  {id:"sweetville-founder-004",number:"004",title:"Sweetville Founder",subtitle:"First Edition",category:"Founder Collection",icon:"👑",rarity:"Legendary",photo:"jahntella-card-004.jpg",theme:"official-card",a:"#f2b53b",b:"#9a245e",trait:"Here From The Beginning",lore:"Awarded to the early Sweeties who explored the world while its streets, songs, and secrets were still being built.",quote:"You did not just visit the story—you became part of its beginning."},
+  {id:"late-night-latte-005",number:"005",title:"Late Night Latte",subtitle:"Extra Sparkle",category:"Pink Café",icon:"☕",rarity:"Common",photo:"jahntella-card-005.jpg",theme:"official-card",a:"#d8688c",b:"#6d3159",trait:"Cozy Confidence",lore:"A warm Pink Café favorite for slow nights, big ideas, and conversations that last one song longer than planned.",quote:"Rest is sweet. So is starting again."},
+  {id:"golden-hoop-006",number:"006",title:"Golden Hoop",subtitle:"Signature Shine",category:"Jahntella Lore",icon:"✨",rarity:"Rare",photo:"jahntella-card-006.jpg",theme:"official-card",a:"#e5ad31",b:"#ad396f",trait:"Perfect Pop Instinct",lore:"Sweetville legend says Jahntella can hear a perfect hook before her golden hoops finish their first swing.",quote:"Trust the rhythm that feels like you."},
+  {id:"bubblegum-pop-007",number:"007",title:"Bubblegum Pop",subtitle:"Bright, Bold, Unapologetic",category:"Sweet Era",icon:"🫧",rarity:"Common",photo:"jahntella-card-007.jpg",theme:"official-card",a:"#ff66b3",b:"#45a6d9",trait:"Instant Joy",lore:"A bright burst of melody and color made for singing too loudly, laughing too hard, and turning ordinary moments into memories.",quote:"Joy does not need permission."},
+  {id:"after-hours-008",number:"008",title:"After Hours",subtitle:"Keep A Little Mystery",category:"Neon Lounge",icon:"🪩",rarity:"Legendary",photo:"jahntella-card-008.jpg",theme:"official-card",a:"#190d4f",b:"#d22291",trait:"Velvet-Rope Energy",lore:"The rarest Neon Lounge energy: own the dance floor, keep it cute, and always leave a little mystery behind.",quote:"Be unforgettable without explaining everything."},
+  {id:"sparkle-lake-009",number:"009",title:"Sparkle Lake Wish",subtitle:"One Brave Step",category:"Sweetville Location",icon:"⭐",rarity:"Common",photo:"jahntella-card-009.jpg",theme:"official-card",a:"#288bc9",b:"#8d4de7",trait:"Hope In Motion",lore:"The water glows whenever a visitor makes a wish and follows it with one honest, brave step.",quote:"A wish becomes a path when you move toward it."},
+  {id:"vip-pass-010",number:"010",title:"VIP Pass",subtitle:"The Velvet Rope Moved",category:"Neon Lounge",icon:"🎟️",rarity:"Rare",photo:"jahntella-card-010.jpg",theme:"official-card",a:"#8d1b72",b:"#29104f",trait:"All-Access Confidence",lore:"A private pass into Sweetville after dark. The bass is already shaking the walls, and your name is on the list.",quote:"Walk in like the room was waiting for you."},
+  {id:"creative-note-011",number:"011",title:"Creative Director's Note",subtitle:"Build The World",category:"Behind The Scenes",icon:"✍️",rarity:"Rare",photo:"jahntella-card-011.jpg",theme:"official-card",a:"#303030",b:"#a31462",trait:"Vision Into Reality",lore:"A reminder from behind the curtain: every detail, color, lyric, and dream becomes real one thoughtful decision at a time.",quote:"Do not just imagine the world. Build it."},
+  {id:"original-sweetie-012",number:"012",title:"Original Sweetie",subtitle:"Stay Sweet",category:"First Edition",icon:"💖",rarity:"Legendary",photo:"jahntella-card-012.jpg",theme:"official-card",a:"#ff3f9b",b:"#6338e4",trait:"Sweetness With Strength",lore:"The final card in the First Edition set celebrates fans who bring confidence, kindness, curiosity, and heart into Sweetville.",quote:"Sweetness is not weakness. It is your superpower."}
 ];
 
 const SURPRISE_STORAGE_KEY = "jahntellaSweetSurpriseCollectionV1";
@@ -629,20 +627,10 @@ function updateSurpriseCount() {
 }
 function cardFrontMarkup(card) {
   return `
-    <span class="card-topline">
-      <span class="card-series">SWEET ERA • FIRST EDITION</span>
-      <span class="card-rarity-pill">${escapeHtml(card.rarity.toUpperCase())}</span>
+    <span class="official-card-art">
+      <img src="${escapeHtml(card.photo)}" alt="${escapeHtml(card.title)} — Jahntella First Edition card">
+      <span class="official-card-shine" aria-hidden="true"></span>
     </span>
-    <span class="card-art-window card-photo-window theme-${escapeHtml(card.theme)}">
-      <img class="card-jahntella-photo" src="${escapeHtml(card.photo)}" alt="Jahntella" style="--photo-position:${escapeHtml(card.photoPosition)};--photo-zoom:${card.photoZoom}">
-      <span class="card-photo-vignette"></span>
-      <span class="card-photo-sparkles" aria-hidden="true"></span>
-    </span>
-    <span class="card-title-block">
-      <h3>${escapeHtml(card.title)}</h3>
-      <p>${escapeHtml(card.subtitle)}</p>
-    </span>
-    <span class="card-bottomline"><span>#${card.number}</span><span>JAHNTELLA♡</span></span>
   `;
 }
 function cardBackMarkup(card) {
@@ -797,14 +785,9 @@ function renderSweetCollection() {
       const favorite = favorites.includes(card.id);
       return `
         <button class="vault-card-slot" type="button" data-card-id="${card.id}" aria-label="View ${escapeHtml(card.title)}">
-          <span class="vault-card-preview" style="--card-a:${card.a};--card-b:${card.b}">
+          <span class="vault-card-preview official-vault-card">
             ${favorite ? '<span class="vault-favorite-mark">★</span>' : ""}
-            <span class="mini-rarity">${escapeHtml(card.rarity.toUpperCase())}</span>
-            <span class="mini-art mini-photo-art">
-              <img src="${escapeHtml(card.photo)}" alt="" style="--photo-position:${escapeHtml(card.photoPosition)};--photo-zoom:${card.photoZoom}">
-            </span>
-            <h4>${escapeHtml(card.title)}</h4>
-            <small>#${card.number} • ${escapeHtml(card.category)}</small>
+            <img src="${escapeHtml(card.photo)}" alt="${escapeHtml(card.title)}">
           </span>
         </button>`;
     }).join("");
@@ -816,7 +799,7 @@ function renderSweetCollection() {
     const recent = [...unlockedCards].reverse().slice(0, 4);
     vaultRecentRow.innerHTML = recent.length ? recent.map((card) => `
       <button class="vault-mini-card" type="button" data-recent-card="${card.id}" style="--card-a:${card.a};--card-b:${card.b}">
-        <span class="recent-photo"><img src="${escapeHtml(card.photo)}" alt="" style="--photo-position:${escapeHtml(card.photoPosition)};--photo-zoom:${card.photoZoom}"></span>
+        <span class="recent-photo official-recent-card"><img src="${escapeHtml(card.photo)}" alt="${escapeHtml(card.title)}"></span>
         <strong>${escapeHtml(card.title)}</strong>
         <small>#${card.number} • ${escapeHtml(card.rarity)}</small>
       </button>`).join("") : '<div class="vault-recent-empty">Your newest cards will appear here after you open a Sweet Pack.</div>';
@@ -868,114 +851,18 @@ function drawRoundedRect(context, x, y, width, height, radius) {
 }
 async function downloadCurrentCard() {
   if (!currentSurprise) return;
-  const card = currentSurprise;
   try {
-    const image = new Image();
-    image.src = card.photo;
-    await image.decode();
-
-    const canvas = document.createElement("canvas");
-    canvas.width = 1080;
-    canvas.height = 1512;
-    const ctx = canvas.getContext("2d");
-
-    ctx.fillStyle = "#08000c";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    const gradient = ctx.createLinearGradient(0, 0, 1080, 1512);
-    gradient.addColorStop(0, card.a);
-    gradient.addColorStop(1, card.b);
-    ctx.fillStyle = gradient;
-    ctx.beginPath();
-    ctx.roundRect(42, 42, 996, 1428, 58);
-    ctx.fill();
-
-    // Full-bleed Jahntella artwork with a locked face and hair reference.
-    const artX = 76, artY = 170, artW = 928, artH = 930;
-    ctx.save();
-    ctx.beginPath();
-    ctx.roundRect(artX, artY, artW, artH, 38);
-    ctx.clip();
-
-    const zoom = card.photoZoom || 1;
-    const sourceAspect = image.width / image.height;
-    const targetAspect = artW / artH;
-    let sw, sh;
-    if (sourceAspect > targetAspect) {
-      sh = image.height / zoom;
-      sw = sh * targetAspect;
-    } else {
-      sw = image.width / zoom;
-      sh = sw / targetAspect;
-    }
-    const positionParts = String(card.photoPosition || "50% 50%").split(" ");
-    const px = parseFloat(positionParts[0]) / 100;
-    const py = parseFloat(positionParts[1] || "50%") / 100;
-    const sx = Math.max(0, Math.min(image.width - sw, image.width * px - sw * px));
-    const sy = Math.max(0, Math.min(image.height - sh, image.height * py - sh * py));
-    ctx.drawImage(image, sx, sy, sw, sh, artX, artY, artW, artH);
-
-    const overlay = ctx.createLinearGradient(0, artY, 0, artY + artH);
-    overlay.addColorStop(0, "rgba(0,0,0,0)");
-    overlay.addColorStop(.62, "rgba(0,0,0,.05)");
-    overlay.addColorStop(1, "rgba(8,0,12,.72)");
-    ctx.fillStyle = overlay;
-    ctx.fillRect(artX, artY, artW, artH);
-    ctx.restore();
-
-    ctx.strokeStyle = "rgba(255,255,255,.9)";
-    ctx.lineWidth = 7;
-    ctx.beginPath();
-    ctx.roundRect(64, 64, 952, 1384, 45);
-    ctx.stroke();
-
-    ctx.fillStyle = "#fff";
-    ctx.textAlign = "left";
-    ctx.font = "700 32px Arial";
-    ctx.fillText("SWEET ERA • FIRST EDITION", 92, 125);
-
-    ctx.textAlign = "right";
-    ctx.font = "800 30px Arial";
-    ctx.fillText(card.rarity.toUpperCase(), 988, 125);
-
-    ctx.textAlign = "left";
-    ctx.font = "900 86px Arial";
-    ctx.fillText(card.title.toUpperCase(), 92, 1195);
-
-    ctx.font = "700 33px Arial";
-    ctx.fillText(card.subtitle.toUpperCase(), 92, 1250);
-
-    ctx.font = "italic 33px Georgia";
-    ctx.fillStyle = "rgba(255,255,255,.9)";
-    const quote = `“${card.quote}”`;
-    const words = quote.split(" ");
-    let line = "", lines = [];
-    for (const word of words) {
-      const test = line ? `${line} ${word}` : word;
-      if (ctx.measureText(test).width > 820) {
-        lines.push(line);
-        line = word;
-      } else {
-        line = test;
-      }
-    }
-    if (line) lines.push(line);
-    lines.slice(0, 2).forEach((item, index) => ctx.fillText(item, 92, 1320 + index * 43));
-
-    ctx.fillStyle = "#fff";
-    ctx.textAlign = "left";
-    ctx.font = "700 28px Arial";
-    ctx.fillText(`#${card.number}`, 92, 1410);
-
-    ctx.textAlign = "right";
-    ctx.font = "italic 42px Georgia";
-    ctx.fillText("Jahntella♡", 988, 1410);
-
+    const response = await fetch(currentSurprise.photo);
+    if (!response.ok) throw new Error("Artwork could not be loaded.");
+    const blob = await response.blob();
     const link = document.createElement("a");
-    link.download = `Jahntella_${card.number}_${card.title.replace(/\s+/g, "_")}.png`;
-    link.href = canvas.toDataURL("image/png");
+    link.download = `Jahntella_${currentSurprise.number}_${currentSurprise.title.replace(/\s+/g, "_")}.jpg`;
+    link.href = URL.createObjectURL(blob);
+    document.body.appendChild(link);
     link.click();
-    showToast("Jahntella collectible downloaded! ⬇");
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(link.href), 1200);
+    showToast("Official Jahntella card downloaded! ⬇");
   } catch (error) {
     console.error(error);
     showToast("The card could not be downloaded. Please try again.");
