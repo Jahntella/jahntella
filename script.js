@@ -453,4 +453,52 @@ document.getElementById("sweetListForm").addEventListener("submit", async (event
     event.target.reset();
   }
 });
-\n\n// Sprint 1: Sweetville destination postcards\nconst sweetvilleDialog = document.getElementById("sweetvilleDialog");\nconst sweetvilleDialogIcon = document.getElementById("sweetvilleDialogIcon");\nconst sweetvilleDialogKicker = document.getElementById("sweetvilleDialogKicker");\nconst sweetvilleDialogTitle = document.getElementById("sweetvilleDialogTitle");\nconst sweetvilleDialogNote = document.getElementById("sweetvilleDialogNote");\n\ndocument.querySelectorAll("[data-sweetville-place]").forEach((place) => {\n  place.addEventListener("click", (event) => {\n    if (event.target.closest("#shootingStar")) return;\n    const name = place.dataset.sweetvillePlace || "Sweetville";\n    if (sweetvilleDialogIcon) sweetvilleDialogIcon.textContent = place.dataset.sweetvilleIcon || "🍭";\n    if (sweetvilleDialogKicker) sweetvilleDialogKicker.textContent = place.dataset.sweetvilleKicker || "A POSTCARD FROM SWEETVILLE";\n    if (sweetvilleDialogTitle) sweetvilleDialogTitle.innerHTML = `${name} is <em>almost open.</em>`;\n    if (sweetvilleDialogNote) sweetvilleDialogNote.textContent = place.dataset.sweetvilleNote || "Something sweet is on the way.";\n    if (sweetvilleDialog) sweetvilleDialog.showModal();\n  });\n});\n\n// A bonus delight separate from the four-sparkle game\nconst shootingStar = document.getElementById("shootingStar");\nlet shootingStarTimer;\n\nfunction launchShootingStar() {\n  if (!shootingStar) return;\n  shootingStar.classList.remove("is-flying");\n  void shootingStar.offsetWidth;\n  shootingStar.classList.add("is-flying");\n  window.clearTimeout(shootingStarTimer);\n  shootingStarTimer = window.setTimeout(launchShootingStar, 20000);\n}\n\nfunction catchShootingStar(event) {\n  event.stopPropagation();\n  shootingStar.classList.remove("is-flying");\n  showToast("Sweet! You caught a shooting star! ✨");\n  window.clearTimeout(shootingStarTimer);\n  shootingStarTimer = window.setTimeout(launchShootingStar, 20000);\n}\n\nif (shootingStar) {\n  shootingStar.addEventListener("click", catchShootingStar);\n  shootingStar.addEventListener("keydown", (event) => {\n    if (event.key === "Enter" || event.key === " ") catchShootingStar(event);\n  });\n  shootingStarTimer = window.setTimeout(launchShootingStar, 4500);\n}\n
+
+
+// Sprint 1: Sweetville destination postcards
+const sweetvilleDialog = document.getElementById("sweetvilleDialog");
+const sweetvilleDialogIcon = document.getElementById("sweetvilleDialogIcon");
+const sweetvilleDialogKicker = document.getElementById("sweetvilleDialogKicker");
+const sweetvilleDialogTitle = document.getElementById("sweetvilleDialogTitle");
+const sweetvilleDialogNote = document.getElementById("sweetvilleDialogNote");
+
+document.querySelectorAll("[data-sweetville-place]").forEach((place) => {
+  place.addEventListener("click", (event) => {
+    if (event.target.closest("#shootingStar")) return;
+    const name = place.dataset.sweetvillePlace || "Sweetville";
+    if (sweetvilleDialogIcon) sweetvilleDialogIcon.textContent = place.dataset.sweetvilleIcon || "🍭";
+    if (sweetvilleDialogKicker) sweetvilleDialogKicker.textContent = place.dataset.sweetvilleKicker || "A POSTCARD FROM SWEETVILLE";
+    if (sweetvilleDialogTitle) sweetvilleDialogTitle.innerHTML = `${name} is <em>almost open.</em>`;
+    if (sweetvilleDialogNote) sweetvilleDialogNote.textContent = place.dataset.sweetvilleNote || "Something sweet is on the way.";
+    if (sweetvilleDialog) sweetvilleDialog.showModal();
+  });
+});
+
+// A bonus delight separate from the four-sparkle game
+const shootingStar = document.getElementById("shootingStar");
+let shootingStarTimer;
+
+function launchShootingStar() {
+  if (!shootingStar) return;
+  shootingStar.classList.remove("is-flying");
+  void shootingStar.offsetWidth;
+  shootingStar.classList.add("is-flying");
+  window.clearTimeout(shootingStarTimer);
+  shootingStarTimer = window.setTimeout(launchShootingStar, 20000);
+}
+
+function catchShootingStar(event) {
+  event.stopPropagation();
+  shootingStar.classList.remove("is-flying");
+  showToast("Sweet! You caught a shooting star! ✨");
+  window.clearTimeout(shootingStarTimer);
+  shootingStarTimer = window.setTimeout(launchShootingStar, 20000);
+}
+
+if (shootingStar) {
+  shootingStar.addEventListener("click", catchShootingStar);
+  shootingStar.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") catchShootingStar(event);
+  });
+  shootingStarTimer = window.setTimeout(launchShootingStar, 4500);
+}
