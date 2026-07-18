@@ -2314,3 +2314,88 @@ footer{
 @media(prefers-reduced-motion:reduce){
   .official-card-shine{animation:none}
 }
+
+
+/* =========================================================
+   VERSION 3.5 — METALLIC FOIL SWEET PACK
+   ========================================================= */
+.sweet-pack.foil-image-pack{
+  width:min(370px,82vw);
+  aspect-ratio:381/511;
+  padding:0;
+  border:0;
+  border-radius:0;
+  overflow:hidden;
+  background:#050005;
+  box-shadow:none;
+  clip-path:none;
+  animation:packFloat 2.2s ease-in-out infinite;
+}
+.sweet-pack.foil-image-pack::before,
+.sweet-pack.foil-image-pack::after{
+  display:none;
+}
+.foil-pack-art{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  user-select:none;
+  pointer-events:none;
+}
+.foil-pack-glint{
+  position:absolute;
+  inset:-35%;
+  pointer-events:none;
+  opacity:.55;
+  background:linear-gradient(
+    110deg,
+    transparent 33%,
+    rgba(255,255,255,.08) 42%,
+    rgba(255,255,255,.78) 48%,
+    rgba(255,136,211,.32) 54%,
+    transparent 63%
+  );
+  mix-blend-mode:screen;
+  transform:translateX(-75%) rotate(7deg);
+  animation:foilPackGlint 3.1s ease-in-out infinite;
+}
+.foil-pack-tap{
+  position:absolute!important;
+  left:50%;
+  bottom:5.5%;
+  transform:translateX(-50%);
+  z-index:3;
+  padding:7px 14px;
+  border-radius:999px;
+  background:rgba(0,0,0,.65);
+  border:1px solid rgba(255,119,192,.75);
+  color:#fff!important;
+  font-weight:900!important;
+  letter-spacing:.15em!important;
+  text-shadow:0 0 10px #ff3d9d;
+  white-space:nowrap;
+  animation:tapPulse 1.2s ease-in-out infinite;
+}
+.sweet-pack.foil-image-pack.is-opening{
+  animation:foilPackOpen .9s cubic-bezier(.18,.76,.25,1) forwards;
+}
+@keyframes foilPackGlint{
+  0%,20%{transform:translateX(-76%) rotate(7deg)}
+  65%,100%{transform:translateX(76%) rotate(7deg)}
+}
+@keyframes foilPackOpen{
+  0%{transform:scale(1) rotate(0);opacity:1;filter:brightness(1)}
+  22%{transform:scale(1.04) rotate(-2deg);filter:brightness(1.22)}
+  44%{transform:scale(1.07) rotate(2deg);filter:brightness(1.35)}
+  70%{transform:scale(.84) translateY(-70px);opacity:.82}
+  100%{transform:scale(.48) translateY(-250px);opacity:0}
+}
+@media(max-width:600px){
+  .sweet-pack.foil-image-pack{width:min(330px,88vw)}
+}
+@media(prefers-reduced-motion:reduce){
+  .foil-pack-glint{animation:none!important}
+}
