@@ -502,3 +502,347 @@ if (shootingStar) {
   });
   shootingStarTimer = window.setTimeout(launchShootingStar, 4500);
 }
+
+
+// Sprint 2: Sweet Surprises
+const SWEET_SURPRISES = [
+  {
+    id: "mood-dangerous-adorable",
+    category: "Tonight's Mood",
+    icon: "💋",
+    title: "Dangerous... but adorable.",
+    message: "Walk in like the lights came on just for you. Keep the confidence high and the drama cute.",
+    rarity: "Common"
+  },
+  {
+    id: "quote-kind-confidence",
+    category: "Sweet Quote",
+    icon: "✨",
+    title: "Kindness is part of the glow.",
+    message: "Confidence gets attention. Kindness is what makes people remember how you made them feel.",
+    rarity: "Common"
+  },
+  {
+    id: "cafe-pink-order",
+    category: "Pink Café Order",
+    icon: "☕",
+    title: "Strawberry latte, extra sparkle.",
+    message: "Today's order comes with one pink donut and absolutely no permission to dim your shine.",
+    rarity: "Common"
+  },
+  {
+    id: "letter-one-more-chorus",
+    category: "Letter from Jahntella",
+    icon: "💌",
+    title: "One more chorus.",
+    message: "Hey Sweetie — sometimes the best part of the night begins right when everyone else thinks it is over.",
+    rarity: "Common"
+  },
+  {
+    id: "fun-fact-hoops",
+    category: "Jahntella Lore",
+    icon: "💖",
+    title: "The gold hoops stay on.",
+    message: "Sweetville lore says Jahntella can hear a perfect pop hook before her earrings finish their first swing.",
+    rarity: "Rare"
+  },
+  {
+    id: "lyric-velvet-rope",
+    category: "Fun Dipp Lyric Drop",
+    icon: "🎵",
+    title: "Near the velvet rope...",
+    message: "\"You caught my eye near the velvet rope.\" The moment the sweet night turns into something a little riskier.",
+    rarity: "Rare"
+  },
+  {
+    id: "neon-vip-pass",
+    category: "Neon Lounge Secret",
+    icon: "🌙",
+    title: "The velvet rope moved for you.",
+    message: "You found a pink VIP pass. Opening night is getting closer, and the bass is already shaking Sweetville.",
+    rarity: "Rare"
+  },
+  {
+    id: "pink-lips-card",
+    category: "Digital Collectible",
+    icon: "💄",
+    title: "Pink Lips Card #002",
+    message: "Collection: The Sweet Era. Trait: extra attitude. Rarity: Ultra Rare. Keep this browser collection growing.",
+    rarity: "Ultra Rare"
+  },
+  {
+    id: "fun-dipp-card",
+    category: "Digital Collectible",
+    icon: "🍭",
+    title: "Fun Dipp Card #001",
+    message: "The song that opened Sweetville after dark. Candy-coated pop, neon confidence, and one unforgettable hook.",
+    rarity: "Ultra Rare"
+  },
+  {
+    id: "sparkle-lake-wish",
+    category: "Sparkle Lake Wish",
+    icon: "⭐",
+    title: "Your wish made the water glow.",
+    message: "Something you are quietly hoping for deserves one brave step today. Sweetville believes in momentum.",
+    rarity: "Common"
+  },
+  {
+    id: "legendary-founder",
+    category: "Legendary Drop",
+    icon: "👑",
+    title: "Original Sweetie Badge",
+    message: "You were here while Sweetville was still being built. That makes you part of the beginning.",
+    rarity: "Legendary"
+  },
+  {
+    id: "secret-after-dark",
+    category: "After-Dark Secret",
+    icon: "🪩",
+    title: "Keep it cute. Keep it bad.",
+    message: "The Neon Lounge rule: flirt with the moment, own the dance floor, and leave a little mystery behind.",
+    rarity: "Legendary"
+  }
+];
+
+const SURPRISE_STORAGE_KEY = "jahntellaSweetSurpriseCollectionV1";
+const sweetMachine = document.getElementById("sweetMachine");
+const surpriseButton = document.getElementById("surpriseButton");
+const surprisePreview = document.getElementById("surprisePreview");
+const machineStatus = document.getElementById("machineStatus");
+const machineCount = document.getElementById("machineCount");
+const previewRarity = document.getElementById("previewRarity");
+const previewNumber = document.getElementById("previewNumber");
+const previewIcon = document.getElementById("previewIcon");
+const previewCategory = document.getElementById("previewCategory");
+const previewTitle = document.getElementById("previewTitle");
+const previewMessage = document.getElementById("previewMessage");
+const shareSurpriseButton = document.getElementById("shareSurpriseButton");
+const openCollectionButton = document.getElementById("openCollectionButton");
+const resetCollectionButton = document.getElementById("resetCollectionButton");
+const collectionDialog = document.getElementById("collectionDialog");
+const collectionGrid = document.getElementById("collectionGrid");
+const collectionUnlocked = document.getElementById("collectionUnlocked");
+const collectionTotal = document.getElementById("collectionTotal");
+const collectionRare = document.getElementById("collectionRare");
+
+let currentSurprise = null;
+let isSurpriseSpinning = false;
+
+function getSweetCollection() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(SURPRISE_STORAGE_KEY) || "[]");
+    return Array.isArray(saved) ? saved.filter((id) => SWEET_SURPRISES.some((item) => item.id === id)) : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveSweetCollection(collection) {
+  localStorage.setItem(SURPRISE_STORAGE_KEY, JSON.stringify([...new Set(collection)]));
+}
+
+function rarityClass(rarity) {
+  return `rarity-${String(rarity).toLowerCase().replace(/\s+/g, "-")}`;
+}
+
+function weightedSurprise() {
+  const collection = getSweetCollection();
+  const locked = SWEET_SURPRISES.filter((item) => !collection.includes(item.id));
+  const source = locked.length ? locked : SWEET_SURPRISES;
+
+  const weighted = source.flatMap((item) => {
+    const weight = {
+      "Common": 7,
+      "Rare": 4,
+      "Ultra Rare": 2,
+      "Legendary": 1
+    }[item.rarity] || 3;
+    return Array(weight).fill(item);
+  });
+
+  return weighted[Math.floor(Math.random() * weighted.length)];
+}
+
+function updateSurpriseCount() {
+  const count = getSweetCollection().length;
+  if (machineCount) {
+    machineCount.textContent = `${count} surprise${count === 1 ? "" : "s"} collected`;
+  }
+}
+
+function burstSweetConfetti() {
+  const colors = ["#ff4fa3", "#ffd66b", "#b76dff", "#ffffff", "#ff89c2"];
+  for (let index = 0; index < 28; index += 1) {
+    const piece = document.createElement("span");
+    piece.className = "surprise-confetti";
+    piece.style.left = `${48 + Math.random() * 8}%`;
+    piece.style.top = `${38 + Math.random() * 7}%`;
+    piece.style.background = colors[index % colors.length];
+    piece.style.setProperty("--drift", `${-130 + Math.random() * 260}px`);
+    piece.style.animationDelay = `${Math.random() * 0.12}s`;
+    document.body.appendChild(piece);
+    window.setTimeout(() => piece.remove(), 1500);
+  }
+}
+
+function revealSweetSurprise(surprise) {
+  currentSurprise = surprise;
+  const collection = getSweetCollection();
+  const isNew = !collection.includes(surprise.id);
+
+  if (isNew) {
+    collection.push(surprise.id);
+    saveSweetCollection(collection);
+  }
+
+  if (previewRarity) {
+    previewRarity.textContent = surprise.rarity.toUpperCase();
+    previewRarity.className = `surprise-rarity ${rarityClass(surprise.rarity)}`;
+  }
+  if (previewNumber) {
+    previewNumber.textContent = isNew ? "NEW DROP UNLOCKED" : "ENCORE DROP";
+  }
+  if (previewIcon) previewIcon.textContent = surprise.icon;
+  if (previewCategory) previewCategory.textContent = surprise.category.toUpperCase();
+  if (previewTitle) previewTitle.textContent = surprise.title;
+  if (previewMessage) previewMessage.textContent = surprise.message;
+  if (machineStatus) machineStatus.textContent = isNew ? "SOMETHING NEW JUST DROPPED!" : "A SWEET FAVORITE RETURNED";
+  if (shareSurpriseButton) shareSurpriseButton.disabled = false;
+
+  if (surprisePreview) {
+    surprisePreview.classList.remove("is-revealing");
+    void surprisePreview.offsetWidth;
+    surprisePreview.classList.add("is-revealing");
+  }
+
+  updateSurpriseCount();
+  renderSweetCollection();
+
+  if (isNew) {
+    burstSweetConfetti();
+    showToast(`${surprise.rarity} Sweet Surprise unlocked! ${surprise.icon}`);
+  } else {
+    showToast(`Encore drop: ${surprise.title} ${surprise.icon}`);
+  }
+}
+
+function spinSweetMachine() {
+  if (isSurpriseSpinning) return;
+  isSurpriseSpinning = true;
+
+  if (surpriseButton) {
+    surpriseButton.disabled = true;
+    surpriseButton.querySelector("span:last-child").textContent = "Mixing the sweetness...";
+  }
+  if (machineStatus) machineStatus.textContent = "SHAKING UP SWEETVILLE...";
+  if (sweetMachine) sweetMachine.classList.add("is-spinning");
+
+  window.setTimeout(() => {
+    revealSweetSurprise(weightedSurprise());
+    if (sweetMachine) sweetMachine.classList.remove("is-spinning");
+    if (surpriseButton) {
+      surpriseButton.disabled = false;
+      surpriseButton.querySelector("span:last-child").textContent = "Push for Another Surprise";
+    }
+    isSurpriseSpinning = false;
+  }, 720);
+}
+
+function renderSweetCollection() {
+  const collection = getSweetCollection();
+  const unlockedItems = SWEET_SURPRISES.filter((item) => collection.includes(item.id));
+  const rareCount = unlockedItems.filter((item) => item.rarity !== "Common").length;
+
+  if (collectionUnlocked) collectionUnlocked.textContent = String(unlockedItems.length);
+  if (collectionTotal) collectionTotal.textContent = String(SWEET_SURPRISES.length);
+  if (collectionRare) collectionRare.textContent = String(rareCount);
+
+  if (!collectionGrid) return;
+
+  collectionGrid.innerHTML = SWEET_SURPRISES.map((item) => {
+    const unlocked = collection.includes(item.id);
+    if (!unlocked) {
+      return '<article class="collection-card locked" aria-label="Locked surprise"></article>';
+    }
+
+    return `
+      <article class="collection-card">
+        <div class="collection-icon">${item.icon}</div>
+        <h3>${item.title}</h3>
+        <p>${item.category}</p>
+        <span class="surprise-rarity ${rarityClass(item.rarity)}">${item.rarity.toUpperCase()}</span>
+      </article>
+    `;
+  }).join("");
+}
+
+async function shareCurrentSurprise() {
+  if (!currentSurprise) return;
+
+  const shareText = `I unlocked "${currentSurprise.title}" in Jahntella's Sweet Surprises 🍭✨`;
+  const shareData = {
+    title: "Jahntella Sweet Surprise",
+    text: shareText,
+    url: window.location.href.split("#")[0] + "#surprises"
+  };
+
+  try {
+    if (navigator.share) {
+      await navigator.share(shareData);
+    } else if (navigator.clipboard) {
+      await navigator.clipboard.writeText(`${shareText} ${shareData.url}`);
+      showToast("Sweet Surprise copied — ready to share! 💖");
+    } else {
+      showToast(shareText);
+    }
+  } catch (error) {
+    if (error && error.name !== "AbortError") {
+      showToast("Sharing paused — your surprise is still saved.");
+    }
+  }
+}
+
+if (surpriseButton) {
+  surpriseButton.addEventListener("click", spinSweetMachine);
+}
+
+if (openCollectionButton && collectionDialog) {
+  openCollectionButton.addEventListener("click", () => {
+    renderSweetCollection();
+    collectionDialog.showModal();
+  });
+}
+
+if (shareSurpriseButton) {
+  shareSurpriseButton.addEventListener("click", shareCurrentSurprise);
+}
+
+if (resetCollectionButton) {
+  resetCollectionButton.addEventListener("click", () => {
+    const shouldReset = window.confirm("Reset all Sweet Surprise discoveries saved in this browser?");
+    if (!shouldReset) return;
+
+    localStorage.removeItem(SURPRISE_STORAGE_KEY);
+    currentSurprise = null;
+    updateSurpriseCount();
+    renderSweetCollection();
+
+    if (previewRarity) {
+      previewRarity.textContent = "READY";
+      previewRarity.className = "surprise-rarity rarity-common";
+    }
+    if (previewNumber) previewNumber.textContent = "SWEET DROP";
+    if (previewIcon) previewIcon.textContent = "🎁";
+    if (previewCategory) previewCategory.textContent = "YOUR NEXT LITTLE DELIGHT";
+    if (previewTitle) previewTitle.textContent = "What will you unlock?";
+    if (previewMessage) previewMessage.textContent = "Push the glowing button and let Sweetville choose something for you.";
+    if (machineStatus) machineStatus.textContent = "READY FOR SOMETHING SWEET?";
+    if (shareSurpriseButton) shareSurpriseButton.disabled = true;
+    if (surpriseButton) surpriseButton.querySelector("span:last-child").textContent = "Push for a Surprise";
+
+    showToast("Sweet Surprise collection reset.");
+  });
+}
+
+updateSurpriseCount();
+renderSweetCollection();

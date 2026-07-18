@@ -36,6 +36,7 @@
 
     <nav id="siteNav" class="site-nav">
       <a href="#sweetville">Sweetville</a>
+      <a href="#surprises">Sweet Surprises</a>
       <a href="#music">Music</a>
       <a href="#experience">Experience</a>
       <a href="#merch">Merch</a>
@@ -183,6 +184,87 @@
       <div class="sweetville-footer-note reveal">
         <span>Sweetville is growing every week.</span>
         <strong>✨ New places are always opening. 🍭 Come back soon.</strong>
+      </div>
+    </section>
+
+
+    <section id="surprises" class="section surprise-section" aria-labelledby="surpriseTitle">
+      <div class="surprise-orbit surprise-orbit-one" aria-hidden="true">✦</div>
+      <div class="surprise-orbit surprise-orbit-two" aria-hidden="true">♡</div>
+      <div class="surprise-orbit surprise-orbit-three" aria-hidden="true">✧</div>
+
+      <header class="section-heading centered reveal surprise-heading">
+        <p class="eyebrow">A LITTLE SOMETHING JUST FOR YOU</p>
+        <h2 id="surpriseTitle">Open a <em>Sweet Surprise.</em></h2>
+        <p>Give the machine a spin and unlock a mood, message, secret, lyric, or collectible from Jahntella's world.</p>
+      </header>
+
+      <div class="surprise-experience reveal">
+        <div class="sweet-machine" id="sweetMachine" aria-label="Jahntella Sweet Surprise machine">
+          <div class="machine-sign">
+            <span>JAHNTELLA'S</span>
+            <strong>SWEET SURPRISES</strong>
+          </div>
+
+          <div class="machine-globe" aria-hidden="true">
+            <span class="machine-candy candy-one">●</span>
+            <span class="machine-candy candy-two">♥</span>
+            <span class="machine-candy candy-three">★</span>
+            <span class="machine-candy candy-four">●</span>
+            <span class="machine-candy candy-five">✦</span>
+            <span class="machine-candy candy-six">●</span>
+            <span class="machine-candy candy-seven">♥</span>
+            <span class="machine-candy candy-eight">★</span>
+            <div class="machine-glow"></div>
+          </div>
+
+          <div class="machine-body">
+            <div class="machine-display" aria-live="polite">
+              <small id="machineStatus">READY FOR SOMETHING SWEET?</small>
+              <strong id="machineCount">0 surprises collected</strong>
+            </div>
+
+            <button class="machine-button" id="surpriseButton" type="button">
+              <span class="machine-button-icon">🍭</span>
+              <span>Push for a Surprise</span>
+            </button>
+
+            <div class="machine-slot" aria-hidden="true">
+              <span></span>
+            </div>
+          </div>
+        </div>
+
+        <article class="surprise-preview" id="surprisePreview">
+          <div class="preview-topline">
+            <span class="surprise-rarity rarity-common" id="previewRarity">READY</span>
+            <span class="surprise-number" id="previewNumber">SWEET DROP</span>
+          </div>
+
+          <div class="preview-icon" id="previewIcon">🎁</div>
+          <p class="eyebrow" id="previewCategory">YOUR NEXT LITTLE DELIGHT</p>
+          <h3 id="previewTitle">What will you unlock?</h3>
+          <p id="previewMessage">Push the glowing button and let Sweetville choose something for you.</p>
+
+          <div class="preview-signoff">
+            <span>🍭 Stay Sweet</span>
+            <strong>xo, Jahntella 💋</strong>
+          </div>
+
+          <div class="surprise-actions">
+            <button class="button button-primary" id="openCollectionButton" type="button">
+              View My Collection
+            </button>
+            <button class="button button-glass" id="shareSurpriseButton" type="button" disabled>
+              Share This Drop
+            </button>
+          </div>
+        </article>
+      </div>
+
+      <div class="surprise-footnote reveal">
+        <span>Saved privately in this browser — no account needed.</span>
+        <button class="text-button" id="resetCollectionButton" type="button">Reset collection</button>
       </div>
     </section>
 
@@ -513,6 +595,22 @@
     </div>
   </dialog>
 
+
+
+  <dialog class="site-dialog collection-dialog" id="collectionDialog">
+    <button class="dialog-close" type="button" data-close-dialog aria-label="Close collection">×</button>
+    <p class="eyebrow">YOUR PRIVATE SWEET VAULT</p>
+    <h2>My Sweet <em>Collection.</em></h2>
+    <p class="collection-intro">Every surprise you find is saved on this device. Keep spinning to discover them all.</p>
+
+    <div class="collection-summary" id="collectionSummary">
+      <div><strong id="collectionUnlocked">0</strong><span>Unlocked</span></div>
+      <div><strong id="collectionTotal">12</strong><span>Total drops</span></div>
+      <div><strong id="collectionRare">0</strong><span>Rare or better</span></div>
+    </div>
+
+    <div class="collection-grid" id="collectionGrid" aria-live="polite"></div>
+  </dialog>
 
   <dialog class="site-dialog sweetville-dialog" id="sweetvilleDialog">
     <button class="dialog-close" data-close-dialog aria-label="Close">×</button>
