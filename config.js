@@ -5,6 +5,7 @@ window.JAHNTELLA_CONFIG = {
     signoff: "🍭 Stay Sweet, xo, Jahntella 💋"
   },
 
+  // Replace any search URLs below with exact artist/channel URLs as soon as they are confirmed.
   social: {
     instagram: "https://www.instagram.com/jahntella/",
     tiktok: "https://www.tiktok.com/@jahntella",
@@ -21,21 +22,16 @@ window.JAHNTELLA_CONFIG = {
     soundcloud: "https://soundcloud.com/search?q=Jahntella"
   },
 
+  // Store integrations can be added here later.
   store: {
-    provider: "shopify",
-    storefrontUrl: "https://jahntella.myshopify.com",
-    checkoutUrl: "https://jahntella.myshopify.com"
+    provider: "preview",
+    checkoutUrl: ""
   },
 
+  // Newsletter integration options:
+  // "preview", "formspree", "mailchimp", or your own endpoint.
   newsletter: {
     provider: "preview",
     endpoint: ""
-  },
-
-  creativeDirector: {
-    name: "J.W. Hummel",
-    title: "Creative Director",
-    email: "jahntella@gmail.com",
-    portrait: "jon-creative-director.jpg"
   }
 };

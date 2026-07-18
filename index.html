@@ -21,18 +21,56 @@
   <div class="cursor-aura" aria-hidden="true"></div>
 
   <div class="loading-screen" id="loadingScreen">
-    <div class="intro-light intro-light-one"></div>
-    <div class="intro-light intro-light-two"></div>
-    <div class="intro-content">
-      <p class="intro-kicker">A NEW POP WORLD IS OPENING</p>
-      <div class="loader-logo">Jahntella♡</div>
-      <p class="intro-line">Sweet Hooks. Big Choruses. Good Vibes.</p>
-      <button class="button button-primary intro-enter" id="enterWorldButton">
-        Enter the World of Sweet
-      </button>
-      <p class="intro-note">Sound and sparkle are always under your control.</p>
-    </div>
+    <div class="loader-logo">Jahntella♡</div>
+    <div class="loader-track"><span></span></div>
+    <p>Entering the World of Sweet...</p>
   </div>
+
+  <header class="site-header">
+    <a class="site-logo" href="#home" aria-label="Jahntella home">Jahntella<span>♡</span></a>
+
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteNav">
+      <span></span><span></span><span></span>
+      <b class="sr-only">Open navigation</b>
+    </button>
+
+    <nav id="siteNav" class="site-nav">
+      <a href="#music">Music</a>
+      <a href="#experience">Experience</a>
+      <a href="#merch">Merch</a>
+      <a href="#sweet-list">Sweet List</a>
+      <a href="#connect">Connect</a>
+    </nav>
+
+    <button class="header-bag" id="bagButton" aria-label="Open shopping bag">
+      Bag <span id="bagCount">0</span>
+    </button>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-glow hero-glow-one"></div>
+      <div class="hero-glow hero-glow-two"></div>
+
+      <div class="hero-copy reveal">
+        <p class="eyebrow">WELCOME TO THE WORLD OF SWEET</p>
+        <h1>
+          Sweet hooks.
+          <span>Big choruses.</span>
+          Good vibes.
+        </h1>
+        <p class="hero-description">
+          Meet Jahntella — a playful pop universe built from confidence, color,
+          unforgettable melodies and a little trouble.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="#music">Listen now</a>
+          <a class="button button-glass" href="#sweet-list">Join The Sweet List</a>
+        </div>
+
+        <div class="hero-socials" data-social-links></div>
+      </div>
 
       <div class="hero-stage reveal">
         <div class="orbit orbit-one"></div>
@@ -86,7 +124,6 @@
             <div class="release-actions">
               <button class="button button-primary open-platforms" data-track="Fun Dipp">Listen everywhere</button>
               <button class="button button-glass play-preview" data-preview="fun-dipp">Preview vibe</button>
-              <button class="button button-glass share-release" data-track="Fun Dipp">Share Fun Dipp</button>
             </div>
           </div>
         </article>
@@ -201,8 +238,7 @@
       <header class="section-heading reveal">
         <p class="eyebrow">THE SWEET SHOP</p>
         <h2>Wear the <em>era.</em></h2>
-        <p>Preview the first Sweet Shop collection, then continue to the official Shopify storefront.</p>
-        <a class="button button-primary shopify-launch" data-shopify-link target="_blank" rel="noopener">Visit the Sweet Shop</a>
+        <p>Interactive store preview ready to connect to Shopify, Fourthwall or Stripe.</p>
       </header>
 
       <div class="shop-toolbar reveal">
@@ -282,48 +318,6 @@
       </div>
     </section>
 
-
-    <section id="creative-director" class="section director-section">
-      <div class="director-shell reveal">
-        <div class="director-portrait">
-          <img src="jon-creative-director.jpg" alt="J.W. Hummel, Creative Director">
-          <div class="director-frame-copy">Creative Direction<br><strong>J.W. Hummel</strong></div>
-        </div>
-
-        <div class="director-copy">
-          <p class="eyebrow">BEHIND THE WORLD</p>
-          <h2>Meet the <em>Creative Director.</em></h2>
-          <p class="director-lead">
-            Jahntella is more than an artist. She is a colorful world built around
-            positivity, imagination, music, confidence and kindness.
-          </p>
-          <p>
-            J.W. Hummel leads the creative direction behind Jahntella — shaping the
-            visual identity, storytelling, music presentation, merchandise concepts
-            and the larger fan experience.
-          </p>
-
-          <div class="direction-grid">
-            <span>Brand Partnerships</span>
-            <span>Licensing</span>
-            <span>Media & Press</span>
-            <span>Merchandise</span>
-            <span>Creative Collaborations</span>
-            <span>Bookings</span>
-          </div>
-
-          <div class="director-actions">
-            <a class="button button-primary" href="mailto:jahntella@gmail.com?subject=Jahntella%20Business%20Inquiry">
-              Business Inquiries
-            </a>
-            <button class="button button-glass copy-contact" data-copy-email="jahntella@gmail.com">
-              Copy Contact Email
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section id="connect" class="section connect-section">
       <header class="section-heading centered reveal">
         <p class="eyebrow">FOLLOW THE STORY</p>
@@ -331,13 +325,6 @@
       </header>
 
       <div class="social-grid reveal" data-social-cards></div>
-      <div class="business-strip reveal">
-        <div>
-          <small>BUSINESS & MEDIA</small>
-          <strong>Partnerships · Licensing · Press · Bookings</strong>
-        </div>
-        <a href="mailto:jahntella@gmail.com?subject=Jahntella%20Inquiry">jahntella@gmail.com ↗</a>
-      </div>
     </section>
   </main>
 
