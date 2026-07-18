@@ -773,3 +773,193 @@ footer{
   .social-grid{grid-template-columns:1fr}
   .platform-grid{grid-template-columns:1fr}
 }
+
+
+/* =========================================================
+   SAFE PATCH: CREATIVE DIRECTOR SECTION
+   Adds presentation only; no existing JavaScript is changed.
+   ========================================================= */
+
+.creative-director-section{
+  padding-top:38px;
+}
+
+.creative-director-panel{
+  position:relative;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:minmax(280px,.78fr) minmax(0,1.22fr);
+  gap:clamp(32px,6vw,82px);
+  align-items:center;
+  padding:clamp(24px,5vw,68px);
+  border:1px solid rgba(255,79,163,.30);
+  border-radius:38px;
+  background:
+    radial-gradient(circle at 12% 20%,rgba(255,79,163,.20),transparent 31%),
+    radial-gradient(circle at 90% 88%,rgba(139,61,255,.13),transparent 32%),
+    linear-gradient(135deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
+  box-shadow:0 42px 110px rgba(0,0,0,.30);
+}
+
+.creative-director-panel::before{
+  content:"";
+  position:absolute;
+  width:230px;
+  height:230px;
+  right:-75px;
+  top:-85px;
+  border:1px solid rgba(255,79,163,.26);
+  border-radius:50%;
+  box-shadow:
+    0 0 42px rgba(255,79,163,.16),
+    inset 0 0 42px rgba(255,79,163,.08);
+}
+
+.creative-director-photo{
+  position:relative;
+  overflow:hidden;
+  min-height:520px;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:29px;
+  background:#08000c;
+  box-shadow:0 34px 86px rgba(0,0,0,.52);
+}
+
+.creative-director-photo img{
+  width:100%;
+  height:100%;
+  min-height:520px;
+  object-fit:cover;
+  object-position:center top;
+}
+
+.creative-director-photo::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg,transparent 46%,rgba(7,0,10,.94) 100%),
+    linear-gradient(90deg,rgba(255,79,163,.08),transparent 46%);
+}
+
+.creative-director-caption{
+  position:absolute;
+  z-index:2;
+  left:25px;
+  right:25px;
+  bottom:24px;
+}
+
+.creative-director-caption small{
+  display:block;
+  margin-bottom:5px;
+  color:var(--rose);
+  font-size:.68rem;
+  font-weight:800;
+  letter-spacing:.22em;
+}
+
+.creative-director-caption strong{
+  display:block;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(1.55rem,3vw,2.2rem);
+}
+
+.creative-director-content{
+  position:relative;
+  z-index:1;
+}
+
+.creative-director-content h2{
+  max-width:790px;
+  margin:0 0 24px;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(2.8rem,5.4vw,5.7rem);
+  line-height:.98;
+  letter-spacing:-.035em;
+}
+
+.creative-director-content h2 em{
+  font-family:"Sacramento",cursive;
+  color:var(--pink);
+  font-weight:400;
+  font-style:normal;
+  text-shadow:0 0 22px rgba(255,79,163,.38);
+}
+
+.creative-director-content>p{
+  max-width:760px;
+  color:var(--muted);
+  font-size:1rem;
+  line-height:1.78;
+}
+
+.creative-director-content .creative-director-intro{
+  color:var(--white);
+  font-size:clamp(1.04rem,1.8vw,1.22rem);
+}
+
+.creative-direction-list{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin:28px 0;
+}
+
+.creative-direction-list span{
+  padding:13px 15px;
+  border:1px solid var(--line);
+  border-radius:15px;
+  background:rgba(255,255,255,.045);
+  font-size:.84rem;
+  font-weight:800;
+}
+
+.creative-director-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:25px;
+}
+
+.creative-contact-line{
+  margin-top:20px;
+  font-size:.88rem !important;
+}
+
+.creative-contact-line a{
+  color:var(--rose);
+  font-weight:800;
+}
+
+@media(max-width:900px){
+  .creative-director-panel{
+    grid-template-columns:1fr;
+  }
+
+  .creative-director-photo{
+    width:min(560px,100%);
+    min-height:440px;
+    margin-inline:auto;
+  }
+
+  .creative-director-photo img{
+    min-height:440px;
+  }
+}
+
+@media(max-width:620px){
+  .creative-director-panel{
+    padding:20px;
+    border-radius:28px;
+  }
+
+  .creative-director-photo,
+  .creative-director-photo img{
+    min-height:390px;
+  }
+
+  .creative-direction-list{
+    grid-template-columns:1fr;
+  }
+}
