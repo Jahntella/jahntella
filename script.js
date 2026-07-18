@@ -47,12 +47,64 @@ function renderExternalLinks() {
 }
 
 renderExternalLinks();
+
+document.querySelectorAll("[data-shopify-link]").forEach((link) => {
+  const url = CONFIG.store?.storefrontUrl || CONFIG.store?.checkoutUrl || "#";
+  link.href = url;
+});
+
+document.querySelectorAll(".share-release").forEach((button) => {
+  button.addEventListener("click", async () => {
+    const track = button.dataset.track || "Fun Dipp";
+    const shareData = {
+      title: `${track} by Jahntella`,
+      text: `Enter the World of Sweet and discover ${track} by Jahntella.`,
+      url: window.location.href
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast("Site link copied — share something sweet 💖");
+      }
+    } catch {
+      // Sharing was dismissed.
+    }
+  });
+});
+
+document.querySelectorAll("[data-copy-email]").forEach((button) => {
+  button.addEventListener("click", async () => {
+    const email = button.dataset.copyEmail;
+    try {
+      await navigator.clipboard.writeText(email);
+      showToast("Contact email copied ✨");
+    } catch {
+      window.location.href = `mailto:${email}`;
+    }
+  });
+});
 document.getElementById("currentYear").textContent = new Date().getFullYear();
 
 window.addEventListener("load", () => {
+  const loadingScreen = document.getElementById("loadingScreen");
+  const enterButton = document.getElementById("enterWorldButton");
+
+  if (enterButton) {
+    enterButton.addEventListener("click", () => {
+      loadingScreen.classList.add("hidden");
+      document.body.classList.remove("no-scroll");
+      showToast("Welcome to the World of Sweet ✨");
+    });
+  }
+
   window.setTimeout(() => {
-    document.getElementById("loadingScreen").classList.add("hidden");
-  }, 1300);
+    if (loadingScreen && !loadingScreen.classList.contains("hidden")) {
+      enterButton?.classList.add("ready");
+    }
+  }, 700);
 });
 
 const menuToggle = document.getElementById("menuToggle");
