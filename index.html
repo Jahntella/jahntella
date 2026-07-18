@@ -35,6 +35,7 @@
     </button>
 
     <nav id="siteNav" class="site-nav">
+      <a href="#sweetville">Sweetville</a>
       <a href="#music">Music</a>
       <a href="#experience">Experience</a>
       <a href="#merch">Merch</a>
@@ -112,7 +113,77 @@
         </div>
       </div>
 
-      <a class="scroll-cue" href="#music">Scroll to enter <span>↓</span></a>
+      <a class="scroll-cue" href="#sweetville">Enter Sweetville <span>↓</span></a>
+    </section>
+
+
+    <section id="sweetville" class="section sweetville-section" aria-labelledby="sweetvilleTitle">
+      <div class="sweetville-sky" aria-hidden="true">
+        <span class="sweetville-cloud cloud-one"></span>
+        <span class="sweetville-cloud cloud-two"></span>
+        <span class="sweetville-sparkle sparkle-one">✦</span>
+        <span class="sweetville-sparkle sparkle-two">✧</span>
+        <span class="sweetville-sparkle sparkle-three">✦</span>
+      </div>
+
+      <header class="section-heading centered reveal sweetville-heading">
+        <p class="eyebrow">THE FRONT GATE IS OPEN</p>
+        <h2 id="sweetvilleTitle">🍭 Welcome to <em>Sweetville.</em></h2>
+        <p>Every song has a story. Every smile hides a little sparkle. Step into the colorful world of Jahntella.</p>
+      </header>
+
+      <div class="sweetville-map" aria-label="Explore Sweetville destinations">
+        <button class="sweetville-place donut-place reveal" type="button"
+          data-sweetville-place="Donut District" data-sweetville-icon="🍩"
+          data-sweetville-kicker="SPRINKLES START HERE"
+          data-sweetville-note="Where every great day begins with sprinkles, glossy pink boxes and a reason to smile. The ovens are warming up for something sweet.">
+          <span class="place-icon">🍩</span>
+          <span class="place-copy"><strong>Donut District</strong><small>Sprinkles, smiles and sweet drops.</small></span>
+          <span class="place-status">Peek inside →</span>
+        </button>
+
+        <button class="sweetville-place melody-place reveal" type="button"
+          data-sweetville-place="Melody Studio" data-sweetville-icon="🎵"
+          data-sweetville-kicker="WHERE HOOKS COME ALIVE"
+          data-sweetville-note="This is where bright ideas become unforgettable choruses. New song stories, studio notes and secret sounds are being mixed right now.">
+          <span class="place-icon">🎵</span>
+          <span class="place-copy"><strong>Melody Studio</strong><small>Where catchy choruses begin.</small></span>
+          <span class="place-status">Hear the buzz →</span>
+        </button>
+
+        <button class="sweetville-place neon-place reveal" type="button"
+          data-sweetville-place="Neon Lounge" data-sweetville-icon="💋"
+          data-sweetville-kicker="THE SWEET AFTER DARK"
+          data-sweetville-note="The velvet rope is up, the pink lights are glowing and Fun Dipp is almost loud enough. This is Jahntella after dark: playful, confident and a little dangerous.">
+          <span class="place-icon neon-lips">💋</span>
+          <span class="place-copy"><strong>Neon Lounge</strong><small>When the lights glow, the music turns up.</small></span>
+          <span class="place-status">Step past the rope →</span>
+        </button>
+
+        <button class="sweetville-place cafe-place reveal" type="button"
+          data-sweetville-place="Pink Café" data-sweetville-icon="☕"
+          data-sweetville-kicker="SIP. TALK. DREAM."
+          data-sweetville-note="Coffee, conversations, mood cards and way too many pink donuts. Jahntella's little notes and behind-the-scenes stories will live here.">
+          <span class="place-icon coffee-icon">☕</span>
+          <span class="place-copy"><strong>Pink Café</strong><small>Coffee, secrets and big dreams.</small></span>
+          <span class="place-status">Save a seat →</span>
+        </button>
+
+        <button class="sweetville-place lake-place reveal" type="button"
+          data-sweetville-place="Sparkle Lake" data-sweetville-icon="✨"
+          data-sweetville-kicker="MAKE A LITTLE WISH"
+          data-sweetville-note="They say every sparkle hides a wish. Soon this lake will hold wallpapers, surprises, collectible cards and rewards for curious Sweeties.">
+          <span class="place-icon">✨</span>
+          <span class="place-copy"><strong>Sparkle Lake</strong><small>Wishes, surprises and hidden rewards.</small></span>
+          <span class="place-status">Make a wish →</span>
+          <span class="shooting-star" id="shootingStar" role="button" tabindex="0" aria-label="Catch the shooting star">★</span>
+        </button>
+      </div>
+
+      <div class="sweetville-footer-note reveal">
+        <span>Sweetville is growing every week.</span>
+        <strong>✨ New places are always opening. 🍭 Come back soon.</strong>
+      </div>
     </section>
 
     <section class="marquee" aria-label="Jahntella highlights">
@@ -439,6 +510,19 @@
     <div class="video-placeholder">
       <img src="youtube-banner.png" alt="Jahntella video preview">
       <a class="button button-primary" id="youtubeButton" target="_blank" rel="noopener">Open YouTube</a>
+    </div>
+  </dialog>
+
+
+  <dialog class="site-dialog sweetville-dialog" id="sweetvilleDialog">
+    <button class="dialog-close" data-close-dialog aria-label="Close">×</button>
+    <div class="sweetville-postcard-icon" id="sweetvilleDialogIcon">🍭</div>
+    <p class="eyebrow" id="sweetvilleDialogKicker">A POSTCARD FROM SWEETVILLE</p>
+    <h2 id="sweetvilleDialogTitle">Welcome, <em>Sweetie.</em></h2>
+    <p id="sweetvilleDialogNote"></p>
+    <div class="sweetville-signoff">
+      <span>🍭 Stay Sweet,</span>
+      <strong>xo, Jahntella 💋</strong>
     </div>
   </dialog>
 
