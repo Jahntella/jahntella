@@ -2198,3 +2198,176 @@ footer{
   .sweet-pack,.pack-shine,.sweet-pack>small,.sweet-card-front::before,.sweet-card-front::after,.card-art-symbol,.vault-card-preview::after{animation:none!important}
   .sweet-card-inner{transition:none}
 }
+
+
+/* =========================================================
+   VERSION 2.6 — JAHNTELLA FIRST EDITION ARTWORK
+   One locked master face and hair reference across all cards.
+   ========================================================= */
+
+.card-photo-window{
+  position:relative;
+  isolation:isolate;
+  background:#140015;
+}
+.card-jahntella-photo,
+.mini-photo-art img,
+.recent-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:var(--photo-position,50% 50%);
+  transform:scale(var(--photo-zoom,1));
+  transform-origin:var(--photo-position,50% 50%);
+  filter:saturate(1.08) contrast(1.04);
+}
+.card-jahntella-photo{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  animation:jahntellaPortraitFloat 5.4s ease-in-out infinite;
+}
+.card-photo-vignette{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:
+    linear-gradient(to bottom,rgba(0,0,0,.03) 35%,rgba(8,0,12,.72) 100%),
+    radial-gradient(circle at 50% 40%,transparent 45%,rgba(10,0,14,.25) 100%);
+}
+.card-photo-sparkles{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  pointer-events:none;
+  opacity:.82;
+  background-image:
+    radial-gradient(circle at 13% 18%,#fff 0 1px,transparent 2px),
+    radial-gradient(circle at 78% 14%,#fff 0 1.5px,transparent 3px),
+    radial-gradient(circle at 87% 52%,#ffd4ea 0 1px,transparent 3px),
+    radial-gradient(circle at 22% 70%,#fff 0 1px,transparent 3px),
+    radial-gradient(circle at 63% 83%,#ffd4ea 0 1.5px,transparent 3px);
+  background-size:100% 100%;
+  filter:drop-shadow(0 0 7px #ff4fa3);
+  animation:portraitSparkle 2.8s ease-in-out infinite alternate;
+}
+.card-photo-window::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:3;
+  pointer-events:none;
+  mix-blend-mode:screen;
+  opacity:.28;
+}
+.card-photo-window.theme-pink::after,
+.card-photo-window.theme-bubblegum::after{background:linear-gradient(135deg,rgba(255,55,154,.1),rgba(255,182,220,.3))}
+.card-photo-window.theme-purple::after,
+.card-photo-window.theme-midnight::after{background:linear-gradient(135deg,rgba(85,31,230,.28),rgba(255,37,144,.08))}
+.card-photo-window.theme-gold::after,
+.card-photo-window.theme-vip::after{background:linear-gradient(135deg,rgba(255,195,69,.25),rgba(153,38,95,.05))}
+.card-photo-window.theme-cafe::after{background:linear-gradient(135deg,rgba(117,49,41,.16),rgba(255,142,184,.2))}
+.card-photo-window.theme-lake::after{background:linear-gradient(135deg,rgba(35,118,219,.34),rgba(151,76,231,.12))}
+.card-photo-window.theme-editorial::after{background:rgba(0,0,0,.17);backdrop-filter:grayscale(1)}
+.card-photo-window.theme-rainbow::after{
+  background:conic-gradient(from 45deg,rgba(255,0,128,.13),rgba(0,214,255,.16),rgba(255,230,90,.13),rgba(170,72,255,.15),rgba(255,0,128,.13));
+  animation:holoRotate 8s linear infinite;
+}
+
+.mini-photo-art{
+  position:absolute;
+  inset:0;
+  display:block!important;
+  overflow:hidden;
+}
+.mini-photo-art::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom,transparent 46%,rgba(10,0,14,.74) 100%);
+}
+.vault-card-preview .mini-rarity,
+.vault-card-preview h4,
+.vault-card-preview small{
+  z-index:3;
+}
+.vault-card-preview h4,
+.vault-card-preview small{
+  text-shadow:0 2px 8px rgba(0,0,0,.9);
+}
+.vault-card-preview{
+  background:linear-gradient(145deg,var(--card-a),var(--card-b));
+}
+.vault-card-preview::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:inherit;
+  box-shadow:inset 0 0 24px rgba(255,74,164,.2);
+  pointer-events:none;
+}
+.vault-mini-card{
+  position:relative;
+  overflow:hidden;
+  min-height:116px;
+}
+.vault-mini-card .recent-photo{
+  position:absolute;
+  inset:0;
+}
+.vault-mini-card .recent-photo::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom,transparent 32%,rgba(8,0,12,.9) 100%);
+}
+.vault-mini-card strong,
+.vault-mini-card small{
+  position:relative;
+  z-index:2;
+  text-shadow:0 2px 8px #000;
+}
+.vault-mini-card strong{margin-top:auto}
+
+.sweet-card-front{
+  background:
+    radial-gradient(circle at 72% 18%,rgba(255,255,255,.28),transparent 24%),
+    linear-gradient(145deg,var(--card-a),var(--card-b));
+}
+.sweet-card-front .card-title-block{
+  padding-top:4px;
+}
+.sweet-card-front .card-title-block h3{
+  font-family:Georgia,serif;
+  font-style:italic;
+  text-transform:none;
+  text-shadow:0 2px 9px rgba(0,0,0,.9),0 0 16px rgba(255,59,157,.7);
+}
+.card-rarity-pill{
+  box-shadow:0 0 13px rgba(255,74,164,.35);
+}
+.sweet-card-front.legendary{
+  border-color:#ffd66b;
+  box-shadow:0 42px 75px rgba(0,0,0,.55),0 0 54px rgba(255,204,77,.38),inset 0 1px rgba(255,255,255,.7);
+}
+.sweet-card-front.ultra-rare{
+  border-color:#ff9bd1;
+}
+
+@keyframes jahntellaPortraitFloat{
+  0%,100%{transform:scale(var(--photo-zoom,1)) translateY(0)}
+  50%{transform:scale(calc(var(--photo-zoom,1) + .012)) translateY(-3px)}
+}
+@keyframes portraitSparkle{
+  from{opacity:.48;transform:scale(.99)}
+  to{opacity:.95;transform:scale(1.01)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .card-jahntella-photo,
+  .card-photo-sparkles,
+  .card-photo-window.theme-rainbow::after{animation:none!important}
+}
