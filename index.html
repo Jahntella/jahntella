@@ -220,13 +220,13 @@
 
           <div class="machine-body">
             <div class="machine-display" aria-live="polite">
-              <small id="machineStatus">READY FOR SOMETHING SWEET?</small>
-              <strong id="machineCount">0 surprises collected</strong>
+              <small id="machineStatus">READY FOR A SWEET PACK?</small>
+              <strong id="machineCount">0 cards collected</strong>
             </div>
 
             <button class="machine-button" id="surpriseButton" type="button">
               <span class="machine-button-icon">🍭</span>
-              <span>Push for a Surprise</span>
+              <span>Open a Sweet Pack</span>
             </button>
 
             <div class="machine-slot" aria-hidden="true">
@@ -253,7 +253,7 @@
 
           <div class="surprise-actions">
             <button class="button button-primary" id="openCollectionButton" type="button">
-              View My Collection
+              Open My Sweet Vault
             </button>
             <button class="button button-glass" id="shareSurpriseButton" type="button" disabled>
               Share This Drop
@@ -595,22 +595,90 @@
     </div>
   </dialog>
 
+  <button class="floating-vault-button" id="floatingVaultButton" type="button" aria-label="Open My Sweet Vault">
+    <span aria-hidden="true">🎴</span>
+    <strong>My Vault</strong>
+    <small id="floatingVaultCount">0/12</small>
+  </button>
 
+  <dialog class="sweet-vault-dialog" id="collectionDialog">
+    <div class="sweet-vault-shell">
+      <button class="dialog-close vault-close" type="button" data-close-dialog aria-label="Close My Sweet Vault">×</button>
 
-  <dialog class="site-dialog collection-dialog" id="collectionDialog">
-    <button class="dialog-close" type="button" data-close-dialog aria-label="Close collection">×</button>
-    <p class="eyebrow">YOUR PRIVATE SWEET VAULT</p>
-    <h2>My Sweet <em>Collection.</em></h2>
-    <p class="collection-intro">Every surprise you find is saved on this device. Keep spinning to discover them all.</p>
+      <header class="vault-header">
+        <div>
+          <p class="eyebrow">ALWAYS HERE. ALWAYS YOURS.</p>
+          <h2>My Sweet <em>Vault.</em></h2>
+          <p>Your 12-card Sweet Era collection is saved on this device. Tap any unlocked card to view, flip, download, favorite, or share it.</p>
+        </div>
+        <div class="vault-progress-card">
+          <strong><span id="collectionUnlocked">0</span>/<span id="collectionTotal">12</span></strong>
+          <span>Cards collected</span>
+          <div class="vault-progress-track"><span id="vaultProgressFill"></span></div>
+          <small id="vaultProgressPercent">0% complete</small>
+        </div>
+      </header>
 
-    <div class="collection-summary" id="collectionSummary">
-      <div><strong id="collectionUnlocked">0</strong><span>Unlocked</span></div>
-      <div><strong id="collectionTotal">12</strong><span>Total drops</span></div>
-      <div><strong id="collectionRare">0</strong><span>Rare or better</span></div>
+      <section class="vault-recent" aria-labelledby="recentCardsTitle">
+        <div class="vault-section-title">
+          <h3 id="recentCardsTitle">Recently Collected</h3>
+          <span>Newest discoveries first</span>
+        </div>
+        <div class="vault-recent-row" id="vaultRecentRow"></div>
+      </section>
+
+      <section class="vault-binder" aria-labelledby="binderTitle">
+        <div class="vault-section-title">
+          <h3 id="binderTitle">The Sweet Era — First Edition</h3>
+          <span><strong id="collectionRare">0</strong> rare or better</span>
+        </div>
+        <div class="collection-grid vault-card-grid" id="collectionGrid" aria-live="polite"></div>
+      </section>
+
+      <footer class="vault-help">
+        <span>🔒 Stored privately in this browser. No login needed.</span>
+        <button class="text-button" id="vaultResetButton" type="button">Reset this collection</button>
+      </footer>
     </div>
-
-    <div class="collection-grid" id="collectionGrid" aria-live="polite"></div>
   </dialog>
+
+  <div class="pack-reveal-overlay" id="packRevealOverlay" hidden aria-hidden="true">
+    <button class="pack-close-button" id="packCloseButton" type="button" aria-label="Close card reveal">×</button>
+
+    <section class="pack-stage" id="packStage">
+      <div class="sweet-pack" id="sweetPack" role="button" tabindex="0" aria-label="Tap to open your Sweet Pack">
+        <div class="pack-shine"></div>
+        <div class="pack-logo">Jahntella♡</div>
+        <strong>SWEET PACK</strong>
+        <span>FIRST EDITION</span>
+        <div class="pack-seal">🍭</div>
+        <small>TAP TO OPEN</small>
+      </div>
+
+      <div class="card-reveal-panel" id="cardRevealPanel" hidden>
+        <p class="reveal-kicker" id="revealKicker">NEW CARD UNLOCKED</p>
+
+        <div class="sweet-card-scene" id="sweetCardScene">
+          <button class="sweet-card" id="featuredSweetCard" type="button" aria-label="Flip collectible card">
+            <span class="sweet-card-inner">
+              <span class="sweet-card-face sweet-card-front" id="featuredCardFront"></span>
+              <span class="sweet-card-face sweet-card-back" id="featuredCardBack"></span>
+            </span>
+          </button>
+        </div>
+
+        <p class="flip-hint">Tap the card to flip it</p>
+
+        <div class="reveal-actions">
+          <button class="button button-primary" id="downloadCardButton" type="button">⬇ Download Card</button>
+          <button class="button button-glass" id="favoriteCardButton" type="button">☆ Favorite</button>
+          <button class="button button-glass" id="shareCardButton" type="button">↗ Share</button>
+          <button class="button button-glass" id="revealVaultButton" type="button">🎴 My Vault</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
 
   <dialog class="site-dialog sweetville-dialog" id="sweetvilleDialog">
     <button class="dialog-close" data-close-dialog aria-label="Close">×</button>

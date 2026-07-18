@@ -504,107 +504,27 @@ if (shootingStar) {
 }
 
 
-// Sprint 2: Sweet Surprises
+
+// Sprint 2.5: Premium Sweet Card Vault
 const SWEET_SURPRISES = [
-  {
-    id: "mood-dangerous-adorable",
-    category: "Tonight's Mood",
-    icon: "💋",
-    title: "Dangerous... but adorable.",
-    message: "Walk in like the lights came on just for you. Keep the confidence high and the drama cute.",
-    rarity: "Common"
-  },
-  {
-    id: "quote-kind-confidence",
-    category: "Sweet Quote",
-    icon: "✨",
-    title: "Kindness is part of the glow.",
-    message: "Confidence gets attention. Kindness is what makes people remember how you made them feel.",
-    rarity: "Common"
-  },
-  {
-    id: "cafe-pink-order",
-    category: "Pink Café Order",
-    icon: "☕",
-    title: "Strawberry latte, extra sparkle.",
-    message: "Today's order comes with one pink donut and absolutely no permission to dim your shine.",
-    rarity: "Common"
-  },
-  {
-    id: "letter-one-more-chorus",
-    category: "Letter from Jahntella",
-    icon: "💌",
-    title: "One more chorus.",
-    message: "Hey Sweetie — sometimes the best part of the night begins right when everyone else thinks it is over.",
-    rarity: "Common"
-  },
-  {
-    id: "fun-fact-hoops",
-    category: "Jahntella Lore",
-    icon: "💖",
-    title: "The gold hoops stay on.",
-    message: "Sweetville lore says Jahntella can hear a perfect pop hook before her earrings finish their first swing.",
-    rarity: "Rare"
-  },
-  {
-    id: "lyric-velvet-rope",
-    category: "Fun Dipp Lyric Drop",
-    icon: "🎵",
-    title: "Near the velvet rope...",
-    message: "\"You caught my eye near the velvet rope.\" The moment the sweet night turns into something a little riskier.",
-    rarity: "Rare"
-  },
-  {
-    id: "neon-vip-pass",
-    category: "Neon Lounge Secret",
-    icon: "🌙",
-    title: "The velvet rope moved for you.",
-    message: "You found a pink VIP pass. Opening night is getting closer, and the bass is already shaking Sweetville.",
-    rarity: "Rare"
-  },
-  {
-    id: "pink-lips-card",
-    category: "Digital Collectible",
-    icon: "💄",
-    title: "Pink Lips Card #002",
-    message: "Collection: The Sweet Era. Trait: extra attitude. Rarity: Ultra Rare. Keep this browser collection growing.",
-    rarity: "Ultra Rare"
-  },
-  {
-    id: "fun-dipp-card",
-    category: "Digital Collectible",
-    icon: "🍭",
-    title: "Fun Dipp Card #001",
-    message: "The song that opened Sweetville after dark. Candy-coated pop, neon confidence, and one unforgettable hook.",
-    rarity: "Ultra Rare"
-  },
-  {
-    id: "sparkle-lake-wish",
-    category: "Sparkle Lake Wish",
-    icon: "⭐",
-    title: "Your wish made the water glow.",
-    message: "Something you are quietly hoping for deserves one brave step today. Sweetville believes in momentum.",
-    rarity: "Common"
-  },
-  {
-    id: "legendary-founder",
-    category: "Legendary Drop",
-    icon: "👑",
-    title: "Original Sweetie Badge",
-    message: "You were here while Sweetville was still being built. That makes you part of the beginning.",
-    rarity: "Legendary"
-  },
-  {
-    id: "secret-after-dark",
-    category: "After-Dark Secret",
-    icon: "🪩",
-    title: "Keep it cute. Keep it bad.",
-    message: "The Neon Lounge rule: flirt with the moment, own the dance floor, and leave a little mystery behind.",
-    rarity: "Legendary"
-  }
+  {id:"fun-dipp-001",number:"001",title:"Fun Dipp",subtitle:"Candy-Coated Confidence",category:"Music Moment",icon:"🍭",rarity:"Ultra Rare",a:"#ff2b91",b:"#5726d9",trait:"Candy-Coated Confidence",lore:"The song that opened Sweetville after dark—neon confidence, one irresistible hook, and just enough mystery.",quote:"Every unforgettable night begins with one brave step."},
+  {id:"pink-lips-002",number:"002",title:"Pink Lips",subtitle:"Gloss & Attitude",category:"Fashion Moment",icon:"💋",rarity:"Ultra Rare",a:"#ff4f9e",b:"#a6006f",trait:"Gloss & Attitude",lore:"A signature Sweet Era collectible inspired by bold color, fearless style, and the confidence to leave a lasting impression.",quote:"Leave a little sparkle everywhere you go."},
+  {id:"neon-dreams-003",number:"003",title:"Neon Dreams",subtitle:"City Lights After Midnight",category:"Neon Lounge",icon:"🌙",rarity:"Rare",a:"#7028e4",b:"#171753",trait:"Midnight Imagination",lore:"When Sweetville sleeps, the Neon Lounge glows. This card belongs to dreamers who hear music in the city lights.",quote:"The night gets brighter when you bring your own glow."},
+  {id:"sweetville-founder-004",number:"004",title:"Sweetville Founder",subtitle:"First Edition",category:"Founder Collection",icon:"👑",rarity:"Legendary",a:"#f2b53b",b:"#9a245e",trait:"Here From The Beginning",lore:"Awarded to the early Sweeties who explored the world while its streets, songs, and secrets were still being built.",quote:"You did not just visit the story—you became part of its beginning."},
+  {id:"late-night-latte-005",number:"005",title:"Late Night Latte",subtitle:"Extra Sparkle",category:"Pink Café",icon:"☕",rarity:"Common",a:"#d8688c",b:"#6d3159",trait:"Cozy Confidence",lore:"A warm Pink Café favorite for slow nights, big ideas, and conversations that last one song longer than planned.",quote:"Rest is sweet. So is starting again."},
+  {id:"golden-hoop-006",number:"006",title:"Golden Hoop",subtitle:"Signature Shine",category:"Jahntella Lore",icon:"✨",rarity:"Rare",a:"#e5ad31",b:"#ad396f",trait:"Perfect Pop Instinct",lore:"Sweetville legend says Jahntella can hear a perfect hook before her golden hoops finish their first swing.",quote:"Trust the rhythm that feels like you."},
+  {id:"bubblegum-pop-007",number:"007",title:"Bubblegum Pop",subtitle:"Bright, Bold, Unapologetic",category:"Sweet Era",icon:"🫧",rarity:"Common",a:"#ff66b3",b:"#45a6d9",trait:"Instant Joy",lore:"A bright burst of melody and color made for singing too loudly, laughing too hard, and turning ordinary moments into memories.",quote:"Joy does not need permission."},
+  {id:"after-hours-008",number:"008",title:"After Hours",subtitle:"Keep A Little Mystery",category:"Neon Lounge",icon:"🪩",rarity:"Legendary",a:"#190d4f",b:"#d22291",trait:"Velvet-Rope Energy",lore:"The rarest Neon Lounge energy: own the dance floor, keep it cute, and always leave a little mystery behind.",quote:"Be unforgettable without explaining everything."},
+  {id:"sparkle-lake-009",number:"009",title:"Sparkle Lake Wish",subtitle:"One Brave Step",category:"Sweetville Location",icon:"⭐",rarity:"Common",a:"#288bc9",b:"#8d4de7",trait:"Hope In Motion",lore:"The water glows whenever a visitor makes a wish and follows it with one honest, brave step.",quote:"A wish becomes a path when you move toward it."},
+  {id:"vip-pass-010",number:"010",title:"VIP Pass",subtitle:"The Velvet Rope Moved",category:"Neon Lounge",icon:"🎟️",rarity:"Rare",a:"#8d1b72",b:"#29104f",trait:"All-Access Confidence",lore:"A private pass into Sweetville after dark. The bass is already shaking the walls, and your name is on the list.",quote:"Walk in like the room was waiting for you."},
+  {id:"creative-note-011",number:"011",title:"Creative Director's Note",subtitle:"Build The World",category:"Behind The Scenes",icon:"✍️",rarity:"Rare",a:"#303030",b:"#a31462",trait:"Vision Into Reality",lore:"A reminder from behind the curtain: every detail, color, lyric, and dream becomes real one thoughtful decision at a time.",quote:"Do not just imagine the world. Build it."},
+  {id:"original-sweetie-012",number:"012",title:"Original Sweetie",subtitle:"Stay Sweet",category:"First Edition",icon:"💖",rarity:"Legendary",a:"#ff3f9b",b:"#6338e4",trait:"Sweetness With Strength",lore:"The final card in the First Edition set celebrates fans who bring confidence, kindness, curiosity, and heart into Sweetville.",quote:"Sweetness is not weakness. It is your superpower."}
 ];
 
 const SURPRISE_STORAGE_KEY = "jahntellaSweetSurpriseCollectionV1";
+const FAVORITES_STORAGE_KEY = "jahntellaSweetCardFavoritesV1";
+const UNLOCK_DATES_KEY = "jahntellaSweetCardUnlockDatesV1";
+
 const sweetMachine = document.getElementById("sweetMachine");
 const surpriseButton = document.getElementById("surpriseButton");
 const surprisePreview = document.getElementById("surprisePreview");
@@ -624,225 +544,416 @@ const collectionGrid = document.getElementById("collectionGrid");
 const collectionUnlocked = document.getElementById("collectionUnlocked");
 const collectionTotal = document.getElementById("collectionTotal");
 const collectionRare = document.getElementById("collectionRare");
+const vaultProgressFill = document.getElementById("vaultProgressFill");
+const vaultProgressPercent = document.getElementById("vaultProgressPercent");
+const vaultRecentRow = document.getElementById("vaultRecentRow");
+const vaultResetButton = document.getElementById("vaultResetButton");
+const floatingVaultButton = document.getElementById("floatingVaultButton");
+const floatingVaultCount = document.getElementById("floatingVaultCount");
+
+const packRevealOverlay = document.getElementById("packRevealOverlay");
+const packStage = document.getElementById("packStage");
+const sweetPack = document.getElementById("sweetPack");
+const packCloseButton = document.getElementById("packCloseButton");
+const cardRevealPanel = document.getElementById("cardRevealPanel");
+const revealKicker = document.getElementById("revealKicker");
+const featuredSweetCard = document.getElementById("featuredSweetCard");
+const featuredCardFront = document.getElementById("featuredCardFront");
+const featuredCardBack = document.getElementById("featuredCardBack");
+const downloadCardButton = document.getElementById("downloadCardButton");
+const favoriteCardButton = document.getElementById("favoriteCardButton");
+const shareCardButton = document.getElementById("shareCardButton");
+const revealVaultButton = document.getElementById("revealVaultButton");
 
 let currentSurprise = null;
 let isSurpriseSpinning = false;
+let revealIsNew = false;
 
-function getSweetCollection() {
+function readStoredArray(key) {
   try {
-    const saved = JSON.parse(localStorage.getItem(SURPRISE_STORAGE_KEY) || "[]");
-    return Array.isArray(saved) ? saved.filter((id) => SWEET_SURPRISES.some((item) => item.id === id)) : [];
+    const value = JSON.parse(localStorage.getItem(key) || "[]");
+    return Array.isArray(value) ? value : [];
   } catch {
     return [];
   }
 }
-
-function saveSweetCollection(collection) {
-  localStorage.setItem(SURPRISE_STORAGE_KEY, JSON.stringify([...new Set(collection)]));
+function readStoredObject(key) {
+  try {
+    const value = JSON.parse(localStorage.getItem(key) || "{}");
+    return value && typeof value === "object" && !Array.isArray(value) ? value : {};
+  } catch {
+    return {};
+  }
 }
-
+function getSweetCollection() {
+  return readStoredArray(SURPRISE_STORAGE_KEY).filter((id) => SWEET_SURPRISES.some((card) => card.id === id));
+}
+function saveSweetCollection(ids) {
+  localStorage.setItem(SURPRISE_STORAGE_KEY, JSON.stringify([...new Set(ids)]));
+}
+function getFavorites() {
+  return readStoredArray(FAVORITES_STORAGE_KEY).filter((id) => SWEET_SURPRISES.some((card) => card.id === id));
+}
+function saveFavorites(ids) {
+  localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify([...new Set(ids)]));
+}
+function getUnlockDates() {
+  return readStoredObject(UNLOCK_DATES_KEY);
+}
+function saveUnlockDates(dates) {
+  localStorage.setItem(UNLOCK_DATES_KEY, JSON.stringify(dates));
+}
 function rarityClass(rarity) {
-  return `rarity-${String(rarity).toLowerCase().replace(/\s+/g, "-")}`;
+  return String(rarity).toLowerCase().replace(/\s+/g, "-");
 }
-
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"
+  })[character]);
+}
 function weightedSurprise() {
-  const collection = getSweetCollection();
-  const locked = SWEET_SURPRISES.filter((item) => !collection.includes(item.id));
+  const collected = getSweetCollection();
+  const locked = SWEET_SURPRISES.filter((card) => !collected.includes(card.id));
   const source = locked.length ? locked : SWEET_SURPRISES;
-
-  const weighted = source.flatMap((item) => {
-    const weight = {
-      "Common": 7,
-      "Rare": 4,
-      "Ultra Rare": 2,
-      "Legendary": 1
-    }[item.rarity] || 3;
-    return Array(weight).fill(item);
-  });
-
-  return weighted[Math.floor(Math.random() * weighted.length)];
+  const weights = {"Common":7,"Rare":4,"Ultra Rare":2,"Legendary":1};
+  const pool = source.flatMap((card) => Array(weights[card.rarity] || 3).fill(card));
+  return pool[Math.floor(Math.random() * pool.length)];
 }
-
 function updateSurpriseCount() {
   const count = getSweetCollection().length;
-  if (machineCount) {
-    machineCount.textContent = `${count} surprise${count === 1 ? "" : "s"} collected`;
-  }
+  if (machineCount) machineCount.textContent = `${count} card${count === 1 ? "" : "s"} collected`;
+  if (floatingVaultCount) floatingVaultCount.textContent = `${count}/12`;
 }
-
+function cardFrontMarkup(card) {
+  return `
+    <span class="card-topline">
+      <span class="card-series">SWEET ERA • FIRST EDITION</span>
+      <span class="card-rarity-pill">${escapeHtml(card.rarity.toUpperCase())}</span>
+    </span>
+    <span class="card-art-window"><span class="card-art-symbol">${card.icon}</span></span>
+    <span class="card-title-block">
+      <h3>${escapeHtml(card.title)}</h3>
+      <p>${escapeHtml(card.subtitle)}</p>
+    </span>
+    <span class="card-bottomline"><span>#${card.number}</span><span>JAHNTELLA♡</span></span>
+  `;
+}
+function cardBackMarkup(card) {
+  const dates = getUnlockDates();
+  const found = dates[card.id] || "Sweet Surprise Machine";
+  return `
+    <span class="card-back-logo">Jahntella♡</span>
+    <span class="card-back-number">CARD #${card.number}</span>
+    <h3 class="card-back-title">${escapeHtml(card.title)}</h3>
+    <p class="card-back-story">${escapeHtml(card.lore)}</p>
+    <ul class="card-detail-list">
+      <li><span>Collection</span><strong>Sweet Era — First Edition</strong></li>
+      <li><span>Category</span><strong>${escapeHtml(card.category)}</strong></li>
+      <li><span>Trait</span><strong>${escapeHtml(card.trait)}</strong></li>
+      <li><span>Rarity</span><strong>${escapeHtml(card.rarity)}</strong></li>
+      <li><span>Unlocked</span><strong>${escapeHtml(found)}</strong></li>
+    </ul>
+    <p class="card-back-quote">“${escapeHtml(card.quote)}”</p>
+    <span class="card-back-signature">🍭 Stay Sweet<br><strong>xo, Jahntella 💋</strong></span>
+  `;
+}
+function prepareFeaturedCard(card, isNew) {
+  currentSurprise = card;
+  revealIsNew = isNew;
+  featuredSweetCard.classList.remove("is-flipped");
+  featuredCardFront.className = `sweet-card-face sweet-card-front ${rarityClass(card.rarity)}`;
+  featuredCardFront.style.setProperty("--card-a", card.a);
+  featuredCardFront.style.setProperty("--card-b", card.b);
+  featuredCardFront.innerHTML = cardFrontMarkup(card);
+  featuredCardBack.innerHTML = cardBackMarkup(card);
+  revealKicker.textContent = isNew ? "NEW CARD UNLOCKED" : "WELCOME BACK TO THIS CARD";
+  updateFavoriteButton();
+}
+function openPackReveal(card, isNew) {
+  prepareFeaturedCard(card, isNew);
+  cardRevealPanel.hidden = true;
+  sweetPack.hidden = false;
+  sweetPack.classList.remove("is-opening");
+  packRevealOverlay.hidden = false;
+  packRevealOverlay.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  window.setTimeout(() => sweetPack.focus(), 80);
+}
+function closePackReveal() {
+  packRevealOverlay.hidden = true;
+  packRevealOverlay.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+  featuredSweetCard.classList.remove("is-flipped");
+}
 function burstSweetConfetti() {
-  const colors = ["#ff4fa3", "#ffd66b", "#b76dff", "#ffffff", "#ff89c2"];
-  for (let index = 0; index < 28; index += 1) {
+  const colors = ["#ff4fa3","#ffd66b","#9c6dff","#ffffff","#53d9ff"];
+  for (let index = 0; index < 38; index += 1) {
     const piece = document.createElement("span");
     piece.className = "surprise-confetti";
-    piece.style.left = `${48 + Math.random() * 8}%`;
-    piece.style.top = `${38 + Math.random() * 7}%`;
+    piece.style.left = `${45 + Math.random() * 10}%`;
+    piece.style.top = `${30 + Math.random() * 9}%`;
     piece.style.background = colors[index % colors.length];
-    piece.style.setProperty("--drift", `${-130 + Math.random() * 260}px`);
-    piece.style.animationDelay = `${Math.random() * 0.12}s`;
+    piece.style.setProperty("--drift", `${-180 + Math.random() * 360}px`);
+    piece.style.animationDelay = `${Math.random() * .14}s`;
     document.body.appendChild(piece);
-    window.setTimeout(() => piece.remove(), 1500);
+    window.setTimeout(() => piece.remove(), 1600);
   }
 }
-
-function revealSweetSurprise(surprise) {
-  currentSurprise = surprise;
+function openPack() {
+  if (sweetPack.classList.contains("is-opening")) return;
+  sweetPack.classList.add("is-opening");
+  window.setTimeout(() => {
+    sweetPack.hidden = true;
+    cardRevealPanel.hidden = false;
+    burstSweetConfetti();
+    showToast(`${currentSurprise.rarity} card revealed! ${currentSurprise.icon}`);
+    featuredSweetCard.focus();
+  }, 720);
+}
+function revealSweetSurprise(card) {
   const collection = getSweetCollection();
-  const isNew = !collection.includes(surprise.id);
-
+  const isNew = !collection.includes(card.id);
   if (isNew) {
-    collection.push(surprise.id);
+    collection.push(card.id);
     saveSweetCollection(collection);
+    const dates = getUnlockDates();
+    dates[card.id] = new Date().toLocaleDateString(undefined, {year:"numeric",month:"short",day:"numeric"});
+    saveUnlockDates(dates);
   }
-
   if (previewRarity) {
-    previewRarity.textContent = surprise.rarity.toUpperCase();
-    previewRarity.className = `surprise-rarity ${rarityClass(surprise.rarity)}`;
+    previewRarity.textContent = card.rarity.toUpperCase();
+    previewRarity.className = `surprise-rarity rarity-${rarityClass(card.rarity)}`;
   }
-  if (previewNumber) {
-    previewNumber.textContent = isNew ? "NEW DROP UNLOCKED" : "ENCORE DROP";
-  }
-  if (previewIcon) previewIcon.textContent = surprise.icon;
-  if (previewCategory) previewCategory.textContent = surprise.category.toUpperCase();
-  if (previewTitle) previewTitle.textContent = surprise.title;
-  if (previewMessage) previewMessage.textContent = surprise.message;
-  if (machineStatus) machineStatus.textContent = isNew ? "SOMETHING NEW JUST DROPPED!" : "A SWEET FAVORITE RETURNED";
+  if (previewNumber) previewNumber.textContent = isNew ? `CARD #${card.number} UNLOCKED` : `CARD #${card.number} ENCORE`;
+  if (previewIcon) previewIcon.textContent = card.icon;
+  if (previewCategory) previewCategory.textContent = card.category.toUpperCase();
+  if (previewTitle) previewTitle.textContent = card.title;
+  if (previewMessage) previewMessage.textContent = card.lore;
+  if (machineStatus) machineStatus.textContent = isNew ? "A NEW CARD JUST DROPPED!" : "A FAVORITE CARD RETURNED";
   if (shareSurpriseButton) shareSurpriseButton.disabled = false;
-
   if (surprisePreview) {
     surprisePreview.classList.remove("is-revealing");
     void surprisePreview.offsetWidth;
     surprisePreview.classList.add("is-revealing");
   }
-
   updateSurpriseCount();
   renderSweetCollection();
-
-  if (isNew) {
-    burstSweetConfetti();
-    showToast(`${surprise.rarity} Sweet Surprise unlocked! ${surprise.icon}`);
-  } else {
-    showToast(`Encore drop: ${surprise.title} ${surprise.icon}`);
-  }
+  openPackReveal(card, isNew);
 }
-
 function spinSweetMachine() {
   if (isSurpriseSpinning) return;
   isSurpriseSpinning = true;
-
   if (surpriseButton) {
     surpriseButton.disabled = true;
-    surpriseButton.querySelector("span:last-child").textContent = "Mixing the sweetness...";
+    surpriseButton.querySelector("span:last-child").textContent = "Dispensing your Sweet Pack...";
   }
-  if (machineStatus) machineStatus.textContent = "SHAKING UP SWEETVILLE...";
+  if (machineStatus) machineStatus.textContent = "MIXING THE FIRST EDITION...";
   if (sweetMachine) sweetMachine.classList.add("is-spinning");
-
   window.setTimeout(() => {
     revealSweetSurprise(weightedSurprise());
     if (sweetMachine) sweetMachine.classList.remove("is-spinning");
     if (surpriseButton) {
       surpriseButton.disabled = false;
-      surpriseButton.querySelector("span:last-child").textContent = "Push for Another Surprise";
+      surpriseButton.querySelector("span:last-child").textContent = "Open Another Sweet Pack";
     }
     isSurpriseSpinning = false;
-  }, 720);
+  }, 760);
 }
-
+function openCardFromVault(id) {
+  const card = SWEET_SURPRISES.find((item) => item.id === id);
+  if (!card || !getSweetCollection().includes(id)) return;
+  if (collectionDialog?.open) collectionDialog.close();
+  prepareFeaturedCard(card, false);
+  sweetPack.hidden = true;
+  cardRevealPanel.hidden = false;
+  packRevealOverlay.hidden = false;
+  packRevealOverlay.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  window.setTimeout(() => featuredSweetCard.focus(), 60);
+}
 function renderSweetCollection() {
   const collection = getSweetCollection();
-  const unlockedItems = SWEET_SURPRISES.filter((item) => collection.includes(item.id));
-  const rareCount = unlockedItems.filter((item) => item.rarity !== "Common").length;
-
-  if (collectionUnlocked) collectionUnlocked.textContent = String(unlockedItems.length);
+  const favorites = getFavorites();
+  const unlockedCards = collection.map((id) => SWEET_SURPRISES.find((card) => card.id === id)).filter(Boolean);
+  const rareCount = unlockedCards.filter((card) => card.rarity !== "Common").length;
+  const percentage = Math.round((unlockedCards.length / SWEET_SURPRISES.length) * 100);
+  if (collectionUnlocked) collectionUnlocked.textContent = String(unlockedCards.length);
   if (collectionTotal) collectionTotal.textContent = String(SWEET_SURPRISES.length);
   if (collectionRare) collectionRare.textContent = String(rareCount);
-
-  if (!collectionGrid) return;
-
-  collectionGrid.innerHTML = SWEET_SURPRISES.map((item) => {
-    const unlocked = collection.includes(item.id);
-    if (!unlocked) {
-      return '<article class="collection-card locked" aria-label="Locked surprise"></article>';
-    }
-
-    return `
-      <article class="collection-card">
-        <div class="collection-icon">${item.icon}</div>
-        <h3>${item.title}</h3>
-        <p>${item.category}</p>
-        <span class="surprise-rarity ${rarityClass(item.rarity)}">${item.rarity.toUpperCase()}</span>
-      </article>
-    `;
-  }).join("");
+  if (vaultProgressFill) vaultProgressFill.style.width = `${percentage}%`;
+  if (vaultProgressPercent) vaultProgressPercent.textContent = `${percentage}% complete`;
+  if (collectionGrid) {
+    collectionGrid.innerHTML = SWEET_SURPRISES.map((card) => {
+      if (!collection.includes(card.id)) {
+        return `<div class="vault-card-slot locked" data-number="#${card.number}" aria-label="Locked card number ${card.number}"></div>`;
+      }
+      const favorite = favorites.includes(card.id);
+      return `
+        <button class="vault-card-slot" type="button" data-card-id="${card.id}" aria-label="View ${escapeHtml(card.title)}">
+          <span class="vault-card-preview" style="--card-a:${card.a};--card-b:${card.b}">
+            ${favorite ? '<span class="vault-favorite-mark">★</span>' : ""}
+            <span class="mini-rarity">${escapeHtml(card.rarity.toUpperCase())}</span>
+            <span class="mini-art">${card.icon}</span>
+            <h4>${escapeHtml(card.title)}</h4>
+            <small>#${card.number} • ${escapeHtml(card.category)}</small>
+          </span>
+        </button>`;
+    }).join("");
+    collectionGrid.querySelectorAll("[data-card-id]").forEach((button) => {
+      button.addEventListener("click", () => openCardFromVault(button.dataset.cardId));
+    });
+  }
+  if (vaultRecentRow) {
+    const recent = [...unlockedCards].reverse().slice(0, 4);
+    vaultRecentRow.innerHTML = recent.length ? recent.map((card) => `
+      <button class="vault-mini-card" type="button" data-recent-card="${card.id}" style="--card-a:${card.a};--card-b:${card.b}">
+        <span>${card.icon}</span>
+        <strong>${escapeHtml(card.title)}</strong>
+        <small>#${card.number} • ${escapeHtml(card.rarity)}</small>
+      </button>`).join("") : '<div class="vault-recent-empty">Your newest cards will appear here after you open a Sweet Pack.</div>';
+    vaultRecentRow.querySelectorAll("[data-recent-card]").forEach((button) => {
+      button.addEventListener("click", () => openCardFromVault(button.dataset.recentCard));
+    });
+  }
+  updateSurpriseCount();
 }
-
-async function shareCurrentSurprise() {
+function openVault() {
+  renderSweetCollection();
+  if (collectionDialog && !collectionDialog.open) collectionDialog.showModal();
+}
+function updateFavoriteButton() {
+  if (!currentSurprise || !favoriteCardButton) return;
+  const favorite = getFavorites().includes(currentSurprise.id);
+  favoriteCardButton.textContent = favorite ? "★ Favorited" : "☆ Favorite";
+  favoriteCardButton.setAttribute("aria-pressed", String(favorite));
+}
+function toggleFavorite() {
   if (!currentSurprise) return;
-
-  const shareText = `I unlocked "${currentSurprise.title}" in Jahntella's Sweet Surprises 🍭✨`;
-  const shareData = {
-    title: "Jahntella Sweet Surprise",
-    text: shareText,
-    url: window.location.href.split("#")[0] + "#surprises"
-  };
-
+  const favorites = getFavorites();
+  const index = favorites.indexOf(currentSurprise.id);
+  if (index >= 0) favorites.splice(index, 1);
+  else favorites.push(currentSurprise.id);
+  saveFavorites(favorites);
+  updateFavoriteButton();
+  renderSweetCollection();
+  showToast(index >= 0 ? "Removed from favorites." : "Added to favorites! ★");
+}
+async function shareCurrentCard() {
+  if (!currentSurprise) return;
+  const text = `I unlocked Jahntella's ${currentSurprise.title} #${currentSurprise.number} — ${currentSurprise.rarity} 🎴🍭`;
+  const data = {title:"Jahntella Sweet Card",text,url:window.location.href.split("#")[0] + "#surprises"};
   try {
-    if (navigator.share) {
-      await navigator.share(shareData);
-    } else if (navigator.clipboard) {
-      await navigator.clipboard.writeText(`${shareText} ${shareData.url}`);
-      showToast("Sweet Surprise copied — ready to share! 💖");
-    } else {
-      showToast(shareText);
-    }
+    if (navigator.share) await navigator.share(data);
+    else if (navigator.clipboard) {
+      await navigator.clipboard.writeText(`${text} ${data.url}`);
+      showToast("Card share message copied! 💖");
+    } else showToast(text);
   } catch (error) {
-    if (error && error.name !== "AbortError") {
-      showToast("Sharing paused — your surprise is still saved.");
-    }
+    if (error?.name !== "AbortError") showToast("Your card is still safe in My Sweet Vault.");
   }
 }
-
-if (surpriseButton) {
-  surpriseButton.addEventListener("click", spinSweetMachine);
+function drawRoundedRect(context, x, y, width, height, radius) {
+  context.beginPath();
+  context.roundRect(x, y, width, height, radius);
+  context.fill();
 }
-
-if (openCollectionButton && collectionDialog) {
-  openCollectionButton.addEventListener("click", () => {
-    renderSweetCollection();
-    collectionDialog.showModal();
+function downloadCurrentCard() {
+  if (!currentSurprise) return;
+  const card = currentSurprise;
+  const canvas = document.createElement("canvas");
+  canvas.width = 1080;
+  canvas.height = 1512;
+  const ctx = canvas.getContext("2d");
+  const gradient = ctx.createLinearGradient(0,0,1080,1512);
+  gradient.addColorStop(0,card.a);
+  gradient.addColorStop(1,card.b);
+  ctx.fillStyle = "#08000c";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = gradient;
+  drawRoundedRect(ctx,42,42,996,1428,58);
+  ctx.strokeStyle = "rgba(255,255,255,.75)";
+  ctx.lineWidth = 7;
+  ctx.strokeRect(64,64,952,1384);
+  ctx.textAlign = "left";
+  ctx.fillStyle = "#fff";
+  ctx.font = "700 34px Arial";
+  ctx.fillText("SWEET ERA • FIRST EDITION",92,126);
+  ctx.textAlign = "right";
+  ctx.font = "700 30px Arial";
+  ctx.fillText(card.rarity.toUpperCase(),988,126);
+  ctx.textAlign = "center";
+  ctx.globalAlpha = .17;
+  ctx.font = "700 440px Arial";
+  ctx.fillText(card.icon,540,730);
+  ctx.globalAlpha = 1;
+  ctx.font = "700 250px Arial";
+  ctx.fillText(card.icon,540,680);
+  ctx.font = "900 92px Arial";
+  ctx.fillText(card.title.toUpperCase(),540,1040);
+  ctx.font = "700 34px Arial";
+  ctx.fillText(card.subtitle.toUpperCase(),540,1105);
+  ctx.font = "italic 36px Georgia";
+  const quote = `“${card.quote}”`;
+  const words = quote.split(" ");
+  let line = "", lines = [];
+  words.forEach((word) => {
+    const test = line ? `${line} ${word}` : word;
+    if (ctx.measureText(test).width > 820) { lines.push(line); line = word; } else line = test;
   });
+  if (line) lines.push(line);
+  lines.slice(0,3).forEach((item,index) => ctx.fillText(item,540,1200 + index*48));
+  ctx.textAlign = "left";
+  ctx.font = "700 30px Arial";
+  ctx.fillText(`#${card.number}`,92,1398);
+  ctx.textAlign = "right";
+  ctx.font = "italic 38px Georgia";
+  ctx.fillText("Jahntella♡",988,1398);
+  const link = document.createElement("a");
+  link.download = `Jahntella_${card.number}_${card.title.replace(/\s+/g,"_")}.png`;
+  link.href = canvas.toDataURL("image/png");
+  link.click();
+  showToast("Card downloaded in wallpaper quality! ⬇");
+}
+function resetSweetCollection() {
+  const shouldReset = window.confirm("Reset all 12 cards, favorites, and unlock dates saved in this browser?");
+  if (!shouldReset) return;
+  localStorage.removeItem(SURPRISE_STORAGE_KEY);
+  localStorage.removeItem(FAVORITES_STORAGE_KEY);
+  localStorage.removeItem(UNLOCK_DATES_KEY);
+  currentSurprise = null;
+  renderSweetCollection();
+  if (previewRarity) {previewRarity.textContent="READY";previewRarity.className="surprise-rarity rarity-common";}
+  if (previewNumber) previewNumber.textContent="SWEET DROP";
+  if (previewIcon) previewIcon.textContent="🎁";
+  if (previewCategory) previewCategory.textContent="YOUR NEXT LITTLE DELIGHT";
+  if (previewTitle) previewTitle.textContent="What will you unlock?";
+  if (previewMessage) previewMessage.textContent="Push the glowing button and let Sweetville choose a collectible card for you.";
+  if (machineStatus) machineStatus.textContent="READY FOR A SWEET PACK?";
+  if (shareSurpriseButton) shareSurpriseButton.disabled=true;
+  if (surpriseButton) surpriseButton.querySelector("span:last-child").textContent="Open a Sweet Pack";
+  showToast("Sweet Vault reset.");
 }
 
-if (shareSurpriseButton) {
-  shareSurpriseButton.addEventListener("click", shareCurrentSurprise);
-}
-
-if (resetCollectionButton) {
-  resetCollectionButton.addEventListener("click", () => {
-    const shouldReset = window.confirm("Reset all Sweet Surprise discoveries saved in this browser?");
-    if (!shouldReset) return;
-
-    localStorage.removeItem(SURPRISE_STORAGE_KEY);
-    currentSurprise = null;
-    updateSurpriseCount();
-    renderSweetCollection();
-
-    if (previewRarity) {
-      previewRarity.textContent = "READY";
-      previewRarity.className = "surprise-rarity rarity-common";
-    }
-    if (previewNumber) previewNumber.textContent = "SWEET DROP";
-    if (previewIcon) previewIcon.textContent = "🎁";
-    if (previewCategory) previewCategory.textContent = "YOUR NEXT LITTLE DELIGHT";
-    if (previewTitle) previewTitle.textContent = "What will you unlock?";
-    if (previewMessage) previewMessage.textContent = "Push the glowing button and let Sweetville choose something for you.";
-    if (machineStatus) machineStatus.textContent = "READY FOR SOMETHING SWEET?";
-    if (shareSurpriseButton) shareSurpriseButton.disabled = true;
-    if (surpriseButton) surpriseButton.querySelector("span:last-child").textContent = "Push for a Surprise";
-
-    showToast("Sweet Surprise collection reset.");
-  });
-}
+surpriseButton?.addEventListener("click", spinSweetMachine);
+openCollectionButton?.addEventListener("click", openVault);
+floatingVaultButton?.addEventListener("click", openVault);
+shareSurpriseButton?.addEventListener("click", shareCurrentCard);
+resetCollectionButton?.addEventListener("click", resetSweetCollection);
+vaultResetButton?.addEventListener("click", resetSweetCollection);
+sweetPack?.addEventListener("click", openPack);
+sweetPack?.addEventListener("keydown", (event) => {
+  if (event.key === "Enter" || event.key === " ") {event.preventDefault();openPack();}
+});
+featuredSweetCard?.addEventListener("click", () => featuredSweetCard.classList.toggle("is-flipped"));
+packCloseButton?.addEventListener("click", closePackReveal);
+downloadCardButton?.addEventListener("click", downloadCurrentCard);
+favoriteCardButton?.addEventListener("click", toggleFavorite);
+shareCardButton?.addEventListener("click", shareCurrentCard);
+revealVaultButton?.addEventListener("click", () => {closePackReveal();openVault();});
+packRevealOverlay?.addEventListener("click", (event) => {if (event.target === packRevealOverlay) closePackReveal();});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && packRevealOverlay && !packRevealOverlay.hidden) closePackReveal();
+});
 
 updateSurpriseCount();
 renderSweetCollection();
