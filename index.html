@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&family=Sacramento&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles-v61.css">
+  <link rel="stylesheet" href="styles-v62.css">
 </head>
 <body>
   <canvas id="sparkles" aria-hidden="true"></canvas>
@@ -32,7 +32,8 @@
       <a href="#quests">Daily Quest</a>
       <a href="#daily">Daily Drop</a>
       <a href="#games">Games</a>
-      <a href="#vault">Vault</a>
+      <a href="#packs">Sweet Packs</a>
+       <a href="#vault">Vault</a>
       <button type="button" data-open="passport">Passport</button>
       <button type="button" data-open="achievements">Achievements</button>
       <a href="#shop">Shop</a>
@@ -185,6 +186,7 @@
     </section>
 
     <section class="section daily" id="daily">
+      <div class="login-streak" id="loginStreak"></div>
       <div class="daily-card">
         <div>
           <p class="eyebrow">TODAY'S SWEET DROP</p>
@@ -210,21 +212,51 @@
           <div class="game-icon">✨</div>
           <small>PLAYABLE NOW</small>
           <h3>Star Catch</h3>
-          <p>Catch ten falling stars before time runs out.</p>
-          <button class="button primary" type="button" data-open="game">Play Star Catch</button>
+          <p>Build combos, catch golden stars and avoid sour bombs.</p>
+          <button class="button primary" type="button" data-open="game">Play Star Catch 2.0</button>
         </article>
         <article class="game-card locked">
           <div class="game-icon">🍩</div>
-          <small>COMING IN v6.2</small>
+          <small>COMING IN v6.3</small>
           <h3>Donut Dash</h3>
           <p>Collect donuts, dodge lemons and chase a high score.</p>
         </article>
         <article class="game-card locked">
           <div class="game-icon">🎵</div>
-          <small>COMING IN v6.2</small>
+          <small>COMING IN v6.3</small>
           <h3>Melody Memory</h3>
           <p>Repeat Jahntella's musical patterns to earn XP.</p>
         </article>
+      </div>
+    </section>
+
+
+    <section class="section packs" id="packs">
+      <header class="section-heading">
+        <p class="eyebrow">SWEET PACKS HAVE ARRIVED</p>
+        <h2>Shake. Open. <em>Reveal.</em></h2>
+        <p>Earn packs through quests and Star Catch, or spend Sweet Coins in the Pack Shop.</p>
+      </header>
+      <div class="pack-showcase">
+        <div class="pack-product">
+          <div class="sweet-pack-display"><span>J</span><b>SWEET PACK</b><small>3 COLLECTIBLE CARDS</small><i>✦</i></div>
+          <div>
+            <p class="eyebrow">FIRST EDITION</p>
+            <h3>World of Sweet Pack</h3>
+            <p>Every pack contains three reveals and guarantees at least one Rare card or better.</p>
+            <div class="pack-actions">
+              <button class="button primary" type="button" data-open="pack">Open a Pack <span id="packCountButton">(0)</span></button>
+              <button class="button glass" type="button" data-open="packshop">Pack Shop · 35 Coins</button>
+            </div>
+          </div>
+        </div>
+        <div class="rarity-guide">
+          <div class="rarity common"><span>●</span><strong>Common</strong><small>Classic Sweetville finds</small></div>
+          <div class="rarity rare"><span>◆</span><strong>Rare</strong><small>Glossy pink shine</small></div>
+          <div class="rarity ultra"><span>✦</span><strong>Ultra Rare</strong><small>Golden sparkle</small></div>
+          <div class="rarity secret"><span>💎</span><strong>Secret Rare</strong><small>Hidden treasures</small></div>
+          <div class="rarity rainbow"><span>🌈</span><strong>Rainbow Rare</strong><small>The sweetest pull</small></div>
+        </div>
       </div>
     </section>
 
@@ -242,6 +274,7 @@
           <small>CARDS UNLOCKED</small>
           <div class="progress"><i id="vaultProgress"></i></div>
           <button class="button glass" type="button" data-open="vault">Open Collection Book</button>
+          <button class="button primary compact" type="button" data-open="packshop">Buy Sweet Pack</button>
         </aside>
       </div>
     </section>
@@ -290,6 +323,8 @@
   <div class="modal" id="achievementsModal" aria-hidden="true"><div class="modal-shell achievements-shell"></div></div>
   <div class="modal" id="vaultModal" aria-hidden="true"><div class="modal-shell vault-shell"></div></div>
   <div class="modal" id="gameModal" aria-hidden="true"><div class="modal-shell game-shell"></div></div>
+  <div class="modal" id="packModal" aria-hidden="true"><div class="modal-shell pack-shell"></div></div>
+  <div class="modal" id="packshopModal" aria-hidden="true"><div class="modal-shell packshop-shell"></div></div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -310,8 +345,8 @@
     <button id="playerClose" class="player-close" type="button" aria-label="Close player">×</button>
   </aside>
 
-  <div class="build-badge">BUILD 6.1</div>
+  <div class="build-badge">BUILD 6.2</div>
   <script src="config.js"></script>
-  <script src="app-v61.js"></script>
+  <script src="app-v62.js"></script>
 </body>
 </html>
