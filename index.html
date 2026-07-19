@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&family=Sacramento&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles-v60.css">
+  <link rel="stylesheet" href="styles-v61.css">
 </head>
 <body>
   <canvas id="sparkles" aria-hidden="true"></canvas>
@@ -29,6 +29,7 @@
     <nav class="site-nav" id="siteNav">
       <a href="#sweetville">Sweetville</a>
       <a href="#music">Music</a>
+      <a href="#quests">Daily Quest</a>
       <a href="#daily">Daily Drop</a>
       <a href="#games">Games</a>
       <a href="#vault">Vault</a>
@@ -78,7 +79,9 @@
         <p>Five districts. Five stories. Five passport stamps waiting to be discovered.</p>
       </header>
 
-      <div class="world-map">
+      <div class="world-map" id="worldMap">
+        <div class="time-badge" id="timeBadge"><span id="timeIcon">☀️</span><b id="timeLabel">Sweetville Day</b></div>
+        <div class="night-stars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
         <div class="map-sky" aria-hidden="true"><i></i><i></i><i></i></div>
         <button class="zone donut" type="button" data-zone="donut">
           <span class="zone-icon">🍩</span>
@@ -110,11 +113,16 @@
           <small>Wishes and hidden rewards.</small>
           <b>Explore →</b>
         </button>
-        <div class="map-center">
+        <button class="map-center castle-button" type="button" data-open="castle" aria-label="Enter Sweetville Castle">
           <span>🏰</span>
-          <strong>Sweetville</strong>
-          <small>THE WORLD IS GROWING</small>
-        </div>
+          <strong>Sweetville Castle</strong>
+          <small>NOW OPEN — ENTER</small>
+        </button>
+        <button class="npc npc-baker" type="button" data-npc="baker" aria-label="Talk to the Donut Baker"><span>👩‍🍳</span><small>Donut Baker</small></button>
+        <button class="npc npc-producer" type="button" data-npc="producer" aria-label="Talk to the Studio Producer"><span>🎧</span><small>Producer</small></button>
+        <button class="npc npc-host" type="button" data-npc="host" aria-label="Talk to the Neon Host"><span>🪩</span><small>Neon Host</small></button>
+        <button class="npc npc-barista" type="button" data-npc="barista" aria-label="Talk to the Café Barista"><span>🧁</span><small>Barista</small></button>
+        <button class="npc npc-fairy" type="button" data-npc="fairy" aria-label="Talk to the Wish Fairy"><span>🧚</span><small>Wish Fairy</small></button>
         <div class="map-path p1"></div><div class="map-path p2"></div><div class="map-path p3"></div>
       </div>
     </section>
@@ -155,6 +163,27 @@
       </div>
     </section>
 
+
+    <section class="section quests" id="quests">
+      <header class="section-heading">
+        <p class="eyebrow">TODAY IN SWEETVILLE</p>
+        <h2>Your Daily <em>Sweet Quest.</em></h2>
+        <p>Complete three simple adventures to earn a bonus reward. Your quest refreshes each day.</p>
+      </header>
+      <div class="quest-board">
+        <div class="quest-header">
+          <div><span class="quest-day" id="questDay">TODAY</span><strong id="questTitle">Sweetville Adventure</strong></div>
+          <div class="quest-reward"><span>🎁</span><div><small>COMPLETION REWARD</small><strong>75 XP + 20 Coins</strong></div></div>
+        </div>
+        <div class="quest-list" id="questList"></div>
+        <div class="quest-footer">
+          <div class="progress"><i id="questProgress"></i></div>
+          <span id="questStatus">0 of 3 complete</span>
+          <button class="button primary" id="claimQuest" type="button" disabled>Complete Quest First</button>
+        </div>
+      </div>
+    </section>
+
     <section class="section daily" id="daily">
       <div class="daily-card">
         <div>
@@ -186,13 +215,13 @@
         </article>
         <article class="game-card locked">
           <div class="game-icon">🍩</div>
-          <small>COMING IN v6.1</small>
+          <small>COMING IN v6.2</small>
           <h3>Donut Dash</h3>
           <p>Collect donuts, dodge lemons and chase a high score.</p>
         </article>
         <article class="game-card locked">
           <div class="game-icon">🎵</div>
-          <small>COMING IN v6.1</small>
+          <small>COMING IN v6.2</small>
           <h3>Melody Memory</h3>
           <p>Repeat Jahntella's musical patterns to earn XP.</p>
         </article>
@@ -255,6 +284,8 @@
   </footer>
 
   <div class="modal" id="zoneModal" aria-hidden="true"><div class="modal-shell zone-shell"></div></div>
+  <div class="modal" id="castleModal" aria-hidden="true"><div class="modal-shell castle-shell"></div></div>
+  <div class="modal" id="npcModal" aria-hidden="true"><div class="modal-shell npc-shell"></div></div>
   <div class="modal" id="passportModal" aria-hidden="true"><div class="modal-shell passport-shell"></div></div>
   <div class="modal" id="achievementsModal" aria-hidden="true"><div class="modal-shell achievements-shell"></div></div>
   <div class="modal" id="vaultModal" aria-hidden="true"><div class="modal-shell vault-shell"></div></div>
@@ -279,8 +310,8 @@
     <button id="playerClose" class="player-close" type="button" aria-label="Close player">×</button>
   </aside>
 
-  <div class="build-badge">BUILD 6.0</div>
+  <div class="build-badge">BUILD 6.1</div>
   <script src="config.js"></script>
-  <script src="app-v60.js"></script>
+  <script src="app-v61.js"></script>
 </body>
 </html>
