@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&family=Sacramento&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles-v621.css">
+  <link rel="stylesheet" href="styles-v63.css">
 </head>
 <body>
   <canvas id="sparkles" aria-hidden="true"></canvas>
@@ -36,6 +36,7 @@
        <a href="#vault">Vault</a>
        <a href="#creative-director">Creative Director</a>
        <a href="#contact">Contact</a>
+      <button type="button" data-open="profile">Sweetie Profile</button>
       <button type="button" data-open="passport">Passport</button>
       <button type="button" data-open="achievements">Achievements</button>
       <a href="#shop">Shop</a>
@@ -84,6 +85,8 @@
 
       <div class="world-map" id="worldMap">
         <div class="time-badge" id="timeBadge"><span id="timeIcon">☀️</span><b id="timeLabel">Sweetville Day</b></div>
+        <div class="weather-badge" id="weatherBadge"><span id="weatherIcon">🌸</span><b id="weatherLabel">Sweet Breeze</b></div>
+        <div class="weather-layer" id="weatherLayer" aria-hidden="true"></div>
         <div class="night-stars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
         <div class="map-sky" aria-hidden="true"><i></i><i></i><i></i></div>
         <button class="zone donut" type="button" data-zone="donut">
@@ -127,6 +130,24 @@
         <button class="npc npc-barista" type="button" data-npc="barista" aria-label="Talk to the Café Barista"><span>🧁</span><small>Barista</small></button>
         <button class="npc npc-fairy" type="button" data-npc="fairy" aria-label="Talk to the Wish Fairy"><span>🧚</span><small>Wish Fairy</small></button>
         <div class="map-path p1"></div><div class="map-path p2"></div><div class="map-path p3"></div>
+      </div>
+    </section>
+
+
+    <section class="section story-progress-section" id="story">
+      <header class="section-heading">
+        <p class="eyebrow">YOUR SWEETVILLE STORY</p>
+        <h2>Every adventure opens <em>a new chapter.</em></h2>
+        <p>Explore districts, meet citizens, play games and help the World of Sweet grow.</p>
+      </header>
+      <div class="chapter-track" id="chapterTrack"></div>
+      <div class="chapter-spotlight" id="chapterSpotlight">
+        <span id="chapterIcon">🍭</span>
+        <div>
+          <small id="chapterLabel">CHAPTER 1</small>
+          <h3 id="chapterTitle">The Gates Open</h3>
+          <p id="chapterCopy">Your first steps into Sweetville begin here.</p>
+        </div>
       </div>
     </section>
 
@@ -217,17 +238,19 @@
           <p>Build combos, catch golden stars and avoid sour bombs.</p>
           <button class="button primary" type="button" data-open="game">Play Star Catch 2.0</button>
         </article>
-        <article class="game-card locked">
+        <article class="game-card featured donut-game-card">
           <div class="game-icon">🍩</div>
-          <small>COMING IN v6.3</small>
+          <small>NEW IN v6.3</small>
           <h3>Donut Dash</h3>
-          <p>Collect donuts, dodge lemons and chase a high score.</p>
+          <p>Move the basket, collect donuts, dodge sour lemons and build your sweetest score.</p>
+          <button class="button primary" type="button" data-open="donutgame">Play Donut Dash</button>
         </article>
-        <article class="game-card locked">
+        <article class="game-card featured melody-game-card">
           <div class="game-icon">🎵</div>
-          <small>COMING IN v6.3</small>
+          <small>NEW IN v6.3</small>
           <h3>Melody Memory</h3>
-          <p>Repeat Jahntella's musical patterns to earn XP.</p>
+          <p>Watch the glowing melody, repeat the pattern and climb through increasingly tricky rounds.</p>
+          <button class="button primary" type="button" data-open="melodygame">Play Melody Memory</button>
         </article>
       </div>
     </section>
@@ -388,7 +411,7 @@
 
   <footer>
     <a class="logo" href="#home">Jahntella<span>♡</span></a>
-    <div><p>🍭 Stay Sweet, xo, Jahntella 💋</p><small class="footer-credit">Creative Direction by J.W. Hummel · © <span id="currentYear"></span> Jahntella</small></div>
+    <div><p>🍭 Stay Sweet, xo, Jahntella 💋</p><small class="footer-credit">Creative Direction by J.W. Hummel · © <span id="currentYear"></span> Jahntella · World of Sweet v6.3</small></div>
     <div>
       <a href="https://www.instagram.com/jahntella/" target="_blank" rel="noopener">Instagram</a>
       <a href="https://www.tiktok.com/@jahntella" target="_blank" rel="noopener">TikTok</a>
@@ -405,6 +428,9 @@
   <div class="modal" id="gameModal" aria-hidden="true"><div class="modal-shell game-shell"></div></div>
   <div class="modal" id="packModal" aria-hidden="true"><div class="modal-shell pack-shell"></div></div>
   <div class="modal" id="packshopModal" aria-hidden="true"><div class="modal-shell packshop-shell"></div></div>
+  <div class="modal" id="profileModal" aria-hidden="true"><div class="modal-shell profile-shell"></div></div>
+  <div class="modal" id="donutgameModal" aria-hidden="true"><div class="modal-shell donutgame-shell"></div></div>
+  <div class="modal" id="melodygameModal" aria-hidden="true"><div class="modal-shell melodygame-shell"></div></div>
 
 
   <div class="floating-collection-tools" aria-label="Sweet collection shortcuts">
@@ -435,8 +461,8 @@
     <button id="playerClose" class="player-close" type="button" aria-label="Close player">×</button>
   </aside>
 
-  <div class="build-badge">BUILD 6.2.1</div>
+  <div class="build-badge">BUILD 6.3</div>
   <script src="config.js"></script>
-  <script src="app-v621.js"></script>
+  <script src="app-v63.js"></script>
 </body>
 </html>
