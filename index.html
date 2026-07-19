@@ -1,468 +1,865 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#120016">
-  <meta name="description" content="Enter Jahntella's World of Sweet — music, Sweetville, games, collectibles and surprises.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09000f">
+  <meta name="description" content="Enter the official World of Jahntella — music, videos, merch, hidden surprises and The Sweet List.">
   <meta property="og:title" content="Jahntella — The World of Sweet">
   <meta property="og:description" content="Sweet hooks. Big choruses. Good vibes.">
   <meta property="og:image" content="jahntella-official-v1.png">
   <title>Jahntella — The World of Sweet</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&family=Sacramento&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles-v632.css">
+  <link rel="stylesheet" href="styles-v511.css">
 </head>
+
 <body>
-  <canvas id="sparkles" aria-hidden="true"></canvas>
+  <canvas id="sparkleCanvas" aria-hidden="true"></canvas>
+  <div class="cursor-aura" aria-hidden="true"></div>
 
   <div class="loading-screen" id="loadingScreen">
-    <div class="loading-logo">Jahntella<span>♡</span></div>
-    <div class="loading-bar"><i></i></div>
-    <p>Opening the gates to Sweetville...</p>
+    <div class="loader-logo">Jahntella♡</div>
+    <div class="loader-track"><span></span></div>
+    <p>Entering the World of Sweet...</p>
   </div>
 
   <header class="site-header">
-    <a class="logo" href="#home">Jahntella<span>♡</span></a>
-    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
-    <nav class="site-nav" id="siteNav">
+    <a class="site-logo" href="#home" aria-label="Jahntella home">Jahntella<span>♡</span></a>
+
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteNav">
+      <span></span><span></span><span></span>
+      <b class="sr-only">Open navigation</b>
+    </button>
+
+    <nav id="siteNav" class="site-nav">
       <a href="#sweetville">Sweetville</a>
+      <a href="#surprises">Sweet Surprises</a>
       <a href="#music">Music</a>
-      <a href="#quests">Daily Quest</a>
-      <a href="#daily">Daily Drop</a>
-      <a href="#games">Games</a>
-      <a href="#packs">Sweet Packs</a>
-       <a href="#vault">Vault</a>
-       <a href="#creative-director">Creative Director</a>
-       <a href="#contact">Contact</a>
-      <button type="button" data-open="profile">Sweetie Profile</button>
-      <button type="button" data-open="passport">Passport</button>
-      <button type="button" data-open="achievements">Achievements</button>
-      <a href="#shop">Shop</a>
+      <a href="#experience">Experience</a>
+      <a href="#merch">Merch</a>
+      <a href="#sweet-list">Sweet List</a>
+      <a href="#creative-director">Creative Director</a>
+      <a href="#connect">Connect</a>
     </nav>
-    <button class="coin-pill" type="button" data-open="passport"><span>🍬</span><b id="headerCoins">0</b></button>
+
+    <button class="header-bag" id="bagButton" aria-label="Open shopping bag">
+      Bag <span id="bagCount">0</span>
+    </button>
   </header>
 
   <main>
-    <section class="hero" id="home">
-      <div class="hero-copy">
+    <section id="home" class="hero">
+      <div class="hero-glow hero-glow-one"></div>
+      <div class="hero-glow hero-glow-two"></div>
+
+      <div class="hero-copy reveal">
         <p class="eyebrow">WELCOME TO THE WORLD OF SWEET</p>
-        <h1>Sweet hooks.<br><em>Big choruses.</em><br>Good vibes.</h1>
-        <p class="hero-text">Explore Jahntella's colorful pop universe. Listen, play, collect, unlock rewards and discover something new every time you visit.</p>
+        <h1>
+          Sweet hooks.
+          <span>Big choruses.</span>
+          Good vibes.
+        </h1>
+        <p class="hero-description">
+          Meet Jahntella — a playful pop universe built from confidence, color,
+          unforgettable melodies and a little trouble.
+        </p>
+
+        <div class="fun-dipp-spotlight" aria-label="Fun Dipp new single">
+          <div class="fun-dipp-copy">
+            <span class="fun-dipp-kicker">🍭 NEW SINGLE</span>
+            <strong>FUN DIPP</strong>
+            <small>Click the candy stick and dip into the sweetness.</small>
+          </div>
+
+          <a class="fun-dipp-stick" href="#" data-audio-track="fun-dipp" onclick="return window.JahntellaPlayFallback('fun-dipp')" aria-label="Play Fun Dipp on this website">
+            <span class="stick-sugar" aria-hidden="true"></span>
+            <span class="stick-label">DIP IN ▶</span>
+          </a>
+
+          <span class="fun-dipp-powder" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i>
+          </span>
+        </div>
+
         <div class="hero-actions">
-          <button class="button primary" type="button" data-play="fun-dipp">Play Fun Dipp ▶</button>
-          <a class="button glass" href="#sweetville">Enter Sweetville ↓</a>
+          <button class="button button-primary site-audio-button" type="button" data-audio-track="fun-dipp" onclick="window.JahntellaPlayFallback('fun-dipp')">Listen Now ▶</button>
+          <a class="button button-glass" href="https://open.spotify.com/search/Jahntella" target="_blank" rel="noopener">Spotify ↗</a>
+          <a class="button button-glass" href="#sweet-list">Join The Sweet List</a>
         </div>
-        <div class="hero-stats">
-          <div><strong id="heroLevel">1</strong><span>Explorer Level</span></div>
-          <div><strong id="heroStamps">0</strong><span>Passport Stamps</span></div>
-          <div><strong id="heroCards">0</strong><span>Vault Cards</span></div>
+
+        <div class="hero-socials" data-social-links></div>
+      </div>
+
+      <div class="hero-stage reveal">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+
+        <div class="portrait-frame">
+          <img src="jahntella-official-v1.png" alt="Jahntella smiling and giving a peace sign">
+        </div>
+
+        <button class="floating-card floating-card-one" data-secret="You found a hidden star! ⭐">
+          <span>✦</span> Stay Sweet
+        </button>
+
+        <button class="floating-card floating-card-two" data-secret="A little sweet. A little trouble. 💋">
+          A little sweet.<br>A little trouble.
+        </button>
+
+        <button id="soundControl" class="sound-control" type="button">
+          <span>✦</span> Play sparkle chimes
+        </button>
+
+        <div class="hidden-star-field" aria-label="Hidden sparkle game">
+          <button class="hidden-star hidden-star-one" type="button"
+            aria-label="Hidden sparkle one" data-star-id="1"
+            data-secret="Sparkle 1 of 4 found! ⭐">✦</button>
+
+          <button class="hidden-star hidden-star-two" type="button"
+            aria-label="Hidden sparkle two" data-star-id="2"
+            data-secret="Sparkle 2 of 4 found! 💖">✧</button>
+
+          <button class="hidden-star hidden-star-three" type="button"
+            aria-label="Hidden sparkle three" data-star-id="3"
+            data-secret="Sparkle 3 of 4 found! 🍭">✦</button>
+
+          <button class="hidden-star hidden-star-four" type="button"
+            aria-label="Hidden sparkle four" data-star-id="4"
+            data-secret="Sparkle 4 of 4 found! ✨">✧</button>
         </div>
       </div>
 
-      <div class="hero-world">
-        <div class="hero-orbit orbit-one"></div>
-        <div class="hero-orbit orbit-two"></div>
-        <div class="portrait-shell">
-          <img src="jahntella-official-v1.png" alt="Jahntella">
-          <span class="portrait-glow"></span>
-        </div>
-        <button class="floating-message one" type="button" data-secret="stay-sweet">✦ Stay Sweet</button>
-        <button class="floating-message two" type="button" data-secret="little-trouble">A little sweet.<br>A little trouble. 💋</button>
-        <span class="floating-candy candy-a">🍭</span>
-        <span class="floating-candy candy-b">🍬</span>
-        <span class="floating-candy candy-c">✨</span>
-      </div>
+      <a class="scroll-cue" href="#sweetville">Enter Sweetville <span>↓</span></a>
     </section>
 
-    <section class="section sweetville" id="sweetville">
-      <header class="section-heading">
+
+    <section id="sweetville" class="section sweetville-section" aria-labelledby="sweetvilleTitle">
+      <div class="sweetville-sky" aria-hidden="true">
+        <span class="sweetville-cloud cloud-one"></span>
+        <span class="sweetville-cloud cloud-two"></span>
+        <span class="sweetville-sparkle sparkle-one">✦</span>
+        <span class="sweetville-sparkle sparkle-two">✧</span>
+        <span class="sweetville-sparkle sparkle-three">✦</span>
+      </div>
+
+      <header class="section-heading centered reveal sweetville-heading">
         <p class="eyebrow">THE FRONT GATE IS OPEN</p>
-        <h2>Explore <em>Sweetville.</em></h2>
-        <p>Five districts. Five stories. Five passport stamps waiting to be discovered.</p>
+        <h2 id="sweetvilleTitle">🍭 Welcome to <em>Sweetville.</em></h2>
+        <p>Every song has a story. Every smile hides a little sparkle. Step into the colorful world of Jahntella.</p>
       </header>
 
-      <div class="world-map" id="worldMap">
-        <div class="time-badge" id="timeBadge"><span id="timeIcon">☀️</span><b id="timeLabel">Sweetville Day</b></div>
-        <div class="weather-badge" id="weatherBadge"><span id="weatherIcon">🌸</span><b id="weatherLabel">Sweet Breeze</b></div>
-        <div class="weather-layer" id="weatherLayer" aria-hidden="true"></div>
-        <div class="night-stars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="map-sky" aria-hidden="true"><i></i><i></i><i></i></div>
-        <button class="zone donut" type="button" data-zone="donut">
-          <span class="zone-icon">🍩</span>
-          <strong>Donut District</strong>
-          <small>Sprinkles, smiles and sweet drops.</small>
-          <b>Explore →</b>
+      <div class="sweetville-map" aria-label="Explore Sweetville destinations">
+        <button class="sweetville-place donut-place reveal" type="button"
+          data-sweetville-place="Donut District" data-sweetville-icon="🍩"
+          data-sweetville-kicker="SPRINKLES START HERE"
+          data-sweetville-note="Where every great day begins with sprinkles, glossy pink boxes and a reason to smile. The ovens are warming up for something sweet.">
+          <span class="place-icon">🍩</span>
+          <span class="place-copy"><strong>Donut District</strong><small>Sprinkles, smiles and sweet drops.</small></span>
+          <span class="place-status">Peek inside →</span>
         </button>
-        <button class="zone melody" type="button" data-zone="melody">
-          <span class="zone-icon">🎵</span>
-          <strong>Melody Studio</strong>
-          <small>Where catchy choruses begin.</small>
-          <b>Explore →</b>
+
+        <button class="sweetville-place melody-place reveal" type="button"
+          data-sweetville-place="Melody Studio" data-sweetville-icon="🎵"
+          data-sweetville-kicker="WHERE HOOKS COME ALIVE"
+          data-sweetville-note="This is where bright ideas become unforgettable choruses. New song stories, studio notes and secret sounds are being mixed right now.">
+          <span class="place-icon">🎵</span>
+          <span class="place-copy"><strong>Melody Studio</strong><small>Where catchy choruses begin.</small></span>
+          <span class="place-status">Hear the buzz →</span>
         </button>
-        <button class="zone neon" type="button" data-zone="neon">
-          <span class="zone-icon">💋</span>
-          <strong>Neon Lounge</strong>
-          <small>The sweet side after dark.</small>
-          <b>Explore →</b>
+
+        <button class="sweetville-place neon-place reveal" type="button"
+          data-sweetville-place="Neon Lounge" data-sweetville-icon="💋"
+          data-sweetville-kicker="THE SWEET AFTER DARK"
+          data-sweetville-note="The velvet rope is up, the pink lights are glowing and Fun Dipp is almost loud enough. This is Jahntella after dark: playful, confident and a little dangerous.">
+          <span class="place-icon neon-lips">💋</span>
+          <span class="place-copy"><strong>Neon Lounge</strong><small>When the lights glow, the music turns up.</small></span>
+          <span class="place-status">Step past the rope →</span>
         </button>
-        <button class="zone cafe" type="button" data-zone="cafe">
-          <span class="zone-icon">☕</span>
-          <strong>Pink Café</strong>
-          <small>Coffee, secrets and big dreams.</small>
-          <b>Explore →</b>
+
+        <button class="sweetville-place cafe-place reveal" type="button"
+          data-sweetville-place="Pink Café" data-sweetville-icon="☕"
+          data-sweetville-kicker="SIP. TALK. DREAM."
+          data-sweetville-note="Coffee, conversations, mood cards and way too many pink donuts. Jahntella's little notes and behind-the-scenes stories will live here.">
+          <span class="place-icon coffee-icon">☕</span>
+          <span class="place-copy"><strong>Pink Café</strong><small>Coffee, secrets and big dreams.</small></span>
+          <span class="place-status">Save a seat →</span>
         </button>
-        <button class="zone lake" type="button" data-zone="lake">
-          <span class="zone-icon">✨</span>
-          <strong>Sparkle Lake</strong>
-          <small>Wishes and hidden rewards.</small>
-          <b>Explore →</b>
+
+        <button class="sweetville-place lake-place reveal" type="button"
+          data-sweetville-place="Sparkle Lake" data-sweetville-icon="✨"
+          data-sweetville-kicker="MAKE A LITTLE WISH"
+          data-sweetville-note="They say every sparkle hides a wish. Soon this lake will hold wallpapers, surprises, collectible cards and rewards for curious Sweeties.">
+          <span class="place-icon">✨</span>
+          <span class="place-copy"><strong>Sparkle Lake</strong><small>Wishes, surprises and hidden rewards.</small></span>
+          <span class="place-status">Make a wish →</span>
+          <span class="shooting-star" id="shootingStar" role="button" tabindex="0" aria-label="Catch the shooting star">★</span>
         </button>
-        <button class="map-center castle-button" type="button" data-open="castle" aria-label="Enter Sweetville Castle">
-          <span>🏰</span>
-          <strong>Sweetville Castle</strong>
-          <small>NOW OPEN — ENTER</small>
-        </button>
-        <button class="npc npc-baker" type="button" data-npc="baker" aria-label="Talk to the Donut Baker"><span>👩‍🍳</span><small>Donut Baker</small></button>
-        <button class="npc npc-producer" type="button" data-npc="producer" aria-label="Talk to the Studio Producer"><span>🎧</span><small>Producer</small></button>
-        <button class="npc npc-host" type="button" data-npc="host" aria-label="Talk to the Neon Host"><span>🪩</span><small>Neon Host</small></button>
-        <button class="npc npc-barista" type="button" data-npc="barista" aria-label="Talk to the Café Barista"><span>🧁</span><small>Barista</small></button>
-        <button class="npc npc-fairy" type="button" data-npc="fairy" aria-label="Talk to the Wish Fairy"><span>🧚</span><small>Wish Fairy</small></button>
-        <div class="map-path p1"></div><div class="map-path p2"></div><div class="map-path p3"></div>
+      </div>
+
+      <div class="sweetville-footer-note reveal">
+        <span>Sweetville is growing every week.</span>
+        <strong>✨ New places are always opening. 🍭 Come back soon.</strong>
       </div>
     </section>
 
 
-    <section class="section story-progress-section" id="story">
-      <header class="section-heading">
-        <p class="eyebrow">YOUR SWEETVILLE STORY</p>
-        <h2>Every adventure opens <em>a new chapter.</em></h2>
-        <p>Explore districts, meet citizens, play games and help the World of Sweet grow.</p>
-      </header>
-      <div class="chapter-track" id="chapterTrack"></div>
-      <div class="chapter-spotlight" id="chapterSpotlight">
-        <span id="chapterIcon">🍭</span>
-        <div>
-          <small id="chapterLabel">CHAPTER 1</small>
-          <h3 id="chapterTitle">The Gates Open</h3>
-          <p id="chapterCopy">Your first steps into Sweetville begin here.</p>
-        </div>
-      </div>
-    </section>
+    <section id="surprises" class="section surprise-section" aria-labelledby="surpriseTitle">
+      <div class="surprise-orbit surprise-orbit-one" aria-hidden="true">✦</div>
+      <div class="surprise-orbit surprise-orbit-two" aria-hidden="true">♡</div>
+      <div class="surprise-orbit surprise-orbit-three" aria-hidden="true">✧</div>
 
-    <section class="section music" id="music">
-      <header class="section-heading left">
-        <p class="eyebrow">MELODY STUDIO</p>
-        <h2>Press play on <em>something sweet.</em></h2>
-        <p>Choose a release. The music keeps playing while you explore.</p>
+      <header class="section-heading centered reveal surprise-heading">
+        <p class="eyebrow">A LITTLE SOMETHING JUST FOR YOU</p>
+        <h2 id="surpriseTitle">Open a <em>Sweet Surprise.</em></h2>
+        <p>Give the machine a spin and unlock a mood, message, secret, lyric, or collectible from Jahntella's world.</p>
       </header>
 
-      <div class="music-grid">
-        <article class="release-card active" data-release-card="fun-dipp">
-          <div class="record">
-            <img src="fun-dipp-cover.png" alt="Fun Dipp cover">
-            <span></span>
+      <div class="surprise-experience reveal">
+        <div class="sweet-machine" id="sweetMachine" aria-label="Jahntella Sweet Surprise machine">
+          <div class="machine-sign">
+            <span>JAHNTELLA'S</span>
+            <strong>SWEET SURPRISES</strong>
           </div>
-          <div class="release-copy">
-            <small>DEBUT SINGLE</small>
-            <h3>Fun Dipp</h3>
-            <p>Bright dance-pop, playful confidence and a chorus built to stay in your head.</p>
-            <button class="button primary" type="button" data-play="fun-dipp">Play Fun Dipp ▶</button>
+
+          <div class="machine-globe" aria-hidden="true">
+            <span class="machine-candy candy-one">●</span>
+            <span class="machine-candy candy-two">♥</span>
+            <span class="machine-candy candy-three">★</span>
+            <span class="machine-candy candy-four">●</span>
+            <span class="machine-candy candy-five">✦</span>
+            <span class="machine-candy candy-six">●</span>
+            <span class="machine-candy candy-seven">♥</span>
+            <span class="machine-candy candy-eight">★</span>
+            <div class="machine-glow"></div>
           </div>
-        </article>
 
-        <article class="release-card" data-release-card="pink-lips">
-          <div class="record">
-            <img src="pink-lips-remix.png" alt="Pink Lips Remix cover">
-            <span></span>
-          </div>
-          <div class="release-copy">
-            <small>AFTER-DARK REMIX</small>
-            <h3>Pink Lips Remix</h3>
-            <p>A glossy remix with brighter synths, bigger sparkle and extra attitude.</p>
-            <button class="button primary" type="button" data-play="pink-lips">Play Remix ▶</button>
-          </div>
-        </article>
-      </div>
-    </section>
+          <div class="machine-body">
+            <div class="machine-display" aria-live="polite">
+              <small id="machineStatus">READY FOR A SWEET PACK?</small>
+              <strong id="machineCount">0 cards collected</strong>
+            </div>
 
-
-    <section class="section quests" id="quests">
-      <header class="section-heading">
-        <p class="eyebrow">TODAY IN SWEETVILLE</p>
-        <h2>Your Daily <em>Sweet Quest.</em></h2>
-        <p>Complete three simple adventures to earn a bonus reward. Your quest refreshes each day.</p>
-      </header>
-      <div class="quest-board">
-        <div class="quest-header">
-          <div><span class="quest-day" id="questDay">TODAY</span><strong id="questTitle">Sweetville Adventure</strong></div>
-          <div class="quest-reward"><span>🎁</span><div><small>COMPLETION REWARD</small><strong>75 XP + 20 Coins</strong></div></div>
-        </div>
-        <div class="quest-list" id="questList"></div>
-        <div class="quest-footer">
-          <div class="progress"><i id="questProgress"></i></div>
-          <span id="questStatus">0 of 3 complete</span>
-          <button class="button primary" id="claimQuest" type="button" disabled>Complete Quest First</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="section daily" id="daily">
-      <div class="login-streak" id="loginStreak"></div>
-      <div class="daily-card">
-        <div>
-          <p class="eyebrow">TODAY'S SWEET DROP</p>
-          <h2>A little surprise, <em>every day.</em></h2>
-          <blockquote id="dailyQuote">Loading today's sweetness...</blockquote>
-          <p id="dailyRewardText">Open today's drop to earn your reward.</p>
-          <button class="button primary" id="claimDaily" type="button">Open Today's Drop 🎁</button>
-        </div>
-        <div class="daily-gift" id="dailyGift" aria-hidden="true">
-          <span>🎁</span><i>✦</i><i>♡</i><i>★</i>
-        </div>
-      </div>
-    </section>
-
-    <section class="section games" id="games">
-      <header class="section-heading">
-        <p class="eyebrow">SWEET ARCADE</p>
-        <h2>Play. Smile. <em>Earn rewards.</em></h2>
-        <p>Start with Star Catch. More games will open as Sweetville grows.</p>
-      </header>
-      <div class="games-grid">
-        <article class="game-card featured">
-          <div class="game-icon">✨</div>
-          <small>PLAYABLE NOW</small>
-          <h3>Star Catch</h3>
-          <p>Build combos, catch golden stars and avoid sour bombs.</p>
-          <button class="button primary" type="button" data-open="game">Play Star Catch 2.0</button>
-        </article>
-        <article class="game-card featured donut-game-card">
-          <div class="game-icon">🍩</div>
-          <small>NEW IN v6.3</small>
-          <h3>Donut Dash</h3>
-          <p>Move the basket, collect donuts, dodge sour lemons and build your sweetest score.</p>
-          <button class="button primary" type="button" data-open="donutgame">Play Donut Dash</button>
-        </article>
-        <article class="game-card featured melody-game-card">
-          <div class="game-icon">🎵</div>
-          <small>NEW IN v6.3</small>
-          <h3>Melody Memory</h3>
-          <p>Watch the glowing melody, repeat the pattern and climb through increasingly tricky rounds.</p>
-          <button class="button primary" type="button" data-open="melodygame">Play Melody Memory</button>
-        </article>
-      </div>
-    </section>
-
-
-
-    <section class="section classic-surprises" id="surprises">
-      <div class="classic-orbit one" aria-hidden="true">✦</div>
-      <div class="classic-orbit two" aria-hidden="true">♡</div>
-      <header class="section-heading">
-        <p class="eyebrow">JAHNTELLA'S SWEET SURPRISES</p>
-        <h2>Open a <em>Sweet Pack.</em></h2>
-        <p>The original Sweet Surprise machine is back—now connected to the v6.2 rarity and Vault system.</p>
-      </header>
-      <div class="surprise-experience-restored">
-        <div class="sweet-machine-restored">
-          <div class="machine-sign-restored"><small>JAHNTELLA'S</small><strong>SWEET SURPRISES</strong></div>
-          <div class="machine-globe-restored" aria-hidden="true">
-            <i>●</i><i>♥</i><i>★</i><i>✦</i><i>●</i><i>♥</i><i>★</i>
-          </div>
-          <div class="machine-body-restored">
-            <small>READY FOR A SWEET PACK?</small>
-            <strong id="classicPackCount">0 packs ready</strong>
-            <button class="machine-button-restored" type="button" data-open="pack">
-              <span>🍭</span><b>Open a Sweet Pack</b>
+            <button class="machine-button" id="surpriseButton" type="button">
+              <span class="machine-button-icon">🍭</span>
+              <span>Open a Sweet Pack</span>
             </button>
-          </div>
-        </div>
-        <article class="surprise-preview-restored">
-          <span class="restored-badge">FIRST EDITION</span>
-          <div class="preview-icon-restored">🎁</div>
-          <p class="eyebrow">YOUR NEXT LITTLE DELIGHT</p>
-          <h3>What will you unlock?</h3>
-          <p>Pull Common, Rare, Ultra Rare, Secret Rare, or Rainbow Rare cards. Every discovery is saved privately in this browser.</p>
-          <div class="restored-actions">
-            <button class="button primary" type="button" data-open="pack">Open Pack</button>
-            <button class="button glass" type="button" data-open="vault">Open My Sweet Vault</button>
-          </div>
-        </article>
-      </div>
-    </section>
 
-    <section class="section packs" id="packs">
-      <header class="section-heading">
-        <p class="eyebrow">SWEET PACKS HAVE ARRIVED</p>
-        <h2>Shake. Open. <em>Reveal.</em></h2>
-        <p>Earn packs through quests and Star Catch, or spend Sweet Coins in the Pack Shop.</p>
-      </header>
-      <div class="pack-showcase">
-        <div class="pack-product">
-          <div class="sweet-pack-display"><span>J</span><b>SWEET PACK</b><small>3 COLLECTIBLE CARDS</small><i>✦</i></div>
-          <div>
-            <p class="eyebrow">FIRST EDITION</p>
-            <h3>World of Sweet Pack</h3>
-            <p>Every pack contains three reveals and guarantees at least one Rare card or better.</p>
-            <div class="pack-actions">
-              <button class="button primary" type="button" data-open="pack">Open a Pack <span id="packCountButton">(0)</span></button>
-              <button class="button glass" type="button" data-open="packshop">Pack Shop · 35 Coins</button>
+            <div class="machine-slot" aria-hidden="true">
+              <span></span>
             </div>
           </div>
         </div>
-        <div class="rarity-guide">
-          <div class="rarity common"><span>●</span><strong>Common</strong><small>Classic Sweetville finds</small></div>
-          <div class="rarity rare"><span>◆</span><strong>Rare</strong><small>Glossy pink shine</small></div>
-          <div class="rarity ultra"><span>✦</span><strong>Ultra Rare</strong><small>Golden sparkle</small></div>
-          <div class="rarity secret"><span>💎</span><strong>Secret Rare</strong><small>Hidden treasures</small></div>
-          <div class="rarity rainbow"><span>🌈</span><strong>Rainbow Rare</strong><small>The sweetest pull</small></div>
+
+        <article class="surprise-preview" id="surprisePreview">
+          <div class="preview-topline">
+            <span class="surprise-rarity rarity-common" id="previewRarity">READY</span>
+            <span class="surprise-number" id="previewNumber">SWEET DROP</span>
+          </div>
+
+          <div class="preview-icon" id="previewIcon">🎁</div>
+          <p class="eyebrow" id="previewCategory">YOUR NEXT LITTLE DELIGHT</p>
+          <h3 id="previewTitle">What will you unlock?</h3>
+          <p id="previewMessage">Push the glowing button and let Sweetville choose something for you.</p>
+
+          <div class="preview-signoff">
+            <span>🍭 Stay Sweet</span>
+            <strong>xo, Jahntella 💋</strong>
+          </div>
+
+          <div class="surprise-actions">
+            <button class="button button-primary" id="openCollectionButton" type="button">
+              Open My Sweet Vault
+            </button>
+            <button class="button button-glass" id="shareSurpriseButton" type="button">
+              Share This Drop
+            </button>
+          </div>
+        </article>
+      </div>
+
+      <div class="surprise-footnote reveal">
+        <span>Saved privately in this browser — no account needed.</span>
+        <button class="text-button" id="resetCollectionButton" type="button">Reset collection</button>
+      </div>
+    </section>
+
+    <section class="marquee" aria-label="Jahntella highlights">
+      <div class="marquee-track">
+        FUN DIPP ✦ PINK LIPS REMIX ✦ THE SWEET ERA ✦ STAY SWEET ✦
+        FUN DIPP ✦ PINK LIPS REMIX ✦ THE SWEET ERA ✦ STAY SWEET ✦
+      </div>
+    </section>
+
+    <section id="music" class="section music-section">
+      <header class="section-heading reveal">
+        <p class="eyebrow">THE SWEET ERA</p>
+        <h2>Press play on <em>something sweet.</em></h2>
+        <p>Choose a release, then open it on the music platform you love.</p>
+      </header>
+
+      <div class="vinyl-stage reveal">
+        <article class="release-panel active" data-release="fun-dipp">
+          <div class="record-wrap">
+            <div class="vinyl">
+              <img src="fun-dipp-cover.png" alt="Fun Dipp artwork">
+            </div>
+          </div>
+          <div class="release-copy">
+            <p class="release-label">DEBUT SINGLE</p>
+            <h3>Fun Dipp</h3>
+            <p>Bright dance-pop, playful confidence and a chorus built to stay in your head.</p>
+            <div class="release-actions">
+              <button class="button button-primary site-audio-button" type="button" data-audio-track="fun-dipp">Play Fun Dipp ▶</button>
+              <a class="button button-glass" href="https://open.spotify.com/search/Jahntella" target="_blank" rel="noopener">Spotify ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="release-panel" data-release="pink-lips">
+          <div class="record-wrap">
+            <div class="vinyl">
+              <img src="pink-lips-remix.png" alt="Pink Lips Remix artwork">
+            </div>
+          </div>
+          <div class="release-copy">
+            <p class="release-label">REMIX</p>
+            <h3>Pink Lips Remix</h3>
+            <p>A glossy after-dark remix with brighter synths, bigger sparkle and extra attitude.</p>
+            <div class="release-actions">
+              <button class="button button-primary site-audio-button" type="button" data-audio-track="pink-lips">Play Remix ▶</button>
+              <a class="button button-glass" href="https://www.youtube.com/@Jahntella" target="_blank" rel="noopener">YouTube ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <div class="release-tabs" role="tablist" aria-label="Choose a release">
+          <button class="release-tab active" type="button" data-target="fun-dipp" data-audio-track="fun-dipp" aria-label="Play Fun Dipp">
+            <img src="fun-dipp-cover.png" alt="">
+            <span>Fun Dipp</span>
+          </button>
+          <button class="release-tab" type="button" data-target="pink-lips" data-audio-track="pink-lips" aria-label="Play Pink Lips Remix">
+            <img src="pink-lips-remix.png" alt="">
+            <span>Pink Lips Remix</span>
+          </button>
         </div>
       </div>
     </section>
 
-    <section class="section vault" id="vault">
-      <header class="section-heading left">
-        <p class="eyebrow">THE SWEET VAULT</p>
-        <h2>Build your <em>collection.</em></h2>
-        <p>Collect cards by exploring the site, opening daily drops and completing achievements.</p>
+    <section id="experience" class="section experience-section">
+      <header class="section-heading centered reveal">
+        <p class="eyebrow">AN INTERACTIVE POP UNIVERSE</p>
+        <h2>Explore the <em>World of Jahntella.</em></h2>
+        <p>Tap the cards, discover details and collect hidden hearts.</p>
       </header>
-      <div class="vault-layout">
-        <div class="binder" id="binder"></div>
-        <aside class="vault-stats">
-          <span class="vault-big">🎴</span>
-          <strong><b id="vaultCount">0</b>/12</strong>
-          <small>CARDS UNLOCKED</small>
-          <div class="progress"><i id="vaultProgress"></i></div>
-          <button class="button glass" type="button" data-open="vault">Open Collection Book</button>
-          <button class="button primary compact" type="button" data-open="packshop">Buy Sweet Pack</button>
-        </aside>
+
+      <div class="experience-grid">
+        <button class="experience-card large reveal" data-secret="Joy is contagious. Confidence is kind. 💖">
+          <img src="world-page.png" alt="">
+          <span class="experience-overlay">
+            <small>01</small>
+            <strong>Her World</strong>
+            <em>Color. Confidence. Creativity.</em>
+          </span>
+        </button>
+
+        <button class="experience-card reveal" data-modal="storyModal">
+          <img src="book-cover.png" alt="">
+          <span class="experience-overlay">
+            <small>02</small>
+            <strong>The Creative Bible</strong>
+            <em>See how the world was built.</em>
+          </span>
+        </button>
+
+        <button class="experience-card reveal" data-modal="videoModal">
+          <img src="youtube-banner.png" alt="">
+          <span class="experience-overlay">
+            <small>03</small>
+            <strong>Watch</strong>
+            <em>Videos, visualizers and Shorts.</em>
+          </span>
+        </button>
+
+        <button class="experience-card reveal" data-secret="Hidden heart collected! 💗">
+          <div class="graphic-card">
+            <div class="giant-heart">♡</div>
+            <p>Find the hidden hearts across the site.</p>
+          </div>
+          <span class="experience-overlay">
+            <small>04</small>
+            <strong>Easter Eggs</strong>
+            <em>Look closer.</em>
+          </span>
+        </button>
+      </div>
+
+      <div class="heart-counter reveal">
+        Hidden sparkles collected:
+        <strong id="heartCounter">0</strong>
+        <span>/ 4</span>
       </div>
     </section>
 
-    <section class="section shop" id="shop">
-      <header class="section-heading">
+    <section class="section manifesto-section">
+      <div class="manifesto-card reveal">
+        <div class="manifesto-copy">
+          <p class="eyebrow">THE JAHNTELLA PROMISE</p>
+          <h2>Leave people happier than they were <em>five minutes ago.</em></h2>
+          <p>
+            Every song. Every visual. Every fan interaction. The goal is simple:
+            create moments that feel joyful, welcoming and unforgettable.
+          </p>
+        </div>
+        <div class="manifesto-values">
+          <span><b>🍭</b> Sweet</span>
+          <span><b>✨</b> Creative</span>
+          <span><b>💖</b> Inclusive</span>
+          <span><b>🎶</b> Memorable</span>
+          <span><b>🌈</b> Colorful</span>
+          <span><b>👑</b> Confident</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="merch" class="section merch-section">
+      <header class="section-heading reveal">
         <p class="eyebrow">THE SWEET SHOP</p>
-        <h2>Wear the <em>world.</em></h2>
-        <p>The first official Sweetville drop is being prepared.</p>
+        <h2>Wear the <em>era.</em></h2>
+        <p>Interactive store preview ready to connect to Shopify, Fourthwall or Stripe.</p>
       </header>
-      <div class="shop-grid">
-        <article><div>🍭</div><small>COMING SOON</small><h3>Stay Sweet Tee</h3><p>Signature World of Sweet artwork.</p></article>
-        <article><div>💋</div><small>COMING SOON</small><h3>Pink Lips Hoodie</h3><p>After-dark comfort with neon attitude.</p></article>
-        <article><div>✨</div><small>COMING SOON</small><h3>Sweetville Sticker Pack</h3><p>Collect every district and icon.</p></article>
+
+      <div class="shop-toolbar reveal">
+        <div class="shop-filters" role="group" aria-label="Filter merchandise">
+          <button class="filter active" data-filter="all">All</button>
+          <button class="filter" data-filter="apparel">Apparel</button>
+          <button class="filter" data-filter="accessories">Accessories</button>
+          <button class="filter" data-filter="collectibles">Collectibles</button>
+        </div>
+      </div>
+
+      <div class="product-grid">
+        <article class="product-card reveal" data-category="apparel" data-name="Stay Sweet Hoodie" data-price="58">
+          <div class="product-image hoodie-art">
+            <span>Stay Sweet♡</span>
+            <button class="quick-look">Quick look</button>
+          </div>
+          <div class="product-info">
+            <div><h3>Stay Sweet Hoodie</h3><p>Soft pink · Unisex</p></div>
+            <strong>$58</strong>
+          </div>
+          <button class="add-to-bag">Add to bag</button>
+        </article>
+
+        <article class="product-card reveal" data-category="apparel" data-name="J Heart Signature Tee" data-price="32">
+          <div class="product-image tee-art">
+            <span>J♡</span>
+            <button class="quick-look">Quick look</button>
+          </div>
+          <div class="product-info">
+            <div><h3>J♡ Signature Tee</h3><p>Black · Pink neon print</p></div>
+            <strong>$32</strong>
+          </div>
+          <button class="add-to-bag">Add to bag</button>
+        </article>
+
+        <article class="product-card reveal" data-category="accessories" data-name="Heart Necklace" data-price="28">
+          <div class="product-image necklace-art">
+            <span>💖</span>
+            <button class="quick-look">Quick look</button>
+          </div>
+          <div class="product-info">
+            <div><h3>Heart Necklace</h3><p>Signature accessory</p></div>
+            <strong>$28</strong>
+          </div>
+          <button class="add-to-bag">Add to bag</button>
+        </article>
+
+        <article class="product-card reveal" data-category="collectibles" data-name="Sweet Era Poster" data-price="18">
+          <div class="product-image poster-art">
+            <span>THE<br>SWEET<br>ERA</span>
+            <button class="quick-look">Quick look</button>
+          </div>
+          <div class="product-info">
+            <div><h3>Sweet Era Poster</h3><p>18 × 24 inches</p></div>
+            <strong>$18</strong>
+          </div>
+          <button class="add-to-bag">Add to bag</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="sweet-list" class="section signup-section">
+      <div class="signup-card reveal">
+        <div class="signup-badge">♡</div>
+        <p class="eyebrow">JOIN THE SWEET LIST</p>
+        <h2>Be first in line for <em>everything sweet.</em></h2>
+        <p>Early music, secret drops, behind-the-scenes moments and fan-only surprises.</p>
+
+        <form id="sweetListForm">
+          <label class="sr-only" for="fanEmail">Email address</label>
+          <input id="fanEmail" type="email" placeholder="Your email address" required>
+          <button class="button button-primary" type="submit">Join now</button>
+        </form>
+
+        <p class="form-message" id="formMessage">No spam. Just sparkle.</p>
       </div>
     </section>
 
 
     <section id="creative-director" class="section creative-director-section">
-      <div class="creative-director-panel">
+      <div class="creative-director-panel reveal">
         <div class="creative-director-photo">
-          <img src="jon-creative-director.jpg" alt="J.W. Hummel, Creative Director for Jahntella">
+          <img
+            src="jon-creative-director.jpg"
+            alt="J.W. Hummel, Creative Director for Jahntella"
+          >
           <div class="creative-director-caption">
             <small>CREATIVE DIRECTION</small>
             <strong>J.W. Hummel</strong>
           </div>
         </div>
+
         <div class="creative-director-content">
           <p class="eyebrow">BEHIND THE WORLD</p>
           <h2>Meet the <em>Creative Director.</em></h2>
-          <p class="creative-director-intro">Jahntella is more than an artist. She is a colorful world built around positivity, imagination, music, confidence and kindness.</p>
-          <p>J.W. Hummel leads the creative direction behind Jahntella—shaping the visual identity, storytelling, release presentation, merchandise concepts and the growing fan experience.</p>
-          <div class="creative-direction-list">
-            <span>Brand Partnerships</span><span>Licensing</span><span>Media &amp; Press</span>
-            <span>Merchandise</span><span>Creative Collaborations</span><span>Bookings</span>
+
+          <p class="creative-director-intro">
+            Jahntella is more than an artist. She is a colorful world built
+            around positivity, imagination, music, confidence and kindness.
+          </p>
+
+          <p>
+            J.W. Hummel leads the creative direction behind Jahntella—shaping
+            the visual identity, storytelling, release presentation,
+            merchandise concepts and the growing fan experience.
+          </p>
+
+          <div class="creative-direction-list" aria-label="Creative direction services">
+            <span>Brand Partnerships</span>
+            <span>Licensing</span>
+            <span>Media &amp; Press</span>
+            <span>Merchandise</span>
+            <span>Creative Collaborations</span>
+            <span>Bookings</span>
           </div>
+
           <div class="creative-director-actions">
-            <a class="button primary" href="https://mail.google.com/mail/?view=cm&fs=1&to=jahntella%40gmail.com&su=Business%20Inquiry%20%E2%80%93%20Jahntella" target="_blank" rel="noopener">Business Inquiries</a>
-            <a class="button glass" href="#contact">Contact Jahntella</a>
+            <a
+              class="button button-primary"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=jahntella%40gmail.com&su=Business%20Inquiry%20%E2%80%93%20Jahntella&body=Hello%20Jahntella%2C%0A%0AMy%20name%20is%3A%0A%0ACompany%20%28if%20applicable%29%3A%0A%0AI%27m%20contacting%20you%20regarding%3A%0A%0AAdditional%20details%3A%0A%0ABest%20regards%2C%0A" target="_blank" rel="noopener"
+            >
+              Business Inquiries
+            </a>
+            <a class="button button-glass" href="#connect">
+              Follow Jahntella
+            </a>
           </div>
-          <p class="creative-contact-line">Contact: <a href="mailto:jahntella@gmail.com">jahntella@gmail.com</a></p>
+
+          <p class="creative-contact-line">
+            Contact:
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jahntella%40gmail.com&su=Business%20Inquiry%20%E2%80%93%20Jahntella&body=Hello%20Jahntella%2C%0A%0AMy%20name%20is%3A%0A%0ACompany%20%28if%20applicable%29%3A%0A%0AI%27m%20contacting%20you%20regarding%3A%0A%0AAdditional%20details%3A%0A%0ABest%20regards%2C%0A" target="_blank" rel="noopener">jahntella@gmail.com</a>
+          </p>
         </div>
       </div>
     </section>
 
+    <section id="connect" class="section connect-section">
+      <header class="section-heading centered reveal">
+        <p class="eyebrow">FOLLOW THE STORY</p>
+        <h2>Meet Jahntella <em>everywhere.</em></h2>
+      </header>
+
+      <div class="social-grid reveal" data-social-cards></div>
+    </section>
+  
     <section id="contact" class="section contact-launch">
-      <div class="contact-panel">
+      <div class="section-inner reveal">
         <p class="eyebrow">LET'S CREATE SOMETHING SWEET 🍭</p>
         <h2>Booking • Brand Partnerships • Interviews • Collaborations</h2>
-        <p>For bookings, partnerships, licensing, media, merchandise, or creative collaborations, contact Jahntella directly.</p>
+        <p>
+          For bookings, partnerships, licensing, media, merchandise, or creative
+          collaborations, contact Jahntella directly.
+        </p>
         <div class="contact-launch-actions">
-          <a class="button primary" href="https://mail.google.com/mail/?view=cm&fs=1&to=jahntella%40gmail.com&su=Business%20Inquiry%20%E2%80%93%20Jahntella" target="_blank" rel="noopener">📧 Open Gmail</a>
-          <button class="button glass" id="copyBusinessEmail" type="button">Copy Email Address</button>
+          <a
+            class="button button-primary"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=jahntella%40gmail.com&su=Business%20Inquiry%20%E2%80%93%20Jahntella&body=Hello%20Jahntella%2C%0A%0AMy%20name%20is%3A%0A%0ACompany%20%28if%20applicable%29%3A%0A%0AI%27m%20contacting%20you%20regarding%3A%0A%0AAdditional%20details%3A%0A%0ABest%20regards%2C%0A"
+            target="_blank"
+            rel="noopener"
+          >📧 Open Gmail</a>
+          <button class="button button-glass" id="copyBusinessEmail" type="button">
+            Copy Email Address
+          </button>
         </div>
-        <a class="contact-email-address" href="mailto:jahntella@gmail.com">jahntella@gmail.com</a>
+        <a class="contact-email-address" href="https://mail.google.com/mail/?view=cm&fs=1&to=jahntella%40gmail.com&su=Business%20Inquiry%20%E2%80%93%20Jahntella&body=Hello%20Jahntella%2C%0A%0AMy%20name%20is%3A%0A%0ACompany%20%28if%20applicable%29%3A%0A%0AI%27m%20contacting%20you%20regarding%3A%0A%0AAdditional%20details%3A%0A%0ABest%20regards%2C%0A" target="_blank" rel="noopener">
+          jahntella@gmail.com
+        </a>
       </div>
     </section>
 
-    <section class="section join" id="sweet-list">
-      <div>
-        <p class="eyebrow">JOIN THE SWEET LIST</p>
-        <h2>Be first through <em>the gates.</em></h2>
-        <p>Get new music, Sweetville openings, merch drops and secret rewards.</p>
-      </div>
-      <form id="sweetListForm">
-        <input type="email" id="sweetEmail" placeholder="Your email address" required aria-label="Email address">
-        <button class="button primary" type="submit">Join The Sweet List</button>
-        <small>Preview signup — connect your preferred email provider in config.js.</small>
-      </form>
-    </section>
   </main>
 
   <footer>
-    <a class="logo" href="#home">Jahntella<span>♡</span></a>
-    <div><p>🍭 Stay Sweet, xo, Jahntella 💋</p><small class="footer-credit">Creative Direction by J.W. Hummel · © <span id="currentYear"></span> Jahntella · Jahntella Sweet Era v6.3.2</small></div>
-    <div>
-      <a href="https://www.instagram.com/jahntella/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.tiktok.com/@jahntella" target="_blank" rel="noopener">TikTok</a>
-      <a href="https://www.youtube.com/@jahntella" target="_blank" rel="noopener">YouTube</a>
+    <div class="footer-logo">Jahntella♡</div>
+    <p id="footerSignoff">🍭 Stay Sweet, xo, Jahntella 💋</p>
+    <div class="footer-links" data-social-links></div>
+    <p class="footer-credit">
+      Creative Direction by J.W. Hummel · © <span id="currentYear"></span> Jahntella
+    </p>
+</footer>
+
+  <dialog class="site-dialog" id="platformDialog">
+    <button class="dialog-close" data-close-dialog aria-label="Close">×</button>
+    <p class="eyebrow">CHOOSE A PLATFORM</p>
+    <h2 id="platformTrack">Listen to Jahntella</h2>
+    <div class="platform-grid" data-music-links></div>
+  </dialog>
+
+  <dialog class="site-dialog story-dialog" id="storyModal">
+    <button class="dialog-close" data-close-dialog aria-label="Close">×</button>
+    <p class="eyebrow">THE OFFICIAL CREATIVE BIBLE</p>
+    <h2>The world behind <em>the music.</em></h2>
+    <img src="book-cover.png" alt="Jahntella Creative Bible cover">
+    <p>
+      A collectible visual universe documenting Jahntella's mission, style,
+      music, values and future eras.
+    </p>
+  </dialog>
+
+  <dialog class="site-dialog" id="videoModal">
+    <button class="dialog-close" data-close-dialog aria-label="Close">×</button>
+    <p class="eyebrow">WATCH JAHNTELLA</p>
+    <h2>Videos and <em>visualizers.</em></h2>
+    <div class="video-placeholder">
+      <img src="youtube-banner.png" alt="Jahntella video preview">
+      <a class="button button-primary" id="youtubeButton" target="_blank" rel="noopener">Open YouTube</a>
     </div>
-  </footer>
+  </dialog>
 
-  <div class="modal" id="zoneModal" aria-hidden="true"><div class="modal-shell zone-shell"></div></div>
-  <div class="modal" id="castleModal" aria-hidden="true"><div class="modal-shell castle-shell"></div></div>
-  <div class="modal" id="npcModal" aria-hidden="true"><div class="modal-shell npc-shell"></div></div>
-  <div class="modal" id="passportModal" aria-hidden="true"><div class="modal-shell passport-shell"></div></div>
-  <div class="modal" id="achievementsModal" aria-hidden="true"><div class="modal-shell achievements-shell"></div></div>
-  <div class="modal" id="vaultModal" aria-hidden="true"><div class="modal-shell vault-shell"></div></div>
-  <div class="modal" id="gameModal" aria-hidden="true"><div class="modal-shell game-shell"></div></div>
-  <div class="modal" id="packModal" aria-hidden="true"><div class="modal-shell pack-shell"></div></div>
-  <div class="modal" id="packshopModal" aria-hidden="true"><div class="modal-shell packshop-shell"></div></div>
-  <div class="modal" id="profileModal" aria-hidden="true"><div class="modal-shell profile-shell"></div></div>
-  <div class="modal" id="donutgameModal" aria-hidden="true"><div class="modal-shell donutgame-shell"></div></div>
-  <div class="modal" id="melodygameModal" aria-hidden="true"><div class="modal-shell melodygame-shell"></div></div>
+  <button class="floating-vault-button" id="floatingVaultButton" type="button" aria-label="Open My Sweet Vault">
+    <span aria-hidden="true">🎴</span>
+    <strong>My Vault</strong>
+    <small id="floatingVaultCount">0/12</small>
+  </button>
 
+  <dialog class="sweet-vault-dialog" id="collectionDialog">
+    <div class="sweet-vault-shell">
+      <button class="dialog-close vault-close" type="button" data-close-dialog aria-label="Close My Sweet Vault">×</button>
 
-  <div class="floating-collection-tools" aria-label="Sweet collection shortcuts">
-    <button class="floating-pack-button" type="button" data-open="pack" aria-label="Open a Sweet Pack">
-      <span>🎁</span><strong>Sweet Pack</strong><small id="floatingPackCount">0 ready</small>
-    </button>
-    <button class="floating-vault-button" type="button" data-open="vault" aria-label="Open My Sweet Vault">
-      <span>🎴</span><strong>My Vault</strong><small id="floatingVaultCount">0/12</small>
-    </button>
+      <header class="vault-header">
+        <div>
+          <p class="eyebrow">ALWAYS HERE. ALWAYS YOURS.</p>
+          <h2>My Sweet <em>Vault.</em></h2>
+          <p>Your 12-card Sweet Vault Series 1 collection is saved on this device. Tap any unlocked card to view, flip, download, favorite, or share it.</p>
+        </div>
+        <div class="vault-progress-card">
+          <strong><span id="collectionUnlocked">0</span>/<span id="collectionTotal">12</span></strong>
+          <span>Cards collected</span>
+          <div class="vault-progress-track"><span id="vaultProgressFill"></span></div>
+          <small id="vaultProgressPercent">0% complete</small>
+        </div>
+      </header>
+
+      <section class="vault-stats" aria-label="Sweet Vault collection statistics">
+        <div class="vault-stat">
+          <small>PACKS OPENED</small>
+          <strong id="vaultPacksOpened">0</strong>
+        </div>
+        <div class="vault-stat">
+          <small>HIGHEST PULL</small>
+          <strong id="vaultHighestPull">—</strong>
+        </div>
+        <div class="vault-stat">
+          <small>DUPLICATES</small>
+          <strong id="vaultDuplicateCount">0</strong>
+        </div>
+        <div class="vault-stat">
+          <small>SECRET RARE</small>
+          <strong id="vaultSecretStatus">Not Found</strong>
+        </div>
+      </section>
+
+      <section class="vault-recent" aria-labelledby="recentCardsTitle">
+        <div class="vault-section-title">
+          <h3 id="recentCardsTitle">Recently Collected</h3>
+          <span>Newest discoveries first</span>
+        </div>
+        <div class="vault-recent-row" id="vaultRecentRow"></div>
+      </section>
+
+      <section class="vault-binder" aria-labelledby="binderTitle">
+        <div class="vault-section-title">
+          <h3 id="binderTitle">Jahntella Sweet Era — First Edition</h3>
+          <span><strong id="collectionRare">0</strong> premium pulls</span>
+        </div>
+        <div class="collection-grid vault-card-grid" id="collectionGrid" aria-live="polite"></div>
+      </section>
+
+      <footer class="vault-help">
+        <span>🔒 Stored privately in this browser. No login needed.</span>
+        <button class="text-button" id="vaultResetButton" type="button">Reset this collection</button>
+</footer>
+    </div>
+  </dialog>
+
+  <div class="vault-celebration" id="vaultCelebration" hidden aria-hidden="true">
+    <div class="vault-celebration-wash" aria-hidden="true"></div>
+    <div class="vault-celebration-particles" id="vaultCelebrationParticles" aria-hidden="true"></div>
+    <div class="vault-celebration-banner" role="status" aria-live="assertive">
+      <small id="celebrationKicker">SWEET VAULT MOMENT</small>
+      <strong id="celebrationTitle">✨ AMAZING PULL! ✨</strong>
+      <span id="celebrationSubtitle">A special card has joined your collection.</span>
+    </div>
   </div>
+
+  <div class="pack-reveal-overlay" id="packRevealOverlay" hidden aria-hidden="true">
+    <button class="pack-close-button" id="packCloseButton" type="button" aria-label="Close card reveal">×</button>
+
+    <section class="pack-stage" id="packStage">
+      <p class="pack-animation-status" id="packAnimationStatus" aria-live="polite">Your Sweet Pack is ready.</p>
+      <div class="sweet-pack foil-image-pack" id="sweetPack" role="button" tabindex="0" aria-label="Tap to open your Sweet Pack">
+        <img class="foil-pack-art" src="jahntella-foil-pack-v361.jpg" alt="Jahntella metallic pink foil Sweet Pack">
+        <span class="foil-pack-glint" aria-hidden="true"></span>
+        <span class="pack-tear-half pack-tear-top" aria-hidden="true"></span>
+        <span class="pack-tear-half pack-tear-bottom" aria-hidden="true"></span>
+        <span class="pack-sparkles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        <small class="foil-pack-tap">TAP TO OPEN</small>
+      </div>
+
+      <div class="card-reveal-panel" id="cardRevealPanel" hidden>
+        <p class="reveal-kicker" id="revealKicker">NEW CARD UNLOCKED</p>
+        <p class="reveal-message" id="revealMessage"></p>
+        <p class="reveal-rarity" id="revealRarity" aria-live="polite"></p>
+
+        <div class="sweet-card-scene" id="sweetCardScene">
+          <button class="sweet-card" id="featuredSweetCard" type="button" aria-label="Flip collectible card">
+            <span class="sweet-card-inner">
+              <span class="sweet-card-face sweet-card-front" id="featuredCardFront"></span>
+              <span class="sweet-card-face sweet-card-back" id="featuredCardBack"></span>
+            </span>
+          </button>
+        </div>
+
+        <p class="flip-hint">Tap the card to flip it</p>
+
+        <div class="reveal-actions">
+          <button class="button button-primary" id="downloadCardButton" type="button">⬇ Download Card</button>
+          <button class="button button-glass" id="favoriteCardButton" type="button">☆ Favorite</button>
+          <button class="button button-glass" id="shareCardButton" type="button">↗ Share</button>
+          <button class="button button-glass" id="revealVaultButton" type="button">🎴 My Vault</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <dialog class="site-dialog sweetville-dialog" id="sweetvilleDialog">
+    <button class="dialog-close" data-close-dialog aria-label="Close">×</button>
+    <div class="sweetville-postcard-icon" id="sweetvilleDialogIcon">🍭</div>
+    <p class="eyebrow" id="sweetvilleDialogKicker">A POSTCARD FROM SWEETVILLE</p>
+    <h2 id="sweetvilleDialogTitle">Welcome, <em>Sweetie.</em></h2>
+    <p id="sweetvilleDialogNote"></p>
+    <div class="sweetville-signoff">
+      <span>🍭 Stay Sweet,</span>
+      <strong>xo, Jahntella 💋</strong>
+    </div>
+  </dialog>
+
+  <aside class="bag-drawer" id="bagDrawer" aria-label="Shopping bag">
+    <button class="bag-close" id="bagClose" aria-label="Close bag">×</button>
+    <p class="eyebrow">THE SWEET SHOP</p>
+    <h2>Your bag</h2>
+    <div id="bagItems" class="bag-items"></div>
+    <div class="bag-total">
+      <span>Total</span>
+      <strong id="bagTotal">$0</strong>
+    </div>
+    <button class="button button-primary checkout-button" id="checkoutButton">Checkout preview</button>
+  </aside>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <audio id="audioFunDipp" preload="metadata"><source src="fun-dipp-v430.mp4" type="audio/mp4"></audio>
-  <audio id="audioPinkLips" preload="metadata"><source src="pink-lips-remix-v430.mp4" type="audio/mp4"></audio>
 
-  <aside class="music-player" id="musicPlayer">
-    <div class="player-art" id="playerArt">🍭</div>
+  <script>
+    window.setTimeout(function () {
+      var loadingScreen = document.getElementById("loadingScreen");
+      if (loadingScreen) loadingScreen.classList.add("hidden");
+    }, 2600);
+  </script>
+  <script src="config.js"></script>
+  <!-- Build 4.3: embedded Jahntella music player -->
+  <audio id="audioFunDipp" preload="metadata">
+    <source src="fun-dipp-v430.mp4" type="audio/mp4">
+  </audio>
+  <audio id="audioPinkLips" preload="metadata">
+    <source src="pink-lips-remix-v430.mp4" type="audio/mp4">
+  </audio>
+
+  <aside class="jahntella-player" id="jahntellaPlayer" aria-label="Jahntella music player">
+    <div class="player-art" aria-hidden="true">🍭</div>
     <div class="player-copy">
       <small id="playerStatus">READY TO PLAY</small>
       <strong id="playerTrack">Fun Dipp</strong>
-      <div class="player-progress"><span id="playerCurrent">0:00</span><input id="playerRange" type="range" min="0" max="100" value="0" aria-label="Song progress"><span id="playerDuration">0:00</span></div>
+      <div class="player-progress-wrap">
+        <span id="playerCurrent">0:00</span>
+        <input id="playerProgress" type="range" min="0" max="100" value="0" aria-label="Song progress">
+        <span id="playerDuration">0:00</span>
+      </div>
     </div>
-    <div class="visualizer" id="visualizer"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-    <button id="playerPrev" type="button" aria-label="Previous song">‹</button>
-    <button id="playerToggle" class="main-play" type="button" aria-label="Play or pause">▶</button>
-    <button id="playerNext" type="button" aria-label="Next song">›</button>
-    <button id="playerClose" class="player-close" type="button" aria-label="Close player">×</button>
+    <div class="player-visualizer" id="playerVisualizer" aria-hidden="true">
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
+    <div class="player-transport">
+      <button class="player-skip" id="playerPrevious" type="button" aria-label="Previous song">‹</button>
+      <button class="player-main-control" id="playerToggle" type="button" aria-label="Play or pause">▶</button>
+      <button class="player-skip" id="playerNext" type="button" aria-label="Next song">›</button>
+    </div>
+    <button class="player-close" id="playerClose" type="button" aria-label="Close player">×</button>
   </aside>
 
-  <div class="build-badge">BUILD 6.3.2</div>
-  <script src="config.js"></script>
-  <script src="app-v632.js"></script>
+
+
+
+  <script>
+    window.JahntellaPlayFallback = function (trackKey) {
+      var audioId = trackKey === "pink-lips" ? "audioPinkLips" : "audioFunDipp";
+      var audio = document.getElementById(audioId);
+      var player = document.getElementById("jahntellaPlayer");
+      if (!audio) return false;
+
+      ["audioFunDipp", "audioPinkLips"].forEach(function (id) {
+        var other = document.getElementById(id);
+        if (other && other !== audio) {
+          other.pause();
+          other.currentTime = 0;
+        }
+      });
+
+      if (player) player.classList.add("visible");
+      document.body.classList.add("music-player-open");
+
+      if (audio.paused) {
+        audio.play().catch(function () {});
+      } else {
+        audio.pause();
+      }
+      return false;
+    };
+  </script>
+
+  <script src="script-v511.js"></script>
+
+  <div id="buildBadge" style="position:fixed;left:8px;bottom:8px;z-index:99999;
+  font:700 10px/1.2 Arial,sans-serif;color:#ff8fc9;background:rgba(0,0,0,.78);
+  border:1px solid rgba(255,74,164,.45);border-radius:999px;padding:5px 8px;
+  pointer-events:none;">BUILD 5.1.1</div>
+
+
 </body>
 </html>
