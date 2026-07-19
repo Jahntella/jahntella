@@ -1,5 +1,5 @@
 window.JAHNTELLA_CONFIG = {
-  version: "6.2",
+  version: "6.2.1",
   brand: {
     siteName: "Jahntella",
     email: "jahntella@gmail.com",

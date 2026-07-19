@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&family=Sacramento&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles-v62.css">
+  <link rel="stylesheet" href="styles-v621.css">
 </head>
 <body>
   <canvas id="sparkles" aria-hidden="true"></canvas>
@@ -34,6 +34,8 @@
       <a href="#games">Games</a>
       <a href="#packs">Sweet Packs</a>
        <a href="#vault">Vault</a>
+       <a href="#creative-director">Creative Director</a>
+       <a href="#contact">Contact</a>
       <button type="button" data-open="passport">Passport</button>
       <button type="button" data-open="achievements">Achievements</button>
       <a href="#shop">Shop</a>
@@ -231,6 +233,43 @@
     </section>
 
 
+
+    <section class="section classic-surprises" id="surprises">
+      <div class="classic-orbit one" aria-hidden="true">✦</div>
+      <div class="classic-orbit two" aria-hidden="true">♡</div>
+      <header class="section-heading">
+        <p class="eyebrow">JAHNTELLA'S SWEET SURPRISES</p>
+        <h2>Open a <em>Sweet Pack.</em></h2>
+        <p>The original Sweet Surprise machine is back—now connected to the v6.2 rarity and Vault system.</p>
+      </header>
+      <div class="surprise-experience-restored">
+        <div class="sweet-machine-restored">
+          <div class="machine-sign-restored"><small>JAHNTELLA'S</small><strong>SWEET SURPRISES</strong></div>
+          <div class="machine-globe-restored" aria-hidden="true">
+            <i>●</i><i>♥</i><i>★</i><i>✦</i><i>●</i><i>♥</i><i>★</i>
+          </div>
+          <div class="machine-body-restored">
+            <small>READY FOR A SWEET PACK?</small>
+            <strong id="classicPackCount">0 packs ready</strong>
+            <button class="machine-button-restored" type="button" data-open="pack">
+              <span>🍭</span><b>Open a Sweet Pack</b>
+            </button>
+          </div>
+        </div>
+        <article class="surprise-preview-restored">
+          <span class="restored-badge">FIRST EDITION</span>
+          <div class="preview-icon-restored">🎁</div>
+          <p class="eyebrow">YOUR NEXT LITTLE DELIGHT</p>
+          <h3>What will you unlock?</h3>
+          <p>Pull Common, Rare, Ultra Rare, Secret Rare, or Rainbow Rare cards. Every discovery is saved privately in this browser.</p>
+          <div class="restored-actions">
+            <button class="button primary" type="button" data-open="pack">Open Pack</button>
+            <button class="button glass" type="button" data-open="vault">Open My Sweet Vault</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section class="section packs" id="packs">
       <header class="section-heading">
         <p class="eyebrow">SWEET PACKS HAVE ARRIVED</p>
@@ -292,6 +331,47 @@
       </div>
     </section>
 
+
+    <section id="creative-director" class="section creative-director-section">
+      <div class="creative-director-panel">
+        <div class="creative-director-photo">
+          <img src="jon-creative-director.jpg" alt="J.W. Hummel, Creative Director for Jahntella">
+          <div class="creative-director-caption">
+            <small>CREATIVE DIRECTION</small>
+            <strong>J.W. Hummel</strong>
+          </div>
+        </div>
+        <div class="creative-director-content">
+          <p class="eyebrow">BEHIND THE WORLD</p>
+          <h2>Meet the <em>Creative Director.</em></h2>
+          <p class="creative-director-intro">Jahntella is more than an artist. She is a colorful world built around positivity, imagination, music, confidence and kindness.</p>
+          <p>J.W. Hummel leads the creative direction behind Jahntella—shaping the visual identity, storytelling, release presentation, merchandise concepts and the growing fan experience.</p>
+          <div class="creative-direction-list">
+            <span>Brand Partnerships</span><span>Licensing</span><span>Media &amp; Press</span>
+            <span>Merchandise</span><span>Creative Collaborations</span><span>Bookings</span>
+          </div>
+          <div class="creative-director-actions">
+            <a class="button primary" href="https://mail.google.com/mail/?view=cm&fs=1&to=jahntella%40gmail.com&su=Business%20Inquiry%20%E2%80%93%20Jahntella" target="_blank" rel="noopener">Business Inquiries</a>
+            <a class="button glass" href="#contact">Contact Jahntella</a>
+          </div>
+          <p class="creative-contact-line">Contact: <a href="mailto:jahntella@gmail.com">jahntella@gmail.com</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact-launch">
+      <div class="contact-panel">
+        <p class="eyebrow">LET'S CREATE SOMETHING SWEET 🍭</p>
+        <h2>Booking • Brand Partnerships • Interviews • Collaborations</h2>
+        <p>For bookings, partnerships, licensing, media, merchandise, or creative collaborations, contact Jahntella directly.</p>
+        <div class="contact-launch-actions">
+          <a class="button primary" href="https://mail.google.com/mail/?view=cm&fs=1&to=jahntella%40gmail.com&su=Business%20Inquiry%20%E2%80%93%20Jahntella" target="_blank" rel="noopener">📧 Open Gmail</a>
+          <button class="button glass" id="copyBusinessEmail" type="button">Copy Email Address</button>
+        </div>
+        <a class="contact-email-address" href="mailto:jahntella@gmail.com">jahntella@gmail.com</a>
+      </div>
+    </section>
+
     <section class="section join" id="sweet-list">
       <div>
         <p class="eyebrow">JOIN THE SWEET LIST</p>
@@ -308,7 +388,7 @@
 
   <footer>
     <a class="logo" href="#home">Jahntella<span>♡</span></a>
-    <p>🍭 Stay Sweet, xo, Jahntella 💋</p>
+    <div><p>🍭 Stay Sweet, xo, Jahntella 💋</p><small class="footer-credit">Creative Direction by J.W. Hummel · © <span id="currentYear"></span> Jahntella</small></div>
     <div>
       <a href="https://www.instagram.com/jahntella/" target="_blank" rel="noopener">Instagram</a>
       <a href="https://www.tiktok.com/@jahntella" target="_blank" rel="noopener">TikTok</a>
@@ -325,6 +405,16 @@
   <div class="modal" id="gameModal" aria-hidden="true"><div class="modal-shell game-shell"></div></div>
   <div class="modal" id="packModal" aria-hidden="true"><div class="modal-shell pack-shell"></div></div>
   <div class="modal" id="packshopModal" aria-hidden="true"><div class="modal-shell packshop-shell"></div></div>
+
+
+  <div class="floating-collection-tools" aria-label="Sweet collection shortcuts">
+    <button class="floating-pack-button" type="button" data-open="pack" aria-label="Open a Sweet Pack">
+      <span>🎁</span><strong>Sweet Pack</strong><small id="floatingPackCount">0 ready</small>
+    </button>
+    <button class="floating-vault-button" type="button" data-open="vault" aria-label="Open My Sweet Vault">
+      <span>🎴</span><strong>My Vault</strong><small id="floatingVaultCount">0/12</small>
+    </button>
+  </div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -345,8 +435,8 @@
     <button id="playerClose" class="player-close" type="button" aria-label="Close player">×</button>
   </aside>
 
-  <div class="build-badge">BUILD 6.2</div>
+  <div class="build-badge">BUILD 6.2.1</div>
   <script src="config.js"></script>
-  <script src="app-v62.js"></script>
+  <script src="app-v621.js"></script>
 </body>
 </html>
