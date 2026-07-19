@@ -1,0 +1,38 @@
+JAHNTELLA v5.1 — MUSIC EXPERIENCE
+=================================
+
+1. Upload script-v51.js to the ROOT of your GitHub repository.
+
+2. Open index.html in GitHub and locate this line near the bottom:
+
+   <script src="script-v504.js"></script>
+
+3. Directly BELOW that line, add:
+
+   <script src="script-v51.js"></script>
+
+4. Optional: change the existing build badge text from:
+
+   BUILD 5.0.4
+
+   to:
+
+   BUILD 5.1
+
+5. Commit the changes, wait 1–2 minutes, and hard refresh with Ctrl + F5.
+
+DO NOT delete or replace script-v504.js. v5.1 safely layers the Music Experience on top of the working v5.0.4 site.
+
+Included:
+- Premium Fun Dipp player
+- Rotating vinyl artwork
+- Progress and volume controls
+- Animated visualizer
+- Featured single presentation
+- Streaming hub
+- Music video coming-soon panel
+- Lyrics and Behind the Song panels
+- Sweet List CTA
+- Share Song button
+- Mobile and reduced-motion support
+- Existing persistent mini-player remains intact
