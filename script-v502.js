@@ -1,4 +1,4 @@
-window.JAHNTELLA_BUILD = "5.0.2-SWEET-VAULT-STATS";
+window.JAHNTELLA_BUILD = "5.0.2.2-STATS-MIGRATION-FIX";
 
 const CONFIG = window.JAHNTELLA_CONFIG || {brand:{},social:{},music:{},store:{},newsletter:{}};
 
@@ -660,6 +660,35 @@ function recordVaultPull(card, isNew) {
 
 function renderVaultStats() {
   const stats = getVaultStats();
+  const collectedCards = getSweetCollection()
+    .map((id) => SWEET_SURPRISES.find((card) => card.id === id))
+    .filter(Boolean);
+
+  const collectionHighest = collectedCards.reduce((highest, card) => {
+    if (!highest || (RARITY_RANK[card.rarity] || 0) > (RARITY_RANK[highest] || 0)) {
+      return card.rarity;
+    }
+    return highest;
+  }, "");
+
+  // Migration for visitors who collected cards before v5.0.2 existed.
+  // Each unique saved card required at least one pack opening.
+  if (stats.packsOpened < collectedCards.length) {
+    stats.packsOpened = collectedCards.length;
+  }
+
+  if (collectionHighest &&
+      (!stats.highestPull ||
+       (RARITY_RANK[collectionHighest] || 0) > (RARITY_RANK[stats.highestPull] || 0))) {
+    stats.highestPull = collectionHighest;
+  }
+
+  if (collectedCards.some((card) => card.rarity === "Secret Rare")) {
+    stats.secretRare = true;
+  }
+
+  saveVaultStats(stats);
+
   if (vaultPacksOpened) vaultPacksOpened.textContent = String(stats.packsOpened);
   if (vaultHighestPull) vaultHighestPull.textContent = stats.highestPull || "—";
   if (vaultDuplicateCount) vaultDuplicateCount.textContent = String(stats.duplicates);
