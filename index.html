@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&family=Sacramento&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles-v503b.css">
+  <link rel="stylesheet" href="styles-v504.css">
 </head>
 
 <body>
@@ -708,6 +708,16 @@
     </div>
   </dialog>
 
+  <div class="vault-celebration" id="vaultCelebration" hidden aria-hidden="true">
+    <div class="vault-celebration-wash" aria-hidden="true"></div>
+    <div class="vault-celebration-particles" id="vaultCelebrationParticles" aria-hidden="true"></div>
+    <div class="vault-celebration-banner" role="status" aria-live="assertive">
+      <small id="celebrationKicker">SWEET VAULT MOMENT</small>
+      <strong id="celebrationTitle">✨ AMAZING PULL! ✨</strong>
+      <span id="celebrationSubtitle">A special card has joined your collection.</span>
+    </div>
+  </div>
+
   <div class="pack-reveal-overlay" id="packRevealOverlay" hidden aria-hidden="true">
     <button class="pack-close-button" id="packCloseButton" type="button" aria-label="Close card reveal">×</button>
 
@@ -724,6 +734,7 @@
 
       <div class="card-reveal-panel" id="cardRevealPanel" hidden>
         <p class="reveal-kicker" id="revealKicker">NEW CARD UNLOCKED</p>
+        <p class="reveal-message" id="revealMessage"></p>
         <p class="reveal-rarity" id="revealRarity" aria-live="polite"></p>
 
         <div class="sweet-card-scene" id="sweetCardScene">
@@ -842,12 +853,12 @@
     };
   </script>
 
-  <script src="script-v503b.js"></script>
+  <script src="script-v504.js"></script>
 
   <div id="buildBadge" style="position:fixed;left:8px;bottom:8px;z-index:99999;
   font:700 10px/1.2 Arial,sans-serif;color:#ff8fc9;background:rgba(0,0,0,.78);
   border:1px solid rgba(255,74,164,.45);border-radius:999px;padding:5px 8px;
-  pointer-events:none;">BUILD 5.0.3B</div>
+  pointer-events:none;">BUILD 5.0.4</div>
 
 
 </body>
