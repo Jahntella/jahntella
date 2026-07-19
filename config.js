@@ -22,16 +22,24 @@ window.JAHNTELLA_CONFIG = {
     soundcloud: "https://soundcloud.com/search?q=Jahntella"
   },
 
-  // Store integrations can be added here later.
   store: {
     provider: "preview",
     checkoutUrl: ""
   },
 
-  // Newsletter integration options:
-  // "preview", "formspree", "mailchimp", or your own endpoint.
   newsletter: {
     provider: "preview",
     endpoint: ""
   }
 };
+
+// Load the v5.3.1 production patch after the existing v5.3 application has initialized.
+window.addEventListener("load", function () {
+  var existing = document.querySelector('script[src="script-v531-patch.js"]');
+  if (existing) return;
+
+  var script = document.createElement("script");
+  script.src = "script-v531-patch.js";
+  script.defer = true;
+  document.body.appendChild(script);
+});
