@@ -33,13 +33,24 @@ window.JAHNTELLA_CONFIG = {
   }
 };
 
-// Load the v5.3.1 production patch after the existing v5.3 application has initialized.
+// Load production patches in order so each release builds safely on the previous one.
 window.addEventListener("load", function () {
-  var existing = document.querySelector('script[src="script-v531-patch.js"]');
-  if (existing) return;
+  function loadScript(src, callback) {
+    var existing = document.querySelector('script[src="' + src + '"]');
+    if (existing) {
+      if (callback) callback();
+      return;
+    }
 
-  var script = document.createElement("script");
-  script.src = "script-v531-patch.js";
-  script.defer = true;
-  document.body.appendChild(script);
+    var script = document.createElement("script");
+    script.src = src;
+    script.onload = function () {
+      if (callback) callback();
+    };
+    document.body.appendChild(script);
+  }
+
+  loadScript("script-v531-patch.js", function () {
+    loadScript("script-v54-achievements.js");
+  });
 });
