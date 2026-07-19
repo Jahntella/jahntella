@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&family=Sacramento&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles-v422.css">
+  <link rel="stylesheet" href="styles-v430.css">
 </head>
 
 <body>
@@ -77,8 +77,7 @@
             <small>Click the candy stick and dip into the sweetness.</small>
           </div>
 
-          <a class="fun-dipp-stick" href="https://www.youtube.com/@Jahntella" target="_blank"
-             rel="noopener" aria-label="Listen to Fun Dipp on YouTube">
+          <a class="fun-dipp-stick" href="#" data-audio-track="fun-dipp" aria-label="Play Fun Dipp on this website">
             <span class="stick-sugar" aria-hidden="true"></span>
             <span class="stick-label">DIP IN ▶</span>
           </a>
@@ -89,7 +88,7 @@
         </div>
 
         <div class="hero-actions">
-          <a class="button button-primary" href="https://www.youtube.com/@Jahntella" target="_blank" rel="noopener">Listen Now ▶</a>
+          <button class="button button-primary site-audio-button" type="button" data-audio-track="fun-dipp">Listen Now ▶</button>
           <a class="button button-glass" href="https://open.spotify.com/search/Jahntella" target="_blank" rel="noopener">Spotify ↗</a>
           <a class="button button-glass" href="#sweet-list">Join The Sweet List</a>
         </div>
@@ -316,8 +315,8 @@
             <h3>Fun Dipp</h3>
             <p>Bright dance-pop, playful confidence and a chorus built to stay in your head.</p>
             <div class="release-actions">
-              <a class="button button-primary" href="https://open.spotify.com/search/Jahntella" target="_blank" rel="noopener">Listen on Spotify ↗</a>
-              <a class="button button-glass" href="https://www.youtube.com/@Jahntella" target="_blank" rel="noopener">Play on YouTube ▶</a>
+              <button class="button button-primary site-audio-button" type="button" data-audio-track="fun-dipp">Play Fun Dipp ▶</button>
+              <a class="button button-glass" href="https://open.spotify.com/search/Jahntella" target="_blank" rel="noopener">Spotify ↗</a>
             </div>
           </div>
         </article>
@@ -333,8 +332,8 @@
             <h3>Pink Lips Remix</h3>
             <p>A glossy after-dark remix with brighter synths, bigger sparkle and extra attitude.</p>
             <div class="release-actions">
-              <a class="button button-primary" href="https://open.spotify.com/search/Jahntella" target="_blank" rel="noopener">Listen on Spotify ↗</a>
-              <a class="button button-glass" href="https://www.youtube.com/@Jahntella" target="_blank" rel="noopener">Play on YouTube ▶</a>
+              <button class="button button-primary site-audio-button" type="button" data-audio-track="pink-lips">Play Remix ▶</button>
+              <a class="button button-glass" href="https://www.youtube.com/@Jahntella" target="_blank" rel="noopener">YouTube ↗</a>
             </div>
           </div>
         </article>
@@ -733,12 +732,36 @@
     }, 2600);
   </script>
   <script src="config.js"></script>
-  <script src="script-v422.js"></script>
+  <script src="script-v430.js"></script>
 
   <div id="buildBadge" style="position:fixed;left:8px;bottom:8px;z-index:99999;
   font:700 10px/1.2 Arial,sans-serif;color:#ff8fc9;background:rgba(0,0,0,.78);
   border:1px solid rgba(255,74,164,.45);border-radius:999px;padding:5px 8px;
-  pointer-events:none;">BUILD 4.2.2</div>
+  pointer-events:none;">BUILD 4.3</div>
+
+
+  <!-- Build 4.3: embedded Jahntella music player -->
+  <audio id="audioFunDipp" preload="metadata">
+    <source src="fun-dipp-v430.mp4" type="audio/mp4">
+  </audio>
+  <audio id="audioPinkLips" preload="metadata">
+    <source src="pink-lips-remix-v430.mp4" type="audio/mp4">
+  </audio>
+
+  <aside class="jahntella-player" id="jahntellaPlayer" aria-label="Jahntella music player">
+    <div class="player-art" aria-hidden="true">🍭</div>
+    <div class="player-copy">
+      <small id="playerStatus">READY TO PLAY</small>
+      <strong id="playerTrack">Fun Dipp</strong>
+      <div class="player-progress-wrap">
+        <span id="playerCurrent">0:00</span>
+        <input id="playerProgress" type="range" min="0" max="100" value="0" aria-label="Song progress">
+        <span id="playerDuration">0:00</span>
+      </div>
+    </div>
+    <button class="player-main-control" id="playerToggle" type="button" aria-label="Play or pause">▶</button>
+    <button class="player-close" id="playerClose" type="button" aria-label="Close player">×</button>
+  </aside>
 
 </body>
 </html>
