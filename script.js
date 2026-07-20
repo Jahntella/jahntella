@@ -3,12 +3,14 @@
     "fun-dipp": {
       audio: document.getElementById("audioFunDipp"),
       title: "Fun Dipp",
-      artwork: "https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/fun-dipp-cover.png"
+      artwork: "https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/fun-dipp-cover.png",
+      record: document.getElementById("funDippRecord")
     },
     "pink-lips": {
       audio: document.getElementById("audioPinkLips"),
       title: "Pink Lips Remix",
-      artwork: "https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/pink-lips-remix.png"
+      artwork: "https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/pink-lips-remix.png",
+      record: document.getElementById("pinkLipsRecord")
     }
   };
 
@@ -32,6 +34,7 @@
       if (track.audio !== selected) {
         track.audio.pause();
         track.audio.currentTime = 0;
+        if (track.record) track.record.classList.remove("is-spinning");
       }
     });
   };
@@ -47,7 +50,10 @@
     player.classList.add("visible");
 
     track.audio.play()
-      .then(() => { toggle.textContent = "❚❚"; })
+      .then(() => {
+        toggle.textContent = "❚❚";
+        if (track.record) track.record.classList.add("is-spinning");
+      })
       .catch(() => { toggle.textContent = "▶"; });
   };
 
@@ -63,11 +69,15 @@
 
     if (current.audio.paused) {
       current.audio.play()
-        .then(() => { toggle.textContent = "❚❚"; })
+        .then(() => {
+          toggle.textContent = "❚❚";
+          if (current.record) current.record.classList.add("is-spinning");
+        })
         .catch(() => { toggle.textContent = "▶"; });
     } else {
       current.audio.pause();
       toggle.textContent = "▶";
+      if (current.record) current.record.classList.remove("is-spinning");
     }
   });
 
@@ -85,6 +95,7 @@
       if (current === track) {
         toggle.textContent = "▶";
         progress.value = 0;
+        if (track.record) track.record.classList.remove("is-spinning");
       }
     });
   });
