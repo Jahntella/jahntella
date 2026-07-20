@@ -1672,8 +1672,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (packButton) {
     packButton.addEventListener("click", () => {
-      if (originalPack) originalPack.click();
-      else {
+      if (typeof spinSweetMachine === "function") {
+        spinSweetMachine();
+      } else if (originalPack) {
+        originalPack.click();
+      } else {
         const dialog = document.getElementById("packDialog");
         if (dialog && typeof dialog.showModal === "function") dialog.showModal();
       }
@@ -1682,8 +1685,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (vaultButton) {
     vaultButton.addEventListener("click", () => {
-      if (originalVault) originalVault.click();
-      else {
+      if (typeof openVault === "function") {
+        openVault();
+      } else if (originalVault) {
+        originalVault.click();
+      } else {
         const dialog = document.getElementById("collectionDialog");
         if (dialog && typeof dialog.showModal === "function") dialog.showModal();
       }
