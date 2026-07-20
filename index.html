@@ -2,171 +2,382 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Official home of pop artist Jahntella — music, merch, videos and The Sweet List.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09000f">
+  <meta name="description" content="Enter the official World of Jahntella — music, videos, merch, hidden surprises and The Sweet List.">
+  <meta property="og:title" content="Jahntella — The World of Sweet">
+  <meta property="og:description" content="Sweet hooks. Big choruses. Good vibes.">
+  <meta property="og:image" content="assets/jahntella-official-v1.png">
   <title>Jahntella — The World of Sweet</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&family=Sacramento&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&family=Sacramento&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <div class="cursor-glow" aria-hidden="true"></div>
-  <div class="sparkles" aria-hidden="true"></div>
+  <canvas id="sparkleCanvas" aria-hidden="true"></canvas>
+  <div class="cursor-aura" aria-hidden="true"></div>
+
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loader-logo">Jahntella♡</div>
+    <div class="loader-track"><span></span></div>
+    <p>Entering the World of Sweet...</p>
+  </div>
 
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="Jahntella home">Jahntella<span>♡</span></a>
-    <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
-    <nav id="nav" class="nav">
+    <a class="site-logo" href="#home" aria-label="Jahntella home">Jahntella<span>♡</span></a>
+
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteNav">
+      <span></span><span></span><span></span>
+      <b class="sr-only">Open navigation</b>
+    </button>
+
+    <nav id="siteNav" class="site-nav">
       <a href="#music">Music</a>
-      <a href="#world">Her World</a>
+      <a href="#experience">Experience</a>
       <a href="#merch">Merch</a>
       <a href="#sweet-list">Sweet List</a>
       <a href="#connect">Connect</a>
     </nav>
+
+    <button class="header-bag" id="bagButton" aria-label="Open shopping bag">
+      Bag <span id="bagCount">0</span>
+    </button>
   </header>
 
-  <main id="top">
-    <section class="hero">
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-glow hero-glow-one"></div>
+      <div class="hero-glow hero-glow-two"></div>
+
       <div class="hero-copy reveal">
         <p class="eyebrow">WELCOME TO THE WORLD OF SWEET</p>
-        <h1>Sweet hooks.<br><em>Big choruses.</em><br>Good vibes.</h1>
-        <p class="hero-text">Meet Jahntella — playful pop, glowing visuals and a little trouble wrapped in bubblegum pink.</p>
+        <h1>
+          Sweet hooks.
+          <span>Big choruses.</span>
+          Good vibes.
+        </h1>
+        <p class="hero-description">
+          Meet Jahntella — a playful pop universe built from confidence, color,
+          unforgettable melodies and a little trouble.
+        </p>
+
         <div class="hero-actions">
-          <a class="btn primary" href="#music">Listen now</a>
-          <a class="btn ghost" href="#sweet-list">Join The Sweet List</a>
+          <a class="button button-primary" href="#music">Listen now</a>
+          <a class="button button-glass" href="#sweet-list">Join The Sweet List</a>
         </div>
-        <div class="mini-socials" data-social-links></div>
+
+        <div class="hero-socials" data-social-links></div>
       </div>
-      <div class="hero-visual reveal">
-        <div class="portrait-ring">
-          <img src="assets/jahntella-profile.png" alt="Jahntella smiling and giving a peace sign">
+
+      <div class="hero-stage reveal">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+
+        <div class="portrait-frame">
+          <img src="assets/jahntella-official-v1.png" alt="Jahntella smiling and giving a peace sign">
         </div>
-        <div class="floating-note note-1">Stay Sweet ✦</div>
-        <div class="floating-note note-2">A little sweet.<br>A little trouble.</div>
+
+        <button class="floating-card floating-card-one easter-egg" data-secret="You found a hidden star! ⭐">
+          <span>✦</span> Stay Sweet
+        </button>
+
+        <button class="floating-card floating-card-two easter-egg" data-secret="A little sweet. A little trouble. 💋">
+          A little sweet.<br>A little trouble.
+        </button>
+
+        <button id="soundControl" class="sound-control" aria-pressed="false">
+          <span>♫</span> Sparkle sound: off
+        </button>
       </div>
-      <button class="sound-pill" id="soundToggle" aria-pressed="false">♫ Ambient sparkle: off</button>
+
+      <a class="scroll-cue" href="#music">Scroll to enter <span>↓</span></a>
     </section>
 
-    <section class="ticker" aria-label="Jahntella highlights">
-      <div>FUN DIPP ✦ PINK LIPS REMIX ✦ THE SWEET ERA ✦ STAY SWEET ✦ FUN DIPP ✦ PINK LIPS REMIX ✦</div>
+    <section class="marquee" aria-label="Jahntella highlights">
+      <div class="marquee-track">
+        FUN DIPP ✦ PINK LIPS REMIX ✦ THE SWEET ERA ✦ STAY SWEET ✦
+        FUN DIPP ✦ PINK LIPS REMIX ✦ THE SWEET ERA ✦ STAY SWEET ✦
+      </div>
     </section>
 
     <section id="music" class="section music-section">
-      <div class="section-heading reveal">
+      <header class="section-heading reveal">
         <p class="eyebrow">THE SWEET ERA</p>
-        <h2>Music made to <em>move you.</em></h2>
-        <p>Choose your favorite platform and step into Jahntella's sound.</p>
-      </div>
+        <h2>Press play on <em>something sweet.</em></h2>
+        <p>Choose a release, then open it on the music platform you love.</p>
+      </header>
 
-      <div class="release-grid">
-        <article class="release-card reveal">
-          <img src="assets/fun-dipp-cover.png" alt="Fun Dipp single cover">
-          <div class="release-body">
-            <span>DEBUT SINGLE</span>
+      <div class="vinyl-stage reveal">
+        <article class="release-panel active" data-release="fun-dipp">
+          <div class="record-wrap">
+            <div class="vinyl">
+              <img src="assets/fun-dipp-cover.png" alt="Fun Dipp artwork">
+            </div>
+          </div>
+          <div class="release-copy">
+            <p class="release-label">DEBUT SINGLE</p>
             <h3>Fun Dipp</h3>
-            <p>Bright, playful dance-pop with a sugar-rush chorus.</p>
-            <button class="btn primary platform-open" data-track="Fun Dipp">Listen everywhere</button>
+            <p>Bright dance-pop, playful confidence and a chorus built to stay in your head.</p>
+            <div class="release-actions">
+              <button class="button button-primary open-platforms" data-track="Fun Dipp">Listen everywhere</button>
+              <button class="button button-glass play-preview" data-preview="fun-dipp">Preview vibe</button>
+            </div>
           </div>
         </article>
 
-        <article class="release-card reveal">
-          <img src="assets/pink-lips-remix.png" alt="Pink Lips Remix cover">
-          <div class="release-body">
-            <span>REMIX</span>
+        <article class="release-panel" data-release="pink-lips">
+          <div class="record-wrap">
+            <div class="vinyl">
+              <img src="assets/pink-lips-remix.png" alt="Pink Lips Remix artwork">
+            </div>
+          </div>
+          <div class="release-copy">
+            <p class="release-label">REMIX</p>
             <h3>Pink Lips Remix</h3>
-            <p>A glossy after-dark remix with extra sparkle.</p>
-            <button class="btn primary platform-open" data-track="Pink Lips Remix">Listen everywhere</button>
+            <p>A glossy after-dark remix with brighter synths, bigger sparkle and extra attitude.</p>
+            <div class="release-actions">
+              <button class="button button-primary open-platforms" data-track="Pink Lips Remix">Listen everywhere</button>
+              <button class="button button-glass play-preview" data-preview="pink-lips">Preview vibe</button>
+            </div>
           </div>
         </article>
+
+        <div class="release-tabs" role="tablist" aria-label="Choose a release">
+          <button class="release-tab active" data-target="fun-dipp">
+            <img src="assets/fun-dipp-cover.png" alt="">
+            <span>Fun Dipp</span>
+          </button>
+          <button class="release-tab" data-target="pink-lips">
+            <img src="assets/pink-lips-remix.png" alt="">
+            <span>Pink Lips Remix</span>
+          </button>
+        </div>
       </div>
     </section>
 
-    <section id="world" class="section world-section">
-      <div class="world-card reveal">
-        <div>
-          <p class="eyebrow">WHO IS JAHNTELLA?</p>
-          <h2>Joy is contagious.<br><em>Confidence is kind.</em></h2>
-          <p>Jahntella exists to leave people happier than they were five minutes ago. Every song, image and fan moment is built around color, creativity and belonging.</p>
-          <a class="text-link" href="#sweet-list">Enter her world →</a>
+    <section id="experience" class="section experience-section">
+      <header class="section-heading centered reveal">
+        <p class="eyebrow">AN INTERACTIVE POP UNIVERSE</p>
+        <h2>Explore the <em>World of Jahntella.</em></h2>
+        <p>Tap the cards, discover details and collect hidden hearts.</p>
+      </header>
+
+      <div class="experience-grid">
+        <button class="experience-card large reveal easter-egg" data-secret="Joy is contagious. Confidence is kind. 💖">
+          <img src="assets/world-page.png" alt="">
+          <span class="experience-overlay">
+            <small>01</small>
+            <strong>Her World</strong>
+            <em>Color. Confidence. Creativity.</em>
+          </span>
+        </button>
+
+        <button class="experience-card reveal" data-modal="storyModal">
+          <img src="assets/book-cover.png" alt="">
+          <span class="experience-overlay">
+            <small>02</small>
+            <strong>The Creative Bible</strong>
+            <em>See how the world was built.</em>
+          </span>
+        </button>
+
+        <button class="experience-card reveal" data-modal="videoModal">
+          <img src="assets/youtube-banner.png" alt="">
+          <span class="experience-overlay">
+            <small>03</small>
+            <strong>Watch</strong>
+            <em>Videos, visualizers and Shorts.</em>
+          </span>
+        </button>
+
+        <button class="experience-card reveal easter-egg" data-secret="Hidden heart collected! 💗">
+          <div class="graphic-card">
+            <div class="giant-heart">♡</div>
+            <p>Find the hidden hearts across the site.</p>
+          </div>
+          <span class="experience-overlay">
+            <small>04</small>
+            <strong>Easter Eggs</strong>
+            <em>Look closer.</em>
+          </span>
+        </button>
+      </div>
+
+      <div class="heart-counter reveal">
+        Hidden hearts collected:
+        <strong id="heartCounter">0</strong>
+        <span>/ 4</span>
+      </div>
+    </section>
+
+    <section class="section manifesto-section">
+      <div class="manifesto-card reveal">
+        <div class="manifesto-copy">
+          <p class="eyebrow">THE JAHNTELLA PROMISE</p>
+          <h2>Leave people happier than they were <em>five minutes ago.</em></h2>
+          <p>
+            Every song. Every visual. Every fan interaction. The goal is simple:
+            create moments that feel joyful, welcoming and unforgettable.
+          </p>
         </div>
-        <div class="values">
-          <span>🍭 Sweet</span><span>✨ Creative</span><span>💖 Inclusive</span>
-          <span>🎶 Memorable</span><span>🌈 Colorful</span><span>👑 Confident</span>
+        <div class="manifesto-values">
+          <span><b>🍭</b> Sweet</span>
+          <span><b>✨</b> Creative</span>
+          <span><b>💖</b> Inclusive</span>
+          <span><b>🎶</b> Memorable</span>
+          <span><b>🌈</b> Colorful</span>
+          <span><b>👑</b> Confident</span>
         </div>
       </div>
     </section>
 
     <section id="merch" class="section merch-section">
-      <div class="section-heading reveal">
+      <header class="section-heading reveal">
         <p class="eyebrow">THE SWEET SHOP</p>
-        <h2>Wear the <em>world.</em></h2>
-        <p>Interactive preview store. Connect these buttons to Shopify, Fourthwall or your preferred checkout when products are ready.</p>
+        <h2>Wear the <em>era.</em></h2>
+        <p>Interactive store preview ready to connect to Shopify, Fourthwall or Stripe.</p>
+      </header>
+
+      <div class="shop-toolbar reveal">
+        <div class="shop-filters" role="group" aria-label="Filter merchandise">
+          <button class="filter active" data-filter="all">All</button>
+          <button class="filter" data-filter="apparel">Apparel</button>
+          <button class="filter" data-filter="accessories">Accessories</button>
+          <button class="filter" data-filter="collectibles">Collectibles</button>
+        </div>
       </div>
+
       <div class="product-grid">
-        <article class="product reveal" data-name="Stay Sweet Hoodie" data-price="58">
-          <div class="product-art hoodie"><span>Stay Sweet♡</span></div>
-          <h3>Stay Sweet Hoodie</h3><p>$58</p><button class="add-cart">Add to bag</button>
+        <article class="product-card reveal" data-category="apparel" data-name="Stay Sweet Hoodie" data-price="58">
+          <div class="product-image hoodie-art">
+            <span>Stay Sweet♡</span>
+            <button class="quick-look">Quick look</button>
+          </div>
+          <div class="product-info">
+            <div><h3>Stay Sweet Hoodie</h3><p>Soft pink · Unisex</p></div>
+            <strong>$58</strong>
+          </div>
+          <button class="add-to-bag">Add to bag</button>
         </article>
-        <article class="product reveal" data-name="J Heart Tee" data-price="32">
-          <div class="product-art tee"><span>J♡</span></div>
-          <h3>J♡ Signature Tee</h3><p>$32</p><button class="add-cart">Add to bag</button>
+
+        <article class="product-card reveal" data-category="apparel" data-name="J Heart Signature Tee" data-price="32">
+          <div class="product-image tee-art">
+            <span>J♡</span>
+            <button class="quick-look">Quick look</button>
+          </div>
+          <div class="product-info">
+            <div><h3>J♡ Signature Tee</h3><p>Black · Pink neon print</p></div>
+            <strong>$32</strong>
+          </div>
+          <button class="add-to-bag">Add to bag</button>
         </article>
-        <article class="product reveal" data-name="Heart Necklace" data-price="28">
-          <div class="product-art necklace"><span>💖</span></div>
-          <h3>Heart Necklace</h3><p>$28</p><button class="add-cart">Add to bag</button>
+
+        <article class="product-card reveal" data-category="accessories" data-name="Heart Necklace" data-price="28">
+          <div class="product-image necklace-art">
+            <span>💖</span>
+            <button class="quick-look">Quick look</button>
+          </div>
+          <div class="product-info">
+            <div><h3>Heart Necklace</h3><p>Signature accessory</p></div>
+            <strong>$28</strong>
+          </div>
+          <button class="add-to-bag">Add to bag</button>
         </article>
-        <article class="product reveal" data-name="Sweet Era Poster" data-price="18">
-          <div class="product-art poster"><span>THE<br>SWEET<br>ERA</span></div>
-          <h3>Sweet Era Poster</h3><p>$18</p><button class="add-cart">Add to bag</button>
+
+        <article class="product-card reveal" data-category="collectibles" data-name="Sweet Era Poster" data-price="18">
+          <div class="product-image poster-art">
+            <span>THE<br>SWEET<br>ERA</span>
+            <button class="quick-look">Quick look</button>
+          </div>
+          <div class="product-info">
+            <div><h3>Sweet Era Poster</h3><p>18 × 24 inches</p></div>
+            <strong>$18</strong>
+          </div>
+          <button class="add-to-bag">Add to bag</button>
         </article>
       </div>
     </section>
 
     <section id="sweet-list" class="section signup-section">
       <div class="signup-card reveal">
+        <div class="signup-badge">♡</div>
         <p class="eyebrow">JOIN THE SWEET LIST</p>
         <h2>Be first in line for <em>everything sweet.</em></h2>
         <p>Early music, secret drops, behind-the-scenes moments and fan-only surprises.</p>
-        <form id="sweetForm">
-          <label class="sr-only" for="email">Email address</label>
-          <input id="email" type="email" placeholder="Your email address" required>
-          <button class="btn primary" type="submit">Join now</button>
+
+        <form id="sweetListForm">
+          <label class="sr-only" for="fanEmail">Email address</label>
+          <input id="fanEmail" type="email" placeholder="Your email address" required>
+          <button class="button button-primary" type="submit">Join now</button>
         </form>
-        <small id="formMessage">No spam. Just sparkle.</small>
+
+        <p class="form-message" id="formMessage">No spam. Just sparkle.</p>
       </div>
     </section>
 
     <section id="connect" class="section connect-section">
-      <div class="section-heading reveal">
+      <header class="section-heading centered reveal">
         <p class="eyebrow">FOLLOW THE STORY</p>
         <h2>Meet Jahntella <em>everywhere.</em></h2>
-      </div>
+      </header>
+
       <div class="social-grid reveal" data-social-cards></div>
     </section>
   </main>
 
   <footer>
     <div class="footer-logo">Jahntella♡</div>
-    <p>🍭 Stay Sweet, xo, Jahntella 💋</p>
-    <p class="credit">Creative Direction by J.W. Hummel · © <span id="year"></span> Jahntella</p>
+    <p id="footerSignoff">🍭 Stay Sweet, xo, Jahntella 💋</p>
+    <div class="footer-links" data-social-links></div>
+    <p class="footer-credit">
+      Creative Direction by J.W. Hummel · © <span id="currentYear"></span> Jahntella
+    </p>
   </footer>
 
-  <dialog id="platformModal">
-    <button class="modal-close" aria-label="Close">×</button>
+  <dialog class="site-dialog" id="platformDialog">
+    <button class="dialog-close" data-close-dialog aria-label="Close">×</button>
     <p class="eyebrow">CHOOSE A PLATFORM</p>
-    <h2 id="modalTrack">Listen to Jahntella</h2>
+    <h2 id="platformTrack">Listen to Jahntella</h2>
     <div class="platform-grid" data-music-links></div>
   </dialog>
 
-  <aside class="cart" id="cart" aria-label="Shopping bag">
-    <button class="cart-close">×</button>
-    <h2>Your Sweet Bag</h2>
-    <div id="cartItems"></div>
-    <div class="cart-total">Total: <strong id="cartTotal">$0</strong></div>
-    <button class="btn primary checkout">Checkout preview</button>
+  <dialog class="site-dialog story-dialog" id="storyModal">
+    <button class="dialog-close" data-close-dialog aria-label="Close">×</button>
+    <p class="eyebrow">THE OFFICIAL CREATIVE BIBLE</p>
+    <h2>The world behind <em>the music.</em></h2>
+    <img src="assets/book-cover.png" alt="Jahntella Creative Bible cover">
+    <p>
+      A collectible visual universe documenting Jahntella's mission, style,
+      music, values and future eras.
+    </p>
+  </dialog>
+
+  <dialog class="site-dialog" id="videoModal">
+    <button class="dialog-close" data-close-dialog aria-label="Close">×</button>
+    <p class="eyebrow">WATCH JAHNTELLA</p>
+    <h2>Videos and <em>visualizers.</em></h2>
+    <div class="video-placeholder">
+      <img src="assets/youtube-banner.png" alt="Jahntella video preview">
+      <a class="button button-primary" id="youtubeButton" target="_blank" rel="noopener">Open YouTube</a>
+    </div>
+  </dialog>
+
+  <aside class="bag-drawer" id="bagDrawer" aria-label="Shopping bag">
+    <button class="bag-close" id="bagClose" aria-label="Close bag">×</button>
+    <p class="eyebrow">THE SWEET SHOP</p>
+    <h2>Your bag</h2>
+    <div id="bagItems" class="bag-items"></div>
+    <div class="bag-total">
+      <span>Total</span>
+      <strong id="bagTotal">$0</strong>
+    </div>
+    <button class="button button-primary checkout-button" id="checkoutButton">Checkout preview</button>
   </aside>
-  <button class="cart-fab" id="cartFab">Bag <span id="cartCount">0</span></button>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="config.js"></script>
   <script src="script.js"></script>

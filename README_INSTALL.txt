@@ -1,38 +1,59 @@
-JAHNTELLA WEBSITE V3.1 — FLAT GITHUB INSTALL
-================================================
+JAHNTELLA WEBSITE V3 — INSTALLATION
+===================================
 
-This edition does NOT use an assets folder.
-Every file uploads directly into the main repository page.
+QUICK INSTALL ON GITHUB PAGES
+1. Extract this ZIP file.
+2. Open your GitHub repository used for jahntella.com.
+3. Upload every file and the entire assets folder into the repository root.
+4. Replace the old files when GitHub asks.
+5. Commit with a message such as: "Launch Jahntella Website V3".
+6. Wait 1–3 minutes, then refresh jahntella.com.
+7. Hard-refresh with Ctrl+F5 if the old site is cached.
 
-UPLOAD THESE FILES DIRECTLY:
+FILES
 - index.html
 - styles.css
 - script.js
 - config.js
-- jahntella-official-v1.png
-- fun-dipp-cover.png
-- pink-lips-remix.png
-- youtube-banner.png
-- neon-logo.png
-- book-cover.png
-- world-page.png
+- assets/
 
-INSTALLATION
-1. Extract this ZIP on your computer.
-2. Open the main page of your GitHub repository.
-3. Click Add file → Upload files.
-4. Open the extracted folder.
-5. Select every file inside it.
-6. Drag all selected files onto GitHub.
-7. Commit with: Launch Jahntella Website V3.1
-8. Wait 1–3 minutes.
-9. Visit https://jahntella.com
-10. Press Ctrl + F5 if the old version still appears.
+BEFORE LAUNCH
+Open config.js and verify:
+- Instagram URL
+- TikTok URL
+- YouTube URL
+- Spotify artist URL
+- Final music URLs
+- Newsletter endpoint
+- Store checkout URL
 
-IMPORTANT
-Do not upload the ZIP itself.
-Do not upload the containing folder.
-Upload all files shown inside the extracted folder.
+WORKING NOW
+- Responsive interactive landing page
+- Animated loading screen
+- Sparkle canvas and mouse glow
+- Official Jahntella Version 1.0 portrait
+- Release switcher
+- Music platform modal
+- Browser-generated preview tones
+- Hidden-heart Easter egg system
+- Interactive merch filters and shopping bag
+- Sweet List preview signup using local browser storage
+- Social channel cards
+- Mobile navigation
 
-The older V2 and V3 folders in GitHub may remain temporarily.
-They will not affect the website because GitHub Pages publishes the root index.html.
+CONNECTING REAL SERVICES
+Merch:
+- Shopify
+- Fourthwall
+- Stripe Payment Links
+Add the checkout URL to config.js.
+
+Email:
+- Formspree
+- Mailchimp
+- ConvertKit
+- Beehiiv
+Add the endpoint to config.js.
+
+IMPORTANT BRAND RULE
+assets/jahntella-official-v1.png is the official Jahntella Version 1.0 master face reference.
