@@ -204,15 +204,19 @@
   const confettiLayer = document.getElementById("confettiLayer");
 
   const readVault = () => {
-    try {
-      const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
-      return {
-        collected: Array.isArray(parsed.collected) ? parsed.collected : [],
-        lastPulled: parsed.lastPulled || null
-      };
-    } catch {
-      return { collected: [], lastPulled: null };
+    const keys = [STORAGE_KEY, "jahntellaSweetVaultV18", "jahntellaSweetVaultV19"];
+    for (const key of keys) {
+      try {
+        const parsed = JSON.parse(localStorage.getItem(key) || "{}");
+        if (Array.isArray(parsed.collected) || parsed.lastPulled) {
+          return {
+            collected: Array.isArray(parsed.collected) ? [...new Set(parsed.collected)] : [],
+            lastPulled: parsed.lastPulled || null
+          };
+        }
+      } catch {}
     }
+    return { collected: [], lastPulled: null };
   };
 
   let vaultState = readVault();
