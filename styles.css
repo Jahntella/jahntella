@@ -138,3 +138,14 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-3;ba
 @keyframes shoot-star{0%{opacity:0;translate:0 0}8%{opacity:1}75%{opacity:.9}100%{opacity:0;translate:var(--travel-x) var(--travel-y)}}
 @media(max-width:780px){.hero-image-circle{width:min(92vw,520px)}.hero-image-circle img{width:92%!important}}
 @media(prefers-reduced-motion:reduce){.shooting-stars,.twinkle-stars{display:none}.hero-image-circle img,.hero-image-circle::before,.hero-orbit{animation:none!important}}
+
+/* v2.1 Creative Director refinement */
+.creative-director-card{grid-template-columns:minmax(180px,.42fr) minmax(0,1.58fr)!important;align-items:center}
+.creative-director-image-small{display:flex;justify-content:center;align-items:center;padding:1.25rem}
+.creative-director-image-small img{width:min(100%,260px)!important;max-height:320px!important;object-fit:cover!important;border-radius:24px!important;box-shadow:0 20px 45px rgba(0,0,0,.38),0 0 28px rgba(255,79,183,.15)!important}
+.collaboration-button{position:relative;overflow:hidden;gap:.55rem}
+.collaboration-button span{display:inline-block;font-size:1rem;text-shadow:0 0 8px rgba(255,255,255,.9),0 0 14px rgba(255,79,183,.9);animation:collab-star-twinkle 1.9s ease-in-out infinite}
+.collaboration-button::after{content:"";position:absolute;top:-60%;bottom:-60%;width:42%;left:-55%;transform:rotate(20deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.52),transparent);transition:left .65s ease}
+.collaboration-button:hover::after{left:120%}
+@keyframes collab-star-twinkle{0%,100%{transform:scale(.86) rotate(-8deg);opacity:.72}50%{transform:scale(1.14) rotate(8deg);opacity:1}}
+@media(max-width:860px){.creative-director-card{grid-template-columns:1fr!important}.creative-director-image-small img{width:min(72vw,230px)!important;max-height:280px!important}}
