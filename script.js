@@ -20,7 +20,6 @@
   const artwork = document.getElementById("playerArtwork");
   const progress = document.getElementById("playerProgress");
   const time = document.getElementById("playerTime");
-  const equalizer = document.getElementById("equalizer");
   let current = null;
 
   const formatTime = seconds => {
@@ -30,10 +29,10 @@
     return `${mins}:${secs}`;
   };
 
-  const setPlayingState = isPlaying => {
-    toggle.textContent = isPlaying ? "❚❚" : "▶";
-    equalizer.classList.toggle("playing", isPlaying);
-    if (current?.record) current.record.classList.toggle("is-spinning", isPlaying);
+  const setPlaying = playing => {
+    toggle.textContent = playing ? "❚❚" : "▶";
+    player.classList.toggle("playing", playing);
+    if (current?.record) current.record.classList.toggle("is-spinning", playing);
   };
 
   const stopOtherTracks = selected => {
@@ -49,17 +48,12 @@
   const selectTrack = key => {
     const track = tracks[key];
     if (!track || !track.audio) return;
-
     stopOtherTracks(track.audio);
     current = track;
     title.textContent = track.title;
     artwork.src = track.artwork;
-    artwork.alt = `${track.title} artwork`;
     player.classList.add("visible");
-
-    track.audio.play()
-      .then(() => setPlayingState(true))
-      .catch(() => setPlayingState(false));
+    track.audio.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
   };
 
   document.querySelectorAll(".play-button").forEach(button => {
@@ -67,28 +61,19 @@
   });
 
   toggle.addEventListener("click", () => {
-    if (!current) {
-      selectTrack("fun-dipp");
-      return;
-    }
-
+    if (!current) return selectTrack("fun-dipp");
     if (current.audio.paused) {
-      current.audio.play()
-        .then(() => setPlayingState(true))
-        .catch(() => setPlayingState(false));
+      current.audio.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
     } else {
       current.audio.pause();
-      setPlayingState(false);
+      setPlaying(false);
     }
   });
 
   Object.values(tracks).forEach(track => {
     track.audio.addEventListener("timeupdate", () => {
       if (current !== track) return;
-      const ratio = track.audio.duration
-        ? (track.audio.currentTime / track.audio.duration) * 100
-        : 0;
-      progress.value = ratio;
+      progress.value = track.audio.duration ? (track.audio.currentTime / track.audio.duration) * 100 : 0;
       time.textContent = formatTime(track.audio.currentTime);
     });
 
@@ -96,7 +81,7 @@
       if (current === track) {
         progress.value = 0;
         time.textContent = "0:00";
-        setPlayingState(false);
+        setPlaying(false);
       }
     });
   });
@@ -106,15 +91,5 @@
     current.audio.currentTime = (Number(progress.value) / 100) * current.audio.duration;
   });
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("in-view");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.14 });
-
-  document.querySelectorAll(".reveal").forEach(section => observer.observe(section));
   document.getElementById("year").textContent = new Date().getFullYear();
 })();
