@@ -12,15 +12,18 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div id="scrollProgress" class="scroll-progress" aria-hidden="true"></div>
   <div class="ambient ambient-one"></div>
   <div class="ambient ambient-two"></div>
   <div class="sparkles" aria-hidden="true"></div>
 
   <header class="site-header">
     <a class="logo" href="#home">Jahntella<span>♡</span></a>
-    <nav aria-label="Main navigation">
+    <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav id="siteNav" aria-label="Main navigation">
       <a href="#music">Music</a>
-      <a href="#about">About</a>
+      <a href="#about">Story</a>
+      <a href="#gallery">Gallery</a>
       <a href="#creative-director">Creative Director</a>
       <a href="#connect">Connect</a>
     </nav>
@@ -35,11 +38,11 @@
         <p class="artist-line">Pop Artist • Songwriter • Creator of the World of Sweet</p>
         <div class="hero-actions">
           <a class="primary-button" href="#music">Listen now</a>
-          <a class="secondary-button" href="#about">Enter the story</a>
+          <a class="secondary-button" href="#about">Discover the story</a>
         </div>
       </div>
 
-      <div class="hero-image">
+      <div class="hero-image" id="heroVisual">
         <div class="glow"></div>
         <img src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/jahntella-official-v1.png" alt="Jahntella">
       </div>
@@ -58,7 +61,7 @@
               <img src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/fun-dipp-cover.png" alt="Fun Dipp sleeve artwork">
             </div>
             <div class="record-wrap" id="funDippRecordWrap">
-              <img id="funDippRecord" class="record-cover"
+              <img class="record-cover"
                    src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/fun-dipp-cover.png"
                    alt="Fun Dipp vinyl record artwork">
               <span class="record-shine"></span>
@@ -78,7 +81,7 @@
               <img src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/pink-lips-remix.png" alt="Pink Lips Remix sleeve artwork">
             </div>
             <div class="record-wrap" id="pinkLipsRecordWrap">
-              <img id="pinkLipsRecord" class="record-cover"
+              <img class="record-cover"
                    src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/pink-lips-remix.png"
                    alt="Pink Lips Remix vinyl record artwork">
               <span class="record-shine"></span>
@@ -97,13 +100,44 @@
     <section class="about-section reveal" id="about">
       <div class="about-card">
         <div>
-          <p class="eyebrow">ABOUT JAHNTELLA</p>
-          <h2>Music made to feel <em>bold, sweet, and unforgettable.</em></h2>
+          <p class="eyebrow">THE STORY</p>
+          <h2>A colorful pop world built around <em>confidence and joy.</em></h2>
         </div>
         <div class="about-copy">
           <p>Jahntella blends bright pop hooks, playful visual storytelling, and feel-good energy into one growing creative universe.</p>
           <blockquote>“Welcome to a world where confidence sounds colorful and every chorus feels like a celebration.”</blockquote>
         </div>
+      </div>
+      <div class="milestones">
+        <article><strong>01</strong><span>World of Sweet created</span></article>
+        <article><strong>02</strong><span>Original songs released</span></article>
+        <article><strong>∞</strong><span>Big ideas still ahead</span></article>
+      </div>
+    </section>
+
+    <section class="gallery-section reveal" id="gallery">
+      <div class="section-heading centered">
+        <p class="eyebrow">VISUAL WORLD</p>
+        <h2>Step inside the <em>Jahntella aesthetic.</em></h2>
+      </div>
+      <div class="gallery-grid">
+        <button class="gallery-item gallery-tall" data-lightbox="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/jahntella-official-v1.png">
+          <img src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/jahntella-official-v1.png" alt="Jahntella official artwork">
+        </button>
+        <button class="gallery-item" data-lightbox="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/fun-dipp-cover.png">
+          <img src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/fun-dipp-cover.png" alt="Fun Dipp artwork">
+        </button>
+        <button class="gallery-item" data-lightbox="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/pink-lips-remix.png">
+          <img src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/pink-lips-remix.png" alt="Pink Lips Remix artwork">
+        </button>
+      </div>
+    </section>
+
+    <section class="coming-soon-section reveal">
+      <div class="coming-soon-card">
+        <p class="eyebrow">COMING SOON</p>
+        <h2>More music. More visuals. More <em>World of Sweet.</em></h2>
+        <p>Future releases, videos, collectibles, and exclusive fan experiences are on the way.</p>
       </div>
     </section>
 
@@ -149,12 +183,19 @@
     </div>
     <button id="playerToggle" aria-label="Play or pause">▶</button>
     <button class="player-skip" id="playerNext" aria-label="Next track">⏭</button>
+    <button class="mode-button" id="shuffleToggle" aria-label="Toggle shuffle">🔀</button>
+    <button class="mode-button" id="repeatToggle" aria-label="Toggle repeat">🔁</button>
     <input id="playerProgress" type="range" min="0" max="100" value="0" aria-label="Track progress">
     <span id="playerTime">0:00</span>
     <label class="volume-control" aria-label="Volume">
       <span>🔊</span>
       <input id="playerVolume" type="range" min="0" max="1" step="0.01" value="0.85">
     </label>
+  </div>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button id="lightboxClose" aria-label="Close image">×</button>
+    <img id="lightboxImage" alt="">
   </div>
 
   <audio id="audioFunDipp" preload="metadata">
