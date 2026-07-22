@@ -366,6 +366,7 @@
     }
 
     renderVault();
+if(window.innerWidth<769){setTimeout(()=>document.getElementById('vaultBinder')?.scrollIntoView({behavior:'smooth',block:'start'}),900);}
 
     if (isNew) {
       const slot = vaultGrid.querySelector(`[data-card-id="${card.id}"]`);

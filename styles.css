@@ -149,3 +149,12 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-3;ba
 .collaboration-button:hover::after{left:120%}
 @keyframes collab-star-twinkle{0%,100%{transform:scale(.86) rotate(-8deg);opacity:.72}50%{transform:scale(1.14) rotate(8deg);opacity:1}}
 @media(max-width:860px){.creative-director-card{grid-template-columns:1fr!important}.creative-director-image-small img{width:min(72vw,230px)!important;max-height:280px!important}}
+
+@media (max-width:768px){
+.vault-experience{grid-template-columns:1fr!important}
+.vault-binder,.binder-page{display:block!important;overflow:visible!important;width:100%!important}
+.vault-grid{display:grid!important;grid-template-columns:repeat(2,minmax(130px,1fr))!important;gap:16px!important;min-height:900px!important;opacity:1!important;visibility:visible!important}
+.vault-card-button{width:100%!important;aspect-ratio:2.5/3.5!important;min-height:180px!important}
+.vault-card-scene,.vault-card-inner,.vault-card-face{width:100%!important;height:100%!important}
+.vault-card-face img{width:100%!important;height:100%!important;object-fit:cover!important}
+}
