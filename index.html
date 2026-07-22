@@ -12,16 +12,20 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
   <header class="site-header">
     <a class="logo" href="#home">Jahntella<span>♡</span></a>
     <nav aria-label="Main navigation">
       <a href="#music">Music</a>
+      <a href="#creative-director">Creative Director</a>
       <a href="#connect">Connect</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero" id="home">
+    <section class="hero reveal" id="home">
       <div class="hero-copy">
         <p class="eyebrow">WELCOME TO THE WORLD OF SWEET</p>
         <h1>Sweet hooks.<br><span>Big choruses.</span><br>Good vibes.</h1>
@@ -36,7 +40,7 @@
       </div>
     </section>
 
-    <section class="music-section" id="music">
+    <section class="music-section reveal" id="music">
       <div class="section-heading">
         <p class="eyebrow">MUSIC</p>
         <h2>Press play on <em>something sweet.</em></h2>
@@ -44,9 +48,14 @@
 
       <div class="release-grid">
         <article class="release-card">
-          <img id="funDippRecord" class="record-cover"
-               src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/fun-dipp-cover.png"
-               alt="Fun Dipp cover artwork">
+          <div class="record-stage">
+            <div class="record-wrap" id="funDippRecordWrap">
+              <img id="funDippRecord" class="record-cover"
+                   src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/fun-dipp-cover.png"
+                   alt="Fun Dipp cover artwork">
+              <span class="record-shine"></span>
+            </div>
+          </div>
           <div class="release-copy">
             <p class="release-label">DEBUT SINGLE</p>
             <h3>Fun Dipp</h3>
@@ -55,9 +64,14 @@
         </article>
 
         <article class="release-card">
-          <img id="pinkLipsRecord" class="record-cover"
-               src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/pink-lips-remix.png"
-               alt="Pink Lips Remix cover artwork">
+          <div class="record-stage">
+            <div class="record-wrap" id="pinkLipsRecordWrap">
+              <img id="pinkLipsRecord" class="record-cover"
+                   src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/pink-lips-remix.png"
+                   alt="Pink Lips Remix cover artwork">
+              <span class="record-shine"></span>
+            </div>
+          </div>
           <div class="release-copy">
             <p class="release-label">REMIX</p>
             <h3>Pink Lips Remix</h3>
@@ -67,7 +81,7 @@
       </div>
     </section>
 
-    <section class="creative-director-section" id="creative-director">
+    <section class="creative-director-section reveal" id="creative-director">
       <div class="creative-director-card">
         <div class="creative-director-image">
           <img src="creative-director.jpeg" alt="J.W. Hummel, Creative Director">
@@ -84,7 +98,7 @@
       </div>
     </section>
 
-    <section class="connect-section" id="connect">
+    <section class="connect-section reveal" id="connect">
       <p class="eyebrow">CONNECT</p>
       <h2>Stay inside the <em>World of Sweet.</em></h2>
       <div class="social-links">

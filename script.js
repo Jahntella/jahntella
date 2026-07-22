@@ -4,13 +4,13 @@
       audio: document.getElementById("audioFunDipp"),
       title: "Fun Dipp",
       artwork: "https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/fun-dipp-cover.png",
-      record: document.getElementById("funDippRecord")
+      recordWrap: document.getElementById("funDippRecordWrap")
     },
     "pink-lips": {
       audio: document.getElementById("audioPinkLips"),
       title: "Pink Lips Remix",
       artwork: "https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/pink-lips-remix.png",
-      record: document.getElementById("pinkLipsRecord")
+      recordWrap: document.getElementById("pinkLipsRecordWrap")
     }
   };
 
@@ -32,7 +32,9 @@
   const setPlaying = playing => {
     toggle.textContent = playing ? "❚❚" : "▶";
     player.classList.toggle("playing", playing);
-    if (current?.record) current.record.classList.toggle("is-spinning", playing);
+    Object.values(tracks).forEach(track => {
+      track.recordWrap?.classList.toggle("is-spinning", playing && track === current);
+    });
   };
 
   const stopOtherTracks = selected => {
@@ -40,7 +42,7 @@
       if (track.audio !== selected) {
         track.audio.pause();
         track.audio.currentTime = 0;
-        if (track.record) track.record.classList.remove("is-spinning");
+        track.recordWrap?.classList.remove("is-spinning");
       }
     });
   };
@@ -48,12 +50,17 @@
   const selectTrack = key => {
     const track = tracks[key];
     if (!track || !track.audio) return;
+
     stopOtherTracks(track.audio);
     current = track;
     title.textContent = track.title;
     artwork.src = track.artwork;
+    artwork.alt = `${track.title} artwork`;
     player.classList.add("visible");
-    track.audio.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+
+    track.audio.play()
+      .then(() => setPlaying(true))
+      .catch(() => setPlaying(false));
   };
 
   document.querySelectorAll(".play-button").forEach(button => {
@@ -62,8 +69,11 @@
 
   toggle.addEventListener("click", () => {
     if (!current) return selectTrack("fun-dipp");
+
     if (current.audio.paused) {
-      current.audio.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+      current.audio.play()
+        .then(() => setPlaying(true))
+        .catch(() => setPlaying(false));
     } else {
       current.audio.pause();
       setPlaying(false);
@@ -71,9 +81,19 @@
   });
 
   Object.values(tracks).forEach(track => {
+    track.audio.addEventListener("play", () => {
+      if (current === track) setPlaying(true);
+    });
+
+    track.audio.addEventListener("pause", () => {
+      if (current === track && !track.audio.ended) setPlaying(false);
+    });
+
     track.audio.addEventListener("timeupdate", () => {
       if (current !== track) return;
-      progress.value = track.audio.duration ? (track.audio.currentTime / track.audio.duration) * 100 : 0;
+      progress.value = track.audio.duration
+        ? (track.audio.currentTime / track.audio.duration) * 100
+        : 0;
       time.textContent = formatTime(track.audio.currentTime);
     });
 
@@ -91,5 +111,15 @@
     current.audio.currentTime = (Number(progress.value) / 100) * current.audio.duration;
   });
 
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in-view");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.14 });
+
+  document.querySelectorAll(".reveal").forEach(section => observer.observe(section));
   document.getElementById("year").textContent = new Date().getFullYear();
 })();
