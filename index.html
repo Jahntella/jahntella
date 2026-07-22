@@ -28,6 +28,7 @@
     <nav id="siteNav" aria-label="Main navigation">
       <a href="#music">Music</a>
       <a href="#about">Story</a>
+      <a href="#sweet-vault">Sweet Vault</a>
       <a href="#gallery">Gallery</a>
       <a href="#creative-director">Creative Director</a>
       <a href="#connect">Connect</a>
@@ -120,6 +121,49 @@
       </div>
     </section>
 
+    <section class="sweet-vault-section reveal" id="sweet-vault">
+      <div class="section-heading centered">
+        <p class="eyebrow">SWEET VAULT</p>
+        <h2>Open a pack. Reveal a card. <em>Build your collection.</em></h2>
+        <p class="vault-intro">Every pack contains one official Sweet Vault collectible. Your unlocked cards are saved automatically on this device.</p>
+      </div>
+
+      <div class="vault-experience">
+        <div class="pack-panel">
+          <button class="sweet-pack" id="openPackButton" aria-label="Open a Sweet Vault pack">
+            <span class="pack-shine"></span>
+            <span class="pack-top">JAHNTELLA</span>
+            <span class="pack-lips">💋</span>
+            <strong>SWEET PACK</strong>
+            <span>Contains 1 Official Card</span>
+            <b>OPEN PACK</b>
+          </button>
+          <p id="packStatus" class="pack-status" aria-live="polite">Tap the pack to reveal a collectible.</p>
+        </div>
+
+        <div class="last-pulled-card" id="lastPulledCard">
+          <p class="eyebrow">LAST PULLED</p>
+          <div class="last-pulled-placeholder">Your newest card will appear here.</div>
+        </div>
+      </div>
+
+      <div class="vault-progress-card">
+        <div>
+          <p class="eyebrow">COLLECTION PROGRESS</p>
+          <h3><span id="vaultCount">0</span> / 12 Collected</h3>
+        </div>
+        <div class="vault-progress-track"><i id="vaultProgressBar"></i></div>
+        <strong id="vaultPercent">0%</strong>
+      </div>
+
+      <div class="vault-toolbar">
+        <p>Click an unlocked card to flip it front and back.</p>
+        <button id="resetVaultButton" class="reset-vault-button">Reset Vault</button>
+      </div>
+
+      <div class="vault-grid" id="vaultGrid"></div>
+    </section>
+
     <section class="gallery-section reveal" id="gallery">
       <div class="section-heading centered">
         <p class="eyebrow">VISUAL WORLD</p>
@@ -186,8 +230,6 @@
     </div>
     <button id="playerToggle" aria-label="Play or pause">▶</button>
     <button class="player-skip" id="playerNext" aria-label="Next track">⏭</button>
-    <button class="mode-button" id="shuffleToggle" aria-label="Toggle shuffle" aria-pressed="false">🔀</button>
-    <button class="mode-button" id="repeatToggle" aria-label="Toggle repeat" aria-pressed="false">🔁</button>
     <input id="playerProgress" type="range" min="0" max="100" value="0" aria-label="Track progress">
     <span id="playerTime">0:00</span>
     <label class="volume-control" aria-label="Volume">
@@ -199,6 +241,28 @@
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <button id="lightboxClose" aria-label="Close image">×</button>
     <img id="lightboxImage" alt="">
+  </div>
+
+  <div class="card-reveal-modal" id="cardRevealModal" aria-hidden="true">
+    <div class="reveal-backdrop"></div>
+    <div class="reveal-content" role="dialog" aria-modal="true" aria-labelledby="revealTitle">
+      <button id="closeRevealButton" class="reveal-close" aria-label="Close card reveal">×</button>
+      <p id="revealRarity" class="reveal-rarity"></p>
+      <h2 id="revealTitle">Sweet Vault Pull</h2>
+      <div class="reveal-card-scene">
+        <div class="reveal-card" id="revealCard">
+          <div class="reveal-face reveal-back">
+            <img src="sweet-vault-card-back.png" alt="Sweet Vault card back">
+          </div>
+          <div class="reveal-face reveal-front">
+            <img id="revealCardImage" src="" alt="">
+          </div>
+        </div>
+      </div>
+      <p id="revealMessage"></p>
+      <button id="revealDoneButton" class="primary-button">Add to Vault</button>
+    </div>
+    <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
   </div>
 
   <audio id="audioFunDipp" preload="metadata">
