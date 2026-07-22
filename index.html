@@ -14,11 +14,13 @@
 <body>
   <div class="ambient ambient-one"></div>
   <div class="ambient ambient-two"></div>
+  <div class="sparkles" aria-hidden="true"></div>
 
   <header class="site-header">
     <a class="logo" href="#home">Jahntella<span>♡</span></a>
     <nav aria-label="Main navigation">
       <a href="#music">Music</a>
+      <a href="#about">About</a>
       <a href="#creative-director">Creative Director</a>
       <a href="#connect">Connect</a>
     </nav>
@@ -31,7 +33,10 @@
         <h1>Sweet hooks.<br><span>Big choruses.</span><br>Good vibes.</h1>
         <p class="intro">The official home of Jahntella.</p>
         <p class="artist-line">Pop Artist • Songwriter • Creator of the World of Sweet</p>
-        <a class="primary-button" href="#music">Listen now</a>
+        <div class="hero-actions">
+          <a class="primary-button" href="#music">Listen now</a>
+          <a class="secondary-button" href="#about">Enter the story</a>
+        </div>
       </div>
 
       <div class="hero-image">
@@ -47,37 +52,58 @@
       </div>
 
       <div class="release-grid">
-        <article class="release-card">
+        <article class="release-card" data-card="fun-dipp">
           <div class="record-stage">
+            <div class="record-sleeve">
+              <img src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/fun-dipp-cover.png" alt="Fun Dipp sleeve artwork">
+            </div>
             <div class="record-wrap" id="funDippRecordWrap">
               <img id="funDippRecord" class="record-cover"
                    src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/fun-dipp-cover.png"
-                   alt="Fun Dipp cover artwork">
+                   alt="Fun Dipp vinyl record artwork">
               <span class="record-shine"></span>
             </div>
           </div>
           <div class="release-copy">
             <p class="release-label">DEBUT SINGLE</p>
             <h3>Fun Dipp</h3>
+            <p>Bright pop energy, playful hooks, and a candy-coated chorus.</p>
             <button class="play-button" data-track="fun-dipp">▶ Play Fun Dipp</button>
           </div>
         </article>
 
-        <article class="release-card">
+        <article class="release-card" data-card="pink-lips">
           <div class="record-stage">
+            <div class="record-sleeve">
+              <img src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/pink-lips-remix.png" alt="Pink Lips Remix sleeve artwork">
+            </div>
             <div class="record-wrap" id="pinkLipsRecordWrap">
               <img id="pinkLipsRecord" class="record-cover"
                    src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/pink-lips-remix.png"
-                   alt="Pink Lips Remix cover artwork">
+                   alt="Pink Lips Remix vinyl record artwork">
               <span class="record-shine"></span>
             </div>
           </div>
           <div class="release-copy">
             <p class="release-label">REMIX</p>
             <h3>Pink Lips Remix</h3>
+            <p>A glossy remix with bigger energy and late-night sparkle.</p>
             <button class="play-button" data-track="pink-lips">▶ Play Pink Lips Remix</button>
           </div>
         </article>
+      </div>
+    </section>
+
+    <section class="about-section reveal" id="about">
+      <div class="about-card">
+        <div>
+          <p class="eyebrow">ABOUT JAHNTELLA</p>
+          <h2>Music made to feel <em>bold, sweet, and unforgettable.</em></h2>
+        </div>
+        <div class="about-copy">
+          <p>Jahntella blends bright pop hooks, playful visual storytelling, and feel-good energy into one growing creative universe.</p>
+          <blockquote>“Welcome to a world where confidence sounds colorful and every chorus feels like a celebration.”</blockquote>
+        </div>
       </div>
     </section>
 
@@ -113,6 +139,7 @@
   <footer><span>© <span id="year"></span> Jahntella</span></footer>
 
   <div class="player" id="player" aria-live="polite">
+    <button class="player-skip" id="playerPrev" aria-label="Previous track">⏮</button>
     <img id="playerArtwork"
          src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/fun-dipp-cover.png"
          alt="">
@@ -121,8 +148,13 @@
       <span class="now-playing"><span class="equalizer"><i></i><i></i><i></i><i></i></span> Jahntella</span>
     </div>
     <button id="playerToggle" aria-label="Play or pause">▶</button>
+    <button class="player-skip" id="playerNext" aria-label="Next track">⏭</button>
     <input id="playerProgress" type="range" min="0" max="100" value="0" aria-label="Track progress">
     <span id="playerTime">0:00</span>
+    <label class="volume-control" aria-label="Volume">
+      <span>🔊</span>
+      <input id="playerVolume" type="range" min="0" max="1" step="0.01" value="0.85">
+    </label>
   </div>
 
   <audio id="audioFunDipp" preload="metadata">

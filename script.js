@@ -1,26 +1,32 @@
 (() => {
+  const trackOrder = ["fun-dipp", "pink-lips"];
   const tracks = {
     "fun-dipp": {
       audio: document.getElementById("audioFunDipp"),
       title: "Fun Dipp",
       artwork: "https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/fun-dipp-cover.png",
-      recordWrap: document.getElementById("funDippRecordWrap")
+      recordWrap: document.getElementById("funDippRecordWrap"),
+      card: document.querySelector('[data-card="fun-dipp"]')
     },
     "pink-lips": {
       audio: document.getElementById("audioPinkLips"),
       title: "Pink Lips Remix",
       artwork: "https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/pink-lips-remix.png",
-      recordWrap: document.getElementById("pinkLipsRecordWrap")
+      recordWrap: document.getElementById("pinkLipsRecordWrap"),
+      card: document.querySelector('[data-card="pink-lips"]')
     }
   };
 
   const player = document.getElementById("player");
   const toggle = document.getElementById("playerToggle");
+  const prev = document.getElementById("playerPrev");
+  const next = document.getElementById("playerNext");
   const title = document.getElementById("playerTitle");
   const artwork = document.getElementById("playerArtwork");
   const progress = document.getElementById("playerProgress");
   const time = document.getElementById("playerTime");
-  let current = null;
+  const volume = document.getElementById("playerVolume");
+  let currentKey = null;
 
   const formatTime = seconds => {
     if (!Number.isFinite(seconds)) return "0:00";
@@ -29,11 +35,16 @@
     return `${mins}:${secs}`;
   };
 
+  const currentTrack = () => currentKey ? tracks[currentKey] : null;
+
   const setPlaying = playing => {
     toggle.textContent = playing ? "❚❚" : "▶";
     player.classList.toggle("playing", playing);
-    Object.values(tracks).forEach(track => {
-      track.recordWrap?.classList.toggle("is-spinning", playing && track === current);
+
+    Object.entries(tracks).forEach(([key, track]) => {
+      const active = key === currentKey;
+      track.recordWrap?.classList.toggle("is-spinning", playing && active);
+      track.card?.classList.toggle("is-active", active);
     });
   };
 
@@ -47,20 +58,34 @@
     });
   };
 
-  const selectTrack = key => {
+  const selectTrack = (key, autoplay = true) => {
     const track = tracks[key];
-    if (!track || !track.audio) return;
+    if (!track?.audio) return;
 
     stopOtherTracks(track.audio);
-    current = track;
+    currentKey = key;
     title.textContent = track.title;
     artwork.src = track.artwork;
     artwork.alt = `${track.title} artwork`;
     player.classList.add("visible");
 
-    track.audio.play()
-      .then(() => setPlaying(true))
-      .catch(() => setPlaying(false));
+    Object.entries(tracks).forEach(([trackKey, item]) => {
+      item.card?.classList.toggle("is-active", trackKey === key);
+    });
+
+    if (autoplay) {
+      track.audio.play()
+        .then(() => setPlaying(true))
+        .catch(() => setPlaying(false));
+    } else {
+      setPlaying(false);
+    }
+  };
+
+  const moveTrack = direction => {
+    const currentIndex = currentKey ? trackOrder.indexOf(currentKey) : 0;
+    const nextIndex = (currentIndex + direction + trackOrder.length) % trackOrder.length;
+    selectTrack(trackOrder[nextIndex]);
   };
 
   document.querySelectorAll(".play-button").forEach(button => {
@@ -68,29 +93,39 @@
   });
 
   toggle.addEventListener("click", () => {
-    if (!current) return selectTrack("fun-dipp");
-
-    if (current.audio.paused) {
-      current.audio.play()
-        .then(() => setPlaying(true))
-        .catch(() => setPlaying(false));
+    if (!currentKey) return selectTrack("fun-dipp");
+    const track = currentTrack();
+    if (track.audio.paused) {
+      track.audio.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
     } else {
-      current.audio.pause();
+      track.audio.pause();
       setPlaying(false);
     }
   });
 
+  prev.addEventListener("click", () => moveTrack(-1));
+  next.addEventListener("click", () => moveTrack(1));
+
+  volume.addEventListener("input", () => {
+    const level = Number(volume.value);
+    Object.values(tracks).forEach(track => {
+      track.audio.volume = level;
+    });
+  });
+
   Object.values(tracks).forEach(track => {
+    track.audio.volume = Number(volume.value);
+
     track.audio.addEventListener("play", () => {
-      if (current === track) setPlaying(true);
+      if (currentTrack() === track) setPlaying(true);
     });
 
     track.audio.addEventListener("pause", () => {
-      if (current === track && !track.audio.ended) setPlaying(false);
+      if (currentTrack() === track && !track.audio.ended) setPlaying(false);
     });
 
     track.audio.addEventListener("timeupdate", () => {
-      if (current !== track) return;
+      if (currentTrack() !== track) return;
       progress.value = track.audio.duration
         ? (track.audio.currentTime / track.audio.duration) * 100
         : 0;
@@ -98,17 +133,14 @@
     });
 
     track.audio.addEventListener("ended", () => {
-      if (current === track) {
-        progress.value = 0;
-        time.textContent = "0:00";
-        setPlaying(false);
-      }
+      if (currentTrack() === track) moveTrack(1);
     });
   });
 
   progress.addEventListener("input", () => {
-    if (!current || !current.audio.duration) return;
-    current.audio.currentTime = (Number(progress.value) / 100) * current.audio.duration;
+    const track = currentTrack();
+    if (!track || !track.audio.duration) return;
+    track.audio.currentTime = (Number(progress.value) / 100) * track.audio.duration;
   });
 
   const observer = new IntersectionObserver(entries => {
