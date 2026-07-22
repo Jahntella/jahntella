@@ -20,6 +20,7 @@
   const artwork = document.getElementById("playerArtwork");
   const progress = document.getElementById("playerProgress");
   const time = document.getElementById("playerTime");
+  const equalizer = document.getElementById("equalizer");
   let current = null;
 
   const formatTime = seconds => {
@@ -27,6 +28,12 @@
     const mins = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60).toString().padStart(2, "0");
     return `${mins}:${secs}`;
+  };
+
+  const setPlayingState = isPlaying => {
+    toggle.textContent = isPlaying ? "❚❚" : "▶";
+    equalizer.classList.toggle("playing", isPlaying);
+    if (current?.record) current.record.classList.toggle("is-spinning", isPlaying);
   };
 
   const stopOtherTracks = selected => {
@@ -47,14 +54,12 @@
     current = track;
     title.textContent = track.title;
     artwork.src = track.artwork;
+    artwork.alt = `${track.title} artwork`;
     player.classList.add("visible");
 
     track.audio.play()
-      .then(() => {
-        toggle.textContent = "❚❚";
-        if (track.record) track.record.classList.add("is-spinning");
-      })
-      .catch(() => { toggle.textContent = "▶"; });
+      .then(() => setPlayingState(true))
+      .catch(() => setPlayingState(false));
   };
 
   document.querySelectorAll(".play-button").forEach(button => {
@@ -69,15 +74,11 @@
 
     if (current.audio.paused) {
       current.audio.play()
-        .then(() => {
-          toggle.textContent = "❚❚";
-          if (current.record) current.record.classList.add("is-spinning");
-        })
-        .catch(() => { toggle.textContent = "▶"; });
+        .then(() => setPlayingState(true))
+        .catch(() => setPlayingState(false));
     } else {
       current.audio.pause();
-      toggle.textContent = "▶";
-      if (current.record) current.record.classList.remove("is-spinning");
+      setPlayingState(false);
     }
   });
 
@@ -93,9 +94,9 @@
 
     track.audio.addEventListener("ended", () => {
       if (current === track) {
-        toggle.textContent = "▶";
         progress.value = 0;
-        if (track.record) track.record.classList.remove("is-spinning");
+        time.textContent = "0:00";
+        setPlayingState(false);
       }
     });
   });
@@ -105,5 +106,15 @@
     current.audio.currentTime = (Number(progress.value) / 100) * current.audio.duration;
   });
 
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in-view");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.14 });
+
+  document.querySelectorAll(".reveal").forEach(section => observer.observe(section));
   document.getElementById("year").textContent = new Date().getFullYear();
 })();
