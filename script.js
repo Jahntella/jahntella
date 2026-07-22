@@ -304,18 +304,39 @@
     activePull = null;
   };
 
+  const commitPullToVault = card => {
+    const isNew = !vaultState.collected.includes(card.id);
+    if (isNew) vaultState.collected.push(card.id);
+    vaultState.lastPulled = card.id;
+
+    try {
+      saveVault();
+    } catch (error) {
+      console.error("Sweet Vault could not save:", error);
+    }
+
+    renderVault();
+    return isNew;
+  };
+
   const showReveal = card => {
     activePull = card;
+    const isNew = commitPullToVault(card);
+
     revealModal.className = `card-reveal-modal open ${rarityClass(card.rarity)}`;
     revealModal.setAttribute("aria-hidden", "false");
     revealCardImage.src = card.image;
     revealCardImage.alt = `${card.title} Sweet Vault card`;
     revealRarity.textContent = card.rarity.toUpperCase();
     revealTitle.textContent = card.title;
-    const duplicate = vaultState.collected.includes(card.id);
-    revealMessage.textContent = duplicate ? "Duplicate pull — this card is already in your vault." : "New card unlocked and added to your collection.";
+    revealMessage.textContent = isNew
+      ? "New card unlocked and saved to your Sweet Vault."
+      : "Duplicate pull — your previous copy remains safely stored.";
+    revealDoneButton.textContent = "View My Vault";
+
     if (card.rarity === "Secret Rare") createConfetti(70);
     else if (card.rarity === "Legendary" || card.rarity === "Ultra Rare") createConfetti(35);
+
     window.setTimeout(() => revealModal.classList.add("is-revealed"), 850);
   };
 
@@ -334,12 +355,8 @@
   });
 
   revealDoneButton.addEventListener("click", () => {
-    if (!activePull) return closeReveal();
-    if (!vaultState.collected.includes(activePull.id)) vaultState.collected.push(activePull.id);
-    vaultState.lastPulled = activePull.id;
-    saveVault();
-    renderVault();
     closeReveal();
+    document.getElementById("vaultGrid")?.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 
   closeRevealButton.addEventListener("click", closeReveal);
