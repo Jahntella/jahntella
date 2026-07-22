@@ -35,6 +35,7 @@
   const lightbox = document.getElementById("lightbox");
   const lightboxImage = document.getElementById("lightboxImage");
   const lightboxClose = document.getElementById("lightboxClose");
+  const siteLoader = document.getElementById("siteLoader");
 
   let currentKey = null;
   let shuffle = false;
@@ -53,6 +54,10 @@
       const active = key === currentKey;
       track.recordWrap?.classList.toggle("is-spinning", playing && active);
       track.card?.classList.toggle("is-active", active);
+      const button = track.card?.querySelector(".play-button");
+      if (button) {
+        button.textContent = active && playing ? `❚❚ Pause ${track.title}` : `▶ Play ${track.title}`;
+      }
     });
   };
 
@@ -93,7 +98,16 @@
   };
 
   document.querySelectorAll(".play-button").forEach(button => {
-    button.addEventListener("click", () => selectTrack(button.dataset.track));
+    button.addEventListener("click", () => {
+      const key = button.dataset.track;
+      const track = tracks[key];
+      if (currentKey === key && track && !track.audio.paused) {
+        track.audio.pause();
+        setPlaying(false);
+      } else {
+        selectTrack(key);
+      }
+    });
   });
 
   toggle.addEventListener("click", () => {
@@ -153,6 +167,7 @@
     const open = siteNav.classList.toggle("open");
     navToggle.setAttribute("aria-expanded", String(open));
   });
+
   siteNav.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
     siteNav.classList.remove("open");
     navToggle.setAttribute("aria-expanded", "false");
@@ -183,6 +198,7 @@
     lightbox.classList.remove("open");
     lightbox.setAttribute("aria-hidden", "true");
   };
+
   lightboxClose.addEventListener("click", closeLightbox);
   lightbox.addEventListener("click", event => { if (event.target === lightbox) closeLightbox(); });
   document.addEventListener("keydown", event => { if (event.key === "Escape") closeLightbox(); });
@@ -195,6 +211,11 @@
       }
     });
   }, { threshold: 0.14 });
+
   document.querySelectorAll(".reveal").forEach(section => observer.observe(section));
   document.getElementById("year").textContent = new Date().getFullYear();
+
+  window.addEventListener("load", () => {
+    window.setTimeout(() => siteLoader?.classList.add("is-hidden"), 250);
+  });
 })();
