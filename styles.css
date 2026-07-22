@@ -106,3 +106,35 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-3;ba
 @media(max-width:1000px){.vault-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
 @media(max-width:720px){.vault-binder{padding:20px 16px 20px 43px;border-radius:24px}.vault-binder::before{left:12px;font-size:1.25rem}.binder-rings{left:29px;width:28px}.binder-rings i{width:30px;height:14px;border-width:3px}.binder-page{padding:14px}.vault-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}.binder-page-heading{font-size:.58rem}.vault-card-button{padding:6px!important;border-radius:12px!important}}
 @media(max-width:390px){.vault-grid{grid-template-columns:1fr!important}.vault-card-button{max-width:260px!important;margin-inline:auto!important}}
+
+/* v2.0 circular hero + animated cosmic background */
+.hero{position:relative}
+.hero-image-circle{width:min(100%,640px);aspect-ratio:1;margin-inline:auto;isolation:isolate}
+.hero-image-circle .glow{width:78%;opacity:.28;animation:hero-breathe 5.5s ease-in-out infinite}
+.hero-image-circle img{width:88%!important;max-height:none!important;aspect-ratio:1;object-fit:cover!important;border-radius:50%;background:transparent!important;box-shadow:0 0 0 3px rgba(255,255,255,.55),0 0 0 8px rgba(255,79,183,.22),0 0 42px rgba(255,79,183,.75),0 28px 70px rgba(0,0,0,.5);filter:none!important;animation:hero-float-tilt 7s ease-in-out infinite}
+.hero-image-circle::before{content:"";position:absolute;inset:3%;border-radius:50%;z-index:-1;background:conic-gradient(from 0deg,transparent 0 12%,rgba(255,255,255,.78) 15%,transparent 19% 39%,rgba(255,79,183,.75) 44%,transparent 49% 70%,rgba(255,255,255,.55) 74%,transparent 79% 100%);filter:blur(4px);opacity:.65;animation:hero-halo-spin 18s linear infinite}
+.hero-orbit{position:absolute;inset:7%;border-radius:50%;pointer-events:none}
+.hero-orbit::before,.hero-orbit::after{content:"✦";position:absolute;color:#fff;text-shadow:0 0 10px #fff,0 0 18px var(--pink);font-size:1rem}
+.orbit-one{animation:orbit-spin 13s linear infinite}
+.orbit-one::before{top:2%;left:48%}.orbit-one::after{right:2%;top:48%}
+.orbit-two{inset:12%;animation:orbit-spin-reverse 18s linear infinite}
+.orbit-two::before{bottom:3%;left:30%;font-size:.75rem}.orbit-two::after{left:5%;top:25%;font-size:.65rem}
+@keyframes hero-float-tilt{0%,100%{transform:translateY(0) rotate(-.8deg)}50%{transform:translateY(-14px) rotate(.8deg)}}
+@keyframes hero-breathe{0%,100%{transform:scale(.94);opacity:.23}50%{transform:scale(1.08);opacity:.38}}
+@keyframes hero-halo-spin{to{transform:rotate(360deg)}}
+@keyframes orbit-spin{to{transform:rotate(360deg)}}
+@keyframes orbit-spin-reverse{to{transform:rotate(-360deg)}}
+
+.twinkle-stars,.shooting-stars{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.twinkle-stars{z-index:-1}
+.shooting-stars{z-index:-1}
+.twinkle-star{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;box-shadow:0 0 7px #fff,0 0 13px rgba(255,79,183,.9);animation:twinkle-pulse var(--duration) ease-in-out infinite;animation-delay:var(--delay)}
+.twinkle-star::after{content:"";position:absolute;left:50%;top:50%;width:1px;height:11px;background:linear-gradient(transparent,rgba(255,255,255,.9),transparent);transform:translate(-50%,-50%)}
+.twinkle-star::before{content:"";position:absolute;left:50%;top:50%;height:1px;width:11px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.9),transparent);transform:translate(-50%,-50%)}
+@keyframes twinkle-pulse{0%,100%{opacity:.12;transform:scale(.55)}45%{opacity:.9;transform:scale(1.1)}60%{opacity:.35;transform:scale(.8)}}
+
+.shooting-star{position:absolute;width:95px;height:2px;border-radius:99px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,155,213,.72),#fff);filter:drop-shadow(0 0 6px rgba(255,79,183,.95));opacity:0;transform:rotate(var(--angle));transform-origin:right center;animation:shoot-star var(--speed) linear forwards}
+.shooting-star::after{content:"";position:absolute;right:-2px;top:50%;width:5px;height:5px;border-radius:50%;background:#fff;box-shadow:0 0 8px #fff,0 0 16px var(--pink);transform:translateY(-50%)}
+@keyframes shoot-star{0%{opacity:0;translate:0 0}8%{opacity:1}75%{opacity:.9}100%{opacity:0;translate:var(--travel-x) var(--travel-y)}}
+@media(max-width:780px){.hero-image-circle{width:min(92vw,520px)}.hero-image-circle img{width:92%!important}}
+@media(prefers-reduced-motion:reduce){.shooting-stars,.twinkle-stars{display:none}.hero-image-circle img,.hero-image-circle::before,.hero-orbit{animation:none!important}}

@@ -35,6 +35,56 @@
   const lightboxClose = document.getElementById("lightboxClose");
   const siteLoader = document.getElementById("siteLoader");
 
+  const shootingStars = document.getElementById("shootingStars");
+  const twinkleStars = document.getElementById("twinkleStars");
+
+  const buildTwinkleStars = () => {
+    if (!twinkleStars || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const amount = Math.min(55, Math.max(24, Math.floor(window.innerWidth / 30)));
+    twinkleStars.innerHTML = "";
+    for (let i = 0; i < amount; i += 1) {
+      const star = document.createElement("i");
+      star.className = "twinkle-star";
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.setProperty("--duration", `${2.4 + Math.random() * 4.2}s`);
+      star.style.setProperty("--delay", `${Math.random() * -7}s`);
+      const scale = .45 + Math.random() * .9;
+      star.style.transform = `scale(${scale})`;
+      twinkleStars.appendChild(star);
+    }
+  };
+
+  const launchShootingStar = () => {
+    if (!shootingStars || document.hidden || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const star = document.createElement("i");
+    star.className = "shooting-star";
+    const fromLeft = Math.random() > .22;
+    star.style.left = `${fromLeft ? -8 : 58 + Math.random() * 35}%`;
+    star.style.top = `${5 + Math.random() * 62}%`;
+    star.style.setProperty("--angle", `${fromLeft ? -18 - Math.random() * 18 : 198 + Math.random() * 14}deg`);
+    star.style.setProperty("--speed", `${1.1 + Math.random() * .9}s`);
+    star.style.setProperty("--travel-x", `${fromLeft ? 125 + Math.random() * 35 : -120 - Math.random() * 30}vw`);
+    star.style.setProperty("--travel-y", `${22 + Math.random() * 26}vh`);
+    shootingStars.appendChild(star);
+    window.setTimeout(() => star.remove(), 2400);
+  };
+
+  const scheduleShootingStar = () => {
+    window.setTimeout(() => {
+      launchShootingStar();
+      if (Math.random() > .7) window.setTimeout(launchShootingStar, 420 + Math.random() * 650);
+      scheduleShootingStar();
+    }, 3600 + Math.random() * 5200);
+  };
+
+  buildTwinkleStars();
+  scheduleShootingStar();
+  window.addEventListener("resize", () => {
+    window.clearTimeout(window.__jahntellaStarResize);
+    window.__jahntellaStarResize = window.setTimeout(buildTwinkleStars, 250);
+  });
+
   let currentKey = null;
 
   const currentTrack = () => currentKey ? tracks[currentKey] : null;
