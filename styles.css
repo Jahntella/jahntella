@@ -59,3 +59,23 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-3;ba
 .sweet-pack.is-opening{animation:premium-pack-open 1.05s cubic-bezier(.2,.75,.25,1) both}
 @keyframes premium-pack-open{0%{transform:rotate(-3deg) scale(1)}18%{transform:translateX(-10px) rotate(-7deg) scale(1.015)}36%{transform:translateX(11px) rotate(6deg) scale(1.03)}54%{transform:translateX(-7px) rotate(-5deg) scale(1.045)}72%{transform:translateX(6px) rotate(4deg) scale(1.055)}88%{transform:translateY(-8px) scale(.98,1.07)}100%{transform:translateY(8px) scale(.92,.9);filter:brightness(1.2)}}
 @media(max-width:560px){.sweet-pack{width:min(285px,82vw)}}
+
+/* v1.8.2 clean premium pack + full-card vault display */
+.sweet-pack-clean{justify-content:center;gap:.28rem}
+.sweet-pack-clean .pack-icon{position:relative;z-index:6;display:grid;place-items:center;width:126px;aspect-ratio:1;margin:.55rem auto .2rem;border-radius:50%;font-size:4.2rem;background:radial-gradient(circle at 38% 32%,rgba(255,255,255,.9),rgba(255,255,255,.18) 26%,rgba(255,54,164,.22) 58%,rgba(70,0,45,.65) 100%);border:1px solid rgba(255,255,255,.38);box-shadow:0 0 24px rgba(255,255,255,.42),0 0 58px rgba(255,33,154,.72),inset 0 0 24px rgba(255,255,255,.18);text-shadow:0 5px 14px rgba(62,0,40,.55)}
+.sweet-pack-clean .pack-title{margin-top:.4rem;font-size:clamp(1.9rem,6vw,2.7rem)}
+.pack-tagline{position:relative;z-index:7;margin-top:.2rem;font-size:.64rem;font-weight:800;letter-spacing:.16em;color:#ffeaf7}
+.pack-portrait-wrap,.pack-portrait,.pack-portrait-glow{display:none!important}
+.vault-card-button{display:flex;flex-direction:column}
+.vault-card-scene{width:100%}
+.vault-card-face{background:#120015}
+.vault-card-face img{width:100%;height:100%;object-fit:contain;background:#120015}
+.vault-card-meta{display:none}
+.vault-card-button:not(.is-locked){filter:drop-shadow(0 12px 24px rgba(255,79,183,.14))}
+.vault-card-button:not(.is-locked):hover .vault-card-inner{transform:translateY(-6px)}
+.vault-card-button:not(.is-locked).is-flipped .vault-card-inner{transform:rotateY(180deg)}
+.vault-card-button.just-unlocked .vault-card-face{animation:new-card-glow 1.6s ease-in-out 3}
+@keyframes new-card-glow{0%,100%{box-shadow:0 18px 45px rgba(0,0,0,.3)}50%{box-shadow:0 0 28px rgba(255,255,255,.8),0 0 58px rgba(255,79,183,.78),0 18px 45px rgba(0,0,0,.3)}}
+.last-pulled-display{grid-template-columns:minmax(190px,300px) 1fr}
+.last-pulled-display img{object-fit:contain;background:#120015}
+@media(max-width:760px){.last-pulled-display{grid-template-columns:1fr}.last-pulled-display img{max-width:300px}}

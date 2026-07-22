@@ -256,10 +256,6 @@
               </span>
             </span>
           </span>
-          <span class="vault-card-meta">
-            <strong>${card.id} ${unlocked ? card.title : "Locked"}</strong>
-            <span>${unlocked ? card.rarity : "Open packs to reveal"}</span>
-          </span>
         </button>`;
     }).join("");
 
@@ -316,6 +312,13 @@
     }
 
     renderVault();
+
+    if (isNew) {
+      const slot = vaultGrid.querySelector(`[data-card-id="${card.id}"]`);
+      slot?.classList.add("just-unlocked");
+      window.setTimeout(() => slot?.classList.remove("just-unlocked"), 5200);
+    }
+
     return isNew;
   };
 
