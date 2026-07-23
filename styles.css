@@ -158,3 +158,25 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-3;ba
 .vault-card-scene,.vault-card-inner,.vault-card-face{width:100%!important;height:100%!important}
 .vault-card-face img{width:100%!important;height:100%!important;object-fit:cover!important}
 }
+
+/* ===== v2.3 Free Downloads ===== */
+.downloads-section{padding:clamp(4rem,8vw,7rem) clamp(1.2rem,6vw,6rem);border-top:1px solid rgba(255,255,255,.08);background:radial-gradient(circle at 50% 20%,rgba(255,79,183,.15),transparent 34rem)}
+.downloads-intro{max-width:720px;margin:1rem auto 0;color:var(--muted);line-height:1.7}
+.downloads-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem;margin-top:3rem}
+.download-card{overflow:hidden;border:1px solid var(--panel-border);border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.105),rgba(255,255,255,.045));box-shadow:0 24px 65px rgba(0,0,0,.3);backdrop-filter:blur(18px);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+.download-card:hover{transform:translateY(-8px);box-shadow:0 34px 78px rgba(0,0,0,.4),0 0 34px rgba(255,79,183,.16);border-color:rgba(255,155,213,.38)}
+.download-preview{display:block;position:relative;overflow:hidden;aspect-ratio:9/16;background:#090009}
+.download-preview::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(12,0,14,.25),transparent 35%);pointer-events:none}
+.download-preview img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .45s ease,filter .45s ease}
+.download-card:hover .download-preview img{transform:scale(1.035);filter:brightness(1.05)}
+.download-copy{padding:1.35rem}
+.download-type{margin:0 0 .55rem;color:var(--pink-light);font-size:.72rem;font-weight:800;letter-spacing:.15em}
+.download-copy h3{margin-bottom:.65rem;font-family:"Playfair Display",serif;font-size:1.7rem}
+.download-copy>p:not(.download-type){min-height:3.2em;color:var(--muted);line-height:1.6}
+.download-actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.1rem}
+.download-actions .primary-button,.download-actions .secondary-button{flex:1;min-width:120px}
+.downloads-coming-soon{display:flex;justify-content:space-between;gap:1rem;align-items:center;margin-top:1.5rem;padding:1.2rem 1.4rem;border:1px solid var(--panel-border);border-radius:18px;background:rgba(255,255,255,.055)}
+.downloads-coming-soon strong{color:var(--pink-light)}
+.downloads-coming-soon span{color:var(--muted);text-align:right}
+@media(max-width:980px){.downloads-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.download-card:last-child{grid-column:1/-1;max-width:520px;width:100%;justify-self:center}}
+@media(max-width:680px){.downloads-grid{grid-template-columns:1fr}.download-card:last-child{grid-column:auto;max-width:none}.downloads-coming-soon{align-items:flex-start;flex-direction:column}.downloads-coming-soon span{text-align:left}.download-actions{flex-direction:column}.download-actions .primary-button,.download-actions .secondary-button{width:100%}}
