@@ -1,10 +1,18 @@
-JAHNTELLA POSTER GALLERY — FIXED VERSION
+IMPORTANT: Uploading this ZIP itself to GitHub changes nothing.
+GitHub Pages does not unzip or apply ZIP files.
 
-1. Open index.html in GitHub and click the pencil icon.
-2. Replace the complete Downloads section with the contents of 1-PASTE-INTO-INDEX.html.
-3. Open styles.css and paste everything from 2-ADD-TO-STYLES.css at the very bottom.
-4. Commit both changes to main.
-5. Wait 1–3 minutes, then press Ctrl+F5 on the live site.
+1. Unzip this package.
+2. Download the current index.html and poster-downloads.css from the root of the GitHub repository.
+3. Put both files beside apply-patch.py.
+4. Double-click APPLY-PATCH-WINDOWS.bat.
+5. Upload the UPDATED index.html and poster-downloads.css back to the repository root, replacing the old files.
+6. Commit and wait for GitHub Pages to publish.
 
-This version uses full GitHub image URLs, so all eight posters will load even if the site folder paths differ.
-Do not upload the ZIP itself. Use the files inside it.
+This patch:
+- adds a restrained pop-icon Merch section;
+- uses subtle Fun Dipp hints rather than a candy-shop theme;
+- adds Merch to navigation;
+- fixes mobile poster cropping;
+- hides mobile Preview buttons;
+- disables poster-image links on mobile;
+- preserves desktop previews and the rest of the current site.
