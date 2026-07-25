@@ -1,0 +1,45 @@
+/* LARGE MOBILE POSTER GALLERY PATCH */
+@media (max-width:768px){
+
+.poster-gallery{
+display:grid;
+grid-template-columns:1fr;
+gap:2.5rem;
+}
+
+.poster-card{
+max-width:420px;
+margin:0 auto;
+}
+
+.poster-card img{
+width:100%;
+border-radius:22px;
+display:block;
+}
+
+.poster-copy{
+padding-top:1rem;
+text-align:center;
+}
+
+.poster-actions{
+display:flex;
+justify-content:center;
+}
+
+.poster-actions .secondary-button{
+display:none;
+}
+
+.poster-actions .primary-button{
+width:100%;
+max-width:280px;
+font-size:1.05rem;
+padding:16px 22px;
+}
+
+.wallpaper-divider{
+margin-top:3rem;
+}
+}
