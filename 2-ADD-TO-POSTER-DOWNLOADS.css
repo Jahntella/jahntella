@@ -1,0 +1,25 @@
+/* MOBILE POSTER PREVIEW LIGHTBOX PATCH */
+.poster-preview,
+.poster-preview-button {
+  font: inherit;
+  color: inherit;
+}
+
+button.poster-preview {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  cursor: zoom-in;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+button.poster-preview-button {
+  cursor: zoom-in;
+}
+
+button.poster-preview:focus-visible,
+button.poster-preview-button:focus-visible {
+  outline: 3px solid rgba(255, 100, 190, 0.9);
+  outline-offset: 4px;
+}
