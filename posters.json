@@ -1,0 +1,134 @@
+{
+  "collection_title": "Official Jahntella Poster Collection",
+  "display_year": 2026,
+  "posters": [
+    {
+      "id": "01",
+      "slug": "01-rooftop-lights",
+      "title": "Rooftop Lights",
+      "collection": "Performance Collection",
+      "season": "Season One",
+      "poster_number": "Poster 01 of 12",
+      "original_file": "originals/01-rooftop-lights.png",
+      "preview_file": "web-previews/01-rooftop-lights-preview.jpg",
+      "thumbnail_file": "thumbnails/01-rooftop-lights-thumb.jpg",
+      "original_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "free_download": true
+    },
+    {
+      "id": "02",
+      "slug": "02-fun-dipp-nights",
+      "title": "Fun Dipp Nights",
+      "collection": "Performance Collection",
+      "season": "Season One",
+      "poster_number": "Poster 02 of 12",
+      "original_file": "originals/02-fun-dipp-nights.png",
+      "preview_file": "web-previews/02-fun-dipp-nights-preview.jpg",
+      "thumbnail_file": "thumbnails/02-fun-dipp-nights-thumb.jpg",
+      "original_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "free_download": true
+    },
+    {
+      "id": "03",
+      "slug": "03-studio-spark",
+      "title": "Studio Spark",
+      "collection": "Performance Collection",
+      "season": "Season One",
+      "poster_number": "Poster 03 of 12",
+      "original_file": "originals/03-studio-spark.png",
+      "preview_file": "web-previews/03-studio-spark-preview.jpg",
+      "thumbnail_file": "thumbnails/03-studio-spark-thumb.jpg",
+      "original_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "free_download": true
+    },
+    {
+      "id": "04",
+      "slug": "04-lagoon-dream",
+      "title": "Lagoon Dream",
+      "collection": "Sweetville Escapes",
+      "season": "Season One",
+      "poster_number": "Poster 04 of 12",
+      "original_file": "originals/04-lagoon-dream.png",
+      "preview_file": "web-previews/04-lagoon-dream-preview.jpg",
+      "thumbnail_file": "thumbnails/04-lagoon-dream-thumb.jpg",
+      "original_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "free_download": true
+    },
+    {
+      "id": "05",
+      "slug": "05-bubblegum-beach",
+      "title": "Bubblegum Beach",
+      "collection": "Sweetville Escapes",
+      "season": "Season One",
+      "poster_number": "Poster 05 of 12",
+      "original_file": "originals/05-bubblegum-beach.png",
+      "preview_file": "web-previews/05-bubblegum-beach-preview.jpg",
+      "thumbnail_file": "thumbnails/05-bubblegum-beach-thumb.jpg",
+      "original_dimensions": {
+        "width": 1402,
+        "height": 1122
+      },
+      "free_download": true
+    },
+    {
+      "id": "06",
+      "slug": "06-pink-carpet-premiere",
+      "title": "Pink Carpet Premiere",
+      "collection": "Celebrity Collection",
+      "season": "Season One",
+      "poster_number": "Poster 06 of 12",
+      "original_file": "originals/06-pink-carpet-premiere.png",
+      "preview_file": "web-previews/06-pink-carpet-premiere-preview.jpg",
+      "thumbnail_file": "thumbnails/06-pink-carpet-premiere-thumb.jpg",
+      "original_dimensions": {
+        "width": 1023,
+        "height": 1537
+      },
+      "free_download": true
+    },
+    {
+      "id": "07",
+      "slug": "07-candy-castle-royal",
+      "title": "Candy Castle Royal",
+      "collection": "Royal Sweet Collection",
+      "season": "Season One",
+      "poster_number": "Poster 07 of 12",
+      "original_file": "originals/07-candy-castle-royal.png",
+      "preview_file": "web-previews/07-candy-castle-royal-preview.jpg",
+      "thumbnail_file": "thumbnails/07-candy-castle-royal-thumb.jpg",
+      "original_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "free_download": true
+    },
+    {
+      "id": "08",
+      "slug": "08-pink-diaries",
+      "title": "Pink Diaries",
+      "collection": "Lifestyle Collection",
+      "season": "Season One",
+      "poster_number": "Poster 08 of 12",
+      "original_file": "originals/08-pink-diaries.png",
+      "preview_file": "web-previews/08-pink-diaries-preview.jpg",
+      "thumbnail_file": "thumbnails/08-pink-diaries-thumb.jpg",
+      "original_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "free_download": true
+    }
+  ]
+}
