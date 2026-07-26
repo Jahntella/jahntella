@@ -156,43 +156,79 @@
   }
 }
 
-/* ===== V5.2 player flow fix =====
-   The player now sits in normal document flow beneath the hero
-   instead of remaining fixed over the page.
-*/
-.player-dock-section{
-  position:relative;
-  z-index:6;
-  padding:0 clamp(1.2rem,6vw,6rem);
-  margin-top:-3.25rem;
-  margin-bottom:1rem;
+/* ===== V5.3 — restore full audio player controls ===== */
+
+.hero-v5{
+  padding-bottom:clamp(9.5rem,18vh,12rem);
 }
 
-.player-dock-section .player{
-  position:relative !important;
-  inset:auto !important;
-  left:auto !important;
+.hero-v5-content{
+  transform:translateY(-1.4rem);
+}
+
+.player{
+  position:fixed !important;
+  left:50% !important;
   right:auto !important;
+  bottom:1rem !important;
   top:auto !important;
-  bottom:auto !important;
-  width:min(100%,1080px) !important;
-  margin:0 auto !important;
-  transform:none !important;
+  z-index:80 !important;
+  width:min(1080px,calc(100% - 2rem)) !important;
+  transform:translateX(-50%) !important;
   opacity:1 !important;
   visibility:visible !important;
 }
 
-.hero-v5{
-  padding-bottom:8.5rem;
+.player #playerProgress{
+  display:block !important;
+  min-width:180px !important;
+  flex:1 1 260px !important;
+}
+
+.player .volume-control{
+  display:flex !important;
+  align-items:center !important;
+  gap:.55rem !important;
+}
+
+.player .volume-control input{
+  display:block !important;
+  width:90px !important;
+}
+
+.player #playerToggle,
+.player #playerPrev,
+.player #playerNext{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
 }
 
 @media(max-width:760px){
-  .player-dock-section{
-    margin-top:-2.25rem;
-    padding-inline:1rem;
+  .hero-v5{
+    padding-bottom:10.5rem;
   }
 
-  .hero-v5{
-    padding-bottom:7.5rem;
+  .hero-v5-content{
+    transform:translateY(-.5rem);
+  }
+
+  .player{
+    bottom:.55rem !important;
+    width:calc(100% - 1rem) !important;
+  }
+
+  .player #playerProgress{
+    min-width:110px !important;
+  }
+
+  .player .volume-control input{
+    width:64px !important;
+  }
+}
+
+@media(max-width:560px){
+  .player .volume-control{
+    display:none !important;
   }
 }
