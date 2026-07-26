@@ -1,18 +1,59 @@
-IMPORTANT: Uploading this ZIP itself to GitHub changes nothing.
-GitHub Pages does not unzip or apply ZIP files.
+JAHNTELLA v4.3 — FIVE-SECOND HERO PATCH
+========================================
 
-1. Unzip this package.
-2. Download the current index.html and poster-downloads.css from the root of the GitHub repository.
-3. Put both files beside apply-patch.py.
-4. Double-click APPLY-PATCH-WINDOWS.bat.
-5. Upload the UPDATED index.html and poster-downloads.css back to the repository root, replacing the old files.
-6. Commit and wait for GitHub Pages to publish.
+This first-step patch changes ONLY the homepage hero.
 
-This patch:
-- adds a restrained pop-icon Merch section;
-- uses subtle Fun Dipp hints rather than a candy-shop theme;
-- adds Merch to navigation;
-- fixes mobile poster cropping;
-- hides mobile Preview buttons;
-- disables poster-image links on mobile;
-- preserves desktop previews and the rest of the current site.
+WHAT IT DOES
+------------
+- Replaces the current split image hero with a full-screen video hero.
+- Uses videos/Hero.mp4.
+- Autoplay, muted, loop, playsinline.
+- Adds a dark cinematic overlay.
+- Keeps centered Jahntella branding.
+- Adds a DIP IN button that leads to Music.
+- Leaves Music, Story, Sweet Vault, Posters, Wallpapers, Merch, Gallery,
+  Creative Director, and Connect untouched.
+
+QUICK AUTOMATIC INSTALL
+-----------------------
+1. Extract this ZIP.
+2. Copy apply_v4_3_hero_patch.py into the ROOT of your Jahntella repository,
+   beside index.html.
+3. Run:
+
+   Windows:
+       py apply_v4_3_hero_patch.py
+
+   Mac/Linux:
+       python3 apply_v4_3_hero_patch.py
+
+4. Place your five-second video here:
+       videos/Hero.mp4
+
+5. Upload/commit these changes:
+       index.html
+       hero-v4.3.css
+       videos/Hero.mp4
+
+The script also creates:
+       index-before-v4.3-hero.html
+
+That is your automatic backup. You do not need to upload the backup to GitHub.
+
+MANUAL INSTALL
+--------------
+- Replace the existing <section class="hero reveal" id="home">...</section>
+  block with the contents of hero-section.html.
+- Copy hero-v4.3.css into the repository root.
+- Add this line immediately before </head> in index.html:
+
+  <link rel="stylesheet" href="hero-v4.3.css?v=1">
+
+- Create videos/ and add Hero.mp4.
+
+IMPORTANT
+---------
+The filename and capitalization must be exact:
+videos/Hero.mp4
+
+GitHub Pages is case-sensitive.
