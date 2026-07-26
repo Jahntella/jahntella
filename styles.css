@@ -155,3 +155,44 @@
     animation:none;
   }
 }
+
+/* ===== V5.2 player flow fix =====
+   The player now sits in normal document flow beneath the hero
+   instead of remaining fixed over the page.
+*/
+.player-dock-section{
+  position:relative;
+  z-index:6;
+  padding:0 clamp(1.2rem,6vw,6rem);
+  margin-top:-3.25rem;
+  margin-bottom:1rem;
+}
+
+.player-dock-section .player{
+  position:relative !important;
+  inset:auto !important;
+  left:auto !important;
+  right:auto !important;
+  top:auto !important;
+  bottom:auto !important;
+  width:min(100%,1080px) !important;
+  margin:0 auto !important;
+  transform:none !important;
+  opacity:1 !important;
+  visibility:visible !important;
+}
+
+.hero-v5{
+  padding-bottom:8.5rem;
+}
+
+@media(max-width:760px){
+  .player-dock-section{
+    margin-top:-2.25rem;
+    padding-inline:1rem;
+  }
+
+  .hero-v5{
+    padding-bottom:7.5rem;
+  }
+}

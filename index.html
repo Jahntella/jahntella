@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=5.1-recovery">
+  <link rel="stylesheet" href="styles.css?v=5.2-player-flow">
   <link rel="stylesheet" href="poster-downloads.css?v=4">
 </head>
 <body>
@@ -64,6 +64,16 @@
         <span>SCROLL</span>
         <i></i>
       </a>
+    </section>
+
+    <section class="player-dock-section" aria-label="Now playing">
+      <div class="player" id="player" aria-live="polite">
+    <button class="player-skip" id="playerPrev" aria-label="Previous track">⏮</button>
+    <img id="playerArtwork" src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/fun-dipp-cover.png" alt="">
+    <div class="player-info">
+      <strong id="playerTitle">Fun Dipp</strong>
+      <span class="now-playing"><span class="equalizer"><i></i><i></i><i></i><i></i></span> Jahntella</span>
+    </div>
     </section>
 
     <section class="music-section reveal" id="music">
@@ -381,14 +391,6 @@
   </main>
 
   <footer><span>© <span id="year"></span> Jahntella</span></footer>
-
-  <div class="player" id="player" aria-live="polite">
-    <button class="player-skip" id="playerPrev" aria-label="Previous track">⏮</button>
-    <img id="playerArtwork" src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/fun-dipp-cover.png" alt="">
-    <div class="player-info">
-      <strong id="playerTitle">Fun Dipp</strong>
-      <span class="now-playing"><span class="equalizer"><i></i><i></i><i></i><i></i></span> Jahntella</span>
-    </div>
     <button id="playerToggle" aria-label="Play or pause">▶</button>
     <button class="player-skip" id="playerNext" aria-label="Next track">⏭</button>
     <input id="playerProgress" type="range" min="0" max="100" value="0" aria-label="Track progress">
