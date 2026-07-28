@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=5.3-player-restored">
+  <link rel="stylesheet" href="styles.css?v=5.4-citizen-registry">
   <link rel="stylesheet" href="poster-downloads.css?v=4">
 </head>
 <body>
@@ -31,6 +31,7 @@
     <nav id="siteNav" aria-label="Main navigation">
       <a href="#music">Music</a>
       <a href="#about">Story</a>
+      <a href="#registry">Registry</a>
       <a href="#sweet-vault">Sweet Vault</a>
       <a href="#downloads">Downloads</a>
       <a href="#merch">Merch</a>
@@ -130,6 +131,64 @@
         <article><strong>01</strong><span>World of Sweet created</span></article>
         <article><strong>02</strong><span>Original songs released</span></article>
         <article><strong>∞</strong><span>Big ideas still ahead</span></article>
+      </div>
+    </section>
+
+    <section class="registry-section reveal" id="registry">
+      <div class="registry-shell">
+        <div class="registry-story">
+          <p class="eyebrow">SWEETVILLE CITIZEN REGISTRY</p>
+          <h2>Welcome to <em>Sweetville!</em></h2>
+          <p class="registry-lede">Ready to become an official Sweetie? Sign the Citizen Registry to reserve your digital Sweetville Passport and receive Pink Diary letters, new-music news, secret Sweetville updates, and special surprises from Jahntella.</p>
+
+          <div class="passport-preview" aria-hidden="true">
+            <span class="passport-orbit orbit-one"></span>
+            <span class="passport-orbit orbit-two"></span>
+            <span class="passport-crown">♕</span>
+            <span class="passport-kicker">WORLD OF SWEET</span>
+            <strong>SWEETVILLE</strong>
+            <span class="passport-title">DIGITAL PASSPORT</span>
+            <span class="passport-heart">♡</span>
+            <span class="passport-status">CITIZEN • SWEETIE • DREAMER</span>
+          </div>
+        </div>
+
+        <div class="registry-form-card">
+          <div class="registry-seal" aria-hidden="true">SV</div>
+          <p class="registry-form-kicker">OFFICIAL APPLICATION</p>
+          <h3>Claim Your Passport <span>♡</span></h3>
+
+          <form class="registry-form" action="https://formsubmit.co/jahntella@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New Sweetville Citizen Registry Signup ♡">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://jahntella.com/registry-welcome.html">
+            <input type="hidden" name="_autoresponse" value="Hi Sweetie… 💖&#10;&#10;You made it!&#10;&#10;Your name is officially in the Sweetville Citizen Registry, and I’m so happy you’re here.&#10;&#10;As an official Sweetie, you’ll be among the first to receive:&#10;&#10;♡ Letters from my Pink Diary&#10;♡ Behind-the-song moments&#10;♡ Secret Sweetville updates&#10;♡ New music announcements&#10;♡ Hidden hearts and special surprises&#10;&#10;And yes—there will be plenty of news about Fun Dipp very soon. 🍭✨&#10;&#10;For now, consider this your first little sign that the gates are open and your place is waiting.&#10;&#10;Keep an eye on this digital address.&#10;&#10;Something sweet is coming…&#10;&#10;Stay Sweet, xoxo!&#10;&#10;— Jahntella 💋">
+            <input class="registry-honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <label for="sweetieName">
+              <span>Sweetie Name / First Name</span>
+              <input id="sweetieName" name="Sweetie Name" type="text" autocomplete="given-name" maxlength="60" placeholder="What should Jahntella call you?" required>
+            </label>
+
+            <label for="sweetieEmail">
+              <span>Digital Address / Email</span>
+              <input id="sweetieEmail" name="email" type="email" autocomplete="email" maxlength="120" placeholder="you@example.com" required>
+            </label>
+
+            <label class="registry-consent" for="sweetieConsent">
+              <input id="sweetieConsent" name="Sweetville Email Consent" type="checkbox" value="Yes — I consent to Sweetville emails" required>
+              <span>Yes, send me letters and updates from Sweetville. I can unsubscribe anytime.</span>
+            </label>
+
+            <button class="registry-submit" type="submit">
+              <span>CLAIM MY PASSPORT!</span>
+              <i aria-hidden="true">♡</i>
+            </button>
+          </form>
+
+          <p class="registry-small-print">No spam. Just sparkle. ♡</p>
+          <p class="registry-age-note">Sweeties under 13 should ask a parent or guardian to register using their email.</p>
+        </div>
       </div>
     </section>
 

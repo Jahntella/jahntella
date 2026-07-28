@@ -196,7 +196,7 @@
   }, { passive: true });
 
   window.addEventListener("pointermove", event => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!heroVisual || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const x = (event.clientX / window.innerWidth - .5) * 10;
     const y = (event.clientY / window.innerHeight - .5) * 10;
     heroVisual.style.transform = `translate3d(${x}px,${y}px,0)`;

@@ -232,3 +232,506 @@
     display:none !important;
   }
 }
+
+/* ===== V5.4 — Sweetville Citizen Registry ===== */
+
+.registry-section{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  padding:clamp(5rem,9vw,8rem) clamp(1.1rem,5vw,4.5rem);
+  background:
+    radial-gradient(circle at 16% 35%,rgba(255,42,143,.18),transparent 31rem),
+    radial-gradient(circle at 86% 70%,rgba(130,35,255,.15),transparent 29rem),
+    linear-gradient(145deg,#080008,#170018 52%,#090009);
+}
+
+.registry-section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  opacity:.34;
+  background-image:
+    radial-gradient(circle,rgba(255,255,255,.9) 0 1px,transparent 1.4px),
+    radial-gradient(circle,rgba(255,77,176,.8) 0 1px,transparent 1.5px);
+  background-position:0 0,28px 34px;
+  background-size:72px 72px,95px 95px;
+  mask-image:linear-gradient(to bottom,transparent,#000 18%,#000 82%,transparent);
+}
+
+.registry-shell{
+  width:min(1180px,100%);
+  margin:auto;
+  display:grid;
+  grid-template-columns:minmax(0,1.02fr) minmax(340px,.98fr);
+  gap:clamp(2rem,6vw,5rem);
+  align-items:center;
+}
+
+.registry-story h2{
+  margin:.35rem 0 1.15rem;
+  max-width:700px;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(3rem,6vw,5.6rem);
+  line-height:.95;
+  color:#fff;
+}
+
+.registry-story h2 em{
+  display:block;
+  margin-top:.12em;
+  font-family:"Sacramento",cursive;
+  font-size:1.12em;
+  font-weight:400;
+  color:#ff72bd;
+  text-shadow:0 0 28px rgba(255,35,145,.45);
+}
+
+.registry-lede{
+  max-width:650px;
+  margin:0;
+  color:#f2dbe8;
+  font-size:clamp(1rem,1.5vw,1.18rem);
+  line-height:1.8;
+}
+
+.passport-preview{
+  position:relative;
+  width:min(450px,92%);
+  min-height:250px;
+  margin:2.4rem 0 0;
+  padding:2rem;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  border:1px solid rgba(255,127,195,.72);
+  border-radius:22px;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.06),transparent 48%),
+    radial-gradient(circle at center,rgba(255,51,158,.19),transparent 55%),
+    rgba(15,0,15,.76);
+  box-shadow:
+    inset 0 0 0 5px rgba(255,75,169,.06),
+    inset 0 0 35px rgba(255,30,145,.11),
+    0 20px 60px rgba(0,0,0,.38),
+    0 0 28px rgba(255,43,151,.13);
+}
+
+.passport-preview::before,
+.passport-preview::after{
+  content:"♡";
+  position:absolute;
+  color:#ff62b6;
+  font-size:1.25rem;
+  text-shadow:0 0 14px #ff2291;
+}
+
+.passport-preview::before{left:1.3rem;top:1rem}
+.passport-preview::after{right:1.3rem;bottom:1rem}
+
+.passport-orbit{
+  position:absolute;
+  left:50%;
+  top:50%;
+  border:1px solid rgba(255,96,183,.26);
+  border-radius:50%;
+  transform:translate(-50%,-50%) rotate(-12deg);
+}
+
+.orbit-one{width:330px;height:112px}
+.orbit-two{width:210px;height:210px;transform:translate(-50%,-50%) rotate(22deg)}
+
+.passport-crown{
+  position:relative;
+  z-index:1;
+  color:#ffc0e0;
+  font-size:2.1rem;
+  text-shadow:0 0 16px #ff278f;
+}
+
+.passport-kicker,
+.passport-title,
+.passport-status{
+  position:relative;
+  z-index:1;
+  color:#ffafd5;
+  font-size:.67rem;
+  font-weight:800;
+  letter-spacing:.28em;
+}
+
+.passport-preview strong{
+  position:relative;
+  z-index:1;
+  margin:.35rem 0 0;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(2.2rem,5vw,4rem);
+  line-height:1;
+  letter-spacing:.06em;
+  color:#fff;
+  text-shadow:0 0 18px rgba(255,49,155,.7);
+}
+
+.passport-heart{
+  position:relative;
+  z-index:1;
+  margin:.4rem 0;
+  color:#ff65ba;
+  font-size:2.2rem;
+  line-height:1;
+  text-shadow:0 0 18px #ff248f;
+}
+
+.registry-form-card{
+  position:relative;
+  padding:clamp(2rem,4vw,3.2rem);
+  border:1px solid rgba(255,111,190,.76);
+  border-radius:28px;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.075),transparent 38%),
+    rgba(13,0,14,.88);
+  box-shadow:
+    inset 0 0 0 5px rgba(255,69,169,.04),
+    0 28px 80px rgba(0,0,0,.44),
+    0 0 42px rgba(255,32,143,.14);
+}
+
+.registry-form-card::after{
+  content:"";
+  position:absolute;
+  inset:10px;
+  pointer-events:none;
+  border:1px solid rgba(255,114,187,.16);
+  border-radius:21px;
+}
+
+.registry-seal{
+  position:absolute;
+  right:2rem;
+  top:2rem;
+  width:54px;
+  height:54px;
+  display:grid;
+  place-items:center;
+  border:1px solid #ff75be;
+  border-radius:50%;
+  color:#ffd1e9;
+  font-family:"Playfair Display",serif;
+  font-weight:700;
+  box-shadow:inset 0 0 15px rgba(255,56,154,.26),0 0 18px rgba(255,38,145,.2);
+}
+
+.registry-form-kicker{
+  margin:0;
+  color:#ff6fb9;
+  font-size:.7rem;
+  font-weight:800;
+  letter-spacing:.22em;
+}
+
+.registry-form-card h3{
+  margin:.45rem 4.2rem 1.8rem 0;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(2rem,4vw,3rem);
+  line-height:1.05;
+  color:#fff;
+}
+
+.registry-form-card h3 span{color:#ff67b8}
+
+.registry-form{
+  position:relative;
+  z-index:1;
+  display:grid;
+  gap:1.15rem;
+}
+
+.registry-form > label:not(.registry-consent){
+  display:grid;
+  gap:.5rem;
+}
+
+.registry-form label > span{
+  color:#f8dcea;
+  font-size:.78rem;
+  font-weight:800;
+  letter-spacing:.08em;
+}
+
+.registry-form input[type="text"],
+.registry-form input[type="email"]{
+  width:100%;
+  min-height:56px;
+  padding:.95rem 1rem;
+  border:1px solid rgba(255,116,191,.42);
+  border-radius:12px;
+  outline:none;
+  background:rgba(255,255,255,.045);
+  color:#fff;
+  font:inherit;
+  transition:border-color .2s ease,box-shadow .2s ease,background .2s ease;
+}
+
+.registry-form input::placeholder{color:rgba(255,222,239,.44)}
+
+.registry-form input[type="text"]:focus,
+.registry-form input[type="email"]:focus{
+  border-color:#ff65b7;
+  background:rgba(255,255,255,.07);
+  box-shadow:0 0 0 4px rgba(255,46,150,.12),0 0 24px rgba(255,42,149,.12);
+}
+
+.registry-consent{
+  display:grid;
+  grid-template-columns:22px 1fr;
+  gap:.75rem;
+  align-items:start;
+  cursor:pointer;
+}
+
+.registry-consent input{
+  width:19px;
+  height:19px;
+  margin:.05rem 0 0;
+  accent-color:#ff248f;
+}
+
+.registry-consent span{
+  color:#d8c2ce !important;
+  font-size:.78rem !important;
+  font-weight:500 !important;
+  line-height:1.55;
+  letter-spacing:0 !important;
+}
+
+.registry-submit{
+  min-height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:.7rem;
+  border:1px solid #ff91cb;
+  border-radius:999px;
+  background:linear-gradient(90deg,#d70b6e,#ff2f9b 52%,#d91076);
+  color:#fff;
+  font:800 .84rem/1 "DM Sans",sans-serif;
+  letter-spacing:.12em;
+  cursor:pointer;
+  box-shadow:0 12px 34px rgba(219,12,111,.28),inset 0 1px rgba(255,255,255,.32);
+  transition:transform .2s ease,box-shadow .2s ease,filter .2s ease;
+}
+
+.registry-submit:hover,
+.registry-submit:focus-visible{
+  transform:translateY(-2px);
+  filter:brightness(1.08);
+  box-shadow:0 16px 40px rgba(232,15,125,.38),0 0 24px rgba(255,55,159,.2);
+}
+
+.registry-submit i{
+  font-size:1.25rem;
+  font-style:normal;
+}
+
+.registry-honeypot{
+  position:absolute !important;
+  left:-10000px !important;
+  width:1px !important;
+  height:1px !important;
+  opacity:0 !important;
+}
+
+.registry-small-print{
+  margin:1rem 0 .25rem;
+  text-align:center;
+  color:#ff94ca;
+  font-family:"Sacramento",cursive;
+  font-size:1.45rem;
+}
+
+.registry-age-note{
+  position:relative;
+  z-index:1;
+  margin:.2rem auto 0;
+  max-width:430px;
+  text-align:center;
+  color:#a9909e;
+  font-size:.7rem;
+  line-height:1.5;
+}
+
+/* Registry confirmation */
+
+.registry-confirmation-page{
+  min-height:100svh;
+  overflow-x:hidden;
+  background:
+    radial-gradient(circle at 50% 25%,rgba(255,38,146,.22),transparent 32rem),
+    linear-gradient(145deg,#070007,#1b001b 52%,#070007);
+}
+
+.confirmation-stars{
+  position:fixed;
+  inset:0;
+  opacity:.44;
+  pointer-events:none;
+  background-image:
+    radial-gradient(circle,rgba(255,255,255,.9) 0 1px,transparent 1.5px),
+    radial-gradient(circle,rgba(255,56,158,.9) 0 1px,transparent 1.5px);
+  background-size:78px 78px,111px 111px;
+  background-position:0 0,30px 38px;
+}
+
+.registry-confirmation{
+  position:relative;
+  z-index:1;
+  min-height:100svh;
+  padding:2rem 1.1rem 4rem;
+  display:grid;
+  place-items:center;
+}
+
+.confirmation-logo{
+  position:absolute;
+  top:1.5rem;
+  left:50%;
+  transform:translateX(-50%);
+  color:#fff;
+  font-family:"Sacramento",cursive;
+  font-size:clamp(2.4rem,6vw,3.7rem);
+  text-shadow:0 0 22px rgba(255,60,166,.55);
+}
+
+.confirmation-logo span{color:#ff5eb3}
+
+.confirmation-card{
+  width:min(680px,100%);
+  margin-top:5rem;
+  padding:clamp(2.2rem,6vw,4.5rem);
+  text-align:center;
+  border:1px solid rgba(255,114,190,.72);
+  border-radius:30px;
+  background:linear-gradient(145deg,rgba(255,255,255,.065),transparent 45%),rgba(13,0,14,.86);
+  box-shadow:inset 0 0 0 6px rgba(255,76,172,.04),0 28px 90px rgba(0,0,0,.52),0 0 45px rgba(255,33,145,.14);
+}
+
+.confirmation-seal{
+  width:86px;
+  height:86px;
+  margin:0 auto 1.4rem;
+  display:grid;
+  place-items:center;
+  border:1px solid #ff78bf;
+  border-radius:50%;
+  box-shadow:inset 0 0 28px rgba(255,49,153,.24),0 0 28px rgba(255,38,145,.2);
+}
+
+.confirmation-seal span{
+  color:#ffd4e9;
+  font-family:"Playfair Display",serif;
+  font-size:1.7rem;
+}
+
+.confirmation-card h1{
+  margin:.45rem 0 .7rem;
+  color:#fff;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(2.5rem,7vw,5rem);
+  line-height:1;
+}
+
+.confirmation-card h1 em{
+  display:block;
+  margin-top:.1em;
+  color:#ff70bc;
+  font-family:"Sacramento",cursive;
+  font-size:1.1em;
+  font-weight:400;
+  text-shadow:0 0 26px rgba(255,38,145,.45);
+}
+
+.confirmation-lede{
+  color:#ffd6ea !important;
+  font-size:clamp(1.1rem,2.3vw,1.35rem) !important;
+}
+
+.confirmation-card p{
+  margin:.65rem auto;
+  max-width:520px;
+  color:#dbc4d0;
+  line-height:1.7;
+}
+
+.confirmation-rule{
+  margin:1.6rem auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:.8rem;
+  color:#ff64b7;
+}
+
+.confirmation-rule i{
+  width:80px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#ff5eb2);
+}
+
+.confirmation-rule i:last-child{transform:scaleX(-1)}
+
+.confirmation-button{
+  margin:1.5rem auto 1rem;
+  display:inline-flex;
+  min-width:220px;
+  justify-content:center;
+}
+
+.confirmation-card small{
+  display:block;
+  color:#ff94ca;
+  font-family:"Sacramento",cursive;
+  font-size:1.4rem;
+}
+
+@media(max-width:860px){
+  .registry-shell{
+    grid-template-columns:1fr;
+  }
+
+  .registry-story{
+    text-align:center;
+  }
+
+  .registry-lede,
+  .passport-preview{
+    margin-left:auto;
+    margin-right:auto;
+  }
+}
+
+@media(max-width:520px){
+  .registry-section{
+    padding-left:.85rem;
+    padding-right:.85rem;
+  }
+
+  .registry-form-card{
+    padding:2rem 1.25rem 1.6rem;
+    border-radius:22px;
+  }
+
+  .registry-seal{
+    position:static;
+    width:46px;
+    height:46px;
+    margin:0 0 1rem;
+  }
+
+  .registry-form-card h3{margin-right:0}
+  .passport-preview{min-height:225px;padding:1.5rem .8rem}
+  .orbit-one{width:270px}
+  .passport-status{font-size:.55rem;letter-spacing:.17em}
+}
