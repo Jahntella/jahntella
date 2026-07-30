@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#13000f">
+  <title>Sweeties Magazine — Issue 001</title>
+  <meta name="description" content="Flip through Sweeties Magazine Issue 001 from Jahntella and Sweetville.">
+  <link rel="stylesheet" href="magazine.css">
+</head>
+<body>
+  <main class="magazine-app" aria-label="Sweeties Magazine Issue 001">
+    <header class="magazine-header">
+      <a class="home-link" href="../" aria-label="Return to Jahntella home">Jahntella ♡</a>
+      <div class="issue-title">
+        <span>Sweeties Magazine</span>
+        <small>Issue 001</small>
+      </div>
+      <button class="icon-button" id="fullscreenButton" type="button" aria-label="Open fullscreen">⛶</button>
+    </header>
+
+    <section class="reader-shell">
+      <button class="heart-arrow heart-arrow-left" id="previousButton" type="button" aria-label="Previous page">♡</button>
+
+      <div class="page-stage" id="pageStage" tabindex="0" aria-live="polite">
+        <div class="page-card" id="pageCard">
+          <img id="pageImage" src="images/cover.png" alt="Sweeties Magazine cover" draggable="false">
+          <div class="page-shine" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <button class="heart-arrow heart-arrow-right" id="nextButton" type="button" aria-label="Next page">♡</button>
+    </section>
+
+    <section class="reader-controls" aria-label="Magazine controls">
+      <div class="page-meta">
+        <span id="pageLabel">Cover</span>
+        <span class="page-count" id="pageCount">1 / 11</span>
+      </div>
+      <input id="pageSlider" class="page-slider" type="range" min="0" max="10" value="0" aria-label="Jump to page">
+      <div class="page-dots" id="pageDots" aria-label="Page navigation"></div>
+      <p class="reader-hint">Use the heart arrows, swipe, or press the left and right arrow keys.</p>
+    </section>
+  </main>
+
+  <script src="magazine.js"></script>
+</body>
+</html>
