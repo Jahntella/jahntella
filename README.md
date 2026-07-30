@@ -1,47 +1,43 @@
-# Jahntella v7.0.1 — Sweet Era Restoration
+# Sweeties Magazine Flipbook
 
-This patch fixes the competing music-player engines and reconnects the new
-homepage Vault buttons to the preserved premium Sweet Vault flow.
+A standalone, responsive magazine reader for Sweeties Magazine Issue 001.
 
-## Included fixes
+## Install in the Jahntella repository
 
-- Fun Dipp candy-stick play/pause
-- Main player play/pause toggle
-- Current-time and duration synchronization
-- Progress seeking
-- Previous and next song
-- Fun Dipp and Pink Lips Remix controls
-- Vinyl animation tied to real playback
-- Premium pack launch button
-- Vault collection button
-- Build badge updated to 7.0.1
+1. Extract the ZIP.
+2. Copy the entire `sweeties-magazine` folder into the repository root.
+3. Commit and deploy.
+4. Open `/sweeties-magazine/` on the live site.
 
-## Apply on Windows
-
-1. Download or extract your `jahntella` repository.
-2. Copy this whole patch folder into the repository folder.
-3. Open Command Prompt or PowerShell in the patch folder.
-4. Run:
-
-   `python apply-v701.py ..`
-
-   Replace `..` with the repository path when needed.
-
-5. Upload/commit the modified `index.html` and the new `script-v701.js`.
-
-## Manual installation
-
-Copy `script-v701.js` into the repository root, then add this immediately after
-the existing `script-v700.js` line in `index.html`:
+To add a homepage link, place this wherever you want the magazine button:
 
 ```html
-<script src="script-v700.js"></script>
-<script src="script-v701.js"></script>
+<a href="sweeties-magazine/" class="sweeties-magazine-link">Read Sweeties Magazine ♡</a>
 ```
 
-Change the visible build badge to `BUILD 7.0.1`.
+Optional styling:
 
-## GitHub integration note
+```css
+.sweeties-magazine-link {
+  display: inline-flex;
+  padding: .9rem 1.25rem;
+  border: 1px solid #ff8bd2;
+  border-radius: 999px;
+  color: white;
+  background: #ff2fa7;
+  text-decoration: none;
+  font-weight: 800;
+  box-shadow: 0 0 18px rgba(255,47,167,.65);
+}
+```
 
-The connected GitHub app allowed repository inspection but returned HTTP 403
-for branch/file writes, so this release is packaged as a ready-to-apply patch.
+## Reader features
+
+- Heart-shaped previous and next controls
+- Smooth page-turn transition
+- Mobile swipe support
+- Keyboard arrows, Home, End, and Space
+- Page slider and page dots
+- Fullscreen mode
+- Responsive portrait-page presentation
+- No outside libraries or plugins
