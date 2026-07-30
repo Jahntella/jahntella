@@ -1,19 +1,24 @@
-JAHNTELLA WEBSITE V2
-====================
+SWEETVILLE EXPANSION PACK v1.0
 
-Upload all files and the assets folder to the root of your GitHub Pages repository.
+This ZIP adds a standalone Sweetville Explorer at https://jahntella.com/sweetville/
 
-IMPORTANT:
-1. Open config.js and replace the social and music URLs with the exact final links.
-2. The merch cart is an interactive preview. Connect the checkout button to Shopify,
-   Fourthwall, Stripe Payment Links or another storefront when products are ready.
-3. The Sweet List form currently gives an on-page success response. Connect it to
-   Mailchimp, ConvertKit, Beehiiv or Formspree for real email collection.
-4. Keep JahntellaFinal(1).png as the official Version 1.0 appearance reference.
+INCLUDED
+- Interactive Sweetville hub
+- Five live locations using the supplied Sweet Vault cards
+- Digital explorer passport
+- Local progress tracking
+- Hidden heart in every location
+- Secret “Welcome Home, Sweetie” ending
+- Responsive mobile layout
 
-Main files:
-- index.html
-- styles.css
-- script.js
-- config.js
-- assets/
+UPLOAD
+1. Extract this ZIP.
+2. Upload the included `sweetville` folder into the ROOT of the Jahntella/jahntella repository.
+3. Commit the upload.
+4. Visit https://jahntella.com/sweetville/
+
+IMPORTANT
+This ZIP does not overwrite the homepage.
+
+HOMEPAGE LINK
+Add this link to the homepage navigation or a button: sweetville/

@@ -1,0 +1,10 @@
+<!-- Add inside the homepage navigation -->
+<a href="sweetville/">Sweetville</a>
+
+<!-- Optional homepage feature card -->
+<section class="sweetville-home-entry reveal">
+  <p class="eyebrow">EXPLORE SWEETVILLE</p>
+  <h2>Every street has a story. <em>Every Sweetie belongs here.</em></h2>
+  <p>Visit locations, collect passport stamps, discover hidden hearts, and unlock the secret ending.</p>
+  <a class="primary-button" href="sweetville/">Enter Sweetville</a>
+</section>
