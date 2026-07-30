@@ -10,8 +10,8 @@
     { src: 'images/page-05.png', label: 'Page 5', alt: 'Inside the Studio' },
     { src: 'images/page-06.png', label: 'Page 6', alt: 'On Stage' },
     { src: 'images/page-07.png', label: 'Page 7', alt: 'Sweet Dreams' },
-    { src: 'images/page-08.png', label: 'Page 8', alt: 'Dear Sweeties' },
-    { src: 'images/page-09.png', label: 'Page 9', alt: 'Dear Sweeties continued' },
+    { src: 'images/page-08.png', label: 'Page 8', alt: 'Dear Sweeties letter' },
+    { src: 'images/page-09.png', label: 'Page 9', alt: 'Dear Sweeties community page' },
     { src: 'images/back-cover.png', label: 'Back Cover', alt: 'Sweeties Magazine back cover' }
   ];
 
