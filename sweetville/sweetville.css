@@ -838,3 +838,171 @@ dialog.mini-piano-modal::backdrop {
 @media (prefers-reduced-motion: reduce) {
   .live-district-effects * { animation: none !important; }
 }
+
+/* =========================================================
+   SWEETVILLE v4.1.0 — DISTRICT CARD VISUAL REPAIR
+   ========================================================= */
+
+.living-map-panel .living-map {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 18px !important;
+  padding: 26px !important;
+  align-items: start !important;
+}
+
+.living-map-panel .living-map > .world-location {
+  min-height: 0 !important;
+  height: auto !important;
+  border-radius: 22px !important;
+  overflow: hidden !important;
+  display: block !important;
+}
+
+.living-map-panel .living-map > .live-district-card {
+  min-height: 0 !important;
+  height: auto !important;
+  padding: 0 !important;
+  background: linear-gradient(180deg, rgba(27,0,31,.92), rgba(8,0,12,.98)) !important;
+}
+
+.live-district-visual {
+  width: 100% !important;
+  height: 190px !important;
+  aspect-ratio: auto !important;
+  display: block !important;
+  border-bottom: 1px solid rgba(255,104,194,.42) !important;
+}
+
+.live-district-visual img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 35% !important;
+}
+
+.live-lagoon .live-district-visual img {
+  object-position: center 44% !important;
+}
+
+.live-stage .live-district-visual img {
+  object-position: center 28% !important;
+}
+
+.live-carnival .live-district-visual img {
+  object-position: center 42% !important;
+}
+
+.live-candy .live-district-visual img {
+  object-position: center 42% !important;
+}
+
+.live-neon .live-district-visual img {
+  object-position: center 48% !important;
+}
+
+.live-district-copy {
+  padding: 15px 16px 17px !important;
+  gap: 3px !important;
+  min-height: 118px !important;
+  justify-content: flex-start !important;
+}
+
+.live-district-copy > span:first-child {
+  font-size: 1.55rem !important;
+  line-height: 1 !important;
+  margin-bottom: 6px !important;
+}
+
+.live-district-copy strong {
+  font-size: 1.08rem !important;
+  line-height: 1.2 !important;
+  font-weight: 800 !important;
+  color: #fff !important;
+  text-shadow: none !important;
+}
+
+.live-district-copy small {
+  margin-top: 4px !important;
+  font-size: .82rem !important;
+  line-height: 1.38 !important;
+  color: rgba(255,255,255,.72) !important;
+  text-shadow: none !important;
+}
+
+.live-district-effects {
+  clip-path: inset(0 round 0);
+}
+
+.live-wheel {
+  width: 28% !important;
+  right: 7% !important;
+  top: 9% !important;
+}
+
+.live-waterfall {
+  left: 45% !important;
+  width: 11% !important;
+  top: 4% !important;
+  height: 73% !important;
+}
+
+.live-spotlight {
+  width: 15% !important;
+}
+
+.live-confetti {
+  top: 34% !important;
+}
+
+.live-candy {
+  font-size: 12px !important;
+}
+
+.live-car {
+  height: 3px !important;
+}
+
+.living-map-panel .world-location:hover {
+  transform: translateY(-6px) scale(1.01) !important;
+  box-shadow: 0 18px 40px rgba(0,0,0,.42), 0 0 26px rgba(255,43,172,.27) !important;
+}
+
+.living-map-panel .locked-location {
+  min-height: 150px !important;
+  padding: 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+@media (max-width: 1180px) {
+  .living-map-panel .living-map {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 820px) {
+  .living-map-panel .living-map {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+    padding: 18px !important;
+  }
+
+  .live-district-visual {
+    height: 175px !important;
+  }
+}
+
+@media (max-width: 540px) {
+  .living-map-panel .living-map {
+    grid-template-columns: 1fr !important;
+  }
+
+  .live-district-visual {
+    height: 210px !important;
+  }
+
+  .live-district-copy {
+    min-height: 104px !important;
+  }
+}
