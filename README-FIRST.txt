@@ -1,36 +1,34 @@
-JAHNTELLA EXPERIENCE 1.0
-========================
-ARTIST HOMEPAGE + SWEETVILLE WORLD
+JAHNTELLA EXPERIENCE 1.0 — CORRECTED V6 WORLD
+===============================================
 
-THIS BUILD RESTORES THE ORIGINAL FULL V5 HOMEPAGE.
-It does not replace the artist site with a redesigned homepage.
+THIS IS THE CORRECTED DROP-IN BUILD.
 
-INCLUDED
-- Restored original Jahntella v5 homepage index.html
-- Restored original v5.1 recovery stylesheet
-- Music, Story, Citizen Registry, Sweet Vault, Downloads, Merch, Gallery, Creative Director, Connect, and full audio player preserved
-- Sweetville navigation link added
-- OPEN THE GATES / ENTER SWEETVILLE hero portal added
-- Sweetville World v7 preserved exactly as the current working world
-- Improved Sweetville portrait framing preserved
-- Sweetville motion effects, Mochi, Lagoon, Neon City, Stage, Cottage, piano, memories, and interactions preserved
+WHAT THIS PACKAGE DOES
+- Restores the full original Jahntella artist homepage.
+- Keeps the complete cinematic Sweetville V6 experience.
+- Preserves Mochi, Lagoon of Love, Neon City, Starlight Stage,
+  Jahntella's Cottage, playable piano, gallery, memories, mobile dock,
+  portrait framing fixes, and all V6 interactions.
+- Adds only subtle animation layers: drifting particles, shimmer,
+  gentle scene motion, neon pulses, and environmental life.
+- Connects the homepage to Sweetville with ENTER SWEETVILLE links.
+
+IMPORTANT
+This package does NOT use the stripped replacement world.
+Sweetville remains based on the latest V6 cinematic build.
 
 UPLOAD
-1. Extract the ZIP.
-2. Upload ALL included files and folders into the ROOT of the GitHub repository.
-3. Replace matching files while preserving folder structure.
-4. Do not delete any other existing repository files or assets.
+1. Extract this ZIP.
+2. Upload all included files and folders to the repository root.
+3. Replace matching files.
+4. Do not delete unrelated existing repository files.
 5. Commit with:
-   Jahntella Experience 1.0 — Restore Artist, Connect the World
-6. Wait for GitHub Pages to publish.
+   Jahntella Experience 1.0 — Restore Artist + Animated V6 Sweetville
+6. Test:
+   https://jahntella.com/?v=experience-1.0
+   https://jahntella.com/sweetville/?v=6.1
 7. Hard refresh with Ctrl + F5.
-
-TEST
-https://jahntella.com/?v=experience-1.0
-https://jahntella.com/sweetville/?v=7.0
 
 VERSIONING FROM HERE
 - Artist homepage: Experience 1.x
-- Sweetville world: World 7.x
-
-Updating Sweetville should not replace the root homepage again.
+- Sweetville world: V6.1 and later
