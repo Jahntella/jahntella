@@ -1,60 +1,122 @@
-*{box-sizing:border-box}body{margin:0;font-family:DM Sans,sans-serif;color:#fff;background:linear-gradient(#120015,#2a0031);min-height:100vh}a{color:inherit;text-decoration:none}button,input{font:inherit}.sv-header{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:1rem 3vw;background:#080008dd;border-bottom:1px solid #ff5cb688;backdrop-filter:blur(18px)}.sv-brand{font-family:Sacramento,cursive;font-size:2.2rem}.sv-brand span,.eyebrow{color:#ff72bd}.sv-header nav{display:flex;gap:.8rem;font-size:.75rem;font-weight:800;flex-wrap:wrap}.sv-menu-button{display:none}.hero{min-height:90vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:2rem;padding:6rem 5vw}.hero h1,.panel h2{font-family:Playfair Display,serif;font-size:clamp(3rem,7vw,6rem);line-height:.95;margin:.3rem 0}.hero em,.panel em{font-family:Sacramento,cursive;color:#ff71bd;font-weight:400}.hero p{font-size:1.2rem;line-height:1.7}.actions{display:flex;gap:1rem;flex-wrap:wrap;margin:2rem 0}.btn{border:1px solid #ff64b888;border-radius:999px;padding:.9rem 1.3rem;color:#fff;font-weight:800;cursor:pointer}.primary{background:linear-gradient(135deg,#ff2e9c,#9e22ff)}.secondary{background:#ffffff0d}.status{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem}.status div,.passport-stats div{padding:1rem;border:1px solid #ff65b855;border-radius:16px;background:#0c000f99}.status small,.status strong,.passport-stats small,.passport-stats strong{display:block}.hero-orb{width:min(100%,500px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;text-align:center;background:radial-gradient(circle,#ff299d55,transparent 65%);animation:pulse 4s infinite}.hero-orb span{font-size:5rem}.hero-orb strong{font-family:Playfair Display,serif;font-size:3rem}.panel{margin:0 3vw 3rem;padding:4rem;border:1px solid #ff5cb677;border-radius:28px;background:#160017dd;box-shadow:0 20px 60px #0004}.house,.quest-grid,.npc-grid,.shop-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}.house button,.npc-grid button,.shop-grid article,.quest-card{min-height:180px;padding:1.3rem;border:1px solid #ff5cb666;border-radius:20px;background:#0b000d;color:#fff;text-align:center;cursor:pointer}.house button:first-child{grid-column:span 2}.house strong,.house small,.npc-grid strong,.npc-grid small,.shop-grid strong,.shop-grid small{display:block}.house-display,.dialogue,.archive{margin-top:1.5rem;padding:1.4rem;border:1px solid #ff5cb666;border-radius:18px;background:#0d000f}.quest-card.done{box-shadow:0 0 24px #ff58ae88}.quest-card button{margin-top:1rem}.passport{display:grid;grid-template-columns:.8fr 1.2fr;gap:2rem}.passport-cover{min-height:380px;display:grid;place-items:center;text-align:center;border:2px solid #ff98cc;border-radius:24px;background:linear-gradient(145deg,#ff65b3,#8f1f9a 55%,#32002d)}.passport-cover span{font-size:5rem}.passport-cover strong{font-family:Playfair Display,serif;font-size:2.4rem}.passport-info label{display:grid;gap:.5rem}.passport-info input{padding:1rem;border-radius:12px;border:1px solid #ff5cb677;background:#0a000c;color:#fff}.passport-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem;margin-top:1.5rem}.npc-grid{grid-template-columns:repeat(5,1fr)}.shop-grid{grid-template-columns:repeat(5,1fr)}.castle{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center}.throne{font-size:8rem}.weather-layer{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}.weather-layer span{position:absolute;top:-10%;animation:fall linear infinite}.toast{position:fixed;right:1rem;bottom:1rem;z-index:60;padding:1rem 1.2rem;border:1px solid #ff5cb688;border-radius:16px;background:#120013;transform:translateY(150%);transition:.3s}.toast.show{transform:none}dialog{width:min(760px,calc(100% - 2rem));border:1px solid #ff5cb688;border-radius:24px;background:#120013;color:#fff;padding:2rem}dialog button{float:right;border:0;background:none;color:#fff;font-size:2rem}@keyframes pulse{50%{transform:scale(1.04)}}@keyframes fall{to{transform:translateY(120vh) rotate(180deg)}}@media(max-width:900px){.hero,.passport{grid-template-columns:1fr}.status{grid-template-columns:repeat(2,1fr)}.house,.quest-grid,.npc-grid,.shop-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:650px){.sv-menu-button{display:block}.sv-header nav{display:none;position:absolute;top:100%;left:1rem;right:1rem;flex-direction:column;background:#100010;padding:1rem}.sv-header nav.open{display:flex}.panel{padding:1.4rem}.status,.house,.quest-grid,.npc-grid,.shop-grid,.passport-stats{grid-template-columns:1fr}.house button:first-child{grid-column:auto}.castle{grid-template-columns:1fr;text-align:center}}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#120015">
+  <meta name="description" content="The official home of Jahntella and Sweetville — music, stories, visuals, and an interactive world.">
+  <title>Jahntella — The World of Sweet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=7.0">
+</head>
+<body>
+  <div class="site-sparkles" id="siteSparkles"></div>
 
-/* ===== BUILD v5.1 — INTERACTIVE HOUSE + VISUAL WORLD ===== */
-.visual-house-display{display:grid;grid-template-columns:minmax(220px,.75fr) 1.25fr;align-items:center;gap:2rem;overflow:hidden}
-.house-feature-image{min-height:310px;border-radius:18px;overflow:hidden;box-shadow:0 18px 45px #0007}
-.house-feature-image img{width:100%;height:100%;min-height:310px;object-fit:cover;display:block}
-.visual-house-display h3,.piano-stage h3{font-family:Playfair Display,serif;font-size:clamp(2rem,4vw,3.8rem);margin:.3rem 0}
-.visual-house-display em,.piano-stage em{font-family:Sacramento,cursive;color:#ff71bd;font-weight:400}
+  <header class="main-header">
+    <a class="main-logo" href="#home">Jahntella<span>♡</span></a>
+    <button class="main-menu" id="mainMenu">☰</button>
+    <nav id="mainNav">
+      <a href="#home">Home</a>
+      <a href="#music">Music</a>
+      <a href="#story">Story</a>
+      <a href="#gallery">Visuals</a>
+      <a href="#registry">Registry</a>
+      <a class="world-link" href="sweetville/">Enter Sweetville</a>
+    </nav>
+  </header>
 
-.piano-stage{display:grid;grid-template-columns:.75fr 1.25fr;gap:2rem;align-items:center;margin-top:2rem;padding:2rem;border:1px solid #ff65b877;border-radius:24px;background:radial-gradient(circle at 75% 20%,#ff4ca733,transparent 30%),#09000c}
-.piano-controls{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1rem}
-.now-playing{min-height:1.5rem;color:#ff9bcf;font-weight:800}
-.piano-shell{padding:1.3rem;border-radius:20px;background:linear-gradient(145deg,#290020,#090009);box-shadow:0 24px 50px #0008,inset 0 0 30px #ff4ca722}
-.piano-brand{text-align:center;margin-bottom:1rem;font-family:Sacramento,cursive;font-size:2rem}
-.piano-brand span{color:#ff5eb2}
-.piano-keys{position:relative;display:flex;height:240px;user-select:none;touch-action:manipulation}
-.piano-key{position:relative;border:1px solid #2b1025;cursor:pointer;transition:.08s}
-.piano-key.white{flex:1;background:linear-gradient(#fff,#eadde6);border-radius:0 0 8px 8px;z-index:1}
-.piano-key.black{position:absolute;top:0;width:7.5%;height:62%;z-index:3;background:linear-gradient(#2c1529,#060006);border-radius:0 0 7px 7px;box-shadow:0 8px 10px #0007}
-.piano-key.active,.piano-key:active{transform:translateY(5px);filter:brightness(1.2)}
-.piano-key.white.active{background:linear-gradient(#ffd1e8,#ff8fc7)}
-.piano-key.black.active{background:linear-gradient(#ff3da8,#551044)}
-.piano-key span{position:absolute;left:0;right:0;bottom:.6rem;text-align:center;color:#7a315c;font-size:.7rem;font-weight:800}
-.piano-key.black span{color:#fff;bottom:.35rem}
+  <main>
+    <section class="main-hero" id="home">
+      <img class="main-hero-bg" src="sweetville/assets/v6-car-selfie.png" alt="Jahntella in Sweetville">
+      <div class="main-hero-overlay"></div>
+      <div class="main-hero-copy">
+        <p class="eyebrow">WELCOME TO THE WORLD OF SWEET</p>
+        <h1>Jahntella<span>♡</span></h1>
+        <p class="hero-tagline">Sweet music. Big visuals. A world you can actually enter.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="sweetville/">Enter Sweetville</a>
+          <a class="button ghost" href="#music">Listen Now</a>
+        </div>
+      </div>
+      <div class="hero-world-card">
+        <small>THE INTERACTIVE WORLD</small>
+        <strong>SWEETVILLE</strong>
+        <p>Follow Mochi through the Lagoon of Love, Neon City, Starlight Stage, Jahntella's Cottage, and living memories.</p>
+        <a href="sweetville/">OPEN THE GATES →</a>
+      </div>
+    </section>
 
-.npc-grid button{position:relative;overflow:hidden;min-height:260px;padding-top:8rem;background-size:cover;background-position:center}
-.npc-grid button::before{content:"";position:absolute;inset:0;background:linear-gradient(transparent 15%,#090009dd 68%);z-index:0}
-.npc-grid button>*{position:relative;z-index:1}
-.npc-photo{display:block;font-size:3.2rem;filter:drop-shadow(0 0 15px #fff8)}
-.npc-poppy{background-image:radial-gradient(circle at 50% 25%,#ffb5d9aa,transparent 30%),url("assets/sv-009-pink-cafe.png")!important}
-.npc-rosie{background-image:url("assets/sv-009-pink-cafe.png")!important}
-.npc-melody{background-image:url("assets/sv-007-melody-studio.png")!important}
-.npc-donny{background-image:url("assets/sv-006-donut-district.png")!important}
-.npc-sprinkle{background-image:url("assets/sv-005-neon-sweetheart.png")!important}
+    <section class="main-section world-bridge">
+      <div>
+        <p class="eyebrow">ONE CONNECTED UNIVERSE</p>
+        <h2>The music lives inside the <em>world.</em></h2>
+        <p>Jahntella.com is the official artist home. Sweetville is the interactive universe where the songs, visuals, characters, memories, and future stories come alive.</p>
+      </div>
+      <div class="bridge-grid">
+        <a href="sweetville/#lagoon"><img src="sweetville/assets/v6-lagoon.png" alt="Lagoon of Love"><span>Lagoon of Love</span></a>
+        <a href="sweetville/#city"><img src="sweetville/assets/v6-rooftop-stage.png" alt="Neon City"><span>Neon City</span></a>
+        <a href="sweetville/#stage"><img src="sweetville/assets/v6-stage-reach.png" alt="Starlight Stage"><span>Starlight Stage</span></a>
+      </div>
+    </section>
 
-.shop-grid article{position:relative;overflow:hidden;min-height:280px;padding-top:10rem;background-size:cover;background-position:center}
-.shop-grid article::before{content:"";position:absolute;inset:0;background:linear-gradient(transparent,#090009e8)}
-.shop-grid article>*{position:relative;z-index:1}
-.shop-grid article span{display:block;font-size:2.8rem}
-.shop-candy{background-image:url("assets/sv-006-donut-district.png")!important}
-.shop-fashion{background-image:url("../assets/pink-lips-remix.png")!important}
-.shop-record{background-image:url("../assets/fun-dipp-cover.png")!important}
-.shop-cafe{background-image:url("assets/sv-009-pink-cafe.png")!important}
-.shop-trophy{background-image:url("assets/sv-007-melody-studio.png")!important}
+    <section class="main-section music-section" id="music">
+      <div class="section-heading">
+        <p class="eyebrow">MUSIC</p>
+        <h2>Press play on <em>something sweet.</em></h2>
+      </div>
+      <div class="music-grid">
+        <article>
+          <img src="assets/fun-dipp-cover.png" alt="Fun Dipp cover">
+          <div><small>DEBUT SINGLE</small><h3>Fun Dipp</h3><p>Bright pop energy, playful hooks, and candy-coated confidence.</p></div>
+        </article>
+        <article>
+          <img src="assets/pink-lips-remix.png" alt="Pink Lips Remix cover">
+          <div><small>REMIX</small><h3>Pink Lips Remix</h3><p>Glossy late-night sparkle and a bigger neon pulse.</p></div>
+        </article>
+      </div>
+    </section>
 
-.castle-visual{grid-template-columns:minmax(250px,.85fr) 1.15fr}
-.castle-image{position:relative;min-height:360px;border-radius:22px;overflow:hidden}
-.castle-image img{width:100%;height:100%;min-height:360px;object-fit:cover;filter:saturate(.8) brightness(.7)}
-.castle-image::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent,#160016aa)}
-.castle-image .throne{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);font-size:7rem;filter:drop-shadow(0 0 24px #ffd66d)}
+    <section class="main-section story-section" id="story">
+      <div class="story-copy">
+        <p class="eyebrow">THE STORY</p>
+        <h2>An artist at the center of an <em>original entertainment world.</em></h2>
+        <p>Jahntella blends pop music, cinematic visual storytelling, fashion, collectibles, and interactive experiences into one growing universe designed to deepen with every release.</p>
+        <a class="button primary" href="sweetville/story.html">Read Sweetville Story Mode</a>
+      </div>
+      <img src="sweetville/assets/v6-wallpaper-triptych.png" alt="Jahntella visual collection">
+    </section>
 
-@media(max-width:900px){
- .visual-house-display,.piano-stage,.castle-visual{grid-template-columns:1fr}
- .piano-keys{height:200px}
-}
-@media(max-width:600px){
- .piano-stage{padding:1rem}
- .piano-keys{height:165px}
- .piano-key span{font-size:.55rem}
-}
+    <section class="main-section visual-section" id="gallery">
+      <div class="section-heading centered">
+        <p class="eyebrow">VISUAL WORLD</p>
+        <h2>Scenes from <em>Sweetville.</em></h2>
+      </div>
+      <div class="visual-grid">
+        <img src="sweetville/assets/v6-car-arrival.png" alt="Jahntella arriving in Sweetville">
+        <img src="sweetville/assets/v6-lagoon.png" alt="Jahntella at Lagoon of Love">
+        <img src="sweetville/assets/v6-stage-bow.png" alt="Jahntella thanking the crowd">
+        <img src="sweetville/assets/v6-rooftop-stage.png" alt="Jahntella performing in Neon City">
+      </div>
+    </section>
+
+    <section class="main-section registry-section" id="registry">
+      <div>
+        <p class="eyebrow">SWEETVILLE CITIZEN REGISTRY</p>
+        <h2>Claim your place in the <em>world.</em></h2>
+        <p>Join the Sweetville Citizen Registry and become part of Jahntella's growing universe.</p>
+      </div>
+      <a class="button primary" href="sweetville/#memories">Visit Sweetville</a>
+    </section>
+  </main>
+
+  <footer>
+    <strong>Jahntella<span>♡</span></strong>
+    <p>Music • Stories • Sweetville</p>
+    <a href="sweetville/">Enter the World</a>
+  </footer>
+
+  <script src="script-v7.js?v=7.0"></script>
+</body>
+</html>
