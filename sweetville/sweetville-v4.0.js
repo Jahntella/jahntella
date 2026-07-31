@@ -5,7 +5,7 @@
   const locations = [
     {
       slug:"neon-sweetheart", id:"SV-005", title:"Neon Sweetheart",
-      image:"assets/sv-005-neon-sweetheart.png",
+      image:"assets/sv-005-neon-sweetheart.webp",
       ambience:"Neon reflections • soft synth pulse • floating hearts",
       story:"At the center of Sweetville nightlife, Neon Sweetheart is where confidence meets the dancefloor.",
       quote:"Neon lights. Sweet nights. A heart that shines brightest after dark.",
@@ -18,7 +18,7 @@
     },
     {
       slug:"donut-district", id:"SV-006", title:"Donut District",
-      image:"assets/sv-006-donut-district.png",
+      image:"assets/sv-006-donut-district.webp",
       ambience:"Passing lights • candy city glow • late-night cruising",
       story:"Donut District is Sweetville's candy-colored cruising lane, where every turn feels playful.",
       quote:"Leave a trail of sprinkles and make every ride an unforgettable adventure.",
@@ -31,7 +31,7 @@
     },
     {
       slug:"melody-studio", id:"SV-007", title:"Melody Studio",
-      image:"assets/sv-007-melody-studio.png",
+      image:"assets/sv-007-melody-studio.webp",
       ambience:"Piano echoes • warm studio lights • drifting music notes",
       story:"This is where Jahntella turns tiny ideas into songs.",
       quote:"Every song starts with a tiny idea and a heart brave enough to sing it.",
@@ -44,7 +44,7 @@
     },
     {
       slug:"sparkle-lake", id:"SV-008", title:"Sparkle Lake",
-      image:"assets/sv-008-sparkle-lake.png",
+      image:"assets/sv-008-sparkle-lake.webp",
       ambience:"Water ripples • fireflies • moonlit wind",
       story:"Sparkle Lake reflects more than stars.",
       quote:"The stars always seem brighter when you remember that you are your own fairytale.",
@@ -57,7 +57,7 @@
     },
     {
       slug:"pink-cafe", id:"SV-009", title:"Pink Café",
-      image:"assets/sv-009-pink-cafe.png",
+      image:"assets/sv-009-pink-cafe.webp",
       ambience:"Coffee steam • flower petals • morning birds",
       story:"Pink Café is Jahntella's favorite place to slow down and begin again.",
       quote:"Slow down, make yourself a priority, and start the day with gratitude.",
