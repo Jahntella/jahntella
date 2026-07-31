@@ -1,0 +1,41 @@
+
+/* ===== EXPANSION 3 — ENTER SWEETVILLE HERO CTA ===== */
+.hero-actions .sweetville-entry-button{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,135,207,.9);
+  background:linear-gradient(135deg,rgba(255,53,164,.96),rgba(143,28,255,.96));
+  box-shadow:0 0 32px rgba(255,50,163,.42),inset 0 0 18px rgba(255,255,255,.08);
+}
+.hero-actions .sweetville-entry-button::before{
+  content:"";
+  position:absolute;
+  inset:-40% auto -40% -35%;
+  width:32%;
+  transform:rotate(18deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.65),transparent);
+  animation:sweetville-cta-shine 4.8s ease-in-out infinite;
+}
+.hero-actions .sweetville-entry-button span{position:relative;z-index:1}
+.hero-actions .sweetville-entry-button small{
+  position:relative;
+  z-index:1;
+  display:block;
+  margin-left:.45rem;
+  font-size:.58rem;
+  letter-spacing:.16em;
+  opacity:.84;
+}
+@keyframes sweetville-cta-shine{
+  0%,68%{transform:translateX(0) rotate(18deg);opacity:0}
+  72%{opacity:1}
+  100%{transform:translateX(520px) rotate(18deg);opacity:0}
+}
+@media(max-width:680px){
+  .hero-actions .sweetville-entry-button{
+    width:min(100%,260px);
+    flex-direction:column;
+    gap:.1rem;
+  }
+  .hero-actions .sweetville-entry-button small{margin-left:0}
+}
