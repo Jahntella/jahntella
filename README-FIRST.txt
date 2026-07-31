@@ -1,34 +1,16 @@
-JAHNTELLA EXPERIENCE 1.0 — CORRECTED V6 WORLD
-===============================================
+JAHNTELLA FULL RECOVERY BUILD
 
-THIS IS THE CORRECTED DROP-IN BUILD.
+This package restores:
+1. The full Jahntella artist homepage.
+2. The click-through Sweeties Magazine.
+3. Sweetville Build v4.0 — The World Comes Alive.
 
-WHAT THIS PACKAGE DOES
-- Restores the full original Jahntella artist homepage.
-- Keeps the complete cinematic Sweetville V6 experience.
-- Preserves Mochi, Lagoon of Love, Neon City, Starlight Stage,
-  Jahntella's Cottage, playable piano, gallery, memories, mobile dock,
-  portrait framing fixes, and all V6 interactions.
-- Adds only subtle animation layers: drifting particles, shimmer,
-  gentle scene motion, neon pulses, and environmental life.
-- Connects the homepage to Sweetville with ENTER SWEETVILLE links.
+Upload the CONTENTS of this folder into the root of the GitHub repository.
+Replace matching files. Do not delete unrelated existing assets, audio, video, posters, thumbnails, branding, or originals folders.
 
-IMPORTANT
-This package does NOT use the stripped replacement world.
-Sweetville remains based on the latest V6 cinematic build.
+Main homepage: /index.html
+Magazine: /sweeties-magazine/
+Interactive Sweetville: /sweetville/
 
-UPLOAD
-1. Extract this ZIP.
-2. Upload all included files and folders to the repository root.
-3. Replace matching files.
-4. Do not delete unrelated existing repository files.
-5. Commit with:
-   Jahntella Experience 1.0 — Restore Artist + Animated V6 Sweetville
-6. Test:
-   https://jahntella.com/?v=experience-1.0
-   https://jahntella.com/sweetville/?v=6.1
-7. Hard refresh with Ctrl + F5.
-
-VERSIONING FROM HERE
-- Artist homepage: Experience 1.x
-- Sweetville world: V6.1 and later
+Suggested commit:
+Jahntella Full Recovery — Restore Magazine + Interactive Sweetville

@@ -1,179 +1,327 @@
 <!doctype html>
-<html lang="en" data-scene="arrival">
+<html lang="en" data-phase="night">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#17000f">
-  <meta name="description" content="Sweetville Build v6.1 — a cinematic interactive world by Jahntella.">
-  <title>Sweetville Build v6.1 — Welcome to the World</title>
+  <meta name="theme-color" content="#120015">
+  <meta name="description" content="Enter Sweetville Build v4.0: an interactive living world with districts, music, hidden letters, collectibles, achievements, and a room that grows with your journey.">
+  <title>Sweetville Build v4.0 — The World Comes Alive</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="sweetville-v6.1.css?v=6.1">
+  <link rel="stylesheet" href="sweetville.css?v=4.0">
 </head>
 <body>
-  <div class="cinema-grain" aria-hidden="true"></div><div class="motion-sky" id="motionSky" aria-hidden="true"></div>
-  <div class="fx-layer" id="fxLayer" aria-hidden="true"></div>
+  <div class="gate-screen" id="gateScreen">
+    <div class="gate-copy">
+      <p>THE WORLD OF SWEET</p>
+      <h1>SWEETVILLE</h1>
+      <span>♡</span>
+      <button id="openGates">OPEN THE GATES</button>
+      <small>Your journey will continue where you left off.</small>
+    </div>
+    <div class="gate gate-left"></div>
+    <div class="gate gate-right"></div>
+  </div>
 
-  <header class="world-header">
-    <a class="brand" href="../index.html">Jahntella<span>♡</span></a>
-    <button class="menu-button" id="menuButton" aria-label="Open navigation">☰</button>
-    <nav id="worldNav">
-      <button data-go="arrival">Gates</button>
-      <button data-go="lagoon">Lagoon</button>
-      <button data-go="city">Neon City</button>
-      <button data-go="stage">Starlight Stage</button>
-      <button data-go="house">Cottage</button>
-      <button data-go="memories">Memories</button>
+  <div class="living-sky">
+    <div class="sun"></div>
+    <div class="moon"></div>
+    <div class="cloud cloud-one"></div>
+    <div class="cloud cloud-two"></div>
+    <div class="cloud cloud-three"></div>
+    <div class="shooting-star"></div>
+    <div class="sky-stars" id="skyStars"></div>
+  </div>
+
+  <div class="floating-world" id="floatingWorld"></div>
+  <div class="ambient-life" id="ambientLife" aria-hidden="true"></div>
+
+  <header class="sv-header">
+    <a class="sv-brand" href="../index.html">Jahntella<span>♡</span></a>
+    <button class="sv-menu-button" id="menuButton" aria-label="Open Sweetville menu" aria-expanded="false">☰</button>
+    <nav id="svNav">
+      <a href="#world">World</a>
+      <a href="#livingMap">Map</a>
+      <a href="#gift">Daily Gift</a>
+      <a href="#letters">Letters</a>
+      <a href="#collection">Collection</a>
+      <a href="#bedroom">My Room</a>
+      <a href="#achievements">Achievements</a>
       <a href="story.html">Story Mode</a>
+      <a href="#passport">Passport</a>
+      <a href="../index.html#sweet-vault">Sweet Vault</a>
     </nav>
   </header>
 
-  <main class="world-shell">
-    <section class="scene scene-active" id="arrival" data-scene="arrival">
-      <img class="scene-bg" src="assets/v6-car-arrival.png" alt="Jahntella arriving in Sweetville in a pink convertible">
-      <div class="scene-shade"></div>
-      <div class="scene-copy left">
-        <p class="eyebrow">SWEETVILLE BUILD v6.1</p>
-        <h1>Welcome to the <em>world.</em></h1>
-        <p>Follow Mochi through a cinematic Sweetville built from Jahntella's music, memories, and neon dreams.</p>
-        <div class="scene-actions">
-          <button class="pill primary" id="followMochi">🐶 Follow Mochi</button>
-          <button class="pill ghost" data-go="memories">Explore the Visual World</button>
+  <main>
+    <section class="sv-hero" id="world">
+      <div class="sv-hero-copy">
+        <p class="sv-eyebrow">SWEETVILLE BUILD v4.0</p>
+        <h1>The world comes <em>alive.</em></h1>
+        <p class="sv-lede">Explore an interactive city where every district has its own mood, music, hidden letter, collectible, and little moment from Jahntella.</p>
+        <div class="sv-actions">
+          <a class="sv-button primary" href="#livingMap">Explore the World Map</a>
+          <a class="sv-button secondary" href="#bedroom">Visit My Sweetie Room</a>
+        </div>
+        <div class="world-status">
+          <div><small>WORLD TIME</small><strong id="worldTime">--:--</strong></div>
+          <div><small>SKY</small><strong id="worldPhase">Night</strong></div>
+          <div><small>EXPLORER RANK</small><strong id="rankName">Visitor</strong></div>
+          <div><small>WORLD SOUND</small><strong id="soundStatus">Muted</strong></div>
         </div>
       </div>
-      <button class="mochi-guide" id="mochiGuide" aria-label="Follow Mochi">
-        <span class="mochi-body">🐶</span>
-        <small>MOCHI</small>
-      </button>
-      <button class="spark-trigger" data-fx="fireworks" aria-label="Launch fireworks">✦</button>
+
+      <div class="living-orbit">
+        <div class="orbit-world">
+          <span class="orbit-heart">♡</span>
+          <strong>SWEETVILLE</strong>
+          <small>ALWAYS GROWING • ALWAYS GLOWING</small>
+        </div>
+        <div class="jahntella-message" id="jahntellaMessage">
+          <span>💋</span>
+          <p>“Welcome home, Sweetie.”</p>
+        </div>
+        <button class="sound-toggle" id="soundToggle" aria-pressed="false">🔇 Turn World Sound On</button>
+      </div>
     </section>
 
-    <section class="scene" id="lagoon" data-scene="lagoon">
-      <img class="scene-bg" src="assets/v6-lagoon.png" alt="Jahntella at Sweetville Lagoon of Love">
-      <div class="scene-shade"></div>
-      <div class="scene-copy right">
-        <p class="eyebrow">LAGOON OF LOVE</p>
-        <h2>A quiet place to <em>glow.</em></h2>
-        <p>Tap the water to make ripples, release floating hearts, and let Mochi splash along the shore.</p>
-        <div class="scene-actions">
-          <button class="pill primary" id="lagoonRipple">Create a Ripple</button>
-          <button class="pill ghost" id="lagoonHearts">Release Hearts</button>
-        </div>
+    <section class="sv-panel living-map-panel" id="livingMap">
+      <div class="sv-section-heading">
+        <p class="sv-eyebrow">THE INTERACTIVE WORLD MAP</p>
+        <h2>Choose where Sweetville takes you <em>next.</em></h2>
+        <p>Each open district changes the atmosphere and unlocks one hidden letter, one collectible, and passport progress.</p>
       </div>
-      <div class="lagoon-water" id="lagoonWater"></div>
-      <button class="mochi-guide lagoon-mochi" data-mochi="lagoon"><span>🐶</span><small>SPLASH!</small></button>
+
+      <div class="living-map">
+        <div class="map-river"></div>
+        <div class="map-road road-one"></div>
+        <div class="map-road road-two"></div>
+
+        <button class="world-location location-cafe" data-location="pink-cafe">
+          <span>☕</span><strong>Pink Café</strong><small>Morning glow • gratitude</small>
+        </button>
+        <button class="world-location location-studio" data-location="melody-studio">
+          <span>🎵</span><strong>Melody Studio</strong><small>Warm lights • piano echoes</small>
+        </button>
+        <button class="world-location location-donut" data-location="donut-district">
+          <span>🍩</span><strong>Donut District</strong><small>Neon roads • candy city</small>
+        </button>
+        <button class="world-location location-lake" data-location="sparkle-lake">
+          <span>✨</span><strong>Sparkle Lake</strong><small>Fireflies • moonlit water</small>
+        </button>
+        <button class="world-location location-heart" data-location="neon-sweetheart">
+          <span>💖</span><strong>Neon Sweetheart</strong><small>Heart glow • synth nights</small>
+        </button>
+
+        <div class="world-location locked-location location-castle">
+          <span>🏰</span><strong>Sweetville Castle</strong><small>Lights are beginning to glow…</small>
+        </div>
+        <div class="world-location locked-location location-house">
+          <span>🏡</span><strong>Jahntella's House</strong><small>The door is still locked.</small>
+        </div>
+        <div class="world-location locked-location location-stage">
+          <span>🎤</span><strong>Neon Stage</strong><small>Future music event</small>
+        </div>
+
+        <span class="map-butterfly butterfly-one">🦋</span>
+        <span class="map-butterfly butterfly-two">🦋</span>
+        <span class="map-cat">🐈</span>
+        <span class="map-balloon balloon-one">🎈</span>
+        <span class="map-balloon balloon-two">🎈</span>
+      </div>
     </section>
 
-    <section class="scene" id="city" data-scene="city">
-      <img class="scene-bg" src="assets/v6-rooftop-stage.png" alt="Jahntella performing above Sweetville City District">
-      <div class="scene-shade"></div>
-      <div class="scene-copy left">
-        <p class="eyebrow">NEON CITY</p>
-        <h2>Sweet music. Big lights. <em>One city.</em></h2>
-        <p>Activate the skyline, light the billboards, and watch Sweetville respond.</p>
-        <div class="scene-actions">
-          <button class="pill primary" id="cityLights">Light Up the City</button>
-          <button class="pill ghost" id="cityConfetti">Drop Confetti</button>
-        </div>
+    <section class="sv-panel daily-gift-panel" id="gift">
+      <div>
+        <p class="sv-eyebrow">ONE SURPRISE EVERY DAY</p>
+        <h2>Today's <em>Sweetville Gift.</em></h2>
+        <p>Come back each day to reveal a message, collectible prompt, or little piece of the world.</p>
       </div>
-      <div class="billboard billboard-one">SWEETVILLE</div>
-      <div class="billboard billboard-two">GOOD VIBES</div>
-      <div class="billboard billboard-three">JAHNTELLA ♡</div>
+      <div class="gift-box-wrap">
+        <button class="gift-box" id="giftBox">
+          <span class="gift-lid"></span><span class="gift-body"></span><span class="gift-ribbon"></span><b>♡</b>
+        </button>
+        <p id="giftStatus">Tap the gift to open today's surprise.</p>
+      </div>
+      <div class="gift-reveal" id="giftReveal" hidden>
+        <span id="giftIcon">💌</span>
+        <div><small>TODAY'S GIFT</small><h3 id="giftTitle"></h3><p id="giftText"></p></div>
+      </div>
     </section>
 
-    <section class="scene" id="stage" data-scene="stage">
-      <img class="scene-bg stage-bg" id="stageImage" src="assets/v6-stage-reach.png" alt="Jahntella performing at Starlight Stage">
-      <div class="scene-shade"></div>
-      <div class="scene-copy right">
-        <p class="eyebrow">STARLIGHT STAGE</p>
-        <h2>The crowd is <em>ready.</em></h2>
-        <p>Launch concert mode with moving spotlights, crowd flashes, fireworks, and three live-stage moments.</p>
-        <div class="scene-actions">
-          <button class="pill primary" id="concertMode">Start Concert Mode</button>
-          <button class="pill ghost" id="nextStageMoment">Next Stage Moment</button>
-        </div>
+    <section class="sv-panel diary-panel" id="diary">
+      <div class="diary-cover"><span>J</span><strong>PINK DIARY</strong><small>PRIVATE NOTES FROM SWEETVILLE</small><i>♡</i></div>
+      <div class="diary-page">
+        <p class="sv-eyebrow">LATEST ENTRY</p>
+        <time id="diaryDate"></time>
+        <h2>Dear <em>Sweetie...</em></h2>
+        <p id="diaryEntry"></p>
+        <p class="diary-signoff">Stay Sweet,<br><strong>Jahntella 💋</strong></p>
+        <button class="sv-button secondary" id="nextDiary">Read Another Entry</button>
       </div>
-      <div class="spotlight spotlight-a"></div>
-      <div class="spotlight spotlight-b"></div>
-      <div class="spotlight spotlight-c"></div>
-      <div class="crowd-flashes" id="crowdFlashes"></div>
     </section>
 
-    <section class="scene cottage-scene" id="house" data-scene="house">
-      <div class="cottage-layout">
-        <div class="cottage-copy">
-          <p class="eyebrow">JAHNTELLA'S COTTAGE</p>
-          <h2>Come inside and make some <em>music.</em></h2>
-          <p>The pink piano is fully playable through your speakers. Click the keys or use your keyboard.</p>
-          <div class="cottage-art">
-            <img src="assets/v6-wallpaper-triptych.png" alt="Jahntella Sweetville visual memories">
-          </div>
-        </div>
-        <div class="piano-room">
-          <div class="piano-top">
-            <span>Jahntella ♡</span>
-            <small>Sweetville Baby Grand</small>
-          </div>
-          <div class="piano-keys" id="pianoKeys"></div>
-          <div class="piano-controls">
-            <button class="pill primary" id="pianoDemo">▶ Play Sweetville Theme</button>
-            <button class="pill ghost" id="pianoSustain">Sustain: Off</button>
-          </div>
-          <p id="nowPlaying">Ready to play.</p>
+    <section class="sv-panel letters-panel" id="letters">
+      <div class="sv-section-heading">
+        <p class="sv-eyebrow">HIDDEN LETTERS</p>
+        <h2>Messages are waiting around the <em>world.</em></h2>
+        <p>Find the envelope inside each open district. Letters are saved to your Pink Mailbox.</p>
+      </div>
+      <div class="mailbox-summary">
+        <div class="pink-mailbox">💌</div>
+        <div>
+          <strong><span id="letterCount">0</span> / 5 Letters Found</strong>
+          <p id="letterHint">Explore a district and look for its hidden envelope.</p>
         </div>
       </div>
-      <button class="mochi-guide cottage-mochi" data-mochi="piano"><span>🐶</span><small>MOCHI LISTENS</small></button>
+      <div class="letters-grid" id="lettersGrid"></div>
     </section>
 
-    <section class="scene memories-scene" id="memories" data-scene="memories">
-      <div class="memories-heading">
-        <p class="eyebrow">LIVING MEMORIES</p>
-        <h2>Every picture opens a <em>moment.</em></h2>
-        <p>Tap any memory to enter it full-screen.</p>
+    <section class="sv-panel collection-panel" id="collection">
+      <div class="sv-section-heading">
+        <p class="sv-eyebrow">SECRET COLLECTIBLES</p>
+        <h2>Fill your shelves with pieces of <em>Sweetville.</em></h2>
+        <p>Every district protects one collectible. Find it in the location window and bring it home.</p>
       </div>
-      <div class="memory-grid">
-        <button class="memory-card wide" data-memory="assets/v6-car-selfie.png" data-title="Sweetville Afterparty">
-          <img src="assets/v6-car-selfie.png" alt="Jahntella taking a selfie in Sweetville">
-          <span>Sweetville Afterparty</span>
-        </button>
-        <button class="memory-card" data-memory="assets/v6-lagoon.png" data-title="Lagoon of Love">
-          <img src="assets/v6-lagoon.png" alt="Jahntella at Lagoon of Love">
-          <span>Lagoon of Love</span>
-        </button>
-        <button class="memory-card" data-memory="assets/v6-rooftop-stage.png" data-title="Neon City Live">
-          <img src="assets/v6-rooftop-stage.png" alt="Jahntella performing in Neon City">
-          <span>Neon City Live</span>
-        </button>
-        <button class="memory-card" data-memory="assets/v6-stage-salute.png" data-title="One More Song">
-          <img src="assets/v6-stage-salute.png" alt="Jahntella saluting the crowd">
-          <span>One More Song</span>
-        </button>
-        <button class="memory-card" data-memory="assets/v6-stage-bow.png" data-title="Thank You, Sweeties">
-          <img src="assets/v6-stage-bow.png" alt="Jahntella bowing to the crowd">
-          <span>Thank You, Sweeties</span>
-        </button>
+      <div class="collection-progress">
+        <strong><span id="collectibleCount">0</span> / 5 Collected</strong>
+        <div class="collection-track"><i id="collectionBar"></i></div>
       </div>
+      <div class="collectible-shelf" id="collectibleShelf"></div>
+    </section>
+
+    <section class="sv-panel bedroom-panel" id="bedroom">
+      <div class="sv-section-heading">
+        <p class="sv-eyebrow">MY SWEETIE ROOM</p>
+        <h2>Your room grows with your <em>journey.</em></h2>
+        <p>Collected treasures appear on the shelf, passport stamps decorate the wall, and achievements add new sparkle.</p>
+      </div>
+      <div class="sweetie-room">
+        <div class="room-window"><span class="room-moon">☾</span><i></i><i></i><i></i></div>
+        <div class="room-poster">Jahntella<span>♡</span></div>
+        <div class="room-passport" id="roomPassport">PASSPORT<br><span id="roomStampCount">0 STAMPS</span></div>
+        <div class="room-bed"><span></span></div>
+        <div class="room-rug">♡</div>
+        <div class="room-shelf" id="roomShelf"></div>
+        <div class="room-award" id="roomAward">☆</div>
+        <div class="room-note" id="roomNote">Keep exploring to make this room your own.</div>
+      </div>
+    </section>
+
+    <section class="sv-panel achievements-panel" id="achievements">
+      <div class="sv-section-heading">
+        <p class="sv-eyebrow">ANIMATED ACHIEVEMENTS</p>
+        <h2>Celebrate every step through <em>Sweetville.</em></h2>
+      </div>
+      <div class="achievement-grid" id="achievementGrid"></div>
+    </section>
+
+    <section class="sv-panel rank-panel">
+      <div>
+        <p class="sv-eyebrow">SWEETIE PASSPORT LEVELS</p>
+        <h2>Your place in Sweetville keeps <em>growing.</em></h2>
+        <p>Ranks are based on visits, hearts, letters, collectibles, achievements, and daily gifts.</p>
+      </div>
+      <div class="rank-track" id="rankTrack"></div>
+    </section>
+
+    <section class="sv-panel passport-section" id="passport">
+      <div class="passport-card">
+        <div>
+          <p class="sv-eyebrow">DIGITAL EXPLORER PASSPORT</p>
+          <h2>Your journey through <em>Sweetville.</em></h2>
+          <p>Build v4.0 preserves progress from earlier Sweetville releases on this device.</p>
+        </div>
+        <div class="passport-stats">
+          <div><strong><span id="visitedCount">0</span> / 5</strong><small>LOCATIONS</small></div>
+          <div><strong><span id="heartCount">0</span> / 5</strong><small>HEARTS</small></div>
+          <div><strong><span id="badgeCount">0</span> / 10</strong><small>ACHIEVEMENTS</small></div>
+          <div><strong><span id="giftCount">0</span></strong><small>DAILY GIFTS</small></div>
+          <div class="passport-track"><i id="passportBar"></i></div>
+        </div>
+      </div>
+      <div class="stamp-grid" id="stampGrid"></div>
+    </section>
+
+    <section class="sv-panel" id="locations">
+      <div class="sv-section-heading">
+        <p class="sv-eyebrow">LOCATION KEYS</p>
+        <h2>Every card opens part of the <em>world.</em></h2>
+      </div>
+      <div class="location-grid" id="locationGrid"></div>
+    </section>
+
+    <section class="story-mode-card">
+      <p class="sv-eyebrow">STORY MODE</p>
+      <h2>Discover the story behind <em>Sweetville.</em></h2>
+      <p>Read the origin, rules of the world, timeline, and private letters from Jahntella.</p>
+      <a class="sv-button primary" href="story.html">ENTER STORY MODE</a>
+    </section>
+
+    <section class="secret-ending" id="secretEnding" hidden>
+      <span>♡</span>
+      <p>Every open district knows your name.</p>
+      <h2>Welcome Home, Sweetie.</h2>
+      <p>You completed the first living chapter of Sweetville.</p>
+      <a class="sv-button primary" href="../index.html#registry">Become an Official Citizen</a>
     </section>
   </main>
 
-  <div class="world-dock">
-    <button data-go="arrival">🏰<span>Gates</span></button>
-    <button data-go="lagoon">🌊<span>Lagoon</span></button>
-    <button data-go="city">🌆<span>City</span></button>
-    <button data-go="stage">🎤<span>Stage</span></button>
-    <button data-go="house">🎹<span>Cottage</span></button>
-    <button data-go="memories">📸<span>Memories</span></button>
-  </div>
+  <dialog class="location-modal" id="locationModal">
+    <button class="modal-close" id="modalClose">×</button>
+    <div class="modal-media">
+      <img id="modalImage" alt="">
+      <div class="modal-atmosphere" id="modalAtmosphere"></div>
+    </div>
+    <div class="modal-copy">
+      <p class="sv-eyebrow" id="modalCardId"></p>
+      <h2 id="modalTitle"></h2>
+      <p class="modal-ambience" id="modalAmbience"></p>
+      <p class="modal-story" id="modalStory"></p>
+      <blockquote id="modalQuote"></blockquote>
+      <div class="jahntella-pop-in" id="modalMessage"></div>
 
-  <dialog id="memoryModal">
-    <button class="modal-close" id="memoryClose">×</button>
-    <img id="memoryImage" alt="">
-    <h3 id="memoryTitle"></h3>
-    <p>A living memory from the World of Sweet.</p>
+      <div class="modal-actions">
+        <button class="sv-button primary" id="stampButton">Stamp My Passport</button>
+        <button class="sv-button secondary" id="playDistrictSound">▶ Play District Mood</button>
+      </div>
+
+      <div class="discovery-grid">
+        <div class="heart-hunt discovery-card">
+          <p>Hidden Heart</p>
+          <button class="hidden-heart" id="hiddenHeart">♡</button>
+          <small id="heartStatus">Tap the glowing heart to collect it.</small>
+        </div>
+        <div class="letter-hunt discovery-card">
+          <p>Hidden Letter</p>
+          <button class="hidden-letter" id="hiddenLetter">💌</button>
+          <small id="letterStatus">Open the envelope.</small>
+        </div>
+        <div class="collectible-hunt discovery-card">
+          <p>Secret Collectible</p>
+          <button class="hidden-collectible" id="hiddenCollectible">?</button>
+          <small id="collectibleStatus">Reveal the district treasure.</small>
+        </div>
+      </div>
+    </div>
   </dialog>
 
-  <div class="toast" id="toast"></div>
-  <script src="sweetville-v6.1.js?v=6.1"></script>
+  <dialog class="letter-modal" id="letterModal">
+    <button class="modal-close" id="letterClose">×</button>
+    <div class="letter-paper">
+      <p class="sv-eyebrow">PINK MAILBOX</p>
+      <h2 id="letterTitle"></h2>
+      <p id="letterBody"></p>
+      <p class="diary-signoff">Stay Sweet,<br><strong>Jahntella 💋</strong></p>
+    </div>
+  </dialog>
+
+  <div class="achievement-toast" id="achievementToast">
+    <span id="toastIcon">🏆</span>
+    <div><small id="toastKicker">NEW ACHIEVEMENT</small><strong id="toastTitle">Explorer</strong></div>
+  </div>
+
+  <script src="sweetville-v4.0.js?v=4.0"></script>
 </body>
 </html>
