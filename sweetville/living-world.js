@@ -14,10 +14,11 @@
   const readState=()=>{try{return JSON.parse(localStorage.getItem('jahntellaSweetvilleV4'))||{}}catch{return {}}};
   const syncStats=()=>{
     const s=readState();
-    $('#cinematicCollectibles').textContent=`${(s.collectibles||[]).length} / 5`;
-    $('#cinematicQuests').textContent=`${(s.badges||[]).length} / 10`;
-    $('#cinematicHearts').textContent=`${(s.hearts||[]).length} / 5`;
-    $('#cinematicVisits').textContent=(s.visited||[]).length;
+    const set=(sel,val)=>{const el=$(sel);if(el)el.textContent=val};
+    set('#cinematicCollectibles',`${(s.collectibles||[]).length} / 5`);
+    set('#cinematicQuests',`${(s.badges||[]).length} / 10`);
+    set('#cinematicHearts',`${(s.hearts||[]).length} / 5`);
+    set('#cinematicVisits',(s.visited||[]).length);
   };
   syncStats(); window.addEventListener('storage',syncStats); setInterval(syncStats,1800);
   $$('.district-card').forEach(card=>card.addEventListener('click',()=>{
@@ -42,3 +43,6 @@
   function animate(){if(!ctx)return;ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);particles=particles.filter(p=>p.life>.02);for(const p of particles){p.x+=p.vx;p.y+=p.vy;p.vy+=.018;p.vx*=.992;p.life*=.974;ctx.beginPath();ctx.arc(p.x,p.y,1.2,0,Math.PI*2);ctx.fillStyle=`hsla(${p.h},100%,70%,${p.life})`;ctx.shadowBlur=12;ctx.shadowColor=`hsl(${p.h},100%,60%)`;ctx.fill()}requestAnimationFrame(animate)}animate();
   setInterval(()=>{if(document.visibilityState==='visible'&&innerWidth>700)launchBurst(innerWidth*(.58+Math.random()*.34),80+Math.random()*220,18+Math.random()*22)},3000);
 })();
+
+// v4.0.5: connect the clean hero sound button to the existing world sound control.
+document.getElementById('heroSoundButton')?.addEventListener('click',()=>document.getElementById('soundToggle')?.click());

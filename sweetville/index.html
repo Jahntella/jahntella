@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="sweetville.css?v=4.0.4-hero-image-2">
+  <link rel="stylesheet" href="sweetville.css?v=4.0.5-clean-hero">
 </head>
 <body>
   <div class="gate-screen" id="gateScreen">
@@ -55,52 +55,20 @@
   </header>
 
   <main>
-<section class="cinematic-home" id="cinematicHome" aria-label="Sweetville cinematic home">
+<section class="cinematic-home cinematic-home-clean" id="cinematicHome" aria-label="Sweetville cinematic home">
   <div class="cinematic-bg" aria-hidden="true"></div>
-  <canvas id="fireworksCanvas" aria-hidden="true"></canvas>
-  <div class="cinematic-stars" id="cinematicStars" aria-hidden="true"></div>
   <div class="cinematic-vignette" aria-hidden="true"></div>
-
-  <div class="cinematic-ui">
-    <div class="cinematic-welcome">
-      <p class="cinematic-script">Welcome to</p>
-      <h1>SWEETVILLE</h1>
-      <div class="neon-heart" aria-hidden="true">♡</div>
-      <p>Explore. Play. Collect.<br>Make memories with Jahntella &amp; Mochi.</p>
-      <div class="cinematic-actions">
-        <a class="journey-button" href="#livingMap">START YOUR JOURNEY <span>›</span></a>
-        <button class="intro-button" id="watchSweetvilleIntro">▷ WATCH INTRO</button>
-      </div>
-      <div class="mochi-message">
-        <div class="mochi-avatar">🐶</div>
-        <div><strong>MOCHI 🐾</strong><p>Hi Sweetie! I’m so excited you’re here! Let’s explore Sweetville together!</p></div>
-      </div>
-    </div>
-
-    <aside class="sweetie-stats-card">
-      <p class="official-sweetie">YOU ARE<br><em>Official Sweetie</em><br><small>WELCOME HOME!</small></p>
-      <h2>SWEETIE STATS</h2>
-      <div><span>◇</span><p>COLLECTIBLES<strong id="cinematicCollectibles">0 / 5</strong></p></div>
-      <div><span>☆</span><p>ACHIEVEMENTS<strong id="cinematicQuests">0 / 10</strong></p></div>
-      <div><span>♡</span><p>HEARTS<strong id="cinematicHearts">0 / 5</strong></p></div>
-      <div><span>♛</span><p>VISITS<strong id="cinematicVisits">0</strong></p></div>
-      <a href="#passport">▣ VIEW PASSPORT ›</a>
-    </aside>
+  <div class="hero-action-bar" aria-label="Sweetville actions">
+    <a class="journey-button" href="#livingMap">EXPLORE THE WORLD MAP <span>›</span></a>
+    <a class="intro-button" href="#bedroom">VISIT MY SWEETIE ROOM</a>
+    <button class="hero-sound-button" id="heroSoundButton" type="button">♫ WORLD SOUND</button>
   </div>
-
-  <div class="district-dock" aria-label="Explore Sweetville districts">
-    <h2>♡ EXPLORE SWEETVILLE DISTRICTS ♡</h2>
-    <div class="district-track" id="districtTrack">
-      <button class="district-card" data-open-location="sparkle-lake"><img src="assets/sparkle-lake.webp" alt="Royal Castle and lake"><span>♛ <strong>ROYAL CASTLE</strong><small>The Heart of Sweetville</small></span></button>
-      <button class="district-card" data-open-location="sparkle-lake"><img src="assets/lagoon-of-love.webp" alt="Lagoon of Love"><span>♡ <strong>LAGOON OF LOVE</strong><small>Peaceful &amp; Beautiful</small></span></button>
-      <button class="district-card" data-open-location="melody-studio"><img src="assets/starlight-stage.webp" alt="Starlight Stage"><span>♬ <strong>STARLIGHT STAGE</strong><small>Music. Lights. Magic.</small></span></button>
-      <button class="district-card" data-open-location="donut-district"><img src="assets/candy-lane.webp" alt="Candy Lane"><span>◉ <strong>CANDY LANE</strong><small>Sweets, Shops &amp; Smiles</small></span></button>
-      <button class="district-card" data-open-location="neon-sweetheart"><img src="assets/neon-city.webp" alt="Neon City"><span>▥ <strong>NEON CITY</strong><small>Bright Lights. Big Dreams.</small></span></button>
-      <button class="district-card" data-open-location="donut-district"><img src="assets/donut-district.webp" alt="Dream Carnival"><span>◉ <strong>DREAM CARNIVAL</strong><small>Rides, Games &amp; Fun</small></span></button>
-      <button class="district-card" data-scroll-target="bedroom"><img src="assets/jahntella-cottage.webp" alt="Jahntella's Cottage"><span>⌂ <strong>JAHNTELLA’S COTTAGE</strong><small>Home Is Where the Heart Is</small></span></button>
-    </div>
+  <div class="hero-progress-strip" aria-label="Sweetie progress">
+    <span>COLLECTIBLES <strong id="cinematicCollectibles">0 / 5</strong></span>
+    <span>ACHIEVEMENTS <strong id="cinematicQuests">0 / 10</strong></span>
+    <span>HEARTS <strong id="cinematicHearts">0 / 5</strong></span>
+    <span>VISITS <strong id="cinematicVisits">0</strong></span>
   </div>
-  <a class="continue-world" href="#world">ENTER THE LIVING WORLD ↓</a>
 </section>
 
     <section class="sv-hero" id="world">

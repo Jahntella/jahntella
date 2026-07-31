@@ -171,3 +171,117 @@ html{scroll-behavior:smooth}.cinematic-home{position:relative;min-height:100svh;
   .sweetie-stats-card{top:6rem;width:145px}
   .district-card{flex-basis:165px;height:150px}
 }
+
+
+/* === v4.0.5 CLEAN HERO LAYOUT ===
+   The approved artwork already contains a complete visual dashboard.
+   Live controls now sit in a separate bar below the artwork instead of over it. */
+.cinematic-home-clean{
+  position:relative;
+  min-height:0;
+  height:auto;
+  aspect-ratio:16 / 10;
+  overflow:hidden;
+  background:#09000d;
+  isolation:isolate;
+}
+.cinematic-home-clean .cinematic-bg{
+  position:absolute;
+  inset:0;
+  background-image:url('assets/sweetville-hero-image-2-cropped.webp');
+  background-size:cover;
+  background-position:center center;
+  animation:none;
+  transform:none;
+}
+.cinematic-home-clean .cinematic-vignette{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:linear-gradient(180deg,rgba(5,0,14,.04) 0%,rgba(5,0,14,.02) 72%,rgba(5,0,14,.82) 100%);
+}
+.hero-action-bar{
+  position:absolute;
+  z-index:5;
+  left:50%;
+  bottom:1.15rem;
+  transform:translateX(-50%);
+  width:min(92%,980px);
+  display:grid;
+  grid-template-columns:1.2fr 1fr .72fr;
+  gap:.75rem;
+  padding:.75rem;
+  border:1px solid rgba(255,93,206,.55);
+  border-radius:22px;
+  background:rgba(13,0,24,.88);
+  backdrop-filter:blur(16px);
+  box-shadow:0 14px 45px rgba(0,0,0,.48),0 0 25px rgba(255,0,153,.18);
+}
+.hero-action-bar .journey-button,
+.hero-action-bar .intro-button,
+.hero-sound-button{
+  min-height:50px;
+  margin:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:999px;
+  border:1px solid rgba(255,123,216,.62);
+  color:#fff;
+  font-weight:800;
+  font-size:.86rem;
+  letter-spacing:.01em;
+  text-align:center;
+  cursor:pointer;
+  background:rgba(69,0,57,.58);
+  box-shadow:none;
+}
+.hero-action-bar .journey-button{background:linear-gradient(90deg,#c21783,#ff43bd)}
+.hero-action-bar .intro-button:hover,.hero-sound-button:hover,.hero-action-bar .journey-button:hover{transform:translateY(-2px);box-shadow:0 0 20px rgba(255,55,184,.45)}
+.hero-progress-strip{
+  position:absolute;
+  z-index:4;
+  top:1rem;
+  right:1rem;
+  display:flex;
+  gap:.45rem;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  max-width:52%;
+}
+.hero-progress-strip span{
+  padding:.48rem .7rem;
+  border:1px solid rgba(255,101,202,.45);
+  border-radius:999px;
+  background:rgba(12,0,20,.76);
+  backdrop-filter:blur(10px);
+  font-size:.62rem;
+  letter-spacing:.06em;
+  color:#ffc7ed;
+}
+.hero-progress-strip strong{color:#fff;margin-left:.3rem}
+
+/* Hide all previous overlay systems if older markup is cached. */
+.cinematic-home-clean .cinematic-ui,
+.cinematic-home-clean .district-dock,
+.cinematic-home-clean .continue-world,
+.cinematic-home-clean #fireworksCanvas,
+.cinematic-home-clean .cinematic-stars{display:none!important}
+
+/* The following content begins clearly below the hero. */
+.cinematic-home-clean + .sv-hero{margin-top:0;padding-top:6rem}
+
+@media(max-width:900px){
+  .cinematic-home-clean{aspect-ratio:16 / 11}
+  .hero-action-bar{grid-template-columns:1fr 1fr;bottom:.75rem;width:95%}
+  .hero-sound-button{grid-column:1/-1;min-height:42px}
+  .hero-progress-strip{display:none}
+}
+@media(max-width:620px){
+  .cinematic-home-clean{aspect-ratio:4 / 5;min-height:620px}
+  .cinematic-home-clean .cinematic-bg{background-size:auto 100%;background-position:56% center}
+  .hero-action-bar{grid-template-columns:1fr;padding:.55rem;gap:.45rem;border-radius:17px}
+  .hero-action-bar .journey-button,.hero-action-bar .intro-button,.hero-sound-button{min-height:43px;font-size:.72rem}
+  .hero-sound-button{grid-column:auto}
+}
