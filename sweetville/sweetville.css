@@ -1006,3 +1006,231 @@ dialog.mini-piano-modal::backdrop {
     min-height: 104px !important;
   }
 }
+
+/* =========================================================
+   SWEETVILLE v4.1.1 — CUSTOM DISTRICT ANIMATIONS
+   ========================================================= */
+
+/* Donut District */
+.donut-sign {
+  position: absolute;
+  right: 8%;
+  top: 12%;
+  width: 25%;
+  aspect-ratio: 1;
+  border: 7px solid #ff83cc;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 6px #7b1a66, 0 0 18px #ff43b4;
+  animation: svDonutSpin 11s linear infinite;
+}
+.donut-sign::before {
+  content: "";
+  position: absolute;
+  inset: 28%;
+  border-radius: 50%;
+  background: rgba(10,0,12,.88);
+}
+.donut-sign i {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 28% 18%, #fff 0 2px, transparent 3px),
+    radial-gradient(circle at 74% 23%, #ffe05b 0 2px, transparent 3px),
+    radial-gradient(circle at 62% 75%, #71e9ff 0 2px, transparent 3px),
+    radial-gradient(circle at 25% 70%, #fff 0 2px, transparent 3px);
+}
+.sprinkle {
+  position: absolute;
+  width: 4px;
+  height: 14px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 0 8px currentColor;
+  animation: svSprinkleDrift 4.8s ease-in-out infinite;
+}
+.sp1 { left: 12%; top: 20%; color:#ff71c4; transform:rotate(24deg); }
+.sp2 { left: 28%; top: 34%; color:#ffd760; transform:rotate(-16deg); animation-delay:-1s; }
+.sp3 { left: 43%; top: 18%; color:#7be8ff; transform:rotate(65deg); animation-delay:-2s; }
+.sp4 { left: 22%; bottom: 18%; color:#fff; transform:rotate(-42deg); animation-delay:-3s; }
+.sp5 { right: 18%; bottom: 22%; color:#ff91df; transform:rotate(12deg); animation-delay:-1.7s; }
+.sugar-glow {
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 50% 70%, rgba(255,94,191,.25), transparent 50%);
+  animation:svSugarPulse 3.2s ease-in-out infinite;
+}
+
+/* Sparkle Lake */
+.lake-moon-glow {
+  position:absolute;
+  right:10%;
+  top:8%;
+  width:48px;
+  aspect-ratio:1;
+  border-radius:50%;
+  background:rgba(255,240,255,.88);
+  box-shadow:0 0 24px rgba(255,255,255,.9),0 0 42px rgba(255,83,194,.55);
+  animation:svMoonGlow 4s ease-in-out infinite;
+}
+.lake-shimmer {
+  position:absolute;
+  left:10%;
+  right:10%;
+  bottom:8%;
+  height:28%;
+  background:linear-gradient(110deg, transparent 18%, rgba(255,255,255,.34) 46%, transparent 70%);
+  transform:skewX(-12deg) translateX(-120%);
+  animation:svLakeShimmer 5.4s ease-in-out infinite;
+}
+.lake-ripple {
+  position:absolute;
+  left:50%;
+  bottom:14%;
+  width:22%;
+  aspect-ratio:2.5/1;
+  border:2px solid rgba(255,255,255,.68);
+  border-radius:50%;
+  transform:translateX(-50%);
+  opacity:0;
+  animation:svLakeRipple 3.4s ease-out infinite;
+}
+.lr2 { animation-delay:1.7s; }
+.lake-firefly {
+  position:absolute;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:#fff8a6;
+  box-shadow:0 0 10px #fff27a;
+  animation:svFirefly 5s ease-in-out infinite;
+}
+.lf1{left:18%;top:34%}
+.lf2{right:24%;top:42%;animation-delay:-1.8s}
+.lf3{left:58%;top:18%;animation-delay:-3s}
+
+/* Starlight Stage */
+.stage-crowd-glow {
+  position:absolute;
+  left:8%;
+  right:8%;
+  bottom:0;
+  height:30%;
+  background:
+    radial-gradient(circle at 10% 70%, #ff78cd 0 2px, transparent 3px),
+    radial-gradient(circle at 28% 52%, #fff 0 2px, transparent 3px),
+    radial-gradient(circle at 46% 68%, #7ee8ff 0 2px, transparent 3px),
+    radial-gradient(circle at 63% 45%, #ffd85d 0 2px, transparent 3px),
+    radial-gradient(circle at 80% 65%, #ff78cd 0 2px, transparent 3px);
+  animation:svCrowdPulse 2.2s ease-in-out infinite;
+}
+
+/* Candy Lane */
+.candy-sign-glow {
+  position:absolute;
+  inset:0;
+  box-shadow:inset 0 0 34px rgba(255,62,177,.18);
+  animation:svCandySignGlow 3s ease-in-out infinite;
+}
+
+/* Neon Sweetheart */
+.neon-heart-pulse {
+  position:absolute;
+  right:10%;
+  top:12%;
+  font-size:3.1rem;
+  color:#ff7bd0;
+  text-shadow:0 0 12px #ff4db8,0 0 24px #ff4db8;
+  animation:svNeonHeart 2.5s ease-in-out infinite;
+}
+.neon-billboard {
+  position:absolute;
+  left:10%;
+  top:14%;
+  width:28%;
+  height:18%;
+  border:2px solid rgba(255,124,213,.85);
+  border-radius:6px;
+  background:linear-gradient(135deg,rgba(255,50,170,.15),rgba(109,63,255,.28));
+  box-shadow:0 0 18px rgba(255,45,176,.55);
+  animation:svBillboard 4s ease-in-out infinite;
+}
+.window-twinkle {
+  position:absolute;
+  width:4px;
+  height:4px;
+  background:#fff;
+  box-shadow:0 0 10px #fff,0 0 14px #ff4fbb;
+  animation:svWindowTwinkle 2.6s ease-in-out infinite;
+}
+.wt1{left:48%;top:26%}
+.wt2{left:62%;top:44%;animation-delay:-1s}
+.wt3{left:35%;top:58%;animation-delay:-1.8s}
+.neon-reflection {
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:28%;
+  background:linear-gradient(100deg,transparent 18%,rgba(255,63,181,.24) 44%,rgba(83,214,255,.18) 58%,transparent 80%);
+  transform:translateX(-120%) skewX(-16deg);
+  animation:svNeonReflection 5.8s ease-in-out infinite;
+}
+
+@keyframes svDonutSpin { to { transform:rotate(360deg); } }
+@keyframes svSprinkleDrift {
+  0%,100% { translate:0 0; opacity:.45; }
+  50% { translate:0 -12px; opacity:1; }
+}
+@keyframes svSugarPulse {
+  0%,100% { opacity:.45; }
+  50% { opacity:1; }
+}
+@keyframes svMoonGlow {
+  0%,100% { transform:scale(.92); opacity:.72; }
+  50% { transform:scale(1.08); opacity:1; }
+}
+@keyframes svLakeShimmer {
+  0%,58% { transform:skewX(-12deg) translateX(-120%); }
+  82%,100% { transform:skewX(-12deg) translateX(120%); }
+}
+@keyframes svLakeRipple {
+  0% { transform:translateX(-50%) scale(.4); opacity:.75; }
+  100% { transform:translateX(-50%) scale(2.4); opacity:0; }
+}
+@keyframes svFirefly {
+  0%,100% { transform:translate(0,0); opacity:.25; }
+  35% { transform:translate(8px,-10px); opacity:1; }
+  70% { transform:translate(-6px,8px); opacity:.6; }
+}
+@keyframes svCrowdPulse {
+  0%,100% { filter:brightness(.75); opacity:.5; }
+  50% { filter:brightness(1.4); opacity:1; }
+}
+@keyframes svCandySignGlow {
+  0%,100% { opacity:.45; }
+  50% { opacity:1; }
+}
+@keyframes svNeonHeart {
+  0%,100% { transform:scale(.92); opacity:.65; }
+  50% { transform:scale(1.13); opacity:1; }
+}
+@keyframes svBillboard {
+  0%,100% { filter:hue-rotate(0deg) brightness(.9); }
+  50% { filter:hue-rotate(22deg) brightness(1.35); }
+}
+@keyframes svWindowTwinkle {
+  0%,100% { transform:scale(.5); opacity:.2; }
+  50% { transform:scale(1.5); opacity:1; }
+}
+@keyframes svNeonReflection {
+  0%,60% { transform:translateX(-120%) skewX(-16deg); }
+  85%,100% { transform:translateX(120%) skewX(-16deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .donut-sign,.sprinkle,.sugar-glow,.lake-moon-glow,.lake-shimmer,
+  .lake-ripple,.lake-firefly,.stage-crowd-glow,.candy-sign-glow,
+  .neon-heart-pulse,.neon-billboard,.window-twinkle,.neon-reflection {
+    animation:none !important;
+  }
+}
