@@ -71,3 +71,104 @@ html{scroll-behavior:smooth}.cinematic-home{position:relative;min-height:100svh;
 @keyframes svKenBurns{from{transform:scale(1.02) translate3d(-.4%,0,0)}to{transform:scale(1.08) translate3d(.7%,-.6%,0)}}@keyframes svTwinkle{0%,100%{opacity:.15;transform:scale(.5)}50%{opacity:1;transform:scale(1.8)}}@keyframes svHeartbeat{0%,100%{transform:scale(1)}15%{transform:scale(1.14)}30%{transform:scale(1)}}@keyframes svIntroPulse{0%{filter:brightness(1)}45%{filter:brightness(1.4)}100%{filter:brightness(1)}}
 @media(max-width:800px){.cinematic-home{min-height:930px}.cinematic-bg{background-position:55% center}.cinematic-ui{padding:7rem 1rem 14rem;align-items:flex-start}.cinematic-welcome{max-width:330px}.cinematic-script{font-size:2.2rem}.cinematic-welcome h1{font-size:3.7rem}.sweetie-stats-card{position:absolute;right:.7rem;top:7rem;width:160px;padding:.55rem;opacity:.93}.official-sweetie{display:none}.sweetie-stats-card>div{padding:.42rem}.sweetie-stats-card h2{font-size:.72rem}.sweetie-stats-card p{font-size:.55rem}.sweetie-stats-card strong{font-size:.75rem}.cinematic-welcome>p:not(.cinematic-script){max-width:180px;font-size:1rem}.cinematic-actions{max-width:240px}.mochi-message{max-width:270px}.district-card{flex-basis:160px;height:140px}.district-dock{bottom:1rem;padding:0 .8rem}.district-dock h2{font-size:.7rem}.continue-world{display:none}}
 @media(prefers-reduced-motion:reduce){.cinematic-bg,.cinematic-stars i,.neon-heart{animation:none!important}}
+
+/* === v4.0.3 CROPPING + LAYOUT REPAIR === */
+/* Use a clean crop of the cinematic artwork so its baked-in mock navigation,
+   buttons, stats and district cards never appear behind the real interface. */
+.cinematic-bg{
+  inset:0;
+  background-image:url('assets/sweetville-cinematic-scene.webp');
+  background-size:cover;
+  background-position:center 42%;
+  animation:svKenBurnsSoft 24s ease-in-out infinite alternate;
+}
+.cinematic-home{min-height:980px}
+.cinematic-ui{
+  min-height:680px;
+  display:grid;
+  grid-template-columns:minmax(320px,440px) minmax(235px,275px);
+  justify-content:space-between;
+  align-items:center;
+  padding:8rem 4vw 18rem;
+  gap:clamp(2rem,8vw,8rem);
+}
+.cinematic-welcome{position:relative;z-index:2;max-width:440px}
+.sweetie-stats-card{position:relative;z-index:2;align-self:center;margin-top:2rem}
+.district-dock{bottom:2.4rem;padding:0 2vw}
+.district-track{gap:.8rem;padding:.55rem .25rem 1.25rem}
+.district-card{flex:0 0 205px;height:170px}
+.district-card img{object-fit:cover;object-position:50% 25%}
+/* Landscape and location images need individual focal points. */
+.district-card:nth-child(1) img{object-position:50% 38%}
+.district-card:nth-child(2) img{object-position:50% 23%}
+.district-card:nth-child(3) img{object-position:50% 20%}
+.district-card:nth-child(4) img{object-position:50% 28%}
+.district-card:nth-child(5) img{object-position:50% 50%}
+.district-card:nth-child(6) img{object-position:50% 30%}
+.district-card:nth-child(7) img{object-position:50% 42%}
+.district-card:after{background:linear-gradient(transparent 48%,rgba(20,0,29,.97) 88%)}
+.continue-world{bottom:.55rem}
+
+/* Prevent the original living-world quote and sound button from colliding. */
+.living-orbit{
+  min-height:500px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:1fr auto;
+  align-items:end;
+  gap:1rem;
+  padding-bottom:1rem;
+}
+.orbit-world{grid-column:1/-1;grid-row:1;justify-self:center}
+.jahntella-message,.sound-toggle{
+  position:relative;
+  inset:auto;
+  bottom:auto;
+  left:auto;
+  right:auto;
+  margin:0;
+  z-index:3;
+}
+.jahntella-message{grid-column:2;grid-row:2;justify-self:end;max-width:290px}
+.sound-toggle{grid-column:1;grid-row:2;justify-self:start;white-space:nowrap}
+
+@keyframes svKenBurnsSoft{
+  from{transform:scale(1.01) translate3d(-.3%,0,0)}
+  to{transform:scale(1.045) translate3d(.4%,-.25%,0)}
+}
+
+@media(max-width:1000px){
+  .cinematic-home{min-height:1050px}
+  .cinematic-bg{background-position:56% 40%}
+  .cinematic-ui{grid-template-columns:minmax(280px,390px) 225px;padding:7.5rem 2.5vw 19rem;gap:2rem}
+  .district-card{flex-basis:190px;height:165px}
+}
+
+@media(max-width:800px){
+  .cinematic-home{min-height:1120px}
+  .cinematic-bg{background-position:57% 38%}
+  .cinematic-ui{display:block;min-height:auto;padding:6.5rem 1rem 21rem}
+  .cinematic-welcome{max-width:min(72vw,360px)}
+  .sweetie-stats-card{position:absolute;right:.75rem;top:6.5rem;width:155px;margin:0}
+  .district-dock{bottom:1.6rem}
+  .district-card{flex-basis:175px;height:155px}
+  .living-orbit{grid-template-columns:1fr;grid-template-rows:auto auto auto;min-height:auto}
+  .orbit-world{grid-column:1;grid-row:1}
+  .sound-toggle{grid-column:1;grid-row:2;justify-self:center}
+  .jahntella-message{grid-column:1;grid-row:3;justify-self:center;max-width:100%}
+}
+
+@media(max-width:560px){
+  .cinematic-home{min-height:1180px}
+  .cinematic-bg{background-position:60% 35%}
+  .cinematic-welcome{max-width:62vw}
+  .cinematic-welcome h1{font-size:clamp(2.8rem,14vw,4rem)}
+  .cinematic-script{font-size:2rem}
+  .cinematic-welcome>p:not(.cinematic-script){font-size:.95rem;max-width:190px}
+  .cinematic-actions{max-width:205px}
+  .journey-button,.intro-button{padding:.8rem .9rem;font-size:.78rem}
+  .mochi-message{max-width:235px;padding:.65rem}
+  .mochi-avatar{width:50px;height:50px;font-size:1.8rem;flex:0 0 50px}
+  .sweetie-stats-card{top:6rem;width:145px}
+  .district-card{flex-basis:165px;height:150px}
+}
