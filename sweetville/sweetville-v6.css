@@ -4,3 +4,75 @@
 .fx-heart,.fx-confetti,.fx-firework{position:absolute;animation:floatFx linear forwards}
 @keyframes mochiBounce{50%{transform:translateY(-12px) rotate(-3deg)}}@keyframes ripple{from{width:10px;height:10px;opacity:1}to{width:320px;height:130px;opacity:0;transform:translate(-50%,-50%)}}@keyframes billboardPulse{to{opacity:1;box-shadow:0 0 34px #ff2f9d,0 0 60px #ff2f9d}}@keyframes sweep{to{transform:rotate(28deg)}}@keyframes flash{50%{opacity:.1;transform:scale(.4)}}@keyframes floatFx{to{transform:translate(var(--x),var(--y)) rotate(360deg);opacity:0}}
 @media(max-width:980px){.world-header nav{display:none;position:absolute;top:100%;left:1rem;right:1rem;flex-direction:column;background:#0b000a;padding:1rem;border:1px solid var(--line);border-radius:18px}.world-header nav.open{display:flex}.menu-button{display:block}.cottage-layout{grid-template-columns:1fr}.memory-grid{grid-template-columns:repeat(2,1fr)}.scene-copy.right{text-align:left;justify-self:start}.scene-copy.right .scene-actions{justify-content:flex-start}.scene-shade{background:linear-gradient(90deg,rgba(4,0,3,.8),rgba(4,0,3,.22)),linear-gradient(transparent 50%,#050004e8)}}@media(max-width:650px){.scene h1,.scene h2{font-size:clamp(3.2rem,15vw,5.4rem)}.scene-copy{padding:7rem 1.2rem 8rem}.mochi-guide{right:1rem;bottom:7rem}.mochi-guide span,.mochi-body{font-size:4rem}.cottage-layout,.memories-scene{padding:7rem 1rem 7rem}.piano-room{padding:1rem}.piano-keys{height:190px}.memory-grid{grid-template-columns:1fr}.memory-card.wide{grid-column:auto}.memory-card{min-height:470px}.world-dock{width:calc(100% - 1rem);justify-content:space-around}.world-dock button{padding:.5rem}.world-dock span{display:block;font-size:.55rem}.billboard{font-size:.6rem}}
+
+
+/* ===== BUILD v6.0.1 — PORTRAIT FOCAL POINT FIX ===== */
+/* Keep Jahntella's face and upper body visible in every full-screen scene. */
+#arrival .scene-bg{
+  object-position:center 28%;
+}
+#lagoon .scene-bg{
+  object-position:center 22%;
+}
+#city .scene-bg{
+  object-position:center 18%;
+}
+#stage .scene-bg{
+  object-position:center 18%;
+}
+
+/* Prevent aggressive zoom from pushing faces out of view. */
+.scene-bg{
+  transform:scale(1.001);
+}
+.scene.is-visible .scene-bg{
+  transform:scale(1.025);
+}
+
+/* Desktop landscape tuning */
+@media (min-width:981px){
+  #arrival .scene-bg{
+    object-position:center 22%;
+  }
+  #lagoon .scene-bg{
+    object-position:center 16%;
+  }
+  #city .scene-bg{
+    object-position:center 14%;
+  }
+  #stage .scene-bg{
+    object-position:center 12%;
+  }
+}
+
+/* Wide screens need even more top-biased framing. */
+@media (min-aspect-ratio:16/9){
+  #arrival .scene-bg{
+    object-position:center 18%;
+  }
+  #lagoon .scene-bg{
+    object-position:center 12%;
+  }
+  #city .scene-bg{
+    object-position:center 10%;
+  }
+  #stage .scene-bg{
+    object-position:center 8%;
+  }
+}
+
+/* Mobile portrait framing */
+@media (max-width:650px){
+  #arrival .scene-bg{
+    object-position:58% 18%;
+  }
+  #lagoon .scene-bg{
+    object-position:52% 12%;
+  }
+  #city .scene-bg{
+    object-position:50% 10%;
+  }
+  #stage .scene-bg{
+    object-position:50% 8%;
+  }
+}
