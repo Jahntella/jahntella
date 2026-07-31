@@ -1,171 +1,179 @@
 <!doctype html>
-<html lang="en" data-phase="night">
+<html lang="en" data-scene="arrival">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#120015">
-  <meta name="description" content="Sweetville Build v5.0: Jahntella's House, quests, puppy NPCs, weather, shops, citizen passports, and the Castle Grand Hall.">
-  <title>Sweetville Build v5.0 — Welcome Home</title>
+  <meta name="theme-color" content="#17000f">
+  <meta name="description" content="Sweetville Build v6 — a cinematic interactive world by Jahntella.">
+  <title>Sweetville Build v6 — Welcome to the World</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="sweetville.css?v=5.0">
+  <link rel="stylesheet" href="sweetville-v6.css?v=6.0">
 </head>
 <body>
-  <div class="weather-layer" id="weatherLayer"></div>
+  <div class="cinema-grain" aria-hidden="true"></div>
+  <div class="fx-layer" id="fxLayer" aria-hidden="true"></div>
 
-  <header class="sv-header">
-    <a class="sv-brand" href="../index.html">Jahntella<span>♡</span></a>
-    <button class="sv-menu-button" id="menuButton">☰</button>
-    <nav id="svNav">
-      <a href="#world">World</a>
-      <a href="#house">Jahntella's House</a>
-      <a href="#quests">Quests</a>
-      <a href="#citizen">Citizen Passport</a>
-      <a href="#npcs">Friends</a>
-      <a href="#shops">Shops</a>
-      <a href="#castle">Castle</a>
+  <header class="world-header">
+    <a class="brand" href="../index.html">Jahntella<span>♡</span></a>
+    <button class="menu-button" id="menuButton" aria-label="Open navigation">☰</button>
+    <nav id="worldNav">
+      <button data-go="arrival">Gates</button>
+      <button data-go="lagoon">Lagoon</button>
+      <button data-go="city">Neon City</button>
+      <button data-go="stage">Starlight Stage</button>
+      <button data-go="house">Cottage</button>
+      <button data-go="memories">Memories</button>
       <a href="story.html">Story Mode</a>
     </nav>
   </header>
 
-  <main>
-    <section class="hero" id="world">
-      <div>
-        <p class="eyebrow">SWEETVILLE BUILD v5.0</p>
-        <h1>Welcome <em>home.</em></h1>
-        <p>Sweetville now remembers you. Jahntella's House is open, quests are live, new friends are waiting, and a puppy has made the city its home.</p>
-
-        <div class="actions">
-          <a class="btn primary" href="#house">Enter Jahntella's House</a>
-          <a class="btn secondary" href="#quests">View Today's Quests</a>
-        </div>
-
-        <div class="status">
-          <div><small>WEATHER</small><strong id="weatherName">Starlight</strong></div>
-          <div><small>CITIZEN RANK</small><strong id="citizenRank">Visitor</strong></div>
-          <div><small>QUESTS COMPLETE</small><strong id="questCount">0 / 5</strong></div>
-          <div><small>PUPPY FRIENDSHIP</small><strong id="puppyFriendship">0%</strong></div>
+  <main class="world-shell">
+    <section class="scene scene-active" id="arrival" data-scene="arrival">
+      <img class="scene-bg" src="assets/v6-car-arrival.png" alt="Jahntella arriving in Sweetville in a pink convertible">
+      <div class="scene-shade"></div>
+      <div class="scene-copy left">
+        <p class="eyebrow">SWEETVILLE BUILD v6</p>
+        <h1>Welcome to the <em>world.</em></h1>
+        <p>Follow Mochi through a cinematic Sweetville built from Jahntella's music, memories, and neon dreams.</p>
+        <div class="scene-actions">
+          <button class="pill primary" id="followMochi">🐶 Follow Mochi</button>
+          <button class="pill ghost" data-go="memories">Explore the Visual World</button>
         </div>
       </div>
-
-      <div class="hero-orb">
-        <span>💋</span>
-        <strong>SWEETVILLE</strong>
-        <small>BUILD v5.0 • WELCOME HOME</small>
-      </div>
+      <button class="mochi-guide" id="mochiGuide" aria-label="Follow Mochi">
+        <span class="mochi-body">🐶</span>
+        <small>MOCHI</small>
+      </button>
+      <button class="spark-trigger" data-fx="fireworks" aria-label="Launch fireworks">✦</button>
     </section>
 
-    <section class="panel" id="house">
-      <p class="eyebrow">JAHNTELLA'S HOUSE</p>
-      <h2>The lights are finally <em>on.</em></h2>
-      <p>Explore the emotional center of Sweetville. Every room holds something personal.</p>
-
-      <div class="house">
-        <button data-room="piano">🎹<strong>Piano</strong><small>Play a melody</small></button>
-        <button data-room="notebook">📖<strong>Lyric Notebook</strong><small>Read private lyrics</small></button>
-        <button data-room="wardrobe">👗<strong>Wardrobe</strong><small>Explore iconic looks</small></button>
-        <button data-room="records">🏆<strong>Gold Records</strong><small>See milestones</small></button>
-        <button data-room="photos">📸<strong>Photo Wall</strong><small>Memory gallery</small></button>
-        <button data-room="booth">🎤<strong>Recording Booth</strong><small>Leave a voice note</small></button>
-        <button data-room="letter">💌<strong>Private Letter</strong><small>For Sweeties only</small></button>
-      </div>
-
-      <div class="house-display" id="houseDisplay">
-        <h3>Jahntella's Living Room</h3>
-        <p>Choose a room to begin exploring.</p>
-      </div>
-    </section>
-
-    <section class="panel" id="quests">
-      <p class="eyebrow">REAL QUESTS</p>
-      <h2>Sweetville needs your <em>help.</em></h2>
-      <div class="quest-grid" id="questGrid"></div>
-    </section>
-
-    <section class="panel" id="citizen">
-      <p class="eyebrow">SWEETVILLE CITIZEN PASSPORT</p>
-      <h2>Your place in the world is now <em>official.</em></h2>
-
-      <div class="passport">
-        <div class="passport-cover">
-          <span>♡</span>
-          <strong>SWEETVILLE</strong>
-          <small>CITIZEN PASSPORT</small>
+    <section class="scene" id="lagoon" data-scene="lagoon">
+      <img class="scene-bg" src="assets/v6-lagoon.png" alt="Jahntella at Sweetville Lagoon of Love">
+      <div class="scene-shade"></div>
+      <div class="scene-copy right">
+        <p class="eyebrow">LAGOON OF LOVE</p>
+        <h2>A quiet place to <em>glow.</em></h2>
+        <p>Tap the water to make ripples, release floating hearts, and let Mochi splash along the shore.</p>
+        <div class="scene-actions">
+          <button class="pill primary" id="lagoonRipple">Create a Ripple</button>
+          <button class="pill ghost" id="lagoonHearts">Release Hearts</button>
         </div>
+      </div>
+      <div class="lagoon-water" id="lagoonWater"></div>
+      <button class="mochi-guide lagoon-mochi" data-mochi="lagoon"><span>🐶</span><small>SPLASH!</small></button>
+    </section>
 
-        <div class="passport-info">
-          <label>
-            Citizen Name
-            <input id="citizenName" maxlength="24" placeholder="Your Sweetie name">
-          </label>
-          <button class="btn primary" id="saveCitizen">Save Passport</button>
+    <section class="scene" id="city" data-scene="city">
+      <img class="scene-bg" src="assets/v6-rooftop-stage.png" alt="Jahntella performing above Sweetville City District">
+      <div class="scene-shade"></div>
+      <div class="scene-copy left">
+        <p class="eyebrow">NEON CITY</p>
+        <h2>Sweet music. Big lights. <em>One city.</em></h2>
+        <p>Activate the skyline, light the billboards, and watch Sweetville respond.</p>
+        <div class="scene-actions">
+          <button class="pill primary" id="cityLights">Light Up the City</button>
+          <button class="pill ghost" id="cityConfetti">Drop Confetti</button>
+        </div>
+      </div>
+      <div class="billboard billboard-one">SWEETVILLE</div>
+      <div class="billboard billboard-two">GOOD VIBES</div>
+      <div class="billboard billboard-three">JAHNTELLA ♡</div>
+    </section>
 
-          <div class="passport-stats">
-            <div><small>CITIZEN NUMBER</small><strong id="citizenNumber">SV-000000</strong></div>
-            <div><small>JOIN DATE</small><strong id="joinDate">—</strong></div>
-            <div><small>RANK</small><strong id="passportRank">Visitor</strong></div>
-            <div><small>LIFETIME VISITS</small><strong id="lifetimeVisits">0</strong></div>
-            <div><small>COMPLETION</small><strong id="completion">0%</strong></div>
+    <section class="scene" id="stage" data-scene="stage">
+      <img class="scene-bg stage-bg" id="stageImage" src="assets/v6-stage-reach.png" alt="Jahntella performing at Starlight Stage">
+      <div class="scene-shade"></div>
+      <div class="scene-copy right">
+        <p class="eyebrow">STARLIGHT STAGE</p>
+        <h2>The crowd is <em>ready.</em></h2>
+        <p>Launch concert mode with moving spotlights, crowd flashes, fireworks, and three live-stage moments.</p>
+        <div class="scene-actions">
+          <button class="pill primary" id="concertMode">Start Concert Mode</button>
+          <button class="pill ghost" id="nextStageMoment">Next Stage Moment</button>
+        </div>
+      </div>
+      <div class="spotlight spotlight-a"></div>
+      <div class="spotlight spotlight-b"></div>
+      <div class="spotlight spotlight-c"></div>
+      <div class="crowd-flashes" id="crowdFlashes"></div>
+    </section>
+
+    <section class="scene cottage-scene" id="house" data-scene="house">
+      <div class="cottage-layout">
+        <div class="cottage-copy">
+          <p class="eyebrow">JAHNTELLA'S COTTAGE</p>
+          <h2>Come inside and make some <em>music.</em></h2>
+          <p>The pink piano is fully playable through your speakers. Click the keys or use your keyboard.</p>
+          <div class="cottage-art">
+            <img src="assets/v6-wallpaper-triptych.png" alt="Jahntella Sweetville visual memories">
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="panel" id="npcs">
-      <p class="eyebrow">SWEETVILLE FRIENDS</p>
-      <h2>Everyone remembers <em>you.</em></h2>
-
-      <div class="npc-grid">
-        <button data-npc="poppy">🐶<strong>Poppy the Puppy</strong><small>Your new Sweetville companion</small></button>
-        <button data-npc="rosie">☕<strong>Rosie</strong><small>Pink Café</small></button>
-        <button data-npc="melody">🎹<strong>Melody</strong><small>Melody Studio</small></button>
-        <button data-npc="donny">🍩<strong>Donny</strong><small>Donut District</small></button>
-        <button data-npc="sprinkle">👑<strong>Princess Sprinkle</strong><small>Castle messenger</small></button>
-      </div>
-
-      <div class="dialogue" id="npcDialogue">Choose a friend to talk.</div>
-    </section>
-
-    <section class="panel" id="shops">
-      <p class="eyebrow">SWEETVILLE SHOPS</p>
-      <h2>The city feels more <em>lived in.</em></h2>
-
-      <div class="shop-grid">
-        <article>🍭<strong>Candy Shop</strong><small>Decorative preview</small></article>
-        <article>👗<strong>Fashion Boutique</strong><small>Wardrobe expansion</small></article>
-        <article>🎵<strong>Record Store</strong><small>Music collection</small></article>
-        <article>☕<strong>Pink Café</strong><small>Daily ritual</small></article>
-        <article>🏆<strong>Trophy Shop</strong><small>Achievement displays</small></article>
-      </div>
-    </section>
-
-    <section class="panel" id="castle">
-      <p class="eyebrow">CASTLE EXPANSION</p>
-      <h2>The Grand Hall is <em>open.</em></h2>
-
-      <div class="castle">
-        <div class="throne">👑</div>
-        <div>
-          <h3>Sweetville Grand Hall</h3>
-          <p>Explore portraits, world history, and the Royal Archives. More rooms will open in future chapters.</p>
-          <button class="btn primary" id="openArchive">Open Royal Archive</button>
+        <div class="piano-room">
+          <div class="piano-top">
+            <span>Jahntella ♡</span>
+            <small>Sweetville Baby Grand</small>
+          </div>
+          <div class="piano-keys" id="pianoKeys"></div>
+          <div class="piano-controls">
+            <button class="pill primary" id="pianoDemo">▶ Play Sweetville Theme</button>
+            <button class="pill ghost" id="pianoSustain">Sustain: Off</button>
+          </div>
+          <p id="nowPlaying">Ready to play.</p>
         </div>
       </div>
+      <button class="mochi-guide cottage-mochi" data-mochi="piano"><span>🐶</span><small>MOCHI LISTENS</small></button>
+    </section>
 
-      <div class="archive" id="archive" hidden>
-        <h3>Royal Archive — Chapter Zero</h3>
-        <p>Before Sweetville had streets, stages, cafés, or castles, it began as one promise: every soft heart deserves a place where it can still feel powerful.</p>
+    <section class="scene memories-scene" id="memories" data-scene="memories">
+      <div class="memories-heading">
+        <p class="eyebrow">LIVING MEMORIES</p>
+        <h2>Every picture opens a <em>moment.</em></h2>
+        <p>Tap any memory to enter it full-screen.</p>
+      </div>
+      <div class="memory-grid">
+        <button class="memory-card wide" data-memory="assets/v6-car-selfie.png" data-title="Sweetville Afterparty">
+          <img src="assets/v6-car-selfie.png" alt="Jahntella taking a selfie in Sweetville">
+          <span>Sweetville Afterparty</span>
+        </button>
+        <button class="memory-card" data-memory="assets/v6-lagoon.png" data-title="Lagoon of Love">
+          <img src="assets/v6-lagoon.png" alt="Jahntella at Lagoon of Love">
+          <span>Lagoon of Love</span>
+        </button>
+        <button class="memory-card" data-memory="assets/v6-rooftop-stage.png" data-title="Neon City Live">
+          <img src="assets/v6-rooftop-stage.png" alt="Jahntella performing in Neon City">
+          <span>Neon City Live</span>
+        </button>
+        <button class="memory-card" data-memory="assets/v6-stage-salute.png" data-title="One More Song">
+          <img src="assets/v6-stage-salute.png" alt="Jahntella saluting the crowd">
+          <span>One More Song</span>
+        </button>
+        <button class="memory-card" data-memory="assets/v6-stage-bow.png" data-title="Thank You, Sweeties">
+          <img src="assets/v6-stage-bow.png" alt="Jahntella bowing to the crowd">
+          <span>Thank You, Sweeties</span>
+        </button>
       </div>
     </section>
   </main>
 
-  <dialog id="roomModal">
-    <button id="roomClose">×</button>
-    <div id="roomModalContent"></div>
+  <div class="world-dock">
+    <button data-go="arrival">🏰<span>Gates</span></button>
+    <button data-go="lagoon">🌊<span>Lagoon</span></button>
+    <button data-go="city">🌆<span>City</span></button>
+    <button data-go="stage">🎤<span>Stage</span></button>
+    <button data-go="house">🎹<span>Cottage</span></button>
+    <button data-go="memories">📸<span>Memories</span></button>
+  </div>
+
+  <dialog id="memoryModal">
+    <button class="modal-close" id="memoryClose">×</button>
+    <img id="memoryImage" alt="">
+    <h3 id="memoryTitle"></h3>
+    <p>A living memory from the World of Sweet.</p>
   </dialog>
 
   <div class="toast" id="toast"></div>
-  <script src="sweetville-v5.0.js?v=5.0"></script>
+  <script src="sweetville-v6.js?v=6.0"></script>
 </body>
 </html>
