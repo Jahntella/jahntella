@@ -1,3 +1,212 @@
+@import url("https://cdn.jsdelivr.net/gh/Jahntella/jahntella@2945b428132ae8c3592954f9a65773e108201ecb/styles.css");
 
-:root{--pink:#ff2f9d;--hot:#ff6fbd;--ink:#080007;--panel:#140014;--line:rgba(255,100,185,.5)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#070006;color:#fff;font-family:"DM Sans",sans-serif}a{color:inherit;text-decoration:none}button{font:inherit}.site-sparkles{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}.site-sparkles i{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;box-shadow:0 0 10px #fff;animation:twinkle 2s infinite alternate}.main-header{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:1rem 3vw;background:#080007d9;border-bottom:1px solid var(--line);backdrop-filter:blur(18px)}.main-logo{font-family:"Sacramento",cursive;font-size:2.5rem}.main-logo span{color:var(--hot)}.main-header nav{display:flex;gap:.7rem;align-items:center}.main-header nav a{padding:.75rem 1rem;border-radius:999px;font-size:.78rem;font-weight:800}.main-header nav a:hover{background:#ffffff10}.world-link{background:linear-gradient(135deg,#ff2f9d,#9d22ff)}.main-menu{display:none;border:1px solid var(--line);background:#120011;color:#fff;border-radius:50%;width:42px;height:42px}.main-hero{position:relative;min-height:100vh;display:grid;align-items:center;overflow:hidden;padding:8rem 5vw 5rem}.main-hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 18%;filter:saturate(1.05)}.main-hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,#070006e8,#07000635 52%,#070006c9),linear-gradient(transparent 60%,#070006)}.main-hero-copy{position:relative;z-index:3;width:min(650px,90vw)}.eyebrow{font-size:.72rem;letter-spacing:.23em;font-weight:800;color:#ff88c9}.main-hero h1{font-family:"Sacramento",cursive;font-size:clamp(5rem,14vw,11rem);line-height:.8;margin:.4rem 0;text-shadow:0 0 28px #ff2f9d}.main-hero h1 span{color:var(--pink);font-size:.45em;vertical-align:.45em}.hero-tagline{font-family:"Playfair Display",serif;font-size:clamp(1.5rem,3.2vw,2.8rem);max-width:700px}.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}.button{display:inline-flex;align-items:center;justify-content:center;padding:1rem 1.4rem;border:1px solid var(--line);border-radius:999px;font-weight:800}.primary{background:linear-gradient(135deg,#ff2f9d,#9d22ff)}.ghost{background:#080007a8;backdrop-filter:blur(8px)}.hero-world-card{position:absolute;z-index:4;right:4vw;bottom:6vh;width:min(380px,86vw);padding:1.5rem;border:1px solid var(--line);border-radius:24px;background:#0b000ad6;backdrop-filter:blur(16px)}.hero-world-card small,.hero-world-card strong{display:block}.hero-world-card strong{font-family:"Playfair Display",serif;font-size:2rem;margin:.3rem 0}.hero-world-card a{color:#ff87c7;font-weight:800}.main-section{padding:7rem 5vw;border-top:1px solid #ffffff0b}.main-section h2{font-family:"Playfair Display",serif;font-size:clamp(3rem,6vw,6rem);line-height:.95;margin:.4rem 0 1rem}.main-section em{font-family:"Sacramento",cursive;color:#ff70bd;font-weight:400}.world-bridge{background:radial-gradient(circle at 20% 20%,#64134055,transparent 35%),#0a0009}.world-bridge>div:first-child{max-width:800px}.world-bridge>div:first-child p:last-child{font-size:1.15rem;line-height:1.75;color:#f1d7e6}.bridge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}.bridge-grid a{position:relative;min-height:360px;border-radius:24px;overflow:hidden;border:1px solid var(--line)}.bridge-grid img{width:100%;height:100%;object-fit:cover;object-position:center 18%;transition:.5s}.bridge-grid a:hover img{transform:scale(1.05)}.bridge-grid a::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent,#080007dd)}.bridge-grid span{position:absolute;z-index:2;left:1rem;bottom:1rem;font-family:"Playfair Display",serif;font-size:1.5rem}.section-heading{max-width:850px}.centered{text-align:center;margin:auto}.music-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}.music-grid article{display:grid;grid-template-columns:minmax(180px,.8fr) 1.2fr;gap:1.5rem;align-items:center;padding:1.2rem;border:1px solid var(--line);border-radius:24px;background:#120011}.music-grid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:18px}.music-grid h3{font-family:"Playfair Display",serif;font-size:2.4rem;margin:.3rem 0}.story-section{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;background:radial-gradient(circle at 80% 20%,#8a1f6750,transparent 35%),#0c000b}.story-section img{width:100%;border-radius:28px;border:1px solid var(--line)}.story-copy p{font-size:1.12rem;line-height:1.8}.visual-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}.visual-grid img{width:100%;height:520px;object-fit:cover;object-position:center 16%;border-radius:24px;border:1px solid var(--line)}.registry-section{display:flex;justify-content:space-between;gap:2rem;align-items:center;background:linear-gradient(135deg,#2a001f,#0b000a)}footer{padding:3rem 5vw;text-align:center;border-top:1px solid var(--line)}footer strong{font-family:"Sacramento",cursive;font-size:3rem}footer strong span{color:var(--hot)}footer a{color:#ff87c7;font-weight:800}@keyframes twinkle{to{opacity:.2;transform:scale(.5)}}@media(max-width:900px){.bridge-grid,.visual-grid{grid-template-columns:repeat(2,1fr)}.music-grid,.story-section{grid-template-columns:1fr}.hero-world-card{position:relative;right:auto;bottom:auto;margin-top:2rem}.main-hero{align-content:center}.registry-section{display:grid}.main-header nav{display:none;position:absolute;top:100%;left:1rem;right:1rem;flex-direction:column;background:#0a0009;padding:1rem;border:1px solid var(--line);border-radius:18px}.main-header nav.open{display:flex}.main-menu{display:block}}@media(max-width:620px){.main-hero{padding:7rem 1rem 4rem}.main-hero-bg{object-position:58% 16%}.main-section{padding:5rem 1rem}.bridge-grid,.visual-grid{grid-template-columns:1fr}.music-grid article{grid-template-columns:1fr}.visual-grid img{height:480px}}
+/* =========================================================
+   JAHNTELLA V5.1 RECOVERY HERO
+   Uses the exact last-known-good site stylesheet above.
+   ========================================================= */
+
+.hero-v5{
+  position:relative;
+  isolation:isolate;
+  min-height:calc(100svh - 72px);
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  padding:clamp(5.5rem,11vh,8rem) clamp(1.2rem,6vw,6rem) clamp(5.5rem,10vh,7rem);
+  background:#100012;
+}
+
+.hero-v5-video{
+  position:absolute;
+  inset:0;
+  z-index:-4;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+
+.hero-v5-overlay{
+  position:absolute;
+  inset:0;
+  z-index:-3;
+  background:
+    linear-gradient(180deg,rgba(16,0,18,.48),rgba(16,0,18,.12) 38%,rgba(16,0,18,.74) 100%),
+    radial-gradient(circle at center,transparent 12%,rgba(16,0,18,.48) 100%);
+}
+
+.hero-v5::after{
+  content:"";
+  position:absolute;
+  inset:auto 0 0;
+  z-index:-2;
+  height:25%;
+  background:linear-gradient(to bottom,transparent,#100012);
+  pointer-events:none;
+}
+
+.hero-v5-content{
+  width:min(100%,920px);
+  text-align:center;
+  text-shadow:0 4px 30px rgba(0,0,0,.72);
+  animation:hero-v5-enter 1s .12s both;
+}
+
+.hero-v5-logo{
+  margin:0;
+  font-family:"Sacramento",cursive;
+  font-size:clamp(5rem,15vw,11rem);
+  font-weight:400;
+  line-height:.82;
+  letter-spacing:-.03em;
+  color:#fff;
+  filter:drop-shadow(0 0 28px rgba(255,79,183,.5));
+}
+
+.hero-v5-logo span{
+  color:var(--pink);
+  font-size:.42em;
+  vertical-align:.42em;
+  margin-left:.08em;
+}
+
+.hero-v5-tagline{
+  max-width:720px;
+  margin:1.2rem auto .7rem;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(1.4rem,3.4vw,2.55rem);
+  line-height:1.15;
+  color:#fff8fc;
+}
+
+.hero-v5 .artist-line{
+  margin:0 auto 1.8rem;
+  color:#ffd1ea;
+}
+
+.hero-v5 .hero-actions{
+  justify-content:center;
+}
+
+.hero-v5-scroll{
+  position:absolute;
+  left:50%;
+  bottom:1rem;
+  display:grid;
+  justify-items:center;
+  gap:.35rem;
+  transform:translateX(-50%);
+  color:rgba(255,255,255,.72);
+  font-size:.62rem;
+  font-weight:800;
+  letter-spacing:.2em;
+}
+
+.hero-v5-scroll i{
+  display:block;
+  width:1px;
+  height:28px;
+  background:linear-gradient(to bottom,rgba(255,255,255,.9),transparent);
+  animation:hero-v5-scroll 1.7s ease-in-out infinite;
+}
+
+@keyframes hero-v5-enter{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:none}
+}
+
+@keyframes hero-v5-scroll{
+  50%{opacity:.3;transform:translateY(7px)}
+}
+
+@media(max-width:680px){
+  .hero-v5{
+    min-height:calc(100svh - 66px);
+    padding:5.5rem 1.1rem 5.5rem;
+  }
+
+  .hero-v5-logo{
+    font-size:clamp(4.5rem,24vw,7.2rem);
+  }
+
+  .hero-v5-tagline{
+    max-width:20rem;
+    font-size:clamp(1.2rem,6vw,1.7rem);
+  }
+
+  .hero-v5 .artist-line{
+    max-width:20rem;
+    font-size:.9rem;
+  }
+
+  .hero-v5 .hero-actions{
+    width:100%;
+  }
+
+  .hero-v5 .primary-button,
+  .hero-v5 .secondary-button{
+    width:min(100%,260px);
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-v5-content,
+  .hero-v5-scroll i{
+    animation:none;
+  }
+}
+
+
+/* =========================================================
+   JAHNTELLA EXPERIENCE 1.0 — SWEETVILLE CONNECTION
+   Preserves the complete v5 artist homepage and connects it
+   to the independently versioned Sweetville World v7.
+   ========================================================= */
+.nav-sweetville-link{
+  color:#fff !important;
+  border:1px solid rgba(255,112,190,.72);
+  border-radius:999px;
+  padding:.58rem .9rem !important;
+  background:linear-gradient(135deg,rgba(255,45,157,.88),rgba(138,31,255,.84));
+  box-shadow:0 0 20px rgba(255,44,153,.24);
+}
+.hero-actions .sweetville-entry-button{
+  position:relative;
+  overflow:hidden;
+  display:inline-flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:.08rem;
+  min-width:210px;
+  border-color:rgba(255,145,211,.92);
+  background:linear-gradient(135deg,#ff2f9d,#9522ff);
+  box-shadow:0 0 32px rgba(255,45,157,.42),inset 0 0 18px rgba(255,255,255,.08);
+}
+.hero-actions .sweetville-entry-button::before{
+  content:"";
+  position:absolute;
+  inset:-55% auto -55% -35%;
+  width:32%;
+  transform:rotate(18deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.72),transparent);
+  animation:experiencePortalShine 5s ease-in-out infinite;
+}
+.hero-actions .sweetville-entry-button span,
+.hero-actions .sweetville-entry-button small{position:relative;z-index:1}
+.hero-actions .sweetville-entry-button small{
+  font-size:.57rem;
+  letter-spacing:.15em;
+  opacity:.88;
+}
+@keyframes experiencePortalShine{
+  0%,68%{transform:translateX(0) rotate(18deg);opacity:0}
+  72%{opacity:1}
+  100%{transform:translateX(540px) rotate(18deg);opacity:0}
+}
+@media(max-width:680px){
+  .hero-actions .sweetville-entry-button{width:min(100%,260px)}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-actions .sweetville-entry-button::before{animation:none}
+}
