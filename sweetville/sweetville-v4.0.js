@@ -340,10 +340,9 @@
   E.openGates.addEventListener("click",()=>{E.gateScreen.classList.add("opening");sessionStorage.setItem("sweetvilleGatesOpened","yes");setTimeout(()=>E.gateScreen.classList.add("opened"),1700)});
   if(sessionStorage.getItem("sweetvilleGatesOpened")==="yes")E.gateScreen.classList.add("opened");
 
-  E.soundToggle.addEventListener("click", async()=>{
-    worldSoundOn=!worldSoundOn;
-    if(worldSoundOn){audioContext ||= new (window.AudioContext||window.webkitAudioContext)();await audioContext.resume();E.soundToggle.textContent="🔊 World Sound On";E.soundToggle.setAttribute("aria-pressed","true");E.soundStatus.textContent="On";showToast("🎵","WORLD SOUND","Sweetville is listening");}
-    else{stopSound();E.soundToggle.textContent="🔇 Turn World Sound On";E.soundToggle.setAttribute("aria-pressed","false");E.soundStatus.textContent="Muted";}
+  E.soundToggle.addEventListener("click", ()=>{
+    document.getElementById("miniPianoModal")?.showModal();
+    E.soundStatus.textContent="Mini Piano";
   });
 
   E.giftBox.addEventListener("click",()=>{

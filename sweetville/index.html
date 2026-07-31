@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="sweetville.css?v=4.0.6-living-polish">
+  <link rel="stylesheet" href="sweetville.css?v=4.0.7-map-piano">
 </head>
 <body>
   <div class="gate-screen" id="gateScreen">
@@ -61,7 +61,7 @@
   <div class="hero-action-bar" aria-label="Sweetville actions">
     <a class="journey-button" href="#livingMap">EXPLORE THE WORLD MAP <span>›</span></a>
     <a class="intro-button" href="#bedroom">VISIT MY SWEETIE ROOM</a>
-    <button class="hero-sound-button" id="heroSoundButton" type="button">♫ WORLD SOUND</button>
+    <button class="hero-sound-button" id="heroSoundButton" type="button">🎹 PLAY MINI PIANO</button>
   </div>
   <div class="hero-progress-strip" aria-label="Sweetie progress">
     <span>COLLECTIBLES <strong id="cinematicCollectibles">0 / 5</strong></span>
@@ -84,7 +84,7 @@
           <div><small>WORLD TIME</small><strong id="worldTime">--:--</strong></div>
           <div><small>SKY</small><strong id="worldPhase">Night</strong></div>
           <div><small>EXPLORER RANK</small><strong id="rankName">Visitor</strong></div>
-          <div><small>WORLD SOUND</small><strong id="soundStatus">Muted</strong></div>
+          <div><small>MUSIC TOY</small><strong id="soundStatus">Mini Piano</strong></div>
         </div>
       </div>
 
@@ -98,7 +98,7 @@
           <span>💋</span>
           <p>“Welcome home, Sweetie.”</p>
         </div>
-        <button class="sound-toggle" id="soundToggle" aria-pressed="false">🔇 Turn World Sound On</button>
+        <button class="sound-toggle" id="soundToggle" aria-pressed="false">🎹 Open Mini Piano</button>
       </div>
     </section>
 
@@ -339,6 +339,32 @@
   </div>
 
   <script src="sweetville-v4.0.js?v=4.0.4-hero-image-2"></script>
-  <script src="living-world.js?v=4.0.6-living-polish"></script>
+  <script src="living-world.js?v=4.0.7-map-piano"></script>
+
+  <dialog class="mini-piano-modal" id="miniPianoModal" aria-labelledby="miniPianoTitle">
+    <div class="mini-piano-shell">
+      <button class="mini-piano-close" id="miniPianoClose" type="button" aria-label="Close mini piano">×</button>
+      <p class="sv-eyebrow">SWEETVILLE MUSIC TOY</p>
+      <h2 id="miniPianoTitle">Play the <em>Mini Piano.</em></h2>
+      <p>Tap the keys or use your computer keyboard: A W S E D F T G Y H U J K.</p>
+      <div class="mini-piano" id="miniPiano" role="group" aria-label="Playable mini piano">
+        <button class="piano-key white" data-note="C4" data-key="a"><span>C</span><small>A</small></button>
+        <button class="piano-key black key-cs" data-note="C#4" data-key="w"><small>W</small></button>
+        <button class="piano-key white" data-note="D4" data-key="s"><span>D</span><small>S</small></button>
+        <button class="piano-key black key-ds" data-note="D#4" data-key="e"><small>E</small></button>
+        <button class="piano-key white" data-note="E4" data-key="d"><span>E</span><small>D</small></button>
+        <button class="piano-key white" data-note="F4" data-key="f"><span>F</span><small>F</small></button>
+        <button class="piano-key black key-fs" data-note="F#4" data-key="t"><small>T</small></button>
+        <button class="piano-key white" data-note="G4" data-key="g"><span>G</span><small>G</small></button>
+        <button class="piano-key black key-gs" data-note="G#4" data-key="y"><small>Y</small></button>
+        <button class="piano-key white" data-note="A4" data-key="h"><span>A</span><small>H</small></button>
+        <button class="piano-key black key-as" data-note="A#4" data-key="u"><small>U</small></button>
+        <button class="piano-key white" data-note="B4" data-key="j"><span>B</span><small>J</small></button>
+        <button class="piano-key white" data-note="C5" data-key="k"><span>C</span><small>K</small></button>
+      </div>
+      <div class="piano-display"><span id="pianoNoteDisplay">READY</span><small>Make something sweet ♡</small></div>
+    </div>
+  </dialog>
+
 </body>
 </html>
