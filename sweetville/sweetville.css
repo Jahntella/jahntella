@@ -72,14 +72,13 @@ html{scroll-behavior:smooth}.cinematic-home{position:relative;min-height:100svh;
 @media(max-width:800px){.cinematic-home{min-height:930px}.cinematic-bg{background-position:55% center}.cinematic-ui{padding:7rem 1rem 14rem;align-items:flex-start}.cinematic-welcome{max-width:330px}.cinematic-script{font-size:2.2rem}.cinematic-welcome h1{font-size:3.7rem}.sweetie-stats-card{position:absolute;right:.7rem;top:7rem;width:160px;padding:.55rem;opacity:.93}.official-sweetie{display:none}.sweetie-stats-card>div{padding:.42rem}.sweetie-stats-card h2{font-size:.72rem}.sweetie-stats-card p{font-size:.55rem}.sweetie-stats-card strong{font-size:.75rem}.cinematic-welcome>p:not(.cinematic-script){max-width:180px;font-size:1rem}.cinematic-actions{max-width:240px}.mochi-message{max-width:270px}.district-card{flex-basis:160px;height:140px}.district-dock{bottom:1rem;padding:0 .8rem}.district-dock h2{font-size:.7rem}.continue-world{display:none}}
 @media(prefers-reduced-motion:reduce){.cinematic-bg,.cinematic-stars i,.neon-heart{animation:none!important}}
 
-/* === v4.0.3 CROPPING + LAYOUT REPAIR === */
-/* Use a clean crop of the cinematic artwork so its baked-in mock navigation,
-   buttons, stats and district cards never appear behind the real interface. */
+/* === v4.0.4 HERO IMAGE 2 REPLACEMENT === */
+/* Use the approved Image 2 as the hero artwork, cropped to remove its baked-in top navigation strip. */
 .cinematic-bg{
   inset:0;
-  background-image:url('assets/sweetville-cinematic-scene.webp');
+  background-image:url('assets/sweetville-hero-image-2-cropped.webp');
   background-size:cover;
-  background-position:center 42%;
+  background-position:center 34%;
   animation:svKenBurnsSoft 24s ease-in-out infinite alternate;
 }
 .cinematic-home{min-height:980px}
