@@ -1,16 +1,30 @@
-JAHNTELLA FULL RECOVERY BUILD
+JAHNTELLA EMERGENCY STRUCTURE REPAIR
 
-This package restores:
-1. The full Jahntella artist homepage.
-2. The click-through Sweeties Magazine.
-3. Sweetville Build v4.0 — The World Comes Alive.
+This package restores the correct website structure:
 
-Upload the CONTENTS of this folder into the root of the GitHub repository.
-Replace matching files. Do not delete unrelated existing assets, audio, video, posters, thumbnails, branding, or originals folders.
+ROOT (Jahntella artist website + click-through magazine)
+- index.html
+- styles.css
+- sweeties-magazine/
 
-Main homepage: /index.html
-Magazine: /sweeties-magazine/
-Interactive Sweetville: /sweetville/
+SWEETVILLE (cinematic interactive world)
+- sweetville/index.html
+- sweetville/sweetville.css
+- sweetville/sweetville-v4.0.js
+- sweetville/living-world.js
+- sweetville/assets/
 
-Suggested commit:
-Jahntella Full Recovery — Restore Magazine + Interactive Sweetville
+UPLOAD INSTRUCTIONS
+1. Open the Jahntella/jahntella repository.
+2. Upload every item INSIDE this ZIP to the repository root.
+3. Replace matching files when prompted.
+4. Do not move sweetville files out of the sweetville folder.
+5. Do not delete existing root asset, audio, video, branding, poster, thumbnail, or originals folders.
+
+Suggested commit message:
+Repair site structure — Restore Jahntella homepage + Cinematic Sweetville
+
+After publishing, test:
+https://jahntella.com/?v=structure-repair-1
+https://jahntella.com/sweeties-magazine/?v=structure-repair-1
+https://jahntella.com/sweetville/?v=living-world-2
