@@ -1,39 +1,30 @@
-JAHNTELLA — SWEETVILLE BUILD v4.0
+JAHNTELLA — SWEETVILLE BUILD v5.0
 ======================================
+WELCOME HOME
 
-THE WORLD COMES ALIVE
-
-UPLOAD INSTRUCTIONS
+UPLOAD
 1. Extract this ZIP.
-2. Open the "sweetville" folder.
-3. Upload all three files into the existing /sweetville/ folder in GitHub.
-4. Replace matching files when prompted.
-5. Commit with:
-   Jahntella Sweetville Build v4.0 — The World Comes Alive
-6. Wait for GitHub Pages to deploy.
-7. Visit:
-   https://jahntella.com/sweetville/?v=4.0
-8. Press Ctrl + F5 once.
+2. Upload the contents of the sweetville folder into your existing GitHub /sweetville/ folder.
+3. Replace matching files.
+4. Commit with:
+   Jahntella Sweetville Build v5.0 — Welcome Home
+5. Test at:
+   https://jahntella.com/sweetville/?v=5.0
+6. Hard refresh with Ctrl + F5.
 
 FILES
 - sweetville/index.html
 - sweetville/sweetville.css
-- sweetville/sweetville-v4.0.js
+- sweetville/sweetville-v5.0.js
 
-BUILD v4.0 FEATURES
-- Expanded illustrated-style interactive world map
-- Living sky and ambient world details
-- Optional synthesized district mood sounds
-- Random Jahntella pop-in messages
-- Five hidden letters and Pink Mailbox
-- Five secret district collectibles
-- Sweetie Room that fills as you collect
-- Ten animated achievements
-- Expanded progress and ranking system
-- Existing visits, hearts, daily gifts, passport, diary, and Story Mode preserved
-- Legacy Build 3.0 visit and heart progress imported automatically
-- Sweetville Castle, Jahntella's House, and Neon Stage teased for future releases
-
-IMPORTANT
-This package only replaces files inside /sweetville/.
-It does not overwrite the main Jahntella homepage or Story Mode files.
+FEATURES
+- Jahntella’s House opens
+- Interactive piano, notebook, wardrobe, records, photos, booth, and private letter
+- Poppy the Puppy replaces the cat concept
+- NPC conversations that remember visits
+- Five real quests with saved progress
+- Citizen passport with name, number, join date, rank, visits, and completion
+- Dynamic weather effects
+- Sweetville shop previews
+- Castle Grand Hall and Royal Archive
+- v4.0 progress imported automatically when possible
