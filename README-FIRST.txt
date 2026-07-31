@@ -1,59 +1,34 @@
-JAHNTELLA v4.3 — FIVE-SECOND HERO PATCH
-========================================
+JAHNTELLA BUILD 3.0 — DROP-IN RELEASE
 
-This first-step patch changes ONLY the homepage hero.
+THIS BUILD REQUIRES NO MANUAL HTML OR CSS EDITING.
 
-WHAT IT DOES
-------------
-- Replaces the current split image hero with a full-screen video hero.
-- Uses videos/Hero.mp4.
-- Autoplay, muted, loop, playsinline.
-- Adds a dark cinematic overlay.
-- Keeps centered Jahntella branding.
-- Adds a DIP IN button that leads to Music.
-- Leaves Music, Story, Sweet Vault, Posters, Wallpapers, Merch, Gallery,
-  Creative Director, and Connect untouched.
+UPLOAD INSTRUCTIONS
+1. Extract the ZIP.
+2. Upload ALL extracted files and folders to the ROOT of the GitHub repository.
+3. When GitHub asks, choose to replace files with the same names.
+4. Commit with: Jahntella Build 3.0 — Story Mode
+5. Wait for GitHub Pages to deploy.
+6. Open https://jahntella.com/?v=3.0 and press Ctrl+F5 once.
 
-QUICK AUTOMATIC INSTALL
------------------------
-1. Extract this ZIP.
-2. Copy apply_v4_3_hero_patch.py into the ROOT of your Jahntella repository,
-   beside index.html.
-3. Run:
+FILES REPLACED
+- magazine-home-link.js
+- magazine-home-link.css
+- sweetville/index.html
+- sweetville/sweetville.css
+- sweetville/sweetville-v2.0.2.js
+- sweetville/story.html
+- sweetville/story-mode.css
 
-   Windows:
-       py apply_v4_3_hero_patch.py
+WHAT APPEARS AFTER UPLOAD
+- Sweetville link in the main navigation
+- OPEN THE GATES / ENTER SWEETVILLE button in the homepage hero
+- Story Mode link in Sweetville navigation
+- Story Mode feature card on the Sweetville page
+- Full Story Mode page
+- Working gates, map, gifts, diary, passport, hearts and badges
+- Extra broken script tag removed
 
-   Mac/Linux:
-       python3 apply_v4_3_hero_patch.py
-
-4. Place your five-second video here:
-       videos/Hero.mp4
-
-5. Upload/commit these changes:
-       index.html
-       hero-v4.3.css
-       videos/Hero.mp4
-
-The script also creates:
-       index-before-v4.3-hero.html
-
-That is your automatic backup. You do not need to upload the backup to GitHub.
-
-MANUAL INSTALL
---------------
-- Replace the existing <section class="hero reveal" id="home">...</section>
-  block with the contents of hero-section.html.
-- Copy hero-v4.3.css into the repository root.
-- Add this line immediately before </head> in index.html:
-
-  <link rel="stylesheet" href="hero-v4.3.css?v=1">
-
-- Create videos/ and add Hero.mp4.
-
-IMPORTANT
----------
-The filename and capitalization must be exact:
-videos/Hero.mp4
-
-GitHub Pages is case-sensitive.
+TEST LINKS
+https://jahntella.com/?v=3.0
+https://jahntella.com/sweetville/?v=3.0
+https://jahntella.com/sweetville/story.html?v=3.0
