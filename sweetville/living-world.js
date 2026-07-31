@@ -45,8 +45,121 @@
 })();
 
 // v4.0.5: connect the clean hero sound button to the existing world sound control.
-document.getElementById('heroSoundButton')?.addEventListener('click',()=>document.getElementById('miniPianoModal')?.showModal());
-
 // Sweetville v4.0.6 — Living World polish
 (()=>{const hero=document.getElementById('cinematicHome');if(!hero||hero.dataset.polishReady==='true')return;hero.dataset.polishReady='true';const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;const layer=document.createElement('div');layer.className='sv-ambient-layer';layer.setAttribute('aria-hidden','true');hero.appendChild(layer);if(!reduced){const sc=innerWidth<700?16:34;for(let i=0;i<sc;i++){const e=document.createElement('i');e.className='sv-spark';e.style.left=Math.random()*100+'%';e.style.top=(18+Math.random()*75)+'%';e.style.setProperty('--spark-size',(2+Math.random()*3)+'px');e.style.setProperty('--spark-duration',(6+Math.random()*8)+'s');e.style.setProperty('--spark-delay',(-Math.random()*12)+'s');e.style.setProperty('--spark-drift',(-35+Math.random()*70)+'px');layer.appendChild(e)}const pc=innerWidth<700?5:10;for(let i=0;i<pc;i++){const e=document.createElement('span');e.className='sv-heart-petal';e.textContent=i%3===0?'♡':'✦';e.style.left=Math.random()*100+'%';e.style.setProperty('--petal-size',(9+Math.random()*10)+'px');e.style.setProperty('--petal-duration',(10+Math.random()*10)+'s');e.style.setProperty('--petal-delay',(-Math.random()*16)+'s');e.style.setProperty('--petal-drift',(-70+Math.random()*140)+'px');layer.appendChild(e)}let raf=0;hero.addEventListener('pointermove',ev=>{if(innerWidth<900)return;cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{const r=hero.getBoundingClientRect(),x=((ev.clientX-r.left)/r.width-.5)*-14,y=((ev.clientY-r.top)/r.height-.5)*-8;hero.style.setProperty('--sv-parallax-x',x.toFixed(2)+'px');hero.style.setProperty('--sv-parallax-y',y.toFixed(2)+'px')})},{passive:true});hero.addEventListener('pointerleave',()=>{hero.style.setProperty('--sv-parallax-x','0px');hero.style.setProperty('--sv-parallax-y','0px')},{passive:true})}document.querySelectorAll('.location-card img').forEach(img=>{img.loading='lazy';img.decoding='async'})})();
-\n\n// Sweetville v4.0.7 — Playable Mini Piano\n(()=>{\n  const modal=document.getElementById('miniPianoModal');\n  const piano=document.getElementById('miniPiano');\n  const close=document.getElementById('miniPianoClose');\n  const display=document.getElementById('pianoNoteDisplay');\n  if(!modal||!piano)return;\n  const freq={C4:261.63,'C#4':277.18,D4:293.66,'D#4':311.13,E4:329.63,F4:349.23,'F#4':369.99,G4:392,'G#4':415.30,A4:440,'A#4':466.16,B4:493.88,C5:523.25};\n  let ctx;\n  const play=(button)=>{\n    const note=button.dataset.note; if(!freq[note])return;\n    ctx ||= new (window.AudioContext||window.webkitAudioContext)();\n    ctx.resume();\n    const osc=ctx.createOscillator(), gain=ctx.createGain();\n    osc.type='triangle'; osc.frequency.value=freq[note];\n    gain.gain.setValueAtTime(.0001,ctx.currentTime);\n    gain.gain.exponentialRampToValueAtTime(.26,ctx.currentTime+.012);\n    gain.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+.72);\n    osc.connect(gain).connect(ctx.destination);\n    osc.start(); osc.stop(ctx.currentTime+.75);\n    button.classList.add('active');\n    display.textContent=note.replace('4','').replace('5',' HIGH');\n    setTimeout(()=>button.classList.remove('active'),150);\n  };\n  piano.querySelectorAll('.piano-key').forEach(btn=>btn.addEventListener('pointerdown',()=>play(btn)));\n  document.addEventListener('keydown',e=>{\n    if(!modal.open||e.repeat)return;\n    const btn=piano.querySelector(`[data-key="${e.key.toLowerCase()}"]`);\n    if(btn){e.preventDefault();play(btn)}\n    if(e.key==='Escape')modal.close();\n  });\n  close?.addEventListener('click',()=>modal.close());\n  modal.addEventListener('click',e=>{if(e.target===modal)modal.close()});\n})();\n
+
+// Sweetville v4.0.8 — Playable Mini Piano
+(() => {
+  const initializePiano = () => {
+    const modal = document.getElementById('miniPianoModal');
+    const piano = document.getElementById('miniPiano');
+    const close = document.getElementById('miniPianoClose');
+    const display = document.getElementById('pianoNoteDisplay');
+    const triggers = [
+      document.getElementById('heroSoundButton'),
+      document.getElementById('soundToggle')
+    ].filter(Boolean);
+
+    if (!modal || !piano || modal.dataset.pianoReady === 'true') return;
+    modal.dataset.pianoReady = 'true';
+
+    const frequencies = {
+      C4: 261.63, 'C#4': 277.18, D4: 293.66, 'D#4': 311.13,
+      E4: 329.63, F4: 349.23, 'F#4': 369.99, G4: 392,
+      'G#4': 415.30, A4: 440, 'A#4': 466.16, B4: 493.88, C5: 523.25
+    };
+
+    let audioContext;
+
+    const openPiano = () => {
+      if (typeof modal.showModal === 'function') {
+        if (!modal.open) modal.showModal();
+      } else {
+        modal.setAttribute('open', '');
+      }
+    };
+
+    const closePiano = () => {
+      if (typeof modal.close === 'function' && modal.open) {
+        modal.close();
+      } else {
+        modal.removeAttribute('open');
+      }
+    };
+
+    const playNote = (button) => {
+      const note = button.dataset.note;
+      if (!frequencies[note]) return;
+
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContextClass) {
+        if (display) display.textContent = 'AUDIO UNAVAILABLE';
+        return;
+      }
+
+      audioContext ||= new AudioContextClass();
+      audioContext.resume();
+
+      const oscillator = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+
+      oscillator.type = 'triangle';
+      oscillator.frequency.setValueAtTime(frequencies[note], audioContext.currentTime);
+
+      gain.gain.setValueAtTime(0.0001, audioContext.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.28, audioContext.currentTime + 0.012);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + 0.72);
+
+      oscillator.connect(gain);
+      gain.connect(audioContext.destination);
+      oscillator.start();
+      oscillator.stop(audioContext.currentTime + 0.75);
+
+      button.classList.add('active');
+      if (display) display.textContent = note.replace('4', '').replace('5', ' HIGH');
+      window.setTimeout(() => button.classList.remove('active'), 150);
+    };
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('click', (event) => {
+        event.preventDefault();
+        openPiano();
+      });
+    });
+
+    piano.querySelectorAll('.piano-key').forEach((button) => {
+      button.addEventListener('pointerdown', (event) => {
+        event.preventDefault();
+        playNote(button);
+      });
+    });
+
+    close?.addEventListener('click', closePiano);
+
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) closePiano();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (!modal.hasAttribute('open') || event.repeat) return;
+
+      if (event.key === 'Escape') {
+        closePiano();
+        return;
+      }
+
+      const key = event.key.toLowerCase();
+      const button = piano.querySelector(`[data-key="${key}"]`);
+      if (button) {
+        event.preventDefault();
+        playNote(button);
+      }
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializePiano, { once: true });
+  } else {
+    initializePiano();
+  }
+})();
