@@ -1,1 +1,169 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b000d"><meta name="description" content="Explore Sweetville, collect location keys, discover hidden hearts, and build your Sweetville passport."><title>Sweetville Explorer — Jahntella</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" rel="stylesheet"><link rel="stylesheet" href="sweetville.css?v=1.0"></head><body><div class="sv-stars" aria-hidden="true"></div><header class="sv-header"><a class="sv-brand" href="../index.html">Jahntella<span>♡</span></a><nav aria-label="Sweetville navigation"><a href="#map">Map</a><a href="#passport">Passport</a><a href="#locations">Locations</a><a href="../index.html#sweet-vault">Sweet Vault</a></nav></header><main><section class="sv-hero"><div class="sv-hero-copy"><p class="sv-eyebrow">SWEETVILLE EXPANSION PACK v1.0</p><h1>Welcome to <em>Sweetville</em></h1><p class="sv-lede">Every street has a story. Every place holds a memory. Every Sweetie belongs here.</p><div class="sv-actions"><a class="sv-button primary" href="#map">Enter Sweetville</a><a class="sv-button secondary" href="#passport">Open Passport</a></div></div><div class="sv-orbit" aria-hidden="true"><span class="orbit-ring ring-one"></span><span class="orbit-ring ring-two"></span><span class="orbit-heart">♡</span><strong>SWEETVILLE</strong><small>POPULATION: DREAMERS • BELIEVERS • SWEETIES</small></div></section><section class="sv-panel" id="map"><div class="sv-section-heading"><p class="sv-eyebrow">INTERACTIVE MAP</p><h2>Choose your next <em>destination.</em></h2><p>Visit a location to stamp your passport. Your progress is saved on this device.</p></div><div class="map-grid" id="mapGrid"><button class="map-node node-cafe" data-location="pink-cafe"><span>☕</span><strong>Pink Café</strong><small>Morning magic & gratitude</small></button><button class="map-node node-studio" data-location="melody-studio"><span>🎵</span><strong>Melody Studio</strong><small>Where every note becomes a memory</small></button><button class="map-node node-donut" data-location="donut-district"><span>🍩</span><strong>Donut District</strong><small>Sprinkle cruises after dark</small></button><button class="map-node node-lake" data-location="sparkle-lake"><span>✨</span><strong>Sparkle Lake</strong><small>Moonlit magic & self-love</small></button><button class="map-node node-heart" data-location="neon-sweetheart"><span>💖</span><strong>Neon Sweetheart</strong><small>Heart on the dancefloor</small></button><button class="map-node locked" disabled><span>🏰</span><strong>Sweetville Castle</strong><small>Coming soon</small></button><button class="map-node locked" disabled><span>🎤</span><strong>Neon Stage</strong><small>Coming soon</small></button><button class="map-node locked" disabled><span>🍭</span><strong>Candy Corner</strong><small>Coming soon</small></button></div></section><section class="sv-panel passport-section" id="passport"><div class="passport-card"><div><p class="sv-eyebrow">DIGITAL EXPLORER PASSPORT</p><h2>Your journey through <em>Sweetville.</em></h2><p>Each destination you visit earns a glowing stamp. Find them all to unlock the “Welcome Home, Sweetie” ending.</p></div><div class="passport-progress"><strong><span id="visitedCount">0</span> / 5</strong><span>locations visited</span><div class="passport-track"><i id="passportBar"></i></div></div></div><div class="stamp-grid" id="stampGrid"></div></section><section class="sv-panel" id="locations"><div class="sv-section-heading"><p class="sv-eyebrow">LOCATION KEYS</p><h2>The Sweet Vault cards are your <em>keys.</em></h2><p>Each card opens a location experience with a story, a quote, a hidden heart, and a collectible stamp.</p></div><div class="location-grid" id="locationGrid"></div></section><section class="secret-ending" id="secretEnding" hidden><span>♡</span><p>You've explored every corner of Sweetville.</p><h2>Welcome Home, Sweetie.</h2><p>Thank you for believing in this world. The next chapter is just beginning.</p></section></main><dialog class="location-modal" id="locationModal"><button class="modal-close" id="modalClose" aria-label="Close location">×</button><div class="modal-media"><img id="modalImage" alt=""></div><div class="modal-copy"><p class="sv-eyebrow" id="modalCardId"></p><h2 id="modalTitle"></h2><p id="modalTagline"></p><blockquote id="modalQuote"></blockquote><button class="sv-button primary" id="stampButton">Stamp My Passport</button><button class="hidden-heart" id="hiddenHeart" aria-label="Find hidden heart">♡</button><p class="heart-status" id="heartStatus">One hidden heart is waiting here.</p></div></dialog><script src="sweetville.js?v=1.0"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b000d">
+  <meta name="description" content="Explore Sweetville, collect location keys, earn badges, find hidden hearts, and complete your digital passport.">
+  <title>Sweetville Explorer — Jahntella</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="sweetville.css?v=1.1">
+</head>
+<body>
+  <div class="sv-stars" aria-hidden="true"></div>
+
+  <header class="sv-header">
+    <a class="sv-brand" href="../index.html">Jahntella<span>♡</span></a>
+    <button class="sv-menu-button" id="menuButton" aria-label="Open Sweetville menu" aria-expanded="false">☰</button>
+    <nav id="svNav" aria-label="Sweetville navigation">
+      <a href="#guide">Guide</a>
+      <a href="#map">Map</a>
+      <a href="#passport">Passport</a>
+      <a href="#badges">Badges</a>
+      <a href="#locations">Locations</a>
+      <a href="../index.html#sweet-vault">Sweet Vault</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="sv-hero">
+      <div class="sv-hero-copy">
+        <p class="sv-eyebrow">SWEETVILLE EXPANSION PACK v1.1</p>
+        <h1>Welcome to <em>Sweetville</em></h1>
+        <p class="sv-lede">Every street has a story. Every place holds a memory. Every Sweetie belongs here.</p>
+        <div class="sv-actions">
+          <a class="sv-button primary" href="#guide">Begin Your Journey</a>
+          <a class="sv-button secondary" href="#passport">Open Passport</a>
+        </div>
+      </div>
+      <div class="sv-orbit" aria-hidden="true">
+        <span class="orbit-ring ring-one"></span>
+        <span class="orbit-ring ring-two"></span>
+        <span class="orbit-heart">♡</span>
+        <strong>SWEETVILLE</strong>
+        <small>POPULATION: DREAMERS • BELIEVERS • SWEETIES</small>
+      </div>
+    </section>
+
+    <section class="sv-panel travel-guide" id="guide">
+      <div class="guide-cover">
+        <span class="guide-crown">♕</span>
+        <p>THE WORLD OF SWEET</p>
+        <h2>SWEETVILLE</h2>
+        <strong>OFFICIAL TRAVEL GUIDE</strong>
+        <span class="guide-heart">♡</span>
+      </div>
+      <div class="guide-copy">
+        <p class="sv-eyebrow">FIRST-TIME VISITOR GUIDE</p>
+        <h2>Your invitation to a world built from <em>music, joy, and imagination.</em></h2>
+        <p>Sweetville is Jahntella’s growing world—a place where songs become locations, collectibles become keys, and every visitor can become an official Sweetie.</p>
+        <div class="guide-rules">
+          <article><span>01</span><div><strong>Explore freely</strong><p>Choose any open location and discover its story.</p></div></article>
+          <article><span>02</span><div><strong>Stamp your passport</strong><p>Every visit is remembered on this device.</p></div></article>
+          <article><span>03</span><div><strong>Find hidden hearts</strong><p>Each location hides one glowing Sweetville secret.</p></div></article>
+          <article><span>04</span><div><strong>Earn badges</strong><p>Your curiosity unlocks new Explorer achievements.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sv-panel" id="map">
+      <div class="sv-section-heading">
+        <p class="sv-eyebrow">INTERACTIVE MAP</p>
+        <h2>Choose your next <em>destination.</em></h2>
+        <p>Open locations are ready to explore. More districts will appear as Sweetville continues to grow.</p>
+      </div>
+      <div class="map-grid" id="mapGrid">
+        <button class="map-node node-cafe" data-location="pink-cafe"><span>☕</span><strong>Pink Café</strong><small>Morning magic & gratitude</small><b>ENTER →</b></button>
+        <button class="map-node node-studio" data-location="melody-studio"><span>🎵</span><strong>Melody Studio</strong><small>Where every note becomes a memory</small><b>ENTER →</b></button>
+        <button class="map-node node-donut" data-location="donut-district"><span>🍩</span><strong>Donut District</strong><small>Sprinkle cruises after dark</small><b>ENTER →</b></button>
+        <button class="map-node node-lake" data-location="sparkle-lake"><span>✨</span><strong>Sparkle Lake</strong><small>Moonlit magic & self-love</small><b>ENTER →</b></button>
+        <button class="map-node node-heart" data-location="neon-sweetheart"><span>💖</span><strong>Neon Sweetheart</strong><small>Heart on the dancefloor</small><b>ENTER →</b></button>
+        <button class="map-node locked" disabled><span>🏰</span><strong>Sweetville Castle</strong><small>Future district</small><b>COMING SOON</b></button>
+        <button class="map-node locked" disabled><span>🎤</span><strong>Neon Stage</strong><small>Future district</small><b>COMING SOON</b></button>
+        <button class="map-node locked" disabled><span>🍭</span><strong>Candy Corner</strong><small>Future district</small><b>COMING SOON</b></button>
+      </div>
+    </section>
+
+    <section class="sv-panel passport-section" id="passport">
+      <div class="passport-card">
+        <div>
+          <p class="sv-eyebrow">DIGITAL EXPLORER PASSPORT</p>
+          <h2>Your journey through <em>Sweetville.</em></h2>
+          <p>Every location visit and hidden heart is stored locally on this device. No account is required.</p>
+        </div>
+        <div class="passport-stats">
+          <div><strong><span id="visitedCount">0</span> / 5</strong><small>LOCATIONS</small></div>
+          <div><strong><span id="heartCount">0</span> / 5</strong><small>HEARTS</small></div>
+          <div><strong><span id="badgeCount">0</span> / 6</strong><small>BADGES</small></div>
+          <div class="passport-track"><i id="passportBar"></i></div>
+        </div>
+      </div>
+      <div class="stamp-grid" id="stampGrid"></div>
+    </section>
+
+    <section class="sv-panel" id="badges">
+      <div class="sv-section-heading">
+        <p class="sv-eyebrow">EXPLORER ACHIEVEMENTS</p>
+        <h2>Every journey leaves a little <em>sparkle.</em></h2>
+        <p>Badges unlock automatically as you explore, collect, and discover.</p>
+      </div>
+      <div class="badge-grid" id="badgeGrid"></div>
+    </section>
+
+    <section class="sv-panel rewards-panel" id="rewards">
+      <div>
+        <p class="sv-eyebrow">HIDDEN HEART REWARDS</p>
+        <h2>Small discoveries. <em>Sweet surprises.</em></h2>
+        <p>Each hidden heart unlocks a new message from Jahntella. Collect all five to reveal the final Sweetville promise.</p>
+      </div>
+      <div class="reward-grid" id="rewardGrid"></div>
+    </section>
+
+    <section class="sv-panel" id="locations">
+      <div class="sv-section-heading">
+        <p class="sv-eyebrow">LOCATION KEYS</p>
+        <h2>The Sweet Vault cards are your <em>keys.</em></h2>
+        <p>Every location card leads to a story, a Jahntella quote, one passport stamp, and one hidden heart.</p>
+      </div>
+      <div class="location-grid" id="locationGrid"></div>
+    </section>
+
+    <section class="secret-ending" id="secretEnding" hidden>
+      <span>♡</span>
+      <p>You've explored every open corner of Sweetville.</p>
+      <h2>Welcome Home, Sweetie.</h2>
+      <p>Thank you for believing in this world. There will always be another place waiting for you.</p>
+      <a class="sv-button primary" href="../index.html#registry">Join the Citizen Registry</a>
+    </section>
+  </main>
+
+  <dialog class="location-modal" id="locationModal">
+    <button class="modal-close" id="modalClose" aria-label="Close location">×</button>
+    <div class="modal-media"><img id="modalImage" alt=""></div>
+    <div class="modal-copy">
+      <p class="sv-eyebrow" id="modalCardId"></p>
+      <h2 id="modalTitle"></h2>
+      <p class="modal-story" id="modalStory"></p>
+      <blockquote id="modalQuote"></blockquote>
+      <div class="modal-actions">
+        <button class="sv-button primary" id="stampButton">Stamp My Passport</button>
+        <a class="sv-button secondary" href="../index.html#sweet-vault">Open Sweet Vault</a>
+      </div>
+      <div class="heart-hunt">
+        <p>Something sweet is hiding here…</p>
+        <button class="hidden-heart" id="hiddenHeart" aria-label="Find hidden heart">♡</button>
+        <p class="heart-status" id="heartStatus">Tap the glowing heart to collect it.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <div class="achievement-toast" id="achievementToast" role="status" aria-live="polite">
+    <span id="toastIcon">🏆</span>
+    <div><small>NEW BADGE</small><strong id="toastTitle">Explorer</strong></div>
+  </div>
+
+  <script src="sweetville.js?v=1.1"></script>
+</body>
+</html>
