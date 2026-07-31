@@ -163,3 +163,62 @@
     initializePiano();
   }
 })();
+
+/* Sweetville v4.0.9 live district previews */
+(() => {
+  const cards = {
+    "sparkle-lake": {
+      title: "Lagoon of Love",
+      image: "assets/lagoon-of-love.webp",
+      classes: "live-lagoon",
+      effect: '<span class="live-waterfall"></span><span class="live-ripple r1"></span><span class="live-ripple r2"></span><span class="live-heart h1">♡</span><span class="live-heart h2">♡</span>'
+    },
+    "donut-district": {
+      title: "Dream Carnival",
+      image: "assets/dream-carnival.webp",
+      classes: "live-carnival",
+      effect: '<span class="live-wheel"><i></i></span><span class="live-balloon b1">●</span><span class="live-balloon b2">●</span>'
+    },
+    "melody-studio": {
+      title: "Starlight Stage",
+      image: "assets/starlight-stage.webp",
+      classes: "live-stage",
+      effect: '<span class="live-spotlight s1"></span><span class="live-spotlight s2"></span><span class="live-confetti"></span>'
+    },
+    "neon-sweetheart": {
+      title: "Neon City",
+      image: "assets/neon-city.webp",
+      classes: "live-neon",
+      effect: '<span class="live-neon-pulse"></span><span class="live-car c1"></span><span class="live-car c2"></span>'
+    },
+    "pink-cafe": {
+      title: "Candy Lane",
+      image: "assets/candy-lane.webp",
+      classes: "live-candy",
+      effect: '<span class="live-candy-shimmer"></span><span class="live-candy candy1">●</span><span class="live-candy candy2">◆</span><span class="live-candy candy3">●</span>'
+    }
+  };
+
+  const enhance = () => {
+    document.querySelectorAll('.living-map .world-location[data-location]').forEach((card) => {
+      const cfg = cards[card.dataset.location];
+      if (!cfg || card.dataset.liveReady === 'true') return;
+      card.dataset.liveReady = 'true';
+      card.classList.add('live-district-card', cfg.classes);
+      const text = card.innerHTML;
+      card.innerHTML = `
+        <span class="live-district-visual">
+          <img src="${cfg.image}" alt="${cfg.title}" loading="lazy" decoding="async">
+          <span class="live-district-effects" aria-hidden="true">${cfg.effect}</span>
+        </span>
+        <span class="live-district-copy">${text}</span>
+      `;
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', enhance, { once: true });
+  } else {
+    enhance();
+  }
+})();

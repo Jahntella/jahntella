@@ -126,7 +126,7 @@
     "rankTrack","visitedCount","heartCount","badgeCount","giftCount","passportBar","stampGrid",
     "locationGrid","secretEnding","locationModal","modalClose","modalImage","modalAtmosphere",
     "modalCardId","modalTitle","modalAmbience","modalStory","modalQuote","modalMessage",
-    "stampButton","playDistrictSound","hiddenHeart","heartStatus","hiddenLetter","letterStatus",
+    "stampButton","hiddenHeart","heartStatus","hiddenLetter","letterStatus",
     "hiddenCollectible","collectibleStatus","letterModal","letterClose","letterTitle","letterBody",
     "achievementToast","toastIcon","toastKicker","toastTitle"
   ].forEach(id => E[id] = el(id));
@@ -184,28 +184,6 @@
   const stopSound = () => {
     activeOscillators.forEach(o => { try{o.stop()}catch{} });
     activeOscillators = [];
-  };
-
-  const playMood = loc => {
-    if (!worldSoundOn) {
-      showToast("🔇","WORLD SOUND","Turn sound on first");
-      return;
-    }
-    stopSound();
-    audioContext ||= new (window.AudioContext || window.webkitAudioContext)();
-    const now = audioContext.currentTime;
-    [1,1.25,1.5].forEach((mult,i) => {
-      const osc = audioContext.createOscillator();
-      const gain = audioContext.createGain();
-      osc.type = i===0 ? "sine" : "triangle";
-      osc.frequency.value = loc.mood.frequency * mult;
-      gain.gain.setValueAtTime(0.0001,now);
-      gain.gain.exponentialRampToValueAtTime(i===0?.035:.012,now+.25);
-      gain.gain.exponentialRampToValueAtTime(0.0001,now+4.5+i);
-      osc.connect(gain).connect(audioContext.destination);
-      osc.start(now+i*.12); osc.stop(now+5+i);
-      activeOscillators.push(osc);
-    });
   };
 
   const evaluateAchievements = (announce=true) => {
@@ -386,9 +364,7 @@
     if(!activeLocation||state.collectibles.includes(activeLocation.slug))return;
     state.collectibles.push(activeLocation.slug);save();E.hiddenCollectible.textContent=activeLocation.collectible.icon;E.collectibleStatus.textContent=activeLocation.collectible.name;showToast(activeLocation.collectible.icon,"NEW COLLECTIBLE",activeLocation.collectible.name);evaluateAchievements(true);render();
   });
-
-  E.playDistrictSound.addEventListener("click",()=>activeLocation&&playMood(activeLocation));
-  E.menuButton.addEventListener("click",()=>{const open=E.svNav.classList.toggle("open");E.menuButton.setAttribute("aria-expanded",String(open))});
+E.menuButton.addEventListener("click",()=>{const open=E.svNav.classList.toggle("open");E.menuButton.setAttribute("aria-expanded",String(open))});
   E.svNav.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{E.svNav.classList.remove("open");E.menuButton.setAttribute("aria-expanded","false")}));
 
   E.skyStars.innerHTML=Array.from({length:80},(_,i)=>`<i style="left:${i*37%100}%;top:${i*61%95}%;animation-delay:${i%9*.2}s"></i>`).join("");

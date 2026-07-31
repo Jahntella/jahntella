@@ -586,3 +586,255 @@ dialog.mini-piano-modal::backdrop {
     align-items: flex-start !important;
   }
 }
+
+/* =========================================================
+   SWEETVILLE v4.0.9 — LIVE DISTRICT PREVIEWS
+   ========================================================= */
+
+#playDistrictSound,
+.play-district-sound,
+[data-action="play-mood"] {
+  display: none !important;
+}
+
+.living-map-panel .living-map > .live-district-card {
+  padding: 0 !important;
+  overflow: hidden !important;
+  min-height: 300px !important;
+  justify-content: flex-start !important;
+  background: linear-gradient(180deg, rgba(9,0,13,.35), rgba(9,0,13,.98)) !important;
+}
+
+.live-district-visual {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  aspect-ratio: 16 / 10 !important;
+  overflow: hidden !important;
+  border-bottom: 1px solid rgba(255,104,194,.45) !important;
+}
+
+.live-district-visual img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  transition: transform .65s ease, filter .45s ease !important;
+}
+
+.live-district-card:hover .live-district-visual img {
+  transform: scale(1.07) !important;
+  filter: saturate(1.12) brightness(1.06) !important;
+}
+
+.live-district-effects {
+  position: absolute !important;
+  inset: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+
+.live-district-copy {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  align-items: flex-start !important;
+  width: 100% !important;
+  padding: 16px 18px 18px !important;
+}
+
+.live-district-copy > span,
+.live-district-copy > strong,
+.live-district-copy > small {
+  position: static !important;
+}
+
+.live-waterfall {
+  position: absolute;
+  left: 42%;
+  top: 8%;
+  width: 16%;
+  height: 68%;
+  background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(150,225,255,.76), rgba(255,119,215,.2));
+  filter: blur(1px);
+  opacity: .8;
+  clip-path: polygon(25% 0, 75% 0, 100% 100%, 0 100%);
+  animation: svWaterfallFlow 1.6s linear infinite;
+  mix-blend-mode: screen;
+}
+
+.live-ripple {
+  position: absolute;
+  left: 50%;
+  bottom: 11%;
+  width: 18%;
+  aspect-ratio: 2.4 / 1;
+  border: 2px solid rgba(255,255,255,.72);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  animation: svRipple 2.8s ease-out infinite;
+}
+.live-ripple.r2 { animation-delay: 1.4s; }
+
+.live-heart {
+  position: absolute;
+  color: rgba(255,159,222,.9);
+  text-shadow: 0 0 10px #ff4bb5;
+  animation: svHeartFloat 4.6s ease-in-out infinite;
+}
+.live-heart.h1 { left: 16%; top: 28%; }
+.live-heart.h2 { right: 13%; top: 20%; animation-delay: -2s; }
+
+.live-wheel {
+  position: absolute;
+  right: 8%;
+  top: 8%;
+  width: 34%;
+  aspect-ratio: 1;
+  border: 3px solid rgba(255,193,236,.9);
+  border-radius: 50%;
+  box-shadow: 0 0 18px rgba(255,49,178,.8);
+  animation: svWheelSpin 15s linear infinite;
+}
+.live-wheel::before,
+.live-wheel::after,
+.live-wheel i::before,
+.live-wheel i::after {
+  content: "";
+  position: absolute;
+  inset: 48% 0 auto 0;
+  height: 2px;
+  background: rgba(255,196,234,.85);
+  transform-origin: 50% 50%;
+}
+.live-wheel::after { transform: rotate(45deg); }
+.live-wheel i::before { transform: rotate(90deg); }
+.live-wheel i::after { transform: rotate(135deg); }
+
+.live-balloon {
+  position: absolute;
+  font-size: 14px;
+  color: #ff5fbf;
+  text-shadow: 0 0 10px #ff5fbf;
+  animation: svBalloonRise 5.5s ease-in-out infinite;
+}
+.live-balloon.b1 { left: 16%; bottom: 8%; }
+.live-balloon.b2 { left: 30%; bottom: 14%; animation-delay: -2.3s; }
+
+.live-spotlight {
+  position: absolute;
+  top: -18%;
+  width: 20%;
+  height: 125%;
+  background: linear-gradient(180deg, rgba(255,255,255,.34), rgba(255,64,181,.05));
+  filter: blur(2px);
+  transform-origin: top center;
+  animation: svSpotlight 5s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+}
+.live-spotlight.s1 { left: 22%; transform: rotate(14deg); }
+.live-spotlight.s2 { right: 18%; transform: rotate(-14deg); animation-delay: -2.5s; }
+
+.live-confetti {
+  position: absolute;
+  left: 50%;
+  top: 38%;
+  width: 4px;
+  height: 4px;
+  border-radius: 1px;
+  background: #fff;
+  box-shadow:
+    -52px 12px 0 #ff4fb2, -34px 28px 0 #ffd84f, -18px 5px 0 #70e6ff,
+    18px 18px 0 #ff83dc, 36px 2px 0 #fff, 48px 34px 0 #a673ff,
+    -44px 50px 0 #ff83dc, -10px 58px 0 #fff, 28px 55px 0 #ffd84f;
+  animation: svConfettiBurst 3.8s ease-in-out infinite;
+}
+
+.live-candy-shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 25%, rgba(255,255,255,.28) 46%, transparent 65%);
+  transform: translateX(-120%);
+  animation: svCandySweep 4.2s ease-in-out infinite;
+}
+
+.live-candy {
+  position: absolute;
+  color: #ff89d2;
+  text-shadow: 0 0 12px #ff39ad;
+  animation: svCandyTwinkle 2.6s ease-in-out infinite;
+}
+.live-candy.candy1 { left: 17%; top: 25%; }
+.live-candy.candy2 { right: 20%; top: 18%; animation-delay: -.9s; }
+.live-candy.candy3 { right: 32%; bottom: 18%; animation-delay: -1.7s; }
+
+.live-neon-pulse {
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 45px rgba(255,22,174,.18);
+  animation: svNeonPulse 3s ease-in-out infinite;
+}
+
+.live-car {
+  position: absolute;
+  bottom: 14%;
+  width: 18px;
+  height: 4px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: -8px 0 10px #ff3eb1, 8px 0 10px #55ddff;
+  animation: svCarMove 5.4s linear infinite;
+}
+.live-car.c1 { left: -12%; }
+.live-car.c2 { left: -18%; bottom: 24%; animation-delay: -2.6s; }
+
+@keyframes svWaterfallFlow {
+  0% { background-position: 0 -20px; opacity: .62; }
+  50% { opacity: .92; }
+  100% { background-position: 0 60px; opacity: .62; }
+}
+@keyframes svRipple {
+  0% { transform: translateX(-50%) scale(.35); opacity: .8; }
+  100% { transform: translateX(-50%) scale(2.2); opacity: 0; }
+}
+@keyframes svHeartFloat {
+  0%,100% { transform: translateY(8px) scale(.85); opacity: .45; }
+  50% { transform: translateY(-10px) scale(1.12); opacity: 1; }
+}
+@keyframes svWheelSpin { to { transform: rotate(360deg); } }
+@keyframes svBalloonRise {
+  0%,100% { transform: translateY(4px); opacity: .5; }
+  50% { transform: translateY(-18px); opacity: 1; }
+}
+@keyframes svSpotlight {
+  0% { rotate: -12deg; opacity: .32; }
+  100% { rotate: 12deg; opacity: .7; }
+}
+@keyframes svConfettiBurst {
+  0%,70%,100% { transform: translate(-50%,-50%) scale(.4); opacity: 0; }
+  76% { transform: translate(-50%,-50%) scale(1); opacity: 1; }
+  92% { transform: translate(-50%,40%) scale(1.25); opacity: 0; }
+}
+@keyframes svCandySweep {
+  0%,58% { transform: translateX(-120%); }
+  82%,100% { transform: translateX(120%); }
+}
+@keyframes svCandyTwinkle {
+  0%,100% { transform: scale(.7) rotate(-8deg); opacity: .35; }
+  50% { transform: scale(1.25) rotate(8deg); opacity: 1; }
+}
+@keyframes svNeonPulse {
+  0%,100% { opacity: .45; filter: saturate(1); }
+  50% { opacity: 1; filter: saturate(1.35); }
+}
+@keyframes svCarMove {
+  0% { transform: translateX(0); opacity: 0; }
+  12% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { transform: translateX(520px); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-district-effects * { animation: none !important; }
+}
