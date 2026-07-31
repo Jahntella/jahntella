@@ -1,501 +1,60 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#120015">
-  <meta name="description" content="The official home of Jahntella. Listen to Fun Dipp and Pink Lips Remix.">
-  <title>Jahntella — The World of Sweet</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=5.4-citizen-registry">
-  <link rel="stylesheet" href="poster-downloads.css?v=4">
-  <link rel="stylesheet" href="magazine-home-link.css?v=1">
-</head>
-<body>
-  <div id="siteLoader" class="site-loader" aria-hidden="true">
-    <div class="loader-mark">Jahntella<span>♡</span></div>
-    <div class="loader-line"><i></i></div>
-  </div>
+*{box-sizing:border-box}body{margin:0;font-family:DM Sans,sans-serif;color:#fff;background:linear-gradient(#120015,#2a0031);min-height:100vh}a{color:inherit;text-decoration:none}button,input{font:inherit}.sv-header{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:1rem 3vw;background:#080008dd;border-bottom:1px solid #ff5cb688;backdrop-filter:blur(18px)}.sv-brand{font-family:Sacramento,cursive;font-size:2.2rem}.sv-brand span,.eyebrow{color:#ff72bd}.sv-header nav{display:flex;gap:.8rem;font-size:.75rem;font-weight:800;flex-wrap:wrap}.sv-menu-button{display:none}.hero{min-height:90vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:2rem;padding:6rem 5vw}.hero h1,.panel h2{font-family:Playfair Display,serif;font-size:clamp(3rem,7vw,6rem);line-height:.95;margin:.3rem 0}.hero em,.panel em{font-family:Sacramento,cursive;color:#ff71bd;font-weight:400}.hero p{font-size:1.2rem;line-height:1.7}.actions{display:flex;gap:1rem;flex-wrap:wrap;margin:2rem 0}.btn{border:1px solid #ff64b888;border-radius:999px;padding:.9rem 1.3rem;color:#fff;font-weight:800;cursor:pointer}.primary{background:linear-gradient(135deg,#ff2e9c,#9e22ff)}.secondary{background:#ffffff0d}.status{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem}.status div,.passport-stats div{padding:1rem;border:1px solid #ff65b855;border-radius:16px;background:#0c000f99}.status small,.status strong,.passport-stats small,.passport-stats strong{display:block}.hero-orb{width:min(100%,500px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;text-align:center;background:radial-gradient(circle,#ff299d55,transparent 65%);animation:pulse 4s infinite}.hero-orb span{font-size:5rem}.hero-orb strong{font-family:Playfair Display,serif;font-size:3rem}.panel{margin:0 3vw 3rem;padding:4rem;border:1px solid #ff5cb677;border-radius:28px;background:#160017dd;box-shadow:0 20px 60px #0004}.house,.quest-grid,.npc-grid,.shop-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}.house button,.npc-grid button,.shop-grid article,.quest-card{min-height:180px;padding:1.3rem;border:1px solid #ff5cb666;border-radius:20px;background:#0b000d;color:#fff;text-align:center;cursor:pointer}.house button:first-child{grid-column:span 2}.house strong,.house small,.npc-grid strong,.npc-grid small,.shop-grid strong,.shop-grid small{display:block}.house-display,.dialogue,.archive{margin-top:1.5rem;padding:1.4rem;border:1px solid #ff5cb666;border-radius:18px;background:#0d000f}.quest-card.done{box-shadow:0 0 24px #ff58ae88}.quest-card button{margin-top:1rem}.passport{display:grid;grid-template-columns:.8fr 1.2fr;gap:2rem}.passport-cover{min-height:380px;display:grid;place-items:center;text-align:center;border:2px solid #ff98cc;border-radius:24px;background:linear-gradient(145deg,#ff65b3,#8f1f9a 55%,#32002d)}.passport-cover span{font-size:5rem}.passport-cover strong{font-family:Playfair Display,serif;font-size:2.4rem}.passport-info label{display:grid;gap:.5rem}.passport-info input{padding:1rem;border-radius:12px;border:1px solid #ff5cb677;background:#0a000c;color:#fff}.passport-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem;margin-top:1.5rem}.npc-grid{grid-template-columns:repeat(5,1fr)}.shop-grid{grid-template-columns:repeat(5,1fr)}.castle{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center}.throne{font-size:8rem}.weather-layer{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}.weather-layer span{position:absolute;top:-10%;animation:fall linear infinite}.toast{position:fixed;right:1rem;bottom:1rem;z-index:60;padding:1rem 1.2rem;border:1px solid #ff5cb688;border-radius:16px;background:#120013;transform:translateY(150%);transition:.3s}.toast.show{transform:none}dialog{width:min(760px,calc(100% - 2rem));border:1px solid #ff5cb688;border-radius:24px;background:#120013;color:#fff;padding:2rem}dialog button{float:right;border:0;background:none;color:#fff;font-size:2rem}@keyframes pulse{50%{transform:scale(1.04)}}@keyframes fall{to{transform:translateY(120vh) rotate(180deg)}}@media(max-width:900px){.hero,.passport{grid-template-columns:1fr}.status{grid-template-columns:repeat(2,1fr)}.house,.quest-grid,.npc-grid,.shop-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:650px){.sv-menu-button{display:block}.sv-header nav{display:none;position:absolute;top:100%;left:1rem;right:1rem;flex-direction:column;background:#100010;padding:1rem}.sv-header nav.open{display:flex}.panel{padding:1.4rem}.status,.house,.quest-grid,.npc-grid,.shop-grid,.passport-stats{grid-template-columns:1fr}.house button:first-child{grid-column:auto}.castle{grid-template-columns:1fr;text-align:center}}
 
-  <div id="scrollProgress" class="scroll-progress" aria-hidden="true"></div>
-  <div class="ambient ambient-one"></div>
-  <div class="ambient ambient-two"></div>
-  <div class="sparkles" aria-hidden="true"></div>
-  <div class="shooting-stars" id="shootingStars" aria-hidden="true"></div>
-  <div class="twinkle-stars" id="twinkleStars" aria-hidden="true"></div>
+/* ===== BUILD v5.1 — INTERACTIVE HOUSE + VISUAL WORLD ===== */
+.visual-house-display{display:grid;grid-template-columns:minmax(220px,.75fr) 1.25fr;align-items:center;gap:2rem;overflow:hidden}
+.house-feature-image{min-height:310px;border-radius:18px;overflow:hidden;box-shadow:0 18px 45px #0007}
+.house-feature-image img{width:100%;height:100%;min-height:310px;object-fit:cover;display:block}
+.visual-house-display h3,.piano-stage h3{font-family:Playfair Display,serif;font-size:clamp(2rem,4vw,3.8rem);margin:.3rem 0}
+.visual-house-display em,.piano-stage em{font-family:Sacramento,cursive;color:#ff71bd;font-weight:400}
 
-  <header class="site-header">
-    <a class="logo" href="#home">Jahntella<span>♡</span></a>
-    <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
-    <nav id="siteNav" aria-label="Main navigation">
-      <a href="#music">Music</a>
-      <a href="#about">Story</a>
-      <a href="#registry">Registry</a>
-      <a href="#sweet-vault">Sweet Vault</a>
-      <a href="#downloads">Downloads</a>
-      <a href="#merch">Merch</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#creative-director">Creative Director</a>
-      <a href="#connect">Connect</a>
-    </nav>
-  </header>
+.piano-stage{display:grid;grid-template-columns:.75fr 1.25fr;gap:2rem;align-items:center;margin-top:2rem;padding:2rem;border:1px solid #ff65b877;border-radius:24px;background:radial-gradient(circle at 75% 20%,#ff4ca733,transparent 30%),#09000c}
+.piano-controls{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1rem}
+.now-playing{min-height:1.5rem;color:#ff9bcf;font-weight:800}
+.piano-shell{padding:1.3rem;border-radius:20px;background:linear-gradient(145deg,#290020,#090009);box-shadow:0 24px 50px #0008,inset 0 0 30px #ff4ca722}
+.piano-brand{text-align:center;margin-bottom:1rem;font-family:Sacramento,cursive;font-size:2rem}
+.piano-brand span{color:#ff5eb2}
+.piano-keys{position:relative;display:flex;height:240px;user-select:none;touch-action:manipulation}
+.piano-key{position:relative;border:1px solid #2b1025;cursor:pointer;transition:.08s}
+.piano-key.white{flex:1;background:linear-gradient(#fff,#eadde6);border-radius:0 0 8px 8px;z-index:1}
+.piano-key.black{position:absolute;top:0;width:7.5%;height:62%;z-index:3;background:linear-gradient(#2c1529,#060006);border-radius:0 0 7px 7px;box-shadow:0 8px 10px #0007}
+.piano-key.active,.piano-key:active{transform:translateY(5px);filter:brightness(1.2)}
+.piano-key.white.active{background:linear-gradient(#ffd1e8,#ff8fc7)}
+.piano-key.black.active{background:linear-gradient(#ff3da8,#551044)}
+.piano-key span{position:absolute;left:0;right:0;bottom:.6rem;text-align:center;color:#7a315c;font-size:.7rem;font-weight:800}
+.piano-key.black span{color:#fff;bottom:.35rem}
 
-  <main>
-    <section class="hero-v5" id="home">
-      <video class="hero-v5-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-        <source src="videos/Hero.mp4" type="video/mp4">
-      </video>
+.npc-grid button{position:relative;overflow:hidden;min-height:260px;padding-top:8rem;background-size:cover;background-position:center}
+.npc-grid button::before{content:"";position:absolute;inset:0;background:linear-gradient(transparent 15%,#090009dd 68%);z-index:0}
+.npc-grid button>*{position:relative;z-index:1}
+.npc-photo{display:block;font-size:3.2rem;filter:drop-shadow(0 0 15px #fff8)}
+.npc-poppy{background-image:radial-gradient(circle at 50% 25%,#ffb5d9aa,transparent 30%),url("assets/sv-009-pink-cafe.png")!important}
+.npc-rosie{background-image:url("assets/sv-009-pink-cafe.png")!important}
+.npc-melody{background-image:url("assets/sv-007-melody-studio.png")!important}
+.npc-donny{background-image:url("assets/sv-006-donut-district.png")!important}
+.npc-sprinkle{background-image:url("assets/sv-005-neon-sweetheart.png")!important}
 
-      <div class="hero-v5-overlay" aria-hidden="true"></div>
+.shop-grid article{position:relative;overflow:hidden;min-height:280px;padding-top:10rem;background-size:cover;background-position:center}
+.shop-grid article::before{content:"";position:absolute;inset:0;background:linear-gradient(transparent,#090009e8)}
+.shop-grid article>*{position:relative;z-index:1}
+.shop-grid article span{display:block;font-size:2.8rem}
+.shop-candy{background-image:url("assets/sv-006-donut-district.png")!important}
+.shop-fashion{background-image:url("../assets/pink-lips-remix.png")!important}
+.shop-record{background-image:url("../assets/fun-dipp-cover.png")!important}
+.shop-cafe{background-image:url("assets/sv-009-pink-cafe.png")!important}
+.shop-trophy{background-image:url("assets/sv-007-melody-studio.png")!important}
 
-      <div class="hero-v5-content">
-        <p class="eyebrow">WELCOME TO THE WORLD OF SWEET</p>
-        <h1 class="hero-v5-logo">Jahntella<span>♡</span></h1>
-        <p class="hero-v5-tagline">Sweet hooks. Big choruses. Good vibes.</p>
-        <p class="artist-line">Pop Artist • Songwriter • Creator of the World of Sweet</p>
+.castle-visual{grid-template-columns:minmax(250px,.85fr) 1.15fr}
+.castle-image{position:relative;min-height:360px;border-radius:22px;overflow:hidden}
+.castle-image img{width:100%;height:100%;min-height:360px;object-fit:cover;filter:saturate(.8) brightness(.7)}
+.castle-image::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent,#160016aa)}
+.castle-image .throne{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);font-size:7rem;filter:drop-shadow(0 0 24px #ffd66d)}
 
-        <div class="hero-actions">
-          <a class="primary-button" href="#music">Listen now</a>
-          <a class="secondary-button" href="#about">Discover the story</a>
-        </div>
-      </div>
-
-      <a class="hero-v5-scroll" href="#music" aria-label="Scroll to music">
-        <span>SCROLL</span>
-        <i></i>
-      </a>
-    </section>
-
-    <section class="music-section reveal" id="music">
-      <div class="section-heading">
-        <p class="eyebrow">MUSIC</p>
-        <h2>Press play on <em>something sweet.</em></h2>
-      </div>
-
-      <div class="release-grid">
-        <article class="release-card" data-card="fun-dipp">
-          <div class="record-stage">
-            <div class="record-sleeve">
-              <img src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/fun-dipp-cover.png" alt="Fun Dipp sleeve artwork">
-            </div>
-            <div class="record-slider">
-              <div class="record-wrap" id="funDippRecordWrap">
-                <img class="record-cover" src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/fun-dipp-cover.png" alt="Fun Dipp vinyl record artwork">
-                <span class="record-shine"></span>
-              </div>
-            </div>
-          </div>
-          <div class="release-copy">
-            <p class="release-label">DEBUT SINGLE</p>
-            <h3>Fun Dipp</h3>
-            <p>Bright pop energy, playful hooks, and a candy-coated chorus.</p>
-            <button class="play-button" data-track="fun-dipp">▶ Play Fun Dipp</button>
-          </div>
-        </article>
-
-        <article class="release-card" data-card="pink-lips">
-          <div class="record-stage">
-            <div class="record-sleeve">
-              <img src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/pink-lips-remix.png" alt="Pink Lips Remix sleeve artwork">
-            </div>
-            <div class="record-slider">
-              <div class="record-wrap" id="pinkLipsRecordWrap">
-                <img class="record-cover" src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/pink-lips-remix.png" alt="Pink Lips Remix vinyl record artwork">
-                <span class="record-shine"></span>
-              </div>
-            </div>
-          </div>
-          <div class="release-copy">
-            <p class="release-label">REMIX</p>
-            <h3>Pink Lips Remix</h3>
-            <p>A glossy remix with bigger energy and late-night sparkle.</p>
-            <button class="play-button" data-track="pink-lips">▶ Play Pink Lips Remix</button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="about-section reveal" id="about">
-      <div class="about-card">
-        <div>
-          <p class="eyebrow">THE STORY</p>
-          <h2>A colorful pop world built around <em>confidence and joy.</em></h2>
-        </div>
-        <div class="about-copy">
-          <p>Jahntella blends bright pop hooks, playful visual storytelling, and feel-good energy into one growing creative universe.</p>
-          <blockquote>“Welcome to a world where confidence sounds colorful and every chorus feels like a celebration.”</blockquote>
-        </div>
-      </div>
-      <div class="milestones">
-        <article><strong>01</strong><span>World of Sweet created</span></article>
-        <article><strong>02</strong><span>Original songs released</span></article>
-        <article><strong>∞</strong><span>Big ideas still ahead</span></article>
-      </div>
-    </section>
-
-    <section class="registry-section reveal" id="registry">
-      <div class="registry-shell">
-        <div class="registry-story">
-          <p class="eyebrow">SWEETVILLE CITIZEN REGISTRY</p>
-          <h2>Welcome to <em>Sweetville!</em></h2>
-          <p class="registry-lede">Ready to become an official Sweetie? Sign the Citizen Registry to reserve your digital Sweetville Passport and receive Pink Diary letters, new-music news, secret Sweetville updates, and special surprises from Jahntella.</p>
-
-          <div class="passport-preview" aria-hidden="true">
-            <span class="passport-orbit orbit-one"></span>
-            <span class="passport-orbit orbit-two"></span>
-            <span class="passport-crown">♕</span>
-            <span class="passport-kicker">WORLD OF SWEET</span>
-            <strong>SWEETVILLE</strong>
-            <span class="passport-title">DIGITAL PASSPORT</span>
-            <span class="passport-heart">♡</span>
-            <span class="passport-status">CITIZEN • SWEETIE • DREAMER</span>
-          </div>
-        </div>
-
-        <div class="registry-form-card">
-          <div class="registry-seal" aria-hidden="true">SV</div>
-          <p class="registry-form-kicker">OFFICIAL APPLICATION</p>
-          <h3>Claim Your Passport <span>♡</span></h3>
-
-          <form class="registry-form" action="https://formsubmit.co/jahntella@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="New Sweetville Citizen Registry Signup ♡">
-            <input type="hidden" name="_cc" value="hummeljon@gmail.com">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_next" value="https://jahntella.com/registry-welcome.html">
-            <input type="hidden" name="_autoresponse" value="Hi Sweetie… 💖&#10;&#10;You made it!&#10;&#10;Your name is officially in the Sweetville Citizen Registry, and I’m so happy you’re here.&#10;&#10;As an official Sweetie, you’ll be among the first to receive:&#10;&#10;♡ Letters from my Pink Diary&#10;♡ Behind-the-song moments&#10;♡ Secret Sweetville updates&#10;♡ New music announcements&#10;♡ Hidden hearts and special surprises&#10;&#10;And yes—there will be plenty of news about Fun Dipp very soon. 🍭✨&#10;&#10;For now, consider this your first little sign that the gates are open and your place is waiting.&#10;&#10;Keep an eye on this digital address.&#10;&#10;Something sweet is coming…&#10;&#10;Stay Sweet, xoxo!&#10;&#10;— Jahntella 💋">
-            <input class="registry-honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-            <label for="sweetieName">
-              <span>Sweetie Name / First Name</span>
-              <input id="sweetieName" name="Sweetie Name" type="text" autocomplete="given-name" maxlength="60" placeholder="What should Jahntella call you?" required>
-            </label>
-
-            <label for="sweetieEmail">
-              <span>Digital Address / Email</span>
-              <input id="sweetieEmail" name="email" type="email" autocomplete="email" maxlength="120" placeholder="you@example.com" required>
-            </label>
-
-            <label class="registry-consent" for="sweetieConsent">
-              <input id="sweetieConsent" name="Sweetville Email Consent" type="checkbox" value="Yes — I consent to Sweetville emails" required>
-              <span>Yes, send me letters and updates from Sweetville. I can unsubscribe anytime.</span>
-            </label>
-
-            <button class="registry-submit" type="submit">
-              <span>CLAIM MY PASSPORT!</span>
-              <i aria-hidden="true">♡</i>
-            </button>
-          </form>
-
-          <p class="registry-small-print">No spam. Just sparkle. ♡</p>
-          <p class="registry-age-note">Sweeties under 13 should ask a parent or guardian to register using their email.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="sweet-vault-section reveal" id="sweet-vault">
-      <div class="section-heading centered">
-        <p class="eyebrow">SWEET VAULT</p>
-        <h2>Open a pack. Reveal a card. <em>Build your collection.</em></h2>
-        <p class="vault-intro">Every pack contains one official Sweet Vault collectible. Your unlocked cards are saved automatically on this device.</p>
-      </div>
-
-      <div class="vault-experience">
-        <div class="pack-panel">
-          <button class="sweet-pack sweet-pack-clean" id="openPackButton" aria-label="Open a Sweet Vault pack">
-            <span class="pack-foil pack-foil-left"></span>
-            <span class="pack-foil pack-foil-right"></span>
-            <span class="pack-shine"></span>
-            <span class="pack-seal pack-seal-top"></span>
-            <span class="pack-seal pack-seal-bottom"></span>
-            <span class="pack-brand">Jahntella<span>💋</span></span>
-            <span class="pack-icon" aria-hidden="true">💋</span>
-            <span class="pack-title">SWEET PACK</span>
-            <span class="pack-edition">FIRST EDITION</span>
-            <span class="pack-crown">♛</span>
-            <span class="pack-tagline">OFFICIAL COLLECTIBLE CARD</span>
-            <span class="pack-open-label">TAP TO OPEN</span>
-          </button>
-          <p id="packStatus" class="pack-status" aria-live="polite">Tap the pack to reveal a collectible.</p>
-        </div>
-
-        <div class="last-pulled-card" id="lastPulledCard">
-          <p class="eyebrow">LAST PULLED</p>
-          <div class="last-pulled-placeholder">Your newest card will appear here.</div>
-        </div>
-      </div>
-
-      <div class="vault-progress-card">
-        <div>
-          <p class="eyebrow">COLLECTION PROGRESS</p>
-          <h3><span id="vaultCount">0</span> / 12 Collected</h3>
-        </div>
-        <div class="vault-progress-track"><i id="vaultProgressBar"></i></div>
-        <strong id="vaultPercent">0%</strong>
-      </div>
-
-      <div class="vault-toolbar">
-        <p>Click an unlocked card to flip it front and back.</p>
-        <button id="resetVaultButton" class="reset-vault-button">Reset Vault</button>
-      </div>
-
-      <div class="vault-binder" id="vaultBinder">
-          <div class="binder-rings" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-          <div class="binder-page">
-            <div class="binder-page-heading">
-              <span>FIRST EDITION COLLECTION</span>
-              <strong>12 CARD SET</strong>
-            </div>
-            <div class="vault-grid" id="vaultGrid"></div>
-          </div>
-        </div>
-    </section>
-
-
-      <section class="downloads-section reveal" id="downloads">
-      <div class="section-heading centered">
-        <p class="eyebrow">FREE DOWNLOADS</p>
-        <h2>Collect the official <em>Jahntella posters.</em></h2>
-        <img class="downloads-signature" src="branding/jahntella-signature.png" alt="Jahntella signature">
-      </div>
-
-      <div class="poster-gallery">
-        <article class="poster-card">
-          <div class="poster-image">
-            <img src="thumbnails/01-rooftop-lights-thumb.jpg" alt="Rooftop Lights official Jahntella poster" loading="lazy">
-          </div>
-          <div class="poster-download-only">
-            <a class="primary-button" href="originals/01-rooftop-lights.png" download="Jahntella-01-rooftop-lights.png">⬇ Download Poster 01</a>
-          </div>
-        </article>
-        <article class="poster-card">
-          <div class="poster-image">
-            <img src="thumbnails/02-fun-dipp-nights-thumb.jpg" alt="Fun Dipp Nights official Jahntella poster" loading="lazy">
-          </div>
-          <div class="poster-download-only">
-            <a class="primary-button" href="originals/02-fun-dipp-nights.png" download="Jahntella-02-fun-dipp-nights.png">⬇ Download Poster 02</a>
-          </div>
-        </article>
-        <article class="poster-card">
-          <div class="poster-image">
-            <img src="thumbnails/03-studio-spark-thumb.jpg" alt="Studio Spark official Jahntella poster" loading="lazy">
-          </div>
-          <div class="poster-download-only">
-            <a class="primary-button" href="originals/03-studio-spark.png" download="Jahntella-03-studio-spark.png">⬇ Download Poster 03</a>
-          </div>
-        </article>
-        <article class="poster-card">
-          <div class="poster-image">
-            <img src="thumbnails/04-lagoon-dream-thumb.jpg" alt="Lagoon Dream official Jahntella poster" loading="lazy">
-          </div>
-          <div class="poster-download-only">
-            <a class="primary-button" href="originals/04-lagoon-dream.png" download="Jahntella-04-lagoon-dream.png">⬇ Download Poster 04</a>
-          </div>
-        </article>
-        <article class="poster-card">
-          <div class="poster-image">
-            <img src="thumbnails/05-bubblegum-beach-thumb.jpg" alt="Bubblegum Beach official Jahntella poster" loading="lazy">
-          </div>
-          <div class="poster-download-only">
-            <a class="primary-button" href="originals/05-bubblegum-beach.png" download="Jahntella-05-bubblegum-beach.png">⬇ Download Poster 05</a>
-          </div>
-        </article>
-        <article class="poster-card">
-          <div class="poster-image">
-            <img src="thumbnails/06-pink-carpet-premiere-thumb.jpg" alt="Pink Carpet Premiere official Jahntella poster" loading="lazy">
-          </div>
-          <div class="poster-download-only">
-            <a class="primary-button" href="originals/06-pink-carpet-premiere.png" download="Jahntella-06-pink-carpet-premiere.png">⬇ Download Poster 06</a>
-          </div>
-        </article>
-        <article class="poster-card">
-          <div class="poster-image">
-            <img src="thumbnails/07-candy-castle-royal-thumb.jpg" alt="Candy Castle Royal official Jahntella poster" loading="lazy">
-          </div>
-          <div class="poster-download-only">
-            <a class="primary-button" href="originals/07-candy-castle-royal.png" download="Jahntella-07-candy-castle-royal.png">⬇ Download Poster 07</a>
-          </div>
-        </article>
-        <article class="poster-card">
-          <div class="poster-image">
-            <img src="thumbnails/08-pink-diaries-thumb.jpg" alt="Pink Diaries official Jahntella poster" loading="lazy">
-          </div>
-          <div class="poster-download-only">
-            <a class="primary-button" href="originals/08-pink-diaries.png" download="Jahntella-08-pink-diaries.png">⬇ Download Poster 08</a>
-          </div>
-        </article>
-      </div>
-
-      <div class="wallpaper-divider">
-        <span>Phone Funloads</span>
-      </div>
-
-      <div class="downloads-grid">
-        <article class="download-card">
-          <div class="download-preview">
-            <img src="assets/jahntella-phone-wallpaper-01.png" alt="Jahntella Fun Dipp phone wallpaper preview">
-          </div>
-          <div class="download-copy">
-            <h3>Fun Dipp World</h3>
-            <div class="download-actions">
-              <a class="primary-button" href="assets/jahntella-phone-wallpaper-01.png" download="Jahntella-Fun-Dipp-World-Wallpaper.png">⬇ Download</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="download-card">
-          <div class="download-preview">
-            <img src="assets/jahntella-phone-wallpaper-02.png" alt="Jahntella Sweet Collection phone wallpaper preview">
-          </div>
-          <div class="download-copy">
-            <h3>Sweet Collection</h3>
-            <div class="download-actions">
-              <a class="primary-button" href="assets/jahntella-phone-wallpaper-02.png" download="Jahntella-Sweet-Collection-Wallpaper.png">⬇ Download</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="download-card">
-          <div class="download-preview">
-            <img src="assets/jahntella-phone-wallpaper-03.png" alt="Jahntella Good Nights phone wallpaper preview">
-          </div>
-          <div class="download-copy">
-            <h3>Good Nights, Sweet Dreams</h3>
-            <div class="download-actions">
-              <a class="primary-button" href="assets/jahntella-phone-wallpaper-03.png" download="Jahntella-Good-Nights-Wallpaper.png">⬇ Download</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="pop-merch-section reveal" id="merch">
-      <div class="merch-hero-card">
-        <div class="merch-era-mark" aria-hidden="true">
-          <span class="merch-j">J</span>
-          <span class="merch-star">★</span>
-          <span class="merch-ring ring-one"></span>
-          <span class="merch-ring ring-two"></span>
-        </div>
-        <div class="merch-hero-copy">
-          <p class="eyebrow">OFFICIAL MERCH</p>
-          <h2>The <em>Fun Dipp Era</em> begins here.</h2>
-          <p class="merch-small-line">FIRST DROP • COMING SOON</p>
-        </div>
-      </div>
-    </section>
-
-<section class="gallery-section reveal" id="gallery">
-      <div class="section-heading centered">
-        <p class="eyebrow">VISUAL WORLD</p>
-        <h2>Step inside the <em>Jahntella aesthetic.</em></h2>
-      </div>
-      <div class="gallery-grid">
-        <button class="gallery-item gallery-tall" data-lightbox="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/jahntella-official-v1.png">
-          <img src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/jahntella-official-v1.png" alt="Jahntella official artwork">
-        </button>
-        <button class="gallery-item" data-lightbox="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/fun-dipp-cover.png">
-          <img src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/fun-dipp-cover.png" alt="Fun Dipp artwork">
-        </button>
-        <button class="gallery-item" data-lightbox="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/pink-lips-remix.png">
-          <img src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/pink-lips-remix.png" alt="Pink Lips Remix artwork">
-        </button>
-      </div>
-    </section>
-
-    <section class="coming-soon-section reveal">
-      <div class="coming-soon-card">
-        <p class="eyebrow">COMING SOON</p>
-        <h2>More music. More visuals. More <em>World of Sweet.</em></h2>
-        <p>Future releases, videos, collectibles, and exclusive fan experiences are on the way.</p>
-      </div>
-    </section>
-
-    <section class="creative-director-section reveal" id="creative-director">
-      <div class="creative-director-card">
-        <div class="creative-director-image creative-director-image-small">
-          <img src="creative-director.jpeg" alt="J.W. Hummel, Creative Director">
-        </div>
-        <div class="creative-director-copy">
-          <p class="eyebrow">BEHIND THE WORLD OF SWEET</p>
-          <h2>J.W. Hummel</h2>
-          <h3>Creative Director • Brand Builder • Visual Storyteller</h3>
-          <p class="director-tagline">Building a bold, sweet, unforgettable pop universe.</p>
-          <p>From music and visuals to collectibles, merchandise, and fan experiences, every part of the World of Sweet is designed to create something memorable. For collaborations, licensing, partnerships, media opportunities, or creative projects, let's connect.</p>
-          <a class="contact-button collaboration-button" href="mailto:jahntella@gmail.com?subject=Jahntella%20Collaboration%20Inquiry"><span aria-hidden="true">★</span> Let's Create Together</a>
-          <a class="email-link" href="mailto:jahntella@gmail.com">jahntella@gmail.com</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="connect-section reveal" id="connect">
-      <p class="eyebrow">CONNECT</p>
-      <h2>Stay inside the <em>World of Sweet.</em></h2>
-      <div class="social-links">
-        <a href="https://www.instagram.com/jahntella" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.tiktok.com/@jahntella" target="_blank" rel="noopener">TikTok</a>
-        <a href="https://www.youtube.com/@Jahntella" target="_blank" rel="noopener">YouTube</a>
-        <a href="https://open.spotify.com/search/Jahntella" target="_blank" rel="noopener">Spotify</a>
-      </div>
-    </section>
-  </main>
-
-  <footer><span>© <span id="year"></span> Jahntella</span></footer>
-
-  <div class="player" id="player" aria-live="polite">
-    <button class="player-skip" id="playerPrev" aria-label="Previous track">⏮</button>
-    <img id="playerArtwork" src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/fun-dipp-cover.png" alt="">
-    <div class="player-info">
-      <strong id="playerTitle">Fun Dipp</strong>
-      <span class="now-playing"><span class="equalizer"><i></i><i></i><i></i><i></i></span> Jahntella</span>
-    </div>
-    <button id="playerToggle" aria-label="Play or pause">▶</button>
-    <button class="player-skip" id="playerNext" aria-label="Next track">⏭</button>
-    <input id="playerProgress" type="range" min="0" max="100" value="0" aria-label="Track progress">
-    <span id="playerTime">0:00</span>
-    <label class="volume-control" aria-label="Volume">
-      <span>🔊</span>
-      <input id="playerVolume" type="range" min="0" max="1" step="0.01" value="0.85">
-    </label>
-  </div>
-
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <button id="lightboxClose" aria-label="Close image">×</button>
-    <img id="lightboxImage" alt="">
-  </div>
-
-  <div class="card-reveal-modal" id="cardRevealModal" aria-hidden="true">
-    <div class="reveal-backdrop"></div>
-    <div class="reveal-content" role="dialog" aria-modal="true" aria-labelledby="revealTitle">
-      <button id="closeRevealButton" class="reveal-close" aria-label="Close card reveal">×</button>
-      <p id="revealRarity" class="reveal-rarity"></p>
-      <h2 id="revealTitle">Sweet Vault Pull</h2>
-      <div class="reveal-card-scene">
-        <div class="reveal-card" id="revealCard">
-          <div class="reveal-face reveal-back">
-            <img src="sweet-vault-card-back.png" alt="Sweet Vault card back">
-          </div>
-          <div class="reveal-face reveal-front">
-            <img id="revealCardImage" src="" alt="">
-          </div>
-        </div>
-      </div>
-      <p id="revealMessage"></p>
-      <button id="revealDoneButton" class="primary-button">Add to Vault</button>
-    </div>
-    <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
-  </div>
-
-  <audio id="audioFunDipp" preload="metadata">
-    <source src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/fun-dipp-v430.mp4" type="audio/mp4">
-  </audio>
-
-  <audio id="audioPinkLips" preload="metadata">
-    <source src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/pink-lips-remix-v430.mp4" type="audio/mp4">
-  </audio>
-
-  <script src="script.js"></script>
-  <script src="magazine-home-link.js?v=1"></script>
-</body>
-</html>
+@media(max-width:900px){
+ .visual-house-display,.piano-stage,.castle-visual{grid-template-columns:1fr}
+ .piano-keys{height:200px}
+}
+@media(max-width:600px){
+ .piano-stage{padding:1rem}
+ .piano-keys{height:165px}
+ .piano-key span{font-size:.55rem}
+}
