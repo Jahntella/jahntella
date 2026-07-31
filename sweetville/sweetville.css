@@ -1234,3 +1234,90 @@ dialog.mini-piano-modal::backdrop {
     animation:none !important;
   }
 }
+
+/* =========================================================
+   SWEETVILLE v4.1.2 — SPARKLE LAKE WATER-ONLY EFFECT FIX
+   ========================================================= */
+
+/* Keep the image crop focused so Jahntella stays visible. */
+.live-lagoon .live-district-visual img {
+  object-position: center 42% !important;
+}
+
+/* Confine every Sparkle Lake effect to the lower water zone. */
+.live-lagoon .live-district-effects {
+  clip-path: inset(43% 0 0 0) !important;
+}
+
+/* Remove the moon orb from the subject area and convert it to a soft reflection. */
+.live-lagoon .lake-moon-glow {
+  left: 58% !important;
+  right: auto !important;
+  top: 62% !important;
+  width: 70px !important;
+  height: 18px !important;
+  aspect-ratio: auto !important;
+  border-radius: 50% !important;
+  background: rgba(255, 238, 255, .34) !important;
+  box-shadow:
+    0 0 18px rgba(255,255,255,.55),
+    0 0 34px rgba(255,93,201,.38) !important;
+  filter: blur(2px) !important;
+  transform: translateX(-50%) !important;
+  animation: svWaterReflectionPulse 4s ease-in-out infinite !important;
+}
+
+/* Put the shimmer fully across the water, not the person. */
+.live-lagoon .lake-shimmer {
+  left: 4% !important;
+  right: 4% !important;
+  top: auto !important;
+  bottom: 4% !important;
+  height: 34% !important;
+  background:
+    linear-gradient(
+      108deg,
+      transparent 12%,
+      rgba(255,255,255,.10) 30%,
+      rgba(255,183,230,.34) 46%,
+      rgba(132,221,255,.22) 58%,
+      transparent 78%
+    ) !important;
+  mix-blend-mode: screen !important;
+}
+
+/* Center ripples on the visible lagoon surface. */
+.live-lagoon .lake-ripple {
+  left: 55% !important;
+  top: auto !important;
+  bottom: 9% !important;
+  width: 22% !important;
+  border-color: rgba(255, 215, 242, .74) !important;
+}
+
+/* Fireflies stay near the waterline and edges. */
+.live-lagoon .lf1 {
+  left: 13% !important;
+  top: 68% !important;
+}
+
+.live-lagoon .lf2 {
+  right: 14% !important;
+  top: 73% !important;
+}
+
+.live-lagoon .lf3 {
+  left: 36% !important;
+  top: 61% !important;
+}
+
+@keyframes svWaterReflectionPulse {
+  0%,100% {
+    transform: translateX(-50%) scaleX(.82);
+    opacity: .38;
+  }
+  50% {
+    transform: translateX(-50%) scaleX(1.18);
+    opacity: .82;
+  }
+}
