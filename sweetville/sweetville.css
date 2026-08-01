@@ -2103,3 +2103,287 @@ html:not([data-phase="night"]) .exp32-lanterns{
     transition:none!important;
   }
 }
+
+/* =========================================================
+   SWEETVILLE EXP 5.0 — STORY MODE
+   Code-only. Reuses all existing Sweetville artwork.
+   ========================================================= */
+
+.exp50-story-panel{
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 88% 8%,rgba(255,65,177,.18),transparent 28%),
+    radial-gradient(circle at 12% 88%,rgba(133,78,255,.14),transparent 30%),
+    var(--panel);
+}
+
+.exp50-story-shell{
+  display:grid;
+  grid-template-columns:minmax(220px,.7fr) minmax(0,1.6fr);
+  gap:1.25rem;
+  margin-top:2rem;
+}
+
+.exp50-story-map{
+  display:grid;
+  gap:.75rem;
+  align-content:start;
+}
+
+.exp50-chapter{
+  display:grid;
+  grid-template-columns:42px 1fr;
+  gap:.7rem;
+  align-items:center;
+  width:100%;
+  padding:.9rem;
+  border:1px solid rgba(255,100,190,.28);
+  border-radius:17px;
+  background:rgba(9,0,12,.65);
+  color:#fff;
+  text-align:left;
+  cursor:pointer;
+  transition:.3s ease;
+}
+
+.exp50-chapter span{
+  grid-row:1/3;
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:#2c092b;
+  color:#ffabd5;
+  font-weight:900;
+}
+
+.exp50-chapter strong,
+.exp50-chapter small{
+  display:block;
+}
+
+.exp50-chapter small{
+  color:#d9b9cc;
+}
+
+.exp50-chapter:hover,
+.exp50-chapter.active{
+  transform:translateX(5px);
+  border-color:rgba(255,125,207,.72);
+  background:linear-gradient(135deg,rgba(255,52,168,.22),rgba(119,37,210,.2));
+  box-shadow:0 12px 30px rgba(0,0,0,.24),0 0 22px rgba(255,61,168,.14);
+}
+
+.exp50-chapter.completed span{
+  background:linear-gradient(135deg,#ff46ad,#8f35e9);
+  color:#fff;
+}
+
+.exp50-story-card{
+  display:grid;
+  grid-template-columns:minmax(240px,.88fr) minmax(0,1.12fr);
+  min-height:470px;
+  overflow:hidden;
+  border:1px solid rgba(255,101,190,.4);
+  border-radius:24px;
+  background:rgba(8,0,11,.76);
+  box-shadow:0 24px 58px rgba(0,0,0,.28);
+}
+
+.exp50-story-art{
+  position:relative;
+  display:grid;
+  place-items:center;
+  min-height:340px;
+  overflow:hidden;
+  background:
+    linear-gradient(rgba(8,0,12,.2),rgba(8,0,12,.7)),
+    url("assets/exp3/01-opening-gates.webp") center/cover;
+  transition:background-image .7s ease;
+}
+
+.exp50-story-art::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,transparent 55%,rgba(8,0,11,.92));
+}
+
+.exp50-story-glow{
+  position:absolute;
+  width:160px;
+  height:160px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.75),rgba(255,82,186,.36) 35%,transparent 70%);
+  filter:blur(5px);
+  animation:exp50Glow 3.5s ease-in-out infinite;
+}
+
+.exp50-story-icon{
+  position:relative;
+  z-index:2;
+  font-size:5rem;
+  filter:drop-shadow(0 0 20px rgba(255,99,193,.85));
+}
+
+.exp50-story-copy{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:2rem;
+}
+
+.exp50-story-copy h3,
+.exp50-finale h3{
+  margin:.25rem 0 1rem;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(2rem,4vw,3.8rem);
+}
+
+.exp50-story-copy > p:not(.sv-eyebrow){
+  color:#f3ddec;
+  font-size:1.03rem;
+  line-height:1.65;
+}
+
+.exp50-objective{
+  margin:1.2rem 0;
+  padding:1rem;
+  border-left:3px solid #ff55b1;
+  border-radius:0 14px 14px 0;
+  background:rgba(255,71,173,.08);
+}
+
+.exp50-objective small,
+.exp50-objective strong{
+  display:block;
+}
+
+.exp50-objective small{
+  margin-bottom:.3rem;
+  color:#ff98ce;
+  letter-spacing:.12em;
+  font-weight:900;
+}
+
+.exp50-story-actions{
+  display:flex;
+  gap:.75rem;
+  flex-wrap:wrap;
+}
+
+.exp50-story-progress{
+  margin-top:1.4rem;
+}
+
+.exp50-story-progress > div:first-child{
+  display:flex;
+  justify-content:space-between;
+  gap:1rem;
+  margin-bottom:.55rem;
+  color:#ffd9ec;
+  font-size:.8rem;
+  font-weight:900;
+}
+
+.exp50-progress-track{
+  height:11px;
+  overflow:hidden;
+  border-radius:999px;
+  background:#310b2e;
+}
+
+.exp50-progress-track i{
+  display:block;
+  width:0;
+  height:100%;
+  border-radius:inherit;
+  background:linear-gradient(90deg,#ff45ad,#d14bff,#7a7cff);
+  box-shadow:0 0 14px rgba(255,78,181,.5);
+  transition:width .55s ease;
+}
+
+.exp50-finale{
+  margin-top:1.5rem;
+  padding:2.2rem;
+  border:1px solid rgba(255,129,208,.55);
+  border-radius:24px;
+  background:radial-gradient(circle at 50% 0,rgba(255,63,177,.25),rgba(10,0,13,.82) 60%);
+  text-align:center;
+}
+
+.exp50-finale > span{
+  display:block;
+  color:#ff72c0;
+  font-size:4.5rem;
+  text-shadow:0 0 28px rgba(255,70,180,.75);
+}
+
+.exp50-story-burst{
+  position:fixed;
+  inset:0;
+  z-index:70;
+  pointer-events:none;
+  overflow:hidden;
+}
+
+.exp50-story-burst span{
+  position:absolute;
+  left:50%;
+  top:50%;
+  color:#ff83c8;
+  text-shadow:0 0 12px #ff4eae;
+  animation:exp50Burst 1.5s ease-out forwards;
+}
+
+@keyframes exp50Glow{
+  0%,100%{transform:scale(.88);opacity:.55}
+  50%{transform:scale(1.12);opacity:1}
+}
+
+@keyframes exp50Burst{
+  from{transform:translate(-50%,-50%) scale(.4);opacity:1}
+  to{transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) rotate(420deg) scale(1.1);opacity:0}
+}
+
+@media(max-width:900px){
+  .exp50-story-shell,
+  .exp50-story-card{
+    grid-template-columns:1fr;
+  }
+
+  .exp50-story-map{
+    grid-template-columns:repeat(5,minmax(180px,1fr));
+    overflow-x:auto;
+    padding-bottom:.5rem;
+  }
+
+  .exp50-story-art{
+    min-height:280px;
+  }
+
+  .exp50-story-art::after{
+    background:linear-gradient(transparent 55%,rgba(8,0,11,.9));
+  }
+}
+
+@media(max-width:600px){
+  .exp50-story-copy{
+    padding:1.25rem;
+  }
+
+  .exp50-story-actions .sv-button{
+    width:100%;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .exp50-story-glow,
+  .exp50-story-burst,
+  .exp50-chapter,
+  .exp50-progress-track i{
+    animation:none!important;
+    transition:none!important;
+  }
+}

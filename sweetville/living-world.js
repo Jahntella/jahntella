@@ -709,3 +709,198 @@
     init();
   }
 })();
+
+/* SWEETVILLE EXP 5.0 — STORY MODE */
+(() => {
+  const chapters = [
+    {
+      label:'CHAPTER ONE',
+      title:'The Missing Sparkle',
+      text:'A tiny light has disappeared from the Sweetville gates. Mochi thinks it left a trail.',
+      objective:'Visit any open district and find the first clue.',
+      hint:'Start with the district that feels brightest to you.',
+      icon:'✨',
+      image:'assets/exp3/01-opening-gates.webp'
+    },
+    {
+      label:'CHAPTER TWO',
+      title:'A Note by the Lake',
+      text:'A folded pink note is drifting near Sparkle Lake. The words only appear beneath the moonlight.',
+      objective:'Open Sparkle Lake and discover the hidden message.',
+      hint:'The fireflies gather near important memories.',
+      icon:'💌',
+      image:'assets/exp3/04-sparkle-lake.webp'
+    },
+    {
+      label:'CHAPTER THREE',
+      title:'The Melody Key',
+      text:'Jahntella left a melody unfinished. The missing note may unlock the next memory.',
+      objective:'Open the Mini Piano and play any three notes.',
+      hint:'There is no wrong melody. Begin with the note that feels happiest.',
+      icon:'🎹',
+      image:'assets/exp3/07-starlight-stage.webp'
+    },
+    {
+      label:'CHAPTER FOUR',
+      title:"Mochi's Sweet Trail",
+      text:'Mochi raced through Candy Lane and left a sparkling trail behind him.',
+      objective:'Visit Candy Lane and follow Mochi’s trail.',
+      hint:'He always stops wherever something smells sweet.',
+      icon:'🐾',
+      image:'assets/exp3/06-candy-lane.webp'
+    },
+    {
+      label:'FINAL CHAPTER',
+      title:'Welcome Home',
+      text:'Every clue points toward one final place—the cottage where Sweetville keeps its happiest memories.',
+      objective:'Complete this chapter to restore the missing sparkle.',
+      hint:'Home is not only a place. It is the feeling you carried through every chapter.',
+      icon:'♡',
+      image:'assets/exp3/10-welcome-home.webp'
+    }
+  ];
+
+  const key = 'sweetvilleExp50Story';
+  let state;
+  try {
+    state = JSON.parse(localStorage.getItem(key)) || { completed: [], active: 0 };
+  } catch {
+    state = { completed: [], active: 0 };
+  }
+
+  const save = () => localStorage.setItem(key, JSON.stringify(state));
+  const $ = (id) => document.getElementById(id);
+
+  const art = $('exp50StoryArt');
+  const icon = $('exp50StoryIcon');
+  const label = $('exp50StoryLabel');
+  const title = $('exp50StoryTitle');
+  const text = $('exp50StoryText');
+  const objective = $('exp50Objective');
+  const stars = $('exp50Stars');
+  const bar = $('exp50ProgressBar');
+  const finale = $('exp50Finale');
+  const begin = $('exp50BeginChapter');
+
+  const burst = () => {
+    const host = document.createElement('div');
+    host.className = 'exp50-story-burst';
+    for (let i = 0; i < 30; i += 1) {
+      const particle = document.createElement('span');
+      particle.textContent = i % 3 === 0 ? '♡' : '✦';
+      const angle = (Math.PI * 2 * i) / 30;
+      const distance = 70 + Math.random() * 170;
+      particle.style.setProperty('--x', `${Math.cos(angle) * distance}px`);
+      particle.style.setProperty('--y', `${Math.sin(angle) * distance}px`);
+      particle.style.animationDelay = `${Math.random() * .15}s`;
+      host.appendChild(particle);
+    }
+    document.body.appendChild(host);
+    window.setTimeout(() => host.remove(), 1900);
+  };
+
+  const updateProgress = () => {
+    const count = state.completed.length;
+    if (stars) stars.textContent = count;
+    if (bar) bar.style.width = `${(count / chapters.length) * 100}%`;
+
+    document.querySelectorAll('.exp50-chapter').forEach((button, index) => {
+      button.classList.toggle('active', index === state.active);
+      button.classList.toggle('completed', state.completed.includes(index));
+      const badge = button.querySelector('span');
+      if (badge) badge.textContent = state.completed.includes(index) ? '✓' : String(index + 1);
+    });
+
+    if (finale) finale.hidden = count !== chapters.length;
+  };
+
+  const render = (index) => {
+    state.active = index;
+    save();
+    const chapter = chapters[index];
+    if (!chapter) return;
+
+    if (label) label.textContent = chapter.label;
+    if (title) title.textContent = chapter.title;
+    if (text) text.textContent = chapter.text;
+    if (objective) objective.textContent = chapter.objective;
+    if (icon) icon.textContent = chapter.icon;
+    if (art) art.style.backgroundImage = `linear-gradient(rgba(8,0,12,.2),rgba(8,0,12,.7)),url("${chapter.image}")`;
+    if (begin) begin.textContent = state.completed.includes(index) ? 'Chapter Complete ✓' : 'Begin Chapter';
+
+    updateProgress();
+  };
+
+  const completeActiveChapter = () => {
+    const index = state.active;
+    if (!state.completed.includes(index)) {
+      state.completed.push(index);
+      state.completed.sort((a,b) => a - b);
+      burst();
+    }
+
+    save();
+    updateProgress();
+
+    if (state.completed.length < chapters.length) {
+      const next = chapters.findIndex((_, i) => !state.completed.includes(i));
+      window.setTimeout(() => render(next), 900);
+    } else {
+      if (finale) {
+        finale.hidden = false;
+        finale.scrollIntoView({ behavior:'smooth', block:'center' });
+      }
+    }
+  };
+
+  const storyStarted = () => {
+    const chapter = chapters[state.active];
+    const existing = document.querySelector('.exp41-whisper');
+    if (existing) {
+      const copy = existing.querySelector('span');
+      if (copy) copy.textContent = `Story Mode: ${chapter.objective}`;
+      existing.classList.add('show');
+      window.setTimeout(() => existing.classList.remove('show'), 4200);
+    }
+
+    // This first version treats each chapter as a guided story moment.
+    // Completion happens after the visitor starts the moment, preserving
+    // all existing district interactions without changing their code.
+    window.setTimeout(completeActiveChapter, 1100);
+  };
+
+  const init = () => {
+    document.querySelectorAll('.exp50-chapter').forEach((button) => {
+      button.addEventListener('click', () => render(Number(button.dataset.chapter)));
+    });
+
+    begin?.addEventListener('click', storyStarted);
+
+    $('exp50StoryHint')?.addEventListener('click', () => {
+      const chapter = chapters[state.active];
+      const whisper = document.querySelector('.exp41-whisper');
+      if (whisper) {
+        const copy = whisper.querySelector('span');
+        if (copy) copy.textContent = `Mochi's hint: ${chapter.hint}`;
+        whisper.classList.add('show');
+        window.setTimeout(() => whisper.classList.remove('show'), 4600);
+      }
+    });
+
+    $('exp50ReplayStory')?.addEventListener('click', () => {
+      state = { completed: [], active: 0 };
+      save();
+      if (finale) finale.hidden = true;
+      render(0);
+      $('exp50Story')?.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+
+    render(Math.min(Math.max(state.active || 0, 0), chapters.length - 1));
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once:true });
+  } else {
+    init();
+  }
+})();
