@@ -2406,3 +2406,25 @@ body:not(.sv-scroll-locked){
 .sv-cinematic-intro.finished{
   pointer-events:none!important;
 }
+
+
+/* SWEETVILLE EXP 5.5 — STORYBOOK EDITION */
+.exp55-storybook{position:relative;border:10px solid #5a1a48;border-radius:30px 18px 18px 30px;background:#f9e9f2;box-shadow:inset 0 0 0 2px #d8a5bf,inset 24px 0 38px rgba(92,22,72,.18),0 26px 70px rgba(0,0,0,.36);transform-origin:left center;overflow:visible}
+.exp55-storybook::before{content:"";position:absolute;left:-18px;top:24px;bottom:24px;width:20px;border-radius:12px 0 0 12px;background:linear-gradient(#7a285f,#3b0c31);box-shadow:inset -4px 0 8px rgba(0,0,0,.35)}
+.exp55-storybook::after{content:"";position:absolute;inset:14px;pointer-events:none;border:1px solid rgba(155,98,128,.38);border-radius:18px;box-shadow:inset 0 0 30px rgba(126,65,101,.08)}
+.exp55-storybook.page-turn{animation:exp55PageTurn .75s cubic-bezier(.22,.61,.36,1)}
+.exp55-storybook .exp50-story-copy{position:relative;color:#3b1732;background:repeating-linear-gradient(0deg,rgba(124,75,101,.04) 0 1px,transparent 1px 28px),linear-gradient(90deg,rgba(104,41,83,.08),transparent 8%),#fffafc}
+.exp55-storybook .sv-eyebrow,.exp55-storybook .exp50-story-copy>p,.exp55-storybook .exp50-objective strong{color:#5a2b4c!important}
+.exp55-book-ribbon{position:absolute;right:1.4rem;top:-10px;z-index:4;padding:.7rem .8rem 1.4rem;background:linear-gradient(#ff61b7,#b42986);color:#fff;font-size:.65rem;letter-spacing:.18em;font-weight:900;clip-path:polygon(0 0,100% 0,100% 82%,50% 100%,0 82%);box-shadow:0 8px 18px rgba(92,24,74,.28)}
+.exp55-dialogue{margin:1rem 0;padding:1rem 1.1rem;border:1px solid rgba(126,67,104,.2);border-radius:18px 18px 18px 4px;background:#fff;box-shadow:0 10px 24px rgba(85,34,67,.08)}
+.exp55-dialogue strong,.exp55-dialogue span{display:block}.exp55-dialogue strong{color:#c52784;font-family:"Playfair Display",serif}.exp55-dialogue span{margin-top:.35rem;color:#4d2940;line-height:1.5}
+.exp55-reward-card{margin-top:1rem;padding:.9rem 1rem;border:1px dashed #c76b9f;border-radius:16px;background:linear-gradient(135deg,#fff7fb,#f9e5f1);color:#5a2448}
+.exp55-reward-card small,.exp55-reward-card strong{display:block}.exp55-reward-card small{margin-bottom:.25rem;color:#b84682;letter-spacing:.14em;font-weight:900}.exp55-reward-card.unlocked{animation:exp55RewardPop .65s ease;border-style:solid;box-shadow:0 0 24px rgba(255,82,176,.22)}
+#exp55StarDisplay{color:#ff4faf;letter-spacing:.25em;font-size:1.05rem}
+.exp55-final-reward{display:inline-block;margin:1rem auto 1.4rem;padding:.85rem 1.1rem;border-radius:999px;background:linear-gradient(135deg,#ff4daf,#8e35e5);box-shadow:0 0 26px rgba(255,75,180,.32);font-weight:900;letter-spacing:.06em}
+.exp50-finale:not([hidden]){animation:exp55FinaleIn .9s ease both}
+@keyframes exp55PageTurn{0%{transform:perspective(1200px) rotateY(0)}45%{transform:perspective(1200px) rotateY(-10deg) translateX(-8px)}100%{transform:perspective(1200px) rotateY(0)}}
+@keyframes exp55RewardPop{0%{transform:scale(.92);opacity:.4}70%{transform:scale(1.04)}100%{transform:scale(1);opacity:1}}
+@keyframes exp55FinaleIn{from{opacity:0;transform:translateY(28px) scale(.96)}to{opacity:1;transform:none}}
+@media(max-width:900px){.exp55-storybook{border-radius:22px;border-width:7px}.exp55-storybook::before{display:none}}
+@media(prefers-reduced-motion:reduce){.exp55-storybook.page-turn,.exp55-reward-card.unlocked,.exp50-finale:not([hidden]){animation:none!important}}

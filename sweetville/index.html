@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#120015">
   <meta name="description" content="Enter Sweetville Build v4.0: an interactive living world with districts, music, hidden letters, collectibles, achievements, and a room that grows with your journey.">
-  <title>Sweetville EXP 5.1 — Scroll Unlock Repair</title>
+  <title>Sweetville EXP 5.5 — Storybook Edition</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="sweetville.css?v=exp-5.1">
+  <link rel="stylesheet" href="sweetville.css?v=exp-5.5">
 </head>
 <body>
 
@@ -93,7 +93,7 @@
 
     <section class="sv-hero" id="world">
       <div class="sv-hero-copy">
-        <p class="sv-eyebrow">SWEETVILLE EXP 5.1</p>
+        <p class="sv-eyebrow">SWEETVILLE EXP 5.5</p>
         <h1>The world comes <em>alive.</em></h1>
         <p class="sv-lede">Explore an interactive city where every district has its own mood, music, hidden letter, collectible, and little moment from Jahntella.</p>
         <div class="sv-actions">
@@ -195,17 +195,17 @@
           </button>
         </aside>
 
-        <div class="exp50-story-card">
+        <div class="exp50-story-card exp55-storybook">
           <div class="exp50-story-art" id="exp50StoryArt" aria-hidden="true">
             <div class="exp50-story-glow"></div>
             <span class="exp50-story-icon" id="exp50StoryIcon">✨</span>
           </div>
-          <div class="exp50-story-copy">
+          <div class="exp50-story-copy"><div class="exp55-book-ribbon">STORYBOOK</div>
             <p class="sv-eyebrow" id="exp50StoryLabel">CHAPTER ONE</p>
             <h3 id="exp50StoryTitle">The Missing Sparkle</h3>
             <p id="exp50StoryText">A tiny light has disappeared from the Sweetville gates. Mochi thinks it left a trail.</p>
 
-            <div class="exp50-objective">
+            <div class="exp55-dialogue" id="exp55Dialogue"><strong>Jahntella 💋</strong><span id="exp55DialogueText">Something is missing from the gates...</span></div><div class="exp50-objective">
               <small>YOUR OBJECTIVE</small>
               <strong id="exp50Objective">Visit any open district and find the first clue.</strong>
             </div>
@@ -215,10 +215,10 @@
               <button class="sv-button secondary" id="exp50StoryHint" type="button">Ask Mochi for a Hint</button>
             </div>
 
-            <div class="exp50-story-progress">
+            <div class="exp55-reward-card" id="exp55RewardCard"><small>CHAPTER REWARD</small><strong id="exp55RewardName">Locked</strong></div><div class="exp50-story-progress">
               <div>
                 <span>MEMORY STARS</span>
-                <strong><b id="exp50Stars">0</b> / 5</strong>
+                <strong><span id="exp55StarDisplay">☆☆☆☆☆</span></strong>
               </div>
               <div class="exp50-progress-track"><i id="exp50ProgressBar"></i></div>
             </div>
@@ -228,8 +228,8 @@
 
       <div class="exp50-finale" id="exp50Finale" hidden>
         <span>♡</span>
-        <h3>Sweetville Remembers You</h3>
-        <p>You followed the clues, helped Mochi, restored the missing sparkle, and made a new memory with Jahntella.</p>
+        <h3>Welcome Home, Sweetie.</h3>
+        <p>You followed Mochi, restored the missing sparkle, and filled Sweetville with five new memories.</p><div class="exp55-final-reward">🏆 SWEETVILLE FOUNDER BADGE UNLOCKED</div>
         <button class="sv-button primary" id="exp50ReplayStory" type="button">Replay the Story</button>
       </div>
     </section>
@@ -450,6 +450,6 @@
     </div>
   </dialog>
 
-  <script src="living-world.js?v=exp-5.1"></script>
+  <script src="living-world.js?v=exp-5.5"></script>
 </body>
 </html>

@@ -978,3 +978,24 @@
   // Expose a safe manual unlock for debugging.
   window.sweetvilleUnlockScroll = unlockScroll;
 })();
+
+
+/* SWEETVILLE EXP 5.5 — STORYBOOK EDITION */
+(() => {
+  const rewards=['Opening Gates Wallpaper','Letter from Sparkle Lake','Starlight Melody Memory','Mochi Sweet Trail Badge','Sweetville Founder Badge'];
+  const dialogue=['Something is missing from the gates...','Mochi found a note near the water.','Listen carefully. The melody remembers the way.','He ran this way—follow the sparkle trail!','You made it. Sweetville remembers you now.'];
+  const book=document.querySelector('.exp55-storybook');
+  const dialogueText=document.getElementById('exp55DialogueText');
+  const rewardCard=document.getElementById('exp55RewardCard');
+  const rewardName=document.getElementById('exp55RewardName');
+  const starDisplay=document.getElementById('exp55StarDisplay');
+  const finale=document.getElementById('exp50Finale');
+  const readState=()=>{try{return JSON.parse(localStorage.getItem('sweetvilleExp50Story'))||{completed:[],active:0}}catch{return{completed:[],active:0}}};
+  const animateBook=()=>{if(!book)return;book.classList.remove('page-turn');void book.offsetWidth;book.classList.add('page-turn')};
+  const sync=()=>{const state=readState(),active=Math.min(Math.max(state.active||0,0),4),completed=Array.isArray(state.completed)?state.completed:[];if(dialogueText)dialogueText.textContent=dialogue[active];if(starDisplay)starDisplay.textContent=Array.from({length:5},(_,i)=>completed.includes(i)?'★':'☆').join('');if(rewardName&&rewardCard){if(completed.includes(active)){rewardName.textContent=rewards[active];rewardCard.classList.add('unlocked')}else{rewardName.textContent='Complete this chapter to unlock';rewardCard.classList.remove('unlocked')}}};
+  document.querySelectorAll('.exp50-chapter').forEach(button=>button.addEventListener('click',()=>{animateBook();setTimeout(sync,120)}));
+  document.getElementById('exp50BeginChapter')?.addEventListener('click',()=>setTimeout(sync,1300));
+  document.getElementById('exp50ReplayStory')?.addEventListener('click',()=>setTimeout(sync,200));
+  if(finale)new MutationObserver(sync).observe(finale,{attributes:true,attributeFilter:['hidden']});
+  addEventListener('storage',sync);setInterval(sync,1200);sync();
+})();
