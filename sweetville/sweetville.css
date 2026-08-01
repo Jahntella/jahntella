@@ -2387,3 +2387,22 @@ html:not([data-phase="night"]) .exp32-lanterns{
     transition:none!important;
   }
 }
+
+/* =========================================================
+   SWEETVILLE EXP 5.1 — SCROLL UNLOCK REPAIR
+   ========================================================= */
+
+html.sv-scroll-locked,
+body.sv-scroll-locked{
+  overflow:hidden!important;
+  height:100%!important;
+}
+
+html:not(.sv-scroll-locked),
+body:not(.sv-scroll-locked){
+  overflow-x:hidden!important;
+}
+
+.sv-cinematic-intro.finished{
+  pointer-events:none!important;
+}

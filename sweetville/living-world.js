@@ -904,3 +904,77 @@
     init();
   }
 })();
+
+/* SWEETVILLE EXP 5.1 — GUARANTEED SCROLL UNLOCK */
+(() => {
+  const html = document.documentElement;
+  const body = document.body;
+  const intro = document.getElementById('svCinematicIntro');
+  const skip = document.getElementById('svCinemaSkip');
+  const gateButton = document.getElementById('openGates');
+  let safetyTimer;
+
+  const lockScroll = () => {
+    html.classList.add('sv-scroll-locked');
+    body.classList.add('sv-scroll-locked');
+    html.style.overflow = 'hidden';
+    body.style.overflow = 'hidden';
+  };
+
+  const unlockScroll = () => {
+    clearTimeout(safetyTimer);
+    html.classList.remove('sv-scroll-locked');
+    body.classList.remove('sv-scroll-locked');
+    html.style.removeProperty('overflow');
+    body.style.removeProperty('overflow');
+    body.style.removeProperty('height');
+    html.style.removeProperty('height');
+  };
+
+  const finishIntroNow = () => {
+    if (intro) {
+      intro.classList.add('finished');
+      intro.setAttribute('aria-hidden', 'true');
+    }
+    unlockScroll();
+  };
+
+  // Replace the fragile transitionend-based behavior with a direct lock.
+  if (intro && !intro.classList.contains('finished')) {
+    lockScroll();
+  } else {
+    unlockScroll();
+  }
+
+  skip?.addEventListener('click', () => {
+    window.setTimeout(finishIntroNow, 0);
+  }, { capture:true });
+
+  gateButton?.addEventListener('click', () => {
+    window.setTimeout(unlockScroll, 1200);
+  }, { capture:true });
+
+  // Watch the intro's finished class and unlock immediately.
+  if (intro) {
+    const observer = new MutationObserver(() => {
+      if (intro.classList.contains('finished')) {
+        unlockScroll();
+        observer.disconnect();
+      }
+    });
+    observer.observe(intro, { attributes:true, attributeFilter:['class'] });
+  }
+
+  // Safety unlock in case any older script fails.
+  safetyTimer = window.setTimeout(unlockScroll, 45000);
+
+  // Browsers may restore the page from cache with old inline styles.
+  window.addEventListener('pageshow', () => {
+    if (!intro || intro.classList.contains('finished')) unlockScroll();
+  });
+
+  window.addEventListener('beforeunload', unlockScroll);
+
+  // Expose a safe manual unlock for debugging.
+  window.sweetvilleUnlockScroll = unlockScroll;
+})();
