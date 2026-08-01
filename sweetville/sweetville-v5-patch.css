@@ -1,0 +1,124 @@
+
+/* SWEETVILLE 5.0 — Living World patch */
+
+/* Permanently remove Sparkle Lake ripple elements. */
+.live-lagoon .lake-ripple,
+.live-lagoon .lr1,
+.live-lagoon .lr2 {
+  display: none !important;
+  animation: none !important;
+}
+
+/* Dedicated lower-water mask so no lake effect can sit on Jahntella. */
+.live-lagoon .lake-water-mask {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 36%;
+  overflow: hidden;
+  pointer-events: none;
+  clip-path: polygon(0 22%, 100% 10%, 100% 100%, 0 100%);
+}
+
+.live-lagoon .lake-water-mask .lake-moon-glow {
+  left: 62% !important;
+  top: 24% !important;
+  width: 72px !important;
+  height: 14px !important;
+  border-radius: 50% !important;
+  background: rgba(255,244,255,.30) !important;
+  box-shadow: 0 0 18px rgba(255,255,255,.48), 0 0 34px rgba(255,93,201,.30) !important;
+  filter: blur(2px) !important;
+}
+
+.live-lagoon .lake-water-mask .lake-shimmer {
+  left: 3% !important;
+  right: 3% !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  height: 100% !important;
+}
+
+.live-lagoon .lake-water-mask .lf1 { left: 11% !important; top: 22% !important; }
+.live-lagoon .lake-water-mask .lf2 { right: 14% !important; top: 34% !important; }
+.live-lagoon .lake-water-mask .lf3 { left: 39% !important; top: 16% !important; }
+
+/* Refined district animation intensity. */
+.live-district-effects { opacity: .82; mix-blend-mode: screen; }
+.live-district-card:hover .live-district-effects { opacity: 1; }
+
+.live-donut .donut-sign { width: 21% !important; opacity: .82; }
+.live-stage .live-confetti { animation-duration: 5.2s !important; }
+.live-candy .live-candy-shimmer { opacity: .62; }
+.live-neon .neon-heart-pulse {
+  font-size: 2.45rem !important;
+  right: 7% !important;
+  top: 10% !important;
+}
+
+/* Premium card depth. */
+.living-map-panel .live-district-card {
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+.living-map-panel .live-district-card:hover {
+  transform: translateY(-8px) scale(1.012) !important;
+  border-color: rgba(255,138,214,.88) !important;
+  box-shadow: 0 20px 48px rgba(0,0,0,.48), 0 0 32px rgba(255,45,174,.25) !important;
+}
+
+/* Mochi hero idle guide. */
+.mochi-guide {
+  position: absolute;
+  right: 3.5%;
+  bottom: 15%;
+  z-index: 6;
+  display: grid;
+  place-items: center;
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,.95), rgba(255,165,220,.82));
+  border: 2px solid rgba(255,255,255,.75);
+  box-shadow: 0 0 28px rgba(255,74,181,.52);
+  animation: mochiIdle 4.8s ease-in-out infinite;
+}
+.mochi-guide .mochi-face {
+  font-size: 3.1rem;
+  transform-origin: center bottom;
+  animation: mochiBlink 5.2s infinite;
+}
+.mochi-guide i {
+  position: absolute;
+  right: -12px;
+  bottom: 18px;
+  width: 28px;
+  height: 12px;
+  border-radius: 999px;
+  background: #ffd6ed;
+  transform-origin: left center;
+  animation: mochiTail 1.15s ease-in-out infinite alternate;
+}
+
+@keyframes mochiIdle {
+  0%,100% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+@keyframes mochiBlink {
+  0%,46%,50%,100% { transform: scaleY(1); }
+  48% { transform: scaleY(.72); }
+}
+@keyframes mochiTail {
+  from { transform: rotate(-18deg); }
+  to { transform: rotate(22deg); }
+}
+
+@media (max-width: 760px) {
+  .mochi-guide { width: 62px; height: 62px; right: 4%; bottom: 19%; }
+  .mochi-guide .mochi-face { font-size: 2.35rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mochi-guide,
+  .mochi-guide .mochi-face,
+  .mochi-guide i { animation: none !important; }
+}
