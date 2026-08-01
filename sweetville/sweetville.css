@@ -2883,3 +2883,115 @@ body:not(.sv-scroll-locked){
 
 /* EXP 6.1 Collection Sync */
 .sv-sync-toast{position:fixed;left:50%;bottom:2rem;z-index:120;transform:translate(-50%,20px);padding:.9rem 1.15rem;border:1px solid rgba(255,117,203,.65);border-radius:18px;background:rgba(10,0,13,.94);color:#fff;opacity:0;pointer-events:none;transition:.28s;text-align:center;font-weight:800}.sv-sync-toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* =========================================================
+   SWEETVILLE EXP 7.0 — ENGINE UPDATE
+   ========================================================= */
+
+.exp32-world-life,
+.ambient-life{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity 1.2s ease,visibility 1.2s ease;
+}
+
+.exp32-world-life.active,
+.ambient-life.active,
+.sv-world-awake .exp32-world-life,
+.sv-world-awake .ambient-life{
+  opacity:1;
+  visibility:visible;
+}
+
+.exp32-world-life{
+  position:fixed;
+  inset:0;
+  z-index:18;
+  overflow:hidden;
+}
+
+.sv-living-fireworks{
+  position:fixed;
+  inset:0;
+  z-index:19;
+  pointer-events:none;
+}
+
+.exp70-firefly,
+.exp70-petal,
+.exp70-bird,
+.exp70-lantern{
+  position:absolute;
+  display:block;
+  pointer-events:none;
+  animation-delay:var(--delay);
+  animation-duration:var(--duration);
+  animation-iteration-count:infinite;
+  animation-timing-function:linear;
+}
+
+.exp70-firefly{
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:#fff8a7;
+  box-shadow:0 0 8px #fff8a7,0 0 18px rgba(255,241,133,.8);
+  animation-name:exp70Firefly;
+}
+
+.exp70-petal{
+  color:#ff9bd1;
+  font-size:12px;
+  opacity:.7;
+  animation-name:exp70Petal;
+}
+
+.exp70-bird{
+  color:rgba(255,255,255,.72);
+  font-size:22px;
+  animation-name:exp70Bird;
+}
+
+.exp70-lantern{
+  color:#ffd27b;
+  font-size:15px;
+  text-shadow:0 0 12px #ff9f52,0 0 24px rgba(255,135,59,.9);
+  animation-name:exp70Lantern;
+}
+
+@keyframes exp70Firefly{
+  0%{transform:translate3d(0,0,0) scale(.7);opacity:.15}
+  25%{opacity:1}
+  50%{transform:translate3d(var(--drift),-45px,0) scale(1.15);opacity:.55}
+  75%{opacity:1}
+  100%{transform:translate3d(calc(var(--drift)*-.4),-95px,0) scale(.7);opacity:.12}
+}
+
+@keyframes exp70Petal{
+  0%{transform:translate3d(0,-15vh,0) rotate(0);opacity:0}
+  12%{opacity:.75}
+  100%{transform:translate3d(var(--drift),115vh,0) rotate(520deg);opacity:0}
+}
+
+@keyframes exp70Bird{
+  0%{transform:translate3d(-15vw,0,0) scale(.8);opacity:0}
+  12%{opacity:.72}
+  100%{transform:translate3d(115vw,-18vh,0) scale(1.1);opacity:0}
+}
+
+@keyframes exp70Lantern{
+  0%{transform:translate3d(0,110vh,0) scale(.75);opacity:0}
+  18%{opacity:.9}
+  100%{transform:translate3d(var(--drift),-18vh,0) scale(1.05);opacity:0}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .exp70-firefly,
+  .exp70-petal,
+  .exp70-bird,
+  .exp70-lantern{
+    animation-duration:1ms!important;
+    animation-iteration-count:1!important;
+  }
+}
