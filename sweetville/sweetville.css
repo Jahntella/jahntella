@@ -2995,3 +2995,6 @@ body:not(.sv-scroll-locked){
     animation-iteration-count:1!important;
   }
 }
+
+
+.exp701-passport-toast{position:fixed;left:50%;top:18%;z-index:125;transform:translate(-50%,-18px) scale(.92);max-width:min(90vw,460px);padding:1rem 1.2rem;border:2px solid #ff91cf;border-radius:18px;background:rgba(12,0,15,.95);color:#fff;box-shadow:0 18px 45px rgba(0,0,0,.45),0 0 30px rgba(255,71,177,.3);opacity:0;pointer-events:none;font-weight:900;text-align:center}.exp701-passport-toast.show{animation:exp701PassportToast 2.6s ease both}.exp60-stamp.exp701-stamp-new{animation:exp701StampIn .55s ease both}@keyframes exp701PassportToast{0%{opacity:0;transform:translate(-50%,-18px) scale(.92)}18%{opacity:1;transform:translate(-50%,0) scale(1.04)}72%{opacity:1;transform:translate(-50%,0) scale(1)}100%{opacity:0;transform:translate(-50%,-14px) scale(.97)}}@keyframes exp701StampIn{from{opacity:.35;transform:rotate(var(--stamp-rotation)) scale(.72)}to{opacity:1;transform:rotate(var(--stamp-rotation)) scale(1)}}
