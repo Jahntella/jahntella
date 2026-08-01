@@ -1932,3 +1932,174 @@ html:not([data-phase="night"]) .exp32-lanterns{
     transition:none!important;
   }
 }
+
+/* =========================================================
+   SWEETVILLE EXP 4.1 — LIVING MAGIC
+   Removes permanent EXP 4.0 overlays and replaces them with
+   brief ambient moments that never cover district artwork.
+   ========================================================= */
+
+.exp40-character-layer,
+.exp40-jahntella,
+.exp40-mochi,
+.exp40-toast,
+.exp40-district-visit{
+  display:none!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+
+/* Clean district cards: artwork stays unobstructed */
+.live-district-card .exp40-district-visit{
+  display:none!important;
+}
+
+/* Hover sparkle without text overlays */
+.live-district-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:4;
+  pointer-events:none;
+  border-radius:inherit;
+  opacity:0;
+  background:
+    radial-gradient(circle at 18% 72%,rgba(255,255,255,.82) 0 1px,transparent 2px),
+    radial-gradient(circle at 38% 34%,rgba(255,160,219,.75) 0 1.5px,transparent 2.5px),
+    radial-gradient(circle at 72% 25%,rgba(255,255,255,.75) 0 1px,transparent 2px),
+    radial-gradient(circle at 84% 66%,rgba(255,111,195,.68) 0 1.5px,transparent 2.5px);
+  filter:drop-shadow(0 0 8px rgba(255,98,190,.8));
+  transition:opacity .3s ease;
+}
+.live-district-card:hover::before{
+  opacity:1;
+  animation:exp41CardSparkle 1.8s ease-in-out infinite;
+}
+
+.exp41-whisper{
+  position:fixed;
+  right:2.2rem;
+  bottom:2.2rem;
+  z-index:48;
+  max-width:min(86vw,340px);
+  padding:.85rem 1rem;
+  border-radius:18px;
+  background:rgba(10,0,13,.86);
+  border:1px solid rgba(255,115,203,.58);
+  box-shadow:0 16px 36px rgba(0,0,0,.4),0 0 24px rgba(255,65,180,.2);
+  backdrop-filter:blur(14px);
+  color:#fff;
+  opacity:0;
+  transform:translateY(18px);
+  pointer-events:none;
+  transition:opacity .35s ease,transform .35s ease;
+}
+.exp41-whisper.show{
+  opacity:1;
+  transform:translateY(0);
+}
+.exp41-whisper strong{
+  display:block;
+  margin-bottom:.15rem;
+  color:#ffafd8;
+  font-family:"Playfair Display",serif;
+}
+.exp41-whisper span{
+  font-size:.84rem;
+  line-height:1.45;
+  color:#ffe7f3;
+}
+
+.exp41-mochi-runner{
+  position:fixed;
+  left:-90px;
+  bottom:1rem;
+  z-index:47;
+  font-size:2.7rem;
+  pointer-events:none;
+  filter:drop-shadow(0 7px 8px rgba(0,0,0,.35));
+}
+.exp41-mochi-runner.run{
+  animation:exp41MochiRun 8s linear forwards;
+}
+
+.exp41-event-layer{
+  position:fixed;
+  inset:0;
+  z-index:19;
+  pointer-events:none;
+  overflow:hidden;
+}
+.exp41-gust span,
+.exp41-heart-rise span,
+.exp41-firework span{
+  position:absolute;
+  display:block;
+}
+.exp41-gust span{
+  top:-8vh;
+  color:#ff9bd5;
+  text-shadow:0 0 10px rgba(255,91,190,.75);
+  animation:exp41PetalGust linear forwards;
+}
+.exp41-heart-rise span{
+  bottom:-30px;
+  color:#ff72bd;
+  text-shadow:0 0 12px rgba(255,91,190,.8);
+  animation:exp41HeartRise ease-out forwards;
+}
+.exp41-firework span{
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#fff;
+  box-shadow:0 0 10px #ff9ad1;
+  animation:exp41Firework 1.4s ease-out forwards;
+}
+
+@keyframes exp41CardSparkle{
+  0%,100%{transform:translateX(-3px);filter:drop-shadow(0 0 7px rgba(255,98,190,.55))}
+  50%{transform:translateX(3px);filter:drop-shadow(0 0 14px rgba(255,145,218,.9))}
+}
+@keyframes exp41MochiRun{
+  0%{left:-90px;transform:translateY(0) rotate(0)}
+  16%{transform:translateY(-5px) rotate(-5deg)}
+  32%{transform:translateY(0) rotate(5deg)}
+  48%{transform:translateY(-4px) rotate(-4deg)}
+  64%{transform:translateY(0) rotate(4deg)}
+  100%{left:calc(100vw + 90px);transform:translateY(0)}
+}
+@keyframes exp41PetalGust{
+  from{transform:translate3d(0,-10vh,0) rotate(0);opacity:0}
+  12%{opacity:.9}
+  to{transform:translate3d(var(--drift),110vh,0) rotate(620deg);opacity:0}
+}
+@keyframes exp41HeartRise{
+  from{transform:translateY(0) scale(.7);opacity:0}
+  15%{opacity:.85}
+  to{transform:translateY(-45vh) translateX(var(--drift)) scale(1.1);opacity:0}
+}
+@keyframes exp41Firework{
+  from{transform:translate(0,0) scale(1);opacity:1}
+  to{transform:translate(var(--x),var(--y)) scale(.35);opacity:0}
+}
+
+@media(max-width:700px){
+  .exp41-whisper{
+    left:1rem;
+    right:1rem;
+    bottom:1rem;
+    max-width:none;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .exp41-whisper,
+  .exp41-mochi-runner,
+  .exp41-event-layer,
+  .live-district-card::before{
+    display:none!important;
+    animation:none!important;
+    transition:none!important;
+  }
+}

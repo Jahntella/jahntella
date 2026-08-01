@@ -555,3 +555,157 @@
     init();
   }
 })();
+
+/* SWEETVILLE EXP 4.1 — LIVING MAGIC */
+(() => {
+  const removeExp40Overlays = () => {
+    document
+      .querySelectorAll('.exp40-character-layer,.exp40-district-visit')
+      .forEach((el) => el.remove());
+  };
+
+  const ensureAmbientUi = () => {
+    if (!document.getElementById('exp41Whisper')) {
+      const whisper = document.createElement('div');
+      whisper.className = 'exp41-whisper';
+      whisper.id = 'exp41Whisper';
+      whisper.innerHTML = '<strong>Jahntella 💋</strong><span></span>';
+      document.body.appendChild(whisper);
+    }
+
+    if (!document.getElementById('exp41MochiRunner')) {
+      const mochi = document.createElement('div');
+      mochi.className = 'exp41-mochi-runner';
+      mochi.id = 'exp41MochiRunner';
+      mochi.textContent = '🐶';
+      document.body.appendChild(mochi);
+    }
+
+    if (!document.getElementById('exp41EventLayer')) {
+      const layer = document.createElement('div');
+      layer.className = 'exp41-event-layer';
+      layer.id = 'exp41EventLayer';
+      layer.innerHTML = '<div class="exp41-gust"></div><div class="exp41-heart-rise"></div><div class="exp41-firework"></div>';
+      document.body.appendChild(layer);
+    }
+  };
+
+  const whisperLines = [
+    'Meet me at Sparkle Lake...',
+    'I hid something sweet.',
+    'Mochi found another adventure.',
+    'The city glows differently when you follow your heart.',
+    'Somewhere in Sweetville, a new memory is waiting.',
+    'Listen closely. The next melody may already be here.'
+  ];
+
+  let whisperTimer;
+  const showWhisper = () => {
+    const box = document.getElementById('exp41Whisper');
+    const text = box?.querySelector('span');
+    if (!box || !text) return;
+    text.textContent = whisperLines[Math.floor(Math.random() * whisperLines.length)];
+    box.classList.add('show');
+    clearTimeout(whisperTimer);
+    whisperTimer = window.setTimeout(() => box.classList.remove('show'), 4200);
+  };
+
+  const runMochi = () => {
+    const mochi = document.getElementById('exp41MochiRunner');
+    if (!mochi || mochi.classList.contains('run')) return;
+    mochi.classList.add('run');
+    window.setTimeout(() => mochi.classList.remove('run'), 8200);
+  };
+
+  const blossomGust = () => {
+    const host = document.querySelector('#exp41EventLayer .exp41-gust');
+    if (!host) return;
+    host.innerHTML = '';
+    const count = innerWidth < 700 ? 12 : 24;
+    for (let i = 0; i < count; i += 1) {
+      const petal = document.createElement('span');
+      petal.textContent = i % 3 === 0 ? '✦' : '❀';
+      petal.style.left = `${Math.random() * 100}%`;
+      petal.style.fontSize = `${8 + Math.random() * 12}px`;
+      petal.style.animationDuration = `${4.5 + Math.random() * 3.5}s`;
+      petal.style.animationDelay = `${Math.random() * .9}s`;
+      petal.style.setProperty('--drift', `${-160 + Math.random() * 320}px`);
+      host.appendChild(petal);
+    }
+    window.setTimeout(() => { host.innerHTML = ''; }, 9000);
+  };
+
+  const floatHearts = () => {
+    const host = document.querySelector('#exp41EventLayer .exp41-heart-rise');
+    if (!host) return;
+    host.innerHTML = '';
+    for (let i = 0; i < 7; i += 1) {
+      const heart = document.createElement('span');
+      heart.textContent = '♡';
+      heart.style.left = `${12 + Math.random() * 76}%`;
+      heart.style.fontSize = `${13 + Math.random() * 12}px`;
+      heart.style.animationDuration = `${4 + Math.random() * 2.5}s`;
+      heart.style.animationDelay = `${Math.random() * 1.2}s`;
+      heart.style.setProperty('--drift', `${-45 + Math.random() * 90}px`);
+      host.appendChild(heart);
+    }
+    window.setTimeout(() => { host.innerHTML = ''; }, 8000);
+  };
+
+  const fireworkBurst = () => {
+    const host = document.querySelector('#exp41EventLayer .exp41-firework');
+    if (!host || document.documentElement.dataset.phase !== 'night') return;
+    host.innerHTML = '';
+    const x = innerWidth * (.58 + Math.random() * .28);
+    const y = 80 + Math.random() * 180;
+    const count = innerWidth < 700 ? 16 : 28;
+    for (let i = 0; i < count; i += 1) {
+      const spark = document.createElement('span');
+      const angle = (Math.PI * 2 * i) / count;
+      const distance = 45 + Math.random() * 85;
+      spark.style.left = `${x}px`;
+      spark.style.top = `${y}px`;
+      spark.style.setProperty('--x', `${Math.cos(angle) * distance}px`);
+      spark.style.setProperty('--y', `${Math.sin(angle) * distance}px`);
+      spark.style.animationDelay = `${Math.random() * .12}s`;
+      host.appendChild(spark);
+    }
+    window.setTimeout(() => { host.innerHTML = ''; }, 1900);
+  };
+
+  const init = () => {
+    removeExp40Overlays();
+    ensureAmbientUi();
+
+    const observer = new MutationObserver(removeExp40Overlays);
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    window.setTimeout(showWhisper, 9000);
+    window.setTimeout(blossomGust, 15000);
+    window.setTimeout(runMochi, 26000);
+
+    window.setInterval(() => {
+      if (document.visibilityState === 'visible') showWhisper();
+    }, 58000);
+
+    window.setInterval(() => {
+      if (document.visibilityState === 'visible') {
+        Math.random() > .5 ? blossomGust() : floatHearts();
+      }
+    }, 76000);
+
+    window.setInterval(() => {
+      if (document.visibilityState === 'visible') runMochi();
+    }, 125000);
+
+    window.setInterval(() => {
+      if (document.visibilityState === 'visible') fireworkBurst();
+    }, 98000);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
+})();
