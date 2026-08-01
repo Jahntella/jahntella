@@ -323,3 +323,39 @@
     }, { once: true });
   }
 })();
+
+/* SWEETVILLE EXP 3.1 — POLISH */
+(() => {
+  const removeLegacyLakeRipples = () => {
+    document
+      .querySelectorAll('.live-lagoon .lake-ripple,.live-lagoon .lr1,.live-lagoon .lr2,.live-lagoon [class*="ripple"]')
+      .forEach((el) => el.remove());
+  };
+
+  const addSceneDrift = () => {
+    document.querySelectorAll('.live-district-card').forEach((card, index) => {
+      const img = card.querySelector('.live-district-visual img');
+      if (!img || img.dataset.driftReady === 'true') return;
+      img.dataset.driftReady = 'true';
+      img.style.transformOrigin = index % 2 === 0 ? '48% 52%' : '52% 48%';
+    });
+  };
+
+  const init = () => {
+    removeLegacyLakeRipples();
+    addSceneDrift();
+
+    const observer = new MutationObserver(() => {
+      removeLegacyLakeRipples();
+      addSceneDrift();
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
+})();

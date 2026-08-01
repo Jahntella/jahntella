@@ -1512,3 +1512,93 @@ dialog.mini-piano-modal::backdrop {
 /* SWEETVILLE EXP 3.0 */
 .sv-cinematic-intro.exp3 .scene-gates .sv-scene-image{background-image:url("assets/exp3/01-opening-gates.webp")}.sv-cinematic-intro.exp3 .scene-castle .sv-scene-image{background-image:url("assets/exp3/02-sweetville-castle.webp")}.sv-cinematic-intro.exp3 .scene-carnival .sv-scene-image{background-image:url("assets/exp3/03-dream-carnival.webp")}.sv-cinematic-intro.exp3 .scene-lake .sv-scene-image{background-image:url("assets/exp3/04-sparkle-lake.webp")}.sv-cinematic-intro.exp3 .scene-donut .sv-scene-image{background-image:url("assets/exp3/05-donut-district.webp")}.sv-cinematic-intro.exp3 .scene-candy .sv-scene-image{background-image:url("assets/exp3/06-candy-lane.webp")}.sv-cinematic-intro.exp3 .scene-stage .sv-scene-image{background-image:url("assets/exp3/07-starlight-stage.webp")}.sv-cinematic-intro.exp3 .scene-neon .sv-scene-image{background-image:url("assets/exp3/08-neon-sweetheart.webp")}.sv-cinematic-intro.exp3 .scene-mochi .sv-scene-image{background-image:url("assets/exp3/09-mochi-moment.webp")}.sv-cinematic-intro.exp3 .scene-home .sv-scene-image{background-image:url("assets/exp3/10-welcome-home.webp")}
 .sv-cinematic-intro.exp3 .sv-cinema-scene.active .sv-scene-image{animation:exp3Camera 7s ease-in-out forwards}.sv-cinematic-intro.exp3 .scene-lake.active .sv-scene-image,.sv-cinematic-intro.exp3 .scene-neon.active .sv-scene-image{animation-name:exp3Pan}.sv-cinematic-intro.exp3 .scene-candy.active .sv-scene-image,.sv-cinematic-intro.exp3 .scene-donut.active .sv-scene-image{animation-name:exp3Street}.sv-cinematic-intro.exp3 .scene-stage.active .sv-scene-image{animation-name:exp3Push}@keyframes exp3Camera{from{transform:scale(1.11)}to{transform:scale(1.02)}}@keyframes exp3Pan{from{transform:scale(1.08) translateX(-1.2%)}to{transform:scale(1.03) translateX(1.2%)}}@keyframes exp3Street{from{transform:scale(1.09) translateY(1%)}to{transform:scale(1.03) translateY(-1%)}}@keyframes exp3Push{from{transform:scale(1.03)}to{transform:scale(1.10)}}
+
+/* =========================================================
+   SWEETVILLE EXP 3.1 — CINEMATIC POLISH
+   ========================================================= */
+
+/* Softer, more cinematic scene transitions */
+.sv-cinematic-intro.exp3 .sv-cinema-scene {
+  transition:
+    opacity 1.55s ease,
+    transform 7.5s cubic-bezier(.22,.61,.36,1),
+    filter 1.55s ease !important;
+  filter: brightness(.78) saturate(.95);
+}
+.sv-cinematic-intro.exp3 .sv-cinema-scene.active {
+  filter: brightness(1) saturate(1.08);
+}
+
+/* More refined copy entrance */
+.sv-cinematic-intro.exp3 .sv-cinema-copy {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1s ease .35s, transform 1s ease .35s;
+}
+.sv-cinematic-intro.exp3 .sv-cinema-scene.active .sv-cinema-copy {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Pink fog polish */
+.sv-cinematic-intro.exp3 .sv-pink-fog {
+  opacity: .62;
+  filter: blur(52px);
+}
+.sv-cinematic-intro.exp3 .fog-one {
+  animation-duration: 11s !important;
+}
+.sv-cinematic-intro.exp3 .fog-two {
+  animation-duration: 14s !important;
+}
+
+/* Sparkle Lake: completely suppress any legacy ripple visuals */
+.live-lagoon .lake-ripple,
+.live-lagoon .lr1,
+.live-lagoon .lr2,
+.live-lagoon [class*="ripple"] {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  animation: none !important;
+}
+
+/* Gentle district camera drift */
+.live-district-visual img {
+  transform: scale(1.025);
+  transition: transform 9s ease, filter .45s ease !important;
+}
+.live-district-card:hover .live-district-visual img {
+  transform: scale(1.075) translate3d(0,-1.2%,0) !important;
+}
+
+/* Smoother location modal entrance */
+.location-modal[open] .modal-panel,
+.location-modal.open .modal-panel {
+  animation: svModalCinemaIn .55s cubic-bezier(.22,.61,.36,1) both;
+}
+@keyframes svModalCinemaIn {
+  from { opacity: 0; transform: translateY(26px) scale(.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Subtle ambient district labels */
+.live-district-copy strong {
+  letter-spacing: .01em;
+}
+.live-district-copy small {
+  opacity: .82;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .sv-cinematic-intro.exp3 .sv-cinema-scene,
+  .sv-cinematic-intro.exp3 .sv-cinema-copy,
+  .live-district-visual img,
+  .location-modal[open] .modal-panel,
+  .location-modal.open .modal-panel {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
