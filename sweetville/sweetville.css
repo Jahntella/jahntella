@@ -1602,3 +1602,141 @@ dialog.mini-piano-modal::backdrop {
     transform: none !important;
   }
 }
+
+/* =========================================================
+   SWEETVILLE EXP 3.2 — LIVING WORLD
+   CODE-ONLY UPGRADE: reuses existing EXP 3.0 artwork
+   ========================================================= */
+
+.exp32-world-life{
+  position:fixed;
+  inset:0;
+  z-index:20;
+  pointer-events:none;
+  overflow:hidden;
+}
+
+.exp32-petals span,
+.exp32-fireflies span,
+.exp32-birds span,
+.exp32-lanterns span{
+  position:absolute;
+  display:block;
+}
+
+.exp32-petals span{
+  top:-8vh;
+  color:#ff9bd8;
+  text-shadow:0 0 12px rgba(255,93,195,.85);
+  animation:exp32PetalFall linear infinite;
+}
+
+.exp32-fireflies span{
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#fff3a1;
+  box-shadow:0 0 10px #fff19a,0 0 18px rgba(255,222,90,.75);
+  animation:exp32Firefly ease-in-out infinite;
+}
+
+.exp32-birds span{
+  top:10vh;
+  font-size:1.1rem;
+  opacity:.5;
+  animation:exp32BirdFlight linear infinite;
+}
+
+.exp32-lanterns span{
+  bottom:-10vh;
+  width:16px;
+  height:24px;
+  border-radius:8px 8px 10px 10px;
+  background:linear-gradient(#ffd7ed,#ff7ec8);
+  box-shadow:0 0 14px rgba(255,95,183,.8);
+  animation:exp32LanternRise linear infinite;
+}
+
+@keyframes exp32PetalFall{
+  from{transform:translate3d(0,-10vh,0) rotate(0deg);opacity:0}
+  10%{opacity:.85}
+  to{transform:translate3d(var(--drift),110vh,0) rotate(540deg);opacity:0}
+}
+@keyframes exp32Firefly{
+  0%,100%{transform:translate(0,0) scale(.7);opacity:.25}
+  35%{transform:translate(14px,-18px) scale(1.15);opacity:1}
+  70%{transform:translate(-10px,10px) scale(.9);opacity:.5}
+}
+@keyframes exp32BirdFlight{
+  from{transform:translateX(-15vw) translateY(0)}
+  to{transform:translateX(115vw) translateY(-4vh)}
+}
+@keyframes exp32LanternRise{
+  from{transform:translateY(0) translateX(0);opacity:0}
+  10%{opacity:.8}
+  to{transform:translateY(-120vh) translateX(var(--drift));opacity:0}
+}
+
+/* Carnival feels alive without new images */
+.live-carnival .live-wheel,
+.live-donut .donut-sign{
+  animation-duration:18s!important;
+}
+.live-carnival:hover .live-wheel,
+.live-donut:hover .donut-sign{
+  animation-duration:10s!important;
+}
+
+/* Night-only fireflies */
+html:not([data-phase="night"]) .exp32-fireflies{
+  display:none;
+}
+
+/* Morning/day birds, night lanterns */
+html[data-phase="night"] .exp32-birds{
+  display:none;
+}
+html:not([data-phase="night"]) .exp32-lanterns{
+  display:none;
+}
+
+/* Gentle living reflections */
+.live-neon .neon-reflection,
+.live-lagoon .lake-shimmer{
+  animation-duration:7.5s!important;
+}
+
+/* District focus pulse */
+.live-district-card{
+  position:relative;
+}
+.live-district-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);
+  pointer-events:none;
+}
+.live-district-card:hover::after{
+  box-shadow:inset 0 0 28px rgba(255,86,190,.16);
+}
+
+/* Keep visual noise low on mobile */
+@media(max-width:700px){
+  .exp32-petals span:nth-child(n+9),
+  .exp32-fireflies span:nth-child(n+7),
+  .exp32-birds span:nth-child(n+3),
+  .exp32-lanterns span:nth-child(n+4){
+    display:none;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .exp32-petals,
+  .exp32-fireflies,
+  .exp32-birds,
+  .exp32-lanterns{
+    display:none!important;
+  }
+}

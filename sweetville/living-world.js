@@ -359,3 +359,74 @@
     init();
   }
 })();
+
+/* SWEETVILLE EXP 3.2 — LIVING WORLD */
+(() => {
+  const make = (parent, count, factory) => {
+    if (!parent || parent.dataset.ready === 'true') return;
+    parent.dataset.ready = 'true';
+    for (let i = 0; i < count; i += 1) {
+      const el = document.createElement('span');
+      factory(el, i);
+      parent.appendChild(el);
+    }
+  };
+
+  const init = () => {
+    const petals = document.getElementById('exp32Petals');
+    const fireflies = document.getElementById('exp32Fireflies');
+    const birds = document.getElementById('exp32Birds');
+    const lanterns = document.getElementById('exp32Lanterns');
+
+    make(petals, 16, (el, i) => {
+      el.textContent = i % 3 === 0 ? '✦' : '❀';
+      el.style.left = `${Math.random() * 100}%`;
+      el.style.fontSize = `${8 + Math.random() * 10}px`;
+      el.style.animationDuration = `${10 + Math.random() * 10}s`;
+      el.style.animationDelay = `${-Math.random() * 14}s`;
+      el.style.setProperty('--drift', `${-90 + Math.random() * 180}px`);
+    });
+
+    make(fireflies, 12, (el) => {
+      el.style.left = `${8 + Math.random() * 84}%`;
+      el.style.top = `${22 + Math.random() * 68}%`;
+      el.style.animationDuration = `${3.5 + Math.random() * 4}s`;
+      el.style.animationDelay = `${-Math.random() * 6}s`;
+    });
+
+    make(birds, 4, (el, i) => {
+      el.textContent = '⌁';
+      el.style.top = `${8 + i * 5}%`;
+      el.style.animationDuration = `${18 + i * 6}s`;
+      el.style.animationDelay = `${-i * 7}s`;
+    });
+
+    make(lanterns, 6, (el) => {
+      el.style.left = `${6 + Math.random() * 88}%`;
+      el.style.animationDuration = `${18 + Math.random() * 12}s`;
+      el.style.animationDelay = `${-Math.random() * 18}s`;
+      el.style.setProperty('--drift', `${-40 + Math.random() * 80}px`);
+    });
+
+    // Subtle random sparkle pulse on district cards.
+    const cards = [...document.querySelectorAll('.live-district-card')];
+    window.setInterval(() => {
+      if (!cards.length || document.visibilityState !== 'visible') return;
+      const card = cards[Math.floor(Math.random() * cards.length)];
+      card.animate(
+        [
+          { filter: 'brightness(1)' },
+          { filter: 'brightness(1.08)' },
+          { filter: 'brightness(1)' }
+        ],
+        { duration: 1600, easing: 'ease-in-out' }
+      );
+    }, 6500);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
+})();
