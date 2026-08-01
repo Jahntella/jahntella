@@ -141,29 +141,19 @@
     snapshot();
   });
 
-  let usingCustomText = false;
-
   const updateQuoteFromSelect = () => {
-    usingCustomText = false;
     if (customText) customText.value = '';
     if (stageQuote) stageQuote.textContent = quoteSelect?.value || 'Welcome home, Sweetie.';
   };
 
   const updateQuoteFromInput = () => {
-    usingCustomText = true;
     const value = customText?.value ?? '';
-    if (stageQuote) {
-      stageQuote.textContent = value.length ? value : ' ';
-    }
+    if (stageQuote) stageQuote.textContent = value.length ? value : ' ';
   };
 
   quoteSelect?.addEventListener('change', () => {
     updateQuoteFromSelect();
     snapshot();
-  });
-
-  customText?.addEventListener('focus', () => {
-    usingCustomText = true;
   });
 
   customText?.addEventListener('input', updateQuoteFromInput);

@@ -16,7 +16,7 @@
   const hostText = document.getElementById('exp94HostText');
 
   const background = new Image();
-  background.src = 'assets/JPhotobooth1.webp?v=9.4';
+  background.src = 'assets/JPhotobooth1.jpg?v=9.4.1';
 
   let userImage = null;
   let frame = 'glow';
@@ -158,6 +158,11 @@
   };
 
   background.onload = draw;
+  background.onerror = () => {
+    if (hostTitle) hostTitle.textContent = 'Photo Booth is ready.';
+    if (hostText) hostText.textContent = 'The background could not load, but you can still create and download your photo.';
+    draw();
+  };
 
   upload?.addEventListener('change', () => {
     const file = upload.files?.[0];

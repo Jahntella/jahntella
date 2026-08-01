@@ -5065,7 +5065,7 @@ body.exp90-lock{overflow:hidden!important}
 }
 
 /* =========================================================
-   SWEETVILLE EXP 9.4 — PHOTO BOOTH
+   SWEETVILLE EXP 9.4.1 — PHOTO BOOTH
    ========================================================= */
 .exp94-photo-panel{position:relative;overflow:hidden}
 .exp94-photo-panel::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 12% 15%,rgba(255,104,183,.17),transparent 29%),radial-gradient(circle at 88% 78%,rgba(167,112,255,.14),transparent 32%)}

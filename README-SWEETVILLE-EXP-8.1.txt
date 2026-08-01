@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#120015">
   <meta name="description" content="Enter Sweetville Build v4.0: an interactive living world with districts, music, hidden letters, collectibles, achievements, and a room that grows with your journey.">
-  <title>Sweetville EXP 9.4 — Sweetville Photo Booth</title>
+  <title>Sweetville EXP 9.4.1 — Sweetville Photo Booth</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="sweetville.css?v=9.4">
+  <link rel="stylesheet" href="sweetville.css?v=9.4.1">
 </head>
 <body>
 
@@ -120,7 +120,7 @@
 
     <section class="sv-hero" id="world">
       <div class="sv-hero-copy">
-        <p class="sv-eyebrow">SWEETVILLE EXP 9.4</p>
+        <p class="sv-eyebrow">SWEETVILLE EXP 9.4.1</p>
         <h1>The world comes <em>alive.</em></h1>
         <p class="sv-lede">Explore an interactive city where every district has its own mood, music, hidden letter, collectible, and little moment from Jahntella.</p>
         <div class="sv-actions">
@@ -441,32 +441,27 @@
       <div class="sv-section-heading">
         <p class="sv-eyebrow">SWEETVILLE PHOTO BOOTH</p>
         <h2>Take a photo with <em>Jahntella.</em></h2>
-        <p>Your picture stays inside your browser. Upload it, pose beside Jahntella, then download or print your Sweetville memory.</p>
+        <p>Your photo stays in your browser. Upload it, pose beside Jahntella, then download, print, or save it.</p>
       </div>
 
       <div class="exp94-photo-shell">
         <aside class="exp94-photo-controls">
           <div class="exp94-host-note">
-            <span>✌️</span>
-            <small>JAHNTELLA SAYS</small>
+            <span>✌️</span><small>JAHNTELLA SAYS</small>
             <h3 id="exp94HostTitle">Come sit beside me!</h3>
             <p id="exp94HostText">Choose a favorite photo and we’ll make a Sweetville keepsake together.</p>
           </div>
 
           <label class="exp94-upload-button" for="exp94Upload">
-            <span>📷</span>
-            <strong>Choose Your Photo</strong>
-            <small>JPG, PNG, or WebP</small>
+            <span>📷</span><div><strong>Choose Your Photo</strong><small>JPG, PNG, or WebP</small></div>
           </label>
           <input id="exp94Upload" type="file" accept="image/png,image/jpeg,image/webp" hidden>
 
-          <div class="exp94-control-group">
-            <small>PHOTO ZOOM</small>
+          <div class="exp94-control-group"><small>PHOTO ZOOM</small>
             <input id="exp94Zoom" type="range" min="1" max="3" step="0.01" value="1">
           </div>
 
-          <div class="exp94-control-group">
-            <small>FRAME STYLE</small>
+          <div class="exp94-control-group"><small>FRAME STYLE</small>
             <div class="exp94-option-grid" id="exp94Frames">
               <button type="button" data-frame="glow" class="active">Pink Glow</button>
               <button type="button" data-frame="polaroid">Polaroid</button>
@@ -475,8 +470,7 @@
             </div>
           </div>
 
-          <div class="exp94-control-group">
-            <small>CAPTION</small>
+          <div class="exp94-control-group"><small>CAPTION</small>
             <select id="exp94Caption">
               <option value="Visiting Sweetville with Jahntella 💖">Visiting Sweetville with Jahntella 💖</option>
               <option value="Besties in the World of Sweet ✨">Besties in the World of Sweet ✨</option>
@@ -491,19 +485,14 @@
 
         <div class="exp94-photo-workspace">
           <div class="exp94-photo-topbar">
-            <div>
-              <small>PHOTO BOOTH POSE 01</small>
-              <strong>Sweetville Besties</strong>
-            </div>
+            <div><small>PHOTO BOOTH POSE 01</small><strong>Sweetville Besties</strong></div>
             <span>Drag your photo to reposition it</span>
           </div>
 
           <div class="exp94-preview-wrap">
-            <canvas id="exp94Canvas" width="1536" height="1024" aria-label="Sweetville photo booth preview"></canvas>
+            <canvas id="exp94Canvas" width="1536" height="1024"></canvas>
             <div class="exp94-empty-photo" id="exp94EmptyPhoto">
-              <span>📸</span>
-              <strong>Your photo goes here</strong>
-              <small>Choose a photo to join Jahntella</small>
+              <span>📸</span><strong>Your photo goes here</strong><small>Choose a photo to join Jahntella</small>
             </div>
           </div>
 
@@ -512,8 +501,7 @@
             <button type="button" class="sv-button secondary" id="exp94Print">Print Photo</button>
             <button type="button" class="sv-button primary" id="exp94Download">Download Photo</button>
           </div>
-
-          <p class="exp94-privacy-note">🔒 Your uploaded photo is processed locally and is not sent to Sweetville or stored on a server.</p>
+          <p class="exp94-privacy-note">🔒 Your uploaded photo stays in your browser and is not sent to a server.</p>
         </div>
       </div>
     </section>
@@ -904,9 +892,9 @@
     <span id="toastIcon">🏆</span>
     <div><small id="toastKicker">NEW ACHIEVEMENT</small><strong id="toastTitle">Explorer</strong></div>
   </div>
-  <script src="intro-carousel.js?v=9.4" defer></script>
+  <script src="intro-carousel.js?v=9.4.1" defer></script>
 
-  <script src="sweetville-v4.0.js?v=9.4"></script>
+  <script src="sweetville-v4.0.js?v=9.4.1"></script>
 <dialog class="mini-piano-modal" id="miniPianoModal" aria-labelledby="miniPianoTitle">
     <div class="mini-piano-shell">
       <button class="mini-piano-close" id="miniPianoClose" type="button" aria-label="Close mini piano">×</button>
@@ -932,19 +920,19 @@
     </div>
   </dialog>
 
-  <script src="living-world.js?v=9.4"></script>
-  <script src="engine-core.js?v=9.4" defer></script>
-  <script src="living-magic.js?v=9.4" defer></script>
-  <script src="passport.js?v=9.4" defer></script>
-  <script src="stability.js?v=9.4" defer></script>
-  <script src="magic-polish.js?v=9.4" defer></script>
-  <script src="piano-fix.js?v=9.4" defer></script>
-  <script src="little-moments.js?v=9.4" defer></script>
-  <script src="ui-polish.js?v=9.4" defer></script>
-  <script src="touch-the-world.js?v=9.4" defer></script>
-  <script src="coloring-studio.js?v=9.4" defer></script>
-  <script src="sweetville-gallery.js?v=9.4" defer></script>
-  <script src="creative-studio.js?v=9.4" defer></script>
-  <script src="photo-booth.js?v=9.4" defer></script>
+  <script src="living-world.js?v=9.4.1"></script>
+  <script src="engine-core.js?v=9.4.1" defer></script>
+  <script src="living-magic.js?v=9.4.1" defer></script>
+  <script src="passport.js?v=9.4.1" defer></script>
+  <script src="stability.js?v=9.4.1" defer></script>
+  <script src="magic-polish.js?v=9.4.1" defer></script>
+  <script src="piano-fix.js?v=9.4.1" defer></script>
+  <script src="little-moments.js?v=9.4.1" defer></script>
+  <script src="ui-polish.js?v=9.4.1" defer></script>
+  <script src="touch-the-world.js?v=9.4.1" defer></script>
+  <script src="coloring-studio.js?v=9.4.1" defer></script>
+  <script src="sweetville-gallery.js?v=9.4.1" defer></script>
+  <script src="creative-studio.js?v=9.4.1" defer></script>
+  <script src="photo-booth.js?v=9.4.1" defer></script>
 </body>
 </html>
