@@ -1321,3 +1321,190 @@ dialog.mini-piano-modal::backdrop {
     opacity: .82;
   }
 }
+
+
+
+/* SWEETVILLE 5.0 — Living World patch */
+
+/* Permanently remove Sparkle Lake ripple elements. */
+.live-lagoon .lake-ripple,
+.live-lagoon .lr1,
+.live-lagoon .lr2 {
+  display: none !important;
+  animation: none !important;
+}
+
+/* Dedicated lower-water mask so no lake effect can sit on Jahntella. */
+.live-lagoon .lake-water-mask {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 36%;
+  overflow: hidden;
+  pointer-events: none;
+  clip-path: polygon(0 22%, 100% 10%, 100% 100%, 0 100%);
+}
+
+.live-lagoon .lake-water-mask .lake-moon-glow {
+  left: 62% !important;
+  top: 24% !important;
+  width: 72px !important;
+  height: 14px !important;
+  border-radius: 50% !important;
+  background: rgba(255,244,255,.30) !important;
+  box-shadow: 0 0 18px rgba(255,255,255,.48), 0 0 34px rgba(255,93,201,.30) !important;
+  filter: blur(2px) !important;
+}
+
+.live-lagoon .lake-water-mask .lake-shimmer {
+  left: 3% !important;
+  right: 3% !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  height: 100% !important;
+}
+
+.live-lagoon .lake-water-mask .lf1 { left: 11% !important; top: 22% !important; }
+.live-lagoon .lake-water-mask .lf2 { right: 14% !important; top: 34% !important; }
+.live-lagoon .lake-water-mask .lf3 { left: 39% !important; top: 16% !important; }
+
+/* Refined district animation intensity. */
+.live-district-effects { opacity: .82; mix-blend-mode: screen; }
+.live-district-card:hover .live-district-effects { opacity: 1; }
+
+.live-donut .donut-sign { width: 21% !important; opacity: .82; }
+.live-stage .live-confetti { animation-duration: 5.2s !important; }
+.live-candy .live-candy-shimmer { opacity: .62; }
+.live-neon .neon-heart-pulse {
+  font-size: 2.45rem !important;
+  right: 7% !important;
+  top: 10% !important;
+}
+
+/* Premium card depth. */
+.living-map-panel .live-district-card {
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+.living-map-panel .live-district-card:hover {
+  transform: translateY(-8px) scale(1.012) !important;
+  border-color: rgba(255,138,214,.88) !important;
+  box-shadow: 0 20px 48px rgba(0,0,0,.48), 0 0 32px rgba(255,45,174,.25) !important;
+}
+
+/* Mochi hero idle guide. */
+.mochi-guide {
+  position: absolute;
+  right: 3.5%;
+  bottom: 15%;
+  z-index: 6;
+  display: grid;
+  place-items: center;
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,.95), rgba(255,165,220,.82));
+  border: 2px solid rgba(255,255,255,.75);
+  box-shadow: 0 0 28px rgba(255,74,181,.52);
+  animation: mochiIdle 4.8s ease-in-out infinite;
+}
+.mochi-guide .mochi-face {
+  font-size: 3.1rem;
+  transform-origin: center bottom;
+  animation: mochiBlink 5.2s infinite;
+}
+.mochi-guide i {
+  position: absolute;
+  right: -12px;
+  bottom: 18px;
+  width: 28px;
+  height: 12px;
+  border-radius: 999px;
+  background: #ffd6ed;
+  transform-origin: left center;
+  animation: mochiTail 1.15s ease-in-out infinite alternate;
+}
+
+@keyframes mochiIdle {
+  0%,100% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+@keyframes mochiBlink {
+  0%,46%,50%,100% { transform: scaleY(1); }
+  48% { transform: scaleY(.72); }
+}
+@keyframes mochiTail {
+  from { transform: rotate(-18deg); }
+  to { transform: rotate(22deg); }
+}
+
+@media (max-width: 760px) {
+  .mochi-guide { width: 62px; height: 62px; right: 4%; bottom: 19%; }
+  .mochi-guide .mochi-face { font-size: 2.35rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mochi-guide,
+  .mochi-guide .mochi-face,
+  .mochi-guide i { animation: none !important; }
+}
+
+
+
+/* =========================================================
+   SWEETVILLE EXP 2.0 — CINEMATIC EXPERIENCE
+   ========================================================= */
+.sv-cinematic-intro{
+  position:fixed;inset:0;z-index:999999;background:#050006;color:#fff;
+  overflow:hidden;transition:opacity 1s ease,visibility 1s ease
+}
+.sv-cinematic-intro.finished{opacity:0;visibility:hidden;pointer-events:none}
+.sv-cinema-scene{position:absolute;inset:0;opacity:0;transform:scale(1.12);
+  transition:opacity 1.2s ease,transform 6s ease}
+.sv-cinema-scene.active{opacity:1;transform:scale(1)}
+.sv-scene-image{position:absolute;inset:-3%;background-size:cover;background-position:center;
+  filter:saturate(1.12) brightness(.82)}
+.scene-castle .sv-scene-image{background-image:url("assets/sweetville-hero-approved.webp")}
+.scene-carnival .sv-scene-image{background-image:url("assets/dream-carnival.webp")}
+.scene-lake .sv-scene-image{background-image:url("assets/lagoon-of-love.webp");background-position:center 46%}
+.scene-candy .sv-scene-image{background-image:url("assets/candy-lane.webp")}
+.scene-stage .sv-scene-image{background-image:url("assets/starlight-stage.webp");background-position:center 28%}
+.scene-neon .sv-scene-image{background-image:url("assets/neon-city.webp")}
+.sv-cinema-scene::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(7,0,10,.78),rgba(7,0,10,.12) 58%,rgba(7,0,10,.5)),
+  linear-gradient(transparent 58%,rgba(7,0,10,.86))}
+.sv-cinema-copy{position:absolute;z-index:4;left:7vw;bottom:13vh;max-width:720px;
+  text-shadow:0 4px 28px #000}
+.sv-cinema-copy small{display:block;letter-spacing:.28em;font-weight:900;color:#ff8dd0}
+.sv-cinema-copy h1,.sv-cinema-copy h2{font-family:"Playfair Display",serif;
+  font-size:clamp(3.5rem,8vw,8rem);line-height:.92;margin:.35rem 0}
+.sv-cinema-copy p{font-size:clamp(1.1rem,2vw,1.6rem)}
+.sv-pink-fog{position:absolute;z-index:3;width:75vw;height:42vh;border-radius:50%;
+  filter:blur(42px);background:radial-gradient(ellipse,rgba(255,77,190,.52),transparent 65%);
+  animation:svFogDrift 8s ease-in-out infinite alternate}
+.fog-one{left:-18vw;bottom:-16vh}.fog-two{right:-24vw;bottom:-10vh;animation-delay:-4s}
+.sv-cinema-sparkles{position:absolute;inset:0;z-index:5;pointer-events:none}
+.sv-cinema-sparkles i{position:absolute;width:4px;height:4px;border-radius:50%;
+  background:#fff;box-shadow:0 0 10px #fff,0 0 18px #ff58bd;
+  animation:svCinemaSpark 4s ease-in-out infinite}
+.sv-cinema-progress{position:absolute;z-index:8;left:7vw;right:7vw;bottom:5vh;height:4px;
+  border-radius:99px;background:rgba(255,255,255,.18);overflow:hidden}
+.sv-cinema-progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ff49b4,#fff,#b767ff)}
+.sv-cinema-skip{position:absolute;z-index:9;right:4vw;top:4vh;padding:.8rem 1.1rem;
+  border:1px solid rgba(255,126,207,.7);border-radius:999px;background:rgba(10,0,12,.58);
+  color:#fff;font-weight:900;cursor:pointer;backdrop-filter:blur(12px)}
+.sv-cinema-finale{position:absolute;inset:0;z-index:7;display:grid;place-items:center;
+  align-content:center;gap:1rem;opacity:0;pointer-events:none;
+  background:radial-gradient(circle,rgba(255,46,168,.38),rgba(6,0,8,.94) 65%)}
+.sv-cinema-finale.show{opacity:1;transition:opacity 1s ease}
+.sv-cinema-finale span{font-size:6rem;color:#ff70c5;text-shadow:0 0 34px #ff39aa}
+.sv-cinema-finale strong{font-family:"Playfair Display",serif;font-size:clamp(2rem,5vw,5rem)}
+@keyframes svFogDrift{to{transform:translate(18vw,-4vh) scale(1.16);opacity:.75}}
+@keyframes svCinemaSpark{0%,100%{opacity:.15;transform:scale(.5)}50%{opacity:1;transform:scale(1.5)}}
+@media(max-width:700px){
+  .sv-cinema-copy{left:1.2rem;right:1.2rem;bottom:12vh}
+  .sv-cinema-copy h1,.sv-cinema-copy h2{font-size:clamp(2.8rem,14vw,5rem)}
+  .sv-cinema-skip{right:1rem;top:1rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .sv-cinema-scene,.sv-pink-fog,.sv-cinema-sparkles i{animation:none!important;transition:none!important}
+}

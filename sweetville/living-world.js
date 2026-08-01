@@ -228,3 +228,98 @@
     enhance();
   }
 })();
+
+
+
+/* SWEETVILLE 5.0 — Living World patch */
+(() => {
+  const apply = () => {
+    const lake = document.querySelector('.live-lagoon .live-district-effects');
+    if (lake) {
+      lake.querySelectorAll('.lake-ripple,.lr1,.lr2').forEach(el => el.remove());
+      if (!lake.querySelector('.lake-water-mask')) {
+        const mask = document.createElement('span');
+        mask.className = 'lake-water-mask';
+        [...lake.children].forEach(child => mask.appendChild(child));
+        lake.appendChild(mask);
+      }
+    }
+
+    const hero = document.getElementById('cinematicHome');
+    if (hero && !document.getElementById('mochiGuide')) {
+      const mochi = document.createElement('div');
+      mochi.className = 'mochi-guide';
+      mochi.id = 'mochiGuide';
+      mochi.setAttribute('aria-hidden', 'true');
+      mochi.innerHTML = '<span class="mochi-face">🐶</span><i></i>';
+      hero.appendChild(mochi);
+    }
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', apply, { once: true });
+  } else {
+    apply();
+  }
+})();
+
+
+
+/* SWEETVILLE EXP 2.0 — Cinematic fly-through */
+(() => {
+  const intro = document.getElementById('svCinematicIntro');
+  if (!intro) return;
+
+  const scenes = [...intro.querySelectorAll('.sv-cinema-scene')];
+  const skip = document.getElementById('svCinemaSkip');
+  const progress = document.getElementById('svCinemaProgress');
+  const finale = intro.querySelector('.sv-cinema-finale');
+  const sparkles = document.getElementById('svCinemaSparkles');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const duration = reduced ? 700 : 3200;
+  let index = 0;
+  let timer;
+
+  if (sparkles) {
+    for (let i = 0; i < 55; i += 1) {
+      const star = document.createElement('i');
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.animationDelay = `${-Math.random() * 5}s`;
+      star.style.animationDuration = `${2.5 + Math.random() * 4}s`;
+      sparkles.appendChild(star);
+    }
+  }
+
+  const finish = () => {
+    clearTimeout(timer);
+    finale?.classList.add('show');
+    if (progress) progress.style.width = '100%';
+    window.setTimeout(() => {
+      intro.classList.add('finished');
+      window.sessionStorage.setItem('sweetvilleExp2Seen', '1');
+    }, reduced ? 300 : 1500);
+  };
+
+  const showScene = (next) => {
+    scenes.forEach((scene, i) => scene.classList.toggle('active', i === next));
+    if (progress) progress.style.width = `${((next + 1) / scenes.length) * 92}%`;
+    index = next;
+    timer = window.setTimeout(() => {
+      if (index >= scenes.length - 1) finish();
+      else showScene(index + 1);
+    }, duration);
+  };
+
+  skip?.addEventListener('click', finish);
+
+  if (window.sessionStorage.getItem('sweetvilleExp2Seen') === '1') {
+    intro.classList.add('finished');
+  } else {
+    document.body.style.overflow = 'hidden';
+    showScene(0);
+    intro.addEventListener('transitionend', () => {
+      if (intro.classList.contains('finished')) document.body.style.overflow = '';
+    }, { once: true });
+  }
+})();
