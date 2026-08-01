@@ -1242,3 +1242,40 @@
     init();
   }
 })();
+\n/* SWEETVILLE EXP 6.1 — COLLECTION SYNC REPAIR */
+(() => {
+  const KEY='jahntellaSweetvilleV4';
+  const locations=[
+    {slug:'neon-sweetheart',title:'Neon Sweetheart',icon:'💄',name:'Pink Lipstick',letter:'The Night I Chose to Glow'},
+    {slug:'donut-district',title:'Donut District',icon:'🍭',name:'Fun Dipp Candy',letter:'Permission to Choose Joy'},
+    {slug:'melody-studio',title:'Melody Studio',icon:'🎵',name:'Sweetville Vinyl',letter:'Before the First Chorus'},
+    {slug:'sparkle-lake',title:'Sparkle Lake',icon:'🎀',name:'Moonlight Bow',letter:'A Quiet Place to Begin Again'},
+    {slug:'pink-cafe',title:'Pink Café',icon:'👑',name:'Café Crown',letter:'Your New Morning'}
+  ];
+  const blank=()=>({visited:[],hearts:[],letters:[],collectibles:[],badges:[]});
+  const read=()=>{try{return {...blank(),...(JSON.parse(localStorage.getItem(KEY))||{})}}catch{return blank()}};
+  let state=read(); let active=sessionStorage.getItem('sweetvilleActiveDistrict')||'';
+  const norm=()=>['visited','hearts','letters','collectibles','badges'].forEach(k=>state[k]=[...new Set(Array.isArray(state[k])?state[k]:[])]);
+  const save=()=>{norm();localStorage.setItem(KEY,JSON.stringify(state));window.dispatchEvent(new CustomEvent('sweetville:statechange'))};
+  const id=x=>document.getElementById(x);
+  const set=(x,v)=>{const e=id(x);if(e)e.textContent=v};
+  let tt; const toast=t=>{let e=id('svSyncToast');if(!e){e=document.createElement('div');e.id='svSyncToast';e.className='sv-sync-toast';document.body.appendChild(e)}clearTimeout(tt);e.textContent=t;e.classList.add('show');tt=setTimeout(()=>e.classList.remove('show'),2400)};
+  const activeSlug=()=>{if(locations.some(l=>l.slug===active))return active;const t=id('modalTitle')?.textContent||'';return locations.find(l=>t.includes(l.title))?.slug||''};
+  const badges=()=>{const r=[['first-visit',state.visited.length>=1],['three-districts',state.visited.length>=3],['all-districts',state.visited.length>=5],['first-heart',state.hearts.length>=1],['all-hearts',state.hearts.length>=5],['first-letter',state.letters.length>=1],['all-letters',state.letters.length>=5],['first-collectible',state.collectibles.length>=1],['all-collectibles',state.collectibles.length>=5],['super-sweetie',state.visited.length>=5&&state.hearts.length>=5&&state.letters.length>=5&&state.collectibles.length>=5]];r.forEach(([b,p])=>{if(p&&!state.badges.includes(b))state.badges.push(b)})};
+  const render=()=>{
+    norm(); badges(); save();
+    set('cinematicCollectibles',`${state.collectibles.length} / 5`);set('cinematicHearts',`${state.hearts.length} / 5`);set('cinematicVisits',state.visited.length);set('cinematicQuests',`${state.badges.length} / 10`);
+    set('letterCount',state.letters.length);set('collectibleCount',state.collectibles.length);set('heartCount',state.hearts.length);set('visitedCount',state.visited.length);set('badgeCount',state.badges.length);set('roomStampCount',`${state.visited.length} STAMP${state.visited.length===1?'':'S'}`);
+    const cb=id('collectionBar');if(cb)cb.style.width=`${state.collectibles.length*20}%`;
+    const pb=id('passportBar');if(pb)pb.style.width=`${state.visited.length*20}%`;
+    const ep=id('exp60ProgressBar');if(ep)ep.style.width=`${state.visited.length*20}%`;set('exp60DistrictCount',`${state.visited.length} / 5`);set('exp60Exploration',`${state.visited.length*20}%`);set('exp60ProgressLabel',`${state.visited.length*20}%`);
+    const lg=id('lettersGrid');if(lg)lg.innerHTML=locations.map(l=>{const f=state.letters.includes(l.slug);return `<article class="letter-card ${f?'':'locked'}"><button data-letter="${l.slug}" ${f?'':'disabled'}><span class="envelope">${f?'💌':'✉️'}</span><strong>${f?l.letter:'Hidden Letter'}</strong><small>${f?l.title:'Find this inside a district'}</small></button></article>`}).join('');
+    const sh=id('collectibleShelf');if(sh)sh.innerHTML=locations.map(l=>{const f=state.collectibles.includes(l.slug);return `<article class="collectible-slot ${f?'':'locked'}"><div><span class="item">${f?l.icon:'?'}</span><strong>${f?l.name:'Mystery Treasure'}</strong><small>${f?l.title:'Still hidden'}</small></div></article>`}).join('');
+    const rs=id('roomShelf');if(rs)rs.innerHTML=locations.filter(l=>state.collectibles.includes(l.slug)).map(l=>`<span class="room-item" title="${l.name}">${l.icon}</span>`).join('');
+    const rn=id('roomNote');if(rn)rn.textContent=state.collectibles.length?`${state.collectibles.length} treasure${state.collectibles.length===1?'':'s'} now live in your room.`:'Keep exploring to make this room your own.';
+  };
+  document.addEventListener('click',e=>{const c=e.target.closest('[data-location]');if(!c)return;const s=c.dataset.location;if(!locations.some(l=>l.slug===s))return;active=s;sessionStorage.setItem('sweetvilleActiveDistrict',s);if(!state.visited.includes(s))state.visited.push(s);render()},true);
+  document.addEventListener('click',e=>{const t=e.target.closest('#hiddenHeart,#hiddenLetter,#hiddenCollectible');if(!t)return;setTimeout(()=>{state=read();const s=activeSlug();if(!s)return;if(!state.visited.includes(s))state.visited.push(s);let k,msg;if(t.id==='hiddenHeart'){k='hearts';msg='Hidden heart added!'}else if(t.id==='hiddenLetter'){k='letters';msg='Letter added to your Pink Mailbox!'}else{k='collectibles';msg='Treasure added to your collection and Sweetie Room!'}const fresh=!state[k].includes(s);if(fresh)state[k].push(s);render();if(fresh)toast(msg)},60)},true);
+  window.addEventListener('storage',()=>{state=read();render()});
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',render,{once:true});else render();
+})();

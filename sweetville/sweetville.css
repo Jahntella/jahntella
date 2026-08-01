@@ -2880,3 +2880,6 @@ body:not(.sv-scroll-locked){
     transition:none!important;
   }
 }
+
+/* EXP 6.1 Collection Sync */
+.sv-sync-toast{position:fixed;left:50%;bottom:2rem;z-index:120;transform:translate(-50%,20px);padding:.9rem 1.15rem;border:1px solid rgba(255,117,203,.65);border-radius:18px;background:rgba(10,0,13,.94);color:#fff;opacity:0;pointer-events:none;transition:.28s;text-align:center;font-weight:800}.sv-sync-toast.show{opacity:1;transform:translate(-50%,0)}
