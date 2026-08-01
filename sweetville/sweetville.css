@@ -2428,3 +2428,455 @@ body:not(.sv-scroll-locked){
 @keyframes exp55FinaleIn{from{opacity:0;transform:translateY(28px) scale(.96)}to{opacity:1;transform:none}}
 @media(max-width:900px){.exp55-storybook{border-radius:22px;border-width:7px}.exp55-storybook::before{display:none}}
 @media(prefers-reduced-motion:reduce){.exp55-storybook.page-turn,.exp55-reward-card.unlocked,.exp50-finale:not([hidden]){animation:none!important}}
+
+/* =========================================================
+   SWEETVILLE EXP 6.0 — PASSPORT EDITION
+   ========================================================= */
+
+.exp60-passport-panel{
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 8% 12%,rgba(255,84,184,.17),transparent 28%),
+    radial-gradient(circle at 92% 88%,rgba(127,82,255,.14),transparent 30%),
+    var(--panel);
+}
+
+.exp60-passport-shell{
+  display:grid;
+  grid-template-columns:minmax(230px,.55fr) minmax(0,1.45fr);
+  gap:1.5rem;
+  margin-top:2rem;
+  align-items:start;
+}
+
+.exp60-passport-cover{
+  position:sticky;
+  top:92px;
+  min-height:560px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:2.2rem;
+  border:10px solid #6d174f;
+  border-radius:30px 18px 18px 30px;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.12),transparent 24%),
+    radial-gradient(circle at 50% 30%,rgba(255,96,186,.2),transparent 32%),
+    linear-gradient(160deg,#711752,#3b092f 72%,#180011);
+  box-shadow:
+    inset 0 0 0 2px rgba(255,210,233,.3),
+    inset 22px 0 28px rgba(0,0,0,.18),
+    0 28px 68px rgba(0,0,0,.32);
+}
+
+.exp60-passport-cover::before{
+  content:"";
+  position:absolute;
+  inset:18px;
+  border:1px solid rgba(255,211,234,.28);
+  border-radius:20px;
+  pointer-events:none;
+}
+
+.exp60-passport-emblem{
+  font-size:5.5rem;
+  color:#ff7cc4;
+  text-shadow:0 0 30px rgba(255,78,181,.65);
+}
+
+.exp60-passport-cover small{
+  letter-spacing:.22em;
+  color:#ffc5e3;
+  font-weight:900;
+}
+
+.exp60-passport-cover h3{
+  margin:.45rem 0 0;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(2.8rem,5vw,4.8rem);
+}
+
+.exp60-passport-cover strong{
+  font-family:"Sacramento",cursive;
+  font-size:2.2rem;
+  color:#ff9fd2;
+}
+
+.exp60-passport-cover p{
+  color:#e9c9da;
+}
+
+.exp60-passport-number{
+  margin-top:1.5rem;
+  padding:.65rem 1rem;
+  border:1px solid rgba(255,172,215,.42);
+  border-radius:10px;
+  background:rgba(8,0,10,.32);
+  letter-spacing:.14em;
+  font-weight:900;
+}
+
+.exp60-passport-pages{
+  display:grid;
+  gap:1rem;
+}
+
+.exp60-passport-page{
+  position:relative;
+  padding:1.6rem;
+  border:1px solid rgba(175,103,145,.28);
+  border-radius:22px;
+  background:
+    repeating-linear-gradient(0deg,rgba(125,76,101,.035) 0 1px,transparent 1px 29px),
+    linear-gradient(90deg,rgba(104,41,83,.07),transparent 8%),
+    #fffafc;
+  color:#4f2942;
+  box-shadow:0 18px 42px rgba(0,0,0,.2);
+}
+
+.exp60-page-heading{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  margin-bottom:1.2rem;
+  padding-bottom:1rem;
+  border-bottom:1px solid rgba(126,67,104,.18);
+}
+
+.exp60-page-heading>span{
+  width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:#f5d6e7;
+  color:#9f3f76;
+  font-family:"Playfair Display",serif;
+  font-weight:900;
+}
+
+.exp60-page-heading small,
+.exp60-page-heading h3{
+  display:block;
+}
+
+.exp60-page-heading small{
+  color:#b74d86;
+  letter-spacing:.14em;
+  font-weight:900;
+}
+
+.exp60-page-heading h3{
+  margin:.2rem 0 0;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(1.6rem,3vw,2.6rem);
+}
+
+.exp60-profile-grid{
+  display:grid;
+  grid-template-columns:170px 1fr;
+  gap:1.2rem;
+}
+
+.exp60-profile-photo{
+  min-height:200px;
+  display:grid;
+  place-items:center;
+  align-content:center;
+  border:8px solid #fff;
+  background:linear-gradient(145deg,#ff7fc4,#8f36db);
+  box-shadow:0 10px 26px rgba(71,22,55,.18);
+  transform:rotate(-1.5deg);
+}
+
+.exp60-profile-photo span{
+  font-size:5rem;
+  color:#fff;
+}
+
+.exp60-profile-photo small{
+  margin-top:.5rem;
+  color:#fff;
+  font-weight:900;
+  letter-spacing:.16em;
+}
+
+.exp60-profile-details{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:.8rem;
+  margin:0;
+}
+
+.exp60-profile-details div{
+  padding:1rem;
+  border:1px solid rgba(126,67,104,.16);
+  border-radius:14px;
+  background:rgba(255,255,255,.66);
+}
+
+.exp60-profile-details dt{
+  color:#a24a78;
+  font-size:.72rem;
+  font-weight:900;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+
+.exp60-profile-details dd{
+  margin:.35rem 0 0;
+  font-family:"Playfair Display",serif;
+  font-size:1.3rem;
+}
+
+.exp60-progress-wrap{
+  margin-top:1.2rem;
+}
+
+.exp60-progress-label{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:.55rem;
+  color:#7e3c63;
+  font-size:.78rem;
+  font-weight:900;
+}
+
+.exp60-progress-track{
+  height:12px;
+  overflow:hidden;
+  border-radius:999px;
+  background:#eed2e1;
+}
+
+.exp60-progress-track i{
+  display:block;
+  width:0;
+  height:100%;
+  border-radius:inherit;
+  background:linear-gradient(90deg,#ff45ad,#ca49ff,#6d73ff);
+  box-shadow:0 0 14px rgba(255,78,181,.38);
+  transition:width .55s ease;
+}
+
+.exp60-stamp-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:.8rem;
+}
+
+.exp60-stamp{
+  min-height:155px;
+  padding:.8rem;
+  display:grid;
+  place-items:center;
+  align-content:center;
+  text-align:center;
+  border:2px dashed rgba(161,76,125,.36);
+  border-radius:50%;
+  background:rgba(255,255,255,.62);
+  transform:rotate(var(--stamp-rotation));
+  transition:.35s ease;
+}
+
+.exp60-stamp span{
+  font-size:2.7rem;
+  filter:grayscale(1);
+  opacity:.25;
+}
+
+.exp60-stamp strong,
+.exp60-stamp small{
+  display:block;
+}
+
+.exp60-stamp strong{
+  margin-top:.35rem;
+  font-size:.78rem;
+}
+
+.exp60-stamp small{
+  margin-top:.2rem;
+  color:#a26988;
+  font-size:.68rem;
+}
+
+.exp60-stamp.unlocked{
+  border-style:solid;
+  border-color:#c94791;
+  color:#a3276e;
+  background:radial-gradient(circle,#fff 0 42%,#ffd8ec 43% 100%);
+  box-shadow:0 0 22px rgba(255,72,174,.18);
+}
+
+.exp60-stamp.unlocked span{
+  filter:none;
+  opacity:1;
+}
+
+.exp60-sticker-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:.8rem;
+}
+
+.exp60-sticker{
+  min-height:145px;
+  padding:.8rem;
+  display:grid;
+  place-items:center;
+  align-content:center;
+  text-align:center;
+  border:1px solid rgba(126,67,104,.18);
+  border-radius:18px;
+  background:#fff;
+  box-shadow:0 8px 20px rgba(74,27,57,.08);
+}
+
+.exp60-sticker span{
+  font-size:2.8rem;
+}
+
+.exp60-sticker strong,
+.exp60-sticker small{
+  display:block;
+}
+
+.exp60-sticker small{
+  color:#a46c89;
+}
+
+.exp60-sticker.locked{
+  opacity:.32;
+  filter:grayscale(.8);
+}
+
+.exp60-history-list{
+  display:grid;
+  gap:.7rem;
+}
+
+.exp60-history-item{
+  display:grid;
+  grid-template-columns:42px 1fr auto;
+  gap:.8rem;
+  align-items:center;
+  padding:.8rem;
+  border:1px solid rgba(126,67,104,.14);
+  border-radius:14px;
+  background:rgba(255,255,255,.66);
+}
+
+.exp60-history-item>span{
+  width:40px;
+  height:40px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:#f6d9e8;
+}
+
+.exp60-history-item strong,
+.exp60-history-item small{
+  display:block;
+}
+
+.exp60-history-item small,
+.exp60-history-item time{
+  color:#9e6b87;
+  font-size:.72rem;
+}
+
+.exp60-empty-history{
+  padding:1.2rem;
+  text-align:center;
+  color:#9c6c87;
+  border:1px dashed rgba(126,67,104,.22);
+  border-radius:14px;
+}
+
+.exp60-reset-button{
+  margin-top:1rem;
+  color:#5c2646!important;
+  border-color:rgba(126,67,104,.28)!important;
+  background:#fff!important;
+}
+
+.exp60-stamp-celebration{
+  position:fixed;
+  left:50%;
+  top:50%;
+  z-index:90;
+  transform:translate(-50%,-50%) scale(.8);
+  padding:1rem 1.3rem;
+  border:2px solid #ff87ca;
+  border-radius:18px;
+  background:rgba(12,0,14,.94);
+  color:#fff;
+  box-shadow:0 20px 50px rgba(0,0,0,.42),0 0 35px rgba(255,74,180,.3);
+  opacity:0;
+  pointer-events:none;
+}
+
+.exp60-stamp-celebration.show{
+  animation:exp60StampPop 2.4s ease both;
+}
+
+@keyframes exp60StampPop{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(.7) rotate(-8deg)}
+  18%{opacity:1;transform:translate(-50%,-50%) scale(1.06) rotate(2deg)}
+  75%{opacity:1;transform:translate(-50%,-50%) scale(1)}
+  100%{opacity:0;transform:translate(-50%,-60%) scale(.96)}
+}
+
+@media(max-width:1050px){
+  .exp60-passport-shell{
+    grid-template-columns:1fr;
+  }
+
+  .exp60-passport-cover{
+    position:relative;
+    top:auto;
+    min-height:390px;
+  }
+
+  .exp60-stamp-grid,
+  .exp60-sticker-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+@media(max-width:700px){
+  .exp60-profile-grid,
+  .exp60-profile-details{
+    grid-template-columns:1fr;
+  }
+
+  .exp60-profile-photo{
+    min-height:170px;
+  }
+
+  .exp60-stamp-grid,
+  .exp60-sticker-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .exp60-history-item{
+    grid-template-columns:40px 1fr;
+  }
+
+  .exp60-history-item time{
+    grid-column:2;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .exp60-progress-track i,
+  .exp60-stamp,
+  .exp60-stamp-celebration{
+    animation:none!important;
+    transition:none!important;
+  }
+}

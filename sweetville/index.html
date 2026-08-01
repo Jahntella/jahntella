@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#120015">
   <meta name="description" content="Enter Sweetville Build v4.0: an interactive living world with districts, music, hidden letters, collectibles, achievements, and a room that grows with your journey.">
-  <title>Sweetville EXP 5.5 — Storybook Edition</title>
+  <title>Sweetville EXP 6.0 — Passport Edition</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="sweetville.css?v=exp-5.5">
+  <link rel="stylesheet" href="sweetville.css?v=exp-6.0">
 </head>
 <body>
 
@@ -93,7 +93,7 @@
 
     <section class="sv-hero" id="world">
       <div class="sv-hero-copy">
-        <p class="sv-eyebrow">SWEETVILLE EXP 5.5</p>
+        <p class="sv-eyebrow">SWEETVILLE EXP 6.0</p>
         <h1>The world comes <em>alive.</em></h1>
         <p class="sv-lede">Explore an interactive city where every district has its own mood, music, hidden letter, collectible, and little moment from Jahntella.</p>
         <div class="sv-actions">
@@ -329,25 +329,97 @@
       <div class="rank-track" id="rankTrack"></div>
     </section>
 
-    <section class="sv-panel passport-section" id="passport">
-      <div class="passport-card">
-        <div>
-          <p class="sv-eyebrow">DIGITAL EXPLORER PASSPORT</p>
-          <h2>Your journey through <em>Sweetville.</em></h2>
-          <p>Build v4.0 preserves progress from earlier Sweetville releases on this device.</p>
-        </div>
-        <div class="passport-stats">
-          <div><strong><span id="visitedCount">0</span> / 5</strong><small>LOCATIONS</small></div>
-          <div><strong><span id="heartCount">0</span> / 5</strong><small>HEARTS</small></div>
-          <div><strong><span id="badgeCount">0</span> / 10</strong><small>ACHIEVEMENTS</small></div>
-          <div><strong><span id="giftCount">0</span></strong><small>DAILY GIFTS</small></div>
-          <div class="passport-track"><i id="passportBar"></i></div>
+    <section class="sv-panel exp60-passport-panel" id="passport">
+      <div class="sv-section-heading">
+        <p class="sv-eyebrow">SWEETVILLE PASSPORT</p>
+        <h2>Your journey now has a <em>home.</em></h2>
+        <p>Every district you visit leaves a stamp, every memory adds a sticker, and Sweetville remembers how your story grows.</p>
+      </div>
+
+      <div class="exp60-passport-shell">
+        <aside class="exp60-passport-cover">
+          <div class="exp60-passport-emblem">♡</div>
+          <small>THE WORLD OF SWEET</small>
+          <h3>SWEETVILLE</h3>
+          <strong>Official Passport</strong>
+          <div class="exp60-passport-number">SV-<span id="exp60PassportNumber">000000</span></div>
+          <p>Property of a Sweetville Explorer</p>
+        </aside>
+
+        <div class="exp60-passport-pages">
+          <section class="exp60-passport-page exp60-profile-page">
+            <div class="exp60-page-heading">
+              <span>01</span>
+              <div>
+                <small>EXPLORER PROFILE</small>
+                <h3 id="exp60ExplorerRank">New Arrival</h3>
+              </div>
+            </div>
+
+            <div class="exp60-profile-grid">
+              <div class="exp60-profile-photo">
+                <span>♡</span>
+                <small>SWEETIE</small>
+              </div>
+
+              <dl class="exp60-profile-details">
+                <div><dt>First Visit</dt><dd id="exp60FirstVisit">Today</dd></div>
+                <div><dt>Total Visits</dt><dd id="exp60TotalVisits">1</dd></div>
+                <div><dt>Districts Explored</dt><dd id="exp60DistrictCount">0 / 5</dd></div>
+                <div><dt>Exploration</dt><dd id="exp60Exploration">0%</dd></div>
+              </dl>
+            </div>
+
+            <div class="exp60-progress-wrap">
+              <div class="exp60-progress-label">
+                <span>WORLD EXPLORATION</span>
+                <strong id="exp60ProgressLabel">0%</strong>
+              </div>
+              <div class="exp60-progress-track"><i id="exp60ProgressBar"></i></div>
+            </div>
+          </section>
+
+          <section class="exp60-passport-page exp60-stamp-page">
+            <div class="exp60-page-heading">
+              <span>02</span>
+              <div>
+                <small>DISTRICT STAMPS</small>
+                <h3>Places That Remember You</h3>
+              </div>
+            </div>
+
+            <div class="exp60-stamp-grid" id="exp60StampGrid"></div>
+          </section>
+
+          <section class="exp60-passport-page exp60-memory-page">
+            <div class="exp60-page-heading">
+              <span>03</span>
+              <div>
+                <small>MEMORY STICKERS</small>
+                <h3>Your Sweetville Keepsakes</h3>
+              </div>
+            </div>
+
+            <div class="exp60-sticker-grid" id="exp60StickerGrid"></div>
+          </section>
+
+          <section class="exp60-passport-page exp60-history-page">
+            <div class="exp60-page-heading">
+              <span>04</span>
+              <div>
+                <small>VISIT HISTORY</small>
+                <h3>Your Latest Adventures</h3>
+              </div>
+            </div>
+
+            <div class="exp60-history-list" id="exp60HistoryList"></div>
+            <button class="sv-button secondary exp60-reset-button" id="exp60ResetPassport" type="button">Reset Passport Progress</button>
+          </section>
         </div>
       </div>
-      <div class="stamp-grid" id="stampGrid"></div>
     </section>
 
-    <section class="sv-panel" id="locations">
+<section class="sv-panel" id="locations">
       <div class="sv-section-heading">
         <p class="sv-eyebrow">LOCATION KEYS</p>
         <h2>Every card opens part of the <em>world.</em></h2>
@@ -450,6 +522,6 @@
     </div>
   </dialog>
 
-  <script src="living-world.js?v=exp-5.5"></script>
+  <script src="living-world.js?v=exp-6.0"></script>
 </body>
 </html>

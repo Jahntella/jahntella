@@ -999,3 +999,246 @@
   if(finale)new MutationObserver(sync).observe(finale,{attributes:true,attributeFilter:['hidden']});
   addEventListener('storage',sync);setInterval(sync,1200);sync();
 })();
+
+/* SWEETVILLE EXP 6.0 — PASSPORT EDITION */
+(() => {
+  const storageKey = 'sweetvilleExp60Passport';
+  const legacyKey = 'jahntellaSweetvilleV4';
+
+  const districts = [
+    { slug:'pink-cafe', name:'Candy Lane', icon:'🍬' },
+    { slug:'melody-studio', name:'Starlight Stage', icon:'🎵' },
+    { slug:'donut-district', name:'Donut District', icon:'🍩' },
+    { slug:'sparkle-lake', name:'Sparkle Lake', icon:'✨' },
+    { slug:'neon-sweetheart', name:'Neon Sweetheart', icon:'💖' }
+  ];
+
+  const stickers = [
+    { id:'first-step', name:'First Step', icon:'👣', test:s => s.history.length >= 1 },
+    { id:'three-districts', name:'World Wanderer', icon:'🗺️', test:s => s.visited.length >= 3 },
+    { id:'all-districts', name:'Sweetville Explorer', icon:'🏆', test:s => s.visited.length >= 5 },
+    { id:'story-memory', name:'Story Keeper', icon:'📖', test:() => {
+      try {
+        const story = JSON.parse(localStorage.getItem('sweetvilleExp50Story')) || {};
+        return Array.isArray(story.completed) && story.completed.length >= 5;
+      } catch {
+        return false;
+      }
+    }},
+    { id:'returning-sweetie', name:'Returning Sweetie', icon:'💌', test:s => s.totalVisits >= 2 }
+  ];
+
+  const nowDate = () => new Date().toISOString();
+
+  const createDefault = () => ({
+    passportNumber: String(Math.floor(100000 + Math.random() * 900000)),
+    firstVisit: nowDate(),
+    totalVisits: 1,
+    sessionMarked: false,
+    visited: [],
+    history: []
+  });
+
+  const read = () => {
+    try {
+      return { ...createDefault(), ...(JSON.parse(localStorage.getItem(storageKey)) || {}) };
+    } catch {
+      return createDefault();
+    }
+  };
+
+  let state = read();
+
+  const save = () => localStorage.setItem(storageKey, JSON.stringify(state));
+
+  const mergeLegacyState = () => {
+    try {
+      const legacy = JSON.parse(localStorage.getItem(legacyKey)) || {};
+      const visited = Array.isArray(legacy.visited) ? legacy.visited : [];
+      visited.forEach(slug => {
+        if (districts.some(d => d.slug === slug) && !state.visited.includes(slug)) {
+          state.visited.push(slug);
+        }
+      });
+    } catch {}
+  };
+
+  const markSessionVisit = () => {
+    const sessionKey = 'sweetvilleExp60Session';
+    if (!sessionStorage.getItem(sessionKey)) {
+      if (state.sessionMarked) {
+        state.totalVisits = Math.max(1, Number(state.totalVisits || 1) + 1);
+      }
+      state.sessionMarked = true;
+      sessionStorage.setItem(sessionKey, '1');
+    }
+  };
+
+  const formatDate = (value, includeTime = false) => {
+    try {
+      const date = new Date(value);
+      return date.toLocaleString(undefined, includeTime
+        ? { month:'short', day:'numeric', hour:'numeric', minute:'2-digit' }
+        : { month:'short', day:'numeric', year:'numeric' });
+    } catch {
+      return 'Today';
+    }
+  };
+
+  const rankFromCount = count => {
+    if (count >= 5) return 'Sweetville Explorer';
+    if (count >= 4) return 'World Wanderer';
+    if (count >= 2) return 'Sweetie Traveler';
+    if (count >= 1) return 'New Explorer';
+    return 'New Arrival';
+  };
+
+  const celebration = (district) => {
+    let box = document.getElementById('exp60StampCelebration');
+    if (!box) {
+      box = document.createElement('div');
+      box.className = 'exp60-stamp-celebration';
+      box.id = 'exp60StampCelebration';
+      document.body.appendChild(box);
+    }
+    box.textContent = `${district.icon} ${district.name} stamp added!`;
+    box.classList.remove('show');
+    void box.offsetWidth;
+    box.classList.add('show');
+  };
+
+  const addVisit = slug => {
+    const district = districts.find(d => d.slug === slug);
+    if (!district) return;
+
+    const isNew = !state.visited.includes(slug);
+    if (isNew) state.visited.push(slug);
+
+    state.history.unshift({
+      slug,
+      name: district.name,
+      icon: district.icon,
+      visitedAt: nowDate()
+    });
+
+    state.history = state.history.slice(0, 12);
+    save();
+    render();
+
+    if (isNew) celebration(district);
+  };
+
+  const render = () => {
+    const count = state.visited.length;
+    const percent = Math.round((count / districts.length) * 100);
+
+    const set = (id, value) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    };
+
+    set('exp60PassportNumber', state.passportNumber);
+    set('exp60ExplorerRank', rankFromCount(count));
+    set('exp60FirstVisit', formatDate(state.firstVisit));
+    set('exp60TotalVisits', String(state.totalVisits || 1));
+    set('exp60DistrictCount', `${count} / ${districts.length}`);
+    set('exp60Exploration', `${percent}%`);
+    set('exp60ProgressLabel', `${percent}%`);
+
+    const progress = document.getElementById('exp60ProgressBar');
+    if (progress) progress.style.width = `${percent}%`;
+
+    const stampGrid = document.getElementById('exp60StampGrid');
+    if (stampGrid) {
+      stampGrid.innerHTML = '';
+      districts.forEach((district, index) => {
+        const unlocked = state.visited.includes(district.slug);
+        const stamp = document.createElement('article');
+        stamp.className = `exp60-stamp${unlocked ? ' unlocked' : ''}`;
+        stamp.style.setProperty('--stamp-rotation', `${index % 2 ? 3 : -3}deg`);
+        stamp.innerHTML = `
+          <span>${unlocked ? district.icon : '♡'}</span>
+          <strong>${district.name}</strong>
+          <small>${unlocked ? 'STAMPED' : 'NOT VISITED'}</small>
+        `;
+        stampGrid.appendChild(stamp);
+      });
+    }
+
+    const stickerGrid = document.getElementById('exp60StickerGrid');
+    if (stickerGrid) {
+      stickerGrid.innerHTML = '';
+      stickers.forEach(sticker => {
+        const unlocked = Boolean(sticker.test(state));
+        const card = document.createElement('article');
+        card.className = `exp60-sticker${unlocked ? '' : ' locked'}`;
+        card.innerHTML = `
+          <span>${unlocked ? sticker.icon : '🔒'}</span>
+          <strong>${unlocked ? sticker.name : 'Locked Sticker'}</strong>
+          <small>${unlocked ? 'UNLOCKED' : 'KEEP EXPLORING'}</small>
+        `;
+        stickerGrid.appendChild(card);
+      });
+    }
+
+    const historyList = document.getElementById('exp60HistoryList');
+    if (historyList) {
+      historyList.innerHTML = '';
+      if (!state.history.length) {
+        historyList.innerHTML = '<div class="exp60-empty-history">Visit a district to begin your passport history.</div>';
+      } else {
+        state.history.slice(0, 8).forEach(item => {
+          const row = document.createElement('article');
+          row.className = 'exp60-history-item';
+          row.innerHTML = `
+            <span>${item.icon}</span>
+            <div>
+              <strong>${item.name}</strong>
+              <small>District visit recorded</small>
+            </div>
+            <time>${formatDate(item.visitedAt, true)}</time>
+          `;
+          historyList.appendChild(row);
+        });
+      }
+    }
+  };
+
+  const attachDistrictListeners = () => {
+    document.querySelectorAll('[data-location]').forEach(card => {
+      if (card.dataset.exp60PassportReady === 'true') return;
+      const slug = card.dataset.location;
+      if (!districts.some(d => d.slug === slug)) return;
+      card.dataset.exp60PassportReady = 'true';
+      card.addEventListener('click', () => addVisit(slug));
+    });
+  };
+
+  const init = () => {
+    mergeLegacyState();
+    markSessionVisit();
+    save();
+    render();
+    attachDistrictListeners();
+
+    const observer = new MutationObserver(attachDistrictListeners);
+    observer.observe(document.body, { childList:true, subtree:true });
+
+    document.getElementById('exp60ResetPassport')?.addEventListener('click', () => {
+      const confirmed = window.confirm('Reset all Sweetville Passport progress?');
+      if (!confirmed) return;
+      state = createDefault();
+      save();
+      render();
+    });
+
+    window.addEventListener('storage', render);
+    window.setInterval(render, 2500);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once:true });
+  } else {
+    init();
+  }
+})();
