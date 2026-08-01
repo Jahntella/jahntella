@@ -274,11 +274,11 @@
   };
 
   const renderRoom = () => {
-    E.roomStampCount.textContent = `${state.visited.length} STAMP${state.visited.length===1?"":"S"}`;
-    E.roomShelf.innerHTML = locations.filter(loc=>state.collectibles.includes(loc.slug)).map(loc=>`<span class="room-item" title="${loc.collectible.name}">${loc.collectible.icon}</span>`).join("");
-    E.roomAward.classList.toggle("unlocked",state.badges.includes("super-sweetie"));
+    if (E.roomStampCount) E.roomStampCount.textContent = `${state.visited.length} STAMP${state.visited.length===1?"":"S"}`;
+    if (E.roomShelf) E.roomShelf.innerHTML = locations.filter(loc=>state.collectibles.includes(loc.slug)).map(loc=>`<span class="room-item" title="${loc.collectible.name}">${loc.collectible.icon}</span>`).join("");
+    if (E.roomAward) E.roomAward.classList.toggle("unlocked",state.badges.includes("super-sweetie"));
     const total = state.visited.length+state.hearts.length+state.letters.length+state.collectibles.length;
-    E.roomNote.textContent = total===0 ? "Keep exploring to make this room your own." :
+    if (E.roomNote) E.roomNote.textContent = total===0 ? "Keep exploring to make this room your own." :
       total<8 ? "Your room is beginning to feel like home." :
       total<16 ? "The shelves are filling and the walls remember your journey." :
       "This room belongs to a true Sweetville explorer.";
@@ -295,25 +295,51 @@
 
   const render = () => {
     evaluateAchievements(false);
-    E.visitedCount.textContent=state.visited.length; E.heartCount.textContent=state.hearts.length;
-    E.badgeCount.textContent=state.badges.filter(id=>achievements.some(a=>a.id===id)).length; E.giftCount.textContent=giftLog().length;
-    E.passportBar.style.width=Math.min(100,score()/30*100)+"%"; E.rankName.textContent=currentRank()[0];
 
-    E.stampGrid.innerHTML = locations.map(loc => {
-      const visited=state.visited.includes(loc.slug);
-      return `<article class="stamp ${visited?"visited":""}"><span class="seal">${visited?"💖":"♡"}</span><strong>${loc.title}</strong><small>${visited?"PASSPORT STAMPED":"NOT YET VISITED"}</small></article>`;
-    }).join("");
+    if (E.visitedCount) E.visitedCount.textContent = state.visited.length;
+    if (E.heartCount) E.heartCount.textContent = state.hearts.length;
+    if (E.badgeCount) {
+      E.badgeCount.textContent = state.badges.filter(id => achievements.some(a => a.id === id)).length;
+    }
+    if (E.giftCount) E.giftCount.textContent = giftLog().length;
+    if (E.passportBar) E.passportBar.style.width = Math.min(100, score() / 30 * 100) + "%";
+    if (E.rankName) E.rankName.textContent = currentRank()[0];
 
-    E.locationGrid.innerHTML = locations.map(loc => `
-      <article class="location-card" data-location="${loc.slug}" tabindex="0" role="button">
-        <img src="${loc.image}" alt="${loc.title}">
-        <div><small>${loc.id}</small><strong>${loc.title}</strong><small>${state.visited.includes(loc.slug)?"Visited ✓":"Enter location →"}</small></div>
-      </article>`).join("");
+    if (E.stampGrid) {
+      E.stampGrid.innerHTML = locations.map(loc => {
+        const visited = state.visited.includes(loc.slug);
+        return `<article class="stamp ${visited ? "visited" : ""}"><span class="seal">${visited ? "💖" : "♡"}</span><strong>${loc.title}</strong><small>${visited ? "PASSPORT STAMPED" : "NOT YET VISITED"}</small></article>`;
+      }).join("");
+    }
 
-    document.querySelectorAll(".world-location[data-location]").forEach(node=>node.classList.toggle("visited",state.visited.includes(node.dataset.location)));
-    E.secretEnding.hidden = !(state.visited.length===5&&state.hearts.length===5&&state.letters.length===5&&state.collectibles.length===5);
+    if (E.locationGrid) {
+      E.locationGrid.innerHTML = locations.map(loc => `
+        <article class="location-card" data-location="${loc.slug}" tabindex="0" role="button">
+          <img src="${loc.image}" alt="${loc.title}">
+          <div><small>${loc.id}</small><strong>${loc.title}</strong><small>${state.visited.includes(loc.slug) ? "Visited ✓" : "Enter location →"}</small></div>
+        </article>`).join("");
+    }
 
-    renderRanks(); renderGift(); renderLetters(); renderCollection(); renderRoom(); renderAchievements(); updateWorld();
+    document.querySelectorAll(".world-location[data-location]").forEach(node => {
+      node.classList.toggle("visited", state.visited.includes(node.dataset.location));
+    });
+
+    if (E.secretEnding) {
+      E.secretEnding.hidden = !(
+        state.visited.length === 5 &&
+        state.hearts.length === 5 &&
+        state.letters.length === 5 &&
+        state.collectibles.length === 5
+      );
+    }
+
+    if (E.rankTrack) renderRanks();
+    if (E.giftBox && E.giftReveal) renderGift();
+    if (E.lettersGrid) renderLetters();
+    if (E.collectibleShelf) renderCollection();
+    if (E.roomShelf) renderRoom();
+    if (E.achievementGrid) renderAchievements();
+    updateWorld();
   };
 
   const openLetter = slug => {
