@@ -155,16 +155,7 @@
   document.getElementById('exp60ResetPassport')?.addEventListener('click', () => mochiReact('💌'));
   document.getElementById('exp50BeginChapter')?.addEventListener('click', () => mochiReact('🐾'));
 
-  // Audio focus behavior.
-  const duckWorldAudio = ducked => {
-    root.dataset.sv72AudioDucked = ducked ? 'true' : 'false';
-    window.dispatchEvent(new CustomEvent('sweetville:audio-duck', { detail:{ ducked } }));
-  };
-
-  pianoModal?.addEventListener('close', () => duckWorldAudio(false));
-  pianoModal?.addEventListener('cancel', () => duckWorldAudio(false));
-  document.getElementById('heroSoundButton')?.addEventListener('click', () => duckWorldAudio(true));
-  document.getElementById('soundToggle')?.addEventListener('click', () => duckWorldAudio(true));
+  // EXP 7.2.1: audio focus is handled safely by piano-fix.js.
 
   // Smooth in-view section reveals.
   if (!reduced && 'IntersectionObserver' in window) {

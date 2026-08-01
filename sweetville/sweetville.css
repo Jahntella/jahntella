@@ -3262,3 +3262,53 @@ html[data-sv72-audio-ducked="true"] .exp70-lantern{
     opacity:1!important;
   }
 }
+
+/* SWEETVILLE EXP 7.2.1 — PIANO HOTFIX */
+#miniPianoModal{
+  z-index:2147483000!important;
+}
+
+#miniPianoModal[open]{
+  display:block!important;
+  pointer-events:auto!important;
+}
+
+#miniPianoModal::backdrop{
+  pointer-events:auto;
+}
+
+#miniPianoModal .piano-modal-card,
+#miniPianoModal .mini-piano-card,
+#miniPianoModal > div{
+  position:relative;
+  pointer-events:auto!important;
+}
+
+#miniPianoClose{
+  position:absolute!important;
+  top:.75rem!important;
+  right:.75rem!important;
+  z-index:20!important;
+  min-width:44px!important;
+  min-height:44px!important;
+  display:grid!important;
+  place-items:center!important;
+  pointer-events:auto!important;
+  cursor:pointer!important;
+  touch-action:manipulation;
+}
+
+#miniPiano .piano-key{
+  pointer-events:auto!important;
+  touch-action:none;
+  cursor:pointer;
+}
+
+#miniPiano .piano-key.active{
+  filter:brightness(1.16);
+  transform:translateY(3px);
+}
+
+html[data-sv72-audio-ducked="true"]{
+  --sv-piano-focus:1;
+}
