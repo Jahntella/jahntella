@@ -3917,3 +3917,314 @@ html[data-sv72-audio-ducked="true"]{
     animation:none!important;
   }
 }
+
+/* =========================================================
+   SWEETVILLE EXP 8.1 — TOUCH THE WORLD
+   Every important touch creates a response
+   ========================================================= */
+
+.exp81-touchable{
+  position:relative;
+  overflow:hidden;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+}
+
+.exp81-ripple{
+  position:absolute;
+  z-index:25;
+  border-radius:50%;
+  pointer-events:none;
+  transform:scale(0);
+  background:radial-gradient(circle,rgba(255,255,255,.62),rgba(255,151,211,.28) 45%,transparent 70%);
+  animation:exp81Ripple .72s ease-out forwards;
+}
+
+.exp81-toast-host{
+  position:fixed;
+  z-index:999999;
+  right:18px;
+  top:88px;
+  width:min(360px,calc(100vw - 28px));
+  display:grid;
+  gap:10px;
+  pointer-events:none;
+}
+
+.exp81-toast{
+  display:flex;
+  align-items:center;
+  gap:.85rem;
+  padding:1rem 1.05rem;
+  border:1px solid rgba(255,255,255,.48);
+  border-radius:20px;
+  color:#5f1f4d;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.96),rgba(255,229,243,.94));
+  box-shadow:
+    0 18px 45px rgba(50,12,41,.28),
+    inset 0 1px 0 rgba(255,255,255,.8);
+  backdrop-filter:blur(18px);
+  opacity:0;
+  transform:translateX(28px) scale(.96);
+  transition:.32s ease;
+}
+
+.exp81-toast.show{
+  opacity:1;
+  transform:none;
+}
+
+.exp81-toast>span{
+  width:44px;
+  height:44px;
+  flex:0 0 auto;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  font-size:1.35rem;
+  background:linear-gradient(145deg,#ffd4e9,#e5d4ff);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.75);
+}
+
+.exp81-toast strong,
+.exp81-toast small{
+  display:block;
+}
+
+.exp81-toast strong{
+  font-family:"Playfair Display",serif;
+  font-size:1.02rem;
+}
+
+.exp81-toast small{
+  margin-top:.16rem;
+  line-height:1.35;
+  opacity:.76;
+}
+
+.exp81-confetti-host{
+  position:fixed;
+  z-index:999998;
+  width:1px;
+  height:1px;
+  pointer-events:none;
+}
+
+.exp81-confetti-host span{
+  position:absolute;
+  color:#ffd2ea;
+  text-shadow:0 0 12px rgba(255,80,180,.5);
+  animation:exp81Confetti 1.35s cubic-bezier(.12,.7,.3,1) var(--d) forwards;
+}
+
+.exp81-note{
+  position:fixed;
+  z-index:999999;
+  pointer-events:none;
+  color:#ffd3ec;
+  font-size:1.7rem;
+  text-shadow:0 0 18px rgba(255,85,186,.7);
+  animation:exp81Note 1.1s ease-out forwards;
+}
+
+.exp81-entered{
+  animation:exp81Entered 1.1s ease!important;
+}
+
+.exp81-world-response{
+  animation:exp81WorldResponse 1.7s ease!important;
+}
+
+.exp81-tucked{
+  animation:exp81Tucked 1.15s cubic-bezier(.22,.7,.32,1)!important;
+}
+
+.exp81-smile-bounce{
+  animation:exp81SmileBounce .68s ease!important;
+}
+
+.exp81-stamped{
+  animation:exp81Stamp .82s cubic-bezier(.2,.8,.2,1)!important;
+}
+
+.exp81-page-turn{
+  transform-origin:left center;
+  animation:exp81PageTurn .82s ease!important;
+}
+
+.exp81-section-awake{
+  animation:exp81SectionAwake .9s ease!important;
+}
+
+.exp81-experience-badge{
+  position:fixed;
+  z-index:99990;
+  right:18px;
+  bottom:18px;
+  display:flex;
+  align-items:center;
+  gap:.55rem;
+  padding:.6rem .8rem;
+  border:1px solid rgba(255,255,255,.42);
+  border-radius:999px;
+  color:#fff;
+  background:linear-gradient(145deg,rgba(105,45,127,.9),rgba(236,81,158,.9));
+  box-shadow:0 15px 36px rgba(34,10,37,.28);
+  backdrop-filter:blur(15px);
+  opacity:0;
+  transform:translateY(16px);
+  pointer-events:none;
+  transition:.3s ease;
+}
+
+.exp81-experience-badge.visible{
+  opacity:1;
+  transform:none;
+}
+
+.exp81-experience-badge>span{
+  font-size:1.15rem;
+}
+
+.exp81-experience-badge small,
+.exp81-experience-badge strong{
+  display:block;
+  line-height:1.05;
+}
+
+.exp81-experience-badge small{
+  font-size:.55rem;
+  letter-spacing:.1em;
+  opacity:.74;
+}
+
+.exp81-experience-badge strong{
+  margin-top:.12rem;
+}
+
+html[data-exp81-district="cafe"] .living-sky{
+  filter:hue-rotate(-12deg) saturate(1.06) brightness(1.06);
+}
+
+html[data-exp81-district="studio"] .living-sky{
+  filter:hue-rotate(18deg) saturate(.92);
+}
+
+html[data-exp81-district="donut"] .living-sky{
+  filter:hue-rotate(-25deg) saturate(1.25);
+}
+
+html[data-exp81-district="lake"] .living-sky{
+  filter:hue-rotate(40deg) saturate(.88) brightness(.96);
+}
+
+html[data-exp81-district="heart"] .living-sky{
+  filter:hue-rotate(-4deg) saturate(1.35);
+}
+
+.living-sky{
+  transition:filter 1.1s ease;
+}
+
+.world-location,
+.exp80-moment-card,
+.exp80-keepsake-card,
+.exp80-smile-card,
+.exp50-story-card,
+.sv-panel{
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease,
+    filter .35s ease;
+}
+
+@keyframes exp81Ripple{
+  0%{transform:scale(0);opacity:.85}
+  100%{transform:scale(1);opacity:0}
+}
+
+@keyframes exp81Confetti{
+  0%{transform:translate(0,0) rotate(0);opacity:0}
+  15%{opacity:1}
+  100%{transform:translate(var(--x),var(--y)) rotate(var(--r));opacity:0}
+}
+
+@keyframes exp81Note{
+  0%{transform:translate(-50%,-20%) scale(.7);opacity:0}
+  18%{opacity:1}
+  100%{transform:translate(-50%,-120px) scale(1.25) rotate(12deg);opacity:0}
+}
+
+@keyframes exp81Entered{
+  0%,100%{transform:translateY(0) scale(1)}
+  35%{transform:translateY(-9px) scale(1.035);filter:brightness(1.14)}
+  65%{transform:translateY(-4px) scale(1.015)}
+}
+
+@keyframes exp81WorldResponse{
+  0%,100%{filter:brightness(1);transform:scale(1)}
+  35%{filter:brightness(1.13);transform:scale(1.018)}
+  62%{filter:brightness(1.06);box-shadow:0 28px 75px rgba(255,70,174,.3)}
+}
+
+@keyframes exp81Tucked{
+  0%{transform:rotate(1deg) scale(1)}
+  40%{transform:rotate(-2deg) scale(1.035) translateY(-6px)}
+  100%{transform:rotate(1deg) scale(1)}
+}
+
+@keyframes exp81SmileBounce{
+  0%,100%{transform:translateY(0)}
+  35%{transform:translateY(-8px) rotate(-.4deg)}
+  70%{transform:translateY(-3px) rotate(.25deg)}
+}
+
+@keyframes exp81Stamp{
+  0%{transform:scale(1) rotate(0)}
+  45%{transform:scale(.9) rotate(-5deg);filter:saturate(1.35)}
+  100%{transform:scale(1) rotate(0)}
+}
+
+@keyframes exp81PageTurn{
+  0%{transform:perspective(1000px) rotateY(0)}
+  42%{transform:perspective(1000px) rotateY(-7deg)}
+  100%{transform:perspective(1000px) rotateY(0)}
+}
+
+@keyframes exp81SectionAwake{
+  0%,100%{filter:brightness(1)}
+  42%{filter:brightness(1.08)}
+}
+
+@media(max-width:650px){
+  .exp81-toast-host{
+    top:auto;
+    bottom:82px;
+    right:14px;
+  }
+
+  .exp81-experience-badge{
+    right:12px;
+    bottom:12px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .exp81-ripple,
+  .exp81-confetti-host span,
+  .exp81-note,
+  .exp81-entered,
+  .exp81-world-response,
+  .exp81-tucked,
+  .exp81-smile-bounce,
+  .exp81-stamped,
+  .exp81-page-turn,
+  .exp81-section-awake{
+    animation:none!important;
+  }
+
+  .living-sky{
+    transition:none!important;
+  }
+}
