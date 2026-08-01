@@ -265,64 +265,8 @@
 
 
 
-/* SWEETVILLE EXP 3.0 — Cinematic journey */
-(() => {
-  const intro = document.getElementById('svCinematicIntro');
-  if (!intro) return;
 
-  const scenes = [...intro.querySelectorAll('.sv-cinema-scene')];
-  const skip = document.getElementById('svCinemaSkip');
-  const progress = document.getElementById('svCinemaProgress');
-  const finale = intro.querySelector('.sv-cinema-finale');
-  const sparkles = document.getElementById('svCinemaSparkles');
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const duration = reduced ? 700 : 3600;
-  let index = 0;
-  let timer;
-
-  if (sparkles) {
-    for (let i = 0; i < 55; i += 1) {
-      const star = document.createElement('i');
-      star.style.left = `${Math.random() * 100}%`;
-      star.style.top = `${Math.random() * 100}%`;
-      star.style.animationDelay = `${-Math.random() * 5}s`;
-      star.style.animationDuration = `${2.5 + Math.random() * 4}s`;
-      sparkles.appendChild(star);
-    }
-  }
-
-  const finish = () => {
-    clearTimeout(timer);
-    finale?.classList.add('show');
-    if (progress) progress.style.width = '100%';
-    window.setTimeout(() => {
-      intro.classList.add('finished');
-      window.sessionStorage.setItem('sweetvilleExp3Seen', '1');
-    }, reduced ? 300 : 1500);
-  };
-
-  const showScene = (next) => {
-    scenes.forEach((scene, i) => scene.classList.toggle('active', i === next));
-    if (progress) progress.style.width = `${((next + 1) / scenes.length) * 92}%`;
-    index = next;
-    timer = window.setTimeout(() => {
-      if (index >= scenes.length - 1) finish();
-      else showScene(index + 1);
-    }, duration);
-  };
-
-  skip?.addEventListener('click', finish);
-
-  if (window.sessionStorage.getItem('sweetvilleExp3Seen') === '1') {
-    intro.classList.add('finished');
-  } else {
-    document.body.style.overflow = 'hidden';
-    showScene(0);
-    intro.addEventListener('transitionend', () => {
-      if (intro.classList.contains('finished')) document.body.style.overflow = '';
-    }, { once: true });
-  }
-})();
+/* EXP 6.1.3: legacy cinematic controller removed; see intro-carousel.js */
 
 /* SWEETVILLE EXP 3.1 — POLISH */
 (() => {
