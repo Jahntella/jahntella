@@ -4651,3 +4651,415 @@ body.exp90-lock{overflow:hidden!important}
     padding:1.3rem;
   }
 }
+
+/* =========================================================
+   SWEETVILLE EXP 9.3 — CREATE WITH JAHNTELLA
+   ========================================================= */
+
+.exp93-creative-panel{
+  position:relative;
+  overflow:hidden;
+}
+
+.exp93-creative-panel::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 12% 16%,rgba(255,121,191,.16),transparent 28%),
+    radial-gradient(circle at 88% 82%,rgba(172,128,255,.15),transparent 32%);
+}
+
+.exp93-creative-shell{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(250px,.78fr) minmax(0,1.7fr);
+  gap:1.25rem;
+  align-items:start;
+}
+
+.exp93-sidebar,
+.exp93-workspace{
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:28px;
+  background:linear-gradient(145deg,rgba(255,255,255,.095),rgba(255,255,255,.04));
+  box-shadow:0 24px 62px rgba(0,0,0,.25);
+  backdrop-filter:blur(18px);
+}
+
+.exp93-sidebar{
+  position:sticky;
+  top:88px;
+  padding:1rem;
+}
+
+.exp93-host-message{
+  padding:1rem;
+  border-radius:20px;
+  color:#5d244b;
+  background:linear-gradient(145deg,#fff8fc,#f6e8ff);
+}
+
+.exp93-host-message>span{
+  display:block;
+  font-size:1.8rem;
+}
+
+.exp93-host-message small{
+  display:block;
+  margin-top:.55rem;
+  letter-spacing:.12em;
+  font-size:.65rem;
+  font-weight:800;
+  opacity:.66;
+}
+
+.exp93-host-message h3{
+  margin:.35rem 0 .45rem;
+  font-family:"Playfair Display",serif;
+  font-size:1.65rem;
+}
+
+.exp93-host-message p{
+  margin:0;
+  line-height:1.55;
+}
+
+.exp93-mode-tabs{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:.55rem;
+  margin-top:1rem;
+}
+
+.exp93-mode-tabs button,
+.exp93-backgrounds button,
+.exp93-sticker-palette button,
+.exp93-top-actions button,
+.exp93-stage-controls button{
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:14px;
+  color:#fff;
+  background:rgba(255,255,255,.07);
+  cursor:pointer;
+  font-weight:800;
+}
+
+.exp93-mode-tabs button{
+  padding:.8rem .65rem;
+}
+
+.exp93-mode-tabs button.active,
+.exp93-backgrounds button.active{
+  color:#64244e;
+  background:linear-gradient(145deg,#fff,#ffd7eb);
+  box-shadow:0 8px 20px rgba(0,0,0,.16);
+}
+
+.exp93-control-group{
+  margin-top:1rem;
+}
+
+.exp93-control-group>small{
+  display:block;
+  margin-bottom:.55rem;
+  font-size:.66rem;
+  letter-spacing:.12em;
+  font-weight:800;
+  opacity:.65;
+}
+
+.exp93-backgrounds{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:.5rem;
+}
+
+.exp93-backgrounds button{
+  padding:.64rem .5rem;
+}
+
+.exp93-control-group select,
+.exp93-control-group input{
+  width:100%;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:12px;
+  padding:.75rem;
+  color:#fff;
+  background:rgba(255,255,255,.08);
+}
+
+.exp93-control-group input{
+  margin-top:.55rem;
+}
+
+.exp93-control-group select option{
+  color:#35142d;
+}
+
+.exp93-sticker-palette{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+}
+
+.exp93-sticker-palette button{
+  width:42px;
+  height:42px;
+  padding:0;
+  font-size:1.35rem;
+}
+
+.exp93-workspace{
+  padding:1rem;
+}
+
+.exp93-workspace-topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  padding:.2rem .2rem 1rem;
+}
+
+.exp93-workspace-topbar small,
+.exp93-workspace-topbar strong{
+  display:block;
+}
+
+.exp93-workspace-topbar small{
+  letter-spacing:.12em;
+  font-size:.66rem;
+  font-weight:800;
+  opacity:.65;
+}
+
+.exp93-workspace-topbar strong{
+  margin-top:.2rem;
+  font-family:"Playfair Display",serif;
+  font-size:1.35rem;
+}
+
+.exp93-top-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.45rem;
+}
+
+.exp93-top-actions button,
+.exp93-stage-controls button{
+  padding:.58rem .72rem;
+}
+
+.exp93-stage-wrap{
+  display:grid;
+  place-items:center;
+  padding:1rem;
+  border-radius:24px;
+  background:rgba(0,0,0,.14);
+  overflow:auto;
+}
+
+.exp93-stage{
+  position:relative;
+  width:min(100%,720px);
+  aspect-ratio:4/5;
+  overflow:hidden;
+  border:12px solid #fff;
+  border-radius:24px;
+  background:linear-gradient(145deg,#7e3ca0,#ff6cab);
+  box-shadow:0 24px 65px rgba(0,0,0,.34);
+}
+
+.exp93-stage.mode-wallpaper{
+  width:min(100%,440px);
+  aspect-ratio:9/16;
+}
+
+.exp93-stage.mode-card{
+  width:min(100%,760px);
+  aspect-ratio:3/2;
+}
+
+.exp93-stage.mode-stickers{
+  aspect-ratio:1/1;
+}
+
+.exp93-stage.bg-pink-sky{
+  background:linear-gradient(145deg,#8638a0,#ff70b4 58%,#ffc3e4);
+}
+
+.exp93-stage.bg-lavender-night{
+  background:radial-gradient(circle at 70% 20%,rgba(255,255,255,.24),transparent 20%),linear-gradient(160deg,#251047,#6544a2 52%,#d763b1);
+}
+
+.exp93-stage.bg-candy-cloud{
+  background:radial-gradient(circle at 25% 25%,#fff 0 8%,transparent 9%),radial-gradient(circle at 70% 35%,rgba(255,255,255,.8) 0 11%,transparent 12%),linear-gradient(145deg,#83c9ff,#f7b1df 58%,#fff0b7);
+}
+
+.exp93-stage.bg-sparkle-lake{
+  background:radial-gradient(circle at 50% 82%,rgba(255,255,255,.22),transparent 32%),linear-gradient(180deg,#33236d,#7f58b5 48%,#d37bb7 49%,#5f75c6);
+}
+
+.exp93-stage.bg-cream-paper{
+  color:#663050;
+  background:repeating-linear-gradient(0deg,rgba(132,92,113,.035) 0 1px,transparent 1px 28px),#fff7ef;
+}
+
+.exp93-stage-glow{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 22% 16%,rgba(255,255,255,.32),transparent 28%),
+    radial-gradient(circle at 80% 78%,rgba(255,255,255,.16),transparent 30%);
+}
+
+.exp93-stage-frame{
+  position:absolute;
+  inset:22px;
+  border:1px solid rgba(255,255,255,.5);
+  border-radius:18px;
+  pointer-events:none;
+}
+
+.exp93-stage-copy{
+  position:absolute;
+  z-index:3;
+  inset:0;
+  display:grid;
+  place-content:center;
+  padding:12%;
+  text-align:center;
+  color:#fff;
+}
+
+.bg-cream-paper .exp93-stage-copy{
+  color:#663050;
+}
+
+.exp93-stage-copy small{
+  letter-spacing:.18em;
+  font-weight:800;
+}
+
+.exp93-stage-copy h3{
+  margin:.55rem 0;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(2rem,6vw,5rem);
+  line-height:1;
+}
+
+.exp93-stage-copy strong{
+  font-family:"Sacramento",cursive;
+  font-size:clamp(1.8rem,4vw,3.2rem);
+  font-weight:400;
+}
+
+.exp93-signature{
+  position:absolute;
+  z-index:4;
+  left:50%;
+  bottom:4%;
+  transform:translateX(-50%);
+  width:90%;
+  text-align:center;
+  color:rgba(255,255,255,.9);
+  font-size:.72rem;
+  font-weight:800;
+}
+
+.bg-cream-paper .exp93-signature{
+  color:#7c4162;
+}
+
+.exp93-sticker-item{
+  position:absolute;
+  z-index:6;
+  border:0;
+  padding:0;
+  background:none;
+  font-size:3rem;
+  cursor:grab;
+  touch-action:none;
+  transform:rotate(var(--rotate,0deg)) scale(var(--scale,1));
+  transform-origin:center;
+  filter:drop-shadow(0 8px 12px rgba(0,0,0,.25));
+}
+
+.exp93-sticker-item.selected{
+  outline:2px dashed rgba(255,255,255,.9);
+  outline-offset:5px;
+}
+
+.exp93-stage-controls{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  margin-top:1rem;
+  padding:1rem;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:18px;
+  background:rgba(255,255,255,.05);
+}
+
+.exp93-stage-controls small,
+.exp93-stage-controls span{
+  display:block;
+}
+
+.exp93-stage-controls small{
+  font-size:.64rem;
+  letter-spacing:.1em;
+  font-weight:800;
+  opacity:.65;
+}
+
+.exp93-stage-controls span{
+  margin-top:.18rem;
+}
+
+.exp93-stage-controls>div:last-child{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.45rem;
+}
+
+.exp93-save-actions{
+  display:flex;
+  justify-content:flex-end;
+  flex-wrap:wrap;
+  gap:.75rem;
+  margin-top:1rem;
+}
+
+@media(max-width:980px){
+  .exp93-creative-shell{
+    grid-template-columns:1fr;
+  }
+
+  .exp93-sidebar{
+    position:relative;
+    top:auto;
+  }
+}
+
+@media(max-width:680px){
+  .exp93-workspace-topbar,
+  .exp93-stage-controls{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .exp93-save-actions .sv-button{
+    width:100%;
+    justify-content:center;
+  }
+
+  .exp93-mode-tabs,
+  .exp93-backgrounds{
+    grid-template-columns:1fr;
+  }
+}

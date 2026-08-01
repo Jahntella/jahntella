@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#120015">
   <meta name="description" content="Enter Sweetville Build v4.0: an interactive living world with districts, music, hidden letters, collectibles, achievements, and a room that grows with your journey.">
-  <title>Sweetville EXP 9.1 — Sweetville Gallery</title>
+  <title>Sweetville EXP 9.3 — Create With Jahntella</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="sweetville.css?v=9.1">
+  <link rel="stylesheet" href="sweetville.css?v=9.3">
 </head>
 <body>
 
@@ -87,6 +87,7 @@
       <a href="#littleMoments">Little Moments</a>
       <a href="#coloringStudio">Coloring Studio</a>
       <a href="#sweetvilleGallery">My Gallery</a>
+      <a href="#creativeStudio">Creative Studio</a>
       <a href="#livingMap">Map</a>
       <a href="#gift">Daily Gift</a>
       <a href="#letters">Letters</a>
@@ -118,7 +119,7 @@
 
     <section class="sv-hero" id="world">
       <div class="sv-hero-copy">
-        <p class="sv-eyebrow">SWEETVILLE EXP 9.1</p>
+        <p class="sv-eyebrow">SWEETVILLE EXP 9.3</p>
         <h1>The world comes <em>alive.</em></h1>
         <p class="sv-lede">Explore an interactive city where every district has its own mood, music, hidden letter, collectible, and little moment from Jahntella.</p>
         <div class="sv-actions">
@@ -317,6 +318,118 @@
         <div class="exp91-gallery-note">
           <span>💋</span>
           <p id="exp91GalleryMessage">“I can’t wait to see what you make.” — Jahntella</p>
+        </div>
+      </div>
+    </section>
+
+
+    
+    <section class="sv-panel exp93-creative-panel" id="creativeStudio">
+      <div class="sv-section-heading">
+        <p class="sv-eyebrow">CREATE WITH JAHNTELLA</p>
+        <h2>Make something that feels <em>like you.</em></h2>
+        <p>Design posters, wallpapers, cards, and sticker scenes—then save them into your Sweetville Gallery.</p>
+      </div>
+
+      <div class="exp93-creative-shell">
+        <aside class="exp93-sidebar">
+          <div class="exp93-host-message">
+            <span>💋</span>
+            <small>JAHNTELLA SAYS</small>
+            <h3 id="exp93HostTitle">Let’s make something beautiful.</h3>
+            <p id="exp93HostMessage">Pick a format, add a little sparkle, and make it completely yours.</p>
+          </div>
+
+          <div class="exp93-mode-tabs" id="exp93ModeTabs">
+            <button type="button" data-mode="poster" class="active">🖼 Poster</button>
+            <button type="button" data-mode="wallpaper">📱 Wallpaper</button>
+            <button type="button" data-mode="card">💌 Sweet Card</button>
+            <button type="button" data-mode="stickers">🎀 Sticker Scene</button>
+          </div>
+
+          <div class="exp93-control-group">
+            <small>BACKGROUND</small>
+            <div class="exp93-backgrounds" id="exp93Backgrounds">
+              <button type="button" data-bg="pink-sky" class="active">Pink Sky</button>
+              <button type="button" data-bg="lavender-night">Lavender Night</button>
+              <button type="button" data-bg="candy-cloud">Candy Cloud</button>
+              <button type="button" data-bg="sparkle-lake">Sparkle Lake</button>
+              <button type="button" data-bg="cream-paper">Cream Paper</button>
+            </div>
+          </div>
+
+          <div class="exp93-control-group">
+            <small>QUOTE</small>
+            <select id="exp93QuoteSelect">
+              <option value="Welcome home, Sweetie.">Welcome home, Sweetie.</option>
+              <option value="Music opens the door. Sweetville opens the heart.">Music opens the door. Sweetville opens the heart.</option>
+              <option value="Create things that leave people happier.">Create things that leave people happier.</option>
+              <option value="For a few minutes, the real world can wait.">For a few minutes, the real world can wait.</option>
+              <option value="You belong here.">You belong here.</option>
+            </select>
+            <input id="exp93CustomText" type="text" maxlength="90" placeholder="Or write your own message">
+          </div>
+
+          <div class="exp93-control-group">
+            <small>STICKERS</small>
+            <div class="exp93-sticker-palette" id="exp93StickerPalette">
+              <button type="button" data-sticker="💖">💖</button>
+              <button type="button" data-sticker="🎀">🎀</button>
+              <button type="button" data-sticker="✨">✨</button>
+              <button type="button" data-sticker="🌸">🌸</button>
+              <button type="button" data-sticker="🍩">🍩</button>
+              <button type="button" data-sticker="🧁">🧁</button>
+              <button type="button" data-sticker="🎵">🎵</button>
+              <button type="button" data-sticker="🐾">🐾</button>
+              <button type="button" data-sticker="🦋">🦋</button>
+              <button type="button" data-sticker="⭐">⭐</button>
+            </div>
+          </div>
+        </aside>
+
+        <div class="exp93-workspace">
+          <div class="exp93-workspace-topbar">
+            <div>
+              <small id="exp93FormatLabel">POSTER CREATOR</small>
+              <strong id="exp93ProjectTitle">Sweetville Poster</strong>
+            </div>
+            <div class="exp93-top-actions">
+              <button type="button" id="exp93Undo">↶ Undo</button>
+              <button type="button" id="exp93Redo">↷ Redo</button>
+              <button type="button" id="exp93Clear">Clear</button>
+            </div>
+          </div>
+
+          <div class="exp93-stage-wrap">
+            <div class="exp93-stage bg-pink-sky mode-poster" id="exp93Stage">
+              <div class="exp93-stage-glow"></div>
+              <div class="exp93-stage-frame"></div>
+              <div class="exp93-stage-copy">
+                <small>THE WORLD OF SWEET</small>
+                <h3 id="exp93StageQuote">Welcome home, Sweetie.</h3>
+                <strong>Jahntella 💋</strong>
+              </div>
+              <div class="exp93-signature">Created together by You &amp; Jahntella 💖</div>
+            </div>
+          </div>
+
+          <div class="exp93-stage-controls">
+            <div>
+              <small>SELECTED STICKER</small>
+              <span id="exp93SelectionStatus">Tap a sticker to add it</span>
+            </div>
+            <div>
+              <button type="button" id="exp93RotateLeft">↺ Rotate</button>
+              <button type="button" id="exp93Grow">＋ Bigger</button>
+              <button type="button" id="exp93Shrink">− Smaller</button>
+              <button type="button" id="exp93Delete">Delete</button>
+            </div>
+          </div>
+
+          <div class="exp93-save-actions">
+            <button type="button" class="sv-button secondary" id="exp93SaveGallery">Save to My Gallery</button>
+            <button type="button" class="sv-button primary" id="exp93Download">Download Creation</button>
+          </div>
         </div>
       </div>
     </section>
@@ -707,9 +820,9 @@
     <span id="toastIcon">🏆</span>
     <div><small id="toastKicker">NEW ACHIEVEMENT</small><strong id="toastTitle">Explorer</strong></div>
   </div>
-  <script src="intro-carousel.js?v=9.1" defer></script>
+  <script src="intro-carousel.js?v=9.3" defer></script>
 
-  <script src="sweetville-v4.0.js?v=9.1"></script>
+  <script src="sweetville-v4.0.js?v=9.3"></script>
 <dialog class="mini-piano-modal" id="miniPianoModal" aria-labelledby="miniPianoTitle">
     <div class="mini-piano-shell">
       <button class="mini-piano-close" id="miniPianoClose" type="button" aria-label="Close mini piano">×</button>
@@ -735,17 +848,18 @@
     </div>
   </dialog>
 
-  <script src="living-world.js?v=9.1"></script>
-  <script src="engine-core.js?v=9.1" defer></script>
-  <script src="living-magic.js?v=9.1" defer></script>
-  <script src="passport.js?v=9.1" defer></script>
-  <script src="stability.js?v=9.1" defer></script>
-  <script src="magic-polish.js?v=9.1" defer></script>
-  <script src="piano-fix.js?v=9.1" defer></script>
-  <script src="little-moments.js?v=9.1" defer></script>
-  <script src="ui-polish.js?v=9.1" defer></script>
-  <script src="touch-the-world.js?v=9.1" defer></script>
-  <script src="coloring-studio.js?v=9.1" defer></script>
-  <script src="sweetville-gallery.js?v=9.1" defer></script>
+  <script src="living-world.js?v=9.3"></script>
+  <script src="engine-core.js?v=9.3" defer></script>
+  <script src="living-magic.js?v=9.3" defer></script>
+  <script src="passport.js?v=9.3" defer></script>
+  <script src="stability.js?v=9.3" defer></script>
+  <script src="magic-polish.js?v=9.3" defer></script>
+  <script src="piano-fix.js?v=9.3" defer></script>
+  <script src="little-moments.js?v=9.3" defer></script>
+  <script src="ui-polish.js?v=9.3" defer></script>
+  <script src="touch-the-world.js?v=9.3" defer></script>
+  <script src="coloring-studio.js?v=9.3" defer></script>
+  <script src="sweetville-gallery.js?v=9.3" defer></script>
+  <script src="creative-studio.js?v=9.3" defer></script>
 </body>
 </html>
