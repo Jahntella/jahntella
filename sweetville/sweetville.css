@@ -3312,3 +3312,201 @@ html[data-sv72-audio-ducked="true"] .exp70-lantern{
 html[data-sv72-audio-ducked="true"]{
   --sv-piano-focus:1;
 }
+
+/* =========================================================
+   SWEETVILLE EXP 8.0 — LITTLE MOMENTS
+   ========================================================= */
+
+.exp80-moments-panel{
+  position:relative;
+  overflow:hidden;
+}
+
+.exp80-moments-panel::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(255,180,224,.16),transparent 28%),
+    radial-gradient(circle at 85% 70%,rgba(153,118,255,.13),transparent 34%);
+}
+
+.exp80-moment-shell{
+  position:relative;
+  display:grid;
+  gap:1.25rem;
+}
+
+.exp80-welcome-card,
+.exp80-moment-card,
+.exp80-keepsake-card,
+.exp80-smile-card,
+.exp80-memory-strip{
+  border:1px solid rgba(255,255,255,.16);
+  background:linear-gradient(145deg,rgba(255,255,255,.1),rgba(255,255,255,.045));
+  box-shadow:0 20px 50px rgba(0,0,0,.22);
+  backdrop-filter:blur(18px);
+}
+
+.exp80-welcome-card{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  padding:1.25rem;
+  border-radius:24px;
+}
+
+.exp80-welcome-icon{
+  width:62px;
+  height:62px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-size:1.8rem;
+  background:linear-gradient(135deg,#ff72bb,#9b6dff);
+  box-shadow:0 0 26px rgba(255,92,184,.35);
+}
+
+.exp80-welcome-card small,
+.exp80-moment-card small,
+.exp80-keepsake-card small,
+.exp80-smile-card small{
+  letter-spacing:.14em;
+  font-weight:800;
+  opacity:.72;
+}
+
+.exp80-welcome-card h3,
+.exp80-moment-card h3,
+.exp80-keepsake-card h3{
+  margin:.25rem 0 .4rem;
+}
+
+.exp80-welcome-card p,
+.exp80-moment-card p,
+.exp80-keepsake-card p{
+  margin:0;
+  opacity:.86;
+}
+
+.exp80-moment-grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:1.25rem;
+}
+
+.exp80-moment-card,
+.exp80-keepsake-card{
+  min-height:300px;
+  border-radius:28px;
+  padding:1.5rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:flex-start;
+}
+
+.exp80-moment-card{
+  background:
+    radial-gradient(circle at 78% 20%,rgba(255,255,255,.18),transparent 28%),
+    linear-gradient(145deg,rgba(255,84,177,.22),rgba(92,57,150,.14));
+}
+
+.exp80-keepsake-card{
+  background:
+    radial-gradient(circle at 25% 18%,rgba(255,245,190,.18),transparent 30%),
+    linear-gradient(145deg,rgba(255,195,105,.18),rgba(255,89,173,.12));
+}
+
+.exp80-moment-icon,
+.exp80-keepsake-card>span{
+  font-size:2.6rem;
+  margin-bottom:.8rem;
+  filter:drop-shadow(0 8px 16px rgba(0,0,0,.24));
+}
+
+.exp80-moment-card .sv-button,
+.exp80-keepsake-card .sv-button{
+  margin-top:1.1rem;
+}
+
+.exp80-smile-card{
+  border-radius:22px;
+  padding:1rem 1.15rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+}
+
+.exp80-smile-card strong{
+  display:block;
+  margin-top:.25rem;
+}
+
+.exp80-smile-card button{
+  border:0;
+  border-radius:999px;
+  padding:.8rem 1rem;
+  cursor:pointer;
+  font-weight:800;
+  background:#fff;
+  color:#5e174e;
+}
+
+.exp80-memory-strip{
+  border-radius:18px;
+  padding:.9rem 1rem;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:.75rem;
+}
+
+.exp80-memory-strip span{
+  opacity:.68;
+  font-size:.76rem;
+  letter-spacing:.11em;
+  font-weight:800;
+}
+
+.exp80-memory-strip strong{
+  font-size:1.25rem;
+  margin-right:.75rem;
+}
+
+.exp80-sharing{
+  animation:exp80MomentGlow 2.6s ease both;
+}
+
+.exp80-kept{
+  box-shadow:0 20px 50px rgba(0,0,0,.22),0 0 36px rgba(255,111,192,.28);
+}
+
+.exp80-pop{
+  animation:exp80SmilePop .5s ease;
+}
+
+@keyframes exp80MomentGlow{
+  0%,100%{filter:brightness(1);transform:scale(1)}
+  35%{filter:brightness(1.13);transform:scale(1.012)}
+  70%{filter:brightness(1.04);transform:scale(1.006)}
+}
+
+@keyframes exp80SmilePop{
+  0%{transform:scale(.98)}
+  55%{transform:scale(1.02)}
+  100%{transform:scale(1)}
+}
+
+@media(max-width:800px){
+  .exp80-moment-grid{grid-template-columns:1fr}
+  .exp80-moment-card,.exp80-keepsake-card{min-height:250px}
+}
+
+@media(max-width:560px){
+  .exp80-welcome-card{align-items:flex-start}
+  .exp80-smile-card{align-items:flex-start;flex-direction:column}
+  .exp80-smile-card button{width:100%}
+}
