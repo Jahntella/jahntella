@@ -2998,3 +2998,59 @@ body:not(.sv-scroll-locked){
 
 
 .exp701-passport-toast{position:fixed;left:50%;top:18%;z-index:125;transform:translate(-50%,-18px) scale(.92);max-width:min(90vw,460px);padding:1rem 1.2rem;border:2px solid #ff91cf;border-radius:18px;background:rgba(12,0,15,.95);color:#fff;box-shadow:0 18px 45px rgba(0,0,0,.45),0 0 30px rgba(255,71,177,.3);opacity:0;pointer-events:none;font-weight:900;text-align:center}.exp701-passport-toast.show{animation:exp701PassportToast 2.6s ease both}.exp60-stamp.exp701-stamp-new{animation:exp701StampIn .55s ease both}@keyframes exp701PassportToast{0%{opacity:0;transform:translate(-50%,-18px) scale(.92)}18%{opacity:1;transform:translate(-50%,0) scale(1.04)}72%{opacity:1;transform:translate(-50%,0) scale(1)}100%{opacity:0;transform:translate(-50%,-14px) scale(.97)}}@keyframes exp701StampIn{from{opacity:.35;transform:rotate(var(--stamp-rotation)) scale(.72)}to{opacity:1;transform:rotate(var(--stamp-rotation)) scale(1)}}
+
+/* =========================================================
+   SWEETVILLE EXP 7.1 — STABILITY & PERFORMANCE
+   ========================================================= */
+
+.sv-page-hidden .exp32-world-life,
+.sv-page-hidden .ambient-life,
+.sv-page-hidden .sv-living-fireworks,
+.sv-page-hidden .sv-cinema-sparkles{
+  animation-play-state:paused!important;
+}
+
+.sv-page-hidden *,
+.sv-page-hidden *::before,
+.sv-page-hidden *::after{
+  animation-play-state:paused!important;
+}
+
+.sv-reduced-effects .exp70-petal,
+.sv-reduced-effects .exp70-bird,
+.sv-reduced-effects .exp70-lantern{
+  display:none!important;
+}
+
+.sv-reduced-effects .exp70-firefly{
+  animation-duration:16s!important;
+}
+
+img{
+  content-visibility:auto;
+}
+
+.exp60-passport-panel,
+.exp50-story-panel,
+.living-map-panel,
+.daily-gift-panel,
+.collection-panel,
+.bedroom-panel,
+.achievement-panel{
+  content-visibility:auto;
+  contain-intrinsic-size:700px;
+}
+
+.sv-living-fireworks,
+.exp32-world-life,
+.ambient-life{
+  contain:strict;
+}
+
+@media(max-width:700px){
+  .exp70-bird:nth-child(n+4),
+  .exp70-lantern:nth-child(n+7),
+  .exp70-firefly:nth-child(n+30){
+    display:none!important;
+  }
+}

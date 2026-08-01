@@ -45,7 +45,7 @@
     if(!sessionStorage.getItem('sweetvillePassportSessionV701')){sessionStorage.setItem('sweetvillePassportSessionV701','1');if(localStorage.getItem(META))meta.totalTrips=(meta.totalTrips||1)+1;meta.lastVisit=new Date().toISOString();saveMeta()}
     bind();render();new MutationObserver(bind).observe(document.body,{childList:true,subtree:true});
     document.getElementById('exp60ResetPassport')?.addEventListener('click',()=>{if(!confirm('Reset Sweetville Passport history and stamps?'))return;const s=master();s.visited=[];localStorage.setItem(MASTER,JSON.stringify(s));meta=fresh();saveMeta();render()});
-    addEventListener('storage',render);addEventListener('sweetville:progress-changed',render);setInterval(render,2200);
+    addEventListener('storage',render);addEventListener('sweetville:progress-changed',render);setInterval(() => { if (document.visibilityState === 'visible') render(); },5000);
   };
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();

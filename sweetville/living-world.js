@@ -20,7 +20,7 @@
     set('#cinematicHearts',`${(s.hearts||[]).length} / 5`);
     set('#cinematicVisits',(s.visited||[]).length);
   };
-  syncStats(); window.addEventListener('storage',syncStats); setInterval(syncStats,1800);
+  syncStats(); window.addEventListener('storage',syncStats); setInterval(() => { if (document.visibilityState === 'visible') syncStats(); },5000);
   $$('.district-card').forEach(card=>card.addEventListener('click',()=>{
     const slug=card.dataset.openLocation;
     if(slug){
@@ -941,7 +941,7 @@
   document.getElementById('exp50BeginChapter')?.addEventListener('click',()=>setTimeout(sync,1300));
   document.getElementById('exp50ReplayStory')?.addEventListener('click',()=>setTimeout(sync,200));
   if(finale)new MutationObserver(sync).observe(finale,{attributes:true,attributeFilter:['hidden']});
-  addEventListener('storage',sync);setInterval(sync,1200);sync();
+  addEventListener('storage',sync);setInterval(() => { if (document.visibilityState === 'visible') sync(); },4000);sync();
 })();
 
 /* SWEETVILLE EXP 6.0 — PASSPORT EDITION */
