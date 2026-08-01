@@ -3510,3 +3510,410 @@ html[data-sv72-audio-ducked="true"]{
   .exp80-smile-card{align-items:flex-start;flex-direction:column}
   .exp80-smile-card button{width:100%}
 }
+
+/* =========================================================
+   SWEETVILLE EXP 8.0.1 — SWEETVILLE UI POLISH
+   Luxury storybook + modern editorial + magical warmth
+   ========================================================= */
+
+.exp80-moments-panel{
+  --exp801-rose:#ff70b8;
+  --exp801-cotton:#ffd7eb;
+  --exp801-lavender:#d9c6ff;
+  --exp801-cream:#fff9f4;
+  --exp801-gold:#f6d58d;
+  --exp801-ink:#5a2146;
+}
+
+.exp80-moments-panel .sv-section-heading{
+  position:relative;
+  padding-top:1rem;
+}
+
+.exp80-moments-panel .sv-section-heading::before,
+.exp80-moments-panel .sv-section-heading::after{
+  content:"✦";
+  position:absolute;
+  top:1.15rem;
+  color:var(--exp801-gold);
+  opacity:.7;
+}
+
+.exp80-moments-panel .sv-section-heading::before{left:0}
+.exp80-moments-panel .sv-section-heading::after{right:0}
+
+.exp80-moments-panel .sv-section-heading h2{
+  text-shadow:0 10px 30px rgba(255,87,177,.16);
+}
+
+.exp80-welcome-card{
+  position:relative;
+  overflow:hidden;
+  padding:1.6rem 1.6rem 3.7rem;
+  border:1px solid rgba(120,56,95,.14);
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.9),rgba(255,243,249,.78)),
+    var(--exp801-cream);
+  color:var(--exp801-ink);
+  box-shadow:
+    0 24px 60px rgba(61,13,48,.2),
+    inset 0 0 0 1px rgba(255,255,255,.85);
+}
+
+.exp80-welcome-card::before{
+  content:"";
+  position:absolute;
+  inset:12px;
+  border:1px solid rgba(218,151,187,.26);
+  border-radius:18px;
+  pointer-events:none;
+}
+
+.exp80-welcome-card::after{
+  content:"";
+  position:absolute;
+  right:-24px;
+  top:-30px;
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle,rgba(255,255,255,.95) 0 7%,transparent 8%),
+    radial-gradient(circle at 30% 30%,rgba(255,128,190,.5),transparent 55%);
+  opacity:.55;
+  filter:blur(1px);
+}
+
+.exp80-welcome-icon{
+  flex:0 0 auto;
+  position:relative;
+  width:70px;
+  height:70px;
+  border:2px solid rgba(255,255,255,.85);
+  background:
+    linear-gradient(145deg,#ff9bd0,#ff6fb7 45%,#b481ff);
+  box-shadow:
+    inset 0 4px 8px rgba(255,255,255,.34),
+    0 12px 30px rgba(255,74,176,.28);
+}
+
+.exp80-welcome-icon::after{
+  content:"";
+  position:absolute;
+  top:7px;
+  left:12px;
+  width:28px;
+  height:12px;
+  border-radius:50%;
+  background:rgba(255,255,255,.42);
+  transform:rotate(-15deg);
+}
+
+.exp80-welcome-card h3{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(1.65rem,3vw,2.35rem);
+}
+
+.exp80-welcome-card p{
+  max-width:62ch;
+  line-height:1.75;
+}
+
+.exp801-signature{
+  position:absolute;
+  right:1.8rem;
+  bottom:1.1rem;
+  display:flex;
+  align-items:flex-end;
+  gap:.45rem;
+  color:#b94480;
+  transform:rotate(-2deg);
+}
+
+.exp801-signature span{
+  font-size:.75rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.exp801-signature strong{
+  font-family:"Sacramento",cursive;
+  font-size:1.8rem;
+  font-weight:400;
+}
+
+.exp80-moment-card{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.32);
+  background:
+    radial-gradient(circle at 80% 12%,rgba(255,255,255,.26),transparent 24%),
+    linear-gradient(145deg,#8d4ac7 0%,#d558a3 45%,#ff8ac6 100%);
+  box-shadow:
+    0 26px 60px rgba(67,20,68,.28),
+    inset 0 1px 0 rgba(255,255,255,.36);
+}
+
+.exp80-moment-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(110deg,transparent 0 36%,rgba(255,255,255,.16) 42%,transparent 49%),
+    repeating-linear-gradient(135deg,rgba(255,255,255,.025) 0 1px,transparent 1px 8px);
+}
+
+.exp80-moment-card h3{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(2rem,4vw,3.4rem);
+  line-height:1;
+}
+
+.exp80-moment-card p{
+  max-width:50ch;
+  line-height:1.7;
+}
+
+.exp80-keepsake-card{
+  position:relative;
+  overflow:hidden;
+  padding:1.8rem 1.7rem 2.6rem;
+  color:var(--exp801-ink);
+  border:10px solid #fff;
+  border-radius:22px;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.96),rgba(255,244,235,.92)),
+    var(--exp801-cream);
+  box-shadow:
+    0 20px 50px rgba(68,24,53,.2),
+    0 0 0 1px rgba(207,146,177,.25);
+  transform:rotate(1deg);
+}
+
+.exp80-keepsake-card::before{
+  content:"";
+  position:absolute;
+  inset:14px;
+  border:1px dashed rgba(192,97,145,.32);
+  border-radius:14px;
+  pointer-events:none;
+}
+
+.exp80-keepsake-card::after{
+  content:"♡";
+  position:absolute;
+  right:1.3rem;
+  bottom:1rem;
+  font-size:3.6rem;
+  color:rgba(255,103,181,.15);
+  transform:rotate(-12deg);
+}
+
+.exp80-keepsake-card h3{
+  position:relative;
+  z-index:2;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(1.8rem,3vw,2.65rem);
+}
+
+.exp80-keepsake-card p{
+  position:relative;
+  z-index:2;
+  line-height:1.7;
+}
+
+.exp801-postmark{
+  position:absolute;
+  right:1.2rem;
+  top:1.1rem;
+  width:84px;
+  height:84px;
+  display:grid;
+  place-items:center;
+  align-content:center;
+  border:2px solid rgba(181,76,129,.48);
+  border-radius:50%;
+  color:#b64f86;
+  transform:rotate(10deg);
+  opacity:.76;
+}
+
+.exp801-postmark span,
+.exp801-postmark small{
+  display:block;
+  line-height:1.1;
+  letter-spacing:.08em;
+  font-weight:900;
+}
+
+.exp801-postmark span{font-size:.68rem}
+.exp801-postmark small{font-size:.5rem}
+
+.exp80-smile-card{
+  position:relative;
+  overflow:hidden;
+  border:8px solid #fff;
+  background:
+    linear-gradient(135deg,#fff8fc 0%,#fde5f3 55%,#eee4ff 100%);
+  color:var(--exp801-ink);
+  box-shadow:
+    0 18px 46px rgba(52,16,45,.22),
+    0 0 0 1px rgba(255,140,199,.18);
+}
+
+.exp80-smile-card::before{
+  content:"SWEETVILLE DAILY";
+  position:absolute;
+  left:-33px;
+  top:23px;
+  padding:.35rem 2.6rem;
+  background:#ff72b7;
+  color:#fff;
+  font-size:.55rem;
+  letter-spacing:.13em;
+  font-weight:900;
+  transform:rotate(-42deg);
+}
+
+.exp80-smile-card strong{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(1.15rem,2.5vw,1.65rem);
+  line-height:1.45;
+}
+
+.exp801-paws{
+  position:absolute;
+  right:1rem;
+  bottom:.4rem;
+  opacity:.2;
+  transform:rotate(-9deg);
+}
+
+.exp801-candy-button{
+  position:relative!important;
+  isolation:isolate;
+  overflow:hidden!important;
+  border:1px solid rgba(255,255,255,.65)!important;
+  border-radius:999px!important;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.38),
+    inset 0 -4px 10px rgba(110,15,73,.16),
+    0 10px 25px rgba(87,18,67,.22)!important;
+  text-shadow:0 1px 1px rgba(92,18,63,.18);
+}
+
+.exp801-candy-button::before{
+  content:"";
+  position:absolute;
+  inset:2px 8% auto;
+  height:42%;
+  border-radius:999px;
+  background:linear-gradient(180deg,rgba(255,255,255,.48),rgba(255,255,255,0));
+  pointer-events:none;
+  z-index:-1;
+}
+
+.exp801-candy-button:hover{
+  transform:translateY(-3px) scale(1.015)!important;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.48),
+    inset 0 -4px 10px rgba(110,15,73,.13),
+    0 15px 32px rgba(95,18,73,.28),
+    0 0 22px rgba(255,95,184,.28)!important;
+}
+
+.exp801-candy-button:active{
+  transform:translateY(1px) scale(.985)!important;
+}
+
+.exp801-button-sparkle{
+  display:inline-block;
+  margin-left:.45rem;
+  font-size:.78em;
+  opacity:.75;
+  animation:exp801Sparkle 2.6s ease-in-out infinite;
+}
+
+.exp80-smile-card button.exp801-candy-button{
+  background:linear-gradient(145deg,#ff8bc8,#ff6aad 55%,#c271f0)!important;
+  color:#fff!important;
+}
+
+.exp80-keepsake-card .sv-button.secondary.exp801-candy-button{
+  color:#6a214d!important;
+  background:linear-gradient(145deg,#fff,#ffeaf4 60%,#f5ddff)!important;
+}
+
+.exp80-moment-card .sv-button.primary.exp801-candy-button{
+  background:linear-gradient(145deg,#fff2f9,#ffcce5 45%,#ff8ac5)!important;
+  color:#6a214d!important;
+}
+
+.exp801-card-flip{
+  animation:exp801CardFlip .55s cubic-bezier(.22,.61,.36,1);
+}
+
+.exp801-saved{
+  animation:exp801Saved 1.15s ease both;
+}
+
+.exp801-warm{
+  animation:exp801Warm 1.8s ease;
+}
+
+@keyframes exp801Sparkle{
+  0%,100%{transform:rotate(0) scale(.9);opacity:.45}
+  50%{transform:rotate(20deg) scale(1.18);opacity:1}
+}
+
+@keyframes exp801CardFlip{
+  0%{transform:perspective(700px) rotateX(0)}
+  45%{transform:perspective(700px) rotateX(7deg) scale(.99)}
+  100%{transform:none}
+}
+
+@keyframes exp801Saved{
+  0%{transform:rotate(1deg) scale(1)}
+  45%{transform:rotate(-1deg) scale(1.025);box-shadow:0 24px 60px rgba(68,24,53,.24),0 0 36px rgba(255,103,181,.32)}
+  100%{transform:rotate(1deg) scale(1)}
+}
+
+@keyframes exp801Warm{
+  0%,100%{filter:brightness(1)}
+  45%{filter:brightness(1.06)}
+}
+
+@media(max-width:650px){
+  .exp801-signature{
+    position:relative;
+    right:auto;
+    bottom:auto;
+    margin-top:1rem;
+    justify-content:flex-end;
+  }
+
+  .exp80-welcome-card{
+    padding-bottom:1.5rem;
+  }
+
+  .exp801-postmark{
+    width:68px;
+    height:68px;
+    right:.8rem;
+    top:.8rem;
+  }
+
+  .exp80-keepsake-card{
+    transform:none;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .exp801-button-sparkle,
+  .exp801-card-flip,
+  .exp801-saved,
+  .exp801-warm{
+    animation:none!important;
+  }
+}
