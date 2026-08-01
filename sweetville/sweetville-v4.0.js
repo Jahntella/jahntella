@@ -129,7 +129,29 @@
     "stampButton","hiddenHeart","heartStatus","hiddenLetter","letterStatus",
     "hiddenCollectible","collectibleStatus","letterModal","letterClose","letterTitle","letterBody",
     "achievementToast","toastIcon","toastKicker","toastTitle"
+
   ].forEach(id => E[id] = el(id));
+
+  /*
+   * EXP 6.1.1 — SAFE LEGACY ELEMENT GUARD
+   * Older Sweetville systems still reference a few sections that newer
+   * layouts replaced. A missing element must never stop the entire script.
+   */
+  Object.keys(E).forEach(id => {
+    if (E[id]) return;
+
+    const fallback = document.createElement("div");
+    fallback.dataset.sweetvilleFallback = id;
+    fallback.hidden = true;
+    fallback.setAttribute("aria-hidden", "true");
+
+    // Dialog-only methods are not available on a normal div.
+    fallback.showModal = () => {};
+    fallback.close = () => {};
+
+    E[id] = fallback;
+  });
+
 
   const KEY = "jahntellaSweetvilleV4";
   const LEGACY_KEY = "jahntellaSweetvilleV1";

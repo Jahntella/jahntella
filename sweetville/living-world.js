@@ -1279,3 +1279,47 @@
   window.addEventListener('storage',()=>{state=read();render()});
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',render,{once:true});else render();
 })();
+
+/* SWEETVILLE EXP 6.1.1 — INTRO RECOVERY */
+(() => {
+  const intro = document.getElementById('svCinematicIntro');
+  const skip = document.getElementById('svCinemaSkip');
+
+  const unlock = () => {
+    document.documentElement.classList.remove('sv-scroll-locked');
+    document.body.classList.remove('sv-scroll-locked');
+    document.documentElement.style.removeProperty('overflow');
+    document.body.style.removeProperty('overflow');
+    document.documentElement.style.removeProperty('height');
+    document.body.style.removeProperty('height');
+  };
+
+  const finish = () => {
+    if (intro) {
+      intro.classList.add('finished');
+      intro.setAttribute('aria-hidden', 'true');
+      intro.style.pointerEvents = 'none';
+    }
+    unlock();
+  };
+
+  skip?.addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    finish();
+  }, { capture: true });
+
+  if (intro) {
+    const observer = new MutationObserver(() => {
+      if (intro.classList.contains('finished')) {
+        unlock();
+        observer.disconnect();
+      }
+    });
+    observer.observe(intro, { attributes: true, attributeFilter: ['class'] });
+  }
+
+  // Never allow a cinematic regression to trap a visitor.
+  window.setTimeout(unlock, 42000);
+  window.sweetvilleEmergencyIntroExit = finish;
+})();
