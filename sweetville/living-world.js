@@ -265,7 +265,7 @@
 
 
 
-/* SWEETVILLE EXP 2.0 — Cinematic fly-through */
+/* SWEETVILLE EXP 3.0 — Cinematic journey */
 (() => {
   const intro = document.getElementById('svCinematicIntro');
   if (!intro) return;
@@ -276,7 +276,7 @@
   const finale = intro.querySelector('.sv-cinema-finale');
   const sparkles = document.getElementById('svCinemaSparkles');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const duration = reduced ? 700 : 3200;
+  const duration = reduced ? 700 : 3600;
   let index = 0;
   let timer;
 
@@ -297,7 +297,7 @@
     if (progress) progress.style.width = '100%';
     window.setTimeout(() => {
       intro.classList.add('finished');
-      window.sessionStorage.setItem('sweetvilleExp2Seen', '1');
+      window.sessionStorage.setItem('sweetvilleExp3Seen', '1');
     }, reduced ? 300 : 1500);
   };
 
@@ -313,7 +313,7 @@
 
   skip?.addEventListener('click', finish);
 
-  if (window.sessionStorage.getItem('sweetvilleExp2Seen') === '1') {
+  if (window.sessionStorage.getItem('sweetvilleExp3Seen') === '1') {
     intro.classList.add('finished');
   } else {
     document.body.style.overflow = 'hidden';

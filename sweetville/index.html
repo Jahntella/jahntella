@@ -5,75 +5,26 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#120015">
   <meta name="description" content="Enter Sweetville Build v4.0: an interactive living world with districts, music, hidden letters, collectibles, achievements, and a room that grows with your journey.">
-  <title>Sweetville EXP 2.0 — Cinematic Experience</title>
+  <title>Sweetville EXP 3.0 — The Journey Begins</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="sweetville.css?v=exp-2.0">
+  <link rel="stylesheet" href="sweetville.css?v=exp-3.0">
 </head>
 <body>
 
-  <section class="sv-cinematic-intro" id="svCinematicIntro" aria-label="Sweetville cinematic introduction">
-    <div class="sv-cinema-scene scene-castle active" data-scene="0">
-      <div class="sv-scene-image"></div>
-      <div class="sv-pink-fog fog-one"></div>
-      <div class="sv-pink-fog fog-two"></div>
-      <div class="sv-cinema-copy">
-        <small>WELCOME TO</small>
-        <h1>SWEETVILLE</h1>
-        <p>Where every dream leaves a little sparkle.</p>
-      </div>
-    </div>
-
-    <div class="sv-cinema-scene scene-carnival" data-scene="1">
-      <div class="sv-scene-image"></div>
-      <div class="sv-cinema-copy">
-        <small>DREAM CARNIVAL</small>
-        <h2>Wonder is always turning.</h2>
-      </div>
-    </div>
-
-    <div class="sv-cinema-scene scene-lake" data-scene="2">
-      <div class="sv-scene-image"></div>
-      <div class="sv-cinema-copy">
-        <small>SPARKLE LAKE</small>
-        <h2>Follow the light across the water.</h2>
-      </div>
-    </div>
-
-    <div class="sv-cinema-scene scene-candy" data-scene="3">
-      <div class="sv-scene-image"></div>
-      <div class="sv-cinema-copy">
-        <small>CANDY LANE</small>
-        <h2>Every corner has something sweet.</h2>
-      </div>
-    </div>
-
-    <div class="sv-cinema-scene scene-stage" data-scene="4">
-      <div class="sv-scene-image"></div>
-      <div class="sv-cinema-copy">
-        <small>STARLIGHT STAGE</small>
-        <h2>The world is waiting for the music.</h2>
-      </div>
-    </div>
-
-    <div class="sv-cinema-scene scene-neon" data-scene="5">
-      <div class="sv-scene-image"></div>
-      <div class="sv-cinema-copy">
-        <small>NEON SWEETHEART</small>
-        <h2>Bright lights. Big dreams.</h2>
-      </div>
-    </div>
-
-    <div class="sv-cinema-finale">
-      <span>♡</span>
-      <strong>WELCOME HOME, SWEETIE.</strong>
-    </div>
-
-    <div class="sv-cinema-sparkles" id="svCinemaSparkles" aria-hidden="true"></div>
-    <div class="sv-cinema-progress"><i id="svCinemaProgress"></i></div>
-    <button class="sv-cinema-skip" id="svCinemaSkip" type="button">SKIP INTRO</button>
-  </section>
+  <section class="sv-cinematic-intro exp3" id="svCinematicIntro" aria-label="Sweetville cinematic introduction">
+<div class="sv-cinema-scene scene-gates active" data-scene="0"><div class="sv-scene-image"></div><div class="sv-pink-fog fog-one"></div><div class="sv-pink-fog fog-two"></div><div class="sv-cinema-copy"><small>THE JOURNEY BEGINS</small><h1>SWEETVILLE</h1><p>The gates are open.</p></div></div>
+<div class="sv-cinema-scene scene-castle" data-scene="1"><div class="sv-scene-image"></div><div class="sv-cinema-copy"><small>SWEETVILLE CASTLE</small><h2>Where every story begins.</h2></div></div>
+<div class="sv-cinema-scene scene-carnival" data-scene="2"><div class="sv-scene-image"></div><div class="sv-cinema-copy"><small>DREAM CARNIVAL</small><h2>Wonder is always turning.</h2></div></div>
+<div class="sv-cinema-scene scene-lake" data-scene="3"><div class="sv-scene-image"></div><div class="sv-cinema-copy"><small>SPARKLE LAKE</small><h2>Follow the light across the water.</h2></div></div>
+<div class="sv-cinema-scene scene-donut" data-scene="4"><div class="sv-scene-image"></div><div class="sv-cinema-copy"><small>DONUT DISTRICT</small><h2>Fresh magic. Made daily.</h2></div></div>
+<div class="sv-cinema-scene scene-candy" data-scene="5"><div class="sv-scene-image"></div><div class="sv-cinema-copy"><small>CANDY LANE</small><h2>Every step is a sweet moment.</h2></div></div>
+<div class="sv-cinema-scene scene-stage" data-scene="6"><div class="sv-scene-image"></div><div class="sv-cinema-copy"><small>STARLIGHT STAGE</small><h2>The world is waiting for the music.</h2></div></div>
+<div class="sv-cinema-scene scene-neon" data-scene="7"><div class="sv-scene-image"></div><div class="sv-cinema-copy"><small>NEON SWEETHEART</small><h2>Bright lights. Big dreams.</h2></div></div>
+<div class="sv-cinema-scene scene-mochi" data-scene="8"><div class="sv-scene-image"></div><div class="sv-cinema-copy"><small>MOCHI MOMENT</small><h2>Take a moment. You deserve it.</h2></div></div>
+<div class="sv-cinema-scene scene-home" data-scene="9"><div class="sv-scene-image"></div><div class="sv-cinema-copy"><small>WELCOME HOME</small><h2>You belong here.</h2></div></div>
+<div class="sv-cinema-finale"><span>♡</span><strong>WELCOME HOME, SWEETIE.</strong></div><div class="sv-cinema-sparkles" id="svCinemaSparkles" aria-hidden="true"></div><div class="sv-cinema-progress"><i id="svCinemaProgress"></i></div><button class="sv-cinema-skip" id="svCinemaSkip" type="button">SKIP INTRO</button></section>
 
   <div class="gate-screen" id="gateScreen">
     <div class="gate-copy">
@@ -136,7 +87,7 @@
 
     <section class="sv-hero" id="world">
       <div class="sv-hero-copy">
-        <p class="sv-eyebrow">SWEETVILLE EXP 2.0</p>
+        <p class="sv-eyebrow">SWEETVILLE EXP 3.0</p>
         <h1>The world comes <em>alive.</em></h1>
         <p class="sv-lede">Explore an interactive city where every district has its own mood, music, hidden letter, collectible, and little moment from Jahntella.</p>
         <div class="sv-actions">
@@ -426,6 +377,6 @@
     </div>
   </dialog>
 
-  <script src="living-world.js?v=exp-2.0"></script>
+  <script src="living-world.js?v=exp-3.0"></script>
 </body>
 </html>
