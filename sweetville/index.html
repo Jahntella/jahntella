@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#120015">
   <meta name="description" content="Enter Sweetville Build v4.0: an interactive living world with districts, music, hidden letters, collectibles, achievements, and a room that grows with your journey.">
-  <title>Sweetville EXP 9.0 — Jahntella's Coloring Studio</title>
+  <title>Sweetville EXP 9.1 — Sweetville Gallery</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="sweetville.css?v=9.0">
+  <link rel="stylesheet" href="sweetville.css?v=9.1">
 </head>
 <body>
 
@@ -86,6 +86,7 @@
       <a href="#world">World</a>
       <a href="#littleMoments">Little Moments</a>
       <a href="#coloringStudio">Coloring Studio</a>
+      <a href="#sweetvilleGallery">My Gallery</a>
       <a href="#livingMap">Map</a>
       <a href="#gift">Daily Gift</a>
       <a href="#letters">Letters</a>
@@ -117,7 +118,7 @@
 
     <section class="sv-hero" id="world">
       <div class="sv-hero-copy">
-        <p class="sv-eyebrow">SWEETVILLE EXP 9.0</p>
+        <p class="sv-eyebrow">SWEETVILLE EXP 9.1</p>
         <h1>The world comes <em>alive.</em></h1>
         <p class="sv-lede">Explore an interactive city where every district has its own mood, music, hidden letter, collectible, and little moment from Jahntella.</p>
         <div class="sv-actions">
@@ -282,6 +283,40 @@
             <button type="button" class="sv-button secondary" id="exp90SaveBrowser">Save to My Gallery</button>
             <button type="button" class="sv-button primary" id="exp90Download">Download Artwork</button>
           </div>
+        </div>
+      </div>
+    </section>
+
+
+    
+    <section class="sv-panel exp91-gallery-panel" id="sweetvilleGallery">
+      <div class="sv-section-heading">
+        <p class="sv-eyebrow">MY SWEETVILLE GALLERY</p>
+        <h2>Your creations deserve a place to <em>shine.</em></h2>
+        <p>Every coloring page you save becomes a framed memory from time spent creating with Jahntella.</p>
+      </div>
+
+      <div class="exp91-gallery-shell">
+        <div class="exp91-gallery-toolbar">
+          <div>
+            <small>YOUR CREATIVE MEMORIES</small>
+            <strong><span id="exp91GalleryCount">0</span> artwork saved</strong>
+          </div>
+          <button type="button" class="sv-button secondary" id="exp91OpenLatest">Open Latest Artwork</button>
+        </div>
+
+        <div class="exp91-gallery-wall" id="exp91GalleryWall" aria-live="polite">
+          <div class="exp91-gallery-empty">
+            <span>🎨</span>
+            <h3>Your gallery is waiting.</h3>
+            <p>Save a coloring page and Jahntella will frame it here for you.</p>
+            <a class="sv-button primary" href="#coloringStudio">Create Your First Artwork</a>
+          </div>
+        </div>
+
+        <div class="exp91-gallery-note">
+          <span>💋</span>
+          <p id="exp91GalleryMessage">“I can’t wait to see what you make.” — Jahntella</p>
         </div>
       </div>
     </section>
@@ -466,6 +501,18 @@
         <p>Collected treasures appear on the shelf, passport stamps decorate the wall, and achievements add new sparkle.</p>
       </div>
       <div class="sweetie-room">
+      <div class="exp91-room-art-wall" id="exp91RoomArtWall">
+        <div class="exp91-room-frame">
+          <div class="exp91-room-art-placeholder">🎨</div>
+          <img id="exp91RoomArtwork" alt="Latest Sweetville artwork" hidden>
+        </div>
+        <div>
+          <small>YOUR ARTWORK</small>
+          <strong id="exp91RoomArtworkTitle">No artwork displayed yet</strong>
+          <a href="#sweetvilleGallery">Visit My Gallery</a>
+        </div>
+      </div>
+
         <div class="room-window"><span class="room-moon">☾</span><i></i><i></i><i></i></div>
         <div class="room-poster">Jahntella<span>♡</span></div>
         <div class="room-passport" id="roomPassport">PASSPORT<br><span id="roomStampCount">0 STAMPS</span></div>
@@ -660,9 +707,9 @@
     <span id="toastIcon">🏆</span>
     <div><small id="toastKicker">NEW ACHIEVEMENT</small><strong id="toastTitle">Explorer</strong></div>
   </div>
-  <script src="intro-carousel.js?v=9.0" defer></script>
+  <script src="intro-carousel.js?v=9.1" defer></script>
 
-  <script src="sweetville-v4.0.js?v=9.0"></script>
+  <script src="sweetville-v4.0.js?v=9.1"></script>
 <dialog class="mini-piano-modal" id="miniPianoModal" aria-labelledby="miniPianoTitle">
     <div class="mini-piano-shell">
       <button class="mini-piano-close" id="miniPianoClose" type="button" aria-label="Close mini piano">×</button>
@@ -688,16 +735,17 @@
     </div>
   </dialog>
 
-  <script src="living-world.js?v=9.0"></script>
-  <script src="engine-core.js?v=9.0" defer></script>
-  <script src="living-magic.js?v=9.0" defer></script>
-  <script src="passport.js?v=9.0" defer></script>
-  <script src="stability.js?v=9.0" defer></script>
-  <script src="magic-polish.js?v=9.0" defer></script>
-  <script src="piano-fix.js?v=9.0" defer></script>
-  <script src="little-moments.js?v=9.0" defer></script>
-  <script src="ui-polish.js?v=9.0" defer></script>
-  <script src="touch-the-world.js?v=9.0" defer></script>
-  <script src="coloring-studio.js?v=9.0" defer></script>
+  <script src="living-world.js?v=9.1"></script>
+  <script src="engine-core.js?v=9.1" defer></script>
+  <script src="living-magic.js?v=9.1" defer></script>
+  <script src="passport.js?v=9.1" defer></script>
+  <script src="stability.js?v=9.1" defer></script>
+  <script src="magic-polish.js?v=9.1" defer></script>
+  <script src="piano-fix.js?v=9.1" defer></script>
+  <script src="little-moments.js?v=9.1" defer></script>
+  <script src="ui-polish.js?v=9.1" defer></script>
+  <script src="touch-the-world.js?v=9.1" defer></script>
+  <script src="coloring-studio.js?v=9.1" defer></script>
+  <script src="sweetville-gallery.js?v=9.1" defer></script>
 </body>
 </html>

@@ -4273,3 +4273,381 @@ body.exp90-lock{overflow:hidden!important}
 @media(max-width:980px){.exp90-studio-shell{grid-template-columns:1fr}.exp90-host-card{position:relative;top:auto}.exp90-tools{grid-template-columns:1fr 1fr}.exp90-action-tools{grid-column:1/-1}}
 @media(max-width:650px){.exp90-canvas-card{padding:.75rem}.exp90-tools{grid-template-columns:1fr}.exp90-action-tools{grid-column:auto}.exp90-save-row .sv-button{width:100%;justify-content:center}}
 @media(prefers-reduced-motion:reduce){.exp90-celebrate{animation:none!important}.exp90-progress-track i{transition:none!important}}
+
+/* =========================================================
+   SWEETVILLE EXP 9.1 — SWEETVILLE GALLERY
+   ========================================================= */
+
+.exp91-gallery-panel{
+  position:relative;
+  overflow:hidden;
+}
+
+.exp91-gallery-panel::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 10% 18%,rgba(255,184,221,.15),transparent 27%),
+    radial-gradient(circle at 88% 72%,rgba(181,133,255,.14),transparent 32%);
+}
+
+.exp91-gallery-shell{
+  position:relative;
+  display:grid;
+  gap:1rem;
+}
+
+.exp91-gallery-toolbar,
+.exp91-gallery-note{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  padding:1rem 1.15rem;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:22px;
+  background:rgba(255,255,255,.065);
+  backdrop-filter:blur(16px);
+}
+
+.exp91-gallery-toolbar small,
+.exp91-gallery-toolbar strong{
+  display:block;
+}
+
+.exp91-gallery-toolbar small{
+  letter-spacing:.12em;
+  font-size:.67rem;
+  font-weight:800;
+  opacity:.66;
+}
+
+.exp91-gallery-toolbar strong{
+  margin-top:.2rem;
+  font-family:"Playfair Display",serif;
+  font-size:1.25rem;
+}
+
+.exp91-gallery-wall{
+  min-height:340px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:1.25rem;
+  padding:1.25rem;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:28px;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025)),
+    repeating-linear-gradient(90deg,rgba(255,255,255,.018) 0 1px,transparent 1px 34px);
+  box-shadow:inset 0 0 60px rgba(0,0,0,.13);
+}
+
+.exp91-gallery-empty{
+  grid-column:1/-1;
+  align-self:center;
+  justify-self:center;
+  max-width:500px;
+  text-align:center;
+  padding:2rem;
+}
+
+.exp91-gallery-empty>span{
+  font-size:3rem;
+}
+
+.exp91-gallery-empty h3{
+  margin:.6rem 0 .35rem;
+  font-family:"Playfair Display",serif;
+  font-size:2rem;
+}
+
+.exp91-gallery-empty p{
+  margin:0 0 1rem;
+  opacity:.76;
+}
+
+.exp91-art-frame{
+  position:relative;
+  align-self:start;
+  padding:11px;
+  border-radius:13px;
+  background:
+    linear-gradient(145deg,#f9dba0,#a36b2a 30%,#f6cf89 56%,#7f4a1d);
+  box-shadow:
+    0 18px 42px rgba(0,0,0,.29),
+    inset 0 0 0 2px rgba(255,255,255,.25);
+  transform:rotate(var(--tilt));
+  transition:transform .32s ease,box-shadow .32s ease;
+}
+
+.exp91-art-frame:hover{
+  transform:rotate(0) translateY(-7px) scale(1.015);
+  box-shadow:
+    0 25px 55px rgba(0,0,0,.34),
+    0 0 28px rgba(255,100,185,.2);
+}
+
+.exp91-art-frame.displayed{
+  box-shadow:
+    0 25px 58px rgba(0,0,0,.34),
+    0 0 0 3px rgba(255,123,195,.4),
+    0 0 34px rgba(255,88,177,.32);
+}
+
+.exp91-art-open{
+  position:relative;
+  display:block;
+  width:100%;
+  padding:0;
+  border:0;
+  cursor:pointer;
+  background:#fff;
+  overflow:hidden;
+}
+
+.exp91-art-open img{
+  display:block;
+  width:100%;
+  aspect-ratio:5/6;
+  object-fit:cover;
+  background:#fff;
+}
+
+.exp91-frame-glow{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  box-shadow:inset 0 0 25px rgba(255,255,255,.32);
+}
+
+.exp91-art-caption{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:.7rem;
+  padding:.75rem .3rem .2rem;
+  color:#fff8e9;
+}
+
+.exp91-art-caption strong,
+.exp91-art-caption small{
+  display:block;
+}
+
+.exp91-art-caption strong{
+  font-family:"Playfair Display",serif;
+  line-height:1.1;
+}
+
+.exp91-art-caption small{
+  margin-top:.18rem;
+  opacity:.72;
+}
+
+.exp91-art-delete{
+  width:30px;
+  height:30px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:50%;
+  color:#fff;
+  background:rgba(60,20,44,.4);
+  cursor:pointer;
+}
+
+.exp91-room-tag{
+  position:absolute;
+  top:-10px;
+  right:12px;
+  padding:.35rem .55rem;
+  border-radius:999px;
+  color:#6f234f;
+  background:#fff1f8;
+  font-size:.57rem;
+  letter-spacing:.08em;
+  font-weight:900;
+  box-shadow:0 7px 18px rgba(0,0,0,.2);
+}
+
+.exp91-gallery-note{
+  justify-content:flex-start;
+}
+
+.exp91-gallery-note>span{
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  flex:0 0 auto;
+  border-radius:50%;
+  background:linear-gradient(145deg,#ff9bd1,#b57df0);
+}
+
+.exp91-gallery-note p{
+  margin:0;
+  font-family:"Playfair Display",serif;
+}
+
+.exp91-artwork-modal{
+  width:min(920px,94vw);
+  max-height:92vh;
+  padding:0;
+  border:0;
+  border-radius:28px;
+  color:#fff;
+  background:#190719;
+  box-shadow:0 35px 100px rgba(0,0,0,.55);
+}
+
+.exp91-artwork-modal::backdrop{
+  background:rgba(5,0,8,.82);
+  backdrop-filter:blur(8px);
+}
+
+.exp91-modal-card{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr);
+  min-height:520px;
+}
+
+.exp91-modal-card>img{
+  width:100%;
+  height:100%;
+  max-height:88vh;
+  object-fit:contain;
+  background:#fff4fa;
+}
+
+.exp91-modal-copy{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:2rem;
+  background:
+    radial-gradient(circle at 85% 20%,rgba(255,105,184,.18),transparent 30%),
+    linear-gradient(145deg,#2a0c28,#140516);
+}
+
+.exp91-modal-copy small{
+  letter-spacing:.13em;
+  font-weight:800;
+  opacity:.65;
+}
+
+.exp91-modal-copy h3{
+  margin:.45rem 0 .4rem;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(2rem,4vw,3.3rem);
+}
+
+.exp91-modal-copy p{
+  opacity:.72;
+}
+
+.exp91-modal-copy>div{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.7rem;
+  margin-top:1rem;
+}
+
+.exp91-modal-close{
+  position:absolute;
+  z-index:5;
+  top:12px;
+  right:12px;
+  width:42px;
+  height:42px;
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:50%;
+  color:#fff;
+  background:rgba(15,3,18,.72);
+  font-size:1.7rem;
+  cursor:pointer;
+}
+
+.exp91-room-art-wall{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  margin:1rem;
+  padding:1rem;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:22px;
+  background:rgba(255,255,255,.055);
+}
+
+.exp91-room-frame{
+  width:120px;
+  padding:8px;
+  flex:0 0 auto;
+  border-radius:8px;
+  background:linear-gradient(145deg,#f6d78f,#925920);
+  box-shadow:0 14px 30px rgba(0,0,0,.26);
+}
+
+.exp91-room-frame img,
+.exp91-room-art-placeholder{
+  display:block;
+  width:100%;
+  aspect-ratio:5/6;
+  object-fit:cover;
+  background:#fff6fb;
+}
+
+.exp91-room-art-placeholder{
+  display:grid;
+  place-items:center;
+  font-size:2rem;
+}
+
+.exp91-room-art-wall small,
+.exp91-room-art-wall strong,
+.exp91-room-art-wall a{
+  display:block;
+}
+
+.exp91-room-art-wall small{
+  letter-spacing:.12em;
+  font-size:.65rem;
+  font-weight:800;
+  opacity:.66;
+}
+
+.exp91-room-art-wall strong{
+  margin:.25rem 0 .45rem;
+  font-family:"Playfair Display",serif;
+}
+
+.exp91-room-art-wall a{
+  color:#ff9bd2;
+  font-weight:800;
+  text-decoration:none;
+}
+
+@media(max-width:760px){
+  .exp91-gallery-toolbar{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .exp91-gallery-toolbar .sv-button{
+    width:100%;
+    justify-content:center;
+  }
+
+  .exp91-modal-card{
+    grid-template-columns:1fr;
+  }
+
+  .exp91-modal-card>img{
+    max-height:58vh;
+  }
+
+  .exp91-modal-copy{
+    padding:1.3rem;
+  }
+}
