@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#120015">
   <meta name="description" content="Enter Sweetville Build v4.0: an interactive living world with districts, music, hidden letters, collectibles, achievements, and a room that grows with your journey.">
-  <title>Sweetville EXP 3.2 — Living World</title>
+  <title>Sweetville EXP 4.0 — Jahntella Lives Here</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="sweetville.css?v=exp-3.2">
+  <link rel="stylesheet" href="sweetville.css?v=exp-4.0">
 </head>
 <body>
 
@@ -25,6 +25,17 @@
 <div class="sv-cinema-scene scene-mochi" data-scene="8"><div class="sv-scene-image"></div><div class="sv-cinema-copy"><small>MOCHI MOMENT</small><h2>Take a moment. You deserve it.</h2></div></div>
 <div class="sv-cinema-scene scene-home" data-scene="9"><div class="sv-scene-image"></div><div class="sv-cinema-copy"><small>WELCOME HOME</small><h2>You belong here.</h2></div></div>
 <div class="sv-cinema-finale"><span>♡</span><strong>WELCOME HOME, SWEETIE.</strong></div><div class="sv-cinema-sparkles" id="svCinemaSparkles" aria-hidden="true"></div><div class="sv-cinema-progress"><i id="svCinemaProgress"></i></div><button class="sv-cinema-skip" id="svCinemaSkip" type="button">SKIP INTRO</button></section>
+
+  <div class="exp40-character-layer" id="exp40CharacterLayer" aria-live="polite">
+    <button class="exp40-jahntella" id="exp40Jahntella" type="button" aria-label="Jahntella is visiting Sweetville">
+      <span class="exp40-avatar">J</span>
+      <span class="exp40-character-copy"><strong>Jahntella</strong><small id="exp40JahntellaMessage">Welcome home, Sweetie.</small></span>
+    </button>
+    <button class="exp40-mochi" id="exp40Mochi" type="button" aria-label="Mochi is exploring Sweetville">
+      <span>🐶</span><i></i>
+    </button>
+    <div class="exp40-toast" id="exp40Toast" role="status"></div>
+  </div>
 
   <div class="exp32-world-life" id="exp32WorldLife" aria-hidden="true">
     <div class="exp32-petals" id="exp32Petals"></div>
@@ -94,7 +105,7 @@
 
     <section class="sv-hero" id="world">
       <div class="sv-hero-copy">
-        <p class="sv-eyebrow">SWEETVILLE EXP 3.2</p>
+        <p class="sv-eyebrow">SWEETVILLE EXP 4.0</p>
         <h1>The world comes <em>alive.</em></h1>
         <p class="sv-lede">Explore an interactive city where every district has its own mood, music, hidden letter, collectible, and little moment from Jahntella.</p>
         <div class="sv-actions">
@@ -384,6 +395,6 @@
     </div>
   </dialog>
 
-  <script src="living-world.js?v=exp-3.2"></script>
+  <script src="living-world.js?v=exp-4.0"></script>
 </body>
 </html>

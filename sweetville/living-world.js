@@ -430,3 +430,128 @@
     init();
   }
 })();
+
+/* SWEETVILLE EXP 4.0 — JAHNTELLA LIVES HERE */
+(() => {
+  const districtMoments = {
+    'pink-cafe': {
+      place: 'Candy Lane',
+      message: 'I was just picking out something sweet for Mochi.',
+      hint: 'Look closely around the café. Sweet things sometimes hide little surprises.'
+    },
+    'melody-studio': {
+      place: 'Starlight Stage',
+      message: 'I come here when a new melody is trying to find me.',
+      hint: 'The piano remembers every note you play.'
+    },
+    'donut-district': {
+      place: 'Donut District',
+      message: 'Mochi thinks every donut is his donut.',
+      hint: 'Watch the bakery lights. One of them may sparkle differently.'
+    },
+    'sparkle-lake': {
+      place: 'Sparkle Lake',
+      message: 'This is where I slow down and listen to the water.',
+      hint: 'Fireflies only reveal their secrets when the world is quiet.'
+    },
+    'neon-sweetheart': {
+      place: 'Neon Sweetheart',
+      message: 'At night, this whole city feels like one giant dream.',
+      hint: 'Some neon hearts glow brighter after you visit more than once.'
+    }
+  };
+
+  let toastTimer;
+  let visitTimer;
+
+  const showToast = (text) => {
+    const toast = document.getElementById('exp40Toast');
+    if (!toast) return;
+    clearTimeout(toastTimer);
+    toast.textContent = text;
+    toast.classList.add('show');
+    toastTimer = window.setTimeout(() => toast.classList.remove('show'), 4200);
+  };
+
+  const showJahntella = (message) => {
+    const character = document.getElementById('exp40Jahntella');
+    const copy = document.getElementById('exp40JahntellaMessage');
+    if (!character) return;
+    if (copy && message) copy.textContent = message;
+    character.classList.add('visible');
+    window.setTimeout(() => character.classList.remove('visible'), 7200);
+  };
+
+  const showMochi = () => {
+    const mochi = document.getElementById('exp40Mochi');
+    if (!mochi) return;
+    mochi.classList.add('visible');
+    window.setTimeout(() => mochi.classList.remove('visible'), 6200);
+  };
+
+  const decorateCards = () => {
+    document.querySelectorAll('.live-district-card[data-location]').forEach((card) => {
+      if (card.dataset.exp40Ready === 'true') return;
+      const moment = districtMoments[card.dataset.location];
+      if (!moment) return;
+
+      card.dataset.exp40Ready = 'true';
+      const badge = document.createElement('span');
+      badge.className = 'exp40-district-visit';
+      badge.innerHTML = `<strong>Jahntella visits here</strong><span>Tap to discover</span>`;
+      card.appendChild(badge);
+
+      card.addEventListener('click', () => {
+        showJahntella(moment.message);
+        showToast(moment.hint);
+        card.classList.add('exp40-active','exp40-presence-glow');
+        window.setTimeout(() => card.classList.remove('exp40-presence-glow'), 3800);
+      });
+    });
+  };
+
+  const randomVisit = () => {
+    const entries = Object.values(districtMoments);
+    const moment = entries[Math.floor(Math.random() * entries.length)];
+    showJahntella(`${moment.place}: ${moment.message}`);
+    if (Math.random() > .55) {
+      window.setTimeout(showMochi, 1200);
+    }
+  };
+
+  const init = () => {
+    decorateCards();
+
+    const jahntella = document.getElementById('exp40Jahntella');
+    const mochi = document.getElementById('exp40Mochi');
+
+    jahntella?.addEventListener('click', () => {
+      showToast('Jahntella left you a little sparkle. Keep exploring Sweetville.');
+    });
+
+    mochi?.addEventListener('click', () => {
+      showToast('Mochi found something! Check the next district you visit for a surprise.');
+      mochi.classList.remove('visible');
+    });
+
+    window.setTimeout(() => {
+      showJahntella('Welcome home, Sweetie. I have been waiting for you.');
+      window.setTimeout(showMochi, 1400);
+    }, 2600);
+
+    visitTimer = window.setInterval(() => {
+      if (document.visibilityState === 'visible' && !document.getElementById('svCinematicIntro')?.classList.contains('finished') === false) {
+        randomVisit();
+      }
+    }, 28000);
+
+    const observer = new MutationObserver(decorateCards);
+    observer.observe(document.body, { childList: true, subtree: true });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
+})();
