@@ -1,228 +1,178 @@
-/* SWEETVILLE EXP 8.1 — TOUCH THE WORLD */
+/* SWEETVILLE EXP 7.2.1 — PIANO AUDIO & CLOSE HOTFIX */
 (() => {
   'use strict';
 
-  const EXPERIENCE_KEY = 'sweetvilleExp81Experience';
-  const state = (() => {
-    try { return JSON.parse(localStorage.getItem(EXPERIENCE_KEY)) || {}; }
-    catch { return {}; }
-  })();
+  const init = () => {
+    const modal = document.getElementById('miniPianoModal');
+    const piano = document.getElementById('miniPiano');
+    const closeButton = document.getElementById('miniPianoClose');
+    const display = document.getElementById('pianoNoteDisplay');
 
-  state.touched = Array.isArray(state.touched) ? state.touched : [];
-  state.memories = Array.isArray(state.memories) ? state.memories : [];
-  state.actions = Number(state.actions || 0);
+    if (!modal || !piano || modal.dataset.piano721Ready === 'true') return;
+    modal.dataset.piano721Ready = 'true';
 
-  const save = () => localStorage.setItem(EXPERIENCE_KEY, JSON.stringify(state));
+    const frequencies = {
+      C4:261.63, 'C#4':277.18, D4:293.66, 'D#4':311.13,
+      E4:329.63, F4:349.23, 'F#4':369.99, G4:392,
+      'G#4':415.30, A4:440, 'A#4':466.16, B4:493.88, C5:523.25
+    };
 
-  const $ = (selector, root=document) => root.querySelector(selector);
-  const $$ = (selector, root=document) => [...root.querySelectorAll(selector)];
+    let audioContext = null;
+    let masterGain = null;
 
-  const toastHost = (() => {
-    let host = $('#exp81ToastHost');
-    if (!host) {
-      host = document.createElement('div');
-      host.id = 'exp81ToastHost';
-      host.className = 'exp81-toast-host';
-      host.setAttribute('aria-live','polite');
-      document.body.appendChild(host);
-    }
-    return host;
-  })();
+    const setAudioFocus = active => {
+      document.documentElement.dataset.sv72AudioDucked = active ? 'true' : 'false';
+      window.dispatchEvent(new CustomEvent('sweetville:audio-duck', {
+        detail:{ ducked:active }
+      }));
+    };
 
-  const toast = (title, text, icon='✨') => {
-    const card = document.createElement('div');
-    card.className = 'exp81-toast';
-    card.innerHTML = `<span>${icon}</span><div><strong>${title}</strong><small>${text}</small></div>`;
-    toastHost.appendChild(card);
-    requestAnimationFrame(() => card.classList.add('show'));
-    window.setTimeout(() => {
-      card.classList.remove('show');
-      window.setTimeout(() => card.remove(), 350);
-    }, 2800);
-  };
+    const getAudio = async () => {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContextClass) return null;
 
-  const ripple = (event, element) => {
-    if (!element) return;
-    const rect = element.getBoundingClientRect();
-    const dot = document.createElement('i');
-    dot.className = 'exp81-ripple';
-    const size = Math.max(rect.width, rect.height) * 1.15;
-    dot.style.width = dot.style.height = `${size}px`;
-    dot.style.left = `${(event.clientX || rect.left + rect.width/2) - rect.left - size/2}px`;
-    dot.style.top = `${(event.clientY || rect.top + rect.height/2) - rect.top - size/2}px`;
-    element.appendChild(dot);
-    dot.addEventListener('animationend', () => dot.remove(), {once:true});
-  };
+      if (!audioContext || audioContext.state === 'closed') {
+        audioContext = new AudioContextClass();
+        masterGain = audioContext.createGain();
+        masterGain.gain.value = .8;
+        masterGain.connect(audioContext.destination);
+      }
 
-  const confetti = (x=innerWidth/2, y=innerHeight/2, count=14) => {
-    const host = document.createElement('div');
-    host.className = 'exp81-confetti-host';
-    host.style.left = `${x}px`;
-    host.style.top = `${y}px`;
-    document.body.appendChild(host);
+      if (audioContext.state === 'suspended') {
+        try {
+          await audioContext.resume();
+        } catch {}
+      }
 
-    const chars = ['♡','✦','•','✧'];
-    for (let i=0;i<count;i++) {
-      const piece = document.createElement('span');
-      piece.textContent = chars[i % chars.length];
-      piece.style.setProperty('--x', `${(Math.random()-.5)*170}px`);
-      piece.style.setProperty('--y', `${-40-Math.random()*120}px`);
-      piece.style.setProperty('--r', `${(Math.random()-.5)*220}deg`);
-      piece.style.setProperty('--d', `${Math.random()*.2}s`);
-      host.appendChild(piece);
-    }
-    window.setTimeout(() => host.remove(), 1500);
-  };
+      return audioContext.state === 'running' ? audioContext : null;
+    };
 
-  const touch = (key, label) => {
-    state.actions += 1;
-    if (!state.touched.includes(key)) state.touched.push(key);
-    save();
-    window.dispatchEvent(new CustomEvent('sweetville:experience', {
-      detail:{key,label,actions:state.actions,touched:state.touched.length}
-    }));
-  };
+    const openModal = async event => {
+      event?.preventDefault();
+      setAudioFocus(true);
+      await getAudio();
 
-  const styleInteractiveControls = () => {
-    $$('button, .sv-button, .world-location, .exp50-chapter, .passport-stamp, [role="button"]').forEach(el => {
-      if (el.dataset.exp81Ready === 'true') return;
-      el.dataset.exp81Ready = 'true';
-      el.classList.add('exp81-touchable');
-      el.addEventListener('pointerdown', event => ripple(event, el), {passive:true});
-    });
-  };
+      try {
+        if (typeof modal.showModal === 'function') {
+          if (!modal.open) modal.showModal();
+        } else {
+          modal.setAttribute('open', '');
+        }
+      } catch {
+        modal.setAttribute('open', '');
+      }
 
-  styleInteractiveControls();
-  new MutationObserver(styleInteractiveControls).observe(document.body, {childList:true,subtree:true});
+      modal.classList.add('sv721-piano-open');
+      closeButton?.focus({ preventScroll:true });
+    };
 
-  // Districts: entering should feel like the world responds.
-  const districtMessages = {
-    'pink-cafe': ['Pink Café','The windows glow warmer. Jahntella saved you the corner table.','☕','cafe'],
-    'melody-studio': ['Melody Studio','The room hums softly. Four little notes are waiting for you.','🎹','studio'],
-    'donut-district': ['Donut District','Neon signs flicker on and the street smells like strawberry sugar.','🍩','donut'],
-    'sparkle-lake': ['Sparkle Lake','Fireflies wake over the water and the lake turns silver.','✨','lake'],
-    'neon-sweetheart': ['Neon Sweetheart','The heart lights pulse once, as though Sweetville noticed you.','💖','heart']
-  };
+    const closeModal = event => {
+      event?.preventDefault();
+      event?.stopPropagation();
 
-  $$('.world-location[data-location]').forEach(button => {
-    button.addEventListener('click', event => {
-      const id = button.dataset.location;
-      const data = districtMessages[id];
-      if (!data) return;
-      document.documentElement.dataset.exp81District = data[3];
-      button.classList.add('exp81-entered');
-      window.setTimeout(() => button.classList.remove('exp81-entered'), 1100);
-      toast(data[0], data[1], data[2]);
-      confetti(event.clientX || innerWidth*.5, event.clientY || innerHeight*.35, 10);
-      touch(`district:${id}`, data[0]);
-      $('#jahntellaMessage p')?.replaceChildren(document.createTextNode(`“${data[1]}”`));
-    });
-  });
+      try {
+        if (typeof modal.close === 'function' && modal.open) {
+          modal.close();
+        } else {
+          modal.removeAttribute('open');
+        }
+      } catch {
+        modal.removeAttribute('open');
+      }
 
-  // Little Moments: create a visible "memory tucked away" animation.
-  $('#exp80BeginMoment')?.addEventListener('click', event => {
-    const card = $('#exp80MomentCard');
-    card?.classList.add('exp81-world-response');
-    window.setTimeout(() => card?.classList.remove('exp81-world-response'), 1700);
-    toast('A Little Moment Began','Sweetville softened the lights for you.','💋');
-    confetti(event.clientX || innerWidth*.42, event.clientY || innerHeight*.45, 12);
-    touch('little-moment','Little Moment');
-  });
+      modal.classList.remove('sv721-piano-open');
+      setAudioFocus(false);
+    };
 
-  $('#exp80SaveKeepsake')?.addEventListener('click', event => {
-    const card = $('#exp80KeepsakeCard');
-    card?.classList.add('exp81-tucked');
-    const title = $('#exp80KeepsakeTitle')?.textContent?.trim() || 'Sweetville Memory';
-    if (!state.memories.includes(title)) state.memories.push(title);
-    save();
-    toast('Memory Kept',`${title} was tucked into your Sweetville scrapbook.`,'🎀');
-    confetti(event.clientX || innerWidth*.65, event.clientY || innerHeight*.48, 16);
-    touch(`memory:${title}`, title);
-  });
+    const playNote = async button => {
+      const note = button?.dataset.note;
+      const frequency = frequencies[note];
+      if (!frequency) return;
 
-  $('#exp80NewSmile')?.addEventListener('click', event => {
-    const card = $('#exp80SmileCard');
-    card?.classList.add('exp81-smile-bounce');
-    window.setTimeout(() => card?.classList.remove('exp81-smile-bounce'), 700);
-    toast('Mochi Found Another One','He is extremely proud of this joke.','🐾');
-    confetti(event.clientX || innerWidth*.72, event.clientY || innerHeight*.55, 8);
-    touch('smile-card','Smile Card');
-  });
+      const context = await getAudio();
+      if (!context || !masterGain) {
+        if (display) display.textContent = 'TAP AGAIN FOR AUDIO';
+        return;
+      }
 
-  // Passport stamps: ink press, sparkle, message.
-  $$('.passport-stamp, [data-passport], .passport-card button').forEach(stamp => {
-    stamp.addEventListener('click', event => {
-      stamp.classList.add('exp81-stamped');
-      window.setTimeout(() => stamp.classList.remove('exp81-stamped'), 900);
-      toast('Passport Stamped','Another place in Sweetville remembers your visit.','🛂');
-      confetti(event.clientX || innerWidth*.5, event.clientY || innerHeight*.5, 12);
-      touch('passport','Passport');
-    });
-  });
+      const now = context.currentTime;
+      const oscillator = context.createOscillator();
+      const gain = context.createGain();
 
-  // Story and chapter buttons: tactile page response.
-  $$('.exp50-chapter, #exp50BeginChapter, #exp50StoryHint').forEach(control => {
-    control.addEventListener('click', () => {
-      $('.exp50-story-card')?.classList.add('exp81-page-turn');
-      window.setTimeout(() => $('.exp50-story-card')?.classList.remove('exp81-page-turn'), 850);
-      toast('The Story Moved','A new page opened in Jahntella’s world.','📖');
-      touch('storybook','Storybook');
-    });
-  });
+      oscillator.type = 'triangle';
+      oscillator.frequency.setValueAtTime(frequency, now);
 
-  // Collection / bedroom / achievement sections receive a visible section pulse.
-  const pulseSection = (selector, label, icon) => {
-    const section = $(selector);
-    if (!section) return;
-    section.addEventListener('click', event => {
-      const control = event.target.closest('button,.sv-button,[role="button"]');
-      if (!control) return;
-      section.classList.add('exp81-section-awake');
-      window.setTimeout(() => section.classList.remove('exp81-section-awake'), 900);
-      toast(label, `${label} responded to your touch.`, icon);
-      touch(`section:${label}`, label);
-    });
-  };
+      gain.gain.setValueAtTime(.0001, now);
+      gain.gain.exponentialRampToValueAtTime(.36, now + .015);
+      gain.gain.exponentialRampToValueAtTime(.0001, now + .72);
 
-  pulseSection('#collection','Your Collection','🎁');
-  pulseSection('#bedroom','My Sweetie Room','🛏️');
-  pulseSection('#achievements','Your Memories','🏅');
-  pulseSection('#letters','Jahntella’s Letters','💌');
-  pulseSection('#gift','Today’s Gift','🎀');
-  pulseSection('#passport','Your Passport','🛂');
+      oscillator.connect(gain);
+      gain.connect(masterGain);
+      oscillator.start(now);
+      oscillator.stop(now + .75);
 
-  // Piano note visuals, without interfering with audio.
-  const pianoObserver = new MutationObserver(() => {
-    $$('#pianoModal button, #miniPiano button, .piano-key, [data-note]').forEach(key => {
-      if (key.dataset.exp81Piano === 'true') return;
-      key.dataset.exp81Piano = 'true';
-      key.addEventListener('click', event => {
-        const note = document.createElement('span');
-        note.className = 'exp81-note';
-        note.textContent = ['♪','♫','✦'][Math.floor(Math.random()*3)];
-        note.style.left = `${event.clientX || innerWidth/2}px`;
-        note.style.top = `${event.clientY || innerHeight/2}px`;
-        document.body.appendChild(note);
-        window.setTimeout(() => note.remove(), 1200);
-        touch('piano-note','Mini Piano');
+      button.classList.add('active');
+      if (display) display.textContent = note.replace('4','').replace('5',' HIGH');
+      window.setTimeout(() => button.classList.remove('active'), 170);
+    };
+
+    // Capture phase makes this hotfix reliable even if an older listener fails.
+    ['heroSoundButton','soundToggle'].forEach(id => {
+      document.getElementById(id)?.addEventListener('click', openModal, {
+        capture:true
       });
     });
-  });
 
-  pianoObserver.observe(document.body, {childList:true,subtree:true});
-  pianoObserver.takeRecords();
+    closeButton?.addEventListener('click', closeModal, {
+      capture:true
+    });
 
-  // Show an experience counter badge after the first interaction.
-  const badge = document.createElement('div');
-  badge.className = 'exp81-experience-badge';
-  badge.innerHTML = '<span>♡</span><div><small>WORLD RESPONSES</small><strong>0</strong></div>';
-  document.body.appendChild(badge);
+    modal.addEventListener('click', event => {
+      if (event.target === modal) closeModal(event);
+    }, { capture:true });
 
-  const updateBadge = () => {
-    $('strong', badge).textContent = String(state.actions);
-    badge.classList.toggle('visible', state.actions > 0);
+    modal.addEventListener('cancel', event => {
+      event.preventDefault();
+      closeModal(event);
+    });
+
+    modal.addEventListener('close', () => {
+      modal.classList.remove('sv721-piano-open');
+      setAudioFocus(false);
+    });
+
+    piano.querySelectorAll('.piano-key').forEach(button => {
+      const play = event => {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        playNote(button);
+      };
+      button.addEventListener('pointerdown', play, { capture:true });
+    });
+
+    document.addEventListener('keydown', event => {
+      if (!modal.open && !modal.hasAttribute('open')) return;
+
+      if (event.key === 'Escape') {
+        closeModal(event);
+        return;
+      }
+
+      if (event.repeat) return;
+      const button = piano.querySelector(`[data-key="${event.key.toLowerCase()}"]`);
+      if (button) {
+        event.preventDefault();
+        playNote(button);
+      }
+    }, { capture:true });
+
+    // Public recovery method for testing/debugging.
+    window.sweetvilleClosePiano = closeModal;
   };
 
-  updateBadge();
-  window.addEventListener('sweetville:experience', updateBadge);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once:true });
+  } else {
+    init();
+  }
 })();
