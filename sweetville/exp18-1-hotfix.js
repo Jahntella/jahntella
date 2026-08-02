@@ -1,86 +1,94 @@
-/* SWEETVILLE EXP 18.1 — STABILITY, SPEED & MOBILE MENU HOTFIX */
+/* SWEETVILLE EXP 18.1.1 — CRITICAL MOBILE MENU + PERFORMANCE FIX */
 (() => {
   'use strict';
 
-  const ready = fn => {
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', fn, {once:true});
-    } else {
-      fn();
-    }
-  };
-
-  ready(() => {
-    const button = document.getElementById('menuButton');
+  const init = () => {
+    const originalButton = document.getElementById('menuButton');
     const nav = document.getElementById('svNav');
-    const close = document.getElementById('svNavClose');
+    const originalClose = document.getElementById('svNavClose');
 
-    if (button && nav) {
-      const openMenu = event => {
-        event?.preventDefault();
-        event?.stopPropagation();
-        nav.classList.add('open');
-        document.body.classList.add('sv-menu-open');
-        button.setAttribute('aria-expanded', 'true');
+    if (originalButton && nav) {
+      // Cloning removes every older click listener attached by previous EXP builds.
+      const button = originalButton.cloneNode(true);
+      originalButton.replaceWith(button);
+
+      let closeButton = originalClose;
+      if (originalClose) {
+        closeButton = originalClose.cloneNode(true);
+        originalClose.replaceWith(closeButton);
+      }
+
+      const setOpen = open => {
+        nav.classList.toggle('open', open);
+        nav.setAttribute('aria-hidden', String(!open));
+        button.setAttribute('aria-expanded', String(open));
+        document.documentElement.classList.toggle('sv-menu-open', open);
+        document.body.classList.toggle('sv-menu-open', open);
       };
 
-      const closeMenu = event => {
-        event?.preventDefault();
-        event?.stopPropagation();
-        nav.classList.remove('open');
-        document.body.classList.remove('sv-menu-open');
-        button.setAttribute('aria-expanded', 'false');
-      };
-
-      const toggleMenu = event => {
+      button.onclick = event => {
         event.preventDefault();
-        event.stopImmediatePropagation();
-        nav.classList.contains('open') ? closeMenu() : openMenu();
+        event.stopPropagation();
+        setOpen(!nav.classList.contains('open'));
       };
 
-      button.addEventListener('click', toggleMenu, {capture:true});
-      close?.addEventListener('click', closeMenu, {capture:true});
-
-      nav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          nav.classList.remove('open');
-          document.body.classList.remove('sv-menu-open');
-          button.setAttribute('aria-expanded', 'false');
-        });
+      closeButton?.addEventListener('click', event => {
+        event.preventDefault();
+        event.stopPropagation();
+        setOpen(false);
       });
 
-      document.addEventListener('click', event => {
+      nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => setOpen(false));
+      });
+
+      document.addEventListener('pointerdown', event => {
         if (!nav.classList.contains('open')) return;
         if (nav.contains(event.target) || button.contains(event.target)) return;
-        closeMenu();
+        setOpen(false);
       });
 
       document.addEventListener('keydown', event => {
-        if (event.key === 'Escape' && nav.classList.contains('open')) closeMenu();
+        if (event.key === 'Escape') setOpen(false);
       });
+
+      setOpen(false);
     }
 
+    // Keep the page responsive while visitors scroll through the large world.
+    document.querySelectorAll('.sv-panel').forEach(panel => {
+      panel.style.contentVisibility = 'auto';
+      panel.style.containIntrinsicSize = '900px';
+    });
+
     document.querySelectorAll('img').forEach((img, index) => {
+      img.decoding = 'async';
       if (!img.closest('.sv-cinematic-intro,.cinematic-home') && index > 1) {
         img.loading = 'lazy';
         img.fetchPriority = 'low';
       }
-      img.decoding = 'async';
     });
 
     if (matchMedia('(max-width: 760px)').matches) {
-      document.documentElement.classList.add('sv-mobile-lite');
-      document.querySelectorAll('.ambient-life span,.floating-world span').forEach((node, index) => {
-        if (index % 2) node.remove();
+      document.documentElement.classList.add('sv-mobile-critical-lite');
+
+      // Remove decorative layers that add work but do not affect features.
+      document.querySelectorAll(
+        '.floating-world,.ambient-life,.exp32-world-life,.shooting-star'
+      ).forEach(layer => layer.remove());
+
+      // Stop autoplay-style ambient effects until the user reaches them.
+      document.querySelectorAll('[style*="animation"]').forEach(node => {
+        if (!node.closest('#svNav,.sv-cinematic-intro')) {
+          node.style.animationPlayState = 'paused';
+        }
       });
     }
+  };
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        entry.target.classList.toggle('sv-offscreen', !entry.isIntersecting);
-      });
-    }, {rootMargin:'160px 0px'});
-
-    document.querySelectorAll('.sv-panel,.exp1618-panel').forEach(section => observer.observe(section));
-  });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, {once:true});
+  } else {
+    init();
+  }
 })();

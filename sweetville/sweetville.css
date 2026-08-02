@@ -6645,3 +6645,92 @@ body.sv-menu-open{
     animation:none!important;
   }
 }
+
+/* EXP 18.1.1 — authoritative mobile menu rules */
+@media(max-width:900px){
+  html.sv-menu-open,
+  body.sv-menu-open{
+    overflow:hidden!important;
+    touch-action:none!important;
+  }
+
+  .sv-header{
+    position:sticky!important;
+    top:0!important;
+    z-index:20000!important;
+  }
+
+  #menuButton.sv-menu-button,
+  .sv-menu-button#menuButton{
+    display:grid!important;
+    visibility:visible!important;
+    opacity:1!important;
+    pointer-events:auto!important;
+    position:relative!important;
+    z-index:20003!important;
+    width:46px!important;
+    height:46px!important;
+    min-width:46px!important;
+    padding:0!important;
+  }
+
+  #svNav{
+    display:flex!important;
+    position:fixed!important;
+    inset:0!important;
+    z-index:20001!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    justify-content:flex-start!important;
+    padding:5.25rem 1rem 2rem!important;
+    overflow-y:auto!important;
+    -webkit-overflow-scrolling:touch!important;
+    background:#100011!important;
+    visibility:hidden!important;
+    opacity:0!important;
+    pointer-events:none!important;
+    transform:translateY(-10px)!important;
+  }
+
+  #svNav.open{
+    visibility:visible!important;
+    opacity:1!important;
+    pointer-events:auto!important;
+    transform:none!important;
+  }
+
+  #svNav a{
+    display:flex!important;
+    width:100%!important;
+    min-height:48px!important;
+    flex:0 0 auto!important;
+  }
+
+  #svNavClose{
+    display:grid!important;
+    position:fixed!important;
+    top:14px!important;
+    right:14px!important;
+    z-index:20004!important;
+    width:46px!important;
+    height:46px!important;
+    pointer-events:auto!important;
+  }
+}
+
+.sv-mobile-critical-lite .cloud,
+.sv-mobile-critical-lite .map-butterfly,
+.sv-mobile-critical-lite .exp150-world-layer,
+.sv-mobile-critical-lite .sv-cinema-sparkles{
+  display:none!important;
+}
+
+.sv-panel{
+  contain:layout paint style;
+}
+
+@media(max-width:760px){
+  .sv-panel{
+    backdrop-filter:none!important;
+  }
+}
