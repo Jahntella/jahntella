@@ -5313,3 +5313,483 @@ body.exp90-lock{overflow:hidden!important}
     animation:none!important;
   }
 }
+
+/* =========================================================
+   SWEETVILLE EXP 11.0 — LIVING TIME
+   ========================================================= */
+
+.exp110-time-status{
+  min-width:135px;
+}
+
+.exp110-living-time-panel{
+  position:relative;
+  overflow:hidden;
+}
+
+.exp110-living-time-panel::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 12% 20%,rgba(255,125,194,.16),transparent 28%),
+    radial-gradient(circle at 88% 78%,rgba(153,118,255,.14),transparent 30%);
+}
+
+.exp110-time-shell{
+  position:relative;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:1rem;
+}
+
+.exp110-time-shell article{
+  min-height:220px;
+  padding:1.25rem;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:24px;
+  background:
+    radial-gradient(circle at 85% 15%,rgba(255,255,255,.12),transparent 27%),
+    linear-gradient(145deg,rgba(255,255,255,.095),rgba(255,255,255,.035));
+  box-shadow:0 22px 52px rgba(0,0,0,.22);
+  backdrop-filter:blur(16px);
+}
+
+.exp110-time-shell small{
+  display:block;
+  letter-spacing:.12em;
+  font-size:.64rem;
+  font-weight:900;
+  opacity:.66;
+}
+
+.exp110-clock-card strong{
+  display:block;
+  margin:.75rem 0 .2rem;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(2.4rem,5vw,4.8rem);
+  line-height:1;
+}
+
+.exp110-clock-card span{
+  opacity:.76;
+}
+
+.exp110-time-shell h3{
+  margin:.65rem 0 .45rem;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(1.45rem,2.4vw,2.2rem);
+}
+
+.exp110-time-shell p{
+  margin:0;
+  line-height:1.6;
+  opacity:.76;
+}
+
+.exp110-season-card>span{
+  display:block;
+  margin-top:.7rem;
+  font-size:2.4rem;
+}
+
+.exp110-daily-card strong{
+  display:block;
+  margin:.75rem 0 .55rem;
+  font-family:"Playfair Display",serif;
+  font-size:1.8rem;
+}
+
+/* Time-driven world atmosphere */
+html[data-sweetville-time="late-night"] .living-sky,
+html[data-sweetville-time="night"] .living-sky{
+  filter:hue-rotate(20deg) saturate(.9) brightness(.72);
+}
+
+html[data-sweetville-time="dawn"] .living-sky{
+  filter:hue-rotate(-12deg) saturate(1.06) brightness(.96);
+}
+
+html[data-sweetville-time="morning"] .living-sky{
+  filter:hue-rotate(-18deg) saturate(1.05) brightness(1.12);
+}
+
+html[data-sweetville-time="afternoon"] .living-sky{
+  filter:saturate(1.08) brightness(1.08);
+}
+
+html[data-sweetville-time="golden-hour"] .living-sky{
+  filter:hue-rotate(-28deg) saturate(1.2) brightness(1.03);
+}
+
+html[data-sweetville-time="evening"] .living-sky{
+  filter:hue-rotate(8deg) saturate(1.12) brightness(.9);
+}
+
+html[data-sweetville-time="late-night"] .firefly,
+html[data-sweetville-time="night"] .firefly,
+html[data-sweetville-time="evening"] .firefly,
+html[data-sweetville-time="golden-hour"] .firefly{
+  opacity:1!important;
+}
+
+html[data-sweetville-time="morning"] .firefly,
+html[data-sweetville-time="afternoon"] .firefly{
+  opacity:.25!important;
+}
+
+html[data-sweetville-season="holiday-sweetville"] body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:4;
+  pointer-events:none;
+  background-image:
+    radial-gradient(circle,#fff 0 1.5px,transparent 2px),
+    radial-gradient(circle,#ffdff1 0 1px,transparent 1.5px);
+  background-size:70px 70px,95px 95px;
+  animation:exp110Snow 14s linear infinite;
+  opacity:.32;
+}
+
+@keyframes exp110Snow{
+  from{background-position:0 -100px,30px -140px}
+  to{background-position:0 900px,30px 760px}
+}
+
+@media(max-width:980px){
+  .exp110-time-shell{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:620px){
+  .exp110-time-shell{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  html[data-sweetville-season="holiday-sweetville"] body::after{
+    animation:none!important;
+  }
+}
+
+/* =========================================================
+   SWEETVILLE EXP 12.0 — A DAY WITH JAHNTELLA
+   ========================================================= */
+
+.exp120-day-panel{
+  position:relative;
+  overflow:hidden;
+}
+
+.exp120-day-panel::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 10% 16%,rgba(255,119,190,.17),transparent 29%),
+    radial-gradient(circle at 88% 82%,rgba(156,116,255,.15),transparent 32%);
+}
+
+.exp120-feature-shell,
+.exp120-moment-gallery,
+.exp120-gallery-heading,
+.exp120-memory-status{
+  position:relative;
+}
+
+.exp120-feature-card{
+  display:grid;
+  grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:30px;
+  background:linear-gradient(145deg,rgba(255,255,255,.095),rgba(255,255,255,.035));
+  box-shadow:0 28px 70px rgba(0,0,0,.28);
+  backdrop-filter:blur(18px);
+}
+
+.exp120-feature-image{
+  position:relative;
+  min-height:620px;
+  overflow:hidden;
+  background:#180719;
+}
+
+.exp120-feature-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:opacity .2s ease,transform .7s ease;
+}
+
+.exp120-feature-image img.changing{
+  opacity:.25;
+  transform:scale(1.025);
+}
+
+.exp120-time-badge{
+  position:absolute;
+  top:18px;
+  left:18px;
+  padding:.55rem .75rem;
+  border:1px solid rgba(255,255,255,.42);
+  border-radius:999px;
+  color:#fff;
+  background:rgba(50,8,48,.72);
+  backdrop-filter:blur(12px);
+  font-size:.62rem;
+  letter-spacing:.12em;
+  font-weight:900;
+}
+
+.exp120-feature-copy{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:clamp(1.5rem,4vw,3.2rem);
+}
+
+.exp120-feature-copy>small{
+  letter-spacing:.14em;
+  font-size:.68rem;
+  font-weight:900;
+  opacity:.67;
+}
+
+.exp120-feature-copy h3{
+  margin:.6rem 0 .75rem;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(2.2rem,4.5vw,4.8rem);
+  line-height:.98;
+}
+
+.exp120-feature-copy p{
+  margin:0;
+  line-height:1.7;
+  opacity:.8;
+}
+
+.exp120-feature-copy blockquote{
+  margin:1.35rem 0;
+  padding-left:1rem;
+  border-left:3px solid rgba(255,126,197,.72);
+  font-family:"Playfair Display",serif;
+  font-size:1.25rem;
+  line-height:1.45;
+}
+
+.exp120-feature-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.7rem;
+}
+
+.exp120-gallery-heading{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:1rem;
+  margin:1.35rem 0 .8rem;
+}
+
+.exp120-gallery-heading small,
+.exp120-gallery-heading strong{
+  display:block;
+}
+
+.exp120-gallery-heading small{
+  letter-spacing:.12em;
+  font-size:.65rem;
+  font-weight:900;
+  opacity:.64;
+}
+
+.exp120-gallery-heading strong{
+  margin-top:.2rem;
+  font-family:"Playfair Display",serif;
+  font-size:1.5rem;
+}
+
+.exp120-gallery-heading>span{
+  font-size:.8rem;
+  opacity:.7;
+}
+
+.exp120-moment-gallery{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:.8rem;
+}
+
+.exp120-moment-card{
+  position:relative;
+  min-width:0;
+  padding:0 0 .9rem;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:20px;
+  color:#fff;
+  text-align:left;
+  background:rgba(255,255,255,.055);
+  cursor:pointer;
+  transition:transform .28s ease,box-shadow .28s ease,filter .28s ease;
+}
+
+.exp120-moment-card:hover,
+.exp120-moment-card.active{
+  transform:translateY(-6px);
+  filter:brightness(1.08);
+  box-shadow:0 20px 45px rgba(0,0,0,.28),0 0 24px rgba(255,81,174,.16);
+}
+
+.exp120-moment-card.active{
+  border-color:rgba(255,143,207,.66);
+}
+
+.exp120-moment-card.kept::after{
+  content:"KEPT ♡";
+  position:absolute;
+  top:10px;
+  right:10px;
+  padding:.3rem .48rem;
+  border-radius:999px;
+  color:#6a234e;
+  background:#fff1f8;
+  font-size:.54rem;
+  letter-spacing:.08em;
+  font-weight:900;
+}
+
+.exp120-moment-card img{
+  display:block;
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+}
+
+.exp120-moment-card>span,
+.exp120-moment-card>small,
+.exp120-moment-card>strong{
+  display:block;
+  margin-left:.85rem;
+  margin-right:.85rem;
+}
+
+.exp120-moment-card>span{
+  margin-top:.75rem;
+  font-size:1.3rem;
+}
+
+.exp120-moment-card>small{
+  margin-top:.35rem;
+  letter-spacing:.1em;
+  font-size:.58rem;
+  font-weight:900;
+  opacity:.61;
+}
+
+.exp120-moment-card>strong{
+  margin-top:.18rem;
+  font-family:"Playfair Display",serif;
+  line-height:1.12;
+}
+
+.exp120-memory-status{
+  display:flex;
+  align-items:center;
+  gap:.7rem;
+  margin-top:1rem;
+  padding:1rem;
+  border:1px solid rgba(255,255,255,.11);
+  border-radius:18px;
+  background:rgba(255,255,255,.05);
+}
+
+.exp120-memory-status>span{
+  letter-spacing:.1em;
+  font-size:.65rem;
+  font-weight:900;
+  opacity:.63;
+}
+
+.exp120-memory-status>strong{
+  font-size:1.5rem;
+  font-family:"Playfair Display",serif;
+}
+
+.exp120-memory-status>p{
+  margin:0 0 0 auto;
+  font-size:.78rem;
+  opacity:.7;
+}
+
+@media(max-width:1100px){
+  .exp120-feature-card{
+    grid-template-columns:1fr;
+  }
+
+  .exp120-feature-image{
+    min-height:520px;
+  }
+
+  .exp120-moment-gallery{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+}
+
+@media(max-width:720px){
+  .exp120-feature-image{
+    min-height:440px;
+  }
+
+  .exp120-moment-gallery{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .exp120-gallery-heading,
+  .exp120-memory-status{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .exp120-memory-status>p{
+    margin-left:0;
+  }
+
+  .exp120-feature-actions .sv-button{
+    width:100%;
+    justify-content:center;
+  }
+}
+
+@media(max-width:480px){
+  .exp120-moment-gallery{
+    grid-template-columns:1fr;
+  }
+
+  .exp120-moment-card{
+    display:grid;
+    grid-template-columns:110px 1fr;
+    grid-template-rows:auto auto auto;
+    align-items:center;
+    padding:0;
+  }
+
+  .exp120-moment-card img{
+    grid-row:1/4;
+    width:110px;
+    height:135px;
+    aspect-ratio:auto;
+  }
+
+  .exp120-moment-card>span,
+  .exp120-moment-card>small,
+  .exp120-moment-card>strong{
+    margin-left:.8rem;
+  }
+}
