@@ -1,0 +1,13 @@
+
+.sv-header{background:linear-gradient(180deg,rgba(26,0,27,.96),rgba(9,0,12,.88));border-bottom:1px solid rgba(255,146,207,.48);box-shadow:0 12px 34px rgba(0,0,0,.28),0 0 26px rgba(255,79,180,.08)}
+.sv-brand{text-shadow:0 0 18px rgba(255,109,197,.4);animation:exp155SvBrand 4.5s ease-in-out infinite}
+#svNav a{position:relative;display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:.66rem .9rem;overflow:hidden;border:1px solid rgba(255,174,214,.34);border-radius:999px;color:#fff7fc;background:linear-gradient(145deg,rgba(255,255,255,.12),rgba(255,255,255,.035)),linear-gradient(135deg,rgba(255,52,163,.26),rgba(137,77,255,.18));box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 8px 20px rgba(0,0,0,.2);transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease,filter .22s ease}
+#svNav a::before{content:"";position:absolute;inset:0;transform:translateX(-120%) skewX(-20deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transition:transform .65s ease}
+#svNav a::after{content:"✦";margin-left:.35rem;color:#ff9fd3;font-size:.64rem;opacity:.8}
+#svNav a:hover,#svNav a:focus-visible{transform:translateY(-2px);border-color:rgba(255,203,227,.7);filter:brightness(1.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 12px 28px rgba(0,0,0,.28),0 0 24px rgba(255,75,178,.22)}
+#svNav a:hover::before,#svNav a:focus-visible::before{transform:translateX(120%) skewX(-20deg)}
+#svNav a[href="story.html"]{border-color:rgba(255,205,226,.78);background:linear-gradient(145deg,rgba(255,255,255,.22),rgba(255,255,255,.06)),linear-gradient(135deg,#ff70bd,#9b4dff);box-shadow:0 0 26px rgba(255,89,186,.22)}
+.sv-menu-button,.sv-nav-close{border:1px solid rgba(255,178,216,.6)!important;color:#fff!important;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.2),transparent 28%),linear-gradient(135deg,#ff4fae,#8b3cff)!important;box-shadow:0 0 24px rgba(255,73,176,.24)!important}
+@keyframes exp155SvBrand{50%{filter:drop-shadow(0 0 14px rgba(255,98,190,.3))}}
+@media(max-width:900px){#svNav{background:radial-gradient(circle at 18% 14%,rgba(255,86,180,.16),transparent 28%),linear-gradient(180deg,rgba(29,0,29,.98),rgba(8,0,11,.98))}#svNav a{width:100%;justify-content:flex-start;min-height:48px;padding:.9rem 1rem;border-radius:18px}}
+@media(prefers-reduced-motion:reduce){.sv-brand{animation:none}#svNav a::before{transition:none}}

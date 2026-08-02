@@ -1,0 +1,17 @@
+
+.story-header{align-items:center;gap:1rem;background:radial-gradient(circle at 15% 20%,rgba(255,96,182,.15),transparent 30%),linear-gradient(180deg,rgba(32,0,30,.96),rgba(9,0,11,.9));border-bottom:1px solid rgba(255,153,209,.5);box-shadow:0 12px 36px rgba(0,0,0,.28),0 0 26px rgba(255,83,181,.08);backdrop-filter:blur(18px)}
+.story-brand{text-shadow:0 0 18px rgba(255,113,197,.42);animation:exp155StoryBrand 4.5s ease-in-out infinite}
+.story-header nav{display:flex;align-items:center;gap:.65rem;flex-wrap:wrap;justify-content:flex-end}
+.story-header nav a{position:relative;display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:.72rem 1rem;overflow:hidden;border:1px solid rgba(255,181,217,.38);border-radius:999px;color:#fff8fc;font-weight:800;background:linear-gradient(145deg,rgba(255,255,255,.14),rgba(255,255,255,.035)),linear-gradient(135deg,rgba(255,73,172,.28),rgba(134,75,255,.18));box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 9px 22px rgba(0,0,0,.2);transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease,filter .22s ease}
+.story-header nav a::before{content:"";position:absolute;inset:0;transform:translateX(-120%) skewX(-20deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transition:transform .65s ease}
+.story-header nav a::after{content:"♡";margin-left:.38rem;color:#ff9fd3;font-size:.8rem}
+.story-header nav a:hover,.story-header nav a:focus-visible{transform:translateY(-2px);border-color:rgba(255,206,229,.76);filter:brightness(1.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 12px 28px rgba(0,0,0,.28),0 0 24px rgba(255,79,181,.23)}
+.story-header nav a:hover::before,.story-header nav a:focus-visible::before{transform:translateX(120%) skewX(-20deg)}
+.story-header nav a[href="#storybook"]{border-color:rgba(255,214,232,.85);background:linear-gradient(145deg,rgba(255,255,255,.22),rgba(255,255,255,.06)),linear-gradient(135deg,#ff72bf,#a34cff);box-shadow:0 0 28px rgba(255,89,187,.24)}
+.story-button,.controls button{position:relative;overflow:hidden;border:1px solid rgba(255,203,228,.8);box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 10px 24px rgba(92,0,75,.28),0 0 24px rgba(255,80,180,.18);transition:transform .2s ease,box-shadow .2s ease,filter .2s ease}
+.story-button::before,.controls button::before{content:"";position:absolute;inset:0;transform:translateX(-120%) skewX(-20deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.32),transparent);transition:transform .65s ease}
+.story-button:hover,.story-button:focus-visible,.controls button:hover,.controls button:focus-visible{transform:translateY(-2px);filter:brightness(1.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.34),0 14px 30px rgba(92,0,75,.32),0 0 30px rgba(255,80,180,.28)}
+.story-button:hover::before,.story-button:focus-visible::before,.controls button:hover::before,.controls button:focus-visible::before{transform:translateX(120%) skewX(-20deg)}
+@keyframes exp155StoryBrand{50%{filter:drop-shadow(0 0 14px rgba(255,98,190,.3))}}
+@media(max-width:680px){.story-header{align-items:flex-start}.story-header nav{display:flex;width:100%;justify-content:flex-start;overflow-x:auto;padding-bottom:.15rem}.story-header nav a{flex:0 0 auto;min-height:40px;padding:.68rem .9rem}}
+@media(prefers-reduced-motion:reduce){.story-brand{animation:none}.story-header nav a::before,.story-button::before,.controls button::before{transition:none}}
