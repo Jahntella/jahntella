@@ -11,3 +11,6 @@
 @keyframes exp155LogoBreath{50%{filter:drop-shadow(0 0 14px rgba(255,98,190,.3))}}
 @media(max-width:980px){#siteNav{gap:.55rem}#siteNav a{width:100%;justify-content:flex-start;padding:.85rem 1rem}}
 @media(prefers-reduced-motion:reduce){.site-header .logo{animation:none}#siteNav a::before{transition:none}}
+
+@media(min-width:981px){.site-header{padding-left:2vw!important;padding-right:2vw!important}#siteNav{gap:.38rem!important;flex-wrap:nowrap!important}#siteNav a{min-height:34px!important;padding:.5rem .62rem!important;font-size:.68rem!important;letter-spacing:.01em!important}#siteNav a::after{margin-left:.24rem!important;font-size:.62rem!important}}
+@media(min-width:981px) and (max-width:1320px){#siteNav a{padding:.48rem .5rem!important;font-size:.62rem!important}#siteNav a::after{display:none!important}}

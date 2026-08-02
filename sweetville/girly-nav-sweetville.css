@@ -11,3 +11,12 @@
 @keyframes exp155SvBrand{50%{filter:drop-shadow(0 0 14px rgba(255,98,190,.3))}}
 @media(max-width:900px){#svNav{background:radial-gradient(circle at 18% 14%,rgba(255,86,180,.16),transparent 28%),linear-gradient(180deg,rgba(29,0,29,.98),rgba(8,0,11,.98))}#svNav a{width:100%;justify-content:flex-start;min-height:48px;padding:.9rem 1rem;border-radius:18px}}
 @media(prefers-reduced-motion:reduce){.sv-brand{animation:none}#svNav a::before{transition:none}}
+
+@media(min-width:901px){.sv-header{padding-left:2vw!important;padding-right:2vw!important}#svNav{gap:.32rem!important;flex-wrap:nowrap!important}#svNav a{min-height:34px!important;padding:.48rem .56rem!important;font-size:.62rem!important}#svNav a::after{margin-left:.22rem!important;font-size:.54rem!important}}
+@media(min-width:901px) and (max-width:1380px){#svNav a{padding:.46rem .44rem!important;font-size:.57rem!important}#svNav a::after{display:none!important}}
+.sv-cinema-skip{position:fixed!important;top:max(16px,env(safe-area-inset-top))!important;left:50%!important;right:auto!important;bottom:auto!important;z-index:10050!important;transform:translateX(-50%)!important;min-width:132px!important;padding:.72rem 1rem!important;border:1px solid rgba(255,205,229,.78)!important;border-radius:999px!important;color:#fff!important;background:linear-gradient(145deg,rgba(255,255,255,.2),rgba(255,255,255,.05)),linear-gradient(135deg,rgba(255,76,174,.92),rgba(146,72,255,.9))!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 12px 28px rgba(0,0,0,.3),0 0 26px rgba(255,82,183,.3)!important;backdrop-filter:blur(14px)!important;font-size:.68rem!important;font-weight:900!important;letter-spacing:.12em!important;opacity:0;animation:exp1551SkipIn .7s .7s ease forwards,exp1551SkipGlow 3s 1.5s ease-in-out infinite!important}
+.sv-cinema-skip:hover,.sv-cinema-skip:focus-visible{filter:brightness(1.08)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.34),0 15px 34px rgba(0,0,0,.34),0 0 34px rgba(255,82,183,.42)!important}
+@keyframes exp1551SkipIn{from{opacity:0;transform:translate(-50%,-8px)}to{opacity:1;transform:translate(-50%,0)}}
+@keyframes exp1551SkipGlow{50%{box-shadow:inset 0 1px 0 rgba(255,255,255,.34),0 12px 28px rgba(0,0,0,.3),0 0 36px rgba(255,82,183,.42)}}
+@media(max-width:600px){.sv-cinema-skip{top:max(10px,env(safe-area-inset-top))!important;min-width:116px!important;padding:.62rem .82rem!important;font-size:.6rem!important}}
+@media(prefers-reduced-motion:reduce){.sv-cinema-skip{opacity:1!important;animation:none!important}}
