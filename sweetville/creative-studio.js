@@ -141,19 +141,27 @@
     snapshot();
   });
 
-  const updateQuote = () => {
-    const value = customText?.value.trim() || quoteSelect?.value || 'Welcome home, Sweetie.';
-    if (stageQuote) stageQuote.textContent = value;
+  const updateQuoteFromSelect = () => {
+    if (customText) customText.value = '';
+    if (stageQuote) stageQuote.textContent = quoteSelect?.value || 'Welcome home, Sweetie.';
+  };
+
+  const updateQuoteFromInput = () => {
+    const value = customText?.value ?? '';
+    if (stageQuote) stageQuote.textContent = value.length ? value : ' ';
   };
 
   quoteSelect?.addEventListener('change', () => {
-    if (customText) customText.value = '';
-    updateQuote();
+    updateQuoteFromSelect();
     snapshot();
   });
 
-  customText?.addEventListener('input', updateQuote);
-  customText?.addEventListener('change', snapshot);
+  customText?.addEventListener('input', updateQuoteFromInput);
+  customText?.addEventListener('keyup', updateQuoteFromInput);
+  customText?.addEventListener('change', () => {
+    updateQuoteFromInput();
+    snapshot();
+  });
 
   stickerPalette?.addEventListener('click', event => {
     const button = event.target.closest('button[data-sticker]');
