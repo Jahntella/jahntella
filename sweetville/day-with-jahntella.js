@@ -122,6 +122,10 @@
       card.classList.toggle('active', card.dataset.moment === key);
     });
 
+    if (keepButton) {
+      keepButton.textContent = readSaved().includes(key) ? 'Remove This Moment' : 'Keep This Moment';
+    }
+
     if (automatic && localScene) {
       localScene.textContent = `${moment.icon} Matched to your local time`;
     }
@@ -135,17 +139,31 @@
 
   keepButton?.addEventListener('click', () => {
     const saved = readSaved();
-    if (!saved.includes(currentKey)) saved.push(currentKey);
+    const existingIndex = saved.indexOf(currentKey);
+    const removing = existingIndex >= 0;
+
+    if (removing) {
+      saved.splice(existingIndex, 1);
+    } else {
+      saved.push(currentKey);
+    }
+
     localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
     updateSavedStatus();
 
-    keepButton.textContent = 'Moment Kept 💖';
-    window.setTimeout(() => keepButton.textContent = 'Keep This Moment', 1600);
+    keepButton.textContent = removing ? 'Moment Removed' : 'Moment Kept 💖';
+    window.setTimeout(() => {
+      const latest = readSaved();
+      keepButton.textContent = latest.includes(currentKey) ? 'Remove This Moment' : 'Keep This Moment';
+    }, 1200);
 
-    window.dispatchEvent(new CustomEvent('sweetville:experience', {
-      detail:{key:`day-moment:${currentKey}`,label:moments[currentKey].title}
-    }));
-    window.sweetvilleLaunchFireworks?.(innerWidth*.5,innerHeight*.28,12);
+    window.dispatchEvent(new CustomEvent('sweetville:memory-changed'));
+    if (!removing) {
+      window.dispatchEvent(new CustomEvent('sweetville:experience', {
+        detail:{key:`day-moment:${currentKey}`,label:moments[currentKey].title}
+      }));
+      window.sweetvilleLaunchFireworks?.(innerWidth*.5,innerHeight*.28,12);
+    }
   });
 
   nextButton?.addEventListener('click', () => {

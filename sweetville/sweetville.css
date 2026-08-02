@@ -6484,3 +6484,72 @@ body.sv-menu-open{
     animation:none!important;
   }
 }
+
+/* =========================================================
+   SWEETVILLE EXP 16/17/18 — MEGA EXPANSION
+   ========================================================= */
+
+.exp1618-panel{position:relative;overflow:hidden}
+.exp1618-panel::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 10% 15%,rgba(255,96,185,.16),transparent 29%),radial-gradient(circle at 90% 85%,rgba(130,92,255,.14),transparent 32%)}
+.exp1618-premiere-card,.exp1618-memory-book,.exp1618-cruise-card,.exp1618-summer-grid,.exp1618-festival-finale{position:relative}
+.exp1618-premiere-card,.exp1618-cruise-card{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(310px,.85fr);overflow:hidden;border:1px solid rgba(255,255,255,.14);border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.035));box-shadow:0 26px 65px rgba(0,0,0,.27)}
+.exp1618-premiere-image,.exp1618-cruise-image{position:relative;min-height:650px;overflow:hidden;background:#180719}
+.exp1618-premiere-image img,.exp1618-cruise-image img{width:100%;height:100%;object-fit:cover}
+.exp1618-premiere-image img{object-position:center 35%}
+.exp1618-cruise-image img{object-position:center}
+.exp1618-premiere-hotspot{position:absolute;left:var(--x);top:var(--y);width:46px;height:46px;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.72);border-radius:50%;font-size:1.15rem;background:rgba(68,8,56,.75);box-shadow:0 0 0 8px rgba(255,106,190,.14),0 0 26px rgba(255,106,190,.48);cursor:pointer;animation:exp1618Pulse 2.4s ease-in-out infinite}
+.exp1618-premiere-hotspot.active{background:#fff0f8;color:#762052}
+@keyframes exp1618Pulse{50%{transform:translate(-50%,-50%) scale(1.08)}}
+.exp1618-premiere-copy,.exp1618-cruise-dashboard{display:flex;flex-direction:column;justify-content:center;padding:clamp(1.5rem,4vw,3rem)}
+.exp1618-premiere-copy>small,.exp1618-cruise-dashboard>small,.exp1618-summer-copy>small,.exp1618-festival-finale small,.exp1618-memory-heading small{letter-spacing:.13em;font-size:.64rem;font-weight:900;opacity:.65}
+.exp1618-premiere-copy h3,.exp1618-cruise-dashboard h3,.exp1618-summer-copy h3,.exp1618-festival-finale h3,.exp1618-memory-heading h3{margin:.5rem 0 .65rem;font-family:"Playfair Display",serif;font-size:clamp(1.8rem,3.8vw,3.4rem)}
+.exp1618-premiere-copy p,.exp1618-cruise-dashboard p,.exp1618-summer-copy p,.exp1618-festival-finale p{line-height:1.65;opacity:.78}
+.exp1618-memory-book{margin-top:1rem;padding:1.2rem;border:1px solid rgba(255,255,255,.13);border-radius:24px;background:rgba(255,255,255,.045)}
+.exp1618-memory-heading{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:1rem}
+.exp1618-memory-heading h3{font-size:1.7rem;margin:.25rem 0 0}
+.exp1618-memory-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem}
+.exp1618-memory-card{padding:1rem;border:1px solid rgba(255,255,255,.12);border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.025))}
+.exp1618-memory-card span,.exp1618-memory-card small,.exp1618-memory-card strong{display:block}
+.exp1618-memory-card span{font-size:1.7rem}
+.exp1618-memory-card small{margin-top:.4rem;font-size:.55rem;letter-spacing:.09em;opacity:.6}
+.exp1618-memory-card strong{margin:.28rem 0 .7rem;font-family:"Playfair Display",serif}
+.exp1618-memory-card button{padding:.45rem .65rem;border:1px solid rgba(255,163,211,.28);border-radius:999px;color:#ffd8ec;background:rgba(255,255,255,.04);cursor:pointer}
+.exp1618-empty-memory{grid-column:1/-1;margin:0;padding:1.2rem;text-align:center;opacity:.6}
+.exp1618-cruise-badge{position:absolute;top:18px;left:18px;padding:.55rem .75rem;border:1px solid rgba(255,255,255,.42);border-radius:999px;background:rgba(45,5,43,.72);backdrop-filter:blur(12px);font-size:.62rem;font-weight:900;letter-spacing:.1em}
+.exp1618-driving-lights{position:absolute;inset:0;pointer-events:none;background:linear-gradient(100deg,transparent 0 42%,rgba(255,255,255,.18) 49%,transparent 56%);transform:translateX(-130%)}
+.exp1618-cruise-card.driving .exp1618-driving-lights{animation:exp1618Drive 1.2s ease}
+@keyframes exp1618Drive{to{transform:translateX(130%)}}
+.exp1618-radio-buttons,.exp1618-destination-buttons,.exp1618-look-buttons{display:flex;flex-wrap:wrap;gap:.55rem;margin:.8rem 0}
+.exp1618-radio-buttons button,.exp1618-destination-buttons button,.exp1618-look-buttons button{padding:.7rem .8rem;border:1px solid rgba(255,255,255,.13);border-radius:14px;color:#fff;background:rgba(255,255,255,.05);cursor:pointer}
+.exp1618-radio-buttons button.active,.exp1618-destination-buttons button.active,.exp1618-look-buttons button.active{border-color:rgba(255,151,207,.68);background:linear-gradient(135deg,rgba(255,72,174,.35),rgba(139,74,255,.25));box-shadow:0 0 20px rgba(255,75,180,.16)}
+.exp1618-summer-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.exp1618-summer-card{overflow:hidden;border:1px solid rgba(255,255,255,.13);border-radius:25px;background:rgba(255,255,255,.045);box-shadow:0 22px 52px rgba(0,0,0,.23)}
+.exp1618-summer-card>img,.exp1618-look-image img{display:block;width:100%;height:620px;object-fit:cover}
+.exp1618-summer-card>img{object-position:center 30%}
+.exp1618-look-image img{object-position:center 25%;transition:opacity .25s ease}
+.exp1618-summer-copy{padding:1.15rem}
+.exp1618-summer-copy>strong{display:block;margin-top:.65rem}
+.exp1618-festival-finale{display:flex;align-items:center;gap:1rem;margin-top:1rem;padding:1.2rem;border:1px solid rgba(255,255,255,.14);border-radius:21px;background:linear-gradient(120deg,rgba(255,82,180,.12),rgba(126,88,255,.09))}
+.exp1618-festival-finale>span{font-size:2.4rem}
+.exp1618-festival-finale>div{flex:1}
+.exp1618-festival-finale h3{font-size:1.55rem;margin:.25rem 0}
+.exp1618-festival-finale p{margin:0}
+
+@media(max-width:1050px){
+  .exp1618-premiere-card,.exp1618-cruise-card{grid-template-columns:1fr}
+  .exp1618-premiere-image,.exp1618-cruise-image{min-height:560px}
+  .exp1618-memory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  .exp1618-summer-grid{grid-template-columns:1fr}
+  .exp1618-summer-card>img,.exp1618-look-image img{height:520px}
+  .exp1618-festival-finale,.exp1618-memory-heading{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:520px){
+  .exp1618-premiere-image,.exp1618-cruise-image{min-height:450px}
+  .exp1618-memory-grid{grid-template-columns:1fr}
+  .exp1618-summer-card>img,.exp1618-look-image img{height:460px}
+}
+@media(prefers-reduced-motion:reduce){
+  .exp1618-premiere-hotspot,.exp1618-driving-lights{animation:none!important}
+}

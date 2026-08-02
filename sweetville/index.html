@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#120015">
   <meta name="description" content="Enter Sweetville Build v4.0: an interactive living world with districts, music, hidden letters, collectibles, achievements, and a room that grows with your journey.">
-  <title>Sweetville EXP 15 — Living Sweetville</title>
+  <title>Sweetville EXP 16/17/18 — Celebrity Life, City Cruise & Summer Festival</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="sweetville.css?v=15.0">
-  <link rel="stylesheet" href="girly-nav-sweetville.css?v=15.5">
+  <link rel="stylesheet" href="sweetville.css?v=18.0">
+  <link rel="stylesheet" href="girly-nav-sweetville.css?v=18.0">
 </head>
 <body>
 
@@ -92,6 +92,9 @@
       <a href="#behindTheScenes">Backstage</a>
       <a href="#fanExperience">Fans</a>
       <a href="#livingSweetville">Living World</a>
+      <a href="#celebrityLife">Premiere</a>
+      <a href="#cityCruise">Cruise</a>
+      <a href="#summerFestival">Summer</a>
       <a href="#livingMap">Map</a>
       <a href="#bedroom">My Room</a>
       <a href="story.html">Story</a>
@@ -119,7 +122,7 @@
 
     <section class="sv-hero" id="world">
       <div class="sv-hero-copy">
-        <p class="sv-eyebrow">SWEETVILLE EXP 15</p>
+        <p class="sv-eyebrow">SWEETVILLE EXP 16/17/18</p>
         <h1>The world comes <em>alive.</em></h1>
         <p class="sv-lede">Explore an interactive city where every district has its own mood, music, hidden letter, collectible, and little moment from Jahntella.</p>
         <div class="sv-actions">
@@ -513,6 +516,125 @@
           <p id="exp150TodayText">A different world event appears each local day.</p>
         </div>
         <strong id="exp150TodayBadge">LIVE TODAY</strong>
+      </div>
+    </section>
+
+
+    
+    <section class="sv-panel exp1618-panel" id="celebrityLife">
+      <div class="sv-section-heading">
+        <p class="sv-eyebrow">EXP 16 — CELEBRITY LIFE</p>
+        <h2>Step onto the pink carpet and <em>meet the Sweeties.</em></h2>
+        <p>Join Jahntella at the Sweetville premiere, collect a signed keepsake, and build a private Memory Book on this device.</p>
+      </div>
+
+      <div class="exp1618-premiere-card">
+        <div class="exp1618-premiere-image">
+          <img src="assets/exp16-18/autograph.jpg?v=18.0" alt="Jahntella signing autographs at the Sweetville premiere">
+          <button type="button" class="exp1618-premiere-hotspot" data-premiere="fans" style="--x:24%;--y:58%">💖</button>
+          <button type="button" class="exp1618-premiere-hotspot" data-premiere="poster" style="--x:31%;--y:67%">✍️</button>
+          <button type="button" class="exp1618-premiere-hotspot" data-premiere="marquee" style="--x:56%;--y:9%">✨</button>
+        </div>
+        <div class="exp1618-premiere-copy">
+          <small>PINK CARPET PREMIERE</small>
+          <h3 id="exp1618PremiereTitle">The Sweeties are waiting.</h3>
+          <p id="exp1618PremiereText">Tap the glowing premiere details to experience the crowd, the autographs, and the lights.</p>
+          <button type="button" class="sv-button primary" id="exp1618CollectAutograph">Collect Signed Premiere Card</button>
+        </div>
+      </div>
+
+      <div class="exp1618-memory-book">
+        <div class="exp1618-memory-heading">
+          <div>
+            <small>YOUR PRIVATE MEMORY BOOK</small>
+            <h3>Moments you chose to keep</h3>
+          </div>
+          <strong id="exp1618MemoryTotal">0 memories</strong>
+        </div>
+        <div class="exp1618-memory-grid" id="exp1618MemoryGrid">
+          <p class="exp1618-empty-memory">Keep a moment from Jahntella’s day or collect a premiere card to begin your book.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sv-panel exp1618-panel" id="cityCruise">
+      <div class="sv-section-heading">
+        <p class="sv-eyebrow">EXP 17 — CRUISE WITH JAHNTELLA</p>
+        <h2>Turn up the radio and ride through the <em>pink city lights.</em></h2>
+        <p>Choose the music, select a destination, and hear a different little thought from Jahntella along the way.</p>
+      </div>
+
+      <div class="exp1618-cruise-card">
+        <div class="exp1618-cruise-image">
+          <img src="assets/exp16-18/city-drive.jpg?v=18.0" alt="Jahntella driving through Sweetville at night">
+          <div class="exp1618-driving-lights" aria-hidden="true"></div>
+          <span class="exp1618-cruise-badge" id="exp1618CruiseBadge">CRUISING DOWNTOWN</span>
+        </div>
+        <div class="exp1618-cruise-dashboard">
+          <small>JAHNTELLA RADIO</small>
+          <h3 id="exp1618RadioTitle">Sweet FM</h3>
+          <p id="exp1618CruiseMessage">“The city always looks different when your favorite song is playing.”</p>
+
+          <div class="exp1618-radio-buttons">
+            <button type="button" data-radio="Sweet FM">💖 Sweet FM</button>
+            <button type="button" data-radio="Fun Dipp Radio">🍭 Fun Dipp</button>
+            <button type="button" data-radio="Late Night Pink">🌙 Late Night</button>
+          </div>
+
+          <div class="exp1618-destination-buttons">
+            <button type="button" data-destination="Donut District">Donut District</button>
+            <button type="button" data-destination="Sparkle Lake">Sparkle Lake</button>
+            <button type="button" data-destination="Pink Carpet Theatre">Pink Carpet</button>
+          </div>
+
+          <button type="button" class="sv-button primary" id="exp1618TakeDrive">Take Another Drive</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="sv-panel exp1618-panel" id="summerFestival">
+      <div class="sv-section-heading">
+        <p class="sv-eyebrow">EXP 18 — SWEETVILLE SUMMER FESTIVAL</p>
+        <h2>Sunset games, flowing dresses, and <em>fireworks by the sea.</em></h2>
+        <p>Play a quick volleyball challenge, choose an evening look, and end the festival beneath pink fireworks.</p>
+      </div>
+
+      <div class="exp1618-summer-grid">
+        <article class="exp1618-summer-card">
+          <img src="assets/exp16-18/volleyball.jpg?v=18.0" alt="Jahntella playing beach volleyball">
+          <div class="exp1618-summer-copy">
+            <small>BEACH GAMES</small>
+            <h3>Sweetville Volleyball</h3>
+            <p id="exp1618VolleyText">Score three points before the sun disappears.</p>
+            <button type="button" class="sv-button primary" id="exp1618VolleyButton">Serve the Ball</button>
+            <strong id="exp1618VolleyScore">0 points</strong>
+          </div>
+        </article>
+
+        <article class="exp1618-summer-card">
+          <div class="exp1618-look-image">
+            <img id="exp1618SummerLook" src="assets/exp16-18/sunset-dress.jpg?v=18.0" alt="Jahntella in a summer dress at sunset">
+          </div>
+          <div class="exp1618-summer-copy">
+            <small>SUMMER STYLE</small>
+            <h3 id="exp1618LookTitle">Sunset Walk</h3>
+            <p id="exp1618LookText">A soft sparkling dress for a quiet walk beside the water.</p>
+            <div class="exp1618-look-buttons">
+              <button type="button" data-look="walk">Sunset Walk</button>
+              <button type="button" data-look="finale">Fireworks Finale</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="exp1618-festival-finale">
+        <span>🎆</span>
+        <div>
+          <small>FESTIVAL FINALE</small>
+          <h3 id="exp1618FinaleTitle">The sky is ready.</h3>
+          <p id="exp1618FinaleText">Finish the evening with fireworks over the Sweetville shoreline.</p>
+        </div>
+        <button type="button" class="sv-button primary" id="exp1618LaunchFinale">Launch the Finale</button>
       </div>
     </section>
 
@@ -1248,9 +1370,9 @@
     <span id="toastIcon">🏆</span>
     <div><small id="toastKicker">NEW ACHIEVEMENT</small><strong id="toastTitle">Explorer</strong></div>
   </div>
-  <script src="intro-carousel.js?v=15.0" defer></script>
+  <script src="intro-carousel.js?v=18.0" defer></script>
 
-  <script src="sweetville-v4.0.js?v=15.0"></script>
+  <script src="sweetville-v4.0.js?v=18.0"></script>
 <dialog class="mini-piano-modal" id="miniPianoModal" aria-labelledby="miniPianoTitle">
     <div class="mini-piano-shell">
       <button class="mini-piano-close" id="miniPianoClose" type="button" aria-label="Close mini piano">×</button>
@@ -1276,24 +1398,25 @@
     </div>
   </dialog>
 
-  <script src="living-world.js?v=15.0"></script>
-  <script src="engine-core.js?v=15.0" defer></script>
-  <script src="living-magic.js?v=15.0" defer></script>
-  <script src="passport.js?v=15.0" defer></script>
-  <script src="stability.js?v=15.0" defer></script>
-  <script src="magic-polish.js?v=15.0" defer></script>
-  <script src="piano-fix.js?v=15.0" defer></script>
-  <script src="little-moments.js?v=15.0" defer></script>
-  <script src="ui-polish.js?v=15.0" defer></script>
-  <script src="touch-the-world.js?v=15.0" defer></script>
-  <script src="coloring-studio.js?v=15.0" defer></script>
-  <script src="sweetville-gallery.js?v=15.0" defer></script>
-  <script src="creative-studio.js?v=15.0" defer></script>
-  <script src="photo-booth.js?v=15.0" defer></script>
-  <script src="exp10-master.js?v=15.0" defer></script>
-  <script src="living-time.js?v=15.0" defer></script>
-  <script src="day-with-jahntella.js?v=15.0" defer></script>
-  <script src="behind-the-scenes-fan.js?v=15.0" defer></script>
-  <script src="living-sweetville.js?v=15.0" defer></script>
+  <script src="living-world.js?v=18.0"></script>
+  <script src="engine-core.js?v=18.0" defer></script>
+  <script src="living-magic.js?v=18.0" defer></script>
+  <script src="passport.js?v=18.0" defer></script>
+  <script src="stability.js?v=18.0" defer></script>
+  <script src="magic-polish.js?v=18.0" defer></script>
+  <script src="piano-fix.js?v=18.0" defer></script>
+  <script src="little-moments.js?v=18.0" defer></script>
+  <script src="ui-polish.js?v=18.0" defer></script>
+  <script src="touch-the-world.js?v=18.0" defer></script>
+  <script src="coloring-studio.js?v=18.0" defer></script>
+  <script src="sweetville-gallery.js?v=18.0" defer></script>
+  <script src="creative-studio.js?v=18.0" defer></script>
+  <script src="photo-booth.js?v=18.0" defer></script>
+  <script src="exp10-master.js?v=18.0" defer></script>
+  <script src="living-time.js?v=18.0" defer></script>
+  <script src="day-with-jahntella.js?v=18.0" defer></script>
+  <script src="behind-the-scenes-fan.js?v=18.0" defer></script>
+  <script src="living-sweetville.js?v=18.0" defer></script>
+  <script src="mega-expansion-16-18.js?v=18.0" defer></script>
 </body>
 </html>
