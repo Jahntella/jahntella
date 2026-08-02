@@ -107,18 +107,62 @@
   });
 
   const radioMessages = {
-    'Sweet FM':'“This is the station I play when I want the whole city to feel brighter.”',
-    'Fun Dipp Radio':'“Okay, this one absolutely needs to be louder.”',
-    'Late Night Pink':'“The city lights look softer after midnight.”'
+    'Fun Dipp':'“Turn up the radio and ride through the pink city lights.”',
+    'Fun Dipp (Pink Lips Remix)':'“Pink lights, city nights, and the remix turned all the way up.”'
+  };
+
+  const driveAudio = document.getElementById('exp181DriveAudio');
+  let activeRadioButton = null;
+
+  const setRadioButtonState = playing => {
+    document.querySelectorAll('[data-radio]').forEach(button => {
+      const active = button === activeRadioButton;
+      button.classList.toggle('active', active);
+      button.textContent = active && playing
+        ? `❚❚ ${button.dataset.radio}`
+        : `${button.dataset.radio.includes('Remix') ? '💋' : '🍭'} ${button.dataset.radio}`;
+    });
   };
 
   document.querySelectorAll('[data-radio]').forEach(button => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', async () => {
       const station = button.dataset.radio;
       document.getElementById('exp1618RadioTitle').textContent = station;
       document.getElementById('exp1618CruiseMessage').textContent = radioMessages[station];
-      document.querySelectorAll('[data-radio]').forEach(item => item.classList.toggle('active', item === button));
+
+      if (!driveAudio) return;
+
+      if (activeRadioButton === button && !driveAudio.paused) {
+        driveAudio.pause();
+        setRadioButtonState(false);
+        return;
+      }
+
+      activeRadioButton = button;
+      if (driveAudio.src !== new URL(button.dataset.trackUrl, document.baseURI).href) {
+        driveAudio.src = button.dataset.trackUrl;
+      }
+
+      try {
+        await driveAudio.play();
+        setRadioButtonState(true);
+        document.querySelector('.exp1618-cruise-card')?.classList.add('music-playing');
+      } catch {
+        setRadioButtonState(false);
+        document.getElementById('exp1618CruiseMessage').textContent =
+          'The song file is not available yet. The drive is ready as soon as the audio is uploaded.';
+      }
     });
+  });
+
+  driveAudio?.addEventListener('pause', () => {
+    setRadioButtonState(false);
+    document.querySelector('.exp1618-cruise-card')?.classList.remove('music-playing');
+  });
+
+  driveAudio?.addEventListener('ended', () => {
+    setRadioButtonState(false);
+    document.querySelector('.exp1618-cruise-card')?.classList.remove('music-playing');
   });
 
   document.querySelectorAll('[data-destination]').forEach(button => {

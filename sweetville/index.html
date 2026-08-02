@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#120015">
   <meta name="description" content="Enter Sweetville Build v4.0: an interactive living world with districts, music, hidden letters, collectibles, achievements, and a room that grows with your journey.">
-  <title>Sweetville EXP 16/17/18 — Celebrity Life, City Cruise & Summer Festival</title>
+  <title>Sweetville EXP 18.1 — Stability, Speed & Drive Music</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="sweetville.css?v=18.0">
-  <link rel="stylesheet" href="girly-nav-sweetville.css?v=18.0">
+  <link rel="stylesheet" href="sweetville.css?v=18.1">
+  <link rel="stylesheet" href="girly-nav-sweetville.css?v=18.1">
 </head>
 <body>
 
@@ -122,7 +122,7 @@
 
     <section class="sv-hero" id="world">
       <div class="sv-hero-copy">
-        <p class="sv-eyebrow">SWEETVILLE EXP 16/17/18</p>
+        <p class="sv-eyebrow">SWEETVILLE EXP 18.1</p>
         <h1>The world comes <em>alive.</em></h1>
         <p class="sv-lede">Explore an interactive city where every district has its own mood, music, hidden letter, collectible, and little moment from Jahntella.</p>
         <div class="sv-actions">
@@ -572,14 +572,14 @@
         </div>
         <div class="exp1618-cruise-dashboard">
           <small>JAHNTELLA RADIO</small>
-          <h3 id="exp1618RadioTitle">Sweet FM</h3>
+          <h3 id="exp1618RadioTitle">Fun Dipp</h3>
           <p id="exp1618CruiseMessage">“The city always looks different when your favorite song is playing.”</p>
 
-          <div class="exp1618-radio-buttons">
-            <button type="button" data-radio="Sweet FM">💖 Sweet FM</button>
-            <button type="button" data-radio="Fun Dipp Radio">🍭 Fun Dipp</button>
-            <button type="button" data-radio="Late Night Pink">🌙 Late Night</button>
+          <div class="exp1618-radio-buttons" aria-label="Jahntella songs">
+            <button type="button" data-radio="Fun Dipp" data-track-url="../audio/fun-dipp.mp3">🍭 Fun Dipp</button>
+            <button type="button" data-radio="Fun Dipp (Pink Lips Remix)" data-track-url="../audio/pink-lips-remix.mp3">💋 Fun Dipp (Pink Lips Remix)</button>
           </div>
+          <audio id="exp181DriveAudio" preload="none"></audio>
 
           <div class="exp1618-destination-buttons">
             <button type="button" data-destination="Donut District">Donut District</button>
@@ -1417,6 +1417,7 @@
   <script src="day-with-jahntella.js?v=18.0" defer></script>
   <script src="behind-the-scenes-fan.js?v=18.0" defer></script>
   <script src="living-sweetville.js?v=18.0" defer></script>
-  <script src="mega-expansion-16-18.js?v=18.0" defer></script>
+  <script src="mega-expansion-16-18.js?v=18.1" defer></script>
+  <script src="exp18-1-hotfix.js?v=18.1" defer></script>
 </body>
 </html>

@@ -6553,3 +6553,95 @@ body.sv-menu-open{
 @media(prefers-reduced-motion:reduce){
   .exp1618-premiere-hotspot,.exp1618-driving-lights{animation:none!important}
 }
+
+/* =========================================================
+   SWEETVILLE EXP 18.1 — STABILITY & PERFORMANCE HOTFIX
+   ========================================================= */
+
+@media(max-width:900px){
+  .sv-menu-button{
+    display:inline-grid!important;
+    place-items:center!important;
+    width:44px!important;
+    height:44px!important;
+    flex:0 0 44px!important;
+    cursor:pointer!important;
+    position:relative!important;
+    z-index:10002!important;
+  }
+
+  #svNav{
+    position:fixed!important;
+    inset:0!important;
+    z-index:10001!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    justify-content:flex-start!important;
+    gap:.55rem!important;
+    padding:5.2rem 1rem 2rem!important;
+    overflow-y:auto!important;
+    overscroll-behavior:contain!important;
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+    transform:translateY(-12px)!important;
+    transition:opacity .22s ease,transform .22s ease,visibility .22s ease!important;
+    background:linear-gradient(180deg,rgba(20,0,22,.99),rgba(5,0,8,.99))!important;
+  }
+
+  #svNav.open{
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+    transform:none!important;
+  }
+
+  #svNav .sv-nav-close{
+    display:grid!important;
+    place-items:center!important;
+    position:fixed!important;
+    top:14px!important;
+    right:14px!important;
+    width:44px!important;
+    height:44px!important;
+    border-radius:50%!important;
+    z-index:10003!important;
+    cursor:pointer!important;
+  }
+
+  body.sv-menu-open{overflow:hidden!important}
+}
+
+.sv-offscreen .ambient-life,
+.sv-offscreen .exp32-world-life,
+.sv-offscreen .sv-living-fireworks{
+  animation-play-state:paused!important;
+}
+
+.sv-mobile-lite .cloud,
+.sv-mobile-lite .shooting-star,
+.sv-mobile-lite .map-butterfly,
+.sv-mobile-lite .exp32-birds{
+  display:none!important;
+}
+
+.sv-mobile-lite .floating-world span,
+.sv-mobile-lite .ambient-life span{
+  animation-duration:18s!important;
+}
+
+.exp1618-cruise-card.music-playing .exp1618-driving-lights{
+  animation:exp1618Drive 1.2s ease infinite!important;
+}
+
+.exp1618-radio-buttons button{
+  min-width:min(100%,260px);
+  justify-content:center;
+}
+
+@media(prefers-reduced-motion:reduce){
+  .exp1618-cruise-card.music-playing .exp1618-driving-lights{
+    animation:none!important;
+  }
+}
