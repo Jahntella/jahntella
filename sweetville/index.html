@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#120015">
   <meta name="description" content="Enter Sweetville Build v4.0: an interactive living world with districts, music, hidden letters, collectibles, achievements, and a room that grows with your journey.">
-  <title>Sweetville EXP 18.1.1 — Critical Mobile & Music Fix</title>
+  <title>Sweetville EXP 18.1.2 — Drive With Jahntella First</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" rel="stylesheet">
@@ -160,6 +160,42 @@
         <button class="sound-toggle" id="soundToggle" aria-pressed="false">🎹 Open Mini Piano</button>
       </div>
     </section>
+
+<section class="sv-panel exp1618-panel" id="cityCruise">
+      <div class="sv-section-heading">
+        <p class="sv-eyebrow">EXP 17 — CRUISE WITH JAHNTELLA</p>
+        <h2>Turn up the radio and ride through the <em>pink city lights.</em></h2>
+        <p>Choose the music, select a destination, and hear a different little thought from Jahntella along the way.</p>
+      </div>
+
+      <div class="exp1618-cruise-card">
+        <div class="exp1618-cruise-image">
+          <img src="assets/exp16-18/city-drive.jpg?v=18.0" alt="Jahntella driving through Sweetville at night">
+          <div class="exp1618-driving-lights" aria-hidden="true"></div>
+          <span class="exp1618-cruise-badge" id="exp1618CruiseBadge">CRUISING DOWNTOWN</span>
+        </div>
+        <div class="exp1618-cruise-dashboard">
+          <small>JAHNTELLA RADIO</small>
+          <h3 id="exp1618RadioTitle">Fun Dipp</h3>
+          <p id="exp1618CruiseMessage">“The city always looks different when your favorite song is playing.”</p>
+
+          <div class="exp1618-radio-buttons" aria-label="Jahntella songs">
+            <button type="button" data-radio="Fun Dipp" data-track-url="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/fun-dipp-v430.mp4">🍭 Fun Dipp</button>
+            <button type="button" data-radio="Fun Dipp (Pink Lips Remix)" data-track-url="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/pink-lips-remix-v430.mp4">💋 Fun Dipp (Pink Lips Remix)</button>
+          </div>
+          <audio id="exp181DriveAudio" preload="none"></audio>
+
+          <div class="exp1618-destination-buttons">
+            <button type="button" data-destination="Donut District">Donut District</button>
+            <button type="button" data-destination="Sparkle Lake">Sparkle Lake</button>
+            <button type="button" data-destination="Pink Carpet Theatre">Pink Carpet</button>
+          </div>
+
+          <button type="button" class="sv-button primary" id="exp1618TakeDrive">Take Another Drive</button>
+        </div>
+      </div>
+    </section>
+
 
     
     <section class="sv-panel exp80-moments-panel" id="littleMoments">
@@ -556,43 +592,7 @@
         </div>
       </div>
     </section>
-
-    <section class="sv-panel exp1618-panel" id="cityCruise">
-      <div class="sv-section-heading">
-        <p class="sv-eyebrow">EXP 17 — CRUISE WITH JAHNTELLA</p>
-        <h2>Turn up the radio and ride through the <em>pink city lights.</em></h2>
-        <p>Choose the music, select a destination, and hear a different little thought from Jahntella along the way.</p>
-      </div>
-
-      <div class="exp1618-cruise-card">
-        <div class="exp1618-cruise-image">
-          <img src="assets/exp16-18/city-drive.jpg?v=18.0" alt="Jahntella driving through Sweetville at night">
-          <div class="exp1618-driving-lights" aria-hidden="true"></div>
-          <span class="exp1618-cruise-badge" id="exp1618CruiseBadge">CRUISING DOWNTOWN</span>
-        </div>
-        <div class="exp1618-cruise-dashboard">
-          <small>JAHNTELLA RADIO</small>
-          <h3 id="exp1618RadioTitle">Fun Dipp</h3>
-          <p id="exp1618CruiseMessage">“The city always looks different when your favorite song is playing.”</p>
-
-          <div class="exp1618-radio-buttons" aria-label="Jahntella songs">
-            <button type="button" data-radio="Fun Dipp" data-track-url="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/fun-dipp-v430.mp4">🍭 Fun Dipp</button>
-            <button type="button" data-radio="Fun Dipp (Pink Lips Remix)" data-track-url="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/pink-lips-remix-v430.mp4">💋 Fun Dipp (Pink Lips Remix)</button>
-          </div>
-          <audio id="exp181DriveAudio" preload="none"></audio>
-
-          <div class="exp1618-destination-buttons">
-            <button type="button" data-destination="Donut District">Donut District</button>
-            <button type="button" data-destination="Sparkle Lake">Sparkle Lake</button>
-            <button type="button" data-destination="Pink Carpet Theatre">Pink Carpet</button>
-          </div>
-
-          <button type="button" class="sv-button primary" id="exp1618TakeDrive">Take Another Drive</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="sv-panel exp1618-panel" id="summerFestival">
+<section class="sv-panel exp1618-panel" id="summerFestival">
       <div class="sv-section-heading">
         <p class="sv-eyebrow">EXP 18 — SWEETVILLE SUMMER FESTIVAL</p>
         <h2>Sunset games, flowing dresses, and <em>fireworks by the sea.</em></h2>
