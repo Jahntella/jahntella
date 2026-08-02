@@ -5793,3 +5793,340 @@ html[data-sweetville-season="holiday-sweetville"] body::after{
     margin-left:.8rem;
   }
 }
+
+/* =========================================================
+   SWEETVILLE EXP 13/14 — BEHIND THE SCENES + FAN EXPERIENCE
+   ========================================================= */
+
+.exp1314-backstage-panel,
+.exp1314-fan-panel{
+  position:relative;
+  overflow:hidden;
+}
+
+.exp1314-backstage-panel::before,
+.exp1314-fan-panel::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 12% 18%,rgba(255,110,189,.17),transparent 30%),
+    radial-gradient(circle at 88% 82%,rgba(142,95,255,.14),transparent 32%);
+}
+
+.exp1314-backstage-grid,
+.exp1314-pass-card,
+.exp1314-return-card,
+.exp1314-fan-grid{
+  position:relative;
+}
+
+.exp1314-backstage-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1rem;
+}
+
+.exp1314-scene-card{
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:28px;
+  background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.035));
+  box-shadow:0 25px 62px rgba(0,0,0,.27);
+}
+
+.exp1314-scene-image{
+  position:relative;
+  min-height:620px;
+  overflow:hidden;
+  background:#180719;
+}
+
+.exp1314-scene-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.exp1314-hotspot{
+  position:absolute;
+  left:var(--x);
+  top:var(--y);
+  width:46px;
+  height:46px;
+  transform:translate(-50%,-50%);
+  border:1px solid rgba(255,255,255,.72);
+  border-radius:50%;
+  font-size:1.2rem;
+  background:rgba(72,9,58,.72);
+  box-shadow:0 0 0 8px rgba(255,113,192,.15),0 0 28px rgba(255,113,192,.5);
+  cursor:pointer;
+  animation:exp1314Pulse 2.4s ease-in-out infinite;
+}
+
+.exp1314-hotspot.active{
+  background:#fff0f8;
+  color:#7a2457;
+}
+
+@keyframes exp1314Pulse{
+  50%{transform:translate(-50%,-50%) scale(1.08)}
+}
+
+.exp1314-scene-copy{
+  padding:1.2rem;
+}
+
+.exp1314-scene-copy>small,
+.exp1314-fan-card>small,
+.exp1314-return-card small{
+  display:block;
+  letter-spacing:.13em;
+  font-size:.63rem;
+  font-weight:900;
+  opacity:.65;
+}
+
+.exp1314-scene-copy h3,
+.exp1314-pass-card h3,
+.exp1314-fan-card h3,
+.exp1314-return-card h3{
+  margin:.45rem 0 .55rem;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(1.6rem,3vw,2.5rem);
+}
+
+.exp1314-scene-copy p,
+.exp1314-pass-card p,
+.exp1314-fan-card p,
+.exp1314-return-card p{
+  margin:0;
+  line-height:1.6;
+  opacity:.77;
+}
+
+.exp1314-detail-box{
+  margin-top:1rem;
+  padding:1rem;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:18px;
+  background:rgba(255,255,255,.05);
+}
+
+.exp1314-detail-box strong,
+.exp1314-detail-box span{
+  display:block;
+}
+
+.exp1314-detail-box span{
+  margin-top:.25rem;
+  font-size:.82rem;
+  opacity:.74;
+}
+
+.exp1314-pass-card{
+  display:grid;
+  grid-template-columns:1fr auto auto;
+  align-items:center;
+  gap:1rem;
+  margin-top:1rem;
+  padding:1.2rem;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:22px;
+  background:linear-gradient(120deg,rgba(255,95,180,.12),rgba(126,92,255,.09));
+}
+
+.exp1314-pass-card>strong{
+  white-space:nowrap;
+  font-size:.78rem;
+  opacity:.72;
+}
+
+.exp1314-return-card{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  margin-bottom:1rem;
+  padding:1.15rem;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:22px;
+  background:rgba(255,255,255,.055);
+}
+
+.exp1314-return-card>span{
+  font-size:2.2rem;
+}
+
+.exp1314-fan-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1rem;
+}
+
+.exp1314-fan-card{
+  padding:1.2rem;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:24px;
+  background:
+    radial-gradient(circle at 88% 12%,rgba(255,255,255,.1),transparent 25%),
+    linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
+  box-shadow:0 20px 48px rgba(0,0,0,.22);
+}
+
+.exp1314-card-icon{
+  display:block;
+  margin-bottom:.45rem;
+  font-size:1.9rem;
+}
+
+.exp1314-fan-card textarea{
+  width:100%;
+  min-height:100px;
+  margin:1rem 0 .7rem;
+  padding:.9rem;
+  resize:vertical;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:16px;
+  color:#fff;
+  background:rgba(0,0,0,.18);
+}
+
+.exp1314-message-wall{
+  display:grid;
+  gap:.5rem;
+  margin-top:.9rem;
+}
+
+.exp1314-message-wall p{
+  margin:0;
+  padding:.7rem .8rem;
+  border-radius:14px;
+  background:rgba(255,255,255,.055);
+  font-family:"Playfair Display",serif;
+}
+
+.exp1314-message-wall .empty{
+  font-family:inherit;
+  opacity:.55;
+}
+
+.exp1314-postcard{
+  min-height:190px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  margin:1rem 0;
+  padding:1.25rem;
+  border:7px solid #f8d9e8;
+  border-radius:14px;
+  color:#6d2754;
+  text-align:center;
+  background:
+    linear-gradient(rgba(255,255,255,.88),rgba(255,245,251,.94)),
+    repeating-linear-gradient(0deg,transparent 0 25px,rgba(180,90,140,.08) 25px 26px);
+  box-shadow:0 20px 35px rgba(0,0,0,.22);
+  transform:rotate(-1deg);
+}
+
+.exp1314-postcard span{
+  font-family:"Sacramento",cursive;
+  font-size:2rem;
+}
+
+.exp1314-postcard strong{
+  margin-top:.6rem;
+  font-family:"Playfair Display",serif;
+  line-height:1.45;
+}
+
+.exp1314-surprise{
+  display:grid;
+  gap:.35rem;
+  margin:1rem 0;
+  padding:1rem;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:18px;
+  background:rgba(255,255,255,.05);
+}
+
+.exp1314-surprise>span{
+  font-size:2rem;
+}
+
+.exp1314-surprise p{
+  margin:0;
+}
+
+.exp1314-gift-grid{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:.5rem;
+  margin:1rem 0 .7rem;
+}
+
+.exp1314-gift-grid>div{
+  display:grid;
+  place-items:center;
+  min-height:78px;
+  padding:.5rem;
+  border:1px dashed rgba(255,255,255,.18);
+  border-radius:14px;
+  filter:grayscale(1);
+  opacity:.35;
+  background:rgba(255,255,255,.04);
+}
+
+.exp1314-gift-grid>div.collected{
+  filter:none;
+  opacity:1;
+  border-style:solid;
+  border-color:rgba(255,138,205,.58);
+  box-shadow:0 0 22px rgba(255,87,180,.14);
+}
+
+.exp1314-gift-grid small{
+  font-size:.55rem;
+}
+
+.exp1314-gift-count{
+  display:block;
+  font-size:.8rem;
+  opacity:.72;
+}
+
+@media(max-width:980px){
+  .exp1314-backstage-grid,
+  .exp1314-fan-grid{
+    grid-template-columns:1fr;
+  }
+
+  .exp1314-pass-card{
+    grid-template-columns:1fr;
+    align-items:start;
+  }
+
+  .exp1314-scene-image{
+    min-height:520px;
+  }
+}
+
+@media(max-width:620px){
+  .exp1314-scene-image{
+    min-height:430px;
+  }
+
+  .exp1314-gift-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+
+  .exp1314-pass-card .sv-button,
+  .exp1314-fan-card .sv-button{
+    width:100%;
+    justify-content:center;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .exp1314-hotspot{animation:none!important}
+}
