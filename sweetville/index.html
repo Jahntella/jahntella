@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#120015">
   <meta name="description" content="Enter Sweetville Build v4.0: an interactive living world with districts, music, hidden letters, collectibles, achievements, and a room that grows with your journey.">
-  <title>Sweetville EXP 18.1.2 — Drive With Jahntella First</title>
+  <title>Sweetville EXP 18.2 — New Cover, Drive Destinations & Photo Moments</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="sweetville.css?v=18.1.1">
-  <link rel="stylesheet" href="girly-nav-sweetville.css?v=18.1.1.1">
+  <link rel="stylesheet" href="sweetville.css?v=18.2">
+  <link rel="stylesheet" href="girly-nav-sweetville.css?v=18.2">
 </head>
 <body>
 
@@ -122,7 +122,7 @@
 
     <section class="sv-hero" id="world">
       <div class="sv-hero-copy">
-        <p class="sv-eyebrow">SWEETVILLE EXP 18.1</p>
+        <p class="sv-eyebrow">SWEETVILLE EXP 18.2</p>
         <h1>The world comes <em>alive.</em></h1>
         <p class="sv-lede">Explore an interactive city where every district has its own mood, music, hidden letter, collectible, and little moment from Jahntella.</p>
         <div class="sv-actions">
@@ -170,7 +170,7 @@
 
       <div class="exp1618-cruise-card">
         <div class="exp1618-cruise-image">
-          <img src="assets/exp16-18/city-drive.jpg?v=18.0" alt="Jahntella driving through Sweetville at night">
+          <img id="exp1618CruiseImage" src="assets/exp16-18/city-drive.jpg?v=18.2" alt="Jahntella driving through Neon City at night" loading="eager" decoding="async">
           <div class="exp1618-driving-lights" aria-hidden="true"></div>
           <span class="exp1618-cruise-badge" id="exp1618CruiseBadge">CRUISING DOWNTOWN</span>
         </div>
@@ -185,10 +185,11 @@
           </div>
           <audio id="exp181DriveAudio" preload="none"></audio>
 
-          <div class="exp1618-destination-buttons">
+          <div class="exp1618-destination-buttons" aria-label="Choose a Sweetville drive destination">
             <button type="button" data-destination="Donut District">Donut District</button>
+            <button type="button" data-destination="Pink Carpet">Pink Carpet</button>
             <button type="button" data-destination="Sparkle Lake">Sparkle Lake</button>
-            <button type="button" data-destination="Pink Carpet Theatre">Pink Carpet</button>
+            <button type="button" data-destination="Neon City" class="exp182-city-return">↩ Back to Neon City</button>
           </div>
 
           <button type="button" class="sv-button primary" id="exp1618TakeDrive">Take Another Drive</button>
@@ -247,6 +248,21 @@
           <span>VISITS TO LITTLE MOMENTS</span>
           <strong id="exp80VisitCount">1</strong>
         </div>
+      </div>
+    </section>
+
+<section class="sv-panel exp182-kiss-panel" id="pinkLipsMoments">
+      <div class="sv-section-heading">
+        <p class="sv-eyebrow">PINK LIPS MOMENTS</p>
+        <h2>A little kiss, a little sparkle, and <em>a lot of fun.</em></h2>
+        <p>Four playful close-up moments from Jahntella’s pink-lips world.</p>
+      </div>
+
+      <div class="exp182-kiss-grid">
+        <figure><img src="assets/exp18-2/pink-lips-1.webp?v=18.2" alt="Jahntella blowing a sparkling pink kiss" loading="lazy" decoding="async"><figcaption>Sweet Kiss</figcaption></figure>
+        <figure><img src="assets/exp18-2/pink-lips-2.webp?v=18.2" alt="Jahntella surrounded by pink kiss marks" loading="lazy" decoding="async"><figcaption>Pink Lips</figcaption></figure>
+        <figure><img src="assets/exp18-2/pink-lips-3.webp?v=18.2" alt="Jahntella sharing a playful kiss moment" loading="lazy" decoding="async"><figcaption>Kiss & Sparkle</figcaption></figure>
+        <figure><img src="assets/exp18-2/pink-lips-4.webp?v=18.2" alt="Jahntella smiling among pink lip prints" loading="lazy" decoding="async"><figcaption>Stay Sweet</figcaption></figure>
       </div>
     </section>
 
@@ -405,6 +421,26 @@
               <strong>Tonight’s flowers are waiting</strong>
               <span>Choose a bouquet to read its note.</span>
             </div>
+          </div>
+        </article>
+      </div>
+
+<div class="exp182-backstage-extra">
+        <article class="exp182-backstage-card">
+          <img src="assets/exp18-2/spa-day.webp?v=18.2" alt="Jahntella relaxing during a Sweetville spa day" loading="lazy" decoding="async">
+          <div>
+            <small>SPA DAY</small>
+            <h3>A quiet moment before the sparkle</h3>
+            <p>Soft colors, fresh fruit water, and a little time to breathe before the next big Sweetville moment.</p>
+          </div>
+        </article>
+
+        <article class="exp182-backstage-card">
+          <img src="assets/exp18-2/hair-glam.webp?v=18.2" alt="Jahntella having her hair styled backstage" loading="lazy" decoding="async">
+          <div>
+            <small>HAIR & GLAM</small>
+            <h3>Getting ready with Jahntella</h3>
+            <p>Curls, clips, pink details, and the final touches before she steps back into the lights.</p>
           </div>
         </article>
       </div>
@@ -1417,7 +1453,7 @@
   <script src="day-with-jahntella.js?v=18.0" defer></script>
   <script src="behind-the-scenes-fan.js?v=18.0" defer></script>
   <script src="living-sweetville.js?v=18.0" defer></script>
-  <script src="mega-expansion-16-18.js?v=18.1.1" defer></script>
-  <script src="exp18-1-hotfix.js?v=18.1.1" defer></script>
+  <script src="mega-expansion-16-18.js?v=18.2" defer></script>
+  <script src="exp18-1-hotfix.js?v=18.2" defer></script>
 </body>
 </html>

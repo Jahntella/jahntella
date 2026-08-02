@@ -165,9 +165,53 @@
     document.querySelector('.exp1618-cruise-card')?.classList.remove('music-playing');
   });
 
+  const destinationScenes = {
+    'Neon City': {
+      image:'assets/exp16-18/city-drive.jpg?v=18.2',
+      alt:'Jahntella driving through Neon City at night',
+      badge:'CRUISING NEON CITY',
+      message:'“The city always looks different when your favorite song is playing.”'
+    },
+    'Donut District': {
+      image:'assets/exp18-2/drive-donut-district.webp?v=18.2',
+      alt:'Jahntella driving through the glowing Donut District',
+      badge:'NEXT STOP: DONUT DISTRICT',
+      message:'“The sweetest streets in town are even better with the music turned up.”'
+    },
+    'Pink Carpet': {
+      image:'assets/exp18-2/drive-pink-carpet.webp?v=18.2',
+      alt:'Jahntella arriving at the Sweetville Pink Carpet premiere',
+      badge:'ARRIVING: PINK CARPET',
+      message:'“Let’s arrive in style and enjoy the spotlight.”'
+    },
+    'Sparkle Lake': {
+      image:'assets/exp18-2/drive-sparkle-lake.webp?v=18.2',
+      alt:'Jahntella driving beside Sparkle Lake at sunset',
+      badge:'CRUISING SPARKLE LAKE',
+      message:'“The water glows, the night sparkles, and the song keeps playing.”'
+    }
+  };
+
   document.querySelectorAll('[data-destination]').forEach(button => {
     button.addEventListener('click', () => {
-      document.getElementById('exp1618CruiseBadge').textContent = `NEXT STOP: ${button.dataset.destination.toUpperCase()}`;
+      const scene = destinationScenes[button.dataset.destination];
+      if (!scene) return;
+
+      const image = document.getElementById('exp1618CruiseImage');
+      if (image) {
+        image.classList.add('changing');
+        const preload = new Image();
+        preload.onload = () => {
+          image.src = scene.image;
+          image.alt = scene.alt;
+          image.classList.remove('changing');
+        };
+        preload.onerror = () => image.classList.remove('changing');
+        preload.src = scene.image;
+      }
+
+      document.getElementById('exp1618CruiseBadge').textContent = scene.badge;
+      document.getElementById('exp1618CruiseMessage').textContent = scene.message;
       document.querySelectorAll('[data-destination]').forEach(item => item.classList.toggle('active', item === button));
     });
   });
