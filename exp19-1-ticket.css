@@ -10,3 +10,14 @@
 .exp191-ticket-copy strong{font-family:"Playfair Display",serif;font-size:1.18rem}
 .exp191-ticket-copy span{font-size:.7rem;opacity:.82;margin-top:.28rem}
 @media(max-width:700px){.exp191-ticket-wrap{right:12px;bottom:12px}.exp191-ticket{min-width:0;padding:.72rem .82rem;border-radius:16px}.exp191-ticket-copy span{display:none}.exp191-ticket-copy strong{font-size:1rem}}
+
+
+/* EXP 19.3 — keep portal ticket above the homepage music player */
+.exp191-ticket-wrap{
+  bottom:96px!important;
+}
+@media(max-width:700px){
+  .exp191-ticket-wrap{
+    bottom:104px!important;
+  }
+}

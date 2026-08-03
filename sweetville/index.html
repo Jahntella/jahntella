@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#120015">
   <meta name="description" content="Enter Sweetville Build v4.0: an interactive living world with districts, music, hidden letters, collectibles, achievements, and a room that grows with your journey.">
-  <title>Sweetville EXP 19.2 — The Sweetville Sphere</title>
+  <title>Sweetville EXP 19.3 — Interactive Sweetville Sphere</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="sweetville.css?v=18.3">
   <link rel="stylesheet" href="girly-nav-sweetville.css?v=18.3">
 <link rel="stylesheet" href="exp19-1-portal.css?v=19.1">
-<link rel="stylesheet" href="exp19-2-sphere.css?v=19.2">
+<link rel="stylesheet" href="exp19-2-sphere.css?v=19.3">
 </head>
 <body>
 
@@ -240,10 +240,35 @@
       </div>
 
       <div class="exp192-sphere-stage">
-        <div class="exp192-sphere-image">
-          <img src="assets/exp19-2/sweetville-sphere.webp?v=19.2" alt="Jahntella performing inside the Sweetville Sphere" loading="lazy" decoding="async">
+        
+        <div class="exp192-sphere-image" id="exp193SphereStage">
+          <div class="exp193-sphere-slides" aria-live="polite">
+            <img class="exp193-sphere-slide active" data-sphere-slide="0"
+                 src="assets/exp19-2/sweetville-sphere.webp?v=19.3"
+                 alt="Jahntella performing inside the Sweetville Sphere"
+                 loading="lazy" decoding="async">
+            <img class="exp193-sphere-slide" data-sphere-slide="1"
+                 src="assets/exp19-3/sweetville-sphere-collage.webp?v=19.3"
+                 alt="Jahntella performing in front of a collage of Sweetville memories"
+                 loading="lazy" decoding="async">
+            <img class="exp193-sphere-slide" data-sphere-slide="2"
+                 src="assets/exp19-3/sweetville-sphere-spotlight.webp?v=19.3"
+                 alt="Jahntella singing beneath a spotlight at the Sweetville Sphere"
+                 loading="lazy" decoding="async">
+          </div>
+
+          <button class="exp193-sphere-arrow prev" id="exp193SpherePrev" type="button" aria-label="Previous Sphere image">‹</button>
+          <button class="exp193-sphere-arrow next" id="exp193SphereNext" type="button" aria-label="Next Sphere image">›</button>
+
+          <div class="exp193-sphere-dots" aria-label="Sphere image selector">
+            <button class="active" type="button" data-sphere-dot="0" aria-label="Show Sphere performance"></button>
+            <button type="button" data-sphere-dot="1" aria-label="Show Sweetville memories performance"></button>
+            <button type="button" data-sphere-dot="2" aria-label="Show spotlight performance"></button>
+          </div>
+
           <div class="exp192-sphere-beams" aria-hidden="true"></div>
           <div class="exp192-crowd-glow" aria-hidden="true"></div>
+          <div class="exp193-confetti" id="exp193Confetti" aria-hidden="true"></div>
           <span class="exp192-now-performing">NOW PERFORMING</span>
         </div>
 
@@ -252,6 +277,7 @@
           <h3 id="exp192SphereTitle">Jahntella takes the stage.</h3>
           <p id="exp192SphereText">The lights are ready. The Sweeties are singing. Tap the buttons below to bring the concert to life.</p>
 
+          <div class="exp193-control-label">🎛 SWEETVILLE SPHERE CONTROL PANEL</div>
           <div class="exp192-sphere-actions">
             <button type="button" class="sv-button primary" id="exp192Lights">Light the Sphere</button>
             <button type="button" class="sv-button secondary" id="exp192Crowd">Hear the Sweeties</button>
@@ -1534,6 +1560,6 @@
   <script src="mega-expansion-16-18.js?v=18.3" defer></script>
   <script src="exp18-1-hotfix.js?v=18.3" defer></script>
 <script src="exp19-1-passport.js?v=19.1" defer></script>
-<script src="exp19-2-sphere.js?v=19.2" defer></script>
+<script src="exp19-2-sphere.js?v=19.3" defer></script>
 </body>
 </html>
