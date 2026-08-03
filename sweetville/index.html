@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#120015">
   <meta name="description" content="Enter Sweetville Build v4.0: an interactive living world with districts, music, hidden letters, collectibles, achievements, and a room that grows with your journey.">
-  <title>Sweetville EXP 18.3 — Driving Framing & Walk-In Closet</title>
+  <title>Sweetville EXP 19.2 — The Sweetville Sphere</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="sweetville.css?v=18.3">
   <link rel="stylesheet" href="girly-nav-sweetville.css?v=18.3">
 <link rel="stylesheet" href="exp19-1-portal.css?v=19.1">
+<link rel="stylesheet" href="exp19-2-sphere.css?v=19.2">
 </head>
 <body>
 
@@ -95,6 +96,7 @@
       <a href="#livingSweetville">Living World</a>
       <a href="#celebrityLife">Premiere</a>
       <a href="#cityCruise">Cruise</a>
+      <a href="#sweetvilleSphere">Sphere</a>
       <a href="#summerFestival">Summer</a>
       <a href="#livingMap">Map</a>
       <a href="#bedroom">My Room</a>
@@ -220,10 +222,47 @@
             <button type="button" data-destination="Donut District">Donut District</button>
             <button type="button" data-destination="Pink Carpet">Pink Carpet</button>
             <button type="button" data-destination="Sparkle Lake">Sparkle Lake</button>
+            <button type="button" data-destination="Sweetville Sphere">Sweetville Sphere</button>
             <button type="button" data-destination="Neon City" class="exp182-city-return">↩ Back to Neon City</button>
           </div>
 
           <button type="button" class="sv-button primary" id="exp1618TakeDrive">Take Another Drive</button>
+          <a class="sv-button secondary exp192-sphere-link" id="exp192GoSphere" href="#sweetvilleSphere">Enter the Sweetville Sphere</a>
+        </div>
+      </div>
+    </section>
+
+<section class="sv-panel exp192-sphere-panel" id="sweetvilleSphere">
+      <div class="sv-section-heading">
+        <p class="sv-eyebrow">EXP 19.2 — THE SWEETVILLE SPHERE</p>
+        <h2>Tonight, the whole world is <em>singing with Jahntella.</em></h2>
+        <p>Step inside Sweetville’s biggest concert destination, turn up the music, and light the Sphere with the crowd.</p>
+      </div>
+
+      <div class="exp192-sphere-stage">
+        <div class="exp192-sphere-image">
+          <img src="assets/exp19-2/sweetville-sphere.webp?v=19.2" alt="Jahntella performing inside the Sweetville Sphere" loading="lazy" decoding="async">
+          <div class="exp192-sphere-beams" aria-hidden="true"></div>
+          <div class="exp192-crowd-glow" aria-hidden="true"></div>
+          <span class="exp192-now-performing">NOW PERFORMING</span>
+        </div>
+
+        <div class="exp192-sphere-copy">
+          <small>LIVE AT THE SWEETVILLE SPHERE</small>
+          <h3 id="exp192SphereTitle">Jahntella takes the stage.</h3>
+          <p id="exp192SphereText">The lights are ready. The Sweeties are singing. Tap the buttons below to bring the concert to life.</p>
+
+          <div class="exp192-sphere-actions">
+            <button type="button" class="sv-button primary" id="exp192Lights">Light the Sphere</button>
+            <button type="button" class="sv-button secondary" id="exp192Crowd">Hear the Sweeties</button>
+            <button type="button" class="sv-button secondary" id="exp192Finale">Launch the Finale</button>
+          </div>
+
+          <div class="exp192-concert-status">
+            <span>LIGHTS <strong id="exp192LightStatus">Ready</strong></span>
+            <span>CROWD <strong id="exp192CrowdStatus">Waiting</strong></span>
+            <span>FINALE <strong id="exp192FinaleStatus">Locked</strong></span>
+          </div>
         </div>
       </div>
     </section>
@@ -1495,5 +1534,6 @@
   <script src="mega-expansion-16-18.js?v=18.3" defer></script>
   <script src="exp18-1-hotfix.js?v=18.3" defer></script>
 <script src="exp19-1-passport.js?v=19.1" defer></script>
+<script src="exp19-2-sphere.js?v=19.2" defer></script>
 </body>
 </html>

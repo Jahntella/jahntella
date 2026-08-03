@@ -166,6 +166,14 @@
   });
 
   const destinationScenes = {
+
+    'Sweetville Sphere': {
+      image:'assets/exp19-2/sweetville-sphere.webp?v=19.2',
+      alt:'Jahntella performing inside the Sweetville Sphere',
+      badge:'ARRIVING: SWEETVILLE SPHERE',
+      message:'“The lights are on, the Sweeties are waiting, and tonight we sing together.”',
+      position:'center 18%'
+    },
     'Neon City': {
       image:'assets/exp16-18/city-drive.jpg?v=18.2',
       alt:'Jahntella driving through Neon City at night',
