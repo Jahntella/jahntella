@@ -1,0 +1,246 @@
+
+/* =========================================================
+   EXP 19.5 — THE WORLD'S #1 POP STAR
+   ========================================================= */
+
+.exp195-popstar-section{
+  position:relative;
+  z-index:5;
+  margin:0;
+  padding:clamp(3.5rem,7vw,7rem) 5vw;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(255,85,183,.18),transparent 31%),
+    radial-gradient(circle at 85% 75%,rgba(129,77,255,.16),transparent 34%),
+    linear-gradient(180deg,#100012,#1a001e 55%,#0c000f);
+  border-top:1px solid rgba(255,145,207,.24);
+  border-bottom:1px solid rgba(255,145,207,.24);
+}
+
+.exp195-popstar-section::before,
+.exp195-popstar-section::after{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:.4;
+  pointer-events:none;
+}
+
+.exp195-popstar-section::before{
+  left:-70px;
+  top:20%;
+  background:#ff4bad;
+}
+
+.exp195-popstar-section::after{
+  right:-60px;
+  bottom:0;
+  background:#854dff;
+}
+
+.exp195-popstar-wrap{
+  position:relative;
+  max-width:1150px;
+  margin:0 auto;
+  display:grid;
+  place-items:center;
+}
+
+.exp195-popstar-badge{
+  position:relative;
+  width:min(100%,980px);
+  padding:clamp(2rem,5vw,4rem);
+  overflow:hidden;
+  border:1px solid rgba(255,214,233,.72);
+  border-radius:36px;
+  text-align:center;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.035)),
+    linear-gradient(135deg,rgba(255,62,165,.22),rgba(132,76,255,.18));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.28),
+    0 30px 80px rgba(0,0,0,.38),
+    0 0 44px rgba(255,76,180,.18);
+  backdrop-filter:blur(22px);
+}
+
+.exp195-popstar-badge::before{
+  content:"";
+  position:absolute;
+  inset:-20%;
+  background:
+    conic-gradient(from 180deg at 50% 50%,transparent 0 20%,rgba(255,255,255,.18) 22% 26%,transparent 28% 65%,rgba(255,255,255,.13) 68% 72%,transparent 74% 100%);
+  animation:exp195BadgeSpin 18s linear infinite;
+  pointer-events:none;
+}
+
+.exp195-popstar-badge::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  transform:translateX(-130%) skewX(-18deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);
+  animation:exp195Shine 5.5s ease-in-out infinite;
+  pointer-events:none;
+}
+
+.exp195-crown{
+  position:relative;
+  z-index:2;
+  display:block;
+  margin-bottom:.4rem;
+  font-size:clamp(2.3rem,5vw,4rem);
+  filter:drop-shadow(0 0 20px rgba(255,205,78,.36));
+  animation:exp195Float 3.6s ease-in-out infinite;
+}
+
+.exp195-kicker{
+  position:relative;
+  z-index:2;
+  margin:0 0 .6rem;
+  font-size:.68rem;
+  font-weight:900;
+  letter-spacing:.24em;
+  color:#ffd7eb;
+  text-transform:uppercase;
+}
+
+.exp195-name{
+  position:relative;
+  z-index:2;
+  margin:0;
+  font-family:"Sacramento",cursive;
+  font-size:clamp(3.6rem,10vw,8.4rem);
+  line-height:.9;
+  color:#fff;
+  text-shadow:
+    0 0 20px rgba(255,92,189,.48),
+    0 0 42px rgba(255,92,189,.26);
+}
+
+.exp195-title{
+  position:relative;
+  z-index:2;
+  margin:.45rem 0 .7rem;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(2rem,5.4vw,5.2rem);
+  line-height:.95;
+  letter-spacing:-.03em;
+  color:#fff6fb;
+}
+
+.exp195-title span{
+  display:block;
+  color:#ff83c7;
+  text-shadow:0 0 22px rgba(255,74,180,.42);
+}
+
+.exp195-subtitle{
+  position:relative;
+  z-index:2;
+  max-width:720px;
+  margin:0 auto;
+  font-size:clamp(1rem,2vw,1.25rem);
+  line-height:1.7;
+  color:#f2ddea;
+}
+
+.exp195-meta{
+  position:relative;
+  z-index:2;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:.7rem;
+  margin:1.6rem 0 1rem;
+}
+
+.exp195-meta span{
+  padding:.72rem .95rem;
+  border:1px solid rgba(255,177,216,.24);
+  border-radius:999px;
+  background:rgba(255,255,255,.045);
+  font-size:.72rem;
+  font-weight:800;
+  color:#ffe7f3;
+}
+
+.exp195-recognition{
+  position:relative;
+  z-index:2;
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+  padding:.7rem .95rem;
+  border:1px solid rgba(255,200,226,.28);
+  border-radius:999px;
+  color:#ffc5e2;
+  background:rgba(255,255,255,.035);
+  font-size:.64rem;
+  font-weight:900;
+  letter-spacing:.09em;
+}
+
+.exp195-sparkles{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+
+.exp195-sparkles i{
+  position:absolute;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#fff;
+  box-shadow:0 0 14px #ff83c7;
+  animation:exp195Twinkle var(--d) ease-in-out infinite;
+}
+
+@keyframes exp195BadgeSpin{
+  to{transform:rotate(360deg)}
+}
+
+@keyframes exp195Shine{
+  0%,55%{transform:translateX(-130%) skewX(-18deg)}
+  75%,100%{transform:translateX(130%) skewX(-18deg)}
+}
+
+@keyframes exp195Float{
+  50%{transform:translateY(-8px)}
+}
+
+@keyframes exp195Twinkle{
+  50%{opacity:.25;transform:scale(.55)}
+}
+
+@media(max-width:700px){
+  .exp195-popstar-section{
+    padding:3rem 1rem;
+  }
+
+  .exp195-popstar-badge{
+    border-radius:26px;
+  }
+
+  .exp195-meta{
+    gap:.45rem;
+  }
+
+  .exp195-meta span{
+    padding:.58rem .72rem;
+    font-size:.64rem;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .exp195-popstar-badge::before,
+  .exp195-popstar-badge::after,
+  .exp195-crown,
+  .exp195-sparkles i{
+    animation:none!important;
+  }
+}
