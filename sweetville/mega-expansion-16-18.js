@@ -170,25 +170,29 @@
       image:'assets/exp16-18/city-drive.jpg?v=18.2',
       alt:'Jahntella driving through Neon City at night',
       badge:'CRUISING NEON CITY',
-      message:'“The city always looks different when your favorite song is playing.”'
+      message:'“The city always looks different when your favorite song is playing.”',
+      position:'center center'
     },
     'Donut District': {
       image:'assets/exp18-2/drive-donut-district.webp?v=18.2',
       alt:'Jahntella driving through the glowing Donut District',
       badge:'NEXT STOP: DONUT DISTRICT',
-      message:'“The sweetest streets in town are even better with the music turned up.”'
+      message:'“The sweetest streets in town are even better with the music turned up.”',
+      position:'center center'
     },
     'Pink Carpet': {
       image:'assets/exp18-2/drive-pink-carpet.webp?v=18.2',
       alt:'Jahntella arriving at the Sweetville Pink Carpet premiere',
       badge:'ARRIVING: PINK CARPET',
-      message:'“Let’s arrive in style and enjoy the spotlight.”'
+      message:'“Let’s arrive in style and enjoy the spotlight.”',
+      position:'center 24%'
     },
     'Sparkle Lake': {
       image:'assets/exp18-2/drive-sparkle-lake.webp?v=18.2',
       alt:'Jahntella driving beside Sparkle Lake at sunset',
       badge:'CRUISING SPARKLE LAKE',
-      message:'“The water glows, the night sparkles, and the song keeps playing.”'
+      message:'“The water glows, the night sparkles, and the song keeps playing.”',
+      position:'center 20%'
     }
   };
 
@@ -204,6 +208,7 @@
         preload.onload = () => {
           image.src = scene.image;
           image.alt = scene.alt;
+          image.style.objectPosition = scene.position || 'center center';
           image.classList.remove('changing');
         };
         preload.onerror = () => image.classList.remove('changing');

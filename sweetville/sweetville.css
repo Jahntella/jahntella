@@ -6847,3 +6847,46 @@ body.sv-menu-open{
   .exp182-backstage-extra{grid-template-columns:1fr}
   .exp182-backstage-card img{height:480px}
 }
+
+/* =========================================================
+   SWEETVILLE EXP 18.3 — DRIVING FRAMING & WALK-IN CLOSET
+   ========================================================= */
+
+#exp1618CruiseImage{
+  object-fit:contain!important;
+  object-position:center center;
+  background:#160014;
+}
+
+.exp1618-cruise-image{
+  background:
+    radial-gradient(circle at 50% 30%,rgba(255,83,180,.14),transparent 48%),
+    #160014!important;
+}
+
+.exp182-backstage-extra{
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+}
+
+.exp183-closet-card img{
+  object-position:center 24%;
+}
+
+@media(max-width:1180px){
+  .exp182-backstage-extra{
+    grid-template-columns:1fr!important;
+  }
+}
+
+@media(max-width:760px){
+  #exp1618CruiseImage{
+    object-fit:contain!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+  }
+
+  .exp1618-cruise-image{
+    min-height:0!important;
+  }
+}
