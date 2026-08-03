@@ -137,3 +137,54 @@
     height:42px;
   }
 }
+
+
+/* =========================================================
+   EXP 19.4 — SPHERE ENCORE
+   ========================================================= */
+
+.exp194-live-badge{
+  position:absolute;
+  top:20px;
+  right:20px;
+  z-index:10;
+  padding:.55rem .72rem;
+  border:1px solid rgba(255,255,255,.5);
+  border-radius:999px;
+  background:rgba(146,0,48,.82);
+  color:#fff;
+  font-size:.62rem;
+  font-weight:900;
+  letter-spacing:.12em;
+  box-shadow:0 0 20px rgba(255,62,132,.42);
+  animation:exp194LivePulse 1.8s ease-in-out infinite;
+}
+
+@keyframes exp194LivePulse{
+  50%{opacity:.65;box-shadow:0 0 30px rgba(255,62,132,.62)}
+}
+
+.exp192-concert-status{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+}
+
+.exp192-sphere-panel.sphere-active .exp1618-radio-buttons,
+.exp192-sphere-panel.sphere-active .exp192-sphere-actions{
+  filter:drop-shadow(0 0 16px rgba(255,78,185,.35));
+}
+
+.exp192-sphere-panel.finale-running .exp193-sphere-slide.active{
+  animation:exp194FinalePulse .8s ease-in-out infinite alternate;
+}
+
+@keyframes exp194FinalePulse{
+  from{filter:brightness(1.1) saturate(1.1)}
+  to{filter:brightness(1.28) saturate(1.25)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .exp194-live-badge,
+  .exp192-sphere-panel.finale-running .exp193-sphere-slide.active{
+    animation:none!important;
+  }
+}
