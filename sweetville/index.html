@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="sweetville.css?v=18.3">
   <link rel="stylesheet" href="girly-nav-sweetville.css?v=18.3">
+<link rel="stylesheet" href="exp19-1-portal.css?v=19.1">
 </head>
 <body>
 
@@ -81,7 +82,7 @@
   <div class="ambient-life" id="ambientLife" aria-hidden="true"></div>
 
   <header class="sv-header">
-    <a class="sv-brand" href="../index.html">Jahntella<span>♡</span></a>
+    <div class="exp191-brand-wrap"><a class="sv-brand" href="../index.html">Jahntella<span>♡</span></a><a class="exp191-realworld-ticket" href="../index.html">🎟️ Ticket to the Real World</a></div>
     <button class="sv-menu-button" id="menuButton" aria-label="Open Sweetville menu" aria-expanded="false">☰</button>
     <nav id="svNav">
       <button class="sv-nav-close" id="svNavClose" type="button" aria-label="Close Sweetville menu">×</button>
@@ -160,6 +161,36 @@
         <button class="sound-toggle" id="soundToggle" aria-pressed="false">🎹 Open Mini Piano</button>
       </div>
     </section>
+
+
+    <section class="exp191-passport-panel" id="exp191Passport">
+      <div class="sv-section-heading">
+        <p class="sv-eyebrow">EXP 19.1 — SWEETIE PASSPORT</p>
+        <h2>Your ticket, your trips, your <em>Sweetville story.</em></h2>
+        <p>This passport remembers a few simple details on this device so every return feels a little more personal.</p>
+      </div>
+
+      <div class="exp191-passport-grid">
+        <article class="exp191-passport-card">
+          <small>SWEETIE PASSPORT</small>
+          <h3 id="exp191PassportName">Visitor</h3>
+          <div class="exp191-passport-fields">
+            <div class="exp191-passport-field"><span>VISITOR NUMBER</span><strong id="exp191VisitorNumber">—</strong></div>
+            <div class="exp191-passport-field"><span>TRIPS TO SWEETVILLE</span><strong id="exp191Trips">1</strong></div>
+            <div class="exp191-passport-field"><span>MEMORIES SAVED</span><strong id="exp191Memories">0</strong></div>
+            <div class="exp191-passport-field"><span>FAVORITE DISTRICT</span><strong id="exp191Favorite">Not chosen yet</strong></div>
+          </div>
+        </article>
+
+        <article class="exp191-passport-card">
+          <small>WELCOME BACK</small>
+          <h3>Your world remembers you.</h3>
+          <p class="exp191-passport-note">Visit districts, keep moments, and return through your ticket. EXP 19 will keep expanding this passport with stamps, concert visits, and new Sweetville destinations.</p>
+          <a class="exp191-realworld-ticket" href="../index.html">🎟️ Return to the Real World</a>
+        </article>
+      </div>
+    </section>
+
 
 <section class="sv-panel exp1618-panel" id="cityCruise">
       <div class="sv-section-heading">
@@ -1463,5 +1494,6 @@
   <script src="living-sweetville.js?v=18.0" defer></script>
   <script src="mega-expansion-16-18.js?v=18.3" defer></script>
   <script src="exp18-1-hotfix.js?v=18.3" defer></script>
+<script src="exp19-1-passport.js?v=19.1" defer></script>
 </body>
 </html>
