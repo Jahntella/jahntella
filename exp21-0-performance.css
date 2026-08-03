@@ -1,0 +1,62 @@
+
+/* EXP 21.0 — Homepage Performance Optimization */
+
+html{
+  content-visibility:auto;
+}
+
+body{
+  font-display:swap;
+}
+
+.hero-v5{
+  background:#120015;
+  contain:layout paint style;
+}
+
+.hero-v5-video{
+  background:#120015;
+}
+
+img{
+  height:auto;
+}
+
+.reveal,
+.music-section,
+.about-section,
+.sweet-vault-section,
+.downloads-section,
+.magazine-section,
+.merch-section,
+.gallery-section,
+.contact-section,
+.exp195-popstar-section{
+  content-visibility:auto;
+  contain-intrinsic-size:900px;
+}
+
+@media(max-width:760px){
+  .ambient,
+  .shooting-stars,
+  .twinkle-stars{
+    opacity:.45!important;
+  }
+
+  .sparkles{
+    display:none!important;
+  }
+
+  .hero-v5-video{
+    filter:none!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .shooting-stars,
+  .twinkle-stars,
+  .ambient,
+  .sparkles{
+    display:none!important;
+  }
+}
