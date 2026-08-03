@@ -1,0 +1,17 @@
+Sweetville EXP 19.3 - Sphere Upgrade
+
+Included assets:
+- JSphere2(1).png
+- Jsphere3(1).png
+
+Planned integration:
+1. Add both images to the Sweetville Sphere gallery.
+2. Replace static Sphere with a 3-image carousel.
+3. Functional buttons:
+   - Light the Sphere
+   - Hear the Sweeties
+   - Launch Finale
+4. Animated lights, glowsticks, fireworks, confetti and finale sequence.
+5. Concert control panel UI.
+
+This package contains the new visual assets and implementation notes for EXP 19.3.
