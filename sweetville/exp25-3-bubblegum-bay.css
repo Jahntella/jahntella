@@ -1,0 +1,14 @@
+
+.exp253-bay-panel{background:radial-gradient(circle at 15% 20%,rgba(255,87,179,.22),transparent 28%),radial-gradient(circle at 85% 78%,rgba(74,199,255,.2),transparent 28%),var(--panel)}
+.exp253-arrival-card{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center;margin:2rem 0;padding:1.4rem;border:1px solid rgba(255,151,207,.55);border-radius:24px;background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.02))}
+.exp253-arrival-copy h3,.exp253-passport-row h3{font-family:"Playfair Display",serif;font-size:clamp(1.7rem,3vw,2.7rem);margin:.25rem 0}
+.exp253-arrival-actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1rem}
+.exp253-ticket-board{min-width:240px;padding:1.25rem;border:1px dashed #ff9bce;border-radius:18px;text-align:center;background:#170018}
+.exp253-ticket-board span{display:block;font-size:2.5rem}.exp253-ticket-board strong,.exp253-ticket-board small{display:block}.exp253-ticket-board small{margin-top:.35rem;color:#ffb7da}
+.exp253-district-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.exp253-district-grid article{overflow:hidden;border:1px solid rgba(255,130,194,.4);border-radius:24px;background:#100012;box-shadow:0 20px 55px rgba(0,0,0,.35)}
+.exp253-district-grid img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}.exp253-district-grid article div{padding:1rem}.exp253-district-grid h3{font-size:1.5rem;margin:.2rem 0}
+.exp253-passport-row{display:flex;justify-content:space-between;gap:1rem;align-items:center;margin-top:1rem;padding:1.3rem;border:1px solid rgba(255,152,207,.4);border-radius:20px;background:#0b000d}
+.exp253-passport-row.is-stamped{box-shadow:0 0 30px rgba(255,83,178,.28);border-color:#ffd66a}
+.location-bay{right:2%;bottom:4%}
+@media(max-width:760px){.exp253-arrival-card{grid-template-columns:1fr}.exp253-ticket-board{min-width:0}.exp253-district-grid{grid-template-columns:1fr}.exp253-passport-row{align-items:flex-start;flex-direction:column}}

@@ -78,3 +78,23 @@
 })();
 
 
+
+(() => {
+  const board=document.getElementById('exp250BoardButton');
+  const overlay=document.getElementById('exp251Departure');
+  if(!board||!overlay)return;
+  let timer;
+  board.addEventListener('click',()=>{
+    if(board.disabled)return;
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+    timer=setTimeout(()=>{window.location.href='sweetville/#bubblegumBay';},3600);
+  });
+  window.addEventListener('pageshow',()=>{
+    clearTimeout(timer);
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden','true');
+    document.body.style.removeProperty('overflow');
+  });
+})();
