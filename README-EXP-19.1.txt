@@ -1,22 +1,14 @@
-SWEETVILLE EXP 19.1 — TICKET PORTAL + PASSPORT
 
-UPLOAD TO REPOSITORY ROOT, PRESERVING THE SWEETVILLE FOLDER.
-
-FILES
-/index.html
-/exp19-1-ticket.css
-/sweetville/index.html
-/sweetville/exp19-1-portal.css
-/sweetville/exp19-1-passport.js
-
-FEATURES
-- Ticket to Sweetville on the Jahntella homepage
-- Ticket to the Real World inside Sweetville
-- Sweetie Passport
-- Visitor number
-- Sweetville trip count
-- Saved memory count
-- Favorite Drive destination remembered on this device
-
-COMMIT MESSAGE
-Sweetville EXP 19.1 — Ticket portal and Sweetie Passport
+/* EXP 20.3 — Homepage Investor Portal entry */
+.exp203-investor-entry{padding:2rem 5vw 5rem;background:linear-gradient(180deg,#120014,#09000b)}
+.exp203-investor-card{position:relative;max-width:980px;margin:0 auto;padding:clamp(1.5rem,4vw,3rem);overflow:hidden;text-align:center;border:1px solid rgba(255,159,211,.35);border-radius:28px;background:radial-gradient(circle at 15% 20%,rgba(255,79,177,.17),transparent 34%),radial-gradient(circle at 85% 80%,rgba(133,78,255,.15),transparent 35%),linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.025));box-shadow:0 24px 60px rgba(0,0,0,.35),0 0 34px rgba(255,74,180,.12)}
+.exp203-investor-card::after{content:"";position:absolute;inset:0;pointer-events:none;transform:translateX(-130%) skewX(-18deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.16),transparent);animation:exp203Shine 6s ease-in-out infinite}
+.exp203-investor-kicker{display:block;font-size:.62rem;font-weight:900;letter-spacing:.17em;color:#ff9dcd}
+.exp203-investor-card h2{margin:.45rem 0 .7rem;font-family:"Playfair Display",serif;font-size:clamp(2rem,4.5vw,4rem);line-height:1}
+.exp203-investor-card h2 em{color:#ff91c9}
+.exp203-investor-card p{max-width:720px;margin:0 auto 1.25rem;line-height:1.7;color:#dfc5d5}
+.exp203-investor-button{position:relative;z-index:1;display:inline-flex;align-items:center;gap:.55rem;padding:.9rem 1.15rem;border-radius:999px;color:#fff;text-decoration:none;font-weight:900;background:linear-gradient(135deg,#ff4eae,#8c57ff);box-shadow:0 14px 32px rgba(255,78,174,.3);transition:transform .2s ease,filter .2s ease}
+.exp203-investor-button:hover,.exp203-investor-button:focus-visible{transform:translateY(-2px);filter:brightness(1.08)}
+@keyframes exp203Shine{0%,55%{transform:translateX(-130%) skewX(-18deg)}75%,100%{transform:translateX(130%) skewX(-18deg)}}
+@media(max-width:700px){.exp203-investor-entry{padding:1.25rem 1rem 3.5rem}.exp203-investor-card{border-radius:22px}}
+@media(prefers-reduced-motion:reduce){.exp203-investor-card::after{animation:none}}

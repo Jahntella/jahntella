@@ -1,26 +1,74 @@
-SWEETVILLE EXP 19.5 — THE WORLD'S #1 POP STAR
+/* EXP 21.0 — Homepage Performance Optimization */
+(() => {
+  'use strict';
 
-UPLOAD EVERYTHING INSIDE THIS ZIP TO THE REPOSITORY ROOT.
-Preserve the included sweetville folder.
+  const ready = fn => {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', fn, {once:true});
+    } else {
+      fn();
+    }
+  };
 
-FEATURES
-- Adds a premium homepage statement:
-  THE WORLD'S #1 POP STAR
-- Frames the statement as part of Jahntella's Sweetville universe
-- Adds crown, pink-glass styling, shimmer, sparkles and floating animation
-- Adds Music, Sweetville, Stories and Fashion identity tags
-- Preserves EXP 19.4 Sphere Encore
-- Preserves the moved Ticket to Sweetville button
+  ready(() => {
+    const video = document.querySelector('.hero-v5-video');
+    const source = video?.querySelector('source[data-src]');
 
-FILES ADDED
-/exp19-5-popstar.css
-/exp19-5-popstar.js
+    const startHeroVideo = () => {
+      if (!video || !source || source.src) return;
+      source.src = source.dataset.src;
+      video.load();
 
-FILE UPDATED
-/index.html
+      const promise = video.play();
+      if (promise?.catch) promise.catch(() => {});
+    };
 
-COMMIT MESSAGE
-Sweetville EXP 19.5 — The World's #1 Pop Star
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(startHeroVideo, {timeout:1800});
+    } else {
+      setTimeout(startHeroVideo, 900);
+    }
 
-PREVIEW
-https://jahntella.com/?v=19.5
+    // Prevent decorative effects from initializing before first interaction on mobile.
+    if (matchMedia('(max-width: 760px)').matches) {
+      document.documentElement.classList.add('exp210-mobile-lite');
+    }
+
+    // Defer below-the-fold image fetching more aggressively.
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+      img.decoding = 'async';
+      if (!img.fetchPriority) img.fetchPriority = 'low';
+    });
+
+    // Pause hero video while offscreen or tab is hidden.
+    if (video && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (document.hidden || !entry.isIntersecting) {
+            video.pause();
+          } else if (source?.src) {
+            video.play().catch(() => {});
+          }
+        });
+      }, {threshold:.15});
+      observer.observe(video);
+    }
+
+    document.addEventListener('visibilitychange', () => {
+      if (!video) return;
+      if (document.hidden) {
+        video.pause();
+      } else if (source?.src && video.getBoundingClientRect().bottom > 0) {
+        video.play().catch(() => {});
+      }
+    });
+
+    // Delay noncritical animation classes until the browser is idle.
+    const enablePolish = () => document.documentElement.classList.add('exp210-polish-ready');
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(enablePolish, {timeout:2500});
+    } else {
+      setTimeout(enablePolish, 1800);
+    }
+  });
+})();

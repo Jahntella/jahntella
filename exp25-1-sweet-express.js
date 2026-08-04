@@ -1,100 +1,23 @@
-/* EXP 25.2 — Both Jahntella songs power the Sweet Express */
-(() => {
-  'use strict';
 
-  const STORAGE_KEY = 'jahntellaSweetEnergyV25';
-  const GOAL = 10;
-
-  const countEl = document.getElementById('exp250PlayCount');
-  const bar = document.getElementById('exp250ProgressBar');
-  const status = document.getElementById('exp250Status');
-  const listenButton = document.getElementById('exp250ListenButton');
-  const boardButton = document.getElementById('exp250BoardButton');
-
-  const funDippAudio = document.getElementById('audioFunDipp');
-  const pinkLipsAudio = document.getElementById('audioPinkLips');
-  const funDippButton = document.querySelector('[data-track="fun-dipp"]');
-
-  if (!countEl || !bar || !status || !listenButton || !boardButton) return;
-
-  let count = Math.max(
-    0,
-    Math.min(GOAL, Number(localStorage.getItem(STORAGE_KEY) || 0))
-  );
-
-  const render = () => {
-    countEl.textContent = String(count);
-    bar.style.width = `${Math.min(100, (count / GOAL) * 100)}%`;
-
-    if (count >= GOAL) {
-      status.textContent = 'The Sweet Express is fully powered. Your ticket is ready!';
-      boardButton.disabled = false;
-      boardButton.classList.add('is-unlocked');
-      boardButton.textContent = '🚂 ALL ABOARD!';
-    } else {
-      const remaining = GOAL - count;
-      status.textContent = `${remaining} completed listen${remaining === 1 ? '' : 's'} to either song until Bubblegum Bay unlocks.`;
-      boardButton.disabled = true;
-      boardButton.classList.remove('is-unlocked');
-      boardButton.textContent = '🚂 All Aboard — Locked';
-    }
-  };
-
-  const addSweetEnergy = trackName => {
-    if (count >= GOAL) return;
-
-    count += 1;
-    localStorage.setItem(STORAGE_KEY, String(count));
-    render();
-
-    status.textContent = `${trackName} added +1 Sweet Energy! ${GOAL - count} remaining.`;
-
-    setTimeout(() => {
-      document.getElementById('sweet-express')?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center'
-      });
-    }, 350);
-  };
-
-  listenButton.addEventListener('click', () => {
-    document.getElementById('music')?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
-
-    setTimeout(() => funDippButton?.click(), 550);
-  });
-
-  funDippAudio?.addEventListener('ended', () => {
-    addSweetEnergy('Fun Dipp');
-  });
-
-  pinkLipsAudio?.addEventListener('ended', () => {
-    addSweetEnergy('Pink Lips Remix');
-  });
-
-  render();
-})();
+.exp191-ticket-wrap{position:fixed;right:22px;bottom:22px;z-index:9000}
+.exp191-ticket{display:flex;align-items:center;gap:.85rem;min-width:230px;padding:.9rem 1.05rem;border:1px solid rgba(255,191,223,.78);border-radius:18px;color:#fff;background:radial-gradient(circle at 20% 15%,rgba(255,255,255,.24),transparent 28%),linear-gradient(135deg,rgba(255,69,174,.96),rgba(126,63,255,.94));box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 16px 34px rgba(0,0,0,.34),0 0 28px rgba(255,74,182,.32);text-decoration:none;overflow:hidden;position:relative;transition:transform .22s ease,filter .22s ease,box-shadow .22s ease}
+.exp191-ticket::before{content:"";position:absolute;inset:0;transform:translateX(-120%) skewX(-20deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.34),transparent);transition:transform .7s ease}
+.exp191-ticket:hover,.exp191-ticket:focus-visible{transform:translateY(-3px);filter:brightness(1.07);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 20px 40px rgba(0,0,0,.38),0 0 38px rgba(255,74,182,.42)}
+.exp191-ticket:hover::before,.exp191-ticket:focus-visible::before{transform:translateX(120%) skewX(-20deg)}
+.exp191-ticket-icon{font-size:1.8rem}
+.exp191-ticket-copy{display:flex;flex-direction:column;line-height:1.05}
+.exp191-ticket-copy small{font-size:.58rem;letter-spacing:.14em;font-weight:900;opacity:.78}
+.exp191-ticket-copy strong{font-family:"Playfair Display",serif;font-size:1.18rem}
+.exp191-ticket-copy span{font-size:.7rem;opacity:.82;margin-top:.28rem}
+@media(max-width:700px){.exp191-ticket-wrap{right:12px;bottom:12px}.exp191-ticket{min-width:0;padding:.72rem .82rem;border-radius:16px}.exp191-ticket-copy span{display:none}.exp191-ticket-copy strong{font-size:1rem}}
 
 
-
-(() => {
-  const board=document.getElementById('exp250BoardButton');
-  const overlay=document.getElementById('exp251Departure');
-  if(!board||!overlay)return;
-  let timer;
-  board.addEventListener('click',()=>{
-    if(board.disabled)return;
-    overlay.classList.add('open');
-    overlay.setAttribute('aria-hidden','false');
-    document.body.style.overflow='hidden';
-    timer=setTimeout(()=>{window.location.href='sweetville/#bubblegumBay';},3600);
-  });
-  window.addEventListener('pageshow',()=>{
-    clearTimeout(timer);
-    overlay.classList.remove('open');
-    overlay.setAttribute('aria-hidden','true');
-    document.body.style.removeProperty('overflow');
-  });
-})();
+/* EXP 19.3 — keep portal ticket above the homepage music player */
+.exp191-ticket-wrap{
+  bottom:96px!important;
+}
+@media(max-width:700px){
+  .exp191-ticket-wrap{
+    bottom:104px!important;
+  }
+}
