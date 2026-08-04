@@ -269,135 +269,52 @@ body > #cardRevealModal #revealDoneButton{
   }
 }
 
-/* =========================================================
-   EXP 21.7 — SAFE DECORATIVE PACK EFFECTS
-   Cosmetic only. Does not control native card opening logic.
-   ========================================================= */
 
-.exp216-pack-tear,
-.exp216-pack-glow{
-  position:absolute;
-  pointer-events:none;
+/* EXP 21.8 — SAFE CSS-ONLY PACK POLISH
+   Uses the site's existing native .is-opening class.
+   No JavaScript event listeners, timers, audio contexts, observers or overlays. */
+
+.sweet-pack.sweet-pack-clean.is-opening{
+  animation:exp218-native-crinkle 1.02s ease-in-out!important;
 }
 
-.exp216-pack-tear{
-  z-index:15;
-  top:0;
-  width:52%;
-  height:32px;
-  opacity:0;
-  background:
-    linear-gradient(180deg,rgba(255,255,255,.82),rgba(255,82,164,.88)),
-    repeating-linear-gradient(90deg,#ffc8e1 0 8px,#89003d 8px 14px,#ff4e9c 14px 21px);
-  filter:drop-shadow(0 8px 10px rgba(0,0,0,.35));
-  transform-origin:bottom center;
+.sweet-pack.sweet-pack-clean.is-opening .pack-shine{
+  animation:exp218-native-flash .9s ease-out!important;
 }
 
-.exp216-pack-tear-left{
-  left:0;
-  clip-path:polygon(0 0,100% 0,92% 72%,82% 54%,72% 80%,60% 58%,48% 84%,35% 56%,20% 78%,0 60%);
+.sweet-pack.sweet-pack-clean.is-opening .exp211-pack-frame{
+  animation:exp218-native-frame .95s ease-in-out!important;
 }
 
-.exp216-pack-tear-right{
-  right:0;
-  clip-path:polygon(0 0,100% 0,100% 60%,82% 78%,68% 56%,55% 84%,43% 58%,30% 80%,18% 54%,8% 72%);
+.sweet-pack.sweet-pack-clean.is-opening::before{
+  animation:exp218-native-topseal .9s ease-out!important;
 }
 
-.exp216-pack-glow{
-  z-index:3;
-  inset:22% 12% 18%;
-  border-radius:50%;
-  opacity:0;
-  background:radial-gradient(circle,rgba(255,255,255,.9),rgba(255,94,188,.52) 28%,transparent 68%);
-  filter:blur(16px);
-  transform:scale(.6);
-}
-
-.sweet-pack.exp217-opening{
-  animation:exp217Crinkle .82s cubic-bezier(.2,.75,.2,1) both!important;
-}
-
-.sweet-pack.exp217-opening .exp216-pack-tear{
-  opacity:1;
-}
-
-.sweet-pack.exp217-opening .exp216-pack-tear-left{
-  animation:exp217TearLeft .5s .12s cubic-bezier(.2,.8,.2,1) forwards;
-}
-
-.sweet-pack.exp217-opening .exp216-pack-tear-right{
-  animation:exp217TearRight .5s .12s cubic-bezier(.2,.8,.2,1) forwards;
-}
-
-.sweet-pack.exp217-opening .exp216-pack-glow{
-  animation:exp217Glow .72s .08s ease-out forwards;
-}
-
-.sweet-pack.exp217-opening .pack-open-label{
-  opacity:.2;
-}
-
-@keyframes exp217Crinkle{
+@keyframes exp218-native-crinkle{
   0%{transform:rotate(-1.5deg) scale(1)}
-  16%{transform:rotate(-2.5deg) scale(.99,1.015)}
-  34%{transform:rotate(2deg) scale(1.01,.985)}
-  52%{transform:rotate(-1deg) scale(.995,1.005)}
-  72%{transform:rotate(.5deg) scale(1.005,.995)}
+  18%{transform:rotate(-2.6deg) scale(.985,1.015)}
+  36%{transform:rotate(1.7deg) scale(1.012,.99)}
+  55%{transform:rotate(-.8deg) scale(.995,1.008)}
+  75%{transform:rotate(.5deg) scale(1.005,.996)}
   100%{transform:rotate(-1.5deg) scale(1)}
 }
-
-@keyframes exp217TearLeft{
-  to{transform:translate(-48%,-92%) rotate(-24deg);opacity:0}
+@keyframes exp218-native-flash{
+  0%{opacity:.55}
+  35%{opacity:1;filter:brightness(1.6)}
+  100%{opacity:.6;filter:none}
 }
-
-@keyframes exp217TearRight{
-  to{transform:translate(48%,-92%) rotate(24deg);opacity:0}
+@keyframes exp218-native-frame{
+  0%,100%{box-shadow:0 15px 32px rgba(0,0,0,.45),0 0 22px rgba(255,157,211,.36),inset 0 0 0 4px rgba(255,255,255,.08)}
+  50%{box-shadow:0 15px 38px rgba(0,0,0,.48),0 0 46px rgba(255,157,211,.8),inset 0 0 0 4px rgba(255,255,255,.18)}
 }
-
-@keyframes exp217Glow{
-  0%{opacity:0;transform:scale(.6)}
-  45%{opacity:.85}
-  100%{opacity:0;transform:scale(1.18)}
+@keyframes exp218-native-topseal{
+  0%{transform:translateY(0)}
+  45%{transform:translateY(-5px) rotate(-1deg)}
+  100%{transform:translateY(0)}
 }
-
-#cardRevealModal.exp217-rare .reveal-content{
-  animation:exp217Rare .55s ease-out;
-}
-
-#cardRevealModal.exp217-legendary .reveal-content{
-  animation:exp217Legendary .7s ease-out;
-}
-
-#cardRevealModal.exp217-secret .reveal-content{
-  animation:exp217Secret .55s ease-out;
-}
-
-@keyframes exp217Rare{
-  0%{transform:scale(.95)}
-  60%{transform:scale(1.02)}
-  100%{transform:scale(1)}
-}
-
-@keyframes exp217Legendary{
-  0%{transform:scale(.93);filter:brightness(1.35)}
-  55%{transform:scale(1.03)}
-  100%{transform:scale(1);filter:none}
-}
-
-@keyframes exp217Secret{
-  0%,100%{transform:translateX(0)}
-  20%{transform:translateX(-6px)}
-  40%{transform:translateX(6px)}
-  60%{transform:translateX(-4px)}
-  80%{transform:translateX(4px)}
-}
-
 @media(prefers-reduced-motion:reduce){
-  .sweet-pack.exp217-opening,
-  .sweet-pack.exp217-opening *,
-  #cardRevealModal.exp217-rare .reveal-content,
-  #cardRevealModal.exp217-legendary .reveal-content,
-  #cardRevealModal.exp217-secret .reveal-content{
-    animation:none!important;
-  }
+  .sweet-pack.sweet-pack-clean.is-opening,
+  .sweet-pack.sweet-pack-clean.is-opening .pack-shine,
+  .sweet-pack.sweet-pack-clean.is-opening .exp211-pack-frame,
+  .sweet-pack.sweet-pack-clean.is-opening::before{animation:none!important}
 }
