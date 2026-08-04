@@ -1,26 +1,99 @@
-/* EXP 21.4 */
+/* EXP 21.5 — Keep card reveal on the current screen */
 (() => {
-  const run=()=>{
-    const m=document.getElementById('cardRevealModal');
-    if(!m)return;
-    if(m.parentElement!==document.body)document.body.appendChild(m);
-    const c=m.querySelector('.reveal-content');
-    const open=()=>{const s=getComputedStyle(m);return s.display!=='none'&&s.visibility!=='hidden'&&m.getBoundingClientRect().width>0};
-    const unlock=()=>{
-      document.body.classList.remove('exp211-reveal-open','exp213-reveal-open','exp214-reveal-open');
-      document.documentElement.classList.remove('exp211-reveal-open','exp213-reveal-open','exp214-reveal-open');
-      [document.body,document.documentElement].forEach(n=>['overflow','position','touch-action','height'].forEach(x=>n.style.removeProperty(x)));
-    };
-    const sync=()=>{if(!open())return unlock();document.body.classList.add('exp214-reveal-open');m.scrollTop=0;if(c)c.scrollTop=0;};
-    new MutationObserver(sync).observe(m,{attributes:true,attributeFilter:['class','aria-hidden','style']});
-    document.getElementById('openPackButton')?.addEventListener('click',()=>{setTimeout(sync,30);setTimeout(sync,250);setTimeout(sync,850)});
-    ['closeRevealButton','revealDoneButton'].forEach(id=>document.getElementById(id)?.addEventListener('click',()=>{setTimeout(unlock,20);setTimeout(unlock,250)}));
-    m.querySelector('.reveal-backdrop')?.addEventListener('click',()=>setTimeout(unlock,100));
-    document.addEventListener('keydown',e=>{if(e.key==='Escape')setTimeout(unlock,50)});
-    window.addEventListener('resize',sync,{passive:true});
-    window.visualViewport?.addEventListener('resize',sync,{passive:true});
-    window.addEventListener('pageshow',unlock);
-    unlock();
+  'use strict';
+
+  const ready = fn => {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', fn, {once:true});
+    } else {
+      fn();
+    }
   };
-  document.readyState==='loading'?document.addEventListener('DOMContentLoaded',run,{once:true}):run();
+
+  ready(() => {
+    const modal = document.getElementById('cardRevealModal');
+    const pack = document.getElementById('openPackButton');
+    const binder = document.getElementById('vaultBinder');
+    if (!modal || !pack) return;
+
+    // Remove the modal from every transformed/contained section.
+    if (modal.parentElement !== document.body) {
+      document.body.appendChild(modal);
+    }
+
+    let revealTop = window.scrollY;
+    let restoreBinderScroll = null;
+
+    const stopScheduledBinderJump = () => {
+      if (!binder || restoreBinderScroll) return;
+
+      const original = binder.scrollIntoView;
+      binder.scrollIntoView = () => {};
+
+      restoreBinderScroll = () => {
+        binder.scrollIntoView = original;
+        restoreBinderScroll = null;
+      };
+
+      setTimeout(() => restoreBinderScroll?.(), 2300);
+    };
+
+    const positionOverCurrentScreen = () => {
+      const isOpen = modal.classList.contains('open') ||
+                     modal.getAttribute('aria-hidden') === 'false';
+
+      if (!isOpen) return;
+
+      modal.style.setProperty('top', `${revealTop}px`, 'important');
+      modal.style.setProperty('bottom', 'auto', 'important');
+      modal.scrollTop = 0;
+      modal.querySelector('.reveal-content')?.scrollTo({top:0, behavior:'auto'});
+    };
+
+    // Capture the exact screen position before the native 1.05-second opening animation.
+    pack.addEventListener('click', () => {
+      revealTop = window.scrollY;
+      stopScheduledBinderJump();
+
+      setTimeout(positionOverCurrentScreen, 1060);
+      setTimeout(positionOverCurrentScreen, 1200);
+      setTimeout(positionOverCurrentScreen, 1800);
+    }, {capture:true});
+
+    new MutationObserver(positionOverCurrentScreen).observe(modal, {
+      attributes:true,
+      attributeFilter:['class', 'aria-hidden']
+    });
+
+    const cleanup = () => {
+      restoreBinderScroll?.();
+      modal.style.removeProperty('top');
+      modal.style.removeProperty('bottom');
+
+      document.body.style.removeProperty('overflow');
+      document.body.style.removeProperty('position');
+      document.body.style.removeProperty('touch-action');
+      document.documentElement.style.removeProperty('overflow');
+      document.documentElement.style.removeProperty('position');
+      document.documentElement.style.removeProperty('touch-action');
+    };
+
+    ['closeRevealButton', 'revealDoneButton'].forEach(id => {
+      document.getElementById(id)?.addEventListener('click', () => {
+        setTimeout(cleanup, 50);
+        setTimeout(cleanup, 300);
+      });
+    });
+
+    modal.querySelector('.reveal-backdrop')?.addEventListener('click', () => {
+      setTimeout(cleanup, 80);
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') setTimeout(cleanup, 80);
+    });
+
+    window.addEventListener('pageshow', cleanup);
+    cleanup();
+  });
 })();
