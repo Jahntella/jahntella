@@ -97,3 +97,129 @@
     cleanup();
   });
 })();
+
+
+/* EXP 21.6 — Premium pack opening effects */
+(() => {
+  'use strict';
+
+  const pack = document.getElementById('openPackButton');
+  const modal = document.getElementById('cardRevealModal');
+  const rarity = document.getElementById('revealRarity');
+  if (!pack || !modal || !rarity) return;
+
+  let audioContext = null;
+
+  const getAudio = () => {
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if (!AudioCtx) return null;
+    audioContext ??= new AudioCtx();
+    return audioContext;
+  };
+
+  const foilRipSound = () => {
+    const ctx = getAudio();
+    if (!ctx) return;
+    if (ctx.state === 'suspended') ctx.resume();
+
+    const length = Math.floor(ctx.sampleRate * .34);
+    const buffer = ctx.createBuffer(1, length, ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+
+    for (let i = 0; i < length; i++) {
+      const t = i / length;
+      const noise = (Math.random() * 2 - 1) * (1 - t);
+      const crackle = Math.sin(i * .19) * .18 * (1 - t);
+      data[i] = (noise * .62 + crackle) * Math.sin(Math.PI * Math.min(1, t * 5));
+    }
+
+    const source = ctx.createBufferSource();
+    const filter = ctx.createBiquadFilter();
+    const gain = ctx.createGain();
+
+    filter.type = 'highpass';
+    filter.frequency.value = 600;
+    gain.gain.setValueAtTime(.0001, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(.18, ctx.currentTime + .025);
+    gain.gain.exponentialRampToValueAtTime(.0001, ctx.currentTime + .34);
+
+    source.buffer = buffer;
+    source.connect(filter).connect(gain).connect(ctx.destination);
+    source.start();
+  };
+
+  const sparkleSound = () => {
+    const ctx = getAudio();
+    if (!ctx) return;
+
+    [880, 1175, 1568].forEach((freq, index) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(.0001, ctx.currentTime + index * .06);
+      gain.gain.exponentialRampToValueAtTime(.06, ctx.currentTime + index * .06 + .02);
+      gain.gain.exponentialRampToValueAtTime(.0001, ctx.currentTime + index * .06 + .34);
+      osc.connect(gain).connect(ctx.destination);
+      osc.start(ctx.currentTime + index * .06);
+      osc.stop(ctx.currentTime + index * .06 + .38);
+    });
+  };
+
+  pack.addEventListener('click', () => {
+    pack.classList.remove('exp216-opening');
+    void pack.offsetWidth;
+    pack.classList.add('exp216-opening');
+
+    foilRipSound();
+
+    setTimeout(() => {
+      sparkleSound();
+      pack.classList.remove('exp216-opening');
+    }, 1080);
+  }, {capture:true});
+
+  const applyRarityBurst = () => {
+    if (!modal.classList.contains('open')) return;
+
+    modal.classList.remove(
+      'exp216-rare-burst',
+      'exp216-legendary-burst',
+      'exp216-secret-burst'
+    );
+
+    const label = rarity.textContent.trim().toLowerCase();
+
+    if (label.includes('secret')) {
+      modal.classList.add('exp216-secret-burst');
+    } else if (label.includes('legendary') || label.includes('ultra')) {
+      modal.classList.add('exp216-legendary-burst');
+    } else if (label.includes('epic') || label.includes('rare')) {
+      modal.classList.add('exp216-rare-burst');
+    }
+
+    setTimeout(() => {
+      modal.classList.remove(
+        'exp216-rare-burst',
+        'exp216-legendary-burst',
+        'exp216-secret-burst'
+      );
+    }, 1700);
+  };
+
+  new MutationObserver(applyRarityBurst).observe(modal, {
+    attributes:true,
+    attributeFilter:['class']
+  });
+
+  ['closeRevealButton', 'revealDoneButton'].forEach(id => {
+    document.getElementById(id)?.addEventListener('click', () => {
+      pack.classList.remove('exp216-opening');
+      modal.classList.remove(
+        'exp216-rare-burst',
+        'exp216-legendary-burst',
+        'exp216-secret-burst'
+      );
+    });
+  });
+})();

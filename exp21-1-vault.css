@@ -268,3 +268,183 @@ body > #cardRevealModal #revealDoneButton{
     padding:.5rem .7rem!important;
   }
 }
+
+
+/* =========================================================
+   EXP 21.6 — PREMIUM PACK OPENING ANIMATION
+   ========================================================= */
+
+.exp216-pack-tear,
+.exp216-pack-glow,
+.exp216-card-peek{
+  position:absolute;
+  pointer-events:none;
+}
+
+.exp216-pack-tear{
+  z-index:15;
+  top:0;
+  width:52%;
+  height:34px;
+  opacity:0;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.82),rgba(255,82,164,.88)),
+    repeating-linear-gradient(90deg,#ffc8e1 0 8px,#89003d 8px 14px,#ff4e9c 14px 21px);
+  filter:drop-shadow(0 8px 10px rgba(0,0,0,.35));
+  transform-origin:bottom center;
+}
+
+.exp216-pack-tear-left{
+  left:0;
+  clip-path:polygon(0 0,100% 0,92% 72%,82% 54%,72% 80%,60% 58%,48% 84%,35% 56%,20% 78%,0 60%);
+}
+
+.exp216-pack-tear-right{
+  right:0;
+  clip-path:polygon(0 0,100% 0,100% 60%,82% 78%,68% 56%,55% 84%,43% 58%,30% 80%,18% 54%,8% 72%);
+}
+
+.exp216-pack-glow{
+  z-index:3;
+  inset:22% 12% 18%;
+  border-radius:50%;
+  opacity:0;
+  background:radial-gradient(circle,rgba(255,255,255,.9),rgba(255,94,188,.52) 28%,transparent 68%);
+  filter:blur(16px);
+  transform:scale(.6);
+}
+
+.exp216-card-peek{
+  z-index:5;
+  left:50%;
+  top:20%;
+  width:66%;
+  height:56%;
+  border-radius:14px;
+  opacity:0;
+  transform:translate(-50%,42%) scale(.92);
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.9),rgba(255,155,213,.6)),
+    url("sweet-vault-card-back.png") center/cover no-repeat;
+  box-shadow:0 20px 40px rgba(0,0,0,.45),0 0 28px rgba(255,119,202,.45);
+}
+
+.sweet-pack.exp216-opening{
+  animation:exp216PackCrinkle 1.05s cubic-bezier(.2,.75,.2,1) both!important;
+}
+
+.sweet-pack.exp216-opening .exp216-pack-tear{
+  opacity:1;
+}
+
+.sweet-pack.exp216-opening .exp216-pack-tear-left{
+  animation:exp216TearLeft .68s .16s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+.sweet-pack.exp216-opening .exp216-pack-tear-right{
+  animation:exp216TearRight .68s .16s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+.sweet-pack.exp216-opening .exp216-pack-glow{
+  animation:exp216Glow .95s .15s ease-out forwards;
+}
+
+.sweet-pack.exp216-opening .exp216-card-peek{
+  animation:exp216CardRise .72s .33s cubic-bezier(.2,.85,.2,1) forwards;
+}
+
+.sweet-pack.exp216-opening .pack-open-label{
+  opacity:0;
+}
+
+.sweet-pack.exp216-opening .exp211-pack-frame,
+.sweet-pack.exp216-opening .pack-title,
+.sweet-pack.exp216-opening .pack-edition,
+.sweet-pack.exp216-opening .pack-crown{
+  animation:exp216PackFade .65s .25s ease forwards;
+}
+
+@keyframes exp216PackCrinkle{
+  0%{transform:rotate(-1.5deg) scale(1)}
+  12%{transform:rotate(-3deg) scale(.985,1.02)}
+  25%{transform:rotate(2deg) scale(1.015,.98)}
+  38%{transform:rotate(-2deg) scale(.99,1.01)}
+  52%{transform:rotate(1deg) scale(1.01,.99)}
+  72%{transform:rotate(-.5deg) scale(.985)}
+  100%{transform:rotate(0) scale(.96);filter:brightness(1.08)}
+}
+
+@keyframes exp216TearLeft{
+  0%{transform:none}
+  100%{transform:translate(-56%,-105%) rotate(-28deg);opacity:0}
+}
+
+@keyframes exp216TearRight{
+  0%{transform:none}
+  100%{transform:translate(56%,-105%) rotate(28deg);opacity:0}
+}
+
+@keyframes exp216Glow{
+  0%{opacity:0;transform:scale(.55)}
+  45%{opacity:.9}
+  100%{opacity:.22;transform:scale(1.25)}
+}
+
+@keyframes exp216CardRise{
+  0%{opacity:0;transform:translate(-50%,42%) scale(.92)}
+  35%{opacity:1}
+  100%{opacity:1;transform:translate(-50%,-18%) scale(1)}
+}
+
+@keyframes exp216PackFade{
+  to{opacity:.18;filter:blur(1px)}
+}
+
+/* Rarity-specific reveal effects */
+#cardRevealModal.exp216-rare-burst .reveal-content{
+  animation:exp216RarePulse .7s ease-out;
+}
+
+#cardRevealModal.exp216-legendary-burst .reveal-content{
+  animation:exp216LegendaryPulse .9s ease-out;
+}
+
+#cardRevealModal.exp216-secret-burst .reveal-content{
+  animation:exp216SecretShake .55s ease-out,exp216SecretGlow 1.4s ease-out;
+}
+
+@keyframes exp216RarePulse{
+  0%{transform:scale(.92);filter:brightness(1.2)}
+  55%{transform:scale(1.025)}
+  100%{transform:scale(1);filter:none}
+}
+
+@keyframes exp216LegendaryPulse{
+  0%{transform:scale(.9);filter:brightness(1.45) saturate(1.25)}
+  45%{transform:scale(1.04)}
+  100%{transform:scale(1);filter:none}
+}
+
+@keyframes exp216SecretShake{
+  0%,100%{transform:translateX(0)}
+  20%{transform:translateX(-8px)}
+  40%{transform:translateX(8px)}
+  60%{transform:translateX(-5px)}
+  80%{transform:translateX(5px)}
+}
+
+@keyframes exp216SecretGlow{
+  0%{box-shadow:0 0 0 rgba(255,255,255,0)}
+  35%{box-shadow:0 0 55px rgba(255,215,79,.72),0 0 95px rgba(255,65,181,.5)}
+  100%{box-shadow:0 0 0 rgba(255,255,255,0)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .sweet-pack.exp216-opening,
+  .sweet-pack.exp216-opening * ,
+  #cardRevealModal.exp216-rare-burst .reveal-content,
+  #cardRevealModal.exp216-legendary-burst .reveal-content,
+  #cardRevealModal.exp216-secret-burst .reveal-content{
+    animation:none!important;
+  }
+}
