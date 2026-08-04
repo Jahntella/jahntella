@@ -1,0 +1,98 @@
+
+:root{--pink:#ff4eae;--soft:#ffb1d7;--bg:#120014;--panel:#210125;--white:#fff7fb}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif}img{max-width:100%;display:block}a{color:inherit}.topbar{position:sticky;top:0;z-index:99;display:flex;align-items:center;gap:1rem;padding:.8rem 3vw;border-bottom:1px solid #ffffff20;background:#100011e8;backdrop-filter:blur(18px)}.logo{font-family:"Sacramento",cursive;font-size:2.15rem;text-decoration:none}.topbar nav{display:flex;gap:.9rem;justify-content:center;flex:1}.topbar nav a,.exit{font-size:.72rem;font-weight:800;text-decoration:none;opacity:.82}.exit{padding:.55rem .8rem;border:1px solid #ffffff35;border-radius:999px}.hero{min-height:88vh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:4vw;padding:5vw;background:radial-gradient(circle at 15% 20%,#ff3fa62b,transparent 35%),radial-gradient(circle at 85% 65%,#7c4cff24,transparent 35%)}.hero>img{border-radius:30px;box-shadow:0 35px 85px #0009,0 0 50px #ff4eae25}.eyebrow{font-size:.66rem;font-weight:900;letter-spacing:.16em;color:var(--soft)}h1,h2,h3{font-family:"Playfair Display",serif}h1{font-size:clamp(2.8rem,5.3vw,6rem);line-height:.96;margin:.7rem 0 1rem}h1 em,h2 em{color:var(--soft)}p{line-height:1.7;color:#dfc7d7}.actions{display:flex;gap:.7rem;flex-wrap:wrap;margin:1.4rem 0}.btn{display:inline-flex;padding:.82rem 1.08rem;border:1px solid #ffffff33;border-radius:999px;text-decoration:none;font-weight:900;background:#ffffff08}.primary{border:0;background:linear-gradient(135deg,var(--pink),#9254ff);box-shadow:0 12px 28px #ff4eae33}.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}.facts span{padding:.8rem;border:1px solid #ffffff18;border-radius:15px;background:#ffffff07;font-size:.69rem;color:#d8bfce}.facts b{display:block;color:#fff;margin-bottom:.25rem}.section{padding:clamp(4rem,8vw,8rem) 5vw;background:#170019}.section.dark{background:#0c000e}.heading{max-width:900px;margin:0 auto 2.2rem;text-align:center}.heading h2,.world h2,.closing h2{font-size:clamp(2.25rem,4.5vw,5rem);line-height:1;margin:.5rem 0}.image-card,.tile{border:0;color:inherit;font:inherit;cursor:zoom-in}.image-card{display:block;position:relative;width:min(100%,1500px);margin:auto;padding:0;border-radius:26px;overflow:hidden;background:#fff;box-shadow:0 30px 80px #0008}.image-card span{position:absolute;right:16px;bottom:16px;padding:.55rem .75rem;border-radius:999px;background:#150016df;font-size:.65rem;font-weight:900}.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;max-width:1500px;margin:auto}.tile{padding:0;text-align:left;border:1px solid #ffffff18;border-radius:22px;overflow:hidden;background:#ffffff07}.tile img{width:100%;aspect-ratio:16/9;object-fit:cover}.tile span{display:block;padding:1rem;color:#d9bfd1}.tile b{display:block;color:#fff;margin-bottom:.25rem}.tile.wide{grid-column:1/-1}.music-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;max-width:1250px;margin:auto}.music-card{display:grid;grid-template-columns:210px 1fr;gap:1rem;padding:1rem;border:1px solid #ffffff18;border-radius:22px;background:#ffffff07}.music-card img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:16px}.music-card h3{font-size:2rem;margin:.25rem 0}.music-card audio{width:100%}.world{display:grid;grid-template-columns:1fr minmax(280px,500px);gap:4vw;align-items:center}.world>img{border-radius:30px;filter:drop-shadow(0 25px 55px #0008)}.pills{display:flex;flex-wrap:wrap;gap:.55rem;margin:1.2rem 0 1.4rem}.pills span{padding:.6rem .75rem;border:1px solid #ffffff20;border-radius:999px;background:#ffffff07;font-size:.7rem}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:1300px;margin:auto}.cards article{padding:1.25rem;border:1px solid #ffffff17;border-radius:20px;background:#ffffff07}.cards article>span{font-size:1.8rem}.cards h3{font-size:1.6rem;margin:.45rem 0}.timeline{max-width:1050px;margin:auto;display:grid;gap:.8rem}.timeline article{display:grid;grid-template-columns:70px 1fr;gap:1rem;padding:1rem;border:1px solid #ffffff16;border-radius:18px;background:#ffffff06}.timeline article>b{font-size:2rem;color:var(--soft)}.timeline h3{margin:.15rem 0}.closing{display:grid;grid-template-columns:minmax(280px,480px) 1fr;gap:4vw;align-items:center;padding:6vw;background:linear-gradient(135deg,#250029,#0e0011)}.closing img{border-radius:30px}.closing p{max-width:760px}footer{display:flex;justify-content:space-between;gap:1rem;padding:1.2rem 4vw;border-top:1px solid #ffffff1a;color:#d8bfd0;font-size:.75rem}dialog{width:min(96vw,1700px);max-height:94vh;padding:0;border:1px solid #ffffff33;border-radius:18px;background:#070008}dialog::backdrop{background:#000d;backdrop-filter:blur(8px)}dialog img{max-height:90vh;margin:auto}#close{position:fixed;right:3vw;top:3vh;z-index:2;width:44px;height:44px;border:1px solid #fff5;border-radius:50%;background:#160017e6;color:#fff;font-size:2rem;cursor:pointer}
+@media(max-width:900px){.topbar nav{display:none}.hero,.world,.closing{grid-template-columns:1fr}.music-grid,.gallery{grid-template-columns:1fr}.tile.wide{grid-column:auto}.cards{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.hero,.section,.closing{padding:3rem 1rem}.facts,.cards{grid-template-columns:1fr}.music-card{grid-template-columns:1fr}.music-card img{max-width:260px}.heading h2,.world h2,.closing h2{font-size:2.3rem}footer{flex-direction:column}}
+
+
+/* EXP 20.4 — Creative Director moved into Investor Portal */
+.investor-director{
+  padding:clamp(4rem,8vw,8rem) 5vw;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(255,78,174,.18),transparent 32%),
+    radial-gradient(circle at 84% 72%,rgba(134,78,255,.15),transparent 35%),
+    linear-gradient(145deg,#1b001e,#0b000d);
+  border-top:1px solid rgba(255,170,216,.18);
+}
+
+.investor-director-card{
+  display:grid;
+  grid-template-columns:minmax(260px,420px) minmax(0,1fr);
+  gap:clamp(1.5rem,5vw,4rem);
+  align-items:center;
+  max-width:1200px;
+  margin:0 auto;
+  padding:clamp(1rem,2vw,1.5rem);
+  border:1px solid rgba(255,177,216,.24);
+  border-radius:30px;
+  background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.025));
+  box-shadow:0 30px 80px rgba(0,0,0,.38),0 0 35px rgba(255,74,180,.12);
+}
+
+.investor-director-image{
+  overflow:hidden;
+  border-radius:23px;
+  background:#100011;
+}
+
+.investor-director-image img{
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  object-position:center top;
+}
+
+.investor-director-copy{
+  padding:clamp(.5rem,2vw,1.5rem);
+}
+
+.investor-director-copy h2{
+  margin:.4rem 0 .15rem;
+  font-size:clamp(2.3rem,4.8vw,4.8rem);
+  line-height:1;
+}
+
+.investor-director-copy h3{
+  margin:.7rem 0 .25rem;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(1.8rem,3vw,3rem);
+  color:#ffabd4;
+}
+
+.investor-director-role{
+  margin:.15rem 0 .9rem;
+  color:#fff;
+  font-weight:800;
+}
+
+.investor-director-tagline{
+  color:#ffb8db;
+  font-family:"Playfair Display",serif;
+  font-size:1.15rem;
+  font-style:italic;
+}
+
+.investor-director-actions{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:1rem;
+  margin-top:1.4rem;
+}
+
+.investor-director-email{
+  color:#ffc0df;
+  font-weight:800;
+  text-decoration:none;
+  border-bottom:1px solid rgba(255,192,223,.45);
+}
+
+@media(max-width:850px){
+  .investor-director-card{
+    grid-template-columns:1fr;
+  }
+
+  .investor-director-image{
+    max-width:420px;
+    margin:0 auto;
+  }
+}
