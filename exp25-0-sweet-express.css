@@ -1,0 +1,22 @@
+
+.exp250-station-section{padding:clamp(4rem,8vw,8rem) 5vw;background:radial-gradient(circle at 12% 15%,rgba(255,76,171,.2),transparent 32%),radial-gradient(circle at 86% 72%,rgba(139,83,255,.18),transparent 34%),linear-gradient(145deg,#18001c,#08000a);border-top:1px solid rgba(255,157,211,.15);border-bottom:1px solid rgba(255,157,211,.15)}
+.exp250-station-shell{display:grid;grid-template-columns:minmax(300px,520px) minmax(0,1fr);gap:clamp(1.5rem,5vw,4.5rem);align-items:center;max-width:1250px;margin:0 auto}
+.exp250-station-image{position:relative;overflow:hidden;border-radius:30px;border:1px solid rgba(255,187,222,.35);background:#170016;box-shadow:0 30px 85px rgba(0,0,0,.5),0 0 45px rgba(255,70,168,.2)}
+.exp250-station-image img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top}
+.exp250-station-glow{position:absolute;inset:auto 10% 5%;height:16%;border-radius:50%;background:radial-gradient(circle,rgba(255,219,123,.55),transparent 68%);filter:blur(18px);animation:exp250Glow 2.4s ease-in-out infinite alternate}
+.exp250-steam{position:absolute;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.72),rgba(255,222,244,.2) 45%,transparent 70%);filter:blur(9px);opacity:.45;animation:exp250Steam 5s ease-in-out infinite}
+.exp250-steam-one{top:1%;left:14%}.exp250-steam-two{top:8%;left:28%;animation-delay:1.7s}
+.exp250-station-copy h2{margin:.45rem 0 1rem;font-size:clamp(2.7rem,5vw,5.6rem);line-height:.95}.exp250-greeting{max-width:720px;color:#f5dce9;font-size:clamp(1.05rem,1.7vw,1.3rem);line-height:1.7}
+.exp250-ticket-card{display:flex;justify-content:space-between;gap:1rem;align-items:center;margin:1.6rem 0 1rem;padding:1rem 1.15rem;border:1px dashed rgba(255,194,225,.55);border-radius:18px;background:linear-gradient(135deg,rgba(255,255,255,.09),rgba(255,255,255,.03))}
+.exp250-ticket-card span{display:block;color:#ff9bd0;font-size:.72rem;font-weight:900;letter-spacing:.18em}.exp250-ticket-card strong{display:block;margin-top:.25rem;color:white;font-size:1.15rem}
+.exp250-ticket-stamp{flex:0 0 auto;padding:.65rem .8rem;border:2px solid #ff8fc9;border-radius:10px;color:#ffb8dc;font-size:.72rem;font-weight:900;letter-spacing:.1em;transform:rotate(-3deg)}
+.exp250-progress-card{margin:1rem 0 1.25rem;padding:1.1rem;border:1px solid rgba(255,135,196,.28);border-radius:18px;background:rgba(10,0,12,.58)}
+.exp250-progress-heading{display:flex;justify-content:space-between;gap:1rem;margin-bottom:.65rem;color:#ffd2e8;font-weight:800}.exp250-progress-track{height:14px;overflow:hidden;border-radius:999px;background:#26001e;box-shadow:inset 0 0 8px rgba(0,0,0,.5)}
+.exp250-progress-track i{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,#ff2f9e,#ff83cb,#ffe16b);box-shadow:0 0 18px rgba(255,76,174,.7);transition:width .6s ease}
+#exp250Status{margin:.65rem 0 0;color:#dcb8cc}.exp250-actions{display:flex;flex-wrap:wrap;gap:.85rem}.exp250-actions button{cursor:pointer}
+.exp250-board-button:disabled{opacity:.5;cursor:not-allowed;filter:saturate(.55)}.exp250-board-button.is-unlocked{opacity:1;cursor:pointer;color:white;border-color:#ffd861;box-shadow:0 0 24px rgba(255,216,97,.35);animation:exp250BoardGlow 1.5s ease-in-out infinite alternate}
+.exp250-small-note{margin:.8rem 0 0;color:#a98a9d;font-size:.85rem}
+@keyframes exp250Steam{0%{transform:translate(0,20px) scale(.75);opacity:0}25%{opacity:.5}100%{transform:translate(45px,-105px) scale(1.4);opacity:0}}
+@keyframes exp250Glow{to{opacity:.55;transform:scale(1.08)}}@keyframes exp250BoardGlow{to{box-shadow:0 0 35px rgba(255,216,97,.7)}}
+@media(max-width:850px){.exp250-station-shell{grid-template-columns:1fr}.exp250-station-image{max-width:520px;margin:0 auto}}
+@media(max-width:580px){.exp250-ticket-card{align-items:flex-start;flex-direction:column}.exp250-actions button{width:100%}}

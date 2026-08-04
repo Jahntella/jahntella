@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="exp20-3-investor-button.css?v=20.3">
 <link rel="stylesheet" href="exp21-0-performance.css?v=21.0">
 <link rel="stylesheet" href="exp21-1-vault.css?v=21.8">
+<link rel="stylesheet" href="exp25-0-sweet-express.css?v=25.0">
 </head>
 <body>
   <div id="siteLoader" class="site-loader" aria-hidden="true">
@@ -147,7 +148,42 @@
       </div>
     </section>
 
-    <section class="about-section reveal" id="about">
+    
+<section class="exp250-station-section reveal" id="sweet-express">
+  <div class="exp250-station-shell">
+    <div class="exp250-station-image">
+      <img src="assets/sweet-express-conductor.png" alt="Jahntella welcoming Sweeties aboard The Sweet Express" loading="lazy" decoding="async">
+      <div class="exp250-steam exp250-steam-one" aria-hidden="true"></div>
+      <div class="exp250-steam exp250-steam-two" aria-hidden="true"></div>
+      <div class="exp250-station-glow" aria-hidden="true"></div>
+    </div>
+    <div class="exp250-station-copy">
+      <p class="eyebrow">THE SWEET EXPRESS</p>
+      <h2>Music powers the journey.</h2>
+      <p class="exp250-greeting">Hi Sweetie! I’m your conductor today. This train doesn’t run on coal—it runs on music, smiles, and Sweeties.</p>
+      <div class="exp250-ticket-card">
+        <div><span>DESTINATION</span><strong>Bubblegum Bay Waterpark</strong></div>
+        <div class="exp250-ticket-stamp">FUN DIPP EXPRESS</div>
+      </div>
+      <div class="exp250-progress-card">
+        <div class="exp250-progress-heading">
+          <span>Listen to Fun Dipp 10 times</span>
+          <strong><span id="exp250PlayCount">0</span> / 10</strong>
+        </div>
+        <div class="exp250-progress-track"><i id="exp250ProgressBar"></i></div>
+        <p id="exp250Status">Complete a full listen to add power to the train.</p>
+      </div>
+      <div class="exp250-actions">
+        <button class="primary-button exp250-listen-button" id="exp250ListenButton">🎵 Power the Express with Fun Dipp</button>
+        <button class="secondary-button exp250-board-button" id="exp250BoardButton" disabled>🚂 All Aboard — Locked</button>
+      </div>
+      <p class="exp250-small-note">Your completed listens are saved on this device.</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="about-section reveal" id="about">
       <div class="about-card">
         <div>
           <p class="eyebrow">THE STORY</p>
@@ -488,5 +524,6 @@
 <script src="exp19-5-popstar.js?v=19.5" defer></script>
 <script src="exp21-0-performance.js?v=21.0" defer></script>
 <script src="exp21-1-vault.js?v=21.8" defer></script>
+<script src="exp25-0-sweet-express.js?v=25.0" defer></script>
 </body>
 </html>
