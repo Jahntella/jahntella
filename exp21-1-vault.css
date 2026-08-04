@@ -320,3 +320,10 @@
     font-size:.75rem!important;
   }
 }
+
+/* EXP 21.4 — TRUE VIEWPORT REVEAL */
+body > #cardRevealModal{position:fixed!important;inset:0!important;z-index:2147483000!important;width:100vw!important;height:100dvh!important;max-width:none!important;max-height:none!important;margin:0!important;transform:none!important;contain:none!important;content-visibility:visible!important}
+body > #cardRevealModal .reveal-backdrop{position:absolute!important;inset:0!important}
+body > #cardRevealModal .reveal-content{position:relative!important;margin:auto!important}
+.sweet-vault-section{contain:none!important}
+body.exp214-reveal-open{overflow:hidden!important}
