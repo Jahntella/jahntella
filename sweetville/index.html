@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="girly-nav-sweetville.css?v=18.3">
 <link rel="stylesheet" href="exp19-1-portal.css?v=19.1">
 <link rel="stylesheet" href="exp19-2-sphere.css?v=19.4">
-<link rel="stylesheet" href="exp25-3-bubblegum-bay.css?v=25.3">
+<link rel="stylesheet" href="exp25-4-bubblegum-bay.css?v=25.4">
 </head>
 <body>
 
@@ -1227,6 +1227,73 @@
 </section>
 
 
+<section class="sv-panel exp254-bay-world" id="exp254BubblegumBay">
+  <div class="sv-section-heading">
+    <p class="sv-eyebrow">EXP 25.4 — INTERACTIVE BUBBLEGUM BAY</p>
+    <h2>Choose your first <em>waterpark adventure.</em></h2>
+    <p>Explore the pool, race the slides, choose a Jahntella song, and search the district for its hidden Sweet Pack.</p>
+  </div>
+
+  <div class="exp254-music-bar">
+    <div><small>NOW PLAYING IN THE PARK</small><strong id="exp254NowPlaying">Choose a song</strong></div>
+    <div class="exp254-song-buttons">
+      <button type="button" data-exp254-track="fun">🍭 Fun Dipp</button>
+      <button type="button" data-exp254-track="pink">💋 Pink Lips Remix</button>
+      <button type="button" data-exp254-track="stop">⏸ Stop</button>
+    </div>
+  </div>
+
+  <div class="exp254-zone-grid">
+    <button class="exp254-zone-card" type="button" data-exp254-zone="pool">
+      <img src="assets/exp25-3/bubblegum-bay-pool.png" alt="Sparkle Pool">
+      <span>💖</span><strong>Sparkle Pool</strong><small>Tap to join Jahntella by the water</small>
+    </button>
+    <button class="exp254-zone-card" type="button" data-exp254-zone="slides">
+      <img src="assets/exp25-3/bubblegum-bay-slide.png" alt="Rainbow Slides">
+      <span>🛝</span><strong>Rainbow Slides</strong><small>Tap to race Jahntella</small>
+    </button>
+    <button class="exp254-zone-card exp254-placeholder-zone" type="button" data-exp254-zone="smoothie">
+      <div class="exp254-placeholder-art">🍹</div>
+      <span>🍓</span><strong>Candy Smoothie Bar</strong><small>Mix today’s sweet drink</small>
+    </button>
+    <button class="exp254-zone-card exp254-placeholder-zone" type="button" data-exp254-zone="photo">
+      <div class="exp254-placeholder-art">📸</div>
+      <span>✨</span><strong>Bay Photo Spot</strong><small>Save a Bubblegum Bay memory</small>
+    </button>
+  </div>
+
+  <div class="exp254-result-card" id="exp254ResultCard">
+    <span id="exp254ResultIcon">💦</span>
+    <div>
+      <small id="exp254ResultKicker">BUBBLEGUM BAY</small>
+      <h3 id="exp254ResultTitle">The park is waiting.</h3>
+      <p id="exp254ResultText">Choose a destination above to begin your day.</p>
+    </div>
+  </div>
+
+  <div class="exp254-secret-card">
+    <div>
+      <small>HIDDEN DISTRICT TREASURE</small>
+      <h3 id="exp254SecretTitle">Somewhere in Bubblegum Bay...</h3>
+      <p id="exp254SecretText">Explore the park to reveal the hidden Sweet Pack.</p>
+    </div>
+    <button type="button" id="exp254SecretButton">?</button>
+  </div>
+
+  <div class="exp254-future-board">
+    <small>SWEETVILLE LINE — FUTURE STOPS</small>
+    <span>🌸 Sakura Gardens</span><span>🎤 Melody District</span><span>🌙 Dream Harbor</span>
+  </div>
+
+  <audio id="exp254FunAudio" preload="none">
+    <source src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/fun-dipp-v430.mp4" type="audio/mp4">
+  </audio>
+  <audio id="exp254PinkAudio" preload="none">
+    <source src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/pink-lips-remix-v430.mp4" type="audio/mp4">
+  </audio>
+</section>
+
+
 <section class="sv-panel exp50-story-panel" id="exp50Story">
       <div class="sv-section-heading">
         <p class="sv-eyebrow">SWEETVILLE STORY MODE</p>
@@ -1616,6 +1683,6 @@
   <script src="exp18-1-hotfix.js?v=18.3" defer></script>
 <script src="exp19-1-passport.js?v=19.1" defer></script>
 <script src="exp19-2-sphere.js?v=19.4" defer></script>
-<script src="exp25-3-bubblegum-bay.js?v=25.3" defer></script>
+<script src="exp25-4-bubblegum-bay.js?v=25.4" defer></script>
 </body>
 </html>
