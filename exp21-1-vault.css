@@ -269,14 +269,13 @@ body > #cardRevealModal #revealDoneButton{
   }
 }
 
-
 /* =========================================================
-   EXP 21.6 — PREMIUM PACK OPENING ANIMATION
+   EXP 21.7 — SAFE DECORATIVE PACK EFFECTS
+   Cosmetic only. Does not control native card opening logic.
    ========================================================= */
 
 .exp216-pack-tear,
-.exp216-pack-glow,
-.exp216-card-peek{
+.exp216-pack-glow{
   position:absolute;
   pointer-events:none;
 }
@@ -285,7 +284,7 @@ body > #cardRevealModal #revealDoneButton{
   z-index:15;
   top:0;
   width:52%;
-  height:34px;
+  height:32px;
   opacity:0;
   background:
     linear-gradient(180deg,rgba(255,255,255,.82),rgba(255,82,164,.88)),
@@ -314,137 +313,91 @@ body > #cardRevealModal #revealDoneButton{
   transform:scale(.6);
 }
 
-.exp216-card-peek{
-  z-index:5;
-  left:50%;
-  top:20%;
-  width:66%;
-  height:56%;
-  border-radius:14px;
-  opacity:0;
-  transform:translate(-50%,42%) scale(.92);
-  background:
-    linear-gradient(145deg,rgba(255,255,255,.9),rgba(255,155,213,.6)),
-    url("sweet-vault-card-back.png") center/cover no-repeat;
-  box-shadow:0 20px 40px rgba(0,0,0,.45),0 0 28px rgba(255,119,202,.45);
+.sweet-pack.exp217-opening{
+  animation:exp217Crinkle .82s cubic-bezier(.2,.75,.2,1) both!important;
 }
 
-.sweet-pack.exp216-opening{
-  animation:exp216PackCrinkle 1.05s cubic-bezier(.2,.75,.2,1) both!important;
-}
-
-.sweet-pack.exp216-opening .exp216-pack-tear{
+.sweet-pack.exp217-opening .exp216-pack-tear{
   opacity:1;
 }
 
-.sweet-pack.exp216-opening .exp216-pack-tear-left{
-  animation:exp216TearLeft .68s .16s cubic-bezier(.2,.8,.2,1) forwards;
+.sweet-pack.exp217-opening .exp216-pack-tear-left{
+  animation:exp217TearLeft .5s .12s cubic-bezier(.2,.8,.2,1) forwards;
 }
 
-.sweet-pack.exp216-opening .exp216-pack-tear-right{
-  animation:exp216TearRight .68s .16s cubic-bezier(.2,.8,.2,1) forwards;
+.sweet-pack.exp217-opening .exp216-pack-tear-right{
+  animation:exp217TearRight .5s .12s cubic-bezier(.2,.8,.2,1) forwards;
 }
 
-.sweet-pack.exp216-opening .exp216-pack-glow{
-  animation:exp216Glow .95s .15s ease-out forwards;
+.sweet-pack.exp217-opening .exp216-pack-glow{
+  animation:exp217Glow .72s .08s ease-out forwards;
 }
 
-.sweet-pack.exp216-opening .exp216-card-peek{
-  animation:exp216CardRise .72s .33s cubic-bezier(.2,.85,.2,1) forwards;
+.sweet-pack.exp217-opening .pack-open-label{
+  opacity:.2;
 }
 
-.sweet-pack.exp216-opening .pack-open-label{
-  opacity:0;
-}
-
-.sweet-pack.exp216-opening .exp211-pack-frame,
-.sweet-pack.exp216-opening .pack-title,
-.sweet-pack.exp216-opening .pack-edition,
-.sweet-pack.exp216-opening .pack-crown{
-  animation:exp216PackFade .65s .25s ease forwards;
-}
-
-@keyframes exp216PackCrinkle{
+@keyframes exp217Crinkle{
   0%{transform:rotate(-1.5deg) scale(1)}
-  12%{transform:rotate(-3deg) scale(.985,1.02)}
-  25%{transform:rotate(2deg) scale(1.015,.98)}
-  38%{transform:rotate(-2deg) scale(.99,1.01)}
-  52%{transform:rotate(1deg) scale(1.01,.99)}
-  72%{transform:rotate(-.5deg) scale(.985)}
-  100%{transform:rotate(0) scale(.96);filter:brightness(1.08)}
+  16%{transform:rotate(-2.5deg) scale(.99,1.015)}
+  34%{transform:rotate(2deg) scale(1.01,.985)}
+  52%{transform:rotate(-1deg) scale(.995,1.005)}
+  72%{transform:rotate(.5deg) scale(1.005,.995)}
+  100%{transform:rotate(-1.5deg) scale(1)}
 }
 
-@keyframes exp216TearLeft{
-  0%{transform:none}
-  100%{transform:translate(-56%,-105%) rotate(-28deg);opacity:0}
+@keyframes exp217TearLeft{
+  to{transform:translate(-48%,-92%) rotate(-24deg);opacity:0}
 }
 
-@keyframes exp216TearRight{
-  0%{transform:none}
-  100%{transform:translate(56%,-105%) rotate(28deg);opacity:0}
+@keyframes exp217TearRight{
+  to{transform:translate(48%,-92%) rotate(24deg);opacity:0}
 }
 
-@keyframes exp216Glow{
-  0%{opacity:0;transform:scale(.55)}
-  45%{opacity:.9}
-  100%{opacity:.22;transform:scale(1.25)}
+@keyframes exp217Glow{
+  0%{opacity:0;transform:scale(.6)}
+  45%{opacity:.85}
+  100%{opacity:0;transform:scale(1.18)}
 }
 
-@keyframes exp216CardRise{
-  0%{opacity:0;transform:translate(-50%,42%) scale(.92)}
-  35%{opacity:1}
-  100%{opacity:1;transform:translate(-50%,-18%) scale(1)}
+#cardRevealModal.exp217-rare .reveal-content{
+  animation:exp217Rare .55s ease-out;
 }
 
-@keyframes exp216PackFade{
-  to{opacity:.18;filter:blur(1px)}
+#cardRevealModal.exp217-legendary .reveal-content{
+  animation:exp217Legendary .7s ease-out;
 }
 
-/* Rarity-specific reveal effects */
-#cardRevealModal.exp216-rare-burst .reveal-content{
-  animation:exp216RarePulse .7s ease-out;
+#cardRevealModal.exp217-secret .reveal-content{
+  animation:exp217Secret .55s ease-out;
 }
 
-#cardRevealModal.exp216-legendary-burst .reveal-content{
-  animation:exp216LegendaryPulse .9s ease-out;
+@keyframes exp217Rare{
+  0%{transform:scale(.95)}
+  60%{transform:scale(1.02)}
+  100%{transform:scale(1)}
 }
 
-#cardRevealModal.exp216-secret-burst .reveal-content{
-  animation:exp216SecretShake .55s ease-out,exp216SecretGlow 1.4s ease-out;
-}
-
-@keyframes exp216RarePulse{
-  0%{transform:scale(.92);filter:brightness(1.2)}
-  55%{transform:scale(1.025)}
+@keyframes exp217Legendary{
+  0%{transform:scale(.93);filter:brightness(1.35)}
+  55%{transform:scale(1.03)}
   100%{transform:scale(1);filter:none}
 }
 
-@keyframes exp216LegendaryPulse{
-  0%{transform:scale(.9);filter:brightness(1.45) saturate(1.25)}
-  45%{transform:scale(1.04)}
-  100%{transform:scale(1);filter:none}
-}
-
-@keyframes exp216SecretShake{
+@keyframes exp217Secret{
   0%,100%{transform:translateX(0)}
-  20%{transform:translateX(-8px)}
-  40%{transform:translateX(8px)}
-  60%{transform:translateX(-5px)}
-  80%{transform:translateX(5px)}
-}
-
-@keyframes exp216SecretGlow{
-  0%{box-shadow:0 0 0 rgba(255,255,255,0)}
-  35%{box-shadow:0 0 55px rgba(255,215,79,.72),0 0 95px rgba(255,65,181,.5)}
-  100%{box-shadow:0 0 0 rgba(255,255,255,0)}
+  20%{transform:translateX(-6px)}
+  40%{transform:translateX(6px)}
+  60%{transform:translateX(-4px)}
+  80%{transform:translateX(4px)}
 }
 
 @media(prefers-reduced-motion:reduce){
-  .sweet-pack.exp216-opening,
-  .sweet-pack.exp216-opening * ,
-  #cardRevealModal.exp216-rare-burst .reveal-content,
-  #cardRevealModal.exp216-legendary-burst .reveal-content,
-  #cardRevealModal.exp216-secret-burst .reveal-content{
+  .sweet-pack.exp217-opening,
+  .sweet-pack.exp217-opening *,
+  #cardRevealModal.exp217-rare .reveal-content,
+  #cardRevealModal.exp217-legendary .reveal-content,
+  #cardRevealModal.exp217-secret .reveal-content{
     animation:none!important;
   }
 }

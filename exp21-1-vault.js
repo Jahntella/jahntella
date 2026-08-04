@@ -98,8 +98,7 @@
   });
 })();
 
-
-/* EXP 21.6 — Premium pack opening effects */
+/* EXP 21.7 — Safe cosmetic effects only */
 (() => {
   'use strict';
 
@@ -110,116 +109,75 @@
 
   let audioContext = null;
 
-  const getAudio = () => {
+  const playRip = () => {
     const AudioCtx = window.AudioContext || window.webkitAudioContext;
-    if (!AudioCtx) return null;
+    if (!AudioCtx) return;
+
     audioContext ??= new AudioCtx();
-    return audioContext;
-  };
+    if (audioContext.state === 'suspended') audioContext.resume();
 
-  const foilRipSound = () => {
-    const ctx = getAudio();
-    if (!ctx) return;
-    if (ctx.state === 'suspended') ctx.resume();
-
-    const length = Math.floor(ctx.sampleRate * .34);
-    const buffer = ctx.createBuffer(1, length, ctx.sampleRate);
+    const length = Math.floor(audioContext.sampleRate * .22);
+    const buffer = audioContext.createBuffer(1, length, audioContext.sampleRate);
     const data = buffer.getChannelData(0);
 
     for (let i = 0; i < length; i++) {
       const t = i / length;
-      const noise = (Math.random() * 2 - 1) * (1 - t);
-      const crackle = Math.sin(i * .19) * .18 * (1 - t);
-      data[i] = (noise * .62 + crackle) * Math.sin(Math.PI * Math.min(1, t * 5));
+      data[i] = (Math.random() * 2 - 1) * (1 - t) * .42;
     }
 
-    const source = ctx.createBufferSource();
-    const filter = ctx.createBiquadFilter();
-    const gain = ctx.createGain();
+    const source = audioContext.createBufferSource();
+    const filter = audioContext.createBiquadFilter();
+    const gain = audioContext.createGain();
 
     filter.type = 'highpass';
-    filter.frequency.value = 600;
-    gain.gain.setValueAtTime(.0001, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(.18, ctx.currentTime + .025);
-    gain.gain.exponentialRampToValueAtTime(.0001, ctx.currentTime + .34);
+    filter.frequency.value = 700;
+    gain.gain.setValueAtTime(.0001, audioContext.currentTime);
+    gain.gain.exponentialRampToValueAtTime(.11, audioContext.currentTime + .018);
+    gain.gain.exponentialRampToValueAtTime(.0001, audioContext.currentTime + .22);
 
     source.buffer = buffer;
-    source.connect(filter).connect(gain).connect(ctx.destination);
+    source.connect(filter).connect(gain).connect(audioContext.destination);
     source.start();
   };
 
-  const sparkleSound = () => {
-    const ctx = getAudio();
-    if (!ctx) return;
-
-    [880, 1175, 1568].forEach((freq, index) => {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.type = 'sine';
-      osc.frequency.value = freq;
-      gain.gain.setValueAtTime(.0001, ctx.currentTime + index * .06);
-      gain.gain.exponentialRampToValueAtTime(.06, ctx.currentTime + index * .06 + .02);
-      gain.gain.exponentialRampToValueAtTime(.0001, ctx.currentTime + index * .06 + .34);
-      osc.connect(gain).connect(ctx.destination);
-      osc.start(ctx.currentTime + index * .06);
-      osc.stop(ctx.currentTime + index * .06 + .38);
-    });
-  };
-
   pack.addEventListener('click', () => {
-    pack.classList.remove('exp216-opening');
+    pack.classList.remove('exp217-opening');
     void pack.offsetWidth;
-    pack.classList.add('exp216-opening');
+    pack.classList.add('exp217-opening');
+    playRip();
 
-    foilRipSound();
+    setTimeout(() => pack.classList.remove('exp217-opening'), 900);
+  }, {capture:false});
 
-    setTimeout(() => {
-      sparkleSound();
-      pack.classList.remove('exp216-opening');
-    }, 1080);
-  }, {capture:true});
-
-  const applyRarityBurst = () => {
+  const decorateReveal = () => {
     if (!modal.classList.contains('open')) return;
 
-    modal.classList.remove(
-      'exp216-rare-burst',
-      'exp216-legendary-burst',
-      'exp216-secret-burst'
-    );
+    modal.classList.remove('exp217-rare','exp217-legendary','exp217-secret');
 
     const label = rarity.textContent.trim().toLowerCase();
 
     if (label.includes('secret')) {
-      modal.classList.add('exp216-secret-burst');
+      modal.classList.add('exp217-secret');
     } else if (label.includes('legendary') || label.includes('ultra')) {
-      modal.classList.add('exp216-legendary-burst');
+      modal.classList.add('exp217-legendary');
     } else if (label.includes('epic') || label.includes('rare')) {
-      modal.classList.add('exp216-rare-burst');
+      modal.classList.add('exp217-rare');
     }
 
     setTimeout(() => {
-      modal.classList.remove(
-        'exp216-rare-burst',
-        'exp216-legendary-burst',
-        'exp216-secret-burst'
-      );
-    }, 1700);
+      modal.classList.remove('exp217-rare','exp217-legendary','exp217-secret');
+    }, 1100);
   };
 
-  new MutationObserver(applyRarityBurst).observe(modal, {
+  new MutationObserver(decorateReveal).observe(modal, {
     attributes:true,
     attributeFilter:['class']
   });
 
-  ['closeRevealButton', 'revealDoneButton'].forEach(id => {
+  ['closeRevealButton','revealDoneButton'].forEach(id => {
     document.getElementById(id)?.addEventListener('click', () => {
-      pack.classList.remove('exp216-opening');
-      modal.classList.remove(
-        'exp216-rare-burst',
-        'exp216-legendary-burst',
-        'exp216-secret-burst'
-      );
+      pack.classList.remove('exp217-opening');
+      modal.classList.remove('exp217-rare','exp217-legendary','exp217-secret');
     });
   });
 })();
