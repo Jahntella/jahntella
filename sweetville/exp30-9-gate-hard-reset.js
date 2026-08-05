@@ -1,107 +1,174 @@
 (() => {
   'use strict';
 
-  const params = new URLSearchParams(location.search);
-  const intentional = params.has('tool') || params.has('district') || params.has('section') || params.has('destination');
-  if (intentional) return;
+  /*
+   * EXP 31.0 SAFE GATE FIX
+   * This file intentionally keeps the same filename already loaded by the
+   * current live Sweetville page. Replacing this one file cannot overwrite
+   * newer HTML, map, district, Studio, contact, poster, or artwork changes.
+   */
 
-  const creativeHashes = new Set([
-    '#photoBooth', '#coloringStudio', '#creativeStudio',
-    '#sweetvilleGallery', '#createHub'
+  const HOME_HASH = '#cinematicHome';
+  const CREATIVE_HASHES = new Set([
+    '#photoBooth',
+    '#coloringStudio',
+    '#creativeStudio',
+    '#sweetvilleGallery',
+    '#createHub'
   ]);
 
-  let entranceLock = false;
-  let lockTimer = 0;
+  let entranceActive = false;
+  let scrollLockTimer = 0;
 
-  const clearDestination = () => {
-    if (location.hash || creativeHashes.has(location.hash)) {
+  const params = new URLSearchParams(location.search);
+  const intentionalDestination =
+    params.has('tool') ||
+    params.has('district') ||
+    params.has('section') ||
+    params.has('destination');
+
+  const unlockDocument = () => {
+    document.documentElement.style.removeProperty('overflow');
+    document.body?.style.removeProperty('overflow');
+    document.documentElement.classList.remove('sv-scroll-locked');
+    document.body?.classList.remove('sv-scroll-locked');
+  };
+
+  const getHome = () =>
+    document.getElementById('cinematicHome') ||
+    document.getElementById('exp260Hub') ||
+    document.querySelector('main');
+
+  const forceHome = () => {
+    if (!entranceActive) return;
+
+    const home = getHome();
+    const top = home ? Math.max(0, home.getBoundingClientRect().top + window.scrollY) : 0;
+
+    document.documentElement.scrollTop = top;
+    if (document.body) document.body.scrollTop = top;
+    window.scrollTo({ top, left: 0, behavior: 'auto' });
+  };
+
+  const clearCreativeDestination = () => {
+    if (CREATIVE_HASHES.has(location.hash)) {
       history.replaceState(null, '', location.pathname + location.search);
     }
   };
 
-  const absoluteTop = () => {
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-    window.scrollTo(0, 0);
+  const finishAtHome = () => {
+    clearInterval(scrollLockTimer);
+    entranceActive = false;
+    unlockDocument();
+
+    const home = getHome();
+    if (home) {
+      home.scrollIntoView({ block: 'start', behavior: 'auto' });
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    }
+
+    // Keep a harmless home hash so mobile browsers restore the correct area.
+    if (location.hash !== HOME_HASH) {
+      history.replaceState(null, '', location.pathname + location.search + HOME_HASH);
+    }
   };
 
-  const beginEntranceLock = () => {
-    entranceLock = true;
-    clearDestination();
+  const openAtHome = event => {
+    /*
+     * Critical difference from previous patches:
+     * stop the older gate handler before it can restore Photo Booth state.
+     */
+    event?.preventDefault();
+    event?.stopPropagation();
+    event?.stopImmediatePropagation();
 
-    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    entranceActive = true;
+    clearCreativeDestination();
 
-    document.documentElement.classList.add('exp309-entering');
-    document.body.classList.remove('exp260-explore-mode');
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
 
     const active = document.activeElement;
-    if (active && typeof active.blur === 'function') active.blur();
+    active?.blur?.();
 
-    absoluteTop();
-    clearInterval(lockTimer);
-    lockTimer = window.setInterval(absoluteTop, 30);
+    document.querySelectorAll(
+      '#photoBooth input, #photoBooth button, #photoBooth select, #photoBooth textarea, ' +
+      '#createHub a, #coloringStudio input, #creativeStudio input'
+    ).forEach(element => element.blur?.());
+
+    document.body.classList.remove('exp260-explore-mode');
+
+    const gate = document.getElementById('gateScreen');
+    gate?.classList.add('opening');
+
+    sessionStorage.setItem('sweetvilleGatesOpened', 'yes');
+
+    forceHome();
+    clearInterval(scrollLockTimer);
+    scrollLockTimer = window.setInterval(forceHome, 20);
 
     window.setTimeout(() => {
-      clearInterval(lockTimer);
-      absoluteTop();
+      gate?.classList.add('opened');
+      forceHome();
+    }, 1700);
 
-      const welcome = document.getElementById('cinematicHome') || document.getElementById('exp260Hub');
-      if (welcome) {
-        const hadTabindex = welcome.hasAttribute('tabindex');
-        if (!hadTabindex) welcome.setAttribute('tabindex', '-1');
-        welcome.focus({ preventScroll: true });
-        absoluteTop();
-        if (!hadTabindex) welcome.removeAttribute('tabindex');
-      }
-
-      document.documentElement.classList.remove('exp309-entering');
-      entranceLock = false;
-    }, 2600);
+    window.setTimeout(finishAtHome, 2350);
   };
 
-  const style = document.createElement('style');
-  style.textContent = `
-    html.exp309-entering,
-    html.exp309-entering body,
-    html.exp309-entering main,
-    html.exp309-entering main > section {
-      overflow-anchor: none !important;
-      scroll-behavior: auto !important;
+  const install = () => {
+    const openButton = document.getElementById('openGates');
+
+    if (openButton) {
+      /*
+       * Capture listeners run before the legacy onclick handler.
+       * Pointerdown handles touch devices; click handles keyboard/desktop.
+       */
+      openButton.addEventListener('pointerdown', openAtHome, true);
+      openButton.addEventListener('click', openAtHome, true);
     }
-    #world { display: none !important; }
-    #svNav a[href="#world"] { display: none !important; }
-  `;
-  document.head.appendChild(style);
 
-  window.addEventListener('DOMContentLoaded', () => {
-    const open = document.getElementById('openGates');
-    open?.addEventListener('pointerdown', beginEntranceLock, { capture: true });
-    open?.addEventListener('click', beginEntranceLock, { capture: true });
+    // Keep the redundant World section and button removed.
+    document.querySelector('#svNav a[href="#world"]')?.remove();
+    const worldSection = document.getElementById('world');
+    if (worldSection) worldSection.hidden = true;
 
-    document.getElementById('svNav')?.querySelectorAll('a').forEach(link => {
-      if (link.textContent.trim() === 'World') link.remove();
-    });
-  });
-
-  // Block late focus or hash events from pulling the page to Photo Booth during entry.
-  window.addEventListener('hashchange', () => {
-    if (entranceLock) {
-      clearDestination();
-      absoluteTop();
+    // A normal visit must not inherit an old Photo Booth hash.
+    if (!intentionalDestination && CREATIVE_HASHES.has(location.hash)) {
+      history.replaceState(null, '', location.pathname + location.search);
     }
-  });
 
-  document.addEventListener('focusin', event => {
-    if (!entranceLock) return;
-    const booth = event.target?.closest?.('#photoBooth, #createHub, #coloringStudio, #creativeStudio, #sweetvilleGallery');
-    if (booth) {
-      event.target.blur?.();
-      absoluteTop();
+    /*
+     * When the gate was already opened in this tab, restore the homepage
+     * instead of allowing the browser to restore Photo Booth scroll position.
+     */
+    if (
+      !intentionalDestination &&
+      sessionStorage.getItem('sweetvilleGatesOpened') === 'yes'
+    ) {
+      entranceActive = true;
+      forceHome();
+      window.setTimeout(finishAtHome, 120);
     }
-  }, true);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', install, { once: true });
+  } else {
+    install();
+  }
 
   window.addEventListener('pageshow', () => {
-    clearDestination();
-    absoluteTop();
+    if (intentionalDestination) return;
+
+    if (CREATIVE_HASHES.has(location.hash)) {
+      history.replaceState(null, '', location.pathname + location.search);
+    }
+
+    if (sessionStorage.getItem('sweetvilleGatesOpened') === 'yes') {
+      entranceActive = true;
+      window.setTimeout(finishAtHome, 50);
+    }
   });
 })();
