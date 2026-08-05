@@ -2,30 +2,22 @@
   'use strict';
 
   /*
-   * EXP 31.2 CLEAN ENTRANCE
-   *
-   * This replaces the gate-reset file already loaded by the CURRENT live
-   * Sweetville index. No index.html replacement is necessary.
+   * EXP 31.3
+   * Keep the cinematic intro, remove only the broken gate,
+   * restore the full homepage, and land on Welcome + official map.
    */
 
-  const CREATIVE_HASHES = new Set([
+  const STALE_HASHES = new Set([
     '#photoBooth',
     '#createHub',
     '#coloringStudio',
     '#creativeStudio',
-    '#sweetvilleGallery'
+    '#sweetvilleGallery',
+    '#livingMap',
+    '#locations',
+    '#world',
+    '#summerFestival'
   ]);
-
-  const TOOL_TARGETS = {
-    coloring: 'coloringStudio',
-    creative: 'creativeStudio',
-    gallery: 'sweetvilleGallery',
-    photo: 'photoBooth'
-  };
-
-  const params = new URLSearchParams(location.search);
-  const requestedTool = params.get('tool');
-  const validTool = requestedTool && TOOL_TARGETS[requestedTool];
 
   const unlock = () => {
     document.documentElement.style.removeProperty('overflow');
@@ -37,114 +29,130 @@
     document.body?.classList.remove('sv-scroll-locked');
   };
 
-  const restoreAllHomepageSections = () => {
+  const clearStaleRoute = () => {
+    const params = new URLSearchParams(location.search);
+    const hasStaleQuery =
+      params.has('district') ||
+      params.has('tool') ||
+      params.has('section') ||
+      params.has('destination');
+
+    if (STALE_HASHES.has(location.hash) || hasStaleQuery) {
+      history.replaceState(null, '', location.pathname);
+    }
+  };
+
+  const restoreHomepage = () => {
+    unlock();
+
     document.body?.classList.remove(
       'exp260-explore-mode',
-      'exp280-district-only'
+      'exp280-district-only',
+      'exp312-tool-mode'
     );
 
     document.querySelectorAll('main > section').forEach(section => {
       section.style.removeProperty('display');
-      section.hidden = false;
+      section.style.removeProperty('visibility');
     });
 
-    const world = document.getElementById('world');
-    if (world) world.hidden = true;
-  };
+    ['world','livingMap','locations','summerFestival'].forEach(id => {
+      const section = document.getElementById(id);
+      if (section) section.style.setProperty('display','none','important');
+    });
 
-  const removeEntranceLayers = () => {
-    document.getElementById('gateScreen')?.remove();
-    document.getElementById('svCinematicIntro')?.remove();
     document.querySelector('#svNav a[href="#world"]')?.remove();
   };
 
-  const goHome = () => {
-    unlock();
-    restoreAllHomepageSections();
-    removeEntranceLayers();
-
-    if (CREATIVE_HASHES.has(location.hash)) {
-      history.replaceState(null, '', location.pathname);
-    }
-
-    /*
-     * Clear stale routing parameters responsible for the Photo Booth landing.
-     * A valid intentional Sweet Studio tool is handled separately below.
-     */
-    if (!validTool && (params.has('district') || params.has('tool'))) {
-      history.replaceState(null, '', location.pathname);
-    }
+  const welcomeHome = () => {
+    clearStaleRoute();
+    restoreHomepage();
 
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
     }
 
-    const home =
+    const welcome =
       document.getElementById('cinematicHome') ||
-      document.getElementById('exp260Hub') ||
-      document.querySelector('main');
+      document.getElementById('exp260Hub');
 
-    if (home) {
-      home.scrollIntoView({ block: 'start', behavior: 'auto' });
-    } else {
-      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-    }
+    requestAnimationFrame(() => {
+      welcome?.scrollIntoView({
+        block:'start',
+        behavior:'auto'
+      });
+    });
   };
 
-  const openRequestedTool = () => {
-    if (!validTool) return false;
+  const finishIntro = () => {
+    const intro = document.getElementById('svCinematicIntro');
 
-    unlock();
-    removeEntranceLayers();
-    restoreAllHomepageSections();
-    document.body?.classList.add('exp312-tool-mode', 'exp260-explore-mode');
+    if (intro && !intro.classList.contains('finished')) {
+      intro.classList.add('finished');
+      intro.setAttribute('aria-hidden','true');
+    }
 
-    const target = document.getElementById(TOOL_TARGETS[requestedTool]);
-    if (!target) return false;
-
-    window.setTimeout(() => {
-      target.scrollIntoView({ block: 'start', behavior: 'auto' });
-    }, 100);
-
-    return true;
+    welcomeHome();
+    setTimeout(welcomeHome, 100);
+    setTimeout(welcomeHome, 500);
   };
 
   const initialize = () => {
-    /*
-     * Remove the gate and cinematic intro before any legacy listeners can
-     * restore focus or scroll position to Photo Booth.
-     */
-    removeEntranceLayers();
-    unlock();
+    clearStaleRoute();
+    restoreHomepage();
 
-    if (!openRequestedTool()) {
-      goHome();
+    /* The old gate must not exist or receive old listeners. */
+    document.getElementById('gateScreen')?.remove();
 
-      // Repeat after late-loading legacy scripts finish.
-      window.setTimeout(goHome, 100);
-      window.setTimeout(goHome, 500);
-      window.setTimeout(goHome, 1400);
+    const intro = document.getElementById('svCinematicIntro');
+    const skip = document.getElementById('svCinemaSkip');
+
+    if (!intro) {
+      welcomeHome();
+      return;
     }
+
+    /*
+     * Do not scroll while the cinematic intro is playing.
+     * When the existing intro-carousel marks it finished, land at Welcome.
+     */
+    const observer = new MutationObserver(() => {
+      if (intro.classList.contains('finished')) {
+        observer.disconnect();
+        welcomeHome();
+      }
+    });
+
+    observer.observe(intro, {
+      attributes:true,
+      attributeFilter:['class','aria-hidden']
+    });
+
+    skip?.addEventListener('click', () => {
+      setTimeout(finishIntro, 0);
+    }, {capture:true});
+
+    /*
+     * Safety release if an older intro script fails.
+     * The full sequence can run normally before this fallback.
+     */
+    setTimeout(() => {
+      if (!intro.classList.contains('finished')) {
+        finishIntro();
+      }
+    }, 22000);
   };
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initialize, { once: true });
+    document.addEventListener('DOMContentLoaded', initialize, {once:true});
   } else {
     initialize();
   }
 
   window.addEventListener('pageshow', () => {
-    if (validTool) {
-      openRequestedTool();
-    } else {
-      goHome();
-    }
-  });
-
-  window.addEventListener('load', () => {
-    if (!validTool) {
-      goHome();
-      window.setTimeout(goHome, 250);
+    const intro = document.getElementById('svCinematicIntro');
+    if (!intro || intro.classList.contains('finished')) {
+      welcomeHome();
     }
   });
 })();

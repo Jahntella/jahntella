@@ -1,47 +1,71 @@
 
 /* =========================================================
-   EXP 31.2 — CLEAN SWEETVILLE ENTRANCE
-   Loaded through the existing exp30-9 stylesheet reference.
+   EXP 31.3 — CINEMATIC INTRO + FULL HOMEPAGE RESTORE
    ========================================================= */
 
-/* Permanently remove the broken entrance layers. */
+/* Remove only the broken second gate. */
 #gateScreen,
-.gate-screen,
+.gate-screen {
+  display:none!important;
+  visibility:hidden!important;
+  opacity:0!important;
+  pointer-events:none!important;
+}
+
+/* Restore the cinematic Sweetville introduction. */
 #svCinematicIntro,
 .sv-cinematic-intro {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
+  display:block!important;
+  visibility:visible!important;
+  opacity:1;
+  pointer-events:auto;
 }
 
-/* Remove the redundant legacy World section and menu item. */
+#svCinematicIntro.finished,
+.sv-cinematic-intro.finished {
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+
+/*
+ * Older map/district scripts applied inline display:none values.
+ * Restore the current live homepage in its real HTML order.
+ */
+main > section:not([hidden]) {
+  display:block!important;
+  visibility:visible!important;
+}
+
+main > section[hidden] {
+  display:none!important;
+}
+
+/* Make the official map impossible for legacy mode CSS to hide. */
+#cinematicHome,
+#exp260Hub {
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+}
+
+/* Sections previously approved for removal from the homepage. */
 #world,
+#livingMap,
+#locations,
+#summerFestival,
 #svNav a[href="#world"] {
-  display: none !important;
+  display:none!important;
 }
 
-/* Make the current live homepage available immediately. */
+/* Normal scrolling after the cinematic sequence. */
 html,
 body {
-  overflow: auto !important;
-  scroll-behavior: auto !important;
+  overflow:auto;
 }
 
 body,
 main,
 main > section {
-  overflow-anchor: none !important;
-}
-
-body.exp260-explore-mode:not(.exp312-tool-mode),
-body.exp280-district-only:not(.exp312-tool-mode) {
-  overflow: auto !important;
-}
-
-/* Keep the current Welcome section as the first visible destination. */
-#cinematicHome {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
+  overflow-anchor:none!important;
 }

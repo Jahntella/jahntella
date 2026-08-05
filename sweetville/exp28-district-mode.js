@@ -2,24 +2,26 @@
   'use strict';
 
   /*
-   * EXP 31.2
-   * The main Sweetville homepage now opens directly. Stale district routing
-   * must not hide the homepage. Dedicated district HTML pages remain intact.
+   * EXP 31.3
+   * Do not let legacy district mode hide the main Sweetville homepage.
+   * Dedicated district HTML pages remain separate and unchanged.
    */
-  const params = new URLSearchParams(location.search);
-  const district = params.get('district');
-
-  if (!district) return;
-
-  const isMainSweetvillePage =
+  const isMainPage =
     /\/sweetville\/(?:index\.html)?$/i.test(location.pathname);
 
-  if (isMainSweetvillePage) {
-    history.replaceState(null, '', location.pathname);
-    document.body.classList.remove('exp280-district-only');
-    document.querySelectorAll('main > section').forEach(section => {
-      section.style.removeProperty('display');
-    });
-    return;
-  }
+  if (!isMainPage) return;
+
+  document.body.classList.remove(
+    'exp280-district-only',
+    'exp260-explore-mode'
+  );
+
+  document.querySelectorAll('main > section').forEach(section => {
+    section.style.removeProperty('display');
+  });
+
+  ['world','livingMap','locations','summerFestival'].forEach(id => {
+    const section = document.getElementById(id);
+    if (section) section.style.setProperty('display','none','important');
+  });
 })();
