@@ -1,14 +1,99 @@
+(() => {
+  'use strict';
+  const mapView=document.getElementById('exp260MapView');
+  const exploreView=document.getElementById('exp260ExploreView');
+  const previewIcon=document.getElementById('exp260PreviewIcon');
+  const previewTitle=document.getElementById('exp260PreviewTitle');
+  const previewText=document.getElementById('exp260PreviewText');
+  const pins=[...document.querySelectorAll('.exp260-pin')];
+  const KEY='jahntellaExp26MapMode';
 
-.exp191-brand-wrap{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}
-.exp191-realworld-ticket{display:inline-flex;align-items:center;gap:.65rem;margin:.3rem 0;padding:.68rem .9rem;border:1px solid rgba(255,199,226,.75);border-radius:999px;color:#fff;background:linear-gradient(145deg,rgba(255,255,255,.18),rgba(255,255,255,.04)),linear-gradient(135deg,rgba(255,73,174,.82),rgba(128,71,255,.8));box-shadow:0 12px 26px rgba(0,0,0,.26),0 0 24px rgba(255,80,182,.22);font-weight:900;text-decoration:none;font-size:.72rem}
-.exp191-passport-panel{margin:0 3vw 3rem;padding:clamp(1.2rem,3vw,2.2rem);border:1px solid rgba(255,120,193,.42);border-radius:28px;background:radial-gradient(circle at 12% 15%,rgba(255,92,184,.16),transparent 30%),linear-gradient(145deg,rgba(24,0,28,.94),rgba(9,0,14,.92));box-shadow:0 24px 60px rgba(0,0,0,.28)}
-.exp191-passport-grid{display:grid;grid-template-columns:minmax(240px,.8fr) minmax(0,1.2fr);gap:1.2rem;align-items:stretch}
-.exp191-passport-card{padding:1.25rem;border:1px solid rgba(255,184,219,.26);border-radius:22px;background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.025))}
-.exp191-passport-card small{display:block;font-size:.58rem;letter-spacing:.13em;font-weight:900;color:#ff98ce}
-.exp191-passport-card h3{margin:.35rem 0 1rem;font-family:"Playfair Display",serif;font-size:2rem}
-.exp191-passport-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem}
-.exp191-passport-field{padding:.9rem;border:1px solid rgba(255,164,211,.2);border-radius:16px;background:rgba(255,255,255,.035)}
-.exp191-passport-field span{display:block;font-size:.58rem;letter-spacing:.1em;opacity:.62}
-.exp191-passport-field strong{display:block;margin-top:.28rem;font-size:1.1rem}
-.exp191-passport-note{line-height:1.7;opacity:.78}
-@media(max-width:800px){.exp191-passport-grid{grid-template-columns:1fr}.exp191-realworld-ticket{font-size:.66rem}}
+  const setMode=mode=>{
+    const explore=mode==='explore';
+    document.body.classList.toggle('exp260-explore-mode',explore);
+    mapView?.classList.toggle('active',!explore);
+    exploreView?.classList.toggle('active',explore);
+    localStorage.setItem(KEY,mode);
+  };
+
+  mapView?.addEventListener('click',()=>setMode('map'));
+  exploreView?.addEventListener('click',()=>setMode('explore'));
+
+  pins.forEach(pin=>{
+    const update=()=>{
+      previewIcon.textContent=pin.dataset.icon||'💖';
+      previewTitle.textContent=pin.dataset.name||'Sweetville';
+      previewText.textContent=pin.querySelector('small')?.textContent||'Enter this destination.';
+    };
+    pin.addEventListener('mouseenter',update);
+    pin.addEventListener('focus',update);
+    if(pin.dataset.target){
+      pin.addEventListener('click',()=>{
+        const target=document.getElementById(pin.dataset.target);
+        if(!target)return;
+        setMode('explore');
+        setTimeout(()=>target.scrollIntoView({behavior:'smooth',block:'start'}),80);
+      });
+    }
+  });
+
+  setMode(localStorage.getItem(KEY)||'map');
+})();
+
+(() => {
+  'use strict';
+  const DESTINATIONS=[
+    ['bubblegumBay','Bubblegum Bay','💦'],
+    ['gardenMarket','Garden Market','🌸'],
+    ['sweetiesStage','Sweeties Stage','🎤'],
+    ['livingMap','Living World','✨'],
+    ['sweetvilleSphere','Sweetville Sphere','🌐'],
+    ['bedroom','Sweetie Room','🛏️'],
+    ['createHub','Create Hub','🎨'],
+    ['passport','Passport','🛂']
+  ];
+  const KEY='jahntellaExp27Passport';
+  const read=()=>{try{return JSON.parse(localStorage.getItem(KEY))||{visited:[]}}catch{return{visited:[]}}};
+  let state=read();
+  state.visited=[...new Set(state.visited||[])];
+
+  const visitedEl=document.getElementById('exp270Visited');
+  const songsEl=document.getElementById('exp270Songs');
+  const packsEl=document.getElementById('exp270Packs');
+  const secretsEl=document.getElementById('exp270Secrets');
+  const rankEl=document.getElementById('exp270Rank');
+  const modalRank=document.getElementById('exp270ModalRank');
+  const progressText=document.getElementById('exp270ProgressText');
+  const stamps=document.getElementById('exp270Stamps');
+  const modal=document.getElementById('exp270PassportModal');
+
+  const rank=count=>count>=8?'Founding Sweetie':count>=6?'Ambassador':count>=4?'Citizen':count>=2?'Explorer':'New Arrival';
+  const render=()=>{
+    const songs=Number(localStorage.getItem('jahntellaSweetEnergyV25')||0);
+    const packFound=localStorage.getItem('jahntellaBubblegumBaySweetPackV254')==='yes'?1:0;
+    let secrets=0;
+    try{
+      const legacy=JSON.parse(localStorage.getItem('jahntellaSweetvilleV4')||'{}');
+      secrets=(legacy.hearts?.length||0)+(legacy.letters?.length||0)+(legacy.collectibles?.length||0);
+    }catch{}
+    visitedEl.textContent=state.visited.length;
+    songsEl.textContent=songs;
+    packsEl.textContent=packFound;
+    secretsEl.textContent=secrets;
+    const r=rank(state.visited.length);
+    rankEl.textContent=r;modalRank.textContent=r;
+    progressText.textContent=`${state.visited.length} destination${state.visited.length===1?'':'s'} visited`;
+    stamps.innerHTML=DESTINATIONS.map(([id,name,icon])=>`<article class="exp270-stamp ${state.visited.includes(id)?'visited':''}"><span>${icon}</span><strong>${name}</strong><small>${state.visited.includes(id)?'STAMPED ✓':'NOT VISITED'}</small></article>`).join('');
+  };
+
+  document.querySelectorAll('.exp260-pin[data-target]').forEach(pin=>{
+    pin.addEventListener('click',()=>{
+      const id=pin.dataset.target;
+      if(!state.visited.includes(id)){state.visited.push(id);localStorage.setItem(KEY,JSON.stringify(state));render();}
+    });
+  });
+  document.getElementById('exp270OpenPassport')?.addEventListener('click',()=>modal?.showModal());
+  document.getElementById('exp270ClosePassport')?.addEventListener('click',()=>modal?.close());
+  modal?.addEventListener('click',e=>{if(e.target===modal)modal.close()});
+  render();
+})();

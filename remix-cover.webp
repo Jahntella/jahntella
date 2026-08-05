@@ -1,132 +1,98 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Jahntella Investor Portal</title>
-<meta name="description" content="Private investor overview for Jahntella and the World of Sweet.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&family=Sacramento&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="investor.css?v=20.1">
-</head>
-<body>
-<header class="topbar">
-  <a class="logo" href="../">Jahntella♡</a>
-  <nav>
-    <a href="#snapshot">Snapshot</a><a href="#bible">Brand Bible</a><a href="#music">Music</a>
-    <a href="#sweetville">Sweetville</a><a href="#opportunity">Opportunity</a><a href="#roadmap">Roadmap</a>
-  </nav>
-  <a class="exit" href="../">Exit Portal</a>
-</header>
 
-<main>
-<section class="hero">
-  <img src="assets/hero.webp" alt="Jahntella official pop artist banner">
-  <div class="hero-copy">
-    <p class="eyebrow">PRIVATE INVESTOR PORTAL • EXP 20.1</p>
-    <h1>An original entertainment property designed to grow across <em>music, publishing, fashion, collectibles, licensing, and immersive digital worlds.</em></h1>
-    <p>Jahntella is more than an artist website. It is a fully branded, expandable entertainment universe with original songs, a living virtual world, fan experiences, stories, magazines, and merchandise potential.</p>
-    <div class="actions"><a class="btn primary" href="#snapshot">View the Opportunity</a><a class="btn" href="../sweetville/">Enter Sweetville</a></div>
-    <div class="facts"><span><b>ORIGINAL IP</b>Built around one recognizable world</span><span><b>LIVE NOW</b>Not only a concept or mockup</span><span><b>SCALABLE</b>New music, districts and products</span></div>
-  </div>
-</section>
-
-<section id="snapshot" class="section">
-  <div class="heading"><p class="eyebrow">THE FAST READ</p><h2>The complete opportunity in <em>one visual card.</em></h2></div>
-  <button class="image-card lightbox-trigger" data-src="assets/pitch.webp"><img src="assets/pitch.webp" alt="Jahntella investor one-card pitch deck"><span>Click to enlarge</span></button>
-</section>
-
-<section id="bible" class="section dark">
-  <div class="heading"><p class="eyebrow">BRAND BIBLE</p><h2>A clear creative system for a world that can <em>grow without losing its identity.</em></h2><p>These approved brand boards define the mission, visual DNA, music, content pillars, audience promise, and future expansion rules.</p></div>
-  <div class="gallery">
-    <button class="tile lightbox-trigger" data-src="assets/brand-world.webp"><img src="assets/brand-world.webp" alt="The World of Sweet brand bible"><span><b>The World of Sweet</b>Mission, character, Sweetville and promise.</span></button>
-    <button class="tile lightbox-trigger" data-src="assets/brand-music.webp"><img src="assets/brand-music.webp" alt="Jahntella music brand bible"><span><b>The Music</b>Sound, emotion and release identity.</span></button>
-    <button class="tile lightbox-trigger" data-src="assets/brand-dna.webp"><img src="assets/brand-dna.webp" alt="Jahntella visual DNA"><span><b>Visual DNA</b>Color, style, wardrobe and recognition.</span></button>
-    <button class="tile lightbox-trigger" data-src="assets/content-library.webp"><img src="assets/content-library.webp" alt="Jahntella content library"><span><b>Content Library</b>A scalable content and campaign system.</span></button>
-    <button class="tile lightbox-trigger wide" data-src="assets/brand-book.webp"><img src="assets/brand-book.webp" alt="Jahntella brand book"><span><b>Full Brand Book</b>The larger creative and commercial vision.</span></button>
-  </div>
-</section>
-
-<section id="music" class="section">
-  <div class="heading"><p class="eyebrow">ORIGINAL MUSIC</p><h2>The world already has its own <em>soundtrack.</em></h2><p>Original songs and cover art establish Jahntella as a genuine pop entertainment property, not only a visual character.</p></div>
-  <div class="music-grid">
-    <article class="music-card">
-      <img src="assets/fun-dipp-cover.webp" alt="Fun Dipp cover art">
-      <div><p class="eyebrow">DEBUT SINGLE</p><h3>Fun Dipp</h3><p>Bright pop energy, playful hooks and a candy-coated chorus.</p>
-      <audio controls preload="none"><source src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/fun-dipp-v430.mp4" type="audio/mp4"></audio></div>
-    </article>
-    <article class="music-card">
-      <img src="assets/remix-cover.webp" alt="Fun Dipp Pink Lips Remix cover art">
-      <div><p class="eyebrow">OFFICIAL REMIX</p><h3>Pink Lips Remix</h3><p>A glossy, higher-energy extension with late-night Sweetville sparkle.</p>
-      <audio controls preload="none"><source src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/pink-lips-remix-v430.mp4" type="audio/mp4"></audio></div>
-    </article>
-  </div>
-</section>
-
-<section id="sweetville" class="section world">
-  <div><p class="eyebrow">THE IMMERSIVE LAYER</p><h2>Sweetville is the <em>world around the artist.</em></h2><p>Visitors can drive with Jahntella, attend the Sweetville Sphere, collect memories, use a persistent passport, explore fashion and lifestyle spaces, read stories, browse the magazine, and return as the world expands.</p>
-  <div class="pills"><span>Interactive districts</span><span>Concert attractions</span><span>Passport & memories</span><span>Storybook</span><span>Magazine</span><span>Collectibles</span><span>Fashion</span><span>Fan engagement</span></div>
-  <a class="btn primary" href="../sweetville/">Experience Sweetville</a></div>
-  <img src="assets/heart.webp" alt="Jahntella in a glowing heart">
-</section>
-
-<section id="opportunity" class="section dark">
-  <div class="heading"><p class="eyebrow">MONETIZATION</p><h2>One property. Multiple <em>revenue paths.</em></h2></div>
-  <div class="cards">
-    <article><span>🎵</span><h3>Music</h3><p>Singles, remixes, albums, publishing, sync and virtual performances.</p></article>
-    <article><span>👕</span><h3>Merchandise</h3><p>Fashion, accessories, beauty collaborations and limited drops.</p></article>
-    <article><span>📚</span><h3>Publishing</h3><p>Storybooks, magazines, journals and activity books.</p></article>
-    <article><span>🧸</span><h3>Collectibles</h3><p>Mochi, Sweetville characters, cards, toys and digital rewards.</p></article>
-    <article><span>🤝</span><h3>Licensing</h3><p>Brand partnerships, campaigns, products and location-based experiences.</p></article>
-    <article><span>🎮</span><h3>Interactive</h3><p>Memberships, premium access, apps, games and evolving digital destinations.</p></article>
-  </div>
-</section>
-
-<section id="roadmap" class="section">
-  <div class="heading"><p class="eyebrow">ROADMAP</p><h2>A world designed to <em>keep expanding.</em></h2></div>
-  <div class="timeline">
-    <article><b>01</b><div><h3>Foundation — Built</h3><p>Identity, songs, website, Sweetville, storybook, magazine, collectibles and investor assets.</p></div></article>
-    <article><b>02</b><div><h3>Audience Growth</h3><p>Social storytelling, music distribution, video content and community growth.</p></div></article>
-    <article><b>03</b><div><h3>Commercial Expansion</h3><p>Merchandise, publishing, memberships, partnerships and product testing.</p></div></article>
-    <article><b>04</b><div><h3>Entertainment Scale</h3><p>Animation, licensing, larger releases, apps and immersive experiences.</p></div></article>
-  </div>
-</section>
-
-<section class="closing">
-  <img src="assets/portrait.webp" alt="Jahntella portrait">
-  <div><p class="eyebrow">THE INVESTMENT THESIS</p><h2>Every new project should deepen the world—not distract from it.</h2><p>Jahntella is designed as an original entertainment property whose music, characters, environments, products and stories reinforce one another.</p>
-  <a class="btn primary" href="mailto:jahntella@google.com?subject=Jahntella%20Investor%20Interest">Discuss the Opportunity</a></div>
-</section>
-</main>
+:root{--pink:#ff4eae;--soft:#ffb1d7;--bg:#120014;--panel:#210125;--white:#fff7fb}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif}img{max-width:100%;display:block}a{color:inherit}.topbar{position:sticky;top:0;z-index:99;display:flex;align-items:center;gap:1rem;padding:.8rem 3vw;border-bottom:1px solid #ffffff20;background:#100011e8;backdrop-filter:blur(18px)}.logo{font-family:"Sacramento",cursive;font-size:2.15rem;text-decoration:none}.topbar nav{display:flex;gap:.9rem;justify-content:center;flex:1}.topbar nav a,.exit{font-size:.72rem;font-weight:800;text-decoration:none;opacity:.82}.exit{padding:.55rem .8rem;border:1px solid #ffffff35;border-radius:999px}.hero{min-height:88vh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:4vw;padding:5vw;background:radial-gradient(circle at 15% 20%,#ff3fa62b,transparent 35%),radial-gradient(circle at 85% 65%,#7c4cff24,transparent 35%)}.hero>img{border-radius:30px;box-shadow:0 35px 85px #0009,0 0 50px #ff4eae25}.eyebrow{font-size:.66rem;font-weight:900;letter-spacing:.16em;color:var(--soft)}h1,h2,h3{font-family:"Playfair Display",serif}h1{font-size:clamp(2.8rem,5.3vw,6rem);line-height:.96;margin:.7rem 0 1rem}h1 em,h2 em{color:var(--soft)}p{line-height:1.7;color:#dfc7d7}.actions{display:flex;gap:.7rem;flex-wrap:wrap;margin:1.4rem 0}.btn{display:inline-flex;padding:.82rem 1.08rem;border:1px solid #ffffff33;border-radius:999px;text-decoration:none;font-weight:900;background:#ffffff08}.primary{border:0;background:linear-gradient(135deg,var(--pink),#9254ff);box-shadow:0 12px 28px #ff4eae33}.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}.facts span{padding:.8rem;border:1px solid #ffffff18;border-radius:15px;background:#ffffff07;font-size:.69rem;color:#d8bfce}.facts b{display:block;color:#fff;margin-bottom:.25rem}.section{padding:clamp(4rem,8vw,8rem) 5vw;background:#170019}.section.dark{background:#0c000e}.heading{max-width:900px;margin:0 auto 2.2rem;text-align:center}.heading h2,.world h2,.closing h2{font-size:clamp(2.25rem,4.5vw,5rem);line-height:1;margin:.5rem 0}.image-card,.tile{border:0;color:inherit;font:inherit;cursor:zoom-in}.image-card{display:block;position:relative;width:min(100%,1500px);margin:auto;padding:0;border-radius:26px;overflow:hidden;background:#fff;box-shadow:0 30px 80px #0008}.image-card span{position:absolute;right:16px;bottom:16px;padding:.55rem .75rem;border-radius:999px;background:#150016df;font-size:.65rem;font-weight:900}.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;max-width:1500px;margin:auto}.tile{padding:0;text-align:left;border:1px solid #ffffff18;border-radius:22px;overflow:hidden;background:#ffffff07}.tile img{width:100%;aspect-ratio:16/9;object-fit:cover}.tile span{display:block;padding:1rem;color:#d9bfd1}.tile b{display:block;color:#fff;margin-bottom:.25rem}.tile.wide{grid-column:1/-1}.music-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;max-width:1250px;margin:auto}.music-card{display:grid;grid-template-columns:210px 1fr;gap:1rem;padding:1rem;border:1px solid #ffffff18;border-radius:22px;background:#ffffff07}.music-card img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:16px}.music-card h3{font-size:2rem;margin:.25rem 0}.music-card audio{width:100%}.world{display:grid;grid-template-columns:1fr minmax(280px,500px);gap:4vw;align-items:center}.world>img{border-radius:30px;filter:drop-shadow(0 25px 55px #0008)}.pills{display:flex;flex-wrap:wrap;gap:.55rem;margin:1.2rem 0 1.4rem}.pills span{padding:.6rem .75rem;border:1px solid #ffffff20;border-radius:999px;background:#ffffff07;font-size:.7rem}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:1300px;margin:auto}.cards article{padding:1.25rem;border:1px solid #ffffff17;border-radius:20px;background:#ffffff07}.cards article>span{font-size:1.8rem}.cards h3{font-size:1.6rem;margin:.45rem 0}.timeline{max-width:1050px;margin:auto;display:grid;gap:.8rem}.timeline article{display:grid;grid-template-columns:70px 1fr;gap:1rem;padding:1rem;border:1px solid #ffffff16;border-radius:18px;background:#ffffff06}.timeline article>b{font-size:2rem;color:var(--soft)}.timeline h3{margin:.15rem 0}.closing{display:grid;grid-template-columns:minmax(280px,480px) 1fr;gap:4vw;align-items:center;padding:6vw;background:linear-gradient(135deg,#250029,#0e0011)}.closing img{border-radius:30px}.closing p{max-width:760px}footer{display:flex;justify-content:space-between;gap:1rem;padding:1.2rem 4vw;border-top:1px solid #ffffff1a;color:#d8bfd0;font-size:.75rem}dialog{width:min(96vw,1700px);max-height:94vh;padding:0;border:1px solid #ffffff33;border-radius:18px;background:#070008}dialog::backdrop{background:#000d;backdrop-filter:blur(8px)}dialog img{max-height:90vh;margin:auto}#close{position:fixed;right:3vw;top:3vh;z-index:2;width:44px;height:44px;border:1px solid #fff5;border-radius:50%;background:#160017e6;color:#fff;font-size:2rem;cursor:pointer}
+@media(max-width:900px){.topbar nav{display:none}.hero,.world,.closing{grid-template-columns:1fr}.music-grid,.gallery{grid-template-columns:1fr}.tile.wide{grid-column:auto}.cards{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.hero,.section,.closing{padding:3rem 1rem}.facts,.cards{grid-template-columns:1fr}.music-card{grid-template-columns:1fr}.music-card img{max-width:260px}.heading h2,.world h2,.closing h2{font-size:2.3rem}footer{flex-direction:column}}
 
 
-<section class="investor-director" id="creativeDirector">
-  <div class="investor-director-card">
-    <div class="investor-director-image">
-      <img src="../creative-director.jpeg" alt="J.W. Hummel, Creative Director" loading="lazy" decoding="async">
-    </div>
+/* EXP 20.4 — Creative Director moved into Investor Portal */
+.investor-director{
+  padding:clamp(4rem,8vw,8rem) 5vw;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(255,78,174,.18),transparent 32%),
+    radial-gradient(circle at 84% 72%,rgba(134,78,255,.15),transparent 35%),
+    linear-gradient(145deg,#1b001e,#0b000d);
+  border-top:1px solid rgba(255,170,216,.18);
+}
 
-    <div class="investor-director-copy">
-      <p class="eyebrow">BEHIND THE WORLD OF SWEET</p>
-      <h2>Meet the Creative Director.</h2>
-      <h3>J.W. Hummel</h3>
-      <p class="investor-director-role">Creative Director • Brand Builder • Visual Storyteller</p>
-      <p class="investor-director-tagline">Building a bold, sweet, unforgettable pop entertainment universe.</p>
-      <p>From original music and visual identity to Sweetville, publishing, collectibles, merchandise, and fan experiences, every part of the World of Sweet is designed to become memorable, recognizable, and expandable.</p>
-      <p>For investment discussions, collaborations, licensing, partnerships, media opportunities, or creative projects, connect directly below.</p>
+.investor-director-card{
+  display:grid;
+  grid-template-columns:minmax(260px,420px) minmax(0,1fr);
+  gap:clamp(1.5rem,5vw,4rem);
+  align-items:center;
+  max-width:1200px;
+  margin:0 auto;
+  padding:clamp(1rem,2vw,1.5rem);
+  border:1px solid rgba(255,177,216,.24);
+  border-radius:30px;
+  background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.025));
+  box-shadow:0 30px 80px rgba(0,0,0,.38),0 0 35px rgba(255,74,180,.12);
+}
 
-      <div class="investor-director-actions">
-        <a class="btn primary" href="mailto:jahntella@google.com?subject=Jahntella%20Investment%20or%20Partnership%20Inquiry">Discuss the Opportunity</a>
-        <a class="investor-director-email" href="mailto:jahntella@google.com">jahntella@google.com</a>
-      </div>
-    </div>
-  </div>
-</section>
+.investor-director-image{
+  overflow:hidden;
+  border-radius:23px;
+  background:#100011;
+}
 
+.investor-director-image img{
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  object-position:center top;
+}
 
-<footer><span>Jahntella Entertainment Property</span><b>This is her world. Welcome to Sweetville. ♡</b></footer>
+.investor-director-copy{
+  padding:clamp(.5rem,2vw,1.5rem);
+}
 
-<dialog id="lightbox"><button id="close" aria-label="Close">×</button><img id="lightboxImg" alt=""></dialog>
-<script src="investor.js?v=20.1" defer></script>
-</body></html>
+.investor-director-copy h2{
+  margin:.4rem 0 .15rem;
+  font-size:clamp(2.3rem,4.8vw,4.8rem);
+  line-height:1;
+}
+
+.investor-director-copy h3{
+  margin:.7rem 0 .25rem;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(1.8rem,3vw,3rem);
+  color:#ffabd4;
+}
+
+.investor-director-role{
+  margin:.15rem 0 .9rem;
+  color:#fff;
+  font-weight:800;
+}
+
+.investor-director-tagline{
+  color:#ffb8db;
+  font-family:"Playfair Display",serif;
+  font-size:1.15rem;
+  font-style:italic;
+}
+
+.investor-director-actions{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:1rem;
+  margin-top:1.4rem;
+}
+
+.investor-director-email{
+  color:#ffc0df;
+  font-weight:800;
+  text-decoration:none;
+  border-bottom:1px solid rgba(255,192,223,.45);
+}
+
+@media(max-width:850px){
+  .investor-director-card{
+    grid-template-columns:1fr;
+  }
+
+  .investor-director-image{
+    max-width:420px;
+    margin:0 auto;
+  }
+}

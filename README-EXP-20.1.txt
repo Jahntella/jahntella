@@ -1,22 +1,62 @@
-JAHNTELLA EXP 20.1 — INVESTOR PORTAL
 
-UPLOAD EVERYTHING INSIDE THIS ZIP TO THE REPOSITORY ROOT.
-The new portal will be located at /investors/
+/* EXP 21.0 — Homepage Performance Optimization */
 
-INCLUDES
-- Investor welcome and investment thesis
-- One-card pitch deck with estimated website value
-- Brand Bible visual gallery
-- Original music and playable songs
-- Sweetville experience overview
-- Monetization opportunities
-- Four-stage roadmap
-- Investor contact call-to-action
-- Full-screen image viewing
-- Responsive desktop and mobile design
+html{
+  content-visibility:auto;
+}
 
-PREVIEW AFTER DEPLOYMENT
-https://jahntella.com/investors/?v=20.1
+body{
+  font-display:swap;
+}
 
-COMMIT MESSAGE
-Jahntella EXP 20.1 — Investor Portal
+.hero-v5{
+  background:#120015;
+  contain:layout paint style;
+}
+
+.hero-v5-video{
+  background:#120015;
+}
+
+img{
+  height:auto;
+}
+
+.reveal,
+.music-section,
+.about-section,
+.sweet-vault-section,
+.downloads-section,
+.magazine-section,
+.merch-section,
+.gallery-section,
+.contact-section,
+.exp195-popstar-section{
+  content-visibility:auto;
+  contain-intrinsic-size:900px;
+}
+
+@media(max-width:760px){
+  .ambient,
+  .shooting-stars,
+  .twinkle-stars{
+    opacity:.45!important;
+  }
+
+  .sparkles{
+    display:none!important;
+  }
+
+  .hero-v5-video{
+    filter:none!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .shooting-stars,
+  .twinkle-stars,
+  .ambient,
+  .sparkles{
+    display:none!important;
+  }
+}

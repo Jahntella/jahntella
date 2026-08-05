@@ -1,22 +1,19 @@
-SWEETVILLE EXP 19.1 — TICKET PORTAL + PASSPORT
+/* EXP 19.5 — Pop Star Badge Sparkles */
+(() => {
+  'use strict';
 
-UPLOAD TO REPOSITORY ROOT, PRESERVING THE SWEETVILLE FOLDER.
+  const layer = document.getElementById('exp195Sparkles');
+  if (!layer) return;
 
-FILES
-/index.html
-/exp19-1-ticket.css
-/sweetville/index.html
-/sweetville/exp19-1-portal.css
-/sweetville/exp19-1-passport.js
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const amount = reduced ? 8 : 24;
 
-FEATURES
-- Ticket to Sweetville on the Jahntella homepage
-- Ticket to the Real World inside Sweetville
-- Sweetie Passport
-- Visitor number
-- Sweetville trip count
-- Saved memory count
-- Favorite Drive destination remembered on this device
-
-COMMIT MESSAGE
-Sweetville EXP 19.1 — Ticket portal and Sweetie Passport
+  for (let i = 0; i < amount; i++) {
+    const sparkle = document.createElement('i');
+    sparkle.style.left = `${4 + Math.random() * 92}%`;
+    sparkle.style.top = `${5 + Math.random() * 90}%`;
+    sparkle.style.setProperty('--d', `${2.2 + Math.random() * 3.5}s`);
+    sparkle.style.animationDelay = `${Math.random() * -5}s`;
+    layer.appendChild(sparkle);
+  }
+})();
