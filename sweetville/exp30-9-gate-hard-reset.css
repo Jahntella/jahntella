@@ -1,6 +1,6 @@
 
 /* =========================================================
-   EXP 31.3 — CINEMATIC INTRO + FULL HOMEPAGE RESTORE
+   EXP 31.4 — WORLD STACK + FAST PASS FIX
    ========================================================= */
 
 /* Remove only the broken second gate. */
@@ -12,12 +12,11 @@
   pointer-events:none!important;
 }
 
-/* Restore the cinematic Sweetville introduction. */
+/* Keep the cinematic introduction. */
 #svCinematicIntro,
 .sv-cinematic-intro {
-  display:block!important;
-  visibility:visible!important;
-  opacity:1;
+  display:block;
+  visibility:visible;
   pointer-events:auto;
 }
 
@@ -28,28 +27,7 @@
   pointer-events:none!important;
 }
 
-/*
- * Older map/district scripts applied inline display:none values.
- * Restore the current live homepage in its real HTML order.
- */
-main > section:not([hidden]) {
-  display:block!important;
-  visibility:visible!important;
-}
-
-main > section[hidden] {
-  display:none!important;
-}
-
-/* Make the official map impossible for legacy mode CSS to hide. */
-#cinematicHome,
-#exp260Hub {
-  display:block!important;
-  visibility:visible!important;
-  opacity:1!important;
-}
-
-/* Sections previously approved for removal from the homepage. */
+/* Approved redundant homepage sections remain removed. */
 #world,
 #livingMap,
 #locations,
@@ -58,7 +36,41 @@ main > section[hidden] {
   display:none!important;
 }
 
-/* Normal scrolling after the cinematic sequence. */
+/*
+ * Do NOT force every main section to display:block.
+ * World and tool scripts must be allowed to hide unrelated sections.
+ */
+#cinematicHome,
+#exp260Hub {
+  visibility:visible;
+  opacity:1;
+}
+
+/* Homepage mode restores only the intended homepage flow. */
+body.exp314-home-mode #cinematicHome,
+body.exp314-home-mode #exp260Hub {
+  display:block!important;
+}
+
+/* During a focused world/tool view, preserve the script-selected section. */
+body.exp314-focus-mode main > section {
+  overflow-anchor:none;
+}
+
+/* Only one global Fast Pass trigger and panel may be visible. */
+.exp290-fastpass-trigger.exp314-fastpass-duplicate,
+.exp290-fastpass-panel.exp314-fastpass-duplicate,
+.exp290-travel-fx.exp314-fastpass-duplicate {
+  display:none!important;
+}
+
+/* Prevent duplicated fixed controls from stacking before JavaScript cleanup. */
+body > .exp290-fastpass-trigger ~ .exp290-fastpass-trigger,
+body > .exp290-fastpass-panel ~ .exp290-fastpass-panel,
+body > .exp290-travel-fx ~ .exp290-travel-fx {
+  display:none!important;
+}
+
 html,
 body {
   overflow:auto;
