@@ -17,7 +17,8 @@
 <link rel="stylesheet" href="exp25-7-sweetville-expansion.css?v=25.7">
 <link rel="stylesheet" href="exp27-sweet-passport.css?v=28.0">
 <link rel="stylesheet" href="exp28-district-fixes.css?v=28.0">
-<link rel="stylesheet" href="exp29-fast-pass.css?v=29.0">
+<link rel="stylesheet" href="exp29-fast-pass.css?v=29.1">
+<link rel="stylesheet" href="exp29-1-interactive-map.css?v=29.1">
 </head>
 <body>
 
@@ -116,69 +117,59 @@
 
   <main>
 
-<section class="exp260-hub" id="exp260Hub">
-  <div class="exp260-hub-shell">
-    <div class="exp260-hub-head">
+
+<section class="exp291-map-hub" id="exp260Hub">
+  <div class="exp291-map-shell">
+    <div class="exp291-map-head">
       <div>
-        <p class="sv-eyebrow">EXP 26 — SWEETVILLE WORLD MAP</p>
-        <h1>Choose your next <em>Sweetville adventure.</em></h1>
-        <p>Everything you already love is still here—now you can reach it instantly from one living map.</p>
+        <p class="sv-eyebrow">EXP 29.1 — OFFICIAL INTERACTIVE SWEETVILLE MAP</p>
+        <h1>Tap a district. <em>Enter the world.</em></h1>
+        <p>Your official Sweetville map is now the central gateway to all 13 districts, stories, partnerships, and real-world possibilities.</p>
       </div>
-      <div class="exp260-view-controls">
-        <button type="button" id="exp260MapView" class="active">🗺 Map View</button>
-        <button type="button" id="exp260ExploreView">✨ Explore View</button>
+      <div class="exp291-map-progress">
+        <small>SWEETVILLE EXPLORER</small>
+        <strong><span id="exp291VisitedCount">0</span> / 13 DISTRICTS</strong>
       </div>
     </div>
 
-    <div class="exp260-map-wrap" id="exp260MapWrap">
-      <div class="exp260-map-sky"></div>
-      <div class="exp260-map-water"></div>
-      <div class="exp260-map-path path-a"></div>
-      <div class="exp260-map-path path-b"></div>
-      <div class="exp260-map-train" aria-hidden="true">🚂</div>
+    <div class="exp291-map-frame" id="exp291MapFrame">
+      <img src="assets/exp29-1/sweetville-official-map.webp" alt="Official Sweetville map showing thirteen districts" loading="eager" decoding="async">
 
-      <a class="exp260-pin pin-bay" href="bubblegum-bay.html" data-name="Bubblegum Bay" data-icon="💦">
-        <span>💦</span><strong>Bubblegum Bay</strong><small>Waterpark • Music • Hidden Pack</small>
-      </a>
-      <a class="exp260-pin pin-garden" href="garden-market.html" data-name="Garden Market" data-icon="🌸">
-        <span>🌸</span><strong>Garden Market</strong><small>Flowers • Friends • Slow mornings</small>
-      </a>
-      <a class="exp260-pin pin-stage" href="sweeties-stage.html" data-name="Sweeties Stage" data-icon="🎤">
-        <span>🎤</span><strong>Sweeties Stage</strong><small>Live music • Community chorus</small>
-      </a>
-      <a class="exp260-pin pin-map" href="living-world.html" data-name="Living World Map" data-icon="✨">
-        <span>✨</span><strong>Living World</strong><small>Classic districts • Secrets • Stamps</small>
-      </a>
-      <a class="exp260-pin pin-sphere" href="sphere.html" data-name="Sweetville Sphere" data-icon="🌐">
-        <span>🌐</span><strong>Sweetville Sphere</strong><small>Encore lights • Music experience</small>
-      </a>
-      <a class="exp260-pin pin-room" href="sweetie-room.html" data-name="Sweetie Room" data-icon="🛏️">
-        <span>🛏️</span><strong>My Sweetie Room</strong><small>Memories • Keepsakes • Progress</small>
-      </a>
-      <a class="exp260-pin pin-story" href="story.html" data-name="Story Book" data-icon="📖">
-        <span>📖</span><strong>Story Book</strong><small>Read the Sweetville story</small>
-      </a>
-      <a class="exp260-pin pin-create" href="create.html" data-name="Create With Jahntella" data-icon="🎨">
-        <span>🎨</span><strong>Create</strong><small>Color • Design • Photo booth</small>
-      </a>
-      <a class="exp260-pin pin-passport" href="passport.html" data-name="Sweetie Passport" data-icon="🛂">
-        <span>🛂</span><strong>Passport</strong><small>Stamps • History • Rank</small>
-      </a>
-      <a class="exp260-pin pin-express" href="sweet-express.html" data-name="Sweet Express" data-icon="🚂">
-        <span>🚂</span><strong>Sweet Express</strong><small>Power the train with music</small>
-      </a>
+      <a class="exp291-hotspot hs-bubblegum" href="bubblegum-bay.html" data-district="Bubblegum Bay" data-partner="Great Wolf Lodge, Coca-Cola, Speedo, Banana Boat, Margaritaville"><span>💦</span><b>Bubblegum Bay</b><i>🤝</i></a>
+      <a class="exp291-hotspot hs-garden" href="garden-market.html" data-district="Garden Market" data-partner="Proven Winners, Miracle-Gro, Burpee, Home Depot Garden Center, Whole Foods Market"><span>🌸</span><b>Garden Market</b><i>🤝</i></a>
+      <a class="exp291-hotspot hs-mochi" href="living-world.html?district=mochi" data-district="Mochi's Area" data-partner="Chewy, PetSmart, Purina, KONG, BarkBox"><span>🐶</span><b>Mochi's Area</b><i>🤝</i></a>
+      <a class="exp291-hotspot hs-sphere" href="sphere.html" data-district="Sweetville Sphere" data-partner="Meta, Epic Games, Roblox, Unity, NVIDIA"><span>🌐</span><b>Sweetville Sphere</b><i>🤝</i></a>
+      <a class="exp291-hotspot hs-sweeties" href="sweeties-stage.html" data-district="Sweeties Stage" data-partner="Spotify, Apple Music, Shure, JBL, Ticketmaster"><span>🎤</span><b>Sweeties Stage</b><i>🤝</i></a>
+      <a class="exp291-hotspot hs-lake" href="living-world.html?district=sparkle-lake" data-district="Sparkle Lake" data-partner="Pandora, Swarovski, Hallmark, Bath & Body Works, Lush"><span>💖</span><b>Sparkle Lake</b><i>🤝</i></a>
+      <a class="exp291-hotspot hs-cafe" href="living-world.html?district=pink-cafe" data-district="Pink Café" data-partner="Starbucks, Dunkin', Nespresso, illy, KitchenAid"><span>☕</span><b>Pink Café</b><i>🤝</i></a>
+      <a class="exp291-hotspot hs-story" href="story.html" data-district="Story Book" data-partner="Scholastic, Penguin Random House, Disney Publishing, Barnes & Noble"><span>📖</span><b>Story Book</b><i>🤝</i></a>
+      <a class="exp291-hotspot hs-carnival" href="living-world.html?district=carnival" data-district="Carnival" data-partner="Six Flags, Cedar Fair, Disney Parks, LEGO, Mattel"><span>🎡</span><b>Carnival</b><i>🤝</i></a>
+      <a class="exp291-hotspot hs-candy" href="living-world.html?district=candy-lane" data-district="Candy Lane" data-partner="Haribo, Sour Patch Kids, Nerds, Skittles, Jelly Belly"><span>🍭</span><b>Candy Lane</b><i>🤝</i></a>
+      <a class="exp291-hotspot hs-donut" href="living-world.html?district=donut-district" data-district="Donut District" data-partner="Krispy Kreme, Dunkin', Tim Hortons, Duck Donuts"><span>🍩</span><b>Donut District</b><i>🤝</i></a>
+      <a class="exp291-hotspot hs-starlight" href="living-world.html?district=starlight-stage" data-district="Starlight Stage" data-partner="Sony Music, Universal Music Group, Live Nation, TikTok, YouTube Music"><span>⭐</span><b>Starlight Stage</b><i>🤝</i></a>
+      <a class="exp291-hotspot hs-express" href="sweet-express.html" data-district="Sweet Express Station" data-partner="Amtrak, Brightline, Virgin Hotels, Expedia, Airbnb"><span>🚂</span><b>Sweet Express</b><i>🤝</i></a>
     </div>
 
-    <div class="exp260-preview" id="exp260Preview">
-      <span id="exp260PreviewIcon">💖</span>
+    <div class="exp291-map-preview" id="exp291MapPreview">
       <div>
-        <small>SELECT A DESTINATION</small>
-        <h3 id="exp260PreviewTitle">Welcome to Sweetville</h3>
-        <p id="exp260PreviewText">Tap a glowing location to travel there instantly.</p>
+        <small id="exp291PreviewKicker">SELECT A DISTRICT</small>
+        <h3 id="exp291PreviewTitle">Every district is a world of its own.</h3>
+        <p id="exp291PreviewText">Tap or hover over a glowing district to explore it.</p>
+      </div>
+      <a id="exp291PartnerButton" href="mailto:jahntella@gmail.com" class="sv-button primary">🤝 Partnership Inquiry</a>
+    </div>
+
+    <div class="exp291-business-note">
+      <span>🤝</span>
+      <div>
+        <small>✨ FOUNDING PARTNERSHIP AVAILABLE</small>
+        <strong>Every Sweetville district is available for real-world branding, licensing, activation, and collaboration.</strong>
+        <p>Brand examples shown throughout Sweetville are illustrative only and do not imply an existing relationship.</p>
       </div>
     </div>
   </div>
 </section>
+
 
 <section class="cinematic-home cinematic-home-clean" id="cinematicHome" aria-label="Sweetville cinematic home">
   <div class="cinematic-bg" aria-hidden="true"></div>
@@ -1772,6 +1763,7 @@
   <i></i><i></i><i></i><i></i><i></i><i></i>
 </div>
 
-<script src="exp29-fast-pass.js?v=29.0" defer></script>
+<script src="exp29-fast-pass.js?v=29.1" defer></script>
+<script src="exp29-1-interactive-map.js?v=29.1" defer></script>
 </body>
 </html>
