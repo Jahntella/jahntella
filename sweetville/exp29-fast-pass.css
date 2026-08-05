@@ -1,0 +1,215 @@
+
+/* =========================================================
+   EXP 29.0 — SWEETVILLE FAST PASS
+   ========================================================= */
+
+.exp290-fastpass-trigger{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:2147482000;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  grid-template-rows:auto auto;
+  column-gap:.65rem;
+  align-items:center;
+  min-width:150px;
+  padding:.75rem .9rem;
+  border:1px solid rgba(255,179,219,.72);
+  border-radius:18px;
+  background:
+    radial-gradient(circle at 20% 15%,rgba(255,255,255,.18),transparent 32%),
+    linear-gradient(135deg,#ff2f9f,#8f25ff);
+  color:#fff;
+  box-shadow:0 18px 45px rgba(0,0,0,.45),0 0 30px rgba(255,63,170,.28);
+  cursor:pointer;
+  transform:translateY(120%);
+  opacity:0;
+  transition:.3s ease;
+}
+.exp290-fastpass-trigger.is-visible{
+  transform:none;
+  opacity:1;
+}
+.exp290-fastpass-trigger>span{
+  grid-row:1/3;
+  font-size:2rem;
+}
+.exp290-fastpass-trigger strong,
+.exp290-fastpass-trigger small{
+  display:block;
+  text-align:left;
+}
+.exp290-fastpass-trigger strong{
+  font-size:.82rem;
+  letter-spacing:.12em;
+}
+.exp290-fastpass-trigger small{
+  opacity:.78;
+  font-size:.68rem;
+}
+
+.exp290-fastpass-panel{
+  position:fixed;
+  inset:0;
+  z-index:2147483000;
+  display:none;
+  place-items:center;
+  padding:1rem;
+  overflow-y:auto;
+  background:rgba(6,0,8,.86);
+  backdrop-filter:blur(10px);
+}
+.exp290-fastpass-panel.open{
+  display:grid;
+}
+.exp290-fastpass-card{
+  position:relative;
+  width:min(96vw,860px);
+  max-height:min(92dvh,900px);
+  overflow-y:auto;
+  padding:clamp(1rem,3vw,2rem);
+  border:1px solid rgba(255,159,210,.65);
+  border-radius:30px;
+  background:
+    radial-gradient(circle at 10% 10%,rgba(255,77,176,.2),transparent 26%),
+    radial-gradient(circle at 92% 18%,rgba(125,87,255,.18),transparent 24%),
+    linear-gradient(145deg,#240020,#0b000d);
+  color:white;
+  box-shadow:0 35px 110px rgba(0,0,0,.68);
+}
+.exp290-fastpass-close{
+  position:absolute;
+  right:14px;
+  top:14px;
+  width:44px;
+  height:44px;
+  border:1px solid rgba(255,171,216,.55);
+  border-radius:50%;
+  background:#21001d;
+  color:#fff;
+  font-size:1.6rem;
+  cursor:pointer;
+}
+.exp290-fastpass-head{
+  display:flex;
+  gap:1rem;
+  align-items:center;
+  padding-right:3rem;
+  margin-bottom:1rem;
+}
+.exp290-fastpass-head>span{
+  font-size:3rem;
+}
+.exp290-fastpass-head small{
+  color:#ffafd4;
+  font-weight:800;
+  letter-spacing:.14em;
+}
+.exp290-fastpass-head h2{
+  margin:.2rem 0 0;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(2rem,4vw,3.5rem);
+}
+.exp290-fastpass-links{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:.75rem;
+}
+.exp290-fastpass-links a{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  grid-template-rows:auto auto;
+  column-gap:.75rem;
+  align-items:center;
+  padding:1rem;
+  border:1px solid rgba(255,137,201,.35);
+  border-radius:18px;
+  background:rgba(255,255,255,.05);
+  color:#fff;
+  text-decoration:none;
+  transition:.2s;
+}
+.exp290-fastpass-links a:hover,
+.exp290-fastpass-links a:focus-visible{
+  transform:translateY(-3px);
+  border-color:#ff92cb;
+  box-shadow:0 14px 35px rgba(0,0,0,.3),0 0 24px rgba(255,75,174,.18);
+}
+.exp290-fastpass-links a>span{
+  grid-row:1/3;
+  font-size:1.8rem;
+}
+.exp290-fastpass-links strong,
+.exp290-fastpass-links small{
+  display:block;
+}
+.exp290-fastpass-links small{
+  color:#d9bccc;
+  margin-top:.2rem;
+}
+.exp290-fastpass-links .exp290-realworld{
+  grid-column:1/-1;
+  background:linear-gradient(135deg,rgba(255,46,156,.28),rgba(143,37,255,.24));
+  border-color:#ff9bd0;
+}
+.exp290-backtop{
+  width:100%;
+  margin-top:1rem;
+  padding:1rem;
+  border:1px solid #ffd56c;
+  border-radius:18px;
+  background:linear-gradient(135deg,#5f174f,#1b071c);
+  color:#fff;
+  cursor:pointer;
+}
+.exp290-backtop span{
+  margin-right:.5rem;
+}
+.exp290-travel-fx{
+  position:fixed;
+  inset:0;
+  z-index:2147482500;
+  pointer-events:none;
+  overflow:hidden;
+  display:none;
+}
+.exp290-travel-fx.active{
+  display:block;
+}
+.exp290-travel-fx i{
+  position:absolute;
+  left:50%;
+  top:55%;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:#ff8bc9;
+  box-shadow:0 0 18px #fff;
+  animation:exp290Spark .8s ease-out forwards;
+}
+.exp290-travel-fx i:nth-child(2){animation-delay:.05s;transform:rotate(60deg)}
+.exp290-travel-fx i:nth-child(3){animation-delay:.1s;transform:rotate(120deg)}
+.exp290-travel-fx i:nth-child(4){animation-delay:.15s;transform:rotate(180deg)}
+.exp290-travel-fx i:nth-child(5){animation-delay:.2s;transform:rotate(240deg)}
+.exp290-travel-fx i:nth-child(6){animation-delay:.25s;transform:rotate(300deg)}
+
+@keyframes exp290Spark{
+  from{opacity:1;translate:0 0;scale:1}
+  to{opacity:0;translate:0 -160px;scale:2.5}
+}
+
+@media(max-width:680px){
+  .exp290-fastpass-trigger{
+    right:12px;
+    bottom:12px;
+    min-width:132px;
+    padding:.65rem .75rem;
+  }
+  .exp290-fastpass-links{
+    grid-template-columns:1fr;
+  }
+  .exp290-fastpass-links .exp290-realworld{
+    grid-column:auto;
+  }
+}

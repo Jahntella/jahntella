@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;800&family=Sacramento&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="exp28-district-shell.css?v=28.0">
+<link rel="stylesheet" href="exp29-fast-pass.css?v=29.0">
 </head>
 <body>
 <header class="exp280-topbar">
@@ -18,5 +19,50 @@
   </div>
 </header>
 <iframe title="Sweetville Sphere" src="index.html?district=sphere&v=28.0" loading="eager"></iframe>
+
+<button class="exp290-fastpass-trigger" id="exp290FastPassTrigger" type="button" aria-expanded="false" aria-controls="exp290FastPassPanel">
+  <span>🎟️</span>
+  <strong>FAST PASS</strong>
+  <small>Travel</small>
+</button>
+
+<div class="exp290-fastpass-panel" id="exp290FastPassPanel" aria-hidden="true">
+  <div class="exp290-fastpass-card" role="dialog" aria-modal="true" aria-labelledby="exp290FastPassTitle">
+    <button class="exp290-fastpass-close" id="exp290FastPassClose" type="button" aria-label="Close Fast Pass">×</button>
+    <div class="exp290-fastpass-head">
+      <span>🎟️</span>
+      <div>
+        <small>SWEETVILLE TRAVEL PASS</small>
+        <h2 id="exp290FastPassTitle">Where to next, Sweetie?</h2>
+      </div>
+    </div>
+
+    <nav class="exp290-fastpass-links" aria-label="Sweetville Fast Pass destinations">
+      <a href="index.html"><span>🗺️</span><strong>Sweetville Map</strong><small>Return to the world hub</small></a>
+      <a href="sweet-express.html"><span>🚂</span><strong>Sweet Express</strong><small>Ride back to the station</small></a>
+      <a href="bubblegum-bay.html"><span>💦</span><strong>Bubblegum Bay</strong><small>Waterpark adventure</small></a>
+      <a href="garden-market.html"><span>🌸</span><strong>Garden Market</strong><small>Flowers and friendship</small></a>
+      <a href="sweeties-stage.html"><span>🎤</span><strong>Sweeties Stage</strong><small>Join the chorus</small></a>
+      <a href="living-world.html"><span>✨</span><strong>Living World</strong><small>Classic districts and secrets</small></a>
+      <a href="sphere.html"><span>🌐</span><strong>Sweetville Sphere</strong><small>Lights and music</small></a>
+      <a href="sweetie-room.html"><span>🛏️</span><strong>My Sweetie Room</strong><small>Memories and progress</small></a>
+      <a href="create.html"><span>🎨</span><strong>Create</strong><small>Color, design, and play</small></a>
+      <a href="passport.html"><span>🛂</span><strong>Sweetie Passport</strong><small>Stamps and explorer rank</small></a>
+      <a href="story.html"><span>📖</span><strong>Story Book</strong><small>Read the Sweetville story</small></a>
+      <a href="../index.html" class="exp290-realworld"><span>🎫</span><strong>Ticket to the Real World</strong><small>Return to Jahntella.com</small></a>
+    </nav>
+
+    <button class="exp290-backtop" id="exp290BackTop" type="button">
+      <span>🚂</span>
+      <strong>Fast Pass Back to the Top</strong>
+    </button>
+  </div>
+</div>
+
+<div class="exp290-travel-fx" id="exp290TravelFx" aria-hidden="true">
+  <i></i><i></i><i></i><i></i><i></i><i></i>
+</div>
+
+<script src="exp29-fast-pass.js?v=29.0" defer></script>
 </body>
 </html>
