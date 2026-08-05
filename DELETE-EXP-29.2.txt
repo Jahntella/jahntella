@@ -1,0 +1,4 @@
+DELETE THIS OBSOLETE FILE AFTER UPLOAD:
+sweetville/exp29-1-partnerships.css
+
+The public district pages no longer use it.

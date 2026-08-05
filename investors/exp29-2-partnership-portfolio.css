@@ -1,0 +1,78 @@
+
+/* =========================================================
+   EXP 29.2 — INVESTOR DISTRICT PARTNERSHIP PORTFOLIO
+   ========================================================= */
+.district-partnerships{overflow:hidden}
+.district-partnership-map{
+  display:grid;
+  grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);
+  gap:1rem;
+  align-items:center;
+  margin:2rem 0;
+}
+.district-partnership-map img{
+  width:100%;
+  height:auto;
+  border:1px solid rgba(255,135,201,.42);
+  border-radius:24px;
+  box-shadow:0 25px 70px rgba(0,0,0,.35);
+}
+.district-partnership-map>div{
+  padding:1.25rem;
+  border:1px solid rgba(255,146,206,.38);
+  border-radius:22px;
+  background:rgba(255,255,255,.05);
+}
+.district-partnership-map small{color:#ffafd4;letter-spacing:.12em;font-weight:800}
+.district-partnership-map h3{font-size:clamp(1.8rem,4vw,3rem);margin:.3rem 0}
+.district-partner-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:.85rem;
+}
+.district-partner-card{
+  padding:1rem;
+  border:1px solid rgba(255,137,202,.34);
+  border-radius:20px;
+  background:rgba(255,255,255,.045);
+}
+.district-partner-heading{
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+}
+.district-partner-heading>span{font-size:2rem}
+.district-partner-heading small{display:block;color:#ffd56c;font-weight:800;letter-spacing:.12em}
+.district-partner-heading h3{margin:.1rem 0;font-size:1.2rem}
+.district-status{
+  margin-left:auto;
+  width:38px;
+  height:38px;
+  border:1px solid rgba(255,202,226,.68);
+  border-radius:50%;
+  background:#2a071f;
+  color:#ffd56c;
+}
+.district-partner-card p{color:#e1cad7;line-height:1.6}
+.district-partner-card>a{color:#ff9fd0;font-weight:800;text-decoration:none}
+.district-partner-cta{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:1rem;
+  margin-top:1rem;
+  padding:1.25rem;
+  border:1px solid #ffd56c66;
+  border-radius:22px;
+  background:linear-gradient(135deg,rgba(255,49,159,.14),rgba(138,39,255,.12));
+}
+.district-partner-cta small{color:#ffd56c;font-weight:800;letter-spacing:.12em}
+.district-partner-cta h3{margin:.25rem 0;font-size:clamp(1.5rem,3vw,2.5rem)}
+@media(max-width:1000px){
+  .district-partner-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  .district-partnership-map{grid-template-columns:1fr}
+  .district-partner-grid{grid-template-columns:1fr}
+  .district-partner-cta{align-items:flex-start;flex-direction:column}
+}
