@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="exp19-2-sphere.css?v=19.4">
 <link rel="stylesheet" href="exp25-4-bubblegum-bay.css?v=25.4">
 <link rel="stylesheet" href="exp25-7-sweetville-expansion.css?v=25.7">
+<link rel="stylesheet" href="exp26-sweetville-map.css?v=26.0">
 </head>
 <body>
 
@@ -112,6 +113,71 @@
   </header>
 
   <main>
+
+<section class="exp260-hub" id="exp260Hub">
+  <div class="exp260-hub-shell">
+    <div class="exp260-hub-head">
+      <div>
+        <p class="sv-eyebrow">EXP 26 — SWEETVILLE WORLD MAP</p>
+        <h1>Choose your next <em>Sweetville adventure.</em></h1>
+        <p>Everything you already love is still here—now you can reach it instantly from one living map.</p>
+      </div>
+      <div class="exp260-view-controls">
+        <button type="button" id="exp260MapView" class="active">🗺 Map View</button>
+        <button type="button" id="exp260ExploreView">✨ Explore View</button>
+      </div>
+    </div>
+
+    <div class="exp260-map-wrap" id="exp260MapWrap">
+      <div class="exp260-map-sky"></div>
+      <div class="exp260-map-water"></div>
+      <div class="exp260-map-path path-a"></div>
+      <div class="exp260-map-path path-b"></div>
+      <div class="exp260-map-train" aria-hidden="true">🚂</div>
+
+      <button class="exp260-pin pin-bay" data-target="bubblegumBay" data-name="Bubblegum Bay" data-icon="💦">
+        <span>💦</span><strong>Bubblegum Bay</strong><small>Waterpark • Music • Hidden Pack</small>
+      </button>
+      <button class="exp260-pin pin-garden" data-target="gardenMarket" data-name="Garden Market" data-icon="🌸">
+        <span>🌸</span><strong>Garden Market</strong><small>Flowers • Friends • Slow mornings</small>
+      </button>
+      <button class="exp260-pin pin-stage" data-target="sweetiesStage" data-name="Sweeties Stage" data-icon="🎤">
+        <span>🎤</span><strong>Sweeties Stage</strong><small>Live music • Community chorus</small>
+      </button>
+      <button class="exp260-pin pin-map" data-target="livingMap" data-name="Living World Map" data-icon="✨">
+        <span>✨</span><strong>Living World</strong><small>Classic districts • Secrets • Stamps</small>
+      </button>
+      <button class="exp260-pin pin-sphere" data-target="sweetvilleSphere" data-name="Sweetville Sphere" data-icon="🌐">
+        <span>🌐</span><strong>Sweetville Sphere</strong><small>Encore lights • Music experience</small>
+      </button>
+      <button class="exp260-pin pin-room" data-target="bedroom" data-name="Sweetie Room" data-icon="🛏️">
+        <span>🛏️</span><strong>My Sweetie Room</strong><small>Memories • Keepsakes • Progress</small>
+      </button>
+      <a class="exp260-pin pin-story" href="story.html" data-name="Story Book" data-icon="📖">
+        <span>📖</span><strong>Story Book</strong><small>Read the Sweetville story</small>
+      </a>
+      <button class="exp260-pin pin-create" data-target="createHub" data-name="Create With Jahntella" data-icon="🎨">
+        <span>🎨</span><strong>Create</strong><small>Color • Design • Photo booth</small>
+      </button>
+      <button class="exp260-pin pin-passport" data-target="passport" data-name="Sweetie Passport" data-icon="🛂">
+        <span>🛂</span><strong>Passport</strong><small>Stamps • History • Rank</small>
+      </button>
+      <a class="exp260-pin pin-express" href="../index.html#sweet-express" data-name="Sweet Express" data-icon="🚂">
+        <span>🚂</span><strong>Sweet Express</strong><small>Power the train with music</small>
+      </a>
+    </div>
+
+    <div class="exp260-preview" id="exp260Preview">
+      <span id="exp260PreviewIcon">💖</span>
+      <div>
+        <small>SELECT A DESTINATION</small>
+        <h3 id="exp260PreviewTitle">Welcome to Sweetville</h3>
+        <p id="exp260PreviewText">Tap a glowing location to travel there instantly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="cinematic-home cinematic-home-clean" id="cinematicHome" aria-label="Sweetville cinematic home">
   <div class="cinematic-bg" aria-hidden="true"></div>
   <div class="cinematic-vignette" aria-hidden="true"></div>
@@ -1665,5 +1731,6 @@
 <script src="exp19-2-sphere.js?v=19.4" defer></script>
 <script src="exp25-4-bubblegum-bay.js?v=25.4" defer></script>
 <script src="exp25-7-sweetville-expansion.js?v=25.7" defer></script>
+<script src="exp26-sweetville-map.js?v=26.0" defer></script>
 </body>
 </html>
