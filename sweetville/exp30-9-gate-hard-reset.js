@@ -1,90 +1,150 @@
 (() => {
   'use strict';
 
+  /*
+   * EXP 31.2 CLEAN ENTRANCE
+   *
+   * This replaces the gate-reset file already loaded by the CURRENT live
+   * Sweetville index. No index.html replacement is necessary.
+   */
+
+  const CREATIVE_HASHES = new Set([
+    '#photoBooth',
+    '#createHub',
+    '#coloringStudio',
+    '#creativeStudio',
+    '#sweetvilleGallery'
+  ]);
+
+  const TOOL_TARGETS = {
+    coloring: 'coloringStudio',
+    creative: 'creativeStudio',
+    gallery: 'sweetvilleGallery',
+    photo: 'photoBooth'
+  };
+
   const params = new URLSearchParams(location.search);
-  const staleCreativeDistricts = new Set(['create','photo','photo-booth','coloring','creative','gallery']);
-  const district = (params.get('district') || '').toLowerCase();
-  const staleCreativeRoute =
-    staleCreativeDistricts.has(district) ||
-    params.has('tool') ||
-    ['#photoBooth','#createHub','#coloringStudio','#creativeStudio','#sweetvilleGallery'].includes(location.hash);
+  const requestedTool = params.get('tool');
+  const validTool = requestedTool && TOOL_TARGETS[requestedTool];
 
-  const gatePresent = Boolean(document.getElementById('gateScreen'));
+  const unlock = () => {
+    document.documentElement.style.removeProperty('overflow');
+    document.body?.style.removeProperty('overflow');
+    document.documentElement.classList.remove(
+      'sv-scroll-locked',
+      'exp309-entering'
+    );
+    document.body?.classList.remove('sv-scroll-locked');
+  };
 
-  // On the main Sweetville gate page, stale creative routes must be cleared.
-  if (gatePresent && staleCreativeRoute) {
-    history.replaceState(null, '', location.pathname);
-  }
+  const restoreAllHomepageSections = () => {
+    document.body?.classList.remove(
+      'exp260-explore-mode',
+      'exp280-district-only'
+    );
 
-  const clearOldDestination = () => {
-    if (gatePresent && (
-      staleCreativeDistricts.has((new URLSearchParams(location.search).get('district') || '').toLowerCase()) ||
-      ['#photoBooth','#createHub','#coloringStudio','#creativeStudio','#sweetvilleGallery'].includes(location.hash)
-    )) {
+    document.querySelectorAll('main > section').forEach(section => {
+      section.style.removeProperty('display');
+      section.hidden = false;
+    });
+
+    const world = document.getElementById('world');
+    if (world) world.hidden = true;
+  };
+
+  const removeEntranceLayers = () => {
+    document.getElementById('gateScreen')?.remove();
+    document.getElementById('svCinematicIntro')?.remove();
+    document.querySelector('#svNav a[href="#world"]')?.remove();
+  };
+
+  const goHome = () => {
+    unlock();
+    restoreAllHomepageSections();
+    removeEntranceLayers();
+
+    if (CREATIVE_HASHES.has(location.hash)) {
       history.replaceState(null, '', location.pathname);
+    }
+
+    /*
+     * Clear stale routing parameters responsible for the Photo Booth landing.
+     * A valid intentional Sweet Studio tool is handled separately below.
+     */
+    if (!validTool && (params.has('district') || params.has('tool'))) {
+      history.replaceState(null, '', location.pathname);
+    }
+
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
+    const home =
+      document.getElementById('cinematicHome') ||
+      document.getElementById('exp260Hub') ||
+      document.querySelector('main');
+
+    if (home) {
+      home.scrollIntoView({ block: 'start', behavior: 'auto' });
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
     }
   };
 
-  const hardTop = () => {
-    const home = document.getElementById('cinematicHome') || document.getElementById('exp260Hub');
-    const top = home ? home.offsetTop : 0;
-    document.documentElement.scrollTop = top;
-    if (document.body) document.body.scrollTop = top;
-    window.scrollTo(0, top);
+  const openRequestedTool = () => {
+    if (!validTool) return false;
+
+    unlock();
+    removeEntranceLayers();
+    restoreAllHomepageSections();
+    document.body?.classList.add('exp312-tool-mode', 'exp260-explore-mode');
+
+    const target = document.getElementById(TOOL_TARGETS[requestedTool]);
+    if (!target) return false;
+
+    window.setTimeout(() => {
+      target.scrollIntoView({ block: 'start', behavior: 'auto' });
+    }, 100);
+
+    return true;
   };
 
-  const install = () => {
-    const button = document.getElementById('openGates');
-    const gate = document.getElementById('gateScreen');
-    if (!button || !gate) return;
+  const initialize = () => {
+    /*
+     * Remove the gate and cinematic intro before any legacy listeners can
+     * restore focus or scroll position to Photo Booth.
+     */
+    removeEntranceLayers();
+    unlock();
 
-    const cleanButton = button.cloneNode(true);
-    button.replaceWith(cleanButton);
+    if (!openRequestedTool()) {
+      goHome();
 
-    cleanButton.addEventListener('click', event => {
-      event.preventDefault();
-      event.stopPropagation();
-      event.stopImmediatePropagation();
-
-      clearOldDestination();
-      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-
-      document.body.classList.remove('exp260-explore-mode','exp280-district-only');
-      document.querySelectorAll('main > section').forEach(section => {
-        section.style.removeProperty('display');
-      });
-
-      document.activeElement?.blur?.();
-      hardTop();
-
-      gate.classList.add('opening');
-      sessionStorage.setItem('sweetvilleGatesOpened','yes');
-
-      let ticks = 0;
-      const lock = setInterval(() => {
-        hardTop();
-        ticks += 1;
-        if (ticks >= 100) clearInterval(lock);
-      }, 20);
-
-      setTimeout(() => {
-        gate.classList.add('opened');
-        hardTop();
-      }, 1700);
-
-      setTimeout(() => {
-        clearInterval(lock);
-        hardTop();
-        const home = document.getElementById('cinematicHome') || document.getElementById('exp260Hub');
-        home?.scrollIntoView({block:'start',behavior:'auto'});
-        history.replaceState(null,'',location.pathname);
-      }, 2400);
-    }, true);
+      // Repeat after late-loading legacy scripts finish.
+      window.setTimeout(goHome, 100);
+      window.setTimeout(goHome, 500);
+      window.setTimeout(goHome, 1400);
+    }
   };
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', install, {once:true});
+    document.addEventListener('DOMContentLoaded', initialize, { once: true });
   } else {
-    install();
+    initialize();
   }
+
+  window.addEventListener('pageshow', () => {
+    if (validTool) {
+      openRequestedTool();
+    } else {
+      goHome();
+    }
+  });
+
+  window.addEventListener('load', () => {
+    if (!validTool) {
+      goHome();
+      window.setTimeout(goHome, 250);
+    }
+  });
 })();

@@ -1,10 +1,47 @@
-/* EXP 30.9 — gate entrance hard reset */
-html.exp309-entering,
-html.exp309-entering body,
-html.exp309-entering main,
-html.exp309-entering main > section {
-  overflow-anchor: none !important;
+
+/* =========================================================
+   EXP 31.2 — CLEAN SWEETVILLE ENTRANCE
+   Loaded through the existing exp30-9 stylesheet reference.
+   ========================================================= */
+
+/* Permanently remove the broken entrance layers. */
+#gateScreen,
+.gate-screen,
+#svCinematicIntro,
+.sv-cinematic-intro {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Remove the redundant legacy World section and menu item. */
+#world,
+#svNav a[href="#world"] {
+  display: none !important;
+}
+
+/* Make the current live homepage available immediately. */
+html,
+body {
+  overflow: auto !important;
   scroll-behavior: auto !important;
 }
-#world { display: none !important; }
-#svNav a[href="#world"] { display: none !important; }
+
+body,
+main,
+main > section {
+  overflow-anchor: none !important;
+}
+
+body.exp260-explore-mode:not(.exp312-tool-mode),
+body.exp280-district-only:not(.exp312-tool-mode) {
+  overflow: auto !important;
+}
+
+/* Keep the current Welcome section as the first visible destination. */
+#cinematicHome {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
