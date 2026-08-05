@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="exp27-sweet-passport.css?v=28.0">
 <link rel="stylesheet" href="exp28-district-fixes.css?v=28.0">
 <link rel="stylesheet" href="exp29-fast-pass.css?v=29.1">
-<link rel="stylesheet" href="exp29-1-interactive-map.css?v=29.2">
+<link rel="stylesheet" href="exp29-1-interactive-map.css?v=29.3">
 </head>
 <body>
 
@@ -104,9 +104,9 @@
       <a href="#cityCruise">Cruise</a>
       <a href="#sweetvilleSphere">Sphere</a>
       <a href="#summerFestival">Summer</a>
-      <a href="#bubblegumBay">Bubblegum Bay</a>
-      <a href="#gardenMarket">Garden Market</a>
-      <a href="#sweetiesStage">Sweeties Stage</a>
+      <a href="bubblegum-bay.html">Bubblegum Bay</a>
+      <a href="garden-market.html">Garden Market</a>
+      <a href="sweeties-stage.html">Sweeties Stage</a>
       <a href="#livingMap">Map</a>
       <a href="#bedroom">My Room</a>
       <a href="story.html">Story</a>
@@ -117,6 +117,24 @@
 
   <main>
 
+
+<section class="cinematic-home cinematic-home-clean" id="cinematicHome" aria-label="Sweetville cinematic home">
+  <div class="cinematic-bg" aria-hidden="true"></div>
+  <div class="cinematic-vignette" aria-hidden="true"></div>
+  <div class="hero-action-bar" aria-label="Sweetville actions">
+    <a class="journey-button" href="#livingMap">EXPLORE THE WORLD MAP <span>›</span></a>
+    <a class="intro-button" href="#bedroom">VISIT MY SWEETIE ROOM</a>
+    <button class="hero-sound-button" id="heroSoundButton" type="button">🎹 PLAY MINI PIANO</button>
+  </div>
+  <div class="hero-progress-strip" aria-label="Sweetie progress">
+    <span>COLLECTIBLES <strong id="cinematicCollectibles">0 / 5</strong></span>
+    <span>ACHIEVEMENTS <strong id="cinematicQuests">0 / 10</strong></span>
+    <span>HEARTS <strong id="cinematicHearts">0 / 5</strong></span>
+    <span>VISITS <strong id="cinematicVisits">0</strong></span>
+  </div>
+</section>
+
+    
 
 <section class="exp291-map-hub" id="exp260Hub">
   <div class="exp291-map-shell">
@@ -172,23 +190,7 @@
 </section>
 
 
-<section class="cinematic-home cinematic-home-clean" id="cinematicHome" aria-label="Sweetville cinematic home">
-  <div class="cinematic-bg" aria-hidden="true"></div>
-  <div class="cinematic-vignette" aria-hidden="true"></div>
-  <div class="hero-action-bar" aria-label="Sweetville actions">
-    <a class="journey-button" href="#livingMap">EXPLORE THE WORLD MAP <span>›</span></a>
-    <a class="intro-button" href="#bedroom">VISIT MY SWEETIE ROOM</a>
-    <button class="hero-sound-button" id="heroSoundButton" type="button">🎹 PLAY MINI PIANO</button>
-  </div>
-  <div class="hero-progress-strip" aria-label="Sweetie progress">
-    <span>COLLECTIBLES <strong id="cinematicCollectibles">0 / 5</strong></span>
-    <span>ACHIEVEMENTS <strong id="cinematicQuests">0 / 10</strong></span>
-    <span>HEARTS <strong id="cinematicHearts">0 / 5</strong></span>
-    <span>VISITS <strong id="cinematicVisits">0</strong></span>
-  </div>
-</section>
-
-    <section class="sv-hero" id="world">
+<section class="sv-hero" id="world">
       <div class="sv-hero-copy">
         <p class="sv-eyebrow">SWEETVILLE EXP 18.3</p>
         <h1>The world comes <em>alive.</em></h1>
@@ -1220,7 +1222,7 @@
           <span>💖</span><strong>Neon Sweetheart</strong><small>Heart glow • synth nights</small>
         </button>
 
-        <a class="world-location location-bay" href="#bubblegumBay">
+        <a class="world-location location-bay" href="bubblegum-bay.html">
           <span>💦</span><strong>Bubblegum Bay</strong><small>Sweet Express • waterpark</small>
         </a>
 
@@ -1765,6 +1767,6 @@
 </div>
 
 <script src="exp29-fast-pass.js?v=29.1" defer></script>
-<script src="exp29-1-interactive-map.js?v=29.2" defer></script>
+<script src="exp29-1-interactive-map.js?v=29.3" defer></script>
 </body>
 </html>

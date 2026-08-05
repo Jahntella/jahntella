@@ -1,0 +1,35 @@
+
+*{box-sizing:border-box}
+html,body{margin:0;background:#0d000f;color:#fff;font-family:"DM Sans",Arial,sans-serif}
+body{min-height:100vh}
+.district-topbar{
+  position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  padding:.75rem clamp(.8rem,3vw,2rem);background:rgba(13,0,15,.94);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,143,204,.32)
+}
+.district-brand{font-family:"Sacramento",cursive;font-size:2rem;color:#ff78bd;text-decoration:none}
+.district-actions{display:flex;gap:.55rem;flex-wrap:wrap;justify-content:flex-end}
+.district-actions a{padding:.6rem .78rem;border:1px solid rgba(255,151,207,.38);border-radius:999px;color:white;text-decoration:none;font-weight:800;font-size:.78rem}
+.district-actions .real{background:linear-gradient(135deg,#ff2f9f,#8d26ff)}
+.district-page{max-width:1200px;margin:auto;padding:clamp(1rem,3vw,2rem)}
+.district-hero{
+  overflow:hidden;border:1px solid rgba(255,139,202,.4);border-radius:28px;background:#130014;
+  box-shadow:0 30px 85px rgba(0,0,0,.45)
+}
+.district-hero img{display:block;width:100%;height:auto;object-fit:contain;object-position:center top}
+.district-copy{padding:clamp(1.2rem,4vw,3rem);background:linear-gradient(145deg,#21001f,#0c000f)}
+.district-copy small{color:#ffafd4;font-weight:800;letter-spacing:.15em}
+.district-copy h1{margin:.35rem 0;font-family:"Playfair Display",serif;font-size:clamp(2.8rem,7vw,6rem);line-height:.95}
+.district-copy em{font-family:"Sacramento",cursive;color:#ff77bc;font-weight:400}
+.district-copy p{max-width:760px;color:#e2c8d7;font-size:1.08rem;line-height:1.7}
+.district-features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin-top:1rem}
+.district-features article{padding:1rem;border:1px solid rgba(255,139,201,.3);border-radius:18px;background:#ffffff07}
+.district-features span{font-size:1.7rem}.district-features strong{display:block;margin:.35rem 0}.district-features small{color:#d6b8ca;letter-spacing:0}
+.district-cta{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.2rem}
+.district-cta a{padding:.8rem 1rem;border-radius:999px;text-decoration:none;font-weight:800;color:white;border:1px solid rgba(255,152,207,.4)}
+.district-cta .primary{background:linear-gradient(135deg,#ff2f9f,#8d26ff)}
+@media(max-width:760px){
+  .district-topbar{align-items:flex-start}
+  .district-actions a{font-size:.68rem}
+  .district-features{grid-template-columns:1fr}
+}
