@@ -1,174 +1,90 @@
 (() => {
   'use strict';
 
-  /*
-   * EXP 31.0 SAFE GATE FIX
-   * This file intentionally keeps the same filename already loaded by the
-   * current live Sweetville page. Replacing this one file cannot overwrite
-   * newer HTML, map, district, Studio, contact, poster, or artwork changes.
-   */
-
-  const HOME_HASH = '#cinematicHome';
-  const CREATIVE_HASHES = new Set([
-    '#photoBooth',
-    '#coloringStudio',
-    '#creativeStudio',
-    '#sweetvilleGallery',
-    '#createHub'
-  ]);
-
-  let entranceActive = false;
-  let scrollLockTimer = 0;
-
   const params = new URLSearchParams(location.search);
-  const intentionalDestination =
+  const staleCreativeDistricts = new Set(['create','photo','photo-booth','coloring','creative','gallery']);
+  const district = (params.get('district') || '').toLowerCase();
+  const staleCreativeRoute =
+    staleCreativeDistricts.has(district) ||
     params.has('tool') ||
-    params.has('district') ||
-    params.has('section') ||
-    params.has('destination');
+    ['#photoBooth','#createHub','#coloringStudio','#creativeStudio','#sweetvilleGallery'].includes(location.hash);
 
-  const unlockDocument = () => {
-    document.documentElement.style.removeProperty('overflow');
-    document.body?.style.removeProperty('overflow');
-    document.documentElement.classList.remove('sv-scroll-locked');
-    document.body?.classList.remove('sv-scroll-locked');
+  const gatePresent = Boolean(document.getElementById('gateScreen'));
+
+  // On the main Sweetville gate page, stale creative routes must be cleared.
+  if (gatePresent && staleCreativeRoute) {
+    history.replaceState(null, '', location.pathname);
+  }
+
+  const clearOldDestination = () => {
+    if (gatePresent && (
+      staleCreativeDistricts.has((new URLSearchParams(location.search).get('district') || '').toLowerCase()) ||
+      ['#photoBooth','#createHub','#coloringStudio','#creativeStudio','#sweetvilleGallery'].includes(location.hash)
+    )) {
+      history.replaceState(null, '', location.pathname);
+    }
   };
 
-  const getHome = () =>
-    document.getElementById('cinematicHome') ||
-    document.getElementById('exp260Hub') ||
-    document.querySelector('main');
-
-  const forceHome = () => {
-    if (!entranceActive) return;
-
-    const home = getHome();
-    const top = home ? Math.max(0, home.getBoundingClientRect().top + window.scrollY) : 0;
-
+  const hardTop = () => {
+    const home = document.getElementById('cinematicHome') || document.getElementById('exp260Hub');
+    const top = home ? home.offsetTop : 0;
     document.documentElement.scrollTop = top;
     if (document.body) document.body.scrollTop = top;
-    window.scrollTo({ top, left: 0, behavior: 'auto' });
-  };
-
-  const clearCreativeDestination = () => {
-    if (CREATIVE_HASHES.has(location.hash)) {
-      history.replaceState(null, '', location.pathname + location.search);
-    }
-  };
-
-  const finishAtHome = () => {
-    clearInterval(scrollLockTimer);
-    entranceActive = false;
-    unlockDocument();
-
-    const home = getHome();
-    if (home) {
-      home.scrollIntoView({ block: 'start', behavior: 'auto' });
-    } else {
-      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-    }
-
-    // Keep a harmless home hash so mobile browsers restore the correct area.
-    if (location.hash !== HOME_HASH) {
-      history.replaceState(null, '', location.pathname + location.search + HOME_HASH);
-    }
-  };
-
-  const openAtHome = event => {
-    /*
-     * Critical difference from previous patches:
-     * stop the older gate handler before it can restore Photo Booth state.
-     */
-    event?.preventDefault();
-    event?.stopPropagation();
-    event?.stopImmediatePropagation();
-
-    entranceActive = true;
-    clearCreativeDestination();
-
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual';
-    }
-
-    const active = document.activeElement;
-    active?.blur?.();
-
-    document.querySelectorAll(
-      '#photoBooth input, #photoBooth button, #photoBooth select, #photoBooth textarea, ' +
-      '#createHub a, #coloringStudio input, #creativeStudio input'
-    ).forEach(element => element.blur?.());
-
-    document.body.classList.remove('exp260-explore-mode');
-
-    const gate = document.getElementById('gateScreen');
-    gate?.classList.add('opening');
-
-    sessionStorage.setItem('sweetvilleGatesOpened', 'yes');
-
-    forceHome();
-    clearInterval(scrollLockTimer);
-    scrollLockTimer = window.setInterval(forceHome, 20);
-
-    window.setTimeout(() => {
-      gate?.classList.add('opened');
-      forceHome();
-    }, 1700);
-
-    window.setTimeout(finishAtHome, 2350);
+    window.scrollTo(0, top);
   };
 
   const install = () => {
-    const openButton = document.getElementById('openGates');
+    const button = document.getElementById('openGates');
+    const gate = document.getElementById('gateScreen');
+    if (!button || !gate) return;
 
-    if (openButton) {
-      /*
-       * Capture listeners run before the legacy onclick handler.
-       * Pointerdown handles touch devices; click handles keyboard/desktop.
-       */
-      openButton.addEventListener('pointerdown', openAtHome, true);
-      openButton.addEventListener('click', openAtHome, true);
-    }
+    const cleanButton = button.cloneNode(true);
+    button.replaceWith(cleanButton);
 
-    // Keep the redundant World section and button removed.
-    document.querySelector('#svNav a[href="#world"]')?.remove();
-    const worldSection = document.getElementById('world');
-    if (worldSection) worldSection.hidden = true;
+    cleanButton.addEventListener('click', event => {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
 
-    // A normal visit must not inherit an old Photo Booth hash.
-    if (!intentionalDestination && CREATIVE_HASHES.has(location.hash)) {
-      history.replaceState(null, '', location.pathname + location.search);
-    }
+      clearOldDestination();
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 
-    /*
-     * When the gate was already opened in this tab, restore the homepage
-     * instead of allowing the browser to restore Photo Booth scroll position.
-     */
-    if (
-      !intentionalDestination &&
-      sessionStorage.getItem('sweetvilleGatesOpened') === 'yes'
-    ) {
-      entranceActive = true;
-      forceHome();
-      window.setTimeout(finishAtHome, 120);
-    }
+      document.body.classList.remove('exp260-explore-mode','exp280-district-only');
+      document.querySelectorAll('main > section').forEach(section => {
+        section.style.removeProperty('display');
+      });
+
+      document.activeElement?.blur?.();
+      hardTop();
+
+      gate.classList.add('opening');
+      sessionStorage.setItem('sweetvilleGatesOpened','yes');
+
+      let ticks = 0;
+      const lock = setInterval(() => {
+        hardTop();
+        ticks += 1;
+        if (ticks >= 100) clearInterval(lock);
+      }, 20);
+
+      setTimeout(() => {
+        gate.classList.add('opened');
+        hardTop();
+      }, 1700);
+
+      setTimeout(() => {
+        clearInterval(lock);
+        hardTop();
+        const home = document.getElementById('cinematicHome') || document.getElementById('exp260Hub');
+        home?.scrollIntoView({block:'start',behavior:'auto'});
+        history.replaceState(null,'',location.pathname);
+      }, 2400);
+    }, true);
   };
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', install, { once: true });
+    document.addEventListener('DOMContentLoaded', install, {once:true});
   } else {
     install();
   }
-
-  window.addEventListener('pageshow', () => {
-    if (intentionalDestination) return;
-
-    if (CREATIVE_HASHES.has(location.hash)) {
-      history.replaceState(null, '', location.pathname + location.search);
-    }
-
-    if (sessionStorage.getItem('sweetvilleGatesOpened') === 'yes') {
-      entranceActive = true;
-      window.setTimeout(finishAtHome, 50);
-    }
-  });
 })();
