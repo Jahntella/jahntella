@@ -1,0 +1,5 @@
+#downloads,#downloads.reveal,#downloads.reveal.visible{opacity:1!important;transform:none!important;visibility:visible!important}
+#downloads .poster-gallery,#downloads .poster-card,#downloads .poster-image{opacity:1!important;visibility:visible!important}
+#downloads .poster-image{min-height:280px;background:#080008}
+#downloads .poster-image img{display:block!important;width:100%!important;height:100%!important;min-height:280px;object-fit:contain!important;opacity:1!important;visibility:visible!important}
+@media(max-width:520px){#downloads .poster-image,#downloads .poster-image img{min-height:230px}}
