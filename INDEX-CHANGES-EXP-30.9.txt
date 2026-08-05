@@ -1,0 +1,10 @@
+In sweetville/index.html:
+
+1. REMOVE:
+<script src="exp30-1-create-navigation.js?v=30.8" defer></script>
+
+2. ADD BEFORE </head>:
+<link rel="stylesheet" href="exp30-9-gate-hard-reset.css?v=30.9">
+
+3. ADD BEFORE </body>:
+<script src="exp30-9-gate-hard-reset.js?v=30.9" defer></script>
