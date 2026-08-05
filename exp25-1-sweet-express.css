@@ -1,23 +1,96 @@
 
-.exp191-ticket-wrap{position:fixed;right:22px;bottom:22px;z-index:9000}
-.exp191-ticket{display:flex;align-items:center;gap:.85rem;min-width:230px;padding:.9rem 1.05rem;border:1px solid rgba(255,191,223,.78);border-radius:18px;color:#fff;background:radial-gradient(circle at 20% 15%,rgba(255,255,255,.24),transparent 28%),linear-gradient(135deg,rgba(255,69,174,.96),rgba(126,63,255,.94));box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 16px 34px rgba(0,0,0,.34),0 0 28px rgba(255,74,182,.32);text-decoration:none;overflow:hidden;position:relative;transition:transform .22s ease,filter .22s ease,box-shadow .22s ease}
-.exp191-ticket::before{content:"";position:absolute;inset:0;transform:translateX(-120%) skewX(-20deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.34),transparent);transition:transform .7s ease}
-.exp191-ticket:hover,.exp191-ticket:focus-visible{transform:translateY(-3px);filter:brightness(1.07);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 20px 40px rgba(0,0,0,.38),0 0 38px rgba(255,74,182,.42)}
-.exp191-ticket:hover::before,.exp191-ticket:focus-visible::before{transform:translateX(120%) skewX(-20deg)}
-.exp191-ticket-icon{font-size:1.8rem}
-.exp191-ticket-copy{display:flex;flex-direction:column;line-height:1.05}
-.exp191-ticket-copy small{font-size:.58rem;letter-spacing:.14em;font-weight:900;opacity:.78}
-.exp191-ticket-copy strong{font-family:"Playfair Display",serif;font-size:1.18rem}
-.exp191-ticket-copy span{font-size:.7rem;opacity:.82;margin-top:.28rem}
-@media(max-width:700px){.exp191-ticket-wrap{right:12px;bottom:12px}.exp191-ticket{min-width:0;padding:.72rem .82rem;border-radius:16px}.exp191-ticket-copy span{display:none}.exp191-ticket-copy strong{font-size:1rem}}
+.exp250-station-section{padding:clamp(4rem,8vw,8rem) 5vw;background:radial-gradient(circle at 12% 15%,rgba(255,76,171,.2),transparent 32%),radial-gradient(circle at 86% 72%,rgba(139,83,255,.18),transparent 34%),linear-gradient(145deg,#18001c,#08000a);border-top:1px solid rgba(255,157,211,.15);border-bottom:1px solid rgba(255,157,211,.15)}
+.exp250-station-shell{display:grid;grid-template-columns:minmax(300px,520px) minmax(0,1fr);gap:clamp(1.5rem,5vw,4.5rem);align-items:center;max-width:1250px;margin:0 auto}
+.exp250-station-image{position:relative;overflow:hidden;border-radius:30px;border:1px solid rgba(255,187,222,.35);background:#170016;box-shadow:0 30px 85px rgba(0,0,0,.5),0 0 45px rgba(255,70,168,.2)}
+.exp250-station-image img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top}
+.exp250-station-glow{position:absolute;inset:auto 10% 5%;height:16%;border-radius:50%;background:radial-gradient(circle,rgba(255,219,123,.55),transparent 68%);filter:blur(18px);animation:exp250Glow 2.4s ease-in-out infinite alternate}
+.exp250-steam{position:absolute;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.72),rgba(255,222,244,.2) 45%,transparent 70%);filter:blur(9px);opacity:.45;animation:exp250Steam 5s ease-in-out infinite}
+.exp250-steam-one{top:1%;left:14%}.exp250-steam-two{top:8%;left:28%;animation-delay:1.7s}
+.exp250-station-copy h2{margin:.45rem 0 1rem;font-size:clamp(2.7rem,5vw,5.6rem);line-height:.95}.exp250-greeting{max-width:720px;color:#f5dce9;font-size:clamp(1.05rem,1.7vw,1.3rem);line-height:1.7}
+.exp250-ticket-card{display:flex;justify-content:space-between;gap:1rem;align-items:center;margin:1.6rem 0 1rem;padding:1rem 1.15rem;border:1px dashed rgba(255,194,225,.55);border-radius:18px;background:linear-gradient(135deg,rgba(255,255,255,.09),rgba(255,255,255,.03))}
+.exp250-ticket-card span{display:block;color:#ff9bd0;font-size:.72rem;font-weight:900;letter-spacing:.18em}.exp250-ticket-card strong{display:block;margin-top:.25rem;color:white;font-size:1.15rem}
+.exp250-ticket-stamp{flex:0 0 auto;padding:.65rem .8rem;border:2px solid #ff8fc9;border-radius:10px;color:#ffb8dc;font-size:.72rem;font-weight:900;letter-spacing:.1em;transform:rotate(-3deg)}
+.exp250-progress-card{margin:1rem 0 1.25rem;padding:1.1rem;border:1px solid rgba(255,135,196,.28);border-radius:18px;background:rgba(10,0,12,.58)}
+.exp250-progress-heading{display:flex;justify-content:space-between;gap:1rem;margin-bottom:.65rem;color:#ffd2e8;font-weight:800}.exp250-progress-track{height:14px;overflow:hidden;border-radius:999px;background:#26001e;box-shadow:inset 0 0 8px rgba(0,0,0,.5)}
+.exp250-progress-track i{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,#ff2f9e,#ff83cb,#ffe16b);box-shadow:0 0 18px rgba(255,76,174,.7);transition:width .6s ease}
+#exp250Status{margin:.65rem 0 0;color:#dcb8cc}.exp250-actions{display:flex;flex-wrap:wrap;gap:.85rem}.exp250-actions button{cursor:pointer}
+.exp250-board-button:disabled{opacity:.5;cursor:not-allowed;filter:saturate(.55)}.exp250-board-button.is-unlocked{opacity:1;cursor:pointer;color:white;border-color:#ffd861;box-shadow:0 0 24px rgba(255,216,97,.35);animation:exp250BoardGlow 1.5s ease-in-out infinite alternate}
+.exp250-small-note{margin:.8rem 0 0;color:#a98a9d;font-size:.85rem}
+@keyframes exp250Steam{0%{transform:translate(0,20px) scale(.75);opacity:0}25%{opacity:.5}100%{transform:translate(45px,-105px) scale(1.4);opacity:0}}
+@keyframes exp250Glow{to{opacity:.55;transform:scale(1.08)}}@keyframes exp250BoardGlow{to{box-shadow:0 0 35px rgba(255,216,97,.7)}}
+@media(max-width:850px){.exp250-station-shell{grid-template-columns:1fr}.exp250-station-image{max-width:520px;margin:0 auto}}
+@media(max-width:580px){.exp250-ticket-card{align-items:flex-start;flex-direction:column}.exp250-actions button{width:100%}}
+
+.exp251-departure{position:fixed;inset:0;z-index:2147483600;display:none;padding:clamp(8px,2vw,20px);overflow:hidden;background:#090009}.exp251-departure.open{display:block}
+.exp251-departure-backdrop{position:fixed;inset:0;background:radial-gradient(circle at 50% 30%,rgba(255,68,173,.16),transparent 35%),rgba(4,0,5,.96);backdrop-filter:blur(8px)}
+.exp251-travel-stage{position:relative;z-index:2;min-height:100dvh;display:grid;place-items:center}.exp251-train-window{position:relative;width:min(94vw,1050px);height:min(76dvh,650px);overflow:hidden;border:8px solid #52133f;border-radius:42px;background:#1c0920;box-shadow:0 30px 100px rgba(0,0,0,.7),0 0 60px rgba(255,51,163,.25),inset 0 0 0 3px #e993bd}
+.exp251-sky{position:absolute;inset:0;background:linear-gradient(#542767 0%,#e868a6 42%,#ffc489 68%,#51285e 100%)}.exp251-city{position:absolute;left:-5%;right:-5%;bottom:18%;height:45%;opacity:.92;background:linear-gradient(90deg,transparent 0 2%,#311437 2% 5%,transparent 5% 7%,#4f174c 7% 11%,transparent 11% 13%,#22132f 13% 17%,transparent 17% 20%,#62205c 20% 25%,transparent 25% 28%,#35123b 28% 34%,transparent 34% 38%,#6d275f 38% 44%,transparent 44% 48%,#28122e 48% 54%,transparent 54% 58%,#5b1a53 58% 64%,transparent 64% 68%,#2c1231 68% 74%,transparent 74% 78%,#621f58 78% 84%,transparent 84% 88%,#351238 88% 94%,transparent 94%);filter:drop-shadow(0 0 18px #ff65b5)}
+.exp251-track{position:absolute;left:-20%;right:-20%;bottom:0;height:28%;background:repeating-linear-gradient(90deg,transparent 0 65px,rgba(255,255,255,.35) 67px 74px,transparent 76px 130px),linear-gradient(#35152f,#080008);transform:perspective(400px) rotateX(58deg);transform-origin:bottom;animation:exp251Track .42s linear infinite}
+.exp251-motion-lines{position:absolute;inset:0;opacity:.45;background:repeating-linear-gradient(90deg,transparent 0 70px,rgba(255,255,255,.15) 72px 74px,transparent 76px 145px);animation:exp251Motion .55s linear infinite}
+.exp251-train-copy{position:absolute;inset:auto 5% 8%;text-align:center;text-shadow:0 4px 25px rgba(0,0,0,.8)}.exp251-train-copy p{color:#ffe386;font-weight:900;letter-spacing:.2em}.exp251-train-copy h2{margin:.4rem 0;color:white;font-size:clamp(2rem,5vw,4.6rem)}
+@keyframes exp251Track{to{background-position:-130px 0,0 0}}@keyframes exp251Motion{to{background-position:-145px 0}}
+@media(max-width:760px){.exp251-train-window{height:70dvh;border-radius:28px;border-width:5px}}
 
 
-/* EXP 19.3 — keep portal ticket above the homepage music player */
-.exp191-ticket-wrap{
-  bottom:96px!important;
+/* =========================================================
+   EXP 25.5 — SWEET EXPRESS CONDUCTOR IMAGE FIT
+   Shows the complete artwork instead of oversized cropping.
+   ========================================================= */
+
+.exp250-station-shell{
+  grid-template-columns:minmax(250px,410px) minmax(0,1fr)!important;
+  max-width:1180px!important;
 }
-@media(max-width:700px){
-  .exp191-ticket-wrap{
-    bottom:104px!important;
+
+.exp250-station-image{
+  width:100%!important;
+  max-width:410px!important;
+  max-height:560px!important;
+  margin:0 auto!important;
+  display:grid!important;
+  place-items:center!important;
+  background:
+    radial-gradient(circle at 50% 30%,rgba(255,80,177,.14),transparent 45%),
+    #170016!important;
+}
+
+.exp250-station-image img{
+  width:100%!important;
+  height:auto!important;
+  max-width:410px!important;
+  max-height:560px!important;
+  aspect-ratio:auto!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  display:block!important;
+}
+
+@media(max-width:850px){
+  .exp250-station-shell{
+    grid-template-columns:1fr!important;
+  }
+
+  .exp250-station-image{
+    width:min(88vw,360px)!important;
+    max-width:360px!important;
+    max-height:500px!important;
+  }
+
+  .exp250-station-image img{
+    max-width:360px!important;
+    max-height:500px!important;
+  }
+}
+
+@media(max-width:480px){
+  .exp250-station-image{
+    width:min(84vw,320px)!important;
+    max-width:320px!important;
+    max-height:450px!important;
+  }
+
+  .exp250-station-image img{
+    max-width:320px!important;
+    max-height:450px!important;
   }
 }

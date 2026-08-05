@@ -1,0 +1,62 @@
+
+/* =========================================================
+   EXP 28.0 — DISTRICT ROUTING + IMAGE + TRAIN FIXES
+   ========================================================= */
+
+/* Train faces/moves toward the right. */
+.exp260-map-train{
+  transform:scaleX(-1);
+  animation:exp280TrainForward 14s linear infinite!important;
+}
+@keyframes exp280TrainForward{
+  from{left:6%}
+  to{left:88%}
+}
+
+/* Never crop the Bubblegum Bay portrait artwork. */
+.exp254-zone-card{
+  min-height:0!important;
+}
+.exp254-zone-card img{
+  width:100%!important;
+  height:auto!important;
+  max-height:none!important;
+  aspect-ratio:auto!important;
+  object-fit:contain!important;
+  object-position:center top!important;
+  background:#100012!important;
+}
+
+/* Never crop Garden Market or Sweeties Stage artwork. */
+.exp257-feature:not(.exp257-feature-wide) img{
+  width:100%!important;
+  height:auto!important;
+  max-height:none!important;
+  aspect-ratio:auto!important;
+  object-fit:contain!important;
+  object-position:center top!important;
+  background:#100012!important;
+}
+
+/* Keep the wide Bubblegum Bay entrance complete too. */
+.exp257-feature-wide img{
+  width:100%!important;
+  height:auto!important;
+  aspect-ratio:auto!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+}
+
+/* Map pins are links now. */
+.exp260-pin{
+  display:block;
+}
+
+/* Dedicated district iframe layout. */
+.exp280-district-frame{
+  width:100%;
+  height:calc(100dvh - 72px);
+  border:0;
+  display:block;
+  background:#100012;
+}

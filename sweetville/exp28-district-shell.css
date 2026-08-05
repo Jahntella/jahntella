@@ -1,0 +1,15 @@
+
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#0d000f;color:#fff;font-family:"DM Sans",Arial,sans-serif}
+.exp280-topbar{
+  height:72px;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:.7rem clamp(.8rem,3vw,2rem);background:#100012f2;border-bottom:1px solid #ff76b844;
+  position:relative;z-index:5;
+}
+.exp280-topbar a{color:#fff;text-decoration:none;font-weight:800}
+.exp280-brand{font-family:"Sacramento",cursive;font-size:2rem;color:#ff75bb!important}
+.exp280-actions{display:flex;gap:.6rem;flex-wrap:wrap}
+.exp280-actions a{padding:.6rem .8rem;border:1px solid #ff92c755;border-radius:999px;font-size:.82rem}
+.exp280-actions .real{background:linear-gradient(135deg,#ff2e9c,#8e27ff)}
+iframe{width:100%;height:calc(100dvh - 72px);border:0;background:#100012}
+@media(max-width:650px){.exp280-topbar{height:auto;min-height:72px;align-items:flex-start}.exp280-actions{justify-content:flex-end}.exp280-actions a{font-size:.72rem;padding:.5rem .65rem}iframe{height:calc(100dvh - 92px)}}
