@@ -1,0 +1,42 @@
+
+/* =========================================================
+   EXP 29.4 — ON-SITE CONTACT MESSAGE BOX
+   ========================================================= */
+.exp294-contact-modal{
+  position:fixed;inset:0;z-index:2147483600;display:none;place-items:center;
+  padding:1rem;background:rgba(5,0,7,.88);backdrop-filter:blur(10px)
+}
+.exp294-contact-modal.open{display:grid}
+.exp294-contact-card{
+  position:relative;width:min(94vw,720px);max-height:92dvh;overflow:auto;
+  padding:clamp(1.2rem,4vw,2rem);border:1px solid rgba(255,151,208,.58);
+  border-radius:28px;background:
+    radial-gradient(circle at 10% 10%,rgba(255,72,174,.18),transparent 28%),
+    linear-gradient(145deg,#240020,#0b000d);color:#fff;
+  box-shadow:0 35px 110px rgba(0,0,0,.68)
+}
+.exp294-contact-close{
+  position:absolute;right:14px;top:14px;width:42px;height:42px;
+  border:1px solid rgba(255,165,214,.55);border-radius:50%;
+  background:#21001d;color:white;font-size:1.5rem;cursor:pointer
+}
+.exp294-contact-card small{display:block;color:#ffafd4;font-weight:800;letter-spacing:.13em}
+.exp294-contact-card h2{margin:.25rem 0;font-family:"Playfair Display",serif;font-size:clamp(2rem,5vw,3.6rem)}
+.exp294-contact-card p{color:#dec5d5;line-height:1.6}
+.exp294-contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+.exp294-contact-field{display:grid;gap:.35rem}
+.exp294-contact-field.full{grid-column:1/-1}
+.exp294-contact-field label{font-weight:800;color:#ffd5e9}
+.exp294-contact-field input,.exp294-contact-field textarea{
+  width:100%;padding:.85rem .9rem;border:1px solid rgba(255,149,208,.34);
+  border-radius:14px;background:#ffffff0a;color:#fff;font:inherit
+}
+.exp294-contact-field input[readonly]{color:#ffb9da;background:#ffffff06}
+.exp294-contact-field textarea{min-height:160px;resize:vertical}
+.exp294-contact-submit{
+  margin-top:1rem;width:100%;padding:.9rem 1rem;border:0;border-radius:999px;
+  background:linear-gradient(135deg,#ff2f9f,#8d26ff);color:#fff;
+  font-weight:900;cursor:pointer
+}
+.exp294-contact-note{margin-top:.7rem!important;font-size:.82rem!important;color:#bfa5b5!important}
+@media(max-width:640px){.exp294-contact-grid{grid-template-columns:1fr}.exp294-contact-field.full{grid-column:auto}}

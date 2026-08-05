@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="exp28-district-fixes.css?v=28.0">
 <link rel="stylesheet" href="exp29-fast-pass.css?v=29.1">
 <link rel="stylesheet" href="exp29-1-interactive-map.css?v=29.3">
+<link rel="stylesheet" href="../exp29-4-contact.css?v=29.4">
 </head>
 <body>
 
@@ -174,7 +175,7 @@
         <h3 id="exp291PreviewTitle">Every district is a world of its own.</h3>
         <p id="exp291PreviewText">Tap or hover over a glowing district to explore it.</p>
       </div>
-      <a id="exp291PartnerButton" href="mailto:jahntella@gmail.com" class="sv-button primary">🤝 Partnership Inquiry</a>
+      <a id="exp291PartnerButton" href="mailto:jahntella@gmail.com" class="sv-button primary" data-exp294-contact data-subject="Jahntella Inquiry">🤝 Partnership Inquiry</a>
     </div>
 
     
@@ -1768,5 +1769,49 @@
 
 <script src="exp29-fast-pass.js?v=29.1" defer></script>
 <script src="exp29-1-interactive-map.js?v=29.3" defer></script>
+
+<div class="exp294-contact-modal" id="exp294ContactModal" aria-hidden="true">
+  <div class="exp294-contact-card" role="dialog" aria-modal="true" aria-labelledby="exp294ContactTitle">
+    <button class="exp294-contact-close" type="button" data-exp294-close aria-label="Close contact form">×</button>
+    <small>CONTACT JAHNTELLA</small>
+    <h2 id="exp294ContactTitle">Send us a message.</h2>
+    <p>Your message will be delivered directly to the Jahntella team.</p>
+
+    <form action="https://formsubmit.co/jahntella@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Jahntella Inquiry">
+      <input type="hidden" name="inquiry_type" value="General Inquiry">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="https://jahntella.com/thank-you.html">
+
+      <div class="exp294-contact-grid">
+        <div class="exp294-contact-field full">
+          <label>Recipient</label>
+          <input type="email" value="jahntella@gmail.com" readonly>
+        </div>
+        <div class="exp294-contact-field full">
+          <label>Subject</label>
+          <input type="text" name="subject_display" value="Jahntella Inquiry" readonly>
+        </div>
+        <div class="exp294-contact-field">
+          <label for="exp294Name">Your Name</label>
+          <input id="exp294Name" type="text" name="name" required>
+        </div>
+        <div class="exp294-contact-field">
+          <label for="exp294Email">Your Email</label>
+          <input id="exp294Email" type="email" name="email" required>
+        </div>
+        <div class="exp294-contact-field full">
+          <label for="exp294Message">Message</label>
+          <textarea id="exp294Message" name="message" required></textarea>
+        </div>
+      </div>
+      <button class="exp294-contact-submit" type="submit">Send Inquiry 💖</button>
+      <p class="exp294-contact-note">The first live submission may require a one-time confirmation in the Jahntella inbox before future messages are delivered automatically.</p>
+    </form>
+  </div>
+</div>
+
+<script src="../exp29-4-contact.js?v=29.4" defer></script>
 </body>
 </html>
