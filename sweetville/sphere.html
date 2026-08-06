@@ -3,10 +3,26 @@
 <title>Sweetville Sphere | Sweetville</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="exp34-district-pack.css?v=34.0"></head>
-<body><header class="d-top"><a class="d-brand" href="index.html">Sweetville ♡</a><nav class="d-actions"><a href="index.html">🗺 Back to Map</a><a class="real" href="../index.html">🎟 Ticket to the Real World</a></nav></header>
-<main class="d-main">
-<section class="sphere-stage"><div><div class="sphere-orb"><strong>SWEETVILLE<br>SPHERE</strong></div><h1>Lights. Music. Community.</h1><p>The Sphere is becoming Sweetville’s immersive home for live music, premieres, fan celebrations, and spectacular shared moments.</p></div></section>
-<section class="d-grid"><article class="d-card"><span>🎵</span><h3>Immersive Music</h3><p>Future 360-degree performances and visual song experiences.</p></article><article class="d-card"><span>🌐</span><h3>World Premieres</h3><p>A destination for premieres, announcements, and Sweetie events.</p></article><article class="d-card"><span>💖</span><h3>Community Nights</h3><p>Shared celebrations that bring the entire Sweetville community together.</p></article></section>
-<nav class="d-nav"><a href="sweeties-stage.html">← Sweeties Stage</a><a class="map" href="index.html">↑ Sweetville Map</a><a href="story.html">Story Book →</a></nav>
-</main></body></html>
+<link rel="stylesheet" href="exp35-sphere.css?v=35.0"></head>
+<body><header class="s-top"><a class="s-brand" href="index.html">Sweetville ♡</a><nav class="s-actions"><a href="index.html">🗺 Back to Map</a><a class="real" href="../index.html">🎟 Ticket to the Real World</a></nav></header>
+<main class="s-main">
+<section class="s-title"><small>EXP 35 — THE SWEETVILLE SPHERE</small><h1>The Sphere is <em>alive.</em></h1><p>Activate the lights, hear thousands of Sweeties, and unlock the finale.</p></section>
+<section class="s-panel" id="spherePanel">
+<div class="s-stage">
+<div class="s-visual">
+<div class="s-slides">
+<div class="s-slide active" data-slide><img src="assets/exp35-sphere/sphere-live-stage.webp" alt="Jahntella performing inside Sweetville Sphere"></div>
+<div class="s-slide visual-one" data-slide></div>
+<div class="s-slide visual-two" data-slide></div>
+</div>
+<div class="s-beams"></div><div class="s-crowd"></div><span class="s-live">● LIVE</span>
+<button class="s-arrow prev" id="spherePrev" type="button">‹</button><button class="s-arrow next" id="sphereNext" type="button">›</button>
+<div class="s-dots"><button class="active" data-dot="0"></button><button data-dot="1"></button><button data-dot="2"></button></div>
+<div class="s-confetti" id="sphereConfetti"></div>
+</div>
+<div class="s-copy"><small>NOW PERFORMING</small><h2>The Sweetville Sphere</h2><p>Build the atmosphere one step at a time. The finale unlocks only after the Sphere is glowing and the Sweeties are cheering.</p>
+<div class="s-buttons"><button id="sphereLights">Light the Sphere</button><button id="sphereCrowd">Hear the Sweeties</button><button class="primary" id="sphereFinale" disabled>Launch the Finale</button></div>
+<div class="s-status"><span>HOUSE LIGHTS<strong id="lightStatus">Ready</strong></span><span>CROWD<strong id="crowdStatus">Waiting</strong></span><span>FINALE<strong id="finaleStatus">Locked</strong></span><span>SWEETIES LIVE<strong id="sweetiesCount">0</strong></span></div>
+</div></div></section>
+<section class="s-note"><h3>Encore-ready.</h3><p>The Sphere is now independent from the Sweetville homepage, so it keeps its full interactive experience without replaying the intro or creating duplicate Fast Passes.</p></section>
+</main><script src="exp35-sphere.js?v=35.0" defer></script></body></html>
