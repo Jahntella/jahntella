@@ -6,7 +6,7 @@ A standalone, responsive magazine reader for Sweeties Magazine Issue 001.
 
 1. Extract the ZIP.
 2. Copy the entire `sweeties-magazine` folder into the repository root.
-3. Commit and deploy.
+3. Commit and deploy. .
 4. Open `/sweeties-magazine/` on the live site.
 
 To add a homepage link, place this wherever you want the magazine button:
