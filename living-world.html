@@ -1,0 +1,43 @@
+
+(() => {
+'use strict';
+const C={
+'bubblegum-bay.html':['count','Bubble Hunt','Find all 6 hidden bubbles!','🫧',6],
+'garden-market.html':['memory','Garden Match','Match the Sweetville garden pairs.'],
+'mochi.html':['count',"Mochi's Toy Hunt",'Find all 5 hidden Mochi toys!','🦴',5],
+'sweeties-stage.html':['rhythm','Sweetie Beat','Tap the heart 10 times before time runs out.'],
+'sparkle-lake.html':['count','Crystal Wish Hunt','Find all 5 hidden crystals!','💎',5],
+'pink-cafe.html':['recipe','Build a Pink Drink','Choose strawberry + sparkle + cream.'],
+'story.html':['word','Sweetville Word Find','Find the hidden word SWEETIE.'],
+'carnival.html':['pop','Balloon Pop','Pop all 8 balloons.'],
+'candy-lane.html':['odd','Odd Candy Out','Find the candy that does not match.'],
+'donut-district.html':['count','Donut Count','Find all 7 hidden donuts!','🍩',7],
+'starlight-stage.html':['catch','Catch the Stars','Catch 7 falling stars.'],
+'sweet-express.html':['route','Sweet Express Route','Pick the correct track: Castle → Lake → Stage.']
+};
+const pathFile=(location.pathname.split('/').pop()||'').toLowerCase();
+const district=(new URLSearchParams(location.search).get('district')||'').toLowerCase();
+const file=pathFile==='living-world.html'&&district?`${district}.html`:pathFile,cfg=C[file];
+if(!cfg||document.querySelector('.sv-game'))return;
+const [type,title,prompt,icon,count]=cfg,key=`sweetvilleGame:${file}`;
+const done=s=>{s.textContent='Challenge complete! Sweetie Secret unlocked 💖';s.classList.add('sv-game-complete');localStorage.setItem(key,'complete')};
+const g=document.createElement('section');g.className='sv-game';g.innerHTML=`<small>DISTRICT CHALLENGE</small><h2>${title}</h2><p>${prompt}</p><div class="sv-game-status">${localStorage.getItem(key)==='complete'?'Already completed 💖':'Ready when you are!'}</div><div class="sv-game-body"></div>`;
+if(pathFile==='living-world.html'){
+  const shellHeader=document.querySelector('.exp280-topbar');if(!shellHeader)return;
+  shellHeader.insertAdjacentElement('afterend',g);
+}else{
+  const t=document.querySelector('.x39-panel,.d-panel,.district-copy,main');if(!t)return;
+  t.classList.contains('district-copy')?t.appendChild(g):t.insertAdjacentElement('afterend',g);
+}
+const bdy=g.querySelector('.sv-game-body'),st=g.querySelector('.sv-game-status');
+
+if(type==='count'){const board=document.createElement('div');board.className='sv-game-board';let n=0;for(let i=0;i<count;i++){const b=document.createElement('button');b.className='sv-hidden-item';b.textContent=icon;b.style.left=(7+((i*17)%82))+'%';b.style.top=(8+((i*29)%76))+'%';b.onclick=()=>{if(b.dataset.hit)return;b.dataset.hit='1';b.style.opacity='.22';n++;st.textContent=`Found ${n} / ${count}`;if(n===count)done(st)};board.appendChild(b)}bdy.appendChild(board)}
+if(type==='memory'){const icons=['🌸','🍓','🌷','🍋'],cards=[...icons,...icons].sort(()=>Math.random()-.5),grid=document.createElement('div');grid.className='sv-game-grid';let open=[],m=0;cards.forEach(x=>{const b=document.createElement('button');b.textContent='💖';b.dataset.i=x;b.onclick=()=>{if(b.dataset.done||open.includes(b)||open.length===2)return;b.textContent=x;open.push(b);if(open.length===2)setTimeout(()=>{if(open[0].dataset.i===open[1].dataset.i){open.forEach(z=>z.dataset.done='1');m+=2;if(m===cards.length)done(st)}else open.forEach(z=>z.textContent='💖');open=[]},450)};grid.appendChild(b)});bdy.appendChild(grid)}
+if(type==='rhythm'){const b=document.createElement('button');b.textContent='💖 TAP THE BEAT';let n=0,timer;b.onclick=()=>{if(!timer)timer=setTimeout(()=>{if(n<10){st.textContent='So close! Try again.';n=0;timer=null}},5000);n++;st.textContent=`${n} / 10`;if(n>=10){clearTimeout(timer);done(st)}};bdy.appendChild(b)}
+if(type==='recipe'){const a=['🍓 Strawberry','✨ Sparkle','🍦 Cream','🍋 Lemon','🍫 Cocoa'],pick=[],row=document.createElement('div');row.className='sv-game-row';a.forEach((x,i)=>{const b=document.createElement('button');b.textContent=x;b.onclick=()=>{if(pick.includes(i))return;pick.push(i);b.disabled=true;if(pick.length===3){[0,1,2].every(v=>pick.includes(v))?done(st):st.textContent='Secret recipe: strawberry + sparkle + cream.'}};row.appendChild(b)});bdy.appendChild(row)}
+if(type==='word'){const grid=document.createElement('div');grid.className='sv-game-wordgrid';'QWESWEETIERASDFGHJKLZXCVBNMPOIUYTREWQAZXCVBNMLKJHGFDSAPOIUYTREWQ'.slice(0,64).split('').forEach(l=>{const s=document.createElement('span');s.textContent=l;grid.appendChild(s)});const b=document.createElement('button');b.textContent='I found SWEETIE!';b.onclick=()=>done(st);bdy.append(grid,b)}
+if(type==='pop'){const board=document.createElement('div');board.className='sv-game-board';let n=0;for(let i=0;i<8;i++){const b=document.createElement('button');b.className='sv-hidden-item';b.textContent='🎈';b.style.left=(8+(i*11)%80)+'%';b.style.top=(10+(i*23)%72)+'%';b.onclick=()=>{if(b.dataset.hit)return;b.dataset.hit='1';b.textContent='✨';n++;if(n===8)done(st)};board.appendChild(b)}bdy.appendChild(board)}
+if(type==='odd'){const grid=document.createElement('div');grid.className='sv-game-grid';['🍬','🍬','🍬','🍬','🍬','🍭','🍬','🍬'].forEach((x,i)=>{const b=document.createElement('button');b.textContent=x;b.onclick=()=>i===5?done(st):st.textContent='That one matches — keep looking!';grid.appendChild(b)});bdy.appendChild(grid)}
+if(type==='catch'){const board=document.createElement('div');board.className='sv-game-board';let c=0,s=0;const spawn=()=>{if(s>=12||c>=7)return;s++;const b=document.createElement('button');b.className='sv-hidden-item';b.textContent='⭐';b.style.left=(5+Math.random()*85)+'%';b.style.top='0%';board.appendChild(b);let y=0;const iv=setInterval(()=>{y+=3;b.style.top=y+'%';if(y>88){clearInterval(iv);b.remove();spawn()}},80);b.onclick=()=>{clearInterval(iv);b.remove();c++;if(c>=7)done(st);else spawn()}};bdy.appendChild(board);spawn()}
+if(type==='route'){const row=document.createElement('div');row.className='sv-game-row';['Castle → Lake → Stage','Castle → Donut → Café','Market → Carnival → Story'].forEach((x,i)=>{const b=document.createElement('button');b.textContent=x;b.onclick=()=>i===0?done(st):st.textContent='Wrong track — try again!';row.appendChild(b)});bdy.appendChild(row)}
+})();
