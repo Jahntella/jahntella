@@ -1,0 +1,28 @@
+JAHNTELLA EXP 41.2 — THREE MISSING DISTRICT GAMES
+
+THIS ZIP CHANGES ONLY THREE EXISTING FILES:
+- pink-cafe.html — Build a Pink Drink
+- carnival.html — Balloon Pop
+- candy-lane.html — Odd Candy Out
+
+IMPORTANT GITHUB UPLOAD STEPS
+
+1. Open the Jahntella/jahntella repository on GitHub.
+2. Open the sweetville folder BEFORE clicking Upload files.
+3. Inside sweetville, click Add file, then Upload files.
+4. Upload these three HTML files from this ZIP:
+   - pink-cafe.html
+   - carnival.html
+   - candy-lane.html
+5. Confirm GitHub shows these exact destination paths:
+   - sweetville/pink-cafe.html
+   - sweetville/carnival.html
+   - sweetville/candy-lane.html
+6. Commit with this message:
+   Jahntella EXP 41.2 — Add three missing district games
+
+DO NOT upload these files at the repository's top level.
+They must replace the existing files inside the sweetville folder.
+
+No other district games are changed.
+The existing Sweetville Sphere is not changed.
