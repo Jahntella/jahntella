@@ -72,3 +72,17 @@
   window.addEventListener('load',reveal);
   reveal();
 })();
+
+(() => {
+'use strict';
+const p=(location.pathname.split('/').pop()||'').toLowerCase();
+const pages=new Set([
+'bubblegum-bay.html','garden-market.html','mochi.html',
+'sweeties-stage.html','sparkle-lake.html','pink-cafe.html','story.html',
+'carnival.html','candy-lane.html','donut-district.html',
+'starlight-stage.html','sweet-express.html'
+]);
+if(!pages.has(p))return;
+if(!document.querySelector('link[href*="exp41-mini-games.css"]')){const l=document.createElement('link');l.rel='stylesheet';l.href='exp41-mini-games.css?v=41.0';document.head.appendChild(l)}
+if(!document.querySelector('script[src*="exp41-mini-games.js"]')){const s=document.createElement('script');s.src='exp41-mini-games.js?v=41.0';s.defer=true;document.body.appendChild(s)}
+})();
