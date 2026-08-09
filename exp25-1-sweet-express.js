@@ -43,6 +43,11 @@
       audio: document.getElementById('audioEmbraceMe'),
       title: 'Embrace Me',
       button: document.querySelector('[data-track="embrace-me"]')
+    },
+    {
+      audio: document.getElementById('audioWeComeTogether'),
+      title: 'We Come Together',
+      button: document.querySelector('[data-track="we-come-together"]')
     }
   ].filter(track => track.audio);
 

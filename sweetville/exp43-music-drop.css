@@ -114,6 +114,13 @@
   box-shadow: 0 22px 60px rgba(0, 0, 0, .4);
 }
 
+.exp43-release-card.exp43-release-featured {
+  grid-column: 2 / 4;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  align-items: center;
+}
+
 .exp43-cover {
   position: relative;
   overflow: hidden;
@@ -136,18 +143,19 @@
 }
 
 .exp43-cover span {
-  position: absolute;
-  top: .85rem;
-  right: .85rem;
-  padding: .48rem .68rem;
-  border: 1px solid rgba(255, 255, 255, .4);
-  border-radius: 999px;
+  position: static;
+  display: block;
+  width: 100%;
+  padding: .58rem .8rem;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, .22);
+  border-radius: 0;
   color: #fff;
-  background: rgba(20, 0, 22, .78);
-  backdrop-filter: blur(12px);
+  background: linear-gradient(90deg, rgba(104, 6, 78, .96), rgba(39, 1, 47, .98));
   font-size: .66rem;
   font-weight: 900;
   letter-spacing: .1em;
+  text-align: center;
 }
 
 .exp43-release-copy {
@@ -279,6 +287,10 @@
     align-items: flex-start;
     flex-direction: column;
   }
+
+  .exp43-release-card.exp43-release-featured {
+    grid-column: 1 / -1;
+  }
 }
 
 @media (max-width: 640px) {
@@ -294,6 +306,11 @@
 
   .exp43-release-copy p {
     min-height: 0;
+  }
+
+  .exp43-release-card.exp43-release-featured {
+    grid-column: auto;
+    grid-template-columns: 1fr;
   }
 
   .exp43-drop-energy {

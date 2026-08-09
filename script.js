@@ -1,5 +1,5 @@
 (() => {
-  const order = ["fun-dipp", "pink-lips", "bite-lip", "gloss", "your-girl", "embrace-me"];
+  const order = ["fun-dipp", "pink-lips", "bite-lip", "gloss", "your-girl", "embrace-me", "we-come-together"];
   const tracks = {
     "fun-dipp": {
       audio: document.getElementById("audioFunDipp"),
@@ -38,6 +38,12 @@
       title: "Embrace Me",
       artwork: "sweetville/embrace-me-cover.webp",
       card: document.querySelector('[data-card="embrace-me"]')
+    },
+    "we-come-together": {
+      audio: document.getElementById("audioWeComeTogether"),
+      title: "We Come Together",
+      artwork: "sweetville/we-come-together-cover.webp",
+      card: document.querySelector('[data-card="we-come-together"]')
     }
   };
 

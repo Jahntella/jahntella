@@ -91,6 +91,13 @@
   transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
 }
 
+.exp44-new-music-card.exp45-featured-release {
+  grid-column: 2 / 4;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  align-items: center;
+}
+
 .exp44-new-music-card:hover,
 .exp44-new-music-card:focus-within,
 .exp44-new-music-card.is-active {
@@ -138,10 +145,12 @@
 
 @media (max-width: 1040px) {
   .exp44-new-music-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .exp44-new-music-card.exp45-featured-release { grid-column: 1 / -1; }
 }
 
 @media (max-width: 700px) {
   .exp44-new-music-head { align-items: flex-start; flex-direction: column; }
   .exp44-new-music-grid { grid-template-columns: 1fr; }
+  .exp44-new-music-card.exp45-featured-release { grid-column: auto; grid-template-columns: 1fr; }
   .exp44-new-music-card p { min-height: 0; }
 }
