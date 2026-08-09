@@ -1,0 +1,63 @@
+JAHNTELLA EXP 42.0 — MUSIC DESTINATIONS + NEW PHOTO STORIES
+
+WHAT THIS BUILD ADDS
+
+- Fun Dipp Splash Club
+  - Plays the existing Fun Dipp audio file
+  - Adds one Sweet Energy point after 90% completion or at the end
+  - Includes the waterpark, pink jeep, piano sunset, pool concert,
+    donut float, sunbathing, and pool bar moments
+
+- Pink Lips After Dark
+  - Plays the existing Fun Dipp (Pink Lips Remix) audio file
+  - Adds one Sweet Energy point after 90% completion or at the end
+  - Includes the dock concert, #1 Pop Star yacht celebration,
+    fireworks close-up, sauna, shower, and bedtime moments
+
+- Sweetville home
+  - Adds both destinations directly beneath the official 13-district map
+  - Adds play buttons and the shared 0 / 10 Sweet Express progress display
+  - Adds both destinations to the Sweetville Fast Pass menu
+
+- Mochi's Area
+  - Keeps JMochi2 as the hero
+  - Adds the new diverse Sweeties-and-pets image to Puppy Playdate
+
+SWEET EXPRESS COUNTER
+
+- Uses the existing jahntellaSweetEnergyV25 saved counter
+- Either full song adds +1 toward the same 10-listen goal
+- One credit is allowed per genuine playthrough
+- Rewinding to the beginning prepares another listen
+- Unlocks at 10 / 10 and never exceeds 10
+- Existing saved progress is preserved
+
+UPLOAD — RECOMMENDED METHOD
+
+1. Extract this ZIP.
+2. Open the ROOT of the Jahntella GitHub repository.
+3. Choose Add file > Upload files.
+4. Drag the entire extracted "sweetville" folder onto the upload page.
+5. Confirm GitHub shows paths beginning with sweetville/ before committing.
+
+Do not upload the files beside the sweetville folder at the repository root.
+The ZIP is already arranged so every file lands in the correct Sweetville path.
+
+COMMIT SUBJECT
+
+Jahntella EXP 42.0 — Open Fun Dipp and Pink Lips music destinations
+
+PREVIEW URLS
+
+https://jahntella.com/sweetville/?v=42.0#exp42MusicDestinations
+https://jahntella.com/sweetville/fun-dipp-splash.html?v=42.0
+https://jahntella.com/sweetville/pink-lips-after-dark.html?v=42.0
+https://jahntella.com/sweetville/mochi.html?v=42.0
+
+UNCHANGED
+
+- The official 13-district map and its hotspots
+- Sweetville Sphere
+- Existing district games
+- Studio, passport, route logic, and existing Sweet Express experience
+- Existing Fun Dipp and Pink Lips Remix audio files
