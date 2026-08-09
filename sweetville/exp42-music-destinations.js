@@ -55,10 +55,16 @@
       src: new URL('we-come-together.mp3', document.baseURI).href,
       destination: 'melody-studio.html#latestMusic',
       artwork: new URL('we-come-together-cover.webp', document.baseURI).href
+    },
+    'play-with-me': {
+      title: 'Play With Me',
+      src: new URL('play-with-me.mp3', document.baseURI).href,
+      destination: 'melody-studio.html#latestMusic',
+      artwork: new URL('play-with-me-cover.webp', document.baseURI).href
     }
   };
 
-  const TRACK_ORDER = ['fun-dipp', 'pink-lips', 'bite-lip', 'gloss', 'your-girl', 'embrace-me', 'we-come-together'];
+  const TRACK_ORDER = ['fun-dipp', 'pink-lips', 'bite-lip', 'gloss', 'your-girl', 'embrace-me', 'we-come-together', 'play-with-me'];
 
   const safeJSON = (value, fallback) => {
     try { return JSON.parse(value) ?? fallback; } catch { return fallback; }

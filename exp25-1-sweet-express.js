@@ -15,39 +15,52 @@
 
   const tracks = [
     {
+      key: 'fun-dipp',
       audio: document.getElementById('audioFunDipp'),
       title: 'Fun Dipp',
       button: document.querySelector('[data-track="fun-dipp"]')
     },
     {
+      key: 'pink-lips',
       audio: document.getElementById('audioPinkLips'),
       title: 'Pink Lips Remix',
       button: document.querySelector('[data-track="pink-lips"]')
     },
     {
+      key: 'bite-lip',
       audio: document.getElementById('audioBiteLip'),
       title: 'Bite Lip',
       button: document.querySelector('[data-track="bite-lip"]')
     },
     {
+      key: 'gloss',
       audio: document.getElementById('audioGloss'),
       title: 'Gloss',
       button: document.querySelector('[data-track="gloss"]')
     },
     {
+      key: 'your-girl',
       audio: document.getElementById('audioYourGirl'),
       title: 'I Want To Be Your Girl',
       button: document.querySelector('[data-track="your-girl"]')
     },
     {
+      key: 'embrace-me',
       audio: document.getElementById('audioEmbraceMe'),
       title: 'Embrace Me',
       button: document.querySelector('[data-track="embrace-me"]')
     },
     {
+      key: 'we-come-together',
       audio: document.getElementById('audioWeComeTogether'),
       title: 'We Come Together',
       button: document.querySelector('[data-track="we-come-together"]')
+    },
+    {
+      key: 'play-with-me',
+      audio: document.getElementById('audioPlayWithMe'),
+      title: 'Play With Me',
+      button: document.querySelector('[data-track="play-with-me"]')
     }
   ].filter(track => track.audio);
 
@@ -91,11 +104,12 @@
     boardButton.textContent = '🚂 All Aboard — Locked';
   };
 
-  const awardCredit = title => {
+  const awardCredit = (title, key) => {
     if (count >= GOAL) return;
 
     count += 1;
     save();
+    window.jahntellaMarkSiteCredit?.(key);
 
     const remaining = GOAL - count;
     render(
@@ -112,8 +126,13 @@
     }, 350);
   };
 
-  tracks.forEach(({audio, title}) => {
-    sessions.set(audio, {credited: false});
+  const savedPlayback = (() => {
+    try { return JSON.parse(sessionStorage.getItem('jahntellaSiteMusicV46') || '{}'); }
+    catch { return {}; }
+  })();
+
+  tracks.forEach(({key, audio, title}) => {
+    sessions.set(audio, {credited: savedPlayback.track === key && savedPlayback.credited === true});
 
     audio.addEventListener('play', () => {
       const session = sessions.get(audio);
@@ -121,6 +140,7 @@
       // A new playthrough begins when the track starts near the beginning.
       if (audio.currentTime < 5 || audio.ended) {
         session.credited = false;
+        window.jahntellaResetSiteCredit?.(key);
       }
     });
 
@@ -136,7 +156,7 @@
 
       if (completion >= CREDIT_THRESHOLD) {
         session.credited = true;
-        awardCredit(title);
+        awardCredit(title, key);
       }
     });
 
@@ -145,7 +165,7 @@
       const session = sessions.get(audio);
       if (!session.credited) {
         session.credited = true;
-        awardCredit(title);
+        awardCredit(title, key);
       }
     });
 
@@ -155,6 +175,7 @@
       // Rewinding to the start prepares a genuinely new listen.
       if (audio.currentTime < 5) {
         session.credited = false;
+        window.jahntellaResetSiteCredit?.(key);
       }
     });
   });

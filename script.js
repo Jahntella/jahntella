@@ -1,17 +1,18 @@
 (() => {
-  const order = ["fun-dipp", "pink-lips", "bite-lip", "gloss", "your-girl", "embrace-me", "we-come-together"];
+  const SITE_PLAYBACK_KEY = "jahntellaSiteMusicV46";
+  const order = ["fun-dipp", "pink-lips", "bite-lip", "gloss", "your-girl", "embrace-me", "we-come-together", "play-with-me"];
   const tracks = {
     "fun-dipp": {
       audio: document.getElementById("audioFunDipp"),
       title: "Fun Dipp",
-      artwork: "https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/fun-dipp-cover.png",
+      artwork: "assets/fun-dipp-cover.png",
       recordWrap: document.getElementById("funDippRecordWrap"),
       card: document.querySelector('[data-card="fun-dipp"]')
     },
     "pink-lips": {
       audio: document.getElementById("audioPinkLips"),
       title: "Pink Lips Remix",
-      artwork: "https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/pink-lips-remix.png",
+      artwork: "assets/pink-lips-remix.png",
       recordWrap: document.getElementById("pinkLipsRecordWrap"),
       card: document.querySelector('[data-card="pink-lips"]')
     },
@@ -44,6 +45,12 @@
       title: "We Come Together",
       artwork: "sweetville/we-come-together-cover.webp",
       card: document.querySelector('[data-card="we-come-together"]')
+    },
+    "play-with-me": {
+      audio: document.getElementById("audioPlayWithMe"),
+      title: "Play With Me",
+      artwork: "sweetville/play-with-me-cover.webp",
+      card: document.querySelector('[data-card="play-with-me"]')
     }
   };
 
@@ -116,6 +123,48 @@
   });
 
   let currentKey = null;
+  let currentCredited = false;
+  let lastSavedSecond = -1;
+
+  const readSitePlayback = () => {
+    try {
+      const value = JSON.parse(sessionStorage.getItem(SITE_PLAYBACK_KEY) || "{}");
+      return tracks[value.track] ? value : {};
+    } catch {
+      return {};
+    }
+  };
+
+  const persistSitePlayback = (force = false) => {
+    const track = currentTrack();
+    if (!track?.audio || !currentKey) return;
+    const second = Math.floor(track.audio.currentTime || 0);
+    if (!force && second === lastSavedSecond) return;
+    lastSavedSecond = second;
+    try {
+      sessionStorage.setItem(SITE_PLAYBACK_KEY, JSON.stringify({
+        track: currentKey,
+        position: track.audio.currentTime || 0,
+        playing: !track.audio.paused && !track.audio.ended,
+        credited: currentCredited,
+        savedAt: Date.now()
+      }));
+    } catch {}
+  };
+
+  window.jahntellaMarkSiteCredit = key => {
+    if (key === currentKey) {
+      currentCredited = true;
+      persistSitePlayback(true);
+    }
+  };
+
+  window.jahntellaResetSiteCredit = key => {
+    if (key === currentKey) {
+      currentCredited = false;
+      persistSitePlayback(true);
+    }
+  };
 
   const currentTrack = () => currentKey ? tracks[currentKey] : null;
   const formatTime = seconds => {
@@ -133,6 +182,7 @@
       const button = track.card?.querySelector(".play-button");
       if (button) button.textContent = active && playing ? `❚❚ Pause ${track.title}` : `▶ Play ${track.title}`;
     });
+    persistSitePlayback(true);
   };
 
   const stopOthers = selected => {
@@ -145,11 +195,14 @@
     });
   };
 
-  const selectTrack = (key, autoplay = true) => {
+  const selectTrack = (key, autoplay = true, options = {}) => {
     const track = tracks[key];
     if (!track?.audio) return;
+    const changing = currentKey !== key;
     stopOthers(track.audio);
     currentKey = key;
+    if (changing || options.fresh) currentCredited = false;
+    if (typeof options.credited === "boolean") currentCredited = options.credited;
     title.textContent = track.title;
     artwork.src = track.artwork;
     artwork.alt = `${track.title} artwork`;
@@ -198,6 +251,7 @@
       if (currentTrack() !== track) return;
       progress.value = track.audio.duration ? (track.audio.currentTime / track.audio.duration) * 100 : 0;
       time.textContent = formatTime(track.audio.currentTime);
+      persistSitePlayback();
     });
     track.audio.addEventListener("ended", () => {
       if (currentTrack() === track) moveTrack(1);
@@ -208,7 +262,34 @@
     const track = currentTrack();
     if (!track || !track.audio.duration) return;
     track.audio.currentTime = (Number(progress.value) / 100) * track.audio.duration;
+    persistSitePlayback(true);
   });
+
+  const savedPlayback = readSitePlayback();
+  if (savedPlayback.track) {
+    selectTrack(savedPlayback.track, false, {credited: savedPlayback.credited === true});
+    const restored = currentTrack()?.audio;
+    const restorePosition = () => {
+      const max = Number.isFinite(restored.duration) ? Math.max(0, restored.duration - .25) : savedPlayback.position;
+      try { restored.currentTime = Math.max(0, Math.min(Number(savedPlayback.position) || 0, max)); } catch {}
+      progress.value = restored.duration ? (restored.currentTime / restored.duration) * 100 : 0;
+      time.textContent = formatTime(restored.currentTime);
+      if (savedPlayback.playing) {
+        restored.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+      }
+    };
+    if (restored.readyState >= 1) restorePosition();
+    else restored.addEventListener("loadedmetadata", restorePosition, {once: true});
+  }
+
+  document.addEventListener("click", event => {
+    const link = event.target.closest("a[href]");
+    if (!link || link.hasAttribute("download")) return;
+    const url = new URL(link.href, document.baseURI);
+    if (url.origin === location.origin) persistSitePlayback(true);
+  }, true);
+
+  window.addEventListener("pagehide", () => persistSitePlayback(true));
 
   navToggle.addEventListener("click", () => {
     const open = siteNav.classList.toggle("open");
