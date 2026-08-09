@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#120015">
-  <meta name="description" content="Enter Sweetville Build v4.0: an interactive living world with districts, music, hidden letters, collectibles, achievements, and a room that grows with your journey.">
-  <title>Sweetville EXP 19.4 — Sphere Encore</title>
+  <meta name="description" content="Enter Sweetville: explore 13 interactive districts plus the Fun Dipp Splash Club and Pink Lips After Dark music destinations.">
+  <title>Sweetville EXP 42.0 — Music Destinations</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" rel="stylesheet">
@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="exp28-district-fixes.css?v=28.0">
 <link rel="stylesheet" href="exp29-fast-pass.css?v=29.1">
 <link rel="stylesheet" href="exp29-1-interactive-map.css?v=29.3">
+<link rel="stylesheet" href="exp42-music-destinations.css?v=42.0">
 <link rel="stylesheet" href="../exp29-4-contact.css?v=29.4">
 <link rel="stylesheet" href="exp30-9-gate-hard-reset.css?v=30.9">
 </head>
@@ -187,6 +188,83 @@
         <strong>Partnership details are available privately in the Investor Portal.</strong>
       </div>
       <a href="../investors/#districtPartnerships">View Investor Opportunities</a>
+    </div>
+  </div>
+</section>
+
+
+<section class="exp42-hub" id="exp42MusicDestinations" aria-labelledby="exp42MusicTitle">
+  <div class="exp42-hub-shell">
+    <article class="exp42-welcome-card">
+      <img src="assets/exp42/sweetville-welcome.webp" alt="Jahntella welcoming visitors beneath the glowing Sweetville gates" loading="lazy" decoding="async">
+      <div class="exp42-welcome-copy">
+        <small>A NEW CHAPTER IN SWEETVILLE</small>
+        <h2>The songs have become <em>places.</em></h2>
+        <p>Welcome, Sweetie. Two new music destinations are now open beyond the original 13 districts—one made for sunshine and splashes, the other made for neon nights and pink fireworks.</p>
+        <p>Press play here or step inside either destination. Every completed song adds Sweet Energy toward the same 10-listen Sweet Express goal.</p>
+      </div>
+    </article>
+
+    <header class="exp42-hub-heading">
+      <div>
+        <small class="exp42-kicker">EXP 42.0 — NOW OPEN</small>
+        <h2 id="exp42MusicTitle">Choose your <em>music destination.</em></h2>
+      </div>
+      <p>Daylight or after dark—enter the scene, play the song, and let Sweetville remember your progress.</p>
+    </header>
+
+    <div class="exp42-destination-grid">
+      <article class="exp42-destination-card" data-exp42-player="fun-dipp">
+        <a class="exp42-card-image" href="fun-dipp-splash.html">
+          <img src="assets/exp42/fun-dipp-waterpark.webp" alt="Jahntella and friends enjoying the Fun Dipp Splash Club" loading="lazy" decoding="async">
+          <span class="exp42-card-badge">🍭 DAYTIME MUSIC DESTINATION</span>
+        </a>
+        <div class="exp42-card-copy">
+          <small>PLAY FUN DIPP</small>
+          <h3>Fun Dipp Splash Club</h3>
+          <p>Pink slides, donut floats, poolside music, and a sunset piano session.</p>
+          <div class="exp42-card-actions">
+            <a href="fun-dipp-splash.html">Enter the Splash Club</a>
+            <button class="exp42-button" type="button" data-exp42-play>▶ Play Fun Dipp</button>
+          </div>
+          <span class="exp42-now" data-exp42-now>READY TO PLAY</span>
+          <audio data-exp42-audio data-exp42-title="Fun Dipp" preload="metadata">
+            <source src="../fun-dipp-v430.mp4" type="audio/mp4">
+          </audio>
+        </div>
+      </article>
+
+      <article class="exp42-destination-card" data-exp42-player="pink-lips">
+        <a class="exp42-card-image" href="pink-lips-after-dark.html">
+          <img src="assets/exp42/popstar-yacht-fireworks.webp" alt="Jahntella celebrating during Pink Lips After Dark" loading="lazy" decoding="async">
+          <span class="exp42-card-badge">💋 NIGHTTIME MUSIC DESTINATION</span>
+        </a>
+        <div class="exp42-card-copy">
+          <small>PLAY THE PINK LIPS REMIX</small>
+          <h3>Pink Lips After Dark</h3>
+          <p>A glowing dock concert, yacht celebration, city lights, and the quiet afterglow.</p>
+          <div class="exp42-card-actions">
+            <a href="pink-lips-after-dark.html">Enter After Dark</a>
+            <button class="exp42-button" type="button" data-exp42-play>▶ Play Pink Lips Remix</button>
+          </div>
+          <span class="exp42-now" data-exp42-now>READY TO PLAY</span>
+          <audio data-exp42-audio data-exp42-title="Pink Lips Remix" preload="metadata">
+            <source src="../pink-lips-remix-v430.mp4" type="audio/mp4">
+          </audio>
+        </div>
+      </article>
+    </div>
+
+    <div class="exp42-energy-panel">
+      <div class="exp42-energy-count">
+        <small>SWEET ENERGY</small>
+        <strong><span data-exp42-count>0</span> / 10</strong>
+      </div>
+      <div>
+        <div class="exp42-progress" aria-label="Sweet Express listening progress"><i data-exp42-progress></i></div>
+        <p class="exp42-energy-message" data-exp42-status>Complete either song to power the Sweet Express.</p>
+      </div>
+      <a class="exp42-button exp42-energy-link" data-exp42-express-link href="sweet-express.html">🚂 Visit the Sweet Express</a>
     </div>
   </div>
 </section>
@@ -1745,6 +1823,8 @@
     <nav class="exp290-fastpass-links" aria-label="Sweetville Fast Pass destinations">
       <a href="index.html"><span>🗺️</span><strong>Sweetville Map</strong><small>Return to the world hub</small></a>
       <a href="sweet-express.html"><span>🚂</span><strong>Sweet Express</strong><small>Ride back to the station</small></a>
+      <a href="fun-dipp-splash.html"><span>🍭</span><strong>Fun Dipp Splash Club</strong><small>Play, splash, and sing</small></a>
+      <a href="pink-lips-after-dark.html"><span>💋</span><strong>Pink Lips After Dark</strong><small>Neon waterfront music</small></a>
       <a href="bubblegum-bay.html"><span>💦</span><strong>Bubblegum Bay</strong><small>Waterpark adventure</small></a>
       <a href="garden-market.html"><span>🌸</span><strong>Garden Market</strong><small>Flowers and friendship</small></a>
       <a href="sweeties-stage.html"><span>🎤</span><strong>Sweeties Stage</strong><small>Join the chorus</small></a>
@@ -1770,6 +1850,7 @@
 
 <script src="exp29-fast-pass.js?v=29.1" defer></script>
 <script src="exp29-1-interactive-map.js?v=29.3" defer></script>
+<script src="exp42-music-destinations.js?v=42.0" defer></script>
 
 <div class="exp294-contact-modal" id="exp294ContactModal" aria-hidden="true">
   <div class="exp294-contact-card" role="dialog" aria-modal="true" aria-labelledby="exp294ContactTitle">

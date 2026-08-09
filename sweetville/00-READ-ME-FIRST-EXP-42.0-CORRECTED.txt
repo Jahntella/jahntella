@@ -1,0 +1,65 @@
+JAHNTELLA EXP 42.0 — CORRECTED FLAT UPLOAD
+
+WHY THE FIRST UPLOAD DID NOT APPEAR
+
+The first ZIP contained a top-level sweetville folder. Because the upload was
+performed from inside GitHub's existing sweetville folder, GitHub created:
+
+sweetville/sweetville/
+
+The live site reads the first sweetville folder, so the nested files were not used.
+
+CORRECT UPLOAD — FOLLOW THESE STEPS
+
+1. Extract this corrected ZIP.
+2. In GitHub, open the EXISTING sweetville folder.
+3. Choose Add file > Upload files.
+4. Drag everything shown at the ROOT of this extracted ZIP onto GitHub:
+
+   - index.html
+   - mochi.html
+   - fun-dipp-splash.html
+   - pink-lips-after-dark.html
+   - exp42-music-destinations.css
+   - exp42-music-destinations.js
+   - assets folder
+
+5. Before committing, confirm GitHub shows paths such as:
+
+   sweetville/index.html
+   sweetville/fun-dipp-splash.html
+   sweetville/pink-lips-after-dark.html
+   sweetville/assets/exp42/fun-dipp-waterpark.webp
+
+6. If GitHub shows sweetville/sweetville/ anywhere, cancel the upload.
+
+If GitHub does not accept the assets folder in the main upload, open the existing
+sweetville/assets folder and drag only the extracted exp42 folder into it.
+
+EASY WAYS TO REACH BOTH MUSIC DESTINATIONS
+
+- Two large destination cards appear directly beneath the official Sweetville map.
+- Both destinations appear in the Sweetville Fast Pass travel menu.
+- Each destination links to the other and back to the map.
+
+SWEET EXPRESS COUNTER
+
+- Fun Dipp and Pink Lips Remix both use the existing Sweet Energy counter.
+- A completed listen adds +1 toward the same 10-listen goal.
+- Progress is saved on the visitor's device and appears in the Sweet Express.
+
+COMMIT SUBJECT
+
+Jahntella EXP 42.0 — Correct music destination upload paths
+
+PREVIEW URLS
+
+https://jahntella.com/sweetville/?v=42.0#exp42MusicDestinations
+https://jahntella.com/sweetville/fun-dipp-splash.html?v=42.0
+https://jahntella.com/sweetville/pink-lips-after-dark.html?v=42.0
+https://jahntella.com/sweetville/mochi.html?v=42.0
+
+OPTIONAL CLEANUP AFTER THE SITE WORKS
+
+The mistakenly created sweetville/sweetville folder can be deleted later.
+It does not need to be removed for the corrected live files to work.
