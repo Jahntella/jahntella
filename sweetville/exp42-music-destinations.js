@@ -17,12 +17,32 @@
     'fun-dipp': {
       title: 'Fun Dipp',
       src: new URL('../fun-dipp-v430.mp4', document.baseURI).href,
-      destination: 'fun-dipp-splash.html'
+      destination: 'fun-dipp-splash.html',
+      artwork: new URL('assets/exp42/fun-dipp-waterpark.webp', document.baseURI).href
     },
     'pink-lips': {
       title: 'Pink Lips Remix',
       src: new URL('../pink-lips-remix-v430.mp4', document.baseURI).href,
-      destination: 'pink-lips-after-dark.html'
+      destination: 'pink-lips-after-dark.html',
+      artwork: new URL('assets/exp42/popstar-yacht-fireworks.webp', document.baseURI).href
+    },
+    'bite-lip': {
+      title: 'Bite Lip',
+      src: new URL('bite-lip-remastered.mp3', document.baseURI).href,
+      destination: 'melody-studio.html#latestMusic',
+      artwork: new URL('bite-lip-cover.webp', document.baseURI).href
+    },
+    gloss: {
+      title: 'Gloss',
+      src: new URL('gloss-remastered.mp3', document.baseURI).href,
+      destination: 'melody-studio.html#latestMusic',
+      artwork: new URL('gloss-cover.webp', document.baseURI).href
+    },
+    'your-girl': {
+      title: 'I Want To Be Your Girl',
+      src: new URL('i-want-to-be-your-girl.mp3', document.baseURI).href,
+      destination: 'melody-studio.html#latestMusic',
+      artwork: new URL('i-want-to-be-your-girl-cover.webp', document.baseURI).href
     }
   };
 
@@ -138,6 +158,24 @@
   const formatTime = seconds => {
     const safe = Number.isFinite(seconds) ? Math.max(0, seconds) : 0;
     return `${Math.floor(safe / 60)}:${String(Math.floor(safe % 60)).padStart(2, '0')}`;
+  };
+
+  const updateMediaSession = () => {
+    const track = TRACKS[playback.track];
+    if (!track || !('mediaSession' in navigator) || typeof MediaMetadata === 'undefined') return;
+    try {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: track.title,
+        artist: 'Jahntella',
+        album: 'Sweetville',
+        artwork: [{src: track.artwork, sizes: '1254x1254', type: track.artwork.endsWith('.webp') ? 'image/webp' : 'image/jpeg'}]
+      });
+    } catch {}
+  };
+
+  const setMediaPlaybackState = value => {
+    if (!('mediaSession' in navigator)) return;
+    try { navigator.mediaSession.playbackState = value; } catch {}
   };
 
   const renderTrackControls = () => {
@@ -285,6 +323,8 @@
       needsTap = false;
       playback.playing = true;
       playback.ended = false;
+      updateMediaSession();
+      setMediaPlaybackState('playing');
       renderTrackControls();
       broadcastState();
     });
@@ -293,6 +333,7 @@
       if (!needsTap) wantsPlayback = false;
       playback.playing = wantsPlayback;
       playback.position = audio.currentTime || playback.position;
+      setMediaPlaybackState('paused');
       renderTrackControls();
       broadcastState();
     });
@@ -311,6 +352,7 @@
       playback.playing = false;
       playback.ended = true;
       playback.position = 0;
+      setMediaPlaybackState('none');
       renderTrackControls();
       broadcastState();
     });
@@ -356,6 +398,7 @@
     playback.playing = true;
     playback.ended = false;
     needsTap = false;
+    updateMediaSession();
     writePlayback();
 
     const begin = async () => {
@@ -385,6 +428,7 @@
     needsTap = false;
     playback.playing = false;
     playback.position = audio.currentTime || playback.position;
+    setMediaPlaybackState('paused');
     audio.pause();
     renderTrackControls();
     broadcastState();
@@ -399,6 +443,7 @@
       audio.load();
     }
     playback = {track: '', position: 0, playing: false, credited: false, ended: false, savedAt: Date.now()};
+    setMediaPlaybackState('none');
     renderTrackControls();
     broadcastState();
   };
@@ -559,6 +604,37 @@
     if (room) room.href = 'sweetie-room.html';
   };
 
+  const addMusicFastPass = () => {
+    document.querySelectorAll('.exp290-fastpass-links').forEach(nav => {
+      if (nav.querySelector('a[href^="melody-studio.html"]')) return;
+      const link = document.createElement('a');
+      link.href = 'melody-studio.html#latestMusic';
+      link.innerHTML = '<span>🎧</span><strong>Melody Studio</strong><small>Play Jahntella’s newest songs</small>';
+      const afterDark = nav.querySelector('a[href^="pink-lips-after-dark.html"]');
+      if (afterDark) afterDark.insertAdjacentElement('afterend', link);
+      else nav.appendChild(link);
+    });
+  };
+
+  const setupMediaSession = () => {
+    if (!isTopWindow || !('mediaSession' in navigator)) return;
+    const setHandler = (action, handler) => {
+      try { navigator.mediaSession.setActionHandler(action, handler); } catch {}
+    };
+    setHandler('play', () => { if (playback.track) playTrack(playback.track); });
+    setHandler('pause', pauseTrack);
+    setHandler('stop', stopTrack);
+    setHandler('seekbackward', details => {
+      if (audio) audio.currentTime = Math.max(0, audio.currentTime - (details.seekOffset || 10));
+    });
+    setHandler('seekforward', details => {
+      if (audio) audio.currentTime = Math.min(audio.duration || Infinity, audio.currentTime + (details.seekOffset || 10));
+    });
+    setHandler('seekto', details => {
+      if (audio && Number.isFinite(details.seekTime)) audio.currentTime = details.seekTime;
+    });
+  };
+
   const recordVisit = () => {
     const current = readVisits();
     try { localStorage.setItem(VISIT_KEY, String(current + 1)); } catch {}
@@ -580,6 +656,7 @@
     injectStyles();
     recordVisit();
     fixWelcomeActions();
+    addMusicFastPass();
     cleanWorldTitles(document.body);
     renderEnergy();
     renderWorldProgress();
@@ -630,6 +707,7 @@
       window.parent.postMessage({type: 'sweetville:music-ready'}, location.origin);
     } else {
       ensureSpeaker();
+      setupMediaSession();
       restorePlayback();
     }
 

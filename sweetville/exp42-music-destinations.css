@@ -570,6 +570,11 @@ body.exp42-page {
   aspect-ratio: 3 / 4;
 }
 
+/* Keep Jahntella's face in frame on the tall Goodnight, Sweeties portrait. */
+.exp42-gallery .exp42-bedtime-photo {
+  object-position: center 18%;
+}
+
 .exp42-gallery figcaption {
   position: absolute;
   inset: auto 0 0;

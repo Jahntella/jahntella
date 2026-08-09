@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#120015">
-  <meta name="description" content="Enter Sweetville: explore 13 interactive districts plus the Fun Dipp Splash Club and Pink Lips After Dark music destinations.">
+  <meta name="description" content="Enter Sweetville, explore 13 interactive districts, and play Jahntella songs including Bite Lip, Gloss, I Want To Be Your Girl, Fun Dipp, and Pink Lips Remix.">
   <title>Sweetville — Music Destinations</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="exp29-fast-pass.css?v=29.1">
 <link rel="stylesheet" href="exp29-1-interactive-map.css?v=29.3">
 <link rel="stylesheet" href="exp42-music-destinations.css?v=42.0">
+<link rel="stylesheet" href="exp43-music-drop.css?v=43.0">
 <link rel="stylesheet" href="../exp29-4-contact.css?v=29.4">
 <link rel="stylesheet" href="exp30-9-gate-hard-reset.css?v=30.9">
 </head>
@@ -255,6 +256,61 @@
       </article>
     </div>
 
+    <section class="exp43-music-drop" id="latestMusic" aria-labelledby="latestMusicTitle">
+      <header class="exp43-drop-head">
+        <div>
+          <small>THE LATEST MUSIC IN SWEETVILLE</small>
+          <h2 id="latestMusicTitle">Three new songs. <em>Press play.</em></h2>
+          <p>Turn up Jahntella’s newest releases here or enter Melody Studio for the full listening wall. The music keeps playing while you explore Sweetville.</p>
+        </div>
+        <a class="exp43-studio-link" href="melody-studio.html#latestMusic">🎧 Enter Melody Studio</a>
+      </header>
+
+      <div class="exp43-release-grid">
+        <article class="exp43-release-card" data-exp42-player="bite-lip">
+          <figure class="exp43-cover">
+            <img src="bite-lip-cover.webp" alt="Bite Lip single cover by Jahntella" loading="lazy" decoding="async">
+            <span>REMASTERED</span>
+          </figure>
+          <div class="exp43-release-copy">
+            <small>NEON POP</small>
+            <h3>Bite Lip</h3>
+            <p>Flirty pop energy, a neon hook, and that left-hip, right-dip attitude.</p>
+            <button class="exp43-play" type="button" data-exp42-play>▶ Play Bite Lip</button>
+            <span class="exp43-now" data-exp42-now>READY TO PLAY</span>
+          </div>
+        </article>
+
+        <article class="exp43-release-card" data-exp42-player="gloss">
+          <figure class="exp43-cover">
+            <img src="gloss-cover.webp" alt="Gloss single cover by Jahntella" loading="lazy" decoding="async">
+            <span>REMASTERED</span>
+          </figure>
+          <div class="exp43-release-copy">
+            <small>GLOSSY POP</small>
+            <h3>Gloss</h3>
+            <p>Playful, polished pop made for pink lights and one more kiss.</p>
+            <button class="exp43-play" type="button" data-exp42-play>▶ Play Gloss</button>
+            <span class="exp43-now" data-exp42-now>READY TO PLAY</span>
+          </div>
+        </article>
+
+        <article class="exp43-release-card" data-exp42-player="your-girl">
+          <figure class="exp43-cover">
+            <img src="i-want-to-be-your-girl-cover.webp" alt="I Want To Be Your Girl single cover by Jahntella" loading="lazy" decoding="async">
+            <span>HOUSE / EDM</span>
+          </figure>
+          <div class="exp43-release-copy">
+            <small>SWEETVILLE DANCE FLOOR</small>
+            <h3>I Want To Be Your Girl</h3>
+            <p>A heart-forward house and EDM rush built for the Sweetville dance floor.</p>
+            <button class="exp43-play" type="button" data-exp42-play>▶ Play I Want To Be Your Girl</button>
+            <span class="exp43-now" data-exp42-now>READY TO PLAY</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <div class="exp42-energy-panel">
       <div class="exp42-energy-count">
         <small>SWEET ENERGY</small>
@@ -262,7 +318,7 @@
       </div>
       <div>
         <div class="exp42-progress" aria-label="Sweet Express listening progress"><i data-exp42-progress></i></div>
-        <p class="exp42-energy-message" data-exp42-status>Complete either song to power the Sweet Express.</p>
+        <p class="exp42-energy-message" data-exp42-status>Complete any song to power the Sweet Express.</p>
       </div>
       <a class="exp42-button exp42-energy-link" data-exp42-express-link href="sweet-express.html">🚂 Visit the Sweet Express</a>
     </div>
@@ -1850,7 +1906,7 @@
 
 <script src="exp29-fast-pass.js?v=29.1" defer></script>
 <script src="exp29-1-interactive-map.js?v=29.3" defer></script>
-<script src="exp42-music-destinations.js?v=42.1" defer></script>
+<script src="exp42-music-destinations.js?v=43.0" defer></script>
 
 <div class="exp294-contact-modal" id="exp294ContactModal" aria-hidden="true">
   <div class="exp294-contact-card" role="dialog" aria-modal="true" aria-labelledby="exp294ContactTitle">

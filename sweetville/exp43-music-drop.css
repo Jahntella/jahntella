@@ -1,0 +1,312 @@
+/* Jahntella's newest playable Sweetville releases */
+.exp43-music-drop,
+.exp43-music-drop * {
+  box-sizing: border-box;
+}
+
+.exp43-music-drop {
+  position: relative;
+  overflow: hidden;
+  margin-top: clamp(1.4rem, 4vw, 3.25rem);
+  padding: clamp(1.2rem, 4vw, 2.6rem);
+  border: 1px solid rgba(255, 126, 203, .42);
+  border-radius: 30px;
+  color: #fff;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(255, 27, 154, .25), transparent 34%),
+    radial-gradient(circle at 90% 20%, rgba(122, 56, 255, .24), transparent 36%),
+    linear-gradient(145deg, #21001f, #09000e 64%, #170026);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, .4);
+  font-family: "DM Sans", Arial, sans-serif;
+}
+
+.exp43-music-drop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .18;
+  background-image: radial-gradient(circle, #fff 0 1px, transparent 1.7px);
+  background-size: 38px 38px;
+  mask-image: linear-gradient(#000, transparent 82%);
+}
+
+.exp43-drop-head,
+.exp43-release-grid,
+.exp43-drop-energy {
+  position: relative;
+  z-index: 1;
+}
+
+.exp43-drop-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.exp43-drop-head > div:first-child {
+  max-width: 760px;
+}
+
+.exp43-drop-head small,
+.exp43-release-copy small {
+  color: #ff9fd0;
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.exp43-drop-head h2 {
+  margin: .35rem 0 .65rem;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(2.5rem, 5vw, 5.1rem);
+  line-height: .98;
+}
+
+.exp43-drop-head h2 em {
+  color: #ff75bf;
+  font-family: "Sacramento", cursive;
+  font-weight: 400;
+}
+
+.exp43-drop-head p,
+.exp43-release-copy p,
+.exp43-drop-energy p {
+  color: #e7cada;
+  line-height: 1.65;
+}
+
+.exp43-drop-head p {
+  max-width: 650px;
+  margin: 0;
+}
+
+.exp43-studio-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-height: 46px;
+  padding: .78rem 1.05rem;
+  border: 1px solid rgba(255, 161, 216, .5);
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(135deg, #ff2fa1, #873eff);
+  box-shadow: 0 14px 34px rgba(255, 41, 158, .24);
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.exp43-release-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.exp43-release-card {
+  overflow: hidden;
+  border: 1px solid rgba(255, 148, 210, .36);
+  border-radius: 25px;
+  background: rgba(10, 0, 13, .9);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, .4);
+}
+
+.exp43-cover {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  background: #150014;
+}
+
+.exp43-cover img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  transition: transform .45s ease, filter .45s ease;
+}
+
+.exp43-release-card:hover .exp43-cover img,
+.exp43-release-card:focus-within .exp43-cover img {
+  transform: scale(1.025);
+  filter: saturate(1.06);
+}
+
+.exp43-cover span {
+  position: absolute;
+  top: .85rem;
+  right: .85rem;
+  padding: .48rem .68rem;
+  border: 1px solid rgba(255, 255, 255, .4);
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(20, 0, 22, .78);
+  backdrop-filter: blur(12px);
+  font-size: .66rem;
+  font-weight: 900;
+  letter-spacing: .1em;
+}
+
+.exp43-release-copy {
+  padding: 1.15rem;
+}
+
+.exp43-release-copy h3 {
+  margin: .3rem 0 .45rem;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(1.7rem, 3vw, 2.65rem);
+  line-height: 1;
+}
+
+.exp43-release-copy p {
+  min-height: 4.9rem;
+  margin: 0;
+  font-size: .92rem;
+}
+
+.exp43-play {
+  width: 100%;
+  min-height: 46px;
+  margin-top: .9rem;
+  padding: .72rem 1rem;
+  border: 1px solid rgba(255, 145, 207, .56);
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(135deg, rgba(255, 47, 161, .92), rgba(126, 53, 255, .92));
+  font: inherit;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.exp43-play.is-playing {
+  border-color: #ffe08a;
+  color: #25001d;
+  background: #ffe08a;
+}
+
+.exp43-now {
+  display: block;
+  margin-top: .65rem;
+  color: #ffe08a;
+  font-size: .7rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-align: center;
+}
+
+.exp43-drop-energy {
+  display: grid;
+  grid-template-columns: auto minmax(160px, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid rgba(255, 155, 211, .34);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, .055);
+}
+
+.exp43-energy-number {
+  text-align: center;
+}
+
+.exp43-energy-number small,
+.exp43-energy-number strong {
+  display: block;
+}
+
+.exp43-energy-number small {
+  color: #ffadd7;
+  font-size: .65rem;
+  font-weight: 900;
+  letter-spacing: .11em;
+}
+
+.exp43-energy-number strong {
+  margin-top: .18rem;
+  font-size: 1.45rem;
+}
+
+.exp43-energy-track {
+  overflow: hidden;
+  height: 10px;
+  border-radius: 999px;
+  background: #260021;
+}
+
+.exp43-energy-track i {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ff329f, #ff91cd, #ffe079);
+  box-shadow: 0 0 18px rgba(255, 82, 176, .68);
+  transition: width .5s ease;
+}
+
+.exp43-drop-energy p {
+  margin: .4rem 0 0;
+  font-size: .82rem;
+}
+
+.exp43-express-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: .68rem .92rem;
+  border: 1px solid rgba(255, 157, 213, .46);
+  border-radius: 999px;
+  color: #fff;
+  font-weight: 900;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.exp43-music-drop.exp43-studio-drop {
+  margin-top: 1rem;
+}
+
+@media (max-width: 900px) {
+  .exp43-release-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .exp43-release-card:last-child {
+    grid-column: 1 / -1;
+    width: min(560px, 100%);
+    justify-self: center;
+  }
+
+  .exp43-drop-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 640px) {
+  .exp43-music-drop {
+    padding: 1rem;
+    border-radius: 22px;
+  }
+
+  .exp43-release-grid,
+  .exp43-drop-energy {
+    grid-template-columns: 1fr;
+  }
+
+  .exp43-release-card:last-child {
+    grid-column: auto;
+  }
+
+  .exp43-release-copy p {
+    min-height: 0;
+  }
+
+  .exp43-drop-energy {
+    text-align: center;
+  }
+}

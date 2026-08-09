@@ -6,14 +6,79 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="exp34-district-pack.css?v=34.0">
+<link rel="stylesheet" href="exp43-music-drop.css?v=43.0">
 </head>
 <body>
-<header class="d-top"><a class="d-brand" href="index.html">Sweetville ♡</a><nav class="d-actions"><a href="index.html">🗺 Back to Map</a><a class="real" href="../index.html">🎟 Ticket to the Real World</a></nav></header>
+<header class="d-top"><a class="d-brand" href="index.html">Sweetville ♡</a><nav class="d-actions"><a href="#latestMusic">🎧 New Music</a><a href="index.html">🗺 Back to Map</a><a class="real" href="../index.html">🎟 Ticket to the Real World</a></nav></header>
 <main class="d-main">
 <section class="d-hero"><img src="assets/exp34/melody-studio.webp" alt="Melody Studio" loading="eager"><div class="d-overlay"><small>SWEETVILLE CREATIVE DISTRICT</small><h1>Melody <em>Studio.</em></h1><p>Every Sweetville song begins with one brave little note.</p></div></section>
-<section class="d-panel"><h2>Welcome, Sweetie.</h2><p>Learn, create, sing, and write beside Jahntella. Melody Studio is where ideas become lyrics, rhythms become memories, and every voice is invited into the room.</p></section>
+<section class="d-panel"><h2>Welcome, Sweetie.</h2><p>Learn, create, sing, and write beside Jahntella. Melody Studio is where ideas become lyrics, rhythms become memories, and Jahntella’s newest songs are ready to play.</p></section>
+
+<section class="exp43-music-drop exp43-studio-drop" id="latestMusic" aria-labelledby="studioMusicTitle">
+  <header class="exp43-drop-head">
+    <div>
+      <small>NOW PLAYING IN MELODY STUDIO</small>
+      <h2 id="studioMusicTitle">Choose your <em>new favorite.</em></h2>
+      <p>Play a full song, keep it going across Sweetville, and add one Sweet Energy point toward the shared 10-listen Sweet Express goal.</p>
+    </div>
+    <a class="exp43-studio-link" href="index.html#latestMusic">♡ Sweetville Music</a>
+  </header>
+
+  <div class="exp43-release-grid">
+    <article class="exp43-release-card" data-exp42-player="bite-lip">
+      <figure class="exp43-cover">
+        <img src="bite-lip-cover.webp" alt="Bite Lip single cover by Jahntella" loading="eager" fetchpriority="high">
+        <span>REMASTERED</span>
+      </figure>
+      <div class="exp43-release-copy">
+        <small>NEON POP</small>
+        <h3>Bite Lip</h3>
+        <p>Flirty pop energy, a neon hook, and that left-hip, right-dip attitude.</p>
+        <button class="exp43-play" type="button" data-exp42-play>▶ Play Bite Lip</button>
+        <span class="exp43-now" data-exp42-now>READY TO PLAY</span>
+      </div>
+    </article>
+
+    <article class="exp43-release-card" data-exp42-player="gloss">
+      <figure class="exp43-cover">
+        <img src="gloss-cover.webp" alt="Gloss single cover by Jahntella" loading="lazy" decoding="async">
+        <span>REMASTERED</span>
+      </figure>
+      <div class="exp43-release-copy">
+        <small>GLOSSY POP</small>
+        <h3>Gloss</h3>
+        <p>Playful, polished pop made for pink lights and one more kiss.</p>
+        <button class="exp43-play" type="button" data-exp42-play>▶ Play Gloss</button>
+        <span class="exp43-now" data-exp42-now>READY TO PLAY</span>
+      </div>
+    </article>
+
+    <article class="exp43-release-card" data-exp42-player="your-girl">
+      <figure class="exp43-cover">
+        <img src="i-want-to-be-your-girl-cover.webp" alt="I Want To Be Your Girl single cover by Jahntella" loading="lazy" decoding="async">
+        <span>HOUSE / EDM</span>
+      </figure>
+      <div class="exp43-release-copy">
+        <small>SWEETVILLE DANCE FLOOR</small>
+        <h3>I Want To Be Your Girl</h3>
+        <p>A heart-forward house and EDM rush built for the Sweetville dance floor.</p>
+        <button class="exp43-play" type="button" data-exp42-play>▶ Play I Want To Be Your Girl</button>
+        <span class="exp43-now" data-exp42-now>READY TO PLAY</span>
+      </div>
+    </article>
+  </div>
+
+  <div class="exp43-drop-energy">
+    <div class="exp43-energy-number"><small>SWEET ENERGY</small><strong><span data-exp42-count>0</span> / 10</strong></div>
+    <div>
+      <div class="exp43-energy-track" aria-label="Sweet Express listening progress"><i data-exp42-progress></i></div>
+      <p data-exp42-status>Complete any song to power the Sweet Express.</p>
+    </div>
+    <a class="exp43-express-link" data-exp42-express-link href="sweet-express.html">🚂 Visit the Sweet Express</a>
+  </div>
+</section>
 <section class="d-grid"><article class="d-card"><span>🎹</span><h3>Learn Piano</h3><p>Future interactive lessons can introduce notes and melodies.</p></article><article class="d-card"><span>🎤</span><h3>Vocal Warmups</h3><p>Sing along with simple Sweetville vocal exercises.</p></article><article class="d-card"><span>✍️</span><h3>Songwriting</h3><p>Collect words, feelings, and hidden lyrics for new songs.</p></article></section>
 <nav class="d-nav"><a href="pink-cafe.html">← Pink Café</a><a class="map" href="index.html">↑ Sweetville Map</a><a href="sweeties-stage.html">Sweeties Stage →</a></nav>
 </main>
-  <script src="exp42-music-destinations.js?v=42.1" defer></script>
+  <script src="exp42-music-destinations.js?v=43.0" defer></script>
 </body></html>
