@@ -1,5 +1,5 @@
 (() => {
-  const order = ["fun-dipp", "pink-lips"];
+  const order = ["fun-dipp", "pink-lips", "bite-lip", "gloss", "your-girl", "embrace-me"];
   const tracks = {
     "fun-dipp": {
       audio: document.getElementById("audioFunDipp"),
@@ -14,6 +14,30 @@
       artwork: "https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/pink-lips-remix.png",
       recordWrap: document.getElementById("pinkLipsRecordWrap"),
       card: document.querySelector('[data-card="pink-lips"]')
+    },
+    "bite-lip": {
+      audio: document.getElementById("audioBiteLip"),
+      title: "Bite Lip",
+      artwork: "sweetville/bite-lip-cover.webp",
+      card: document.querySelector('[data-card="bite-lip"]')
+    },
+    "gloss": {
+      audio: document.getElementById("audioGloss"),
+      title: "Gloss",
+      artwork: "sweetville/gloss-cover.webp",
+      card: document.querySelector('[data-card="gloss"]')
+    },
+    "your-girl": {
+      audio: document.getElementById("audioYourGirl"),
+      title: "I Want To Be Your Girl",
+      artwork: "sweetville/i-want-to-be-your-girl-cover.webp",
+      card: document.querySelector('[data-card="your-girl"]')
+    },
+    "embrace-me": {
+      audio: document.getElementById("audioEmbraceMe"),
+      title: "Embrace Me",
+      artwork: "sweetville/embrace-me-cover.webp",
+      card: document.querySelector('[data-card="embrace-me"]')
     }
   };
 

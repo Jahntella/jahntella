@@ -43,8 +43,16 @@
       src: new URL('i-want-to-be-your-girl.mp3', document.baseURI).href,
       destination: 'melody-studio.html#latestMusic',
       artwork: new URL('i-want-to-be-your-girl-cover.webp', document.baseURI).href
+    },
+    'embrace-me': {
+      title: 'Embrace Me',
+      src: new URL('embrace-me.mp3', document.baseURI).href,
+      destination: 'melody-studio.html#latestMusic',
+      artwork: new URL('embrace-me-cover.webp', document.baseURI).href
     }
   };
+
+  const TRACK_ORDER = ['fun-dipp', 'pink-lips', 'bite-lip', 'gloss', 'your-girl', 'embrace-me'];
 
   const safeJSON = (value, fallback) => {
     try { return JSON.parse(value) ?? fallback; } catch { return fallback; }
@@ -347,14 +355,16 @@
     });
     audio.addEventListener('ended', () => {
       maybeCredit(true);
-      wantsPlayback = false;
       needsTap = false;
       playback.playing = false;
       playback.ended = true;
       playback.position = 0;
-      setMediaPlaybackState('none');
       renderTrackControls();
       broadcastState();
+      const currentIndex = TRACK_ORDER.indexOf(playback.track);
+      const nextTrack = TRACK_ORDER[(currentIndex + 1 + TRACK_ORDER.length) % TRACK_ORDER.length];
+      showToast(`${TRACKS[playback.track].title} complete — now playing ${TRACKS[nextTrack].title}.`);
+      playTrack(nextTrack, {fresh: true});
     });
     audio.addEventListener('loadedmetadata', renderSpeaker);
     return audio;
@@ -455,6 +465,12 @@
     }
     if (playback.track === track && playback.playing && !needsTap && audio && !audio.paused) pauseTrack();
     else playTrack(track, {fresh: playback.track === track && playback.ended});
+  };
+
+  const skipTrack = direction => {
+    const currentIndex = Math.max(0, TRACK_ORDER.indexOf(playback.track));
+    const nextTrack = TRACK_ORDER[(currentIndex + direction + TRACK_ORDER.length) % TRACK_ORDER.length];
+    playTrack(nextTrack, {fresh: true});
   };
 
   const handleMusicButton = event => {
@@ -624,6 +640,8 @@
     setHandler('play', () => { if (playback.track) playTrack(playback.track); });
     setHandler('pause', pauseTrack);
     setHandler('stop', stopTrack);
+    setHandler('previoustrack', () => skipTrack(-1));
+    setHandler('nexttrack', () => skipTrack(1));
     setHandler('seekbackward', details => {
       if (audio) audio.currentTime = Math.max(0, audio.currentTime - (details.seekOffset || 10));
     });

@@ -23,6 +23,26 @@
       audio: document.getElementById('audioPinkLips'),
       title: 'Pink Lips Remix',
       button: document.querySelector('[data-track="pink-lips"]')
+    },
+    {
+      audio: document.getElementById('audioBiteLip'),
+      title: 'Bite Lip',
+      button: document.querySelector('[data-track="bite-lip"]')
+    },
+    {
+      audio: document.getElementById('audioGloss'),
+      title: 'Gloss',
+      button: document.querySelector('[data-track="gloss"]')
+    },
+    {
+      audio: document.getElementById('audioYourGirl'),
+      title: 'I Want To Be Your Girl',
+      button: document.querySelector('[data-track="your-girl"]')
+    },
+    {
+      audio: document.getElementById('audioEmbraceMe'),
+      title: 'Embrace Me',
+      button: document.querySelector('[data-track="embrace-me"]')
     }
   ].filter(track => track.audio);
 
@@ -60,7 +80,7 @@
     }
 
     const remaining = GOAL - count;
-    status.textContent = message || `${remaining} completed listen${remaining === 1 ? '' : 's'} to either song until Bubblegum Bay unlocks.`;
+    status.textContent = message || `${remaining} completed song${remaining === 1 ? '' : 's'} until Bubblegum Bay unlocks.`;
     boardButton.disabled = true;
     boardButton.classList.remove('is-unlocked');
     boardButton.textContent = '🚂 All Aboard — Locked';

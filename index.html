@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#120015">
-  <meta name="description" content="The official home of Jahntella. Listen to Fun Dipp and Pink Lips Remix.">
+  <meta name="description" content="The official home of Jahntella. Listen to Fun Dipp, Pink Lips Remix, and the newest music from the World of Sweet.">
   <title>Jahntella — The World of Sweet</title>
   <link rel="preload" href="assets/hero-performance-poster.webp" as="image" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="exp25-1-sweet-express.css?v=25.5">
 <link rel="stylesheet" href="exp29-4-contact.css?v=29.4">
 <link rel="stylesheet" href="exp30-6-poster-fix.css?v=30.6">
+<link rel="stylesheet" href="exp44-new-music.css?v=44.0">
 </head>
 <body>
   <div id="siteLoader" class="site-loader" aria-hidden="true">
@@ -150,6 +151,59 @@
       </div>
     </section>
 
+    <section class="exp44-new-music reveal" id="newMusic" aria-labelledby="newMusicTitle">
+      <header class="exp44-new-music-head">
+        <div>
+          <p class="eyebrow">NEW MUSIC</p>
+          <h2 id="newMusicTitle">Four new songs. <em>One nonstop playlist.</em></h2>
+          <p>Press play on any release and Jahntella’s music will roll right into the next song.</p>
+        </div>
+        <a href="sweetville/melody-studio.html#latestMusic">Enter Melody Studio →</a>
+      </header>
+
+      <div class="exp44-new-music-grid">
+        <article class="exp44-new-music-card" data-card="bite-lip">
+          <img src="sweetville/bite-lip-cover.webp" alt="Bite Lip single cover by Jahntella" loading="lazy" decoding="async">
+          <div>
+            <small>REMASTERED · NEON POP</small>
+            <h3>Bite Lip</h3>
+            <p>Flirty pop energy with that left-hip, right-dip attitude.</p>
+            <button class="play-button" type="button" data-track="bite-lip">▶ Play Bite Lip</button>
+          </div>
+        </article>
+
+        <article class="exp44-new-music-card" data-card="gloss">
+          <img src="sweetville/gloss-cover.webp" alt="Gloss single cover by Jahntella" loading="lazy" decoding="async">
+          <div>
+            <small>REMASTERED · GLOSSY POP</small>
+            <h3>Gloss</h3>
+            <p>Polished pink-pop sparkle made for one more kiss.</p>
+            <button class="play-button" type="button" data-track="gloss">▶ Play Gloss</button>
+          </div>
+        </article>
+
+        <article class="exp44-new-music-card" data-card="your-girl">
+          <img src="sweetville/i-want-to-be-your-girl-cover.webp" alt="I Want To Be Your Girl single cover by Jahntella" loading="lazy" decoding="async">
+          <div>
+            <small>HOUSE / EDM</small>
+            <h3>I Want To Be Your Girl</h3>
+            <p>A heart-forward rush built for the Sweetville dance floor.</p>
+            <button class="play-button" type="button" data-track="your-girl">▶ Play I Want To Be Your Girl</button>
+          </div>
+        </article>
+
+        <article class="exp44-new-music-card" data-card="embrace-me">
+          <img src="sweetville/embrace-me-cover.webp" alt="Embrace Me single cover by Jahntella" loading="lazy" decoding="async">
+          <div>
+            <small>HOUSE / EDM · NEW</small>
+            <h3>Embrace Me</h3>
+            <p>Give in to the rush and let the moment take us higher.</p>
+            <button class="play-button" type="button" data-track="embrace-me">▶ Play Embrace Me</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
     
 <section class="exp250-station-section reveal" id="sweet-express">
   <div class="exp250-station-shell">
@@ -169,7 +223,7 @@
       </div>
       <div class="exp250-progress-card">
         <div class="exp250-progress-heading">
-          <span>Listen to either song 10 times</span>
+          <span>Complete any Jahntella song 10 times</span>
           <strong><span id="exp250PlayCount">0</span> / 10</strong>
         </div>
         <div class="exp250-progress-track"><i id="exp250ProgressBar"></i></div>
@@ -520,7 +574,23 @@
     <source src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/pink-lips-remix-v430.mp4" type="audio/mp4">
   </audio>
 
-  <script defer src="script.js"></script>
+  <audio id="audioBiteLip" preload="metadata">
+    <source src="sweetville/bite-lip-remastered.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="audioGloss" preload="metadata">
+    <source src="sweetville/gloss-remastered.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="audioYourGirl" preload="metadata">
+    <source src="sweetville/i-want-to-be-your-girl.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="audioEmbraceMe" preload="metadata">
+    <source src="sweetville/embrace-me.mp3" type="audio/mpeg">
+  </audio>
+
+  <script defer src="script.js?v=44.0"></script>
 
   <div class="exp191-ticket-wrap">
     <a class="exp191-ticket" href="sweetville/" aria-label="Use your Ticket to Sweetville">
@@ -536,7 +606,7 @@
 <script src="exp19-5-popstar.js?v=19.5" defer></script>
 <script src="exp21-0-performance.js?v=21.0" defer></script>
 <script src="exp21-1-vault.js?v=21.8" defer></script>
-<script src="exp25-1-sweet-express.js?v=25.6" defer></script>
+<script src="exp25-1-sweet-express.js?v=44.0" defer></script>
 
 <div class="exp294-contact-modal" id="exp294ContactModal" aria-hidden="true">
   <div class="exp294-contact-card" role="dialog" aria-modal="true" aria-labelledby="exp294ContactTitle">
