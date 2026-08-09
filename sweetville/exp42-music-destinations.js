@@ -61,10 +61,16 @@
       src: new URL('play-with-me.mp3', document.baseURI).href,
       destination: 'melody-studio.html#latestMusic',
       artwork: new URL('play-with-me-cover.webp', document.baseURI).href
+    },
+    carnival: {
+      title: 'Carnival',
+      src: new URL('carnival.mp3', document.baseURI).href,
+      destination: 'carnival.html',
+      artwork: new URL('carnival-cover.webp', document.baseURI).href
     }
   };
 
-  const TRACK_ORDER = ['fun-dipp', 'pink-lips', 'bite-lip', 'gloss', 'your-girl', 'embrace-me', 'we-come-together', 'play-with-me'];
+  const TRACK_ORDER = ['fun-dipp', 'pink-lips', 'bite-lip', 'gloss', 'your-girl', 'embrace-me', 'we-come-together', 'play-with-me', 'carnival'];
 
   const safeJSON = (value, fallback) => {
     try { return JSON.parse(value) ?? fallback; } catch { return fallback; }

@@ -61,6 +61,12 @@
       audio: document.getElementById('audioPlayWithMe'),
       title: 'Play With Me',
       button: document.querySelector('[data-track="play-with-me"]')
+    },
+    {
+      key: 'carnival',
+      audio: document.getElementById('audioCarnival'),
+      title: 'Carnival',
+      button: document.querySelector('[data-track="carnival"]')
     }
   ].filter(track => track.audio);
 

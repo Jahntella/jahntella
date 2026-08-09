@@ -9,7 +9,7 @@
   const CREDIT_THRESHOLD = 0.90;
   const base = new URL('.', document.currentScript?.src || document.baseURI);
   const asset = path => new URL(path, base).href;
-  const order = ['fun-dipp', 'pink-lips', 'bite-lip', 'gloss', 'your-girl', 'embrace-me', 'we-come-together', 'play-with-me'];
+  const order = ['fun-dipp', 'pink-lips', 'bite-lip', 'gloss', 'your-girl', 'embrace-me', 'we-come-together', 'play-with-me', 'carnival'];
   const tracks = {
     'fun-dipp': {
       title: 'Fun Dipp',
@@ -50,6 +50,11 @@
       title: 'Play With Me',
       src: asset('sweetville/play-with-me.mp3'),
       artwork: asset('sweetville/play-with-me-cover.webp')
+    },
+    carnival: {
+      title: 'Carnival',
+      src: asset('sweetville/carnival.mp3'),
+      artwork: asset('sweetville/carnival-cover.webp')
     }
   };
 
