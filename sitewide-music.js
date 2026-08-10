@@ -9,7 +9,7 @@
   const CREDIT_THRESHOLD = 0.90;
   const base = new URL('.', document.currentScript?.src || document.baseURI);
   const asset = path => new URL(path, base).href;
-  const order = ['fun-dipp', 'pink-lips', 'bite-lip', 'gloss', 'your-girl', 'embrace-me', 'we-come-together', 'play-with-me', 'carnival'];
+  const order = ['fun-dipp', 'pink-lips', 'bite-lip', 'gloss', 'your-girl', 'embrace-me', 'we-come-together', 'play-with-me', 'carnival', 'made-of-light'];
   const tracks = {
     'fun-dipp': {
       title: 'Fun Dipp',
@@ -55,6 +55,11 @@
       title: 'Carnival',
       src: asset('sweetville/carnival.mp3'),
       artwork: asset('sweetville/carnival-cover.webp')
+    },
+    'made-of-light': {
+      title: 'Made of Light',
+      src: asset('sweetville/made-of-light.mp3'),
+      artwork: asset('sweetville/made-of-light-cover.webp')
     }
   };
 

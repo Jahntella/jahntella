@@ -1,6 +1,6 @@
 (() => {
   const SITE_PLAYBACK_KEY = "jahntellaSiteMusicV46";
-  const order = ["fun-dipp", "pink-lips", "bite-lip", "gloss", "your-girl", "embrace-me", "we-come-together", "play-with-me", "carnival"];
+  const order = ["fun-dipp", "pink-lips", "bite-lip", "gloss", "your-girl", "embrace-me", "we-come-together", "play-with-me", "carnival", "made-of-light"];
   const tracks = {
     "fun-dipp": {
       audio: document.getElementById("audioFunDipp"),
@@ -57,6 +57,12 @@
       title: "Carnival",
       artwork: "sweetville/carnival-cover.webp",
       card: document.querySelector('[data-card="carnival"]')
+    },
+    "made-of-light": {
+      audio: document.getElementById("audioMadeOfLight"),
+      title: "Made of Light",
+      artwork: "sweetville/made-of-light-cover.webp",
+      card: document.querySelector('[data-card="made-of-light"]')
     }
   };
 

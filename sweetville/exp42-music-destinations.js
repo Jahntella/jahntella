@@ -67,10 +67,16 @@
       src: new URL('carnival.mp3', document.baseURI).href,
       destination: 'carnival.html',
       artwork: new URL('carnival-cover.webp', document.baseURI).href
+    },
+    'made-of-light': {
+      title: 'Made of Light',
+      src: new URL('made-of-light.mp3', document.baseURI).href,
+      destination: 'starlight-stage.html',
+      artwork: new URL('made-of-light-cover.webp', document.baseURI).href
     }
   };
 
-  const TRACK_ORDER = ['fun-dipp', 'pink-lips', 'bite-lip', 'gloss', 'your-girl', 'embrace-me', 'we-come-together', 'play-with-me', 'carnival'];
+  const TRACK_ORDER = ['fun-dipp', 'pink-lips', 'bite-lip', 'gloss', 'your-girl', 'embrace-me', 'we-come-together', 'play-with-me', 'carnival', 'made-of-light'];
 
   const safeJSON = (value, fallback) => {
     try { return JSON.parse(value) ?? fallback; } catch { return fallback; }

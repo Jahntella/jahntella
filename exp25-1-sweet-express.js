@@ -67,6 +67,12 @@
       audio: document.getElementById('audioCarnival'),
       title: 'Carnival',
       button: document.querySelector('[data-track="carnival"]')
+    },
+    {
+      key: 'made-of-light',
+      audio: document.getElementById('audioMadeOfLight'),
+      title: 'Made of Light',
+      button: document.querySelector('[data-track="made-of-light"]')
     }
   ].filter(track => track.audio);
 
