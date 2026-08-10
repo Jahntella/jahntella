@@ -1,0 +1,11 @@
+/* EXP 48.4 — Temporarily hide the homepage poster collection.
+   Remove this stylesheet link when the refreshed posters are ready. */
+#downloads > .section-heading.centered,
+#downloads > .poster-gallery {
+  display: none !important;
+}
+
+/* Keep the remaining Phone Funloads area comfortably spaced. */
+#downloads > .wallpaper-divider {
+  margin-top: 0;
+}
