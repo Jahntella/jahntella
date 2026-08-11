@@ -73,6 +73,12 @@
       audio: document.getElementById('audioMadeOfLight'),
       title: 'Made of Light',
       button: document.querySelector('[data-track="made-of-light"]')
+    },
+    {
+      key: 'candy-wrapper',
+      audio: document.getElementById('audioCandyWrapper'),
+      title: 'Candy Wrapper',
+      button: document.querySelector('[data-track="candy-wrapper"]')
     }
   ].filter(track => track.audio);
 
