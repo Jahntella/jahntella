@@ -5,14 +5,14 @@
     "fun-dipp": {
       audio: document.getElementById("audioFunDipp"),
       title: "Fun Dipp",
-      artwork: "assets/fun-dipp-cover.png",
+      artwork: "assets/fun-dipp-cover.webp",
       recordWrap: document.getElementById("funDippRecordWrap"),
       card: document.querySelector('[data-card="fun-dipp"]')
     },
     "pink-lips": {
       audio: document.getElementById("audioPinkLips"),
       title: "Pink Lips Remix",
-      artwork: "assets/pink-lips-remix.png",
+      artwork: "assets/pink-lips-remix.webp",
       recordWrap: document.getElementById("pinkLipsRecordWrap"),
       card: document.querySelector('[data-card="pink-lips"]')
     },
@@ -303,7 +303,12 @@
       }
     };
     if (restored.readyState >= 1) restorePosition();
-    else restored.addEventListener("loadedmetadata", restorePosition, {once: true});
+    else {
+      restored.addEventListener("loadedmetadata", restorePosition, {once: true});
+      // With preload disabled, explicitly request only the saved song when
+      // playback or a saved position actually needs to be restored.
+      if (savedPlayback.playing || Number(savedPlayback.position) > 0) restored.load();
+    }
   }
 
   document.addEventListener("click", event => {
@@ -586,7 +591,7 @@ if(window.innerWidth<769){setTimeout(()=>document.getElementById('vaultBinder')?
   document.querySelectorAll(".reveal").forEach(section => observer.observe(section));
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  window.addEventListener("load", () => {
-    window.setTimeout(() => siteLoader?.classList.add("is-hidden"), 250);
-  });
+  // Reveal as soon as the page structure is usable. Waiting for every image,
+  // font and media request made the loader feel stuck on slower connections.
+  window.setTimeout(() => siteLoader?.classList.add("is-hidden"), 120);
 })();

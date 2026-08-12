@@ -14,12 +14,12 @@
     'fun-dipp': {
       title: 'Fun Dipp',
       src: asset('fun-dipp-v430.mp4'),
-      artwork: asset('assets/fun-dipp-cover.png')
+      artwork: asset('assets/fun-dipp-cover.webp')
     },
     'pink-lips': {
       title: 'Pink Lips Remix',
       src: asset('pink-lips-remix-v430.mp4'),
-      artwork: asset('assets/pink-lips-remix.png')
+      artwork: asset('assets/pink-lips-remix.webp')
     },
     'bite-lip': {
       title: 'Bite Lip',
@@ -115,7 +115,7 @@
   document.body.appendChild(shell);
 
   const audio = document.createElement('audio');
-  audio.preload = 'metadata';
+  audio.preload = 'none';
   audio.dataset.j46Audio = '';
   document.body.appendChild(audio);
 
