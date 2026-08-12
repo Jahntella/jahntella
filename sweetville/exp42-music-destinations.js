@@ -85,10 +85,16 @@
       src: new URL('playground.mp3', document.baseURI).href,
       destination: 'bubblegum-bay.html',
       artwork: new URL('playground-cover.webp', document.baseURI).href
+    },
+    'milk-shake': {
+      title: 'Milk Shake',
+      src: new URL('milk-shake.mp3', document.baseURI).href,
+      destination: 'pink-cafe.html',
+      artwork: new URL('milk-shake-cover.webp', document.baseURI).href
     }
   };
 
-  const TRACK_ORDER = ['fun-dipp', 'pink-lips', 'bite-lip', 'gloss', 'your-girl', 'embrace-me', 'we-come-together', 'play-with-me', 'carnival', 'made-of-light', 'candy-wrapper', 'playground'];
+  const TRACK_ORDER = ['fun-dipp', 'pink-lips', 'bite-lip', 'gloss', 'your-girl', 'embrace-me', 'we-come-together', 'play-with-me', 'carnival', 'made-of-light', 'candy-wrapper', 'playground', 'milk-shake'];
 
   const safeJSON = (value, fallback) => {
     try { return JSON.parse(value) ?? fallback; } catch { return fallback; }

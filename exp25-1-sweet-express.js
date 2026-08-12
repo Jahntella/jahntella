@@ -85,6 +85,12 @@
       audio: document.getElementById('audioPlayground'),
       title: 'Playground',
       button: document.querySelector('[data-track="playground"]')
+    },
+    {
+      key: 'milk-shake',
+      audio: document.getElementById('audioMilkShake'),
+      title: 'Milk Shake',
+      button: document.querySelector('[data-track="milk-shake"]')
     }
   ].filter(track => track.audio);
 

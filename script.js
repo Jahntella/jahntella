@@ -1,6 +1,6 @@
 (() => {
   const SITE_PLAYBACK_KEY = "jahntellaSiteMusicV46";
-  const order = ["fun-dipp", "pink-lips", "bite-lip", "gloss", "your-girl", "embrace-me", "we-come-together", "play-with-me", "carnival", "made-of-light", "candy-wrapper", "playground"];
+  const order = ["fun-dipp", "pink-lips", "bite-lip", "gloss", "your-girl", "embrace-me", "we-come-together", "play-with-me", "carnival", "made-of-light", "candy-wrapper", "playground", "milk-shake"];
   const tracks = {
     "fun-dipp": {
       audio: document.getElementById("audioFunDipp"),
@@ -75,6 +75,12 @@
       title: "Playground",
       artwork: "assets/music-thumbs/playground.webp",
       card: document.querySelector('[data-card="playground"]')
+    },
+    "milk-shake": {
+      audio: document.getElementById("audioMilkShake"),
+      title: "Milk Shake",
+      artwork: "assets/music-thumbs/milk-shake.webp",
+      card: document.querySelector('[data-card="milk-shake"]')
     }
   };
 
