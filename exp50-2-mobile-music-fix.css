@@ -1,0 +1,51 @@
+/* EXP 50.2 — reliable cold-load music covers and a truly docked homepage player */
+
+/* The old performance layer applied content-visibility to <html>. Mobile
+   browsers may then treat fixed descendants as content inside that scroller. */
+html {
+  content-visibility: visible !important;
+}
+
+html body #music,
+html body #newMusic {
+  content-visibility: visible !important;
+  contain: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+#music img,
+#newMusic .exp44-new-music-card > img {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* This file loads last so no earlier homepage rule can put the player back
+   into normal document flow. */
+html body #player.player,
+html body #player.player.visible {
+  position: fixed !important;
+  inset: auto auto max(12px, env(safe-area-inset-bottom)) 50% !important;
+  width: min(920px, calc(100vw - 32px)) !important;
+  margin: 0 !important;
+  z-index: 2147483640 !important;
+  transform: translateX(-50%) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+@media (max-width: 760px) {
+  body {
+    padding-bottom: 126px !important;
+  }
+
+  html body #player.player,
+  html body #player.player.visible {
+    inset: auto 8px max(8px, env(safe-area-inset-bottom)) 8px !important;
+    width: auto !important;
+    max-width: none !important;
+    transform: none !important;
+  }
+}

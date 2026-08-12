@@ -19,61 +19,61 @@
     "bite-lip": {
       audio: document.getElementById("audioBiteLip"),
       title: "Bite Lip",
-      artwork: "sweetville/bite-lip-cover.webp",
+      artwork: "assets/music-thumbs/bite-lip.webp",
       card: document.querySelector('[data-card="bite-lip"]')
     },
     "gloss": {
       audio: document.getElementById("audioGloss"),
       title: "Gloss",
-      artwork: "sweetville/gloss-cover.webp",
+      artwork: "assets/music-thumbs/gloss.webp",
       card: document.querySelector('[data-card="gloss"]')
     },
     "your-girl": {
       audio: document.getElementById("audioYourGirl"),
       title: "I Want To Be Your Girl",
-      artwork: "sweetville/i-want-to-be-your-girl-cover.webp",
+      artwork: "assets/music-thumbs/i-want-to-be-your-girl.webp",
       card: document.querySelector('[data-card="your-girl"]')
     },
     "embrace-me": {
       audio: document.getElementById("audioEmbraceMe"),
       title: "Embrace Me",
-      artwork: "sweetville/embrace-me-cover.webp",
+      artwork: "assets/music-thumbs/embrace-me.webp",
       card: document.querySelector('[data-card="embrace-me"]')
     },
     "we-come-together": {
       audio: document.getElementById("audioWeComeTogether"),
       title: "We Come Together",
-      artwork: "sweetville/we-come-together-cover.webp",
+      artwork: "assets/music-thumbs/we-come-together.webp",
       card: document.querySelector('[data-card="we-come-together"]')
     },
     "play-with-me": {
       audio: document.getElementById("audioPlayWithMe"),
       title: "Play With Me",
-      artwork: "sweetville/play-with-me-cover.webp",
+      artwork: "assets/music-thumbs/play-with-me.webp",
       card: document.querySelector('[data-card="play-with-me"]')
     },
     carnival: {
       audio: document.getElementById("audioCarnival"),
       title: "Carnival",
-      artwork: "sweetville/carnival-cover.webp",
+      artwork: "assets/music-thumbs/carnival.webp",
       card: document.querySelector('[data-card="carnival"]')
     },
     "made-of-light": {
       audio: document.getElementById("audioMadeOfLight"),
       title: "Made of Light",
-      artwork: "sweetville/made-of-light-cover.webp",
+      artwork: "assets/music-thumbs/made-of-light.webp",
       card: document.querySelector('[data-card="made-of-light"]')
     },
     "candy-wrapper": {
       audio: document.getElementById("audioCandyWrapper"),
       title: "Candy Wrapper",
-      artwork: "sweetville/candy-wrapper-cover.webp",
+      artwork: "assets/music-thumbs/candy-wrapper.webp",
       card: document.querySelector('[data-card="candy-wrapper"]')
     },
     playground: {
       audio: document.getElementById("audioPlayground"),
       title: "Playground",
-      artwork: "sweetville/playground-cover.webp",
+      artwork: "assets/music-thumbs/playground.webp",
       card: document.querySelector('[data-card="playground"]')
     }
   };
