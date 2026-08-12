@@ -9,7 +9,7 @@
   const CREDIT_THRESHOLD = 0.90;
   const base = new URL('.', document.currentScript?.src || document.baseURI);
   const asset = path => new URL(path, base).href;
-  const order = ['fun-dipp', 'pink-lips', 'bite-lip', 'gloss', 'your-girl', 'embrace-me', 'we-come-together', 'play-with-me', 'carnival', 'made-of-light', 'candy-wrapper', 'playground', 'milk-shake'];
+  const order = ['fun-dipp', 'pink-lips', 'bite-lip', 'gloss', 'your-girl', 'embrace-me', 'we-come-together', 'play-with-me', 'carnival', 'made-of-light', 'candy-wrapper', 'playground', 'milk-shake', 'tonight'];
   const tracks = {
     'fun-dipp': {
       title: 'Fun Dipp',
@@ -75,6 +75,11 @@
       title: 'Milk Shake',
       src: asset('sweetville/milk-shake.mp3'),
       artwork: asset('sweetville/milk-shake-cover.webp')
+    },
+    tonight: {
+      title: 'Tonight',
+      src: asset('sweetville/tonight.mp3'),
+      artwork: asset('sweetville/tonight-cover.webp')
     }
   };
 

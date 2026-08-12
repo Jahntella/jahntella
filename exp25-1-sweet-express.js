@@ -91,6 +91,12 @@
       audio: document.getElementById('audioMilkShake'),
       title: 'Milk Shake',
       button: document.querySelector('[data-track="milk-shake"]')
+    },
+    {
+      key: 'tonight',
+      audio: document.getElementById('audioTonight'),
+      title: 'Tonight',
+      button: document.querySelector('[data-track="tonight"]')
     }
   ].filter(track => track.audio);
 

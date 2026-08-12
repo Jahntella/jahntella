@@ -91,10 +91,16 @@
       src: new URL('milk-shake.mp3', document.baseURI).href,
       destination: 'pink-cafe.html',
       artwork: new URL('milk-shake-cover.webp', document.baseURI).href
+    },
+    tonight: {
+      title: 'Tonight',
+      src: new URL('tonight.mp3', document.baseURI).href,
+      destination: 'pink-lips-after-dark.html',
+      artwork: new URL('tonight-cover.webp', document.baseURI).href
     }
   };
 
-  const TRACK_ORDER = ['fun-dipp', 'pink-lips', 'bite-lip', 'gloss', 'your-girl', 'embrace-me', 'we-come-together', 'play-with-me', 'carnival', 'made-of-light', 'candy-wrapper', 'playground', 'milk-shake'];
+  const TRACK_ORDER = ['fun-dipp', 'pink-lips', 'bite-lip', 'gloss', 'your-girl', 'embrace-me', 'we-come-together', 'play-with-me', 'carnival', 'made-of-light', 'candy-wrapper', 'playground', 'milk-shake', 'tonight'];
 
   const safeJSON = (value, fallback) => {
     try { return JSON.parse(value) ?? fallback; } catch { return fallback; }
