@@ -79,10 +79,16 @@
       src: new URL('candy-wrapper.mp3', document.baseURI).href,
       destination: 'candy-lane.html',
       artwork: new URL('candy-wrapper-cover.webp', document.baseURI).href
+    },
+    playground: {
+      title: 'Playground',
+      src: new URL('playground.mp3', document.baseURI).href,
+      destination: 'bubblegum-bay.html',
+      artwork: new URL('playground-cover.webp', document.baseURI).href
     }
   };
 
-  const TRACK_ORDER = ['fun-dipp', 'pink-lips', 'bite-lip', 'gloss', 'your-girl', 'embrace-me', 'we-come-together', 'play-with-me', 'carnival', 'made-of-light', 'candy-wrapper'];
+  const TRACK_ORDER = ['fun-dipp', 'pink-lips', 'bite-lip', 'gloss', 'your-girl', 'embrace-me', 'we-come-together', 'play-with-me', 'carnival', 'made-of-light', 'candy-wrapper', 'playground'];
 
   const safeJSON = (value, fallback) => {
     try { return JSON.parse(value) ?? fallback; } catch { return fallback; }

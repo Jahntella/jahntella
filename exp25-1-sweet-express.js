@@ -79,6 +79,12 @@
       audio: document.getElementById('audioCandyWrapper'),
       title: 'Candy Wrapper',
       button: document.querySelector('[data-track="candy-wrapper"]')
+    },
+    {
+      key: 'playground',
+      audio: document.getElementById('audioPlayground'),
+      title: 'Playground',
+      button: document.querySelector('[data-track="playground"]')
     }
   ].filter(track => track.audio);
 
