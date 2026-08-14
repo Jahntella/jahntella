@@ -222,7 +222,7 @@
     try {
       navigator.mediaSession.metadata = new MediaMetadata({
         title: track.title,
-        artist: 'Jahntella™',
+        artist: 'Jahntella',
         album: 'Sweetville',
         artwork: [{src: track.artwork, sizes: '1254x1254', type: track.artwork.endsWith('.webp') ? 'image/webp' : 'image/jpeg'}]
       });
@@ -241,7 +241,7 @@
     document.querySelectorAll('[data-exp42-player]').forEach(player => {
       const track = player.dataset.exp42Player || '';
       const active = track === activeTrack;
-      const title = TRACKS[track]?.title || 'Jahntella™';
+      const title = TRACKS[track]?.title || 'Jahntella';
       player.querySelectorAll('[data-exp42-play]').forEach(button => {
         button.dataset.exp42IdleLabel ||= button.textContent.trim();
         button.classList.toggle('is-playing', active && isPlaying);
@@ -673,7 +673,7 @@
       if (nav.querySelector('a[href^="melody-studio.html"]')) return;
       const link = document.createElement('a');
       link.href = 'melody-studio.html#latestMusic';
-      link.innerHTML = '<span>🎧</span><strong>Melody Studio</strong><small>Play Jahntella™’s newest songs</small>';
+      link.innerHTML = '<span>🎧</span><strong>Melody Studio</strong><small>Play Jahntella’s newest songs</small>';
       const afterDark = nav.querySelector('a[href^="pink-lips-after-dark.html"]');
       if (afterDark) afterDark.insertAdjacentElement('afterend', link);
       else nav.appendChild(link);

@@ -357,7 +357,7 @@
   document.querySelectorAll("[data-lightbox]").forEach(item => {
     item.addEventListener("click", () => {
       lightboxImage.src = item.dataset.lightbox;
-      lightboxImage.alt = item.querySelector("img")?.alt || "Jahntella™ artwork";
+      lightboxImage.alt = item.querySelector("img")?.alt || "Jahntella artwork";
       lightbox.classList.add("open");
       lightbox.setAttribute("aria-hidden", "false");
     });
