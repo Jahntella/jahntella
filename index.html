@@ -18,7 +18,6 @@
 <link rel="stylesheet" href="exp19-5-popstar.css?v=19.5">
 <link rel="stylesheet" href="exp20-3-investor-button.css?v=20.3">
 <link rel="stylesheet" href="exp21-0-performance.css?v=21.0">
-<link rel="stylesheet" href="exp21-1-vault.css?v=25.5">
 <link rel="stylesheet" href="exp25-1-sweet-express.css?v=25.5">
 <link rel="stylesheet" href="exp29-4-contact.css?v=29.4">
 <link rel="stylesheet" href="exp30-6-poster-fix.css?v=30.6">
@@ -48,7 +47,6 @@
       <a href="#music">Music</a>
       <a href="#sweetEraAlbum">Album</a>
       <a href="#about">Story</a>
-      <a href="#sweet-vault">Sweet Vault</a>
       <a href="#downloads">Downloads</a>
       <a href="#magazine">Magazine</a>
       <a href="#merch">Merch</a>
@@ -402,67 +400,6 @@
       </div>
     </section>
 
-    <section class="sweet-vault-section reveal" id="sweet-vault">
-      <div class="section-heading centered">
-        <p class="eyebrow">SWEET VAULT</p>
-        <h2>Open a pack. Reveal a card. <em>Build your collection.</em></h2>
-        <p class="vault-intro">Every pack contains one official Sweet Vault collectible. Your unlocked cards are saved automatically on this device.</p>
-      </div>
-
-      <div class="vault-experience">
-        <div class="pack-panel">
-          <button class="sweet-pack sweet-pack-clean" id="openPackButton" aria-label="Open a Sweet Vault pack">
-            <span class="pack-foil pack-foil-left"></span>
-            <span class="pack-foil pack-foil-right"></span>
-            <span class="pack-shine"></span>
-            <span class="pack-seal pack-seal-top"></span>
-            <span class="pack-seal pack-seal-bottom"></span>
-            <span class="pack-brand">Jahntella<span>💋</span></span>
-            <span class="pack-icon" aria-hidden="true">💋</span>
-            <span class="exp211-pack-frame" aria-hidden="true">
-              <img class="exp211-pack-portrait" src="assets/sweet-pack-jahntella.webp" alt="">
-            </span>
-            <span class="pack-title">SWEET PACK</span>
-            <span class="pack-edition">FIRST EDITION</span>
-            <span class="pack-crown">♛</span>
-            <span class="pack-tagline">OFFICIAL COLLECTIBLE CARD</span>
-            <span class="pack-open-label">TAP TO OPEN</span>
-          </button>
-          <p id="packStatus" class="pack-status" aria-live="polite">Tap the pack to reveal a collectible.</p>
-        </div>
-
-        <div class="last-pulled-card" id="lastPulledCard">
-          <p class="eyebrow">LAST PULLED</p>
-          <div class="last-pulled-placeholder">Your newest card will appear here.</div>
-        </div>
-      </div>
-
-      <div class="vault-progress-card">
-        <div>
-          <p class="eyebrow">COLLECTION PROGRESS</p>
-          <h3><span id="vaultCount">0</span> / 12 Collected</h3>
-        </div>
-        <div class="vault-progress-track"><i id="vaultProgressBar"></i></div>
-        <strong id="vaultPercent">0%</strong>
-      </div>
-
-      <div class="vault-toolbar">
-        <p>Click an unlocked card to flip it front and back.</p>
-        <button id="resetVaultButton" class="reset-vault-button">Reset Vault</button>
-      </div>
-
-      <div class="vault-binder" id="vaultBinder">
-        <div class="binder-rings" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-        <div class="binder-page">
-          <div class="binder-page-heading">
-            <span>FIRST EDITION COLLECTION</span>
-            <strong>12 CARD SET</strong>
-          </div>
-          <div class="vault-grid" id="vaultGrid"></div>
-        </div>
-      </div>
-    </section>
-
     <section class="downloads-section reveal" id="downloads">
       <div class="section-heading centered">
         <p class="eyebrow">FREE DOWNLOADS</p>
@@ -715,28 +652,6 @@
     <img id="lightboxImage" alt="" loading="lazy" decoding="async">
   </div>
 
-  <div class="card-reveal-modal" id="cardRevealModal" aria-hidden="true">
-    <div class="reveal-backdrop"></div>
-    <div class="reveal-content" role="dialog" aria-modal="true" aria-labelledby="revealTitle">
-      <button id="closeRevealButton" class="reveal-close" aria-label="Close card reveal">×</button>
-      <p id="revealRarity" class="reveal-rarity"></p>
-      <h2 id="revealTitle">Sweet Vault Pull</h2>
-      <div class="reveal-card-scene">
-        <div class="reveal-card" id="revealCard">
-          <div class="reveal-face reveal-back">
-            <img src="sweet-vault-card-back.png" alt="Sweet Vault card back" loading="lazy" decoding="async">
-          </div>
-          <div class="reveal-face reveal-front">
-            <img id="revealCardImage" src="" alt="" loading="eager" decoding="async">
-          </div>
-        </div>
-      </div>
-      <p id="revealMessage"></p>
-      <button id="revealDoneButton" class="primary-button">Add to Vault</button>
-    </div>
-    <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
-  </div>
-
   <audio id="audioFunDipp" preload="none">
     <source src="fun-dipp-v430.mp4" type="audio/mp4">
   </audio>
@@ -793,7 +708,7 @@
     <source src="sweetville/tonight.mp3" type="audio/mpeg">
   </audio>
 
-  <script defer src="script.js?v=53.0"></script>
+  <script defer src="script.js?v=54.0"></script>
 
   <div class="exp191-ticket-wrap">
     <a class="exp191-ticket" href="sweetville/" aria-label="Use your Ticket to Sweetville">
@@ -808,7 +723,6 @@
 
 <script src="exp19-5-popstar.js?v=19.5" defer></script>
 <script src="exp21-0-performance.js?v=21.0" defer></script>
-<script src="exp21-1-vault.js?v=21.8" defer></script>
 <script src="exp25-1-sweet-express.js?v=52.0" defer></script>
 
 <div class="exp294-contact-modal" id="exp294ContactModal" aria-hidden="true">

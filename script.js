@@ -405,6 +405,10 @@
   const closeRevealButton = document.getElementById("closeRevealButton");
   const confettiLayer = document.getElementById("confettiLayer");
 
+  if (vaultGrid && vaultCount && vaultPercent && vaultProgressBar && openPackButton &&
+      packStatus && resetVaultButton && lastPulledCard && revealModal && revealCardImage &&
+      revealTitle && revealRarity && revealMessage && revealDoneButton && closeRevealButton &&
+      confettiLayer) {
   const readVault = () => {
     const keys = [STORAGE_KEY, "jahntellaSweetVaultV18", "jahntellaSweetVaultV19"];
     for (const key of keys) {
@@ -584,12 +588,16 @@ if(window.innerWidth<769){setTimeout(()=>document.getElementById('vaultBinder')?
 
   document.addEventListener("keydown", event => {
     if (event.key === "Escape") {
-      closeLightbox();
       closeReveal();
     }
   });
 
   renderVault();
+  }
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") closeLightbox();
+  });
 
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {

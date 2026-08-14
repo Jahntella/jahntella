@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="exp29-1-interactive-map.css?v=29.3">
 <link rel="stylesheet" href="exp42-music-destinations.css?v=42.0">
 <link rel="stylesheet" href="exp43-music-drop.css?v=48.1">
+<link rel="stylesheet" href="exp54-sweet-vault.css?v=54.0">
 <link rel="stylesheet" href="../exp29-4-contact.css?v=29.4">
 <link rel="stylesheet" href="exp30-9-gate-hard-reset.css?v=30.9">
 </head>
@@ -115,7 +116,7 @@
       <a href="#bedroom">My Room</a>
       <a href="story.html">Story</a>
       <a href="#passport">Passport</a>
-      <a href="../index.html#sweet-vault">Sweet Vault</a>
+      <a href="#sweet-vault">Sweet Vault</a>
     </nav>
   </header>
 
@@ -125,8 +126,9 @@
 <section class="cinematic-home cinematic-home-clean" id="cinematicHome" aria-label="Sweetville cinematic home">
   <div class="cinematic-bg" aria-hidden="true"></div>
   <div class="cinematic-vignette" aria-hidden="true"></div>
-  <div class="hero-action-bar" aria-label="Sweetville actions">
+  <div class="hero-action-bar exp54-vault-actions" aria-label="Sweetville actions">
     <a class="journey-button" href="#exp260Hub">EXPLORE THE WORLD MAP <span>›</span></a>
+    <a class="intro-button" href="#sweet-vault">OPEN SWEET VAULT</a>
     <a class="intro-button" href="sweetie-room.html">VISIT MY SWEETIE ROOM</a>
     <button class="hero-sound-button" id="heroSoundButton" type="button">🎹 PLAY MINI PIANO</button>
   </div>
@@ -447,6 +449,68 @@
         <p class="exp42-energy-message" data-exp42-status>Complete any song to power the Sweet Express.</p>
       </div>
       <a class="exp42-button exp42-energy-link" data-exp42-express-link href="sweet-express.html">🚂 Visit the Sweet Express</a>
+    </div>
+  </div>
+</section>
+
+
+<section class="sweet-vault-section" id="sweet-vault" aria-labelledby="sweetVaultTitle">
+  <header class="exp54-vault-head">
+    <p class="exp54-vault-kicker">SWEETVILLE COLLECTIBLES</p>
+    <h2 id="sweetVaultTitle">Open a pack. Reveal a card. <em>Build your collection.</em></h2>
+    <p class="vault-intro">Every pack contains one official Sweet Vault collectible. Your unlocked cards are saved automatically on this device.</p>
+  </header>
+
+  <div class="vault-experience">
+    <div class="pack-panel">
+      <button class="sweet-pack sweet-pack-clean" id="openPackButton" type="button" aria-label="Open a Sweet Vault pack">
+        <span class="pack-foil pack-foil-left"></span>
+        <span class="pack-foil pack-foil-right"></span>
+        <span class="pack-shine"></span>
+        <span class="pack-seal pack-seal-top"></span>
+        <span class="pack-seal pack-seal-bottom"></span>
+        <span class="pack-brand">Jahntella<span>💋</span></span>
+        <span class="pack-icon" aria-hidden="true">💋</span>
+        <span class="exp211-pack-frame" aria-hidden="true">
+          <img class="exp211-pack-portrait" src="../assets/sweet-pack-jahntella.webp" alt="" loading="lazy" decoding="async">
+        </span>
+        <span class="pack-title">SWEET PACK</span>
+        <span class="pack-edition">FIRST EDITION</span>
+        <span class="pack-crown">♛</span>
+        <span class="pack-tagline">OFFICIAL COLLECTIBLE CARD</span>
+        <span class="pack-open-label">TAP TO OPEN</span>
+      </button>
+      <p id="packStatus" class="pack-status" aria-live="polite">Tap the pack to reveal a collectible.</p>
+    </div>
+
+    <div class="last-pulled-card" id="lastPulledCard">
+      <p class="eyebrow">LAST PULLED</p>
+      <div class="last-pulled-placeholder">Your newest card will appear here.</div>
+    </div>
+  </div>
+
+  <div class="vault-progress-card">
+    <div>
+      <p class="eyebrow">COLLECTION PROGRESS</p>
+      <h3><span id="vaultCount">0</span> / 12 Collected</h3>
+    </div>
+    <div class="vault-progress-track" aria-label="Sweet Vault collection progress"><i id="vaultProgressBar"></i></div>
+    <strong id="vaultPercent">0%</strong>
+  </div>
+
+  <div class="vault-toolbar">
+    <p>Tap an unlocked card to flip it front and back.</p>
+    <button id="resetVaultButton" class="reset-vault-button" type="button">Reset Vault</button>
+  </div>
+
+  <div class="vault-binder" id="vaultBinder">
+    <div class="binder-rings" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <div class="binder-page">
+      <div class="binder-page-heading">
+        <span>FIRST EDITION COLLECTION</span>
+        <strong>12 CARD SET</strong>
+      </div>
+      <div class="vault-grid" id="vaultGrid"></div>
     </div>
   </div>
 </section>
@@ -1877,6 +1941,28 @@
 
 </main>
 
+  <div class="card-reveal-modal" id="cardRevealModal" aria-hidden="true">
+    <div class="reveal-backdrop"></div>
+    <div class="reveal-content" role="dialog" aria-modal="true" aria-labelledby="revealTitle">
+      <button id="closeRevealButton" class="reveal-close" type="button" aria-label="Close card reveal">×</button>
+      <p id="revealRarity" class="reveal-rarity"></p>
+      <h2 id="revealTitle">Sweet Vault Pull</h2>
+      <div class="reveal-card-scene">
+        <div class="reveal-card" id="revealCard">
+          <div class="reveal-face reveal-back">
+            <img src="../sweet-vault-card-back.png" alt="Sweet Vault card back" loading="lazy" decoding="async">
+          </div>
+          <div class="reveal-face reveal-front">
+            <img id="revealCardImage" alt="" loading="eager" decoding="async">
+          </div>
+        </div>
+      </div>
+      <p id="revealMessage"></p>
+      <button id="revealDoneButton" type="button">Add to Vault</button>
+    </div>
+    <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
+  </div>
+
   <dialog class="location-modal" id="locationModal">
     <button class="modal-close" id="modalClose">×</button>
     <div class="modal-media">
@@ -1929,6 +2015,7 @@
     <span id="toastIcon">🏆</span>
     <div><small id="toastKicker">NEW ACHIEVEMENT</small><strong id="toastTitle">Explorer</strong></div>
   </div>
+  <script src="exp54-sweet-vault.js?v=54.0" defer></script>
   <script src="intro-carousel.js?v=18.0" defer></script>
 
   <script src="sweetville-v4.0.js?v=18.0"></script>

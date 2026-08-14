@@ -1,0 +1,417 @@
+/* EXP 54.0 — Sweet Vault lives in Sweetville */
+
+.hero-action-bar.exp54-vault-actions{
+  width:min(95%,1180px);
+  grid-template-columns:1.15fr 1fr 1fr .8fr;
+}
+
+#sweet-vault{
+  --vault-pink:#ff4fb7;
+  --vault-pink-light:#ff9bd5;
+  --vault-purple:#a54cff;
+  --vault-text:#fff8fc;
+  --vault-muted:#ead5e4;
+  --vault-border:rgba(255,255,255,.17);
+  width:min(1420px,calc(100% - 2rem));
+  margin:clamp(3.5rem,7vw,7rem) auto;
+  padding:clamp(2rem,5vw,5rem);
+  scroll-margin-top:96px;
+  color:var(--vault-text);
+  border:1px solid rgba(255,118,194,.32);
+  border-radius:clamp(28px,4vw,48px);
+  background:
+    radial-gradient(circle at 50% 0,rgba(255,79,183,.28),transparent 34rem),
+    radial-gradient(circle at 90% 90%,rgba(165,76,255,.2),transparent 28rem),
+    linear-gradient(145deg,rgba(36,0,42,.96),rgba(12,0,18,.96));
+  box-shadow:0 38px 110px rgba(0,0,0,.46),inset 0 0 0 1px rgba(255,255,255,.045);
+  isolation:isolate;
+}
+
+#sweet-vault *{box-sizing:border-box}
+
+#sweet-vault .exp54-vault-head{text-align:center}
+
+#sweet-vault .exp54-vault-kicker,
+#sweet-vault .eyebrow{
+  margin:0 0 .8rem;
+  color:var(--vault-pink-light);
+  font-size:.75rem;
+  font-weight:900;
+  letter-spacing:.2em;
+}
+
+#sweet-vault h2{
+  max-width:900px;
+  margin:0 auto;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(2.6rem,6vw,5.6rem);
+  line-height:.96;
+  letter-spacing:-.045em;
+}
+
+#sweet-vault h2 em{color:var(--vault-pink);font-style:normal}
+
+#sweet-vault .vault-intro{
+  max-width:760px;
+  margin:1.15rem auto 0;
+  color:var(--vault-muted);
+  line-height:1.75;
+}
+
+#sweet-vault .vault-experience{
+  display:grid;
+  grid-template-columns:minmax(260px,.76fr) minmax(320px,1.24fr);
+  gap:2rem;
+  align-items:stretch;
+  margin-top:3rem;
+}
+
+#sweet-vault .pack-panel,
+#sweet-vault .last-pulled-card,
+#sweet-vault .vault-progress-card{
+  border:1px solid var(--vault-border);
+  border-radius:28px;
+  background:linear-gradient(145deg,rgba(255,255,255,.105),rgba(255,255,255,.038));
+  box-shadow:0 24px 70px rgba(0,0,0,.28);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+
+#sweet-vault .pack-panel{
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  padding:2rem;
+  text-align:center;
+  background:
+    radial-gradient(circle at 50% 35%,rgba(255,79,183,.23),transparent 23rem),
+    linear-gradient(145deg,rgba(255,255,255,.1),rgba(255,255,255,.04));
+}
+
+#sweet-vault .pack-panel::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background-image:radial-gradient(circle,rgba(255,255,255,.65) 0 1px,transparent 1.6px);
+  background-size:42px 42px;
+  opacity:.16;
+  animation:exp54-pack-stars 15s linear infinite;
+}
+
+@keyframes exp54-pack-stars{to{background-position:42px 42px}}
+
+#sweet-vault #openPackButton.sweet-pack{
+  position:relative;
+  isolation:isolate;
+  width:clamp(190px,20vw,245px);
+  max-width:245px;
+  aspect-ratio:5/7;
+  margin:0 auto;
+  padding:0;
+  flex:0 0 auto;
+  overflow:hidden;
+  border:2px solid rgba(255,208,232,.9);
+  border-radius:20px 20px 15px 15px;
+  color:#fff;
+  background:
+    radial-gradient(circle at 50% 27%,rgba(255,255,255,.34),transparent 22%),
+    linear-gradient(118deg,#4d001f 0%,#ff207f 18%,#ff91ca 35%,#970044 51%,#ff4eae 69%,#49001e 100%);
+  box-shadow:0 32px 75px rgba(255,29,132,.42),0 0 34px rgba(255,85,181,.4),inset 0 0 0 3px rgba(255,255,255,.16),inset 0 0 45px rgba(45,0,27,.55);
+  cursor:pointer;
+  transform:rotate(-1.5deg);
+  transform-origin:center;
+  transition:transform .3s ease,filter .3s ease;
+}
+
+#sweet-vault #openPackButton.sweet-pack:hover{transform:translateY(-8px) rotate(1deg) scale(1.02);filter:brightness(1.08)}
+
+#sweet-vault #openPackButton.sweet-pack::before,
+#sweet-vault #openPackButton.sweet-pack::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  z-index:8;
+  height:24px;
+  background:linear-gradient(180deg,rgba(255,255,255,.5),transparent 45%),repeating-linear-gradient(90deg,#ffb2d6 0 8px,#7b0033 8px 15px,#ff4c9c 15px 22px);
+  clip-path:polygon(0 0,100% 0,100% 72%,97% 100%,94% 72%,91% 100%,88% 72%,85% 100%,82% 72%,79% 100%,76% 72%,73% 100%,70% 72%,67% 100%,64% 72%,61% 100%,58% 72%,55% 100%,52% 72%,49% 100%,46% 72%,43% 100%,40% 72%,37% 100%,34% 72%,31% 100%,28% 72%,25% 100%,22% 72%,19% 100%,16% 72%,13% 100%,10% 72%,7% 100%,4% 72%,0 100%);
+}
+
+#sweet-vault #openPackButton.sweet-pack::before{top:0}
+#sweet-vault #openPackButton.sweet-pack::after{bottom:0;transform:rotate(180deg)}
+
+#sweet-vault .pack-foil{
+  position:absolute;
+  z-index:2;
+  top:7%;
+  bottom:7%;
+  width:28%;
+  border-radius:50%;
+  filter:blur(1px);
+  opacity:.55;
+  pointer-events:none;
+}
+
+#sweet-vault .pack-foil-left{left:-10%;background:radial-gradient(ellipse at right,rgba(255,255,255,.58),transparent 60%)}
+#sweet-vault .pack-foil-right{right:-10%;background:radial-gradient(ellipse at left,rgba(255,255,255,.5),transparent 60%)}
+
+#sweet-vault .pack-shine{
+  position:absolute;
+  z-index:7;
+  inset:-25% -55%;
+  opacity:.6;
+  pointer-events:none;
+  background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.08) 43%,rgba(255,255,255,.9) 49%,rgba(255,255,255,.16) 54%,transparent 62%);
+  transform:translateX(-58%) rotate(8deg);
+  mix-blend-mode:screen;
+  animation:exp54-pack-shimmer 3.6s ease-in-out infinite;
+}
+
+@keyframes exp54-pack-shimmer{55%,100%{transform:translateX(58%) rotate(8deg)}}
+
+#sweet-vault .pack-seal{display:none}
+
+#sweet-vault .pack-brand{
+  position:absolute;
+  z-index:6;
+  top:8%;
+  left:0;
+  right:0;
+  font-family:"Sacramento",cursive;
+  font-size:2rem;
+  line-height:1;
+  text-shadow:0 0 14px #ff75ba;
+}
+
+#sweet-vault .pack-brand span{font-size:.75em;margin-left:.15rem}
+#sweet-vault .pack-icon,
+#sweet-vault .pack-tagline{display:none}
+
+#sweet-vault .exp211-pack-frame{
+  position:absolute;
+  z-index:4;
+  inset:15% 12% 29%;
+  overflow:hidden;
+  border:2px solid rgba(255,221,238,.92);
+  border-radius:16px;
+  background:#16000f;
+  box-shadow:0 15px 32px rgba(0,0,0,.45),0 0 22px rgba(255,157,211,.36),inset 0 0 0 4px rgba(255,255,255,.08);
+}
+
+#sweet-vault .exp211-pack-frame::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(125deg,transparent 35%,rgba(255,255,255,.32) 48%,transparent 59%),radial-gradient(circle at 20% 15%,rgba(255,255,255,.9) 0 1px,transparent 2px);
+  background-size:auto,31px 31px;
+}
+
+#sweet-vault .exp211-pack-portrait{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+
+#sweet-vault .pack-title{
+  position:absolute;
+  z-index:6;
+  left:0;
+  right:0;
+  bottom:20%;
+  font-family:"Playfair Display",serif;
+  font-size:1.5rem;
+  font-weight:900;
+  letter-spacing:.045em;
+  text-shadow:0 2px 10px #260014;
+}
+
+#sweet-vault .pack-edition{
+  position:absolute;
+  z-index:6;
+  left:0;
+  right:0;
+  bottom:15.5%;
+  font-size:.62rem;
+  font-weight:900;
+  letter-spacing:.2em;
+}
+
+#sweet-vault .pack-crown{position:absolute;z-index:6;left:0;right:0;bottom:10.5%;color:#ffd45c;font-size:1.2rem}
+
+#sweet-vault .pack-open-label{
+  position:absolute;
+  z-index:9;
+  left:50%;
+  bottom:27px;
+  transform:translateX(-50%);
+  width:max-content;
+  padding:.42rem .72rem;
+  border:1px solid rgba(255,222,239,.6);
+  border-radius:999px;
+  background:rgba(31,0,22,.78);
+  color:#fff;
+  font-size:.58rem;
+  font-weight:900;
+  letter-spacing:.15em;
+}
+
+#sweet-vault #openPackButton.is-opening{animation:exp54-pack-open 1.02s ease-in-out!important}
+#sweet-vault #openPackButton.is-opening .pack-shine{animation:exp54-pack-flash .9s ease-out!important}
+
+@keyframes exp54-pack-open{
+  0%{transform:rotate(-1.5deg) scale(1)}
+  18%{transform:rotate(-2.6deg) scale(.985,1.015)}
+  36%{transform:rotate(1.7deg) scale(1.012,.99)}
+  55%{transform:rotate(-.8deg) scale(.995,1.008)}
+  75%{transform:rotate(.5deg) scale(1.005,.996)}
+  100%{transform:rotate(-1.5deg) scale(1)}
+}
+
+@keyframes exp54-pack-flash{0%{opacity:.55}35%{opacity:1;filter:brightness(1.6)}100%{opacity:.6;filter:none}}
+
+#sweet-vault .pack-status{max-width:300px;min-height:1.5rem;margin:.9rem auto 0;color:var(--vault-pink-light);font-weight:800;text-align:center}
+
+#sweet-vault .last-pulled-card{display:flex;flex-direction:column;justify-content:center;padding:2rem}
+#sweet-vault .last-pulled-placeholder{display:grid;place-items:center;min-height:330px;border:1px dashed rgba(255,255,255,.2);border-radius:22px;color:var(--vault-muted);text-align:center}
+#sweet-vault .last-pulled-display{display:grid;grid-template-columns:minmax(190px,300px) 1fr;gap:1.5rem;align-items:center}
+#sweet-vault .last-pulled-display img{display:block;width:min(100%,330px);aspect-ratio:5/7;object-fit:contain;border-radius:18px;background:#120015;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+#sweet-vault .last-pulled-display h3{margin:0 0 .5rem;font-family:"Playfair Display",serif;font-size:2.2rem}
+#sweet-vault .last-pulled-display p{color:var(--vault-muted);line-height:1.6}
+#sweet-vault .rarity-pill{display:inline-flex;margin-bottom:.65rem;padding:.45rem .75rem;border-radius:999px;background:rgba(255,255,255,.1);font-size:.75rem;font-weight:900;letter-spacing:.1em}
+
+#sweet-vault .vault-progress-card{display:grid;grid-template-columns:auto 1fr auto;gap:1.2rem;align-items:center;margin-top:2rem;padding:1.5rem 1.7rem}
+#sweet-vault .vault-progress-card h3{margin:0;font-family:"Playfair Display",serif;font-size:1.8rem}
+#sweet-vault .vault-progress-track{height:12px;overflow:hidden;border-radius:999px;background:rgba(255,255,255,.1)}
+#sweet-vault .vault-progress-track i{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--vault-pink),var(--vault-purple));box-shadow:0 0 18px rgba(255,79,183,.7);transition:width .4s ease}
+
+#sweet-vault .vault-toolbar{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin:2rem 0 1rem}
+#sweet-vault .vault-toolbar p{margin:0;color:var(--vault-muted)}
+#sweet-vault .reset-vault-button{border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:.7rem 1rem;background:rgba(255,255,255,.07);color:#fff;font-weight:800;cursor:pointer}
+#sweet-vault .reset-vault-button:hover{border-color:rgba(255,155,213,.55);background:rgba(255,255,255,.12)}
+
+#sweet-vault .vault-binder{
+  position:relative;
+  max-width:1320px;
+  margin:1.6rem auto 0;
+  padding:32px 34px 32px 72px;
+  overflow:hidden;
+  border:1px solid rgba(255,170,225,.28);
+  border-radius:34px;
+  background:linear-gradient(135deg,#26051f 0%,#681044 7%,#22031d 13%,#160014 48%,#310524 88%,#8a155c 100%);
+  box-shadow:0 35px 90px rgba(0,0,0,.52),inset 0 0 0 2px rgba(255,255,255,.05),inset 16px 0 32px rgba(0,0,0,.42);
+}
+
+#sweet-vault .vault-binder::before{content:"Jahntella Sweet Vault";position:absolute;left:19px;top:50%;transform:translate(-50%,-50%) rotate(-90deg);font-family:"Sacramento",cursive;font-size:1.7rem;white-space:nowrap;color:#ffabd9;text-shadow:0 0 18px rgba(255,79,183,.65)}
+#sweet-vault .binder-rings{position:absolute;left:52px;top:28px;bottom:28px;z-index:4;width:38px;display:flex;flex-direction:column;justify-content:space-around;pointer-events:none}
+#sweet-vault .binder-rings i{display:block;width:42px;height:18px;border:4px solid #d9bdd1;border-left:0;border-radius:0 20px 20px 0;background:linear-gradient(#6e5868,#f9e8f5 45%,#6e5868);box-shadow:5px 5px 12px rgba(0,0,0,.45)}
+#sweet-vault .binder-page{position:relative;padding:24px;border:1px solid rgba(255,255,255,.19);border-radius:24px;background:linear-gradient(145deg,rgba(255,247,253,.2),rgba(255,255,255,.07));box-shadow:inset 0 0 28px rgba(255,255,255,.07),0 15px 36px rgba(0,0,0,.25)}
+#sweet-vault .binder-page::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(110deg,transparent 0 35%,rgba(255,255,255,.08) 45%,transparent 55%);mix-blend-mode:screen}
+#sweet-vault .binder-page-heading{display:flex;justify-content:space-between;gap:1rem;margin:0 4px 18px;color:#ffd8ee;font-size:.72rem;font-weight:900;letter-spacing:.18em}
+
+#sweet-vault .vault-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+#sweet-vault .vault-card-button{position:relative;display:block;width:100%;min-width:0;margin:0;padding:10px;border:1px solid rgba(255,255,255,.18);border-radius:17px;background:linear-gradient(145deg,rgba(255,255,255,.17),rgba(255,255,255,.055));box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),inset 0 0 22px rgba(255,255,255,.06),0 12px 24px rgba(0,0,0,.26);color:inherit;cursor:pointer;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+#sweet-vault .vault-card-button::after{content:"";position:absolute;inset:5px;border-radius:13px;pointer-events:none;background:linear-gradient(120deg,rgba(255,255,255,.14),transparent 35%,rgba(255,255,255,.08) 62%,transparent);mix-blend-mode:screen}
+#sweet-vault .vault-card-scene{display:block;width:100%;aspect-ratio:5/7;perspective:1200px}
+#sweet-vault .vault-card-inner{position:relative;display:block;width:100%;height:100%;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.2,.75,.2,1)}
+#sweet-vault .vault-card-face{position:absolute;inset:0;display:block;width:100%;height:100%;overflow:hidden;border-radius:10px;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#100012;box-shadow:0 8px 20px rgba(0,0,0,.35)}
+#sweet-vault .vault-card-face img{display:block;width:100%;height:100%;object-fit:contain;background:#100012}
+#sweet-vault .vault-card-back{transform:rotateY(180deg)}
+#sweet-vault .vault-card-button.is-flipped .vault-card-inner{transform:rotateY(180deg)}
+#sweet-vault .vault-card-button:not(.is-locked):hover{transform:translateY(-6px);border-color:rgba(255,155,213,.5);box-shadow:0 18px 35px rgba(255,79,183,.2),inset 0 0 0 1px rgba(255,255,255,.12)}
+#sweet-vault .vault-card-button.is-locked{cursor:default;opacity:.66;filter:saturate(.75)}
+#sweet-vault .vault-card-button.is-locked .vault-card-inner{transform:none}
+#sweet-vault .vault-card-button.just-unlocked{animation:exp54-slot-pop 1.1s ease both}
+
+@keyframes exp54-slot-pop{0%{transform:scale(.78);filter:brightness(2)}60%{transform:scale(1.06);box-shadow:0 0 35px rgba(255,255,255,.8),0 0 70px rgba(255,79,183,.85)}100%{transform:scale(1)}}
+
+.card-reveal-modal{
+  --vault-pink:#ff4fb7;
+  --vault-pink-light:#ff9bd5;
+  position:fixed;
+  inset:0;
+  z-index:2147483000;
+  display:none;
+  place-items:center;
+  width:100%;
+  height:100dvh;
+  padding:10px;
+  overflow:hidden;
+  color:#fff8fc;
+}
+
+.card-reveal-modal.open{display:grid}
+.card-reveal-modal .reveal-backdrop{position:absolute;inset:0;background:rgba(8,0,10,.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.card-reveal-modal .reveal-content{position:relative;z-index:2;width:min(92vw,520px);max-height:calc(100dvh - 20px);padding:clamp(.75rem,2vh,1.15rem);overflow-y:auto;border:1px solid rgba(255,255,255,.2);border-radius:22px;background:linear-gradient(145deg,rgba(35,0,42,.99),rgba(12,0,15,.99));text-align:center;box-shadow:0 30px 100px rgba(0,0,0,.65)}
+.card-reveal-modal .reveal-close{position:absolute;top:.55rem;right:.8rem;z-index:3;border:0;background:transparent;color:#fff;font-size:2rem;cursor:pointer}
+.card-reveal-modal .reveal-rarity{margin:.2rem auto;color:var(--vault-pink-light);font-size:.75rem;font-weight:900;letter-spacing:.16em}
+.card-reveal-modal #revealTitle{margin:.15rem 2.5rem .35rem;font-family:"Playfair Display",serif;font-size:clamp(1.35rem,4vh,2.15rem);line-height:1}
+.card-reveal-modal .reveal-card-scene{width:min(62vw,275px);max-height:min(57dvh,400px);aspect-ratio:5/7;margin:.35rem auto;perspective:1200px}
+.card-reveal-modal .reveal-card{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.card-reveal-modal.is-revealed .reveal-card{transform:rotateY(180deg)}
+.card-reveal-modal .reveal-face{position:absolute;inset:0;overflow:hidden;border-radius:20px;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 28px 75px rgba(0,0,0,.5)}
+.card-reveal-modal .reveal-face img{display:block;width:100%;height:100%;object-fit:contain;background:#100012}
+.card-reveal-modal .reveal-front{transform:rotateY(180deg)}
+.card-reveal-modal #revealMessage{margin:.35rem auto;line-height:1.35}
+.card-reveal-modal #revealDoneButton{min-height:44px;margin:.3rem 0 0;padding:.72rem 1.2rem;border:0;border-radius:999px;background:linear-gradient(135deg,var(--vault-pink),#c34cff);box-shadow:0 12px 35px rgba(255,79,183,.28);color:#fff;font-weight:900;cursor:pointer}
+.card-reveal-modal.rarity-Legendary .reveal-content{box-shadow:0 0 80px rgba(255,203,70,.55),0 30px 100px rgba(0,0,0,.65)}
+.card-reveal-modal.rarity-Ultra-Rare .reveal-content{box-shadow:0 0 80px rgba(171,82,255,.55),0 30px 100px rgba(0,0,0,.65)}
+.card-reveal-modal.rarity-Epic .reveal-content{box-shadow:0 0 80px rgba(255,119,73,.5),0 30px 100px rgba(0,0,0,.65)}
+.card-reveal-modal.rarity-Rare .reveal-content{box-shadow:0 0 70px rgba(77,176,255,.45),0 30px 100px rgba(0,0,0,.65)}
+.card-reveal-modal.rarity-Secret-Rare .reveal-content{animation:exp54-secret-pulse 1.2s ease-in-out infinite alternate;box-shadow:0 0 100px rgba(255,75,202,.75),0 0 140px rgba(148,73,255,.5)}
+.card-reveal-modal .confetti-layer{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none}
+.card-reveal-modal .confetti-piece{position:absolute;top:-10%;width:10px;height:18px;border-radius:3px;background:linear-gradient(180deg,#fff,#ff4fb7);animation:exp54-confetti-fall 2.8s linear forwards}
+
+@keyframes exp54-secret-pulse{to{transform:scale(1.025)}}
+@keyframes exp54-confetti-fall{to{transform:translate3d(var(--drift),115vh,0) rotate(720deg)}}
+
+@media(max-width:1000px){#sweet-vault .vault-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+@media(max-width:850px){
+  .hero-action-bar.exp54-vault-actions{grid-template-columns:1fr 1fr}
+  .hero-action-bar.exp54-vault-actions .hero-sound-button{grid-column:auto}
+  #sweet-vault .vault-experience{grid-template-columns:1fr}
+  #sweet-vault .last-pulled-display{grid-template-columns:1fr;text-align:center}
+  #sweet-vault .last-pulled-display img{max-width:300px;margin:auto}
+}
+
+@media(max-width:720px){
+  #sweet-vault{width:min(100% - 1rem,1420px);padding:2.4rem .75rem;border-radius:28px}
+  #sweet-vault .vault-experience{gap:1rem;margin-top:2rem}
+  #sweet-vault .pack-panel,#sweet-vault .last-pulled-card{padding:1.25rem}
+  #sweet-vault #openPackButton.sweet-pack{width:clamp(180px,58vw,225px);max-width:225px}
+  #sweet-vault .vault-progress-card{grid-template-columns:1fr;gap:.8rem;padding:1.2rem}
+  #sweet-vault .vault-toolbar{align-items:flex-start;flex-direction:column;padding-inline:.25rem}
+  #sweet-vault .vault-binder{padding:20px 14px 20px 43px;border-radius:24px}
+  #sweet-vault .vault-binder::before{left:12px;font-size:1.25rem}
+  #sweet-vault .binder-rings{left:29px;width:28px}
+  #sweet-vault .binder-rings i{width:30px;height:14px;border-width:3px}
+  #sweet-vault .binder-page{padding:12px}
+  #sweet-vault .vault-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  #sweet-vault .binder-page-heading{font-size:.55rem;letter-spacing:.1em}
+  #sweet-vault .vault-card-button{padding:6px;border-radius:12px}
+}
+
+@media(max-width:620px){
+  .hero-action-bar.exp54-vault-actions{grid-template-columns:1fr}
+}
+
+@media(max-width:390px){
+  #sweet-vault #openPackButton.sweet-pack{width:clamp(170px,56vw,205px);max-width:205px}
+  #sweet-vault .vault-binder{padding-left:38px}
+  #sweet-vault .vault-grid{grid-template-columns:1fr}
+  #sweet-vault .vault-card-button{max-width:250px;margin-inline:auto}
+  .card-reveal-modal{padding:6px}
+  .card-reveal-modal .reveal-content{width:calc(100vw - 12px);max-height:calc(100dvh - 12px);padding:.7rem;border-radius:17px}
+  .card-reveal-modal .reveal-card-scene{width:min(57vw,220px);max-height:53dvh}
+}
+
+@media(max-height:700px){
+  .card-reveal-modal .reveal-card-scene{width:min(47vw,185px);max-height:46dvh}
+  .card-reveal-modal .reveal-content{padding:.5rem .7rem}
+}
+
+@media(prefers-reduced-motion:reduce){
+  #sweet-vault *,
+  .card-reveal-modal *{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+}
