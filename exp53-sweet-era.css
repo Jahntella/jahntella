@@ -1,0 +1,313 @@
+/* The Sweet Era album showcase and Sweeties community */
+.exp53-album-section{
+  position:relative;
+  overflow:hidden;
+  padding:clamp(4.5rem,8vw,8rem) clamp(1rem,5vw,5rem);
+  background:
+    radial-gradient(circle at 15% 16%,rgba(255,55,172,.26),transparent 30%),
+    radial-gradient(circle at 84% 28%,rgba(64,220,255,.18),transparent 31%),
+    linear-gradient(145deg,#0b0017 0%,#210027 48%,#090016 100%);
+  isolation:isolate;
+}
+
+.exp53-album-section::before,
+.exp53-album-section::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  width:24rem;
+  height:24rem;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:.34;
+  pointer-events:none;
+}
+
+.exp53-album-section::before{
+  top:-12rem;
+  left:-8rem;
+  background:#ff2cab;
+}
+
+.exp53-album-section::after{
+  right:-10rem;
+  bottom:-12rem;
+  background:#31dfff;
+}
+
+.exp53-album-shell{
+  width:min(1220px,100%);
+  margin:0 auto;
+}
+
+.exp53-album-head{
+  max-width:900px;
+  margin:0 auto clamp(2rem,5vw,3.5rem);
+  text-align:center;
+}
+
+.exp53-album-head h2{
+  margin:.45rem 0 1rem;
+  color:#fff;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(2.8rem,6vw,6rem);
+  line-height:.95;
+  letter-spacing:-.035em;
+}
+
+.exp53-album-head h2 em{
+  color:#ff9ad1;
+}
+
+.exp53-album-head p:last-child{
+  max-width:720px;
+  margin:0 auto;
+  color:#ead7e8;
+  font-size:clamp(1rem,1.5vw,1.18rem);
+  line-height:1.75;
+}
+
+.exp53-album-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(1rem,2.5vw,2rem);
+}
+
+.exp53-album-art{
+  position:relative;
+  width:100%;
+  padding:0;
+  overflow:hidden;
+  border:1px solid rgba(255,172,225,.42);
+  border-radius:clamp(20px,3vw,32px);
+  color:#fff;
+  background:rgba(255,255,255,.07);
+  box-shadow:0 28px 70px rgba(0,0,0,.45),0 0 34px rgba(255,64,174,.13);
+  cursor:zoom-in;
+  text-align:left;
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+
+.exp53-album-art:hover,
+.exp53-album-art:focus-visible{
+  transform:translateY(-6px);
+  border-color:rgba(126,229,255,.9);
+  box-shadow:0 34px 84px rgba(0,0,0,.52),0 0 42px rgba(77,222,255,.18);
+}
+
+.exp53-album-art:focus-visible{
+  outline:3px solid #78eaff;
+  outline-offset:4px;
+}
+
+.exp53-album-image{
+  position:relative;
+  aspect-ratio:1;
+  overflow:hidden;
+  background:#09000e;
+}
+
+.exp53-album-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .45s ease;
+}
+
+.exp53-album-art:hover .exp53-album-image img{
+  transform:scale(1.018);
+}
+
+.exp53-album-label{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  padding:1rem 1.1rem 1.15rem;
+  background:linear-gradient(90deg,rgba(255,62,174,.17),rgba(70,214,255,.09));
+}
+
+.exp53-album-label small{
+  color:#ffafe0;
+  font-size:.69rem;
+  font-weight:900;
+  letter-spacing:.14em;
+}
+
+.exp53-album-label strong{
+  color:#fff;
+  font-size:.78rem;
+}
+
+.exp53-sweetie-community{
+  position:relative;
+  margin-top:clamp(2rem,5vw,4rem);
+  padding:clamp(2rem,5vw,4rem);
+  overflow:hidden;
+  border:1px solid rgba(255,163,219,.38);
+  border-radius:clamp(24px,4vw,40px);
+  text-align:center;
+  background:
+    linear-gradient(135deg,rgba(255,54,173,.20),rgba(106,67,231,.17) 55%,rgba(58,213,255,.14)),
+    rgba(8,0,18,.74);
+  box-shadow:0 30px 80px rgba(0,0,0,.36);
+}
+
+.exp53-sweetie-community::before{
+  content:"♡";
+  position:absolute;
+  top:-.55em;
+  right:.02em;
+  color:rgba(255,255,255,.055);
+  font-family:Georgia,serif;
+  font-size:clamp(12rem,28vw,25rem);
+  line-height:1;
+  pointer-events:none;
+}
+
+.exp53-sweetie-kicker{
+  position:relative;
+  margin:0;
+  color:#74e7ff;
+  font-size:.7rem;
+  font-weight:900;
+  letter-spacing:.19em;
+}
+
+.exp53-sweetie-community h3{
+  position:relative;
+  margin:.45rem 0 .75rem;
+  color:#fff;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(2.7rem,6vw,6rem);
+  line-height:1;
+}
+
+.exp53-sweetie-community h3 span{
+  color:#ff8fd0;
+}
+
+.exp53-sweetie-copy{
+  position:relative;
+  max-width:760px;
+  margin:0 auto;
+  color:#f0ddea;
+  font-size:clamp(1rem,1.7vw,1.2rem);
+  line-height:1.7;
+}
+
+.exp53-sweetie-copy strong{
+  color:#fff;
+}
+
+.exp53-social-grid{
+  position:relative;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:.8rem;
+  margin:clamp(1.6rem,4vw,2.5rem) auto 0;
+}
+
+.exp53-social{
+  display:flex;
+  min-height:84px;
+  align-items:center;
+  justify-content:center;
+  gap:.7rem;
+  padding:.85rem;
+  border:1px solid rgba(255,255,255,.23);
+  border-radius:18px;
+  color:#fff;
+  background:rgba(255,255,255,.075);
+  text-decoration:none;
+  transition:transform .2s ease,background .2s ease,border-color .2s ease;
+}
+
+.exp53-social:hover,
+.exp53-social:focus-visible{
+  transform:translateY(-3px);
+  border-color:#7aeaff;
+  background:rgba(255,255,255,.14);
+}
+
+.exp53-social:focus-visible{
+  outline:3px solid #7aeaff;
+  outline-offset:3px;
+}
+
+.exp53-social-icon{
+  display:grid;
+  width:38px;
+  height:38px;
+  flex:0 0 auto;
+  place-items:center;
+  border-radius:12px;
+  color:#0c0012;
+  background:linear-gradient(135deg,#ff78c8,#65eaff);
+  font-size:1.15rem;
+  font-weight:900;
+}
+
+.exp53-social-copy{
+  display:flex;
+  min-width:0;
+  flex-direction:column;
+  text-align:left;
+}
+
+.exp53-social-copy strong{
+  font-size:.82rem;
+}
+
+.exp53-social-copy span{
+  color:#ffc3e4;
+  font-size:.69rem;
+  font-weight:800;
+}
+
+@media(max-width:860px){
+  .exp53-social-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:620px){
+  .exp53-album-section{
+    padding:4rem 1rem;
+  }
+
+  .exp53-album-grid{
+    grid-template-columns:1fr;
+  }
+
+  .exp53-album-art{
+    border-radius:22px;
+  }
+
+  .exp53-album-label{
+    padding:.9rem 1rem 1rem;
+  }
+
+  .exp53-sweetie-community{
+    padding:2.4rem 1rem;
+  }
+
+  .exp53-social-grid{
+    grid-template-columns:1fr;
+  }
+
+  .exp53-social{
+    min-height:72px;
+    justify-content:flex-start;
+    padding:.8rem 1rem;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .exp53-album-art,
+  .exp53-album-image img,
+  .exp53-social{
+    transition:none;
+  }
+}
+
