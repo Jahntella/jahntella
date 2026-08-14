@@ -101,13 +101,13 @@
   const shell = document.createElement('aside');
   shell.className = 'j46-player';
   shell.dataset.j46SitePlayer = '';
-  shell.setAttribute('aria-label', 'Jahntella music player');
+  shell.setAttribute('aria-label', 'Jahntella™ music player');
   shell.innerHTML = `
     <img class="j46-player-art" data-j46-art alt="">
     <div class="j46-player-main">
       <div class="j46-player-heading">
         <div>
-          <small data-j46-status>MUSIC ACROSS JAHNTELLA</small>
+          <small data-j46-status>MUSIC ACROSS JAHNTELLA™</small>
           <strong data-j46-title></strong>
         </div>
         <button class="j46-close" type="button" data-j46-close aria-label="Close music player">×</button>
@@ -173,7 +173,7 @@
     const track = tracks[currentKey];
     navigator.mediaSession.metadata = new MediaMetadata({
       title: track.title,
-      artist: 'Jahntella',
+      artist: 'Jahntella™',
       album: 'The World of Sweet',
       artwork: [{src: track.artwork}]
     });
@@ -209,7 +209,7 @@
     closed = false;
     shell.hidden = false;
     audio.play().then(() => {
-      status.textContent = 'PLAYING ACROSS JAHNTELLA';
+      status.textContent = 'PLAYING ACROSS JAHNTELLA™';
       render();
       persist(true);
     }).catch(() => {
@@ -258,12 +258,12 @@
   });
   audio.addEventListener('play', () => {
     if (audio.currentTime < 5) credited = false;
-    status.textContent = 'PLAYING ACROSS JAHNTELLA';
+    status.textContent = 'PLAYING ACROSS JAHNTELLA™';
     render();
     persist(true);
   });
   audio.addEventListener('pause', () => {
-    if (!audio.ended) status.textContent = 'MUSIC ACROSS JAHNTELLA';
+    if (!audio.ended) status.textContent = 'MUSIC ACROSS JAHNTELLA™';
     render();
     persist(true);
   });
