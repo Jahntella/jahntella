@@ -1,0 +1,31 @@
+/* EXP 56.0 — homepage flow separation and clean hero-video handoff */
+
+.hero-v5-video{
+  opacity:0!important;
+  background:#100012;
+  transition:opacity .55s ease!important;
+}
+
+.hero-v5-video.exp56-video-ready{
+  opacity:1!important;
+}
+
+.exp56-sweetie-section{
+  position:relative;
+  overflow:hidden;
+  padding:clamp(4rem,8vw,7rem) clamp(1rem,5vw,5rem);
+  border-top:1px solid rgba(255,255,255,.08);
+  background:
+    radial-gradient(circle at 18% 25%,rgba(255,55,172,.20),transparent 31rem),
+    radial-gradient(circle at 84% 70%,rgba(64,220,255,.14),transparent 28rem),
+    linear-gradient(145deg,#0c0016,#1b0023 52%,#090014);
+  isolation:isolate;
+}
+
+.exp56-sweetie-section .exp53-sweetie-community{
+  margin-top:0;
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-v5-video{transition:none!important}
+}

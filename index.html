@@ -6,7 +6,6 @@
   <meta name="theme-color" content="#120015">
   <meta name="description" content="The official home of Jahntella. Listen to Fun Dipp, Pink Lips Remix, and the newest music from the World of Sweet.">
   <title>Jahntella — The World of Sweet</title>
-  <link rel="preload" href="assets/hero-performance-poster.webp" as="image" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -23,6 +22,7 @@
 <link rel="stylesheet" href="exp30-6-poster-fix.css?v=30.6">
 <link rel="stylesheet" href="exp44-new-music.css?v=48.1">
 <link rel="stylesheet" href="exp53-sweet-era.css?v=53.0">
+<link rel="stylesheet" href="exp56-flow-fix.css?v=56.0">
   <link rel="stylesheet" href="exp48-3-fixed-player.css?v=48.3">
   <link rel="stylesheet" href="exp48-4-hide-homepage-posters.css?v=48.4">
   <link rel="stylesheet" href="exp50-2-mobile-music-fix.css?v=50.2">
@@ -58,7 +58,7 @@
 
   <main>
     <section class="hero-v5" id="home">
-      <video class="hero-v5-video" autoplay muted loop playsinline preload="none" poster="assets/hero-performance-poster.webp" aria-hidden="true">
+      <video class="hero-v5-video" autoplay muted loop playsinline preload="none" aria-hidden="true">
         <source data-src="videos/Hero.mp4" type="video/mp4">
       </video>
 
@@ -129,30 +129,6 @@
           </button>
         </div>
 
-        <section class="exp53-sweetie-community" aria-labelledby="beASweetieTitle">
-          <p class="exp53-sweetie-kicker">WELCOME TO THE COMMUNITY</p>
-          <h3 id="beASweetieTitle">Be A <span>“SWEETIE”!</span> ♡</h3>
-          <p class="exp53-sweetie-copy">Follow <strong>@jahntella</strong> on <strong>ALL socials!</strong> Stay close to the music, visuals, Sweetville moments, behind-the-scenes magic, and everything coming next in The Sweet Era.</p>
-
-          <div class="exp53-social-grid" aria-label="Follow Jahntella on social media">
-            <a class="exp53-social" href="https://www.instagram.com/jahntella" target="_blank" rel="noopener">
-              <span class="exp53-social-icon" aria-hidden="true">◎</span>
-              <span class="exp53-social-copy"><strong>Instagram</strong><span>@jahntella</span></span>
-            </a>
-            <a class="exp53-social" href="https://www.tiktok.com/@jahntella" target="_blank" rel="noopener">
-              <span class="exp53-social-icon" aria-hidden="true">♪</span>
-              <span class="exp53-social-copy"><strong>TikTok</strong><span>@jahntella</span></span>
-            </a>
-            <a class="exp53-social" href="https://open.spotify.com/search/Jahntella" target="_blank" rel="noopener">
-              <span class="exp53-social-icon" aria-hidden="true">●</span>
-              <span class="exp53-social-copy"><strong>Spotify</strong><span>@jahntella</span></span>
-            </a>
-            <a class="exp53-social" href="https://www.youtube.com/@Jahntella" target="_blank" rel="noopener">
-              <span class="exp53-social-icon" aria-hidden="true">▶</span>
-              <span class="exp53-social-copy"><strong>YouTube</strong><span>@jahntella</span></span>
-            </a>
-          </div>
-        </section>
       </div>
     </section>
 
@@ -337,6 +313,35 @@
         </article>
       </div>
     </section>
+
+<section class="exp56-sweetie-section reveal" id="beASweetie" aria-labelledby="beASweetieTitle">
+  <div class="exp53-album-shell">
+    <section class="exp53-sweetie-community" aria-labelledby="beASweetieTitle">
+      <p class="exp53-sweetie-kicker">WELCOME TO THE COMMUNITY</p>
+      <h3 id="beASweetieTitle">Be A <span>“SWEETIE”!</span> ♡</h3>
+      <p class="exp53-sweetie-copy">Follow <strong>@jahntella</strong> on <strong>ALL socials!</strong> Stay close to the music, visuals, Sweetville moments, behind-the-scenes magic, and everything coming next in The Sweet Era.</p>
+
+      <div class="exp53-social-grid" aria-label="Follow Jahntella on social media">
+        <a class="exp53-social" href="https://www.instagram.com/jahntella" target="_blank" rel="noopener">
+          <span class="exp53-social-icon" aria-hidden="true">◎</span>
+          <span class="exp53-social-copy"><strong>Instagram</strong><span>@jahntella</span></span>
+        </a>
+        <a class="exp53-social" href="https://www.tiktok.com/@jahntella" target="_blank" rel="noopener">
+          <span class="exp53-social-icon" aria-hidden="true">♪</span>
+          <span class="exp53-social-copy"><strong>TikTok</strong><span>@jahntella</span></span>
+        </a>
+        <a class="exp53-social" href="https://open.spotify.com/search/Jahntella" target="_blank" rel="noopener">
+          <span class="exp53-social-icon" aria-hidden="true">●</span>
+          <span class="exp53-social-copy"><strong>Spotify</strong><span>@jahntella</span></span>
+        </a>
+        <a class="exp53-social" href="https://www.youtube.com/@Jahntella" target="_blank" rel="noopener">
+          <span class="exp53-social-icon" aria-hidden="true">▶</span>
+          <span class="exp53-social-copy"><strong>YouTube</strong><span>@jahntella</span></span>
+        </a>
+      </div>
+    </section>
+  </div>
+</section>
 
 <section class="exp250-station-section reveal" id="sweet-express">
   <div class="exp250-station-shell">
@@ -723,6 +728,7 @@
 
 <script src="exp19-5-popstar.js?v=19.5" defer></script>
 <script src="exp21-0-performance.js?v=21.0" defer></script>
+<script src="exp56-hero-video.js?v=56.0" defer></script>
 <script src="exp25-1-sweet-express.js?v=52.0" defer></script>
 
 <div class="exp294-contact-modal" id="exp294ContactModal" aria-hidden="true">
