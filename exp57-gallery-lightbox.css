@@ -1,0 +1,23 @@
+/* EXP 57.0 — show Visual World artwork in its original colors */
+
+#lightbox.exp57-gallery-lightbox.open{
+  background:#050006!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+
+#lightbox.exp57-gallery-lightbox::before,
+#lightbox.exp57-gallery-lightbox::after{
+  content:none!important;
+  display:none!important;
+}
+
+#lightbox.exp57-gallery-lightbox #lightboxImage{
+  position:relative;
+  z-index:1;
+  opacity:1!important;
+  filter:none!important;
+  -webkit-filter:none!important;
+  mix-blend-mode:normal!important;
+  background:transparent!important;
+}
