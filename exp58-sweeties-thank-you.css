@@ -1,0 +1,77 @@
+/* EXP 58.0 — Sweeties thank-you artwork between New Music and Be A Sweetie */
+
+.exp58-thank-you{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  padding:clamp(3.75rem,8vw,7.5rem) clamp(1rem,4vw,2.5rem);
+  background:
+    radial-gradient(circle at 24% 24%,rgba(255,42,166,.18),transparent 34%),
+    radial-gradient(circle at 78% 72%,rgba(35,222,255,.13),transparent 32%),
+    linear-gradient(180deg,#110014 0%,#08020e 54%,#17001a 100%);
+  content-visibility:auto;
+  contain-intrinsic-size:984px 1700px;
+}
+
+.exp58-thank-you::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:8% 50% auto;
+  width:min(92vw,64rem);
+  aspect-ratio:1;
+  border-radius:50%;
+  transform:translateX(-50%);
+  background:radial-gradient(circle,rgba(239,45,192,.2),transparent 68%);
+  filter:blur(38px);
+  pointer-events:none;
+}
+
+.exp58-thank-you-shell{
+  position:relative;
+  width:min(100%,48rem);
+  margin:0 auto;
+}
+
+.exp58-thank-you-art{
+  margin:0;
+  padding:clamp(3px,.55vw,6px);
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:clamp(1rem,2.8vw,2rem);
+  background:linear-gradient(145deg,rgba(255,105,218,.9),rgba(139,62,255,.62) 48%,rgba(34,217,255,.78));
+  box-shadow:
+    0 2rem 6rem rgba(0,0,0,.52),
+    0 0 3rem rgba(243,42,190,.2);
+}
+
+.exp58-thank-you-art img{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:calc(clamp(1rem,2.8vw,2rem) - 4px);
+  background:#08020e;
+}
+
+@media (max-width:640px){
+  .exp58-thank-you{
+    padding:3rem .75rem;
+  }
+
+  .exp58-thank-you-art{
+    border-radius:1rem;
+    box-shadow:
+      0 1.4rem 3.8rem rgba(0,0,0,.48),
+      0 0 2rem rgba(243,42,190,.16);
+  }
+
+  .exp58-thank-you-art img{
+    border-radius:calc(1rem - 4px);
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .exp58-thank-you{
+    scroll-behavior:auto;
+  }
+}
