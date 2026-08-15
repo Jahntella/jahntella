@@ -1,6 +1,6 @@
 (() => {
   const SITE_PLAYBACK_KEY = "jahntellaSiteMusicV46";
-  const order = ["fun-dipp", "pink-lips", "bite-lip", "gloss", "your-girl", "embrace-me", "we-come-together", "play-with-me", "carnival", "made-of-light", "candy-wrapper", "playground", "milk-shake", "tonight"];
+  const order = ["fun-dipp", "pink-lips", "bite-lip", "gloss", "your-girl", "embrace-me", "we-come-together", "play-with-me", "carnival", "made-of-light", "candy-wrapper", "playground", "milk-shake", "tonight", "sweet-dreams", "we-are-1"];
   const tracks = {
     "fun-dipp": {
       audio: document.getElementById("audioFunDipp"),
@@ -87,6 +87,18 @@
       title: "Tonight",
       artwork: "assets/music-thumbs/tonight.webp",
       card: document.querySelector('[data-card="tonight"]')
+    },
+    "sweet-dreams": {
+      audio: document.getElementById("audioSweetDreams"),
+      title: "Sweet Dreams",
+      artwork: "assets/album2/sweet-dreams-cover.webp",
+      card: document.querySelector('[data-card="sweet-dreams"]')
+    },
+    "we-are-1": {
+      audio: document.getElementById("audioWeAre1"),
+      title: "We Are 1",
+      artwork: "assets/album2/we-are-1-cover.webp",
+      card: document.querySelector('[data-card="we-are-1"]')
     }
   };
 
@@ -246,6 +258,10 @@
     Object.entries(tracks).forEach(([trackKey, item]) => item.card?.classList.toggle("is-active", trackKey === key));
     if (autoplay) track.audio.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
     else setPlaying(false);
+  };
+
+  window.jahntellaSelectSiteTrack = (key, autoplay = true, options = {}) => {
+    selectTrack(key, autoplay, options);
   };
 
   const moveTrack = direction => {

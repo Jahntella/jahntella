@@ -97,6 +97,18 @@
       audio: document.getElementById('audioTonight'),
       title: 'Tonight',
       button: document.querySelector('[data-track="tonight"]')
+    },
+    {
+      key: 'sweet-dreams',
+      audio: document.getElementById('audioSweetDreams'),
+      title: 'Sweet Dreams',
+      button: document.querySelector('[data-track="sweet-dreams"]')
+    },
+    {
+      key: 'we-are-1',
+      audio: document.getElementById('audioWeAre1'),
+      title: 'We Are 1',
+      button: document.querySelector('[data-track="we-are-1"]')
     }
   ].filter(track => track.audio);
 

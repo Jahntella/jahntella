@@ -4,7 +4,8 @@
 
   const ENERGY_KEY = 'jahntellaSweetEnergyV25';
   const LEGACY_ENERGY_KEY = 'jahntellaFunDippCompletedListensV25';
-  const PLAYBACK_KEY = 'jahntellaSweetvilleMusicV421';
+  const PLAYBACK_KEY = 'jahntellaSiteMusicV46';
+  const LEGACY_PLAYBACK_KEY = 'jahntellaSweetvilleMusicV421';
   const VISIT_KEY = 'jahntellaSweetvilleVisitsV421';
   const DISTRICT_KEY = 'jahntellaExp291DistrictVisits';
   const ENERGY_GOAL = 10;
@@ -97,10 +98,22 @@
       src: new URL('tonight.mp3', document.baseURI).href,
       destination: 'pink-lips-after-dark.html',
       artwork: new URL('tonight-cover.webp', document.baseURI).href
+    },
+    'sweet-dreams': {
+      title: 'Sweet Dreams',
+      src: new URL('sweet-dreams.mp3', document.baseURI).href,
+      destination: '../index.html#shineEraSneakPeek',
+      artwork: new URL('../assets/album2/sweet-dreams-cover.webp', document.baseURI).href
+    },
+    'we-are-1': {
+      title: 'We Are 1',
+      src: new URL('we-are-1.mp3', document.baseURI).href,
+      destination: '../index.html#shineEraSneakPeek',
+      artwork: new URL('../assets/album2/we-are-1-cover.webp', document.baseURI).href
     }
   };
 
-  const TRACK_ORDER = ['fun-dipp', 'pink-lips', 'bite-lip', 'gloss', 'your-girl', 'embrace-me', 'we-come-together', 'play-with-me', 'carnival', 'made-of-light', 'candy-wrapper', 'playground', 'milk-shake', 'tonight'];
+  const TRACK_ORDER = ['fun-dipp', 'pink-lips', 'bite-lip', 'gloss', 'your-girl', 'embrace-me', 'we-come-together', 'play-with-me', 'carnival', 'made-of-light', 'candy-wrapper', 'playground', 'milk-shake', 'tonight', 'sweet-dreams', 'we-are-1'];
 
   const safeJSON = (value, fallback) => {
     try { return JSON.parse(value) ?? fallback; } catch { return fallback; }
@@ -176,7 +189,9 @@
   };
 
   const readPlayback = () => {
-    const saved = safeJSON(sessionStorage.getItem(PLAYBACK_KEY), {});
+    const shared = safeJSON(sessionStorage.getItem(PLAYBACK_KEY), {});
+    const legacy = safeJSON(sessionStorage.getItem(LEGACY_PLAYBACK_KEY), {});
+    const saved = TRACKS[shared.track] ? shared : legacy;
     return {
       track: TRACKS[saved.track] ? saved.track : '',
       position: Number.isFinite(Number(saved.position)) ? Math.max(0, Number(saved.position)) : 0,
@@ -197,7 +212,10 @@
 
   const writePlayback = () => {
     playback.savedAt = Date.now();
-    try { sessionStorage.setItem(PLAYBACK_KEY, JSON.stringify(playback)); } catch {}
+    try {
+      sessionStorage.setItem(PLAYBACK_KEY, JSON.stringify(playback));
+      sessionStorage.removeItem(LEGACY_PLAYBACK_KEY);
+    } catch {}
   };
 
   const broadcastState = () => {

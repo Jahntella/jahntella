@@ -9,7 +9,7 @@
   const CREDIT_THRESHOLD = 0.90;
   const base = new URL('.', document.currentScript?.src || document.baseURI);
   const asset = path => new URL(path, base).href;
-  const order = ['fun-dipp', 'pink-lips', 'bite-lip', 'gloss', 'your-girl', 'embrace-me', 'we-come-together', 'play-with-me', 'carnival', 'made-of-light', 'candy-wrapper', 'playground', 'milk-shake', 'tonight'];
+  const order = ['fun-dipp', 'pink-lips', 'bite-lip', 'gloss', 'your-girl', 'embrace-me', 'we-come-together', 'play-with-me', 'carnival', 'made-of-light', 'candy-wrapper', 'playground', 'milk-shake', 'tonight', 'sweet-dreams', 'we-are-1'];
   const tracks = {
     'fun-dipp': {
       title: 'Fun Dipp',
@@ -80,6 +80,16 @@
       title: 'Tonight',
       src: asset('sweetville/tonight.mp3'),
       artwork: asset('sweetville/tonight-cover.webp')
+    },
+    'sweet-dreams': {
+      title: 'Sweet Dreams',
+      src: asset('sweetville/sweet-dreams.mp3'),
+      artwork: asset('assets/album2/sweet-dreams-cover.webp')
+    },
+    'we-are-1': {
+      title: 'We Are 1',
+      src: asset('sweetville/we-are-1.mp3'),
+      artwork: asset('assets/album2/we-are-1-cover.webp')
     }
   };
 
