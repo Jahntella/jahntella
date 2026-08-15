@@ -1,22 +1,33 @@
 (() => {
-  const video = document.getElementById("exp60SweetDreamsVideo");
-  if (!video) return;
+  const videos = Array.from(document.querySelectorAll(".exp60-shine-video-frame video"));
+  if (!videos.length) return;
 
   const musicTracks = Array.from(document.querySelectorAll("audio"));
 
-  video.addEventListener("play", () => {
-    musicTracks.forEach(track => {
-      if (!track.paused) track.pause();
+  videos.forEach(activeVideo => {
+    activeVideo.addEventListener("play", () => {
+      musicTracks.forEach(track => {
+        if (!track.paused) track.pause();
+      });
+
+      videos.forEach(otherVideo => {
+        if (otherVideo !== activeVideo && !otherVideo.paused) otherVideo.pause();
+      });
     });
   });
 
   musicTracks.forEach(track => {
     track.addEventListener("play", () => {
-      if (!video.paused) video.pause();
+      videos.forEach(video => {
+        if (!video.paused) video.pause();
+      });
     });
   });
 
   document.addEventListener("visibilitychange", () => {
-    if (document.hidden && !video.paused) video.pause();
+    if (!document.hidden) return;
+    videos.forEach(video => {
+      if (!video.paused) video.pause();
+    });
   });
 })();
