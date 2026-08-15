@@ -103,9 +103,16 @@
 
 .exp60-shine-grid{
   display:grid;
-  grid-template-columns:minmax(17rem,.76fr) minmax(0,1.34fr);
+  grid-template-columns:minmax(25rem,.98fr) minmax(0,1.12fr);
   align-items:center;
   gap:clamp(1.25rem,3vw,2.5rem);
+}
+
+.exp60-shine-covers{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  align-items:center;
+  gap:clamp(.7rem,1.35vw,1.1rem);
 }
 
 .exp60-shine-cover-card,
@@ -119,8 +126,35 @@
 }
 
 .exp60-shine-cover-card{
+  display:block;
+  width:100%;
+  appearance:none;
   padding:clamp(.55rem,1.2vw,.85rem);
+  color:#fff;
+  font:inherit;
+  text-align:left;
+  cursor:zoom-in;
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+
+.exp60-shine-cover-front{
   transform:rotate(-1deg);
+}
+
+.exp60-shine-cover-back{
+  transform:rotate(1deg);
+}
+
+.exp60-shine-cover-card:hover{
+  z-index:1;
+  transform:translateY(-5px) rotate(0);
+  border-color:rgba(223,172,255,.48);
+  box-shadow:0 2.3rem 5.5rem rgba(0,0,0,.48),0 0 2.8rem rgba(174,67,255,.2);
+}
+
+.exp60-shine-cover-card:focus-visible{
+  outline:3px solid #72e8ff;
+  outline-offset:4px;
 }
 
 .exp60-shine-cover-frame{
@@ -146,14 +180,14 @@
   object-fit:cover;
 }
 
-.exp60-shine-cover-card figcaption{
+.exp60-shine-cover-caption{
   display:flex;
   flex-direction:column;
   gap:.22rem;
   padding:1rem .55rem .45rem;
 }
 
-.exp60-shine-cover-card figcaption span,
+.exp60-shine-cover-caption small,
 .exp60-shine-video-heading span{
   color:#d9b4ff;
   font-size:.68rem;
@@ -161,8 +195,8 @@
   letter-spacing:.17em;
 }
 
-.exp60-shine-cover-card figcaption strong{
-  font-size:clamp(1rem,1.65vw,1.18rem);
+.exp60-shine-cover-caption strong{
+  font-size:clamp(.86rem,1.3vw,1.05rem);
 }
 
 .exp60-shine-video-card{
@@ -254,9 +288,12 @@
     margin:0 auto;
   }
 
-  .exp60-shine-cover-card{
-    width:min(100%,31rem);
+  .exp60-shine-covers{
+    width:min(100%,42rem);
     margin:0 auto;
+  }
+
+  .exp60-shine-cover-card{
     transform:none;
   }
 }
@@ -285,6 +322,23 @@
     border-radius:1rem;
   }
 
+  .exp60-shine-cover-card{
+    padding:.42rem;
+  }
+
+  .exp60-shine-cover-caption{
+    padding:.7rem .28rem .3rem;
+  }
+
+  .exp60-shine-cover-caption small{
+    font-size:.59rem;
+    letter-spacing:.12em;
+  }
+
+  .exp60-shine-cover-caption strong{
+    font-size:.8rem;
+  }
+
   .exp60-shine-video-card{
     padding:.6rem;
   }
@@ -302,5 +356,6 @@
 @media (prefers-reduced-motion:reduce){
   .exp60-shine-cover-card{
     transform:none;
+    transition:none;
   }
 }

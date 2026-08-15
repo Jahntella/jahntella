@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="exp50-2-mobile-music-fix.css?v=50.2">
   <link rel="stylesheet" href="exp57-gallery-lightbox.css?v=57.0">
   <link rel="stylesheet" href="exp58-sweeties-thank-you.css?v=58.0">
-  <link rel="stylesheet" href="exp60-shine-era-sneak-peek.css?v=60.0">
+  <link rel="stylesheet" href="exp60-shine-era-sneak-peek.css?v=60.1">
 </head>
 <body>
   <div id="siteLoader" class="site-loader" aria-hidden="true">
@@ -336,25 +336,51 @@
         <header class="exp60-shine-heading">
           <p class="exp60-shine-kicker">SNEAK PEEK <span aria-hidden="true">✦</span> ALBUM II</p>
           <h2 id="shineEraSneakPeekTitle">A new era is beginning to <em>shine.</em></h2>
-          <p>Get your first look at <strong>The Shine Era</strong> and step inside <strong>Sweet Dreams</strong>—an early glimpse of the sound, light, and world of Album II.</p>
+          <p>Get your first look at <strong>The Shine Era</strong>—front and back—and step inside <strong>Sweet Dreams</strong>, an early glimpse of the sound, light, and world of Album II.</p>
         </header>
 
         <div class="exp60-shine-grid">
-          <figure class="exp60-shine-cover-card">
-            <div class="exp60-shine-cover-frame">
-              <img
-                src="assets/album2/the-shine-era-cover.webp"
-                alt="The Shine Era Album II cover featuring Jahntella performing in a crystal purple stage outfit"
-                loading="lazy"
-                decoding="async"
-                width="1254"
-                height="1254">
-            </div>
-            <figcaption>
-              <span>THE NEXT CHAPTER</span>
-              <strong>The Shine Era — Album II</strong>
-            </figcaption>
-          </figure>
+          <div class="exp60-shine-covers" aria-label="The Shine Era Album II front and back covers">
+            <button
+              class="exp60-shine-cover-card exp60-shine-cover-front"
+              type="button"
+              data-lightbox="assets/album2/the-shine-era-cover.webp"
+              aria-label="Enlarge The Shine Era Album II front cover">
+              <span class="exp60-shine-cover-frame">
+                <img
+                  src="assets/album2/the-shine-era-cover.webp"
+                  alt="The Shine Era Album II front cover featuring Jahntella performing in a crystal purple stage outfit"
+                  loading="lazy"
+                  decoding="async"
+                  width="1254"
+                  height="1254">
+              </span>
+              <span class="exp60-shine-cover-caption">
+                <small>OFFICIAL FRONT COVER</small>
+                <strong>Tap to enlarge ↗</strong>
+              </span>
+            </button>
+
+            <button
+              class="exp60-shine-cover-card exp60-shine-cover-back"
+              type="button"
+              data-lightbox="assets/album2/the-shine-era-back.webp"
+              aria-label="Enlarge The Shine Era Album II clean back cover">
+              <span class="exp60-shine-cover-frame">
+                <img
+                  src="assets/album2/the-shine-era-back.webp"
+                  alt="The Shine Era Album II clean back cover with a purple diamond-framed concert stage"
+                  loading="lazy"
+                  decoding="async"
+                  width="1254"
+                  height="1254">
+              </span>
+              <span class="exp60-shine-cover-caption">
+                <small>CLEAN BACK COVER</small>
+                <strong>Tap to enlarge ↗</strong>
+              </span>
+            </button>
+          </div>
 
           <article class="exp60-shine-video-card" aria-labelledby="sweetDreamsPreviewTitle">
             <div class="exp60-shine-video-heading">
