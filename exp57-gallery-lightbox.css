@@ -1,23 +1,44 @@
-/* EXP 57.0 — show Visual World artwork in its original colors */
+/* EXP 63.0 — true-color artwork lightbox
+   The permanent class on the lightbox keeps this fix independent of click
+   listener order and prevents decorative page effects from tinting artwork. */
 
-#lightbox.exp57-gallery-lightbox.open{
-  background:#050006!important;
-  backdrop-filter:none!important;
-  -webkit-backdrop-filter:none!important;
-}
-
-#lightbox.exp57-gallery-lightbox::before,
-#lightbox.exp57-gallery-lightbox::after{
-  content:none!important;
-  display:none!important;
-}
-
-#lightbox.exp57-gallery-lightbox #lightboxImage{
-  position:relative;
-  z-index:1;
+#lightbox.exp63-true-color-lightbox{
+  isolation:isolate!important;
   opacity:1!important;
   filter:none!important;
   -webkit-filter:none!important;
   mix-blend-mode:normal!important;
-  background:transparent!important;
+}
+
+#lightbox.exp63-true-color-lightbox.open{
+  background:#050006!important;
+  background-image:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+
+#lightbox.exp63-true-color-lightbox::before,
+#lightbox.exp63-true-color-lightbox::after{
+  content:none!important;
+  display:none!important;
+  background:none!important;
+}
+
+#lightbox.exp63-true-color-lightbox #lightboxImage{
+  position:relative!important;
+  z-index:2!important;
+  display:block!important;
+  opacity:1!important;
+  filter:none!important;
+  -webkit-filter:none!important;
+  mix-blend-mode:normal!important;
+  background:#050006!important;
+  background-image:none!important;
+  transform:none!important;
+  animation:none!important;
+  image-rendering:auto!important;
+}
+
+#lightbox.exp63-true-color-lightbox #lightboxClose{
+  z-index:3!important;
 }

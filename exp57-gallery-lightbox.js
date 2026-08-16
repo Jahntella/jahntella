@@ -1,4 +1,4 @@
-/* EXP 57.0 — isolate the Visual World lightbox from color overlays */
+/* EXP 63.0 — reinforce the permanent true-color artwork lightbox */
 (() => {
   'use strict';
 
@@ -13,6 +13,7 @@
   ready(() => {
     const lightbox = document.getElementById('lightbox');
     if (!lightbox) return;
+    lightbox.classList.add('exp63-true-color-lightbox');
 
     const clearGalleryMode = () => lightbox.classList.remove('exp57-gallery-lightbox');
 
