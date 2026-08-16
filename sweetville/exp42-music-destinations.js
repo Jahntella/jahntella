@@ -115,6 +115,41 @@
 
   const TRACK_ORDER = ['fun-dipp', 'pink-lips', 'bite-lip', 'gloss', 'your-girl', 'embrace-me', 'we-come-together', 'play-with-me', 'carnival', 'made-of-light', 'candy-wrapper', 'playground', 'milk-shake', 'tonight', 'sweet-dreams', 'we-are-1'];
 
+  const COVER_FILE_TRACKS = {
+    'fun-dipp-cover.png': 'fun-dipp',
+    'fun-dipp-cover.webp': 'fun-dipp',
+    'pink-lips-remix.png': 'pink-lips',
+    'pink-lips-remix.webp': 'pink-lips',
+    'pink-lips-cover.png': 'pink-lips',
+    'pink-lips-cover.webp': 'pink-lips',
+    'bite-lip.webp': 'bite-lip',
+    'bite-lip-cover.webp': 'bite-lip',
+    'gloss.webp': 'gloss',
+    'gloss-cover.webp': 'gloss',
+    'i-want-to-be-your-girl.webp': 'your-girl',
+    'i-want-to-be-your-girl-cover.webp': 'your-girl',
+    'embrace-me.webp': 'embrace-me',
+    'embrace-me-cover.webp': 'embrace-me',
+    'we-come-together.webp': 'we-come-together',
+    'we-come-together-cover.webp': 'we-come-together',
+    'play-with-me.webp': 'play-with-me',
+    'play-with-me-cover.webp': 'play-with-me',
+    'carnival.webp': 'carnival',
+    'carnival-cover.webp': 'carnival',
+    'made-of-light.webp': 'made-of-light',
+    'made-of-light-cover.webp': 'made-of-light',
+    'candy-wrapper.webp': 'candy-wrapper',
+    'candy-wrapper-cover.webp': 'candy-wrapper',
+    'playground.webp': 'playground',
+    'playground-cover.webp': 'playground',
+    'milk-shake.webp': 'milk-shake',
+    'milk-shake-cover.webp': 'milk-shake',
+    'tonight.webp': 'tonight',
+    'tonight-cover.webp': 'tonight',
+    'sweet-dreams-cover.webp': 'sweet-dreams',
+    'we-are-1-cover.webp': 'we-are-1'
+  };
+
   const safeJSON = (value, fallback) => {
     try { return JSON.parse(value) ?? fallback; } catch { return fallback; }
   };
@@ -308,6 +343,7 @@
       .sv421-speaker[hidden]{display:none!important}.sv421-speaker-main{display:grid;grid-template-columns:42px 1fr auto auto;gap:9px;align-items:center}.sv421-speaker-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#ff7ac8,#8d51ff);font-size:20px}.sv421-speaker-copy{min-width:0}.sv421-speaker-copy small{display:block;font-size:9px;font-weight:900;letter-spacing:.14em;color:#ffd8ef}.sv421-speaker-copy strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px}.sv421-speaker button{border:0;cursor:pointer}.sv421-speaker-toggle{min-height:38px;padding:0 13px;border-radius:999px;background:#fff;color:#76044e;font-weight:900}.sv421-speaker-stop{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.13);color:#fff;font-size:19px}.sv421-speaker-progress{height:4px;margin-top:9px;border-radius:99px;overflow:hidden;background:rgba(255,255,255,.17)}.sv421-speaker-progress i{display:block;width:0;height:100%;background:linear-gradient(90deg,#ff92d0,#e0b7ff)}.sv421-speaker-meta{display:flex;justify-content:space-between;gap:12px;margin-top:6px;font-size:10px;color:#ffe8f6}.sv421-speaker.needs-tap{animation:sv421Pulse 1.7s ease-in-out infinite}@keyframes sv421Pulse{50%{box-shadow:0 20px 60px rgba(255,64,177,.72)}}
       .sv421-destination-shell{position:fixed;inset:0;z-index:2147483000;display:grid;grid-template-rows:46px 1fr;background:#13000d}.sv421-shell-bar{display:flex;align-items:center;gap:10px;padding:6px 12px;background:linear-gradient(90deg,#3a0229,#8d155e);color:#fff;font:800 12px/1.2 "DM Sans",system-ui,sans-serif}.sv421-shell-bar span{flex:1;text-align:center}.sv421-shell-bar button{border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:7px 12px;background:rgba(255,255,255,.12);color:#fff;font:inherit;cursor:pointer}.sv421-destination-shell iframe{display:block;width:100%;height:100%;border:0;background:#fff}.sv421-frame-open{overflow:hidden!important}
       .exp42-toast{position:fixed;left:50%;bottom:24px;z-index:2147483646;max-width:min(560px,calc(100vw - 32px));padding:13px 18px;border-radius:999px;background:#4a0635;color:#fff;font:800 13px/1.35 "DM Sans",system-ui,sans-serif;box-shadow:0 14px 45px rgba(51,0,34,.35);opacity:0;pointer-events:none;transform:translate(-50%,18px);transition:.25s ease}.exp42-toast.show{opacity:1;transform:translate(-50%,0)}
+      img.sv64-playable-cover{cursor:pointer!important;transition:transform .22s ease,filter .22s ease,box-shadow .22s ease!important}img.sv64-playable-cover:hover{transform:scale(1.025)!important;filter:brightness(1.08)!important}img.sv64-playable-cover:focus-visible{outline:3px solid #ff8dcc!important;outline-offset:4px!important;box-shadow:0 0 0 7px rgba(255,79,183,.22)!important}
       @media(max-width:600px){.sv421-speaker{right:10px;bottom:10px;width:calc(100vw - 20px);border-radius:17px}.sv421-speaker-main{grid-template-columns:38px 1fr auto auto}.sv421-speaker-icon{width:38px;height:38px}.sv421-speaker-toggle{padding:0 10px;font-size:11px}.sv421-shell-bar span{font-size:10px}.sv421-shell-bar button{padding:6px 9px}}
     `;
     document.head.appendChild(style);
@@ -533,6 +569,35 @@
     else playTrack(track, {fresh: playback.track === track && playback.ended});
   };
 
+  const setupPlayableCovers = root => {
+    const scope = root?.matches?.('img') ? [root] : Array.from(root?.querySelectorAll?.('img') || []);
+    scope.forEach(image => {
+      if (image.classList.contains('sv64-playable-cover')) return;
+      let filename = '';
+      try {
+        const source = image.currentSrc || image.getAttribute('src') || '';
+        filename = decodeURIComponent(new URL(source, document.baseURI).pathname.split('/').pop() || '').toLowerCase();
+      } catch {}
+      const track = COVER_FILE_TRACKS[filename];
+      if (!track || !TRACKS[track]) return;
+      image.classList.add('sv64-playable-cover');
+      image.dataset.sv64CoverTrack = track;
+      image.setAttribute('role', 'button');
+      image.setAttribute('tabindex', '0');
+      image.setAttribute('aria-label', `Play or pause ${TRACKS[track].title}`);
+      image.title = `Play or pause ${TRACKS[track].title}`;
+    });
+  };
+
+  const handlePlayableCover = event => {
+    const cover = event.target.closest?.('[data-sv64-cover-track]');
+    if (!cover) return;
+    if (event.type === 'keydown' && event.key !== 'Enter' && event.key !== ' ') return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    toggleTrack(cover.dataset.sv64CoverTrack);
+  };
+
   const skipTrack = direction => {
     const currentIndex = Math.max(0, TRACK_ORDER.indexOf(playback.track));
     const nextTrack = TRACK_ORDER[(currentIndex + direction + TRACK_ORDER.length) % TRACK_ORDER.length];
@@ -741,11 +806,14 @@
     recordVisit();
     fixWelcomeActions();
     addMusicFastPass();
+    setupPlayableCovers(document.body);
     cleanWorldTitles(document.body);
     renderEnergy();
     renderWorldProgress();
     renderTrackControls();
 
+    document.addEventListener('click', handlePlayableCover, true);
+    document.addEventListener('keydown', handlePlayableCover, true);
     document.addEventListener('click', handleMusicButton, true);
     document.addEventListener('click', keepMusicDuringNavigation, true);
     document.addEventListener('click', event => {
@@ -754,7 +822,10 @@
 
     const observer = new MutationObserver(records => {
       records.forEach(record => record.addedNodes.forEach(added => {
-        if (added.nodeType === Node.ELEMENT_NODE) cleanWorldTitles(added);
+        if (added.nodeType === Node.ELEMENT_NODE) {
+          setupPlayableCovers(added);
+          cleanWorldTitles(added);
+        }
       }));
     });
     observer.observe(document.body, {childList: true, subtree: true});

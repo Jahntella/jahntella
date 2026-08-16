@@ -264,6 +264,93 @@
     selectTrack(key, autoplay, options);
   };
 
+  const coverPlayStyles = document.createElement("style");
+  coverPlayStyles.id = "jahntellaPlayableCoverStyles";
+  coverPlayStyles.textContent = `
+    .jahntella-playable-cover{cursor:pointer!important;transition:transform .22s ease,filter .22s ease,box-shadow .22s ease!important}
+    .jahntella-playable-cover:hover{filter:brightness(1.08)!important}
+    img.jahntella-playable-cover:hover{transform:scale(1.025)!important}
+    .jahntella-playable-cover:focus-visible{outline:3px solid #ff8dcc!important;outline-offset:4px!important;box-shadow:0 0 0 7px rgba(255,79,183,.2)!important}
+  `;
+  document.head.appendChild(coverPlayStyles);
+
+  const toggleCoverTrack = key => {
+    const track = tracks[key];
+    if (!track?.audio) return;
+    if (currentKey === key && !track.audio.paused) {
+      track.audio.pause();
+      setPlaying(false);
+      return;
+    }
+    if (currentKey === key) {
+      track.audio.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+      return;
+    }
+    selectTrack(key);
+  };
+
+  const makeCoverPlayable = (element, key) => {
+    const track = tracks[key];
+    if (!element || !track || element.dataset.jahntellaCoverTrack) return;
+    element.dataset.jahntellaCoverTrack = key;
+    element.classList.add("jahntella-playable-cover");
+    element.setAttribute("aria-label", `Play or pause ${track.title}`);
+    element.title = `Play or pause ${track.title}`;
+
+    const nativeControl = element.matches("button,a[href]");
+    if (!nativeControl) {
+      element.setAttribute("role", "button");
+      element.tabIndex = 0;
+    }
+
+    element.addEventListener("click", event => {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      toggleCoverTrack(key);
+    });
+
+    if (!nativeControl) {
+      element.addEventListener("keydown", event => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        toggleCoverTrack(key);
+      });
+    }
+  };
+
+  Object.entries(tracks).forEach(([key, track]) => {
+    track.card?.querySelectorAll("img").forEach(image => makeCoverPlayable(image, key));
+  });
+
+  const galleryCoverTracks = {
+    "fun-dipp-cover.png": "fun-dipp",
+    "fun-dipp-cover.webp": "fun-dipp",
+    "pink-lips-remix.png": "pink-lips",
+    "pink-lips-remix.webp": "pink-lips",
+    "bite-lip-cover.webp": "bite-lip",
+    "gloss-cover.webp": "gloss",
+    "i-want-to-be-your-girl-cover.webp": "your-girl",
+    "embrace-me-cover.webp": "embrace-me",
+    "we-come-together-cover.webp": "we-come-together",
+    "play-with-me-cover.webp": "play-with-me",
+    "carnival-cover.webp": "carnival",
+    "made-of-light-cover.webp": "made-of-light",
+    "candy-wrapper-cover.webp": "candy-wrapper",
+    "playground-cover.webp": "playground",
+    "milk-shake-cover.webp": "milk-shake",
+    "tonight-cover.webp": "tonight",
+    "sweet-dreams-cover.webp": "sweet-dreams",
+    "we-are-1-cover.webp": "we-are-1"
+  };
+
+  document.querySelectorAll("#gallery [data-lightbox]").forEach(cover => {
+    const path = cover.dataset.lightbox?.split(/[?#]/)[0] || "";
+    const filename = decodeURIComponent(path.split("/").pop() || "").toLowerCase();
+    const key = galleryCoverTracks[filename];
+    if (key) makeCoverPlayable(cover, key);
+  });
+
   const moveTrack = direction => {
     const index = currentKey ? order.indexOf(currentKey) : 0;
     selectTrack(order[(index + direction + order.length) % order.length]);
