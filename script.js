@@ -1,6 +1,48 @@
 (() => {
   const SITE_PLAYBACK_KEY = "jahntellaSiteMusicV46";
-  const order = ["fun-dipp", "pink-lips", "bite-lip", "gloss", "your-girl", "embrace-me", "we-come-together", "play-with-me", "carnival", "made-of-light", "candy-wrapper", "playground", "milk-shake", "tonight", "sweet-dreams", "we-are-1"];
+  const album2Config = window.JAHNTELLA_ALBUM2 || {};
+  const album2PreviewMode = album2Config.previewMode === true;
+  const album2TrackConfig = key => album2Config.tracks?.[key] || {};
+  const album2Url = path => new URL(path, document.baseURI).href;
+  const album2Titles = {
+    "sweet-dreams": "Sweet Dreams",
+    "we-are-1": "We Are 1",
+    "boots-smile-attitude": "Boots, Smile & Attitude"
+  };
+
+  const applyAlbum2PreviewMode = () => {
+    document.documentElement.dataset.album2Playback = album2PreviewMode ? "preview" : "full";
+    if (!album2PreviewMode) return;
+
+    [
+      ["sweet-dreams", "audioSweetDreams", "exp60SweetDreamsVideo"],
+      ["we-are-1", "audioWeAre1", "exp61WeAre1Video"],
+      ["boots-smile-attitude", "audioBootsSmileAttitude", "exp66BootsSmileAttitudeVideo"]
+    ].forEach(([key, audioId, videoId]) => {
+      const media = album2TrackConfig(key);
+      const audio = document.getElementById(audioId);
+      const audioSource = audio?.querySelector("source");
+      if (audioSource && media.previewAudio) audioSource.src = album2Url(media.previewAudio);
+
+      const video = document.getElementById(videoId);
+      const videoSource = video?.querySelector("source");
+      if (videoSource && media.previewVideo) {
+        videoSource.src = album2Url(media.previewVideo);
+        video.setAttribute("aria-label", `Play the ${album2Titles[key]} 60-second preview`);
+        video.load();
+      }
+    });
+
+    document.querySelectorAll(".exp60-shine-video-heading > span").forEach(label => {
+      label.firstChild.textContent = "60-SECOND PREVIEW ";
+    });
+    document.querySelectorAll(".exp60-shine-video-note p").forEach(note => {
+      note.innerHTML = "<strong>Listen to the preview.</strong> Hear the full song everywhere music is sold and streamed beginning August 27.";
+    });
+  };
+
+  applyAlbum2PreviewMode();
+  const order = ["fun-dipp", "pink-lips", "bite-lip", "gloss", "your-girl", "embrace-me", "we-come-together", "play-with-me", "carnival", "made-of-light", "candy-wrapper", "playground", "milk-shake", "tonight", "sweet-dreams", "we-are-1", "boots-smile-attitude"];
   const tracks = {
     "fun-dipp": {
       audio: document.getElementById("audioFunDipp"),
@@ -99,6 +141,12 @@
       title: "We Are 1",
       artwork: "assets/album2/we-are-1-cover.webp",
       card: document.querySelector('[data-card="we-are-1"]')
+    },
+    "boots-smile-attitude": {
+      audio: document.getElementById("audioBootsSmileAttitude"),
+      title: "Boots, Smile & Attitude",
+      artwork: "assets/album2/boots-smile-attitude-cover.webp",
+      card: document.querySelector('[data-card="boots-smile-attitude"]')
     }
   };
 
@@ -177,7 +225,11 @@
   const readSitePlayback = () => {
     try {
       const value = JSON.parse(sessionStorage.getItem(SITE_PLAYBACK_KEY) || "{}");
-      return tracks[value.track] ? value : {};
+      if (!tracks[value.track]) return {};
+      if (album2PreviewMode && ["sweet-dreams", "we-are-1", "boots-smile-attitude"].includes(value.track) && value.album2Mode !== "preview") {
+        return {...value, position: 0, playing: false, credited: false, album2Mode: "preview"};
+      }
+      return value;
     } catch {
       return {};
     }
@@ -195,6 +247,7 @@
         position: track.audio.currentTime || 0,
         playing: !track.audio.paused && !track.audio.ended,
         credited: currentCredited,
+        album2Mode: album2PreviewMode ? "preview" : "full",
         savedAt: Date.now()
       }));
     } catch {}
@@ -341,7 +394,8 @@
     "milk-shake-cover.webp": "milk-shake",
     "tonight-cover.webp": "tonight",
     "sweet-dreams-cover.webp": "sweet-dreams",
-    "we-are-1-cover.webp": "we-are-1"
+    "we-are-1-cover.webp": "we-are-1",
+    "boots-smile-attitude-cover.webp": "boots-smile-attitude"
   };
 
   document.querySelectorAll("#gallery [data-lightbox]").forEach(cover => {

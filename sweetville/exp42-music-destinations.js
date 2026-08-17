@@ -13,6 +13,14 @@
   const CHALLENGE_GOAL = 12;
   const CREDIT_THRESHOLD = 0.9;
   const isTopWindow = window.top === window.self;
+  const album2Config = window.JAHNTELLA_ALBUM2 || {};
+  const album2PreviewMode = album2Config.previewMode === true;
+  const siteRoot = new URL('../', document.baseURI);
+  const album2AudioUrl = (key, fallback) => {
+    const media = album2Config.tracks?.[key] || {};
+    const path = album2PreviewMode ? media.previewAudio : media.fullAudio;
+    return new URL(path || `sweetville/${fallback}`, siteRoot).href;
+  };
 
   const TRACKS = {
     'fun-dipp': {
@@ -101,19 +109,25 @@
     },
     'sweet-dreams': {
       title: 'Sweet Dreams',
-      src: new URL('sweet-dreams.mp3', document.baseURI).href,
+      src: album2AudioUrl('sweet-dreams', 'sweet-dreams.mp3'),
       destination: '../index.html#shineEraSneakPeek',
       artwork: new URL('../assets/album2/sweet-dreams-cover.webp', document.baseURI).href
     },
     'we-are-1': {
       title: 'We Are 1',
-      src: new URL('we-are-1.mp3', document.baseURI).href,
+      src: album2AudioUrl('we-are-1', 'we-are-1.mp3'),
       destination: '../index.html#shineEraSneakPeek',
       artwork: new URL('../assets/album2/we-are-1-cover.webp', document.baseURI).href
+    },
+    'boots-smile-attitude': {
+      title: 'Boots, Smile & Attitude',
+      src: album2AudioUrl('boots-smile-attitude', 'boots-smile-attitude.mp3'),
+      destination: '../index.html#shineEraSneakPeek',
+      artwork: new URL('../assets/album2/boots-smile-attitude-cover.webp', document.baseURI).href
     }
   };
 
-  const TRACK_ORDER = ['fun-dipp', 'pink-lips', 'bite-lip', 'gloss', 'your-girl', 'embrace-me', 'we-come-together', 'play-with-me', 'carnival', 'made-of-light', 'candy-wrapper', 'playground', 'milk-shake', 'tonight', 'sweet-dreams', 'we-are-1'];
+  const TRACK_ORDER = ['fun-dipp', 'pink-lips', 'bite-lip', 'gloss', 'your-girl', 'embrace-me', 'we-come-together', 'play-with-me', 'carnival', 'made-of-light', 'candy-wrapper', 'playground', 'milk-shake', 'tonight', 'sweet-dreams', 'we-are-1', 'boots-smile-attitude'];
 
   const COVER_FILE_TRACKS = {
     'fun-dipp-cover.png': 'fun-dipp',
@@ -147,7 +161,8 @@
     'tonight.webp': 'tonight',
     'tonight-cover.webp': 'tonight',
     'sweet-dreams-cover.webp': 'sweet-dreams',
-    'we-are-1-cover.webp': 'we-are-1'
+    'we-are-1-cover.webp': 'we-are-1',
+    'boots-smile-attitude-cover.webp': 'boots-smile-attitude'
   };
 
   const safeJSON = (value, fallback) => {
@@ -227,12 +242,16 @@
     const shared = safeJSON(sessionStorage.getItem(PLAYBACK_KEY), {});
     const legacy = safeJSON(sessionStorage.getItem(LEGACY_PLAYBACK_KEY), {});
     const saved = TRACKS[shared.track] ? shared : legacy;
+    const resetAlbum2Position = album2PreviewMode &&
+      ['sweet-dreams', 'we-are-1', 'boots-smile-attitude'].includes(saved.track) &&
+      saved.album2Mode !== 'preview';
     return {
       track: TRACKS[saved.track] ? saved.track : '',
-      position: Number.isFinite(Number(saved.position)) ? Math.max(0, Number(saved.position)) : 0,
-      playing: saved.playing === true,
-      credited: saved.credited === true,
-      ended: saved.ended === true,
+      position: resetAlbum2Position ? 0 : (Number.isFinite(Number(saved.position)) ? Math.max(0, Number(saved.position)) : 0),
+      playing: resetAlbum2Position ? false : saved.playing === true,
+      credited: resetAlbum2Position ? false : saved.credited === true,
+      ended: resetAlbum2Position ? false : saved.ended === true,
+      album2Mode: album2PreviewMode ? 'preview' : 'full',
       savedAt: Number(saved.savedAt) || Date.now()
     };
   };
@@ -246,6 +265,7 @@
   let destinationFrame = null;
 
   const writePlayback = () => {
+    playback.album2Mode = album2PreviewMode ? 'preview' : 'full';
     playback.savedAt = Date.now();
     try {
       sessionStorage.setItem(PLAYBACK_KEY, JSON.stringify(playback));
