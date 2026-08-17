@@ -29,6 +29,7 @@
   <link rel="stylesheet" href="exp57-gallery-lightbox.css?v=63.0">
   <link rel="stylesheet" href="exp58-sweeties-thank-you.css?v=58.0">
   <link rel="stylesheet" href="exp60-shine-era-sneak-peek.css?v=66.3">
+  <link rel="stylesheet" href="exp67-album-countdown.css?v=67.0">
 </head>
 <body>
   <div id="siteLoader" class="site-loader" aria-hidden="true">
@@ -893,10 +894,36 @@
     </a>
   </div>
 
+  <aside class="exp67-countdown" id="exp67Countdown" aria-label="Countdown to The Sweet Era album release">
+    <div class="exp67-ticket-edge" aria-hidden="true"></div>
+    <button class="exp67-drag-handle" id="exp67DragHandle" type="button" aria-label="Move countdown ticket">
+      <span aria-hidden="true">✦</span>
+      <strong>THE SWEET ERA</strong>
+      <small>ALBUM I</small>
+    </button>
+    <button class="exp67-toggle" id="exp67Toggle" type="button" aria-expanded="true" aria-controls="exp67CountdownBody" aria-label="Minimize album countdown">−</button>
+    <div class="exp67-countdown-body" id="exp67CountdownBody">
+      <p class="exp67-kicker">AUGUST 27 • MIDNIGHT</p>
+      <div class="exp67-time" role="timer" aria-live="off" aria-label="Time remaining until The Sweet Era album release">
+        <span><strong id="exp67Days">00</strong><small>DAYS</small></span>
+        <i aria-hidden="true">:</i>
+        <span><strong id="exp67Hours">00</strong><small>HRS</small></span>
+        <i aria-hidden="true">:</i>
+        <span><strong id="exp67Minutes">00</strong><small>MIN</small></span>
+        <i aria-hidden="true">:</i>
+        <span><strong id="exp67Seconds">00</strong><small>SEC</small></span>
+      </div>
+      <p class="exp67-message" id="exp67Message"><strong>ALBUM DROP</strong><span>Free listening expires</span></p>
+      <p class="exp67-local">Countdown uses your local time.</p>
+    </div>
+    <span class="exp67-collapsed-copy" aria-hidden="true">⏳ ALBUM COUNTDOWN</span>
+  </aside>
+
 <script src="exp19-5-popstar.js?v=19.5" defer></script>
 <script src="exp21-0-performance.js?v=21.0" defer></script>
 <script src="exp56-hero-video.js?v=56.0" defer></script>
 <script src="exp25-1-sweet-express.js?v=62.0" defer></script>
+<script src="exp67-album-countdown.js?v=67.0" defer></script>
 
 <div class="exp294-contact-modal" id="exp294ContactModal" aria-hidden="true">
   <div class="exp294-contact-card" role="dialog" aria-modal="true" aria-labelledby="exp294ContactTitle">
