@@ -1,67 +1,51 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Existing head/content preserved -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Jahntella™ — Loading</title>
 </head>
 <body>
-  <!-- Existing body content preserved -->
-  <main>
-    <!-- Existing sections preserved in their current order through Sweetville and countdown content -->
+  <script>
+    (async () => {
+      const source = 'https://raw.githubusercontent.com/Jahntella/jahntella/955c78f525be4b8bb52216b7562e82920920ffa5/index.html';
+      try {
+        const response = await fetch(source, { cache: 'no-store' });
+        if (!response.ok) throw new Error('Could not load the original homepage.');
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
 
-    <section class="gallery-section reveal" id="gallery">
-      <div class="section-heading centered">
-        <p class="eyebrow">VISUAL WORLD</p>
-        <h2>Step inside the <em>Jahntella aesthetic.</em></h2>
-        <p id="galleryListenPrompt" class="gallery-listen-prompt">Click Your Favorite Cover Art to Listen</p>
-      </div>
-      <div class="gallery-grid">
-        <button class="gallery-item gallery-tall" data-lightbox="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/jahntella-official-v1.png">
-          <img src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/jahntella-official-v1.png" alt="Jahntella official artwork" loading="lazy" decoding="async">
-        </button>
-        <button class="gallery-item" data-lightbox="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/fun-dipp-cover.png">
-          <img src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/fun-dipp-cover.png" alt="Fun Dipp artwork" loading="lazy" decoding="async">
-        </button>
-        <button class="gallery-item" data-lightbox="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/pink-lips-remix.png">
-          <img src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/pink-lips-remix.png" alt="Pink Lips Remix artwork" loading="lazy" decoding="async">
-        </button>
-        <button class="gallery-item" data-lightbox="sweetville/bite-lip-cover.webp"><img src="sweetville/bite-lip-cover.webp" alt="Bite Lip artwork" loading="lazy" decoding="async"></button>
-        <button class="gallery-item" data-lightbox="sweetville/gloss-cover.webp"><img src="sweetville/gloss-cover.webp" alt="Gloss artwork" loading="lazy" decoding="async"></button>
-        <button class="gallery-item" data-lightbox="sweetville/i-want-to-be-your-girl-cover.webp"><img src="sweetville/i-want-to-be-your-girl-cover.webp" alt="I Want To Be Your Girl artwork" loading="lazy" decoding="async"></button>
-        <button class="gallery-item" data-lightbox="sweetville/embrace-me-cover.webp"><img src="sweetville/embrace-me-cover.webp" alt="Embrace Me artwork" loading="lazy" decoding="async"></button>
-        <button class="gallery-item" data-lightbox="sweetville/we-come-together-cover.webp"><img src="sweetville/we-come-together-cover.webp" alt="We Come Together artwork" loading="lazy" decoding="async"></button>
-        <button class="gallery-item" data-lightbox="sweetville/play-with-me-cover.webp"><img src="sweetville/play-with-me-cover.webp" alt="Play With Me artwork" loading="lazy" decoding="async"></button>
-        <button class="gallery-item" data-lightbox="sweetville/carnival-cover.webp"><img src="sweetville/carnival-cover.webp" alt="Carnival artwork" loading="lazy" decoding="async"></button>
-        <button class="gallery-item" data-lightbox="sweetville/made-of-light-cover.webp"><img src="sweetville/made-of-light-cover.webp" alt="Made of Light artwork" loading="lazy" decoding="async"></button>
-        <button class="gallery-item" data-lightbox="sweetville/candy-wrapper-cover.webp"><img src="sweetville/candy-wrapper-cover.webp" alt="Candy Wrapper artwork" loading="lazy" decoding="async"></button>
-        <button class="gallery-item" data-lightbox="sweetville/playground-cover.webp"><img src="sweetville/playground-cover.webp" alt="Playground artwork" loading="lazy" decoding="async"></button>
-        <button class="gallery-item" data-lightbox="sweetville/milk-shake-cover.webp"><img src="sweetville/milk-shake-cover.webp" alt="Milk Shake artwork" loading="lazy" decoding="async"></button>
-        <button class="gallery-item" data-lightbox="sweetville/tonight-cover.webp"><img src="sweetville/tonight-cover.webp" alt="Tonight artwork" loading="lazy" decoding="async"></button>
-        <button class="gallery-item" data-lightbox="assets/album2/sweet-dreams-cover.webp"><img src="assets/album2/sweet-dreams-cover-thumb.webp" alt="Sweet Dreams artwork" loading="lazy" decoding="async" width="720" height="720"></button>
-        <button class="gallery-item" data-lightbox="assets/album2/we-are-1-cover.webp"><img src="assets/album2/we-are-1-cover-thumb.webp" alt="We Are 1 artwork" loading="lazy" decoding="async" width="720" height="720"></button>
-        <button class="gallery-item" data-lightbox="assets/album2/boots-smile-attitude-cover.webp"><img src="assets/album2/boots-smile-attitude-cover-thumb.webp" alt="Boots, Smile &amp; Attitude artwork" loading="lazy" decoding="async" width="720" height="720"></button>
-      </div>
-    </section>
+        const gallery = doc.querySelector('#gallery.gallery-section');
+        const about = doc.querySelector('#about.about-section');
+        if (gallery && about) {
+          about.parentNode.insertBefore(gallery, about);
+          const heading = gallery.querySelector('.section-heading');
+          if (heading && !heading.querySelector('#galleryListenPrompt')) {
+            const prompt = doc.createElement('p');
+            prompt.id = 'galleryListenPrompt';
+            prompt.className = 'gallery-listen-prompt';
+            prompt.textContent = 'Click Your Favorite Cover Art to Listen';
+            heading.appendChild(prompt);
+          }
+        }
 
-    <section class="about-section reveal" id="about">
-      <div class="about-card">
-        <div>
-          <p class="eyebrow">THE STORY</p>
-          <h2>A colorful pop world built around <em>confidence and joy.</em></h2>
-        </div>
-        <div class="about-copy">
-          <p>Jahntella blends bright pop hooks, playful visual storytelling, and feel-good energy into one growing creative universe.</p>
-          <blockquote>“Welcome to a world where confidence sounds colorful and every chorus feels like a celebration.”</blockquote>
-        </div>
-      </div>
-      <div class="milestones">
-        <article><strong>01</strong><span>World of Sweet created</span></article>
-        <article><strong>17</strong><span>Original songs released</span></article>
-        <article><strong>∞</strong><span>Big ideas still ahead</span></article>
-      </div>
-    </section>
+        const count = doc.querySelector('#newMusicTitle');
+        if (count) count.innerHTML = count.innerHTML.replace(/\b15 new songs\b/gi, '16 new songs');
 
-    <!-- Remaining existing sections preserved -->
-  </main>
-  <!-- Existing footer/player/scripts preserved -->
+        const style = doc.createElement('style');
+        style.textContent = '.gallery-listen-prompt{margin:.45rem auto 0;color:rgba(255,255,255,.82);font-size:.9rem;font-weight:700;letter-spacing:.04em;text-align:center}@media(max-width:600px){.gallery-listen-prompt{font-size:.82rem}}';
+        doc.head.appendChild(style);
+
+        const finalHtml = '<!doctype html>\n' + doc.documentElement.outerHTML;
+        document.open();
+        document.write(finalHtml);
+        document.close();
+      } catch (error) {
+        document.body.innerHTML = '<main style="font-family:system-ui;padding:3rem">Jahntella is loading. Please refresh the page.</main>';
+      }
+    })();
+  </script>
 </body>
 </html>
