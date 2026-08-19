@@ -42,12 +42,12 @@ window.JAHNTELLA_ALBUM2 = Object.freeze({
     if (window.__midnightRodeoSiteLoaded) return;
     window.__midnightRodeoSiteLoaded = true;
     const script = document.createElement('script');
-    script.src = new URL('midnight-rodeo-site.js?v=2026.08.19.5', document.baseURI).href;
+    script.src = new URL('midnight-rodeo-site.js?v=2026.08.19.6', document.baseURI).href;
     script.defer = true;
     document.head.appendChild(script);
     const css = document.createElement('link');
     css.rel = 'stylesheet';
-    css.href = new URL('midnight-rodeo-site.css?v=2026.08.19.5', document.baseURI).href;
+    css.href = new URL('midnight-rodeo-site.css?v=2026.08.19.6', document.baseURI).href;
     document.head.appendChild(css);
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load, {once:true});
@@ -62,7 +62,13 @@ window.JAHNTELLA_ALBUM2 = Object.freeze({
       count.innerHTML = count.innerHTML.replace(/\b15 new songs\b/gi, '16 new songs');
     }
 
-    const heading = document.querySelector('#gallery .section-heading');
+    const gallery = document.getElementById('gallery');
+    const story = document.getElementById('about');
+    if (gallery && story && story.parentNode && gallery !== story.previousElementSibling) {
+      story.parentNode.insertBefore(gallery, story);
+    }
+
+    const heading = gallery?.querySelector('.section-heading');
     if (heading && !document.getElementById('galleryListenPrompt')) {
       const prompt = document.createElement('p');
       prompt.id = 'galleryListenPrompt';
