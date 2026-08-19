@@ -98,22 +98,12 @@
       playFunDippAfterMidnight();
     });
 
-    if (isSweetville) {
-      const boots = document.getElementById('audioBootsSmileAttitude');
-      if (boots && boots.dataset.mrAfterBoots !== '1') {
-        boots.dataset.mrAfterBoots = '1';
-        boots.addEventListener('ended', () => {
-          window.setTimeout(() => playMidnight(true), 0);
-        });
-      }
-    } else {
-      const boots = document.getElementById('audioBootsSmileAttitude');
-      if (boots && boots.dataset.mrAfterBoots !== '1') {
-        boots.dataset.mrAfterBoots = '1';
-        boots.addEventListener('ended', () => {
-          window.setTimeout(() => playMidnight(true), 0);
-        });
-      }
+    const boots = document.getElementById('audioBootsSmileAttitude');
+    if (boots && boots.dataset.mrAfterBoots !== '1') {
+      boots.dataset.mrAfterBoots = '1';
+      boots.addEventListener('ended', () => {
+        window.setTimeout(() => playMidnight(true), 0);
+      });
     }
   };
 
@@ -159,17 +149,25 @@
     const grid = document.querySelector('.gallery-section .gallery-grid');
     if (!grid || document.getElementById('midnightRodeoAestheticCover')) return null;
 
+    // Aesthetic gallery must be artwork-only: no caption, no label, no button text.
     const button = document.createElement('button');
     button.type = 'button';
     button.id = 'midnightRodeoAestheticCover';
     button.className = 'gallery-item mr-gallery-play-card';
-    button.setAttribute('aria-label', 'Play Midnight Rodeo');
+    button.setAttribute('aria-label', 'Play or pause Midnight Rodeo');
     button.innerHTML = `
       <span class="mr-gallery-image-wrap">
-        <img src="${url('assets/album2/midnight-rodeo-cover-thumb.webp')}" alt="Midnight Rodeo artwork by Jahntella" loading="lazy" fetchpriority="low" decoding="async" width="420" height="420">
+        <img src="${url('assets/album2/midnight-rodeo-cover-thumb.webp')}"
+             alt="Midnight Rodeo artwork by Jahntella"
+             loading="lazy"
+             fetchpriority="low"
+             decoding="async"
+             width="420"
+             height="420">
       </span>
-      <span class="mr-gallery-caption"><small>THE SHINE ERA</small><strong>Midnight Rodeo</strong></span>
     `;
+
+    // Insert into the same gallery grid; the cover itself is the only visual/interactive element.
     grid.appendChild(button);
 
     button.addEventListener('click', () => {
@@ -188,7 +186,13 @@
     card.id = 'midnightRodeoSweetvilleCard';
     card.className = 'mr-sweetville-card';
     card.innerHTML = `
-      <img src="${url('assets/album2/midnight-rodeo-cover-thumb.webp')}" alt="Midnight Rodeo artwork" loading="lazy" fetchpriority="low" decoding="async" width="420" height="420">
+      <img src="${url('assets/album2/midnight-rodeo-cover-thumb.webp')}"
+           alt="Midnight Rodeo artwork"
+           loading="lazy"
+           fetchpriority="low"
+           decoding="async"
+           width="420"
+           height="420">
       <div><small>THE SHINE ERA</small><h3>Midnight Rodeo</h3><p>Tap the artwork to play.</p></div>`;
     host.appendChild(card);
     card.querySelector('img')?.addEventListener('click', () => {
