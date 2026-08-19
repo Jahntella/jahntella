@@ -4,28 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#120015">
-  <meta name="color-scheme" content="dark">
   <title>Jahntella™ — Loading</title>
-  <style>
-    html,body{margin:0;min-height:100%;background:#120015;color:#fff}
-    body{min-height:100vh;overflow:hidden;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-    .instant-loader{min-height:100vh;display:grid;place-items:center;background:radial-gradient(circle at 50% 42%,rgba(137,36,162,.28),transparent 42%),#120015}
-    .instant-loader-inner{text-align:center;padding:2rem}
-    .instant-loader-mark{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,7vw,3.4rem);letter-spacing:.02em;color:#fff}
-    .instant-loader-mark span{color:#ff8dcc}
-    .instant-loader-line{width:min(180px,50vw);height:2px;margin:1rem auto 0;background:rgba(255,255,255,.12);overflow:hidden;border-radius:999px}
-    .instant-loader-line i{display:block;width:42%;height:100%;background:linear-gradient(90deg,transparent,#ff8dcc,#d6a4ff,transparent);animation:instantLoad 1.05s ease-in-out infinite}
-    @keyframes instantLoad{0%{transform:translateX(-130%)}100%{transform:translateX(320%)}}
-  </style>
+  <style>html,body{margin:0;background:#120015;color:#fff}body{min-height:100vh}</style>
 </head>
 <body>
-  <div class="instant-loader" aria-label="Loading Jahntella">
-    <div class="instant-loader-inner">
-      <div class="instant-loader-mark">Jahntella<span>♡</span></div>
-      <div class="instant-loader-line" aria-hidden="true"><i></i></div>
-    </div>
-  </div>
+  <div aria-hidden="true" style="min-height:100vh;background:radial-gradient(circle at 50% 20%,#300034 0,#120015 55%,#09000f 100%);display:grid;place-items:center;font-family:system-ui,sans-serif"><div style="text-align:center;color:#ffd7f3;font-weight:700;letter-spacing:.08em">Jahntella<span style="color:#ff8dcc">♡</span><div style="width:92px;height:2px;margin:14px auto 0;background:linear-gradient(90deg,transparent,#ff8dcc,transparent);animation:loaderPulse 1s ease-in-out infinite alternate"></div></div></div>
+  <style>@keyframes loaderPulse{from{opacity:.35;transform:scaleX(.55)}to{opacity:1;transform:scaleX(1)}}</style>
   <script>
     (async () => {
       const source = 'https://raw.githubusercontent.com/Jahntella/jahntella/e331b6900f12b4cd1d9c16fcc6c9aa236f4c6e8c/index.html';
@@ -70,10 +54,45 @@
           shineIntro.innerHTML = 'Get your first look at <strong>The Shine Era</strong>—front and back—and step inside <strong>Sweet Dreams</strong>, <strong>We Are 1</strong>, <strong>Boots, Smile &amp; Attitude</strong>, and <strong>Midnight Rodeo</strong>—four glimpses of the sound, light, and world of Album II.';
         }
 
+        // Speed up the Visual World gallery by using the lightweight music thumbnails
+        // while preserving the full-resolution images in each tile's lightbox target.
+        const galleryThumbs = {
+          'bite-lip-cover.webp':'assets/music-thumbs/bite-lip.webp',
+          'gloss-cover.webp':'assets/music-thumbs/gloss.webp',
+          'i-want-to-be-your-girl-cover.webp':'assets/music-thumbs/i-want-to-be-your-girl.webp',
+          'embrace-me-cover.webp':'assets/music-thumbs/embrace-me.webp',
+          'we-come-together-cover.webp':'assets/music-thumbs/we-come-together.webp',
+          'play-with-me-cover.webp':'assets/music-thumbs/play-with-me.webp',
+          'carnival-cover.webp':'assets/music-thumbs/carnival.webp',
+          'made-of-light-cover.webp':'assets/music-thumbs/made-of-light.webp',
+          'candy-wrapper-cover.webp':'assets/music-thumbs/candy-wrapper.webp',
+          'playground-cover.webp':'assets/music-thumbs/playground.webp',
+          'milk-shake-cover.webp':'assets/music-thumbs/milk-shake.webp',
+          'tonight-cover.webp':'assets/music-thumbs/tonight.webp',
+          'sweet-dreams-cover.webp':'assets/album2/sweet-dreams-cover-thumb.webp',
+          'we-are-1-cover.webp':'assets/album2/we-are-1-cover-thumb.webp',
+          'boots-smile-attitude-cover.webp':'assets/album2/boots-smile-attitude-cover-thumb.webp'
+        };
+        doc.querySelectorAll('#gallery .gallery-item').forEach(item => {
+          const img = item.querySelector('img');
+          if (!img) return;
+          const path = (img.getAttribute('src') || '').split(/[?#]/)[0];
+          const filename = decodeURIComponent(path.split('/').pop() || '').toLowerCase();
+          const thumb = galleryThumbs[filename];
+          if (thumb) img.setAttribute('src', thumb);
+          img.setAttribute('loading', 'lazy');
+          img.setAttribute('decoding', 'async');
+          img.setAttribute('fetchpriority', 'low');
+          if (!img.getAttribute('width')) img.setAttribute('width','420');
+          if (!img.getAttribute('height')) img.setAttribute('height','420');
+        });
+
         const style = doc.createElement('style');
         style.textContent = `
           .gallery-listen-prompt{margin:.45rem auto 0;color:rgba(255,255,255,.82);font-size:.9rem;font-weight:700;letter-spacing:.04em;text-align:center}
           @media(max-width:600px){.gallery-listen-prompt{font-size:.82rem}}
+          .gallery-section{content-visibility:auto;contain-intrinsic-size:1200px 1650px}
+          .gallery-section .gallery-grid{contain:layout paint style}
           .shy-guy-shawn-tribute{padding:3.5rem 1.25rem 2.25rem;text-align:center;background:linear-gradient(180deg,rgba(18,0,21,0),rgba(18,0,21,.5))}
           .shy-guy-shawn-rule{width:72px;height:1px;margin:0 auto 1rem;background:linear-gradient(90deg,transparent,rgba(255,185,233,.8),transparent)}
           .shy-guy-shawn-tribute p{margin:0;color:rgba(255,255,255,.88);font-family:"Playfair Display",serif;font-size:clamp(1.05rem,2vw,1.35rem);letter-spacing:.02em}
@@ -88,7 +107,7 @@
         document.write(finalHtml);
         document.close();
       } catch (error) {
-        document.body.innerHTML = '<main style="min-height:100vh;display:grid;place-items:center;background:#120015;color:#fff;font-family:system-ui;padding:3rem;box-sizing:border-box;text-align:center">Jahntella is loading. Please refresh the page.</main>';
+        document.body.innerHTML = '<main style="font-family:system-ui;padding:3rem;background:#120015;color:#ffd7f3;min-height:100vh">Jahntella is loading. Please refresh the page.</main>';
       }
     })();
   </script>
