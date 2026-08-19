@@ -1,0 +1,22 @@
+/* Midnight Rodeo integration: compact Shine Era card + fast aesthetic tile. */
+.exp66-shine-videos.mr-has-midnight{grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(.65rem,1.35vw,1rem)}
+.mr-inline-midnight-card{min-width:0}
+.mr-inline-midnight-card .exp60-shine-video-frame{aspect-ratio:16/9}
+.mr-inline-midnight-card .exp60-shine-video-note{min-height:2.8rem}
+.mr-gallery-play-card{appearance:none;border:0;background:transparent;padding:0;color:inherit;text-align:left;cursor:pointer}
+.mr-gallery-image-wrap{display:block;overflow:hidden;aspect-ratio:1;border-radius:inherit;background:#09000f}
+.mr-gallery-play-card img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .22s ease,filter .22s ease}
+.mr-gallery-play-card:hover img{transform:scale(1.025);filter:brightness(1.06)}
+.mr-gallery-play-card:focus-visible{outline:3px solid #ff8dcc;outline-offset:4px}
+/* Aesthetic gallery: artwork only. The cover itself remains the click target for playback. */
+.mr-gallery-caption{display:none!important}
+.mr-sweetville-card{display:grid;grid-template-columns:110px 1fr;gap:1rem;align-items:center;margin:1.4rem 0;padding:1rem;border:1px solid rgba(255,255,255,.16);border-radius:1.2rem;background:rgba(14,4,26,.72);box-shadow:0 1.2rem 3rem rgba(0,0,0,.22)}
+.mr-sweetville-card img{display:block;width:110px;height:110px;object-fit:cover;border-radius:.9rem;cursor:pointer;transition:transform .2s ease,filter .2s ease}
+.mr-sweetville-card img:hover{transform:scale(1.02);filter:brightness(1.06)}
+.mr-sweetville-card small{color:#d9b4ff;font-size:.68rem;font-weight:800;letter-spacing:.15em}
+.mr-sweetville-card h3{margin:.25rem 0;font-family:"Playfair Display",serif;color:#fff;font-size:1.5rem}
+.mr-sweetville-card p{margin:0;color:rgba(255,255,255,.7)}
+.mr-gallery-optimized{content-visibility:auto;contain-intrinsic-size:auto 1650px}
+.mr-gallery-optimized .gallery-grid{contain:layout paint style}
+@media(max-width:1050px){.exp66-shine-videos.mr-has-midnight{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.exp66-shine-videos.mr-has-midnight{grid-template-columns:1fr}.mr-sweetville-card{grid-template-columns:88px 1fr}.mr-sweetville-card img{width:88px;height:88px}}
