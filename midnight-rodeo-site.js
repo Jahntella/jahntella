@@ -23,6 +23,11 @@
     return audio;
   };
 
+  const isMidnightSource = () => {
+    const current = audio?.currentSrc || audio?.src || '';
+    return current.includes('midnight-rodeo');
+  };
+
   const stopOtherMedia = except => {
     document.querySelectorAll('audio,video').forEach(node => {
       if (node !== except && !node.paused) node.pause();
@@ -50,10 +55,8 @@
     getAudio();
     if (!audio) return;
 
-    // Make the existing player regard its shared transport as the active
-    // Boots track before we repurpose that same transport for Midnight Rodeo.
-    // This is what makes the existing scrubber, volume, play/pause and next/prev
-    // controls operate on Midnight Rodeo rather than a second hidden player.
+    // Keep the existing player as the single transport, then repurpose its
+    // audio element for Midnight Rodeo. This preserves the same bottom bar.
     if (typeof window.jahntellaSelectSiteTrack === 'function') {
       window.jahntellaSelectSiteTrack('boots-smile-attitude', false, {fresh:true});
     }
@@ -131,18 +134,32 @@
     getAudio();
     if (!audio) return;
 
-    // Intercept the shared transport's ended event before the original player
-    // wraps to Fun Dipp. Midnight Rodeo therefore sits exactly between Boots and Fun Dipp.
+    // IMPORTANT: the site's original player already has an `ended` handler on
+    // this same audio element. Capture the event at the document first, stop it,
+    // and explicitly launch Midnight Rodeo before the original player can wrap
+    // around to Fun Dipp.
     document.addEventListener('ended', event => {
-      if (event.target !== audio || !midnightPlaying) return;
-      event.stopPropagation();
-      midnightTime = 0;
-      midnightPlaying = false;
-      chrome(false);
-      window.setTimeout(() => {
-        restoreBoots();
-        if (typeof window.jahntellaSelectSiteTrack === 'function') window.jahntellaSelectSiteTrack('fun-dipp', true, {fresh:true});
-      }, 0);
+      if (event.target !== audio) return;
+
+      if (!midnightPlaying && !isMidnightSource()) {
+        event.stopImmediatePropagation();
+        midnightTime = 0;
+        startMidnight(true);
+        return;
+      }
+
+      if (midnightPlaying && isMidnightSource()) {
+        event.stopImmediatePropagation();
+        midnightTime = 0;
+        midnightPlaying = false;
+        chrome(false);
+        window.setTimeout(() => {
+          restoreBoots();
+          if (typeof window.jahntellaSelectSiteTrack === 'function') {
+            window.jahntellaSelectSiteTrack('fun-dipp', true, {fresh:true});
+          }
+        }, 0);
+      }
     }, true);
 
     audio.addEventListener('play', () => { if (midnightPlaying) { stopOtherMedia(audio); chrome(true); } });
