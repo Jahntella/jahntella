@@ -34,8 +34,27 @@
         const count = doc.querySelector('#newMusicTitle');
         if (count) count.innerHTML = count.innerHTML.replace(/\b15 new songs\b/gi, '16 new songs');
 
+        const main = doc.querySelector('main');
+        const footer = doc.querySelector('footer');
+        if (main && footer && !doc.getElementById('shyGuyShawnTribute')) {
+          const tribute = doc.createElement('section');
+          tribute.id = 'shyGuyShawnTribute';
+          tribute.className = 'shy-guy-shawn-tribute';
+          tribute.innerHTML = '<div class="shy-guy-shawn-rule" aria-hidden="true"></div><p>Peace to <strong>Shy Guy Shawn</strong> <span>♡</span></p><small>Thank You</small>';
+          footer.parentNode.insertBefore(tribute, footer);
+        }
+
         const style = doc.createElement('style');
-        style.textContent = '.gallery-listen-prompt{margin:.45rem auto 0;color:rgba(255,255,255,.82);font-size:.9rem;font-weight:700;letter-spacing:.04em;text-align:center}@media(max-width:600px){.gallery-listen-prompt{font-size:.82rem}}';
+        style.textContent = `
+          .gallery-listen-prompt{margin:.45rem auto 0;color:rgba(255,255,255,.82);font-size:.9rem;font-weight:700;letter-spacing:.04em;text-align:center}
+          @media(max-width:600px){.gallery-listen-prompt{font-size:.82rem}}
+          .shy-guy-shawn-tribute{padding:3.5rem 1.25rem 2.25rem;text-align:center;background:linear-gradient(180deg,rgba(18,0,21,0),rgba(18,0,21,.5))}
+          .shy-guy-shawn-rule{width:72px;height:1px;margin:0 auto 1rem;background:linear-gradient(90deg,transparent,rgba(255,185,233,.8),transparent)}
+          .shy-guy-shawn-tribute p{margin:0;color:rgba(255,255,255,.88);font-family:"Playfair Display",serif;font-size:clamp(1.05rem,2vw,1.35rem);letter-spacing:.02em}
+          .shy-guy-shawn-tribute p strong{color:#ffd1f2;font-weight:700}
+          .shy-guy-shawn-tribute p span{display:inline-block;margin-left:.25rem;color:#ff8dcc}
+          .shy-guy-shawn-tribute small{display:block;margin-top:.5rem;color:rgba(255,255,255,.55);font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
+        `;
         doc.head.appendChild(style);
 
         const finalHtml = '<!doctype html>\n' + doc.documentElement.outerHTML;
