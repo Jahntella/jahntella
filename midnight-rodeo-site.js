@@ -1,155 +1,222 @@
 (() => {
   'use strict';
-  if (window.__midnightRodeoOptimizedInitialized) return;
-  window.__midnightRodeoOptimizedInitialized = true;
+  if (window.__midnightRodeoUnifiedInitialized) return;
+  window.__midnightRodeoUnifiedInitialized = true;
 
   const config = window.JAHNTELLA_ALBUM2?.tracks?.['midnight-rodeo'] || {
     fullAudio: 'assets/album2/midnight-rodeo.mp3',
     fullVideo: 'assets/album2/midnight-rodeo-official-visualizer.mp4',
     artwork: 'assets/album2/midnight-rodeo-cover.webp'
   };
-
   const root = new URL('.', document.baseURI);
   const url = path => new URL(path, root).href;
+  const midnightAudioUrl = url(config.fullAudio);
+  const midnightArtwork = url(config.artwork);
   const isSweetville = location.pathname.toLowerCase().includes('/sweetville');
-  const audioId = 'midnightRodeoAudio';
+  const STATE_KEY = 'jahntellaMidnightRodeoTransportV1';
+  const BOOTS_ID = 'audioBootsSmileAttitude';
+  let boots = null;
+  let originalBootsSrc = '';
+  let midnightActive = false;
+  let restoring = false;
 
-  const getAudio = () => {
-    let audio = document.getElementById(audioId);
-    if (audio) return audio;
-    audio = document.createElement('audio');
-    audio.id = audioId;
-    audio.preload = 'none';
-    audio.src = url(config.fullAudio);
-    audio.setAttribute('aria-label', 'Midnight Rodeo full song');
-    audio.style.position = 'absolute';
-    audio.style.width = '1px';
-    audio.style.height = '1px';
-    audio.style.opacity = '0';
-    audio.style.pointerEvents = 'none';
-    document.body.appendChild(audio);
-    return audio;
+  const findBoots = () => document.getElementById(BOOTS_ID);
+
+  const rememberBootsSource = () => {
+    boots = findBoots();
+    if (!boots) return null;
+    if (!originalBootsSrc) {
+      originalBootsSrc = boots.querySelector('source')?.src || boots.currentSrc || boots.src || '';
+    }
+    return boots;
   };
 
-  const stopOtherMedia = (except = null) => {
-    document.querySelectorAll('audio').forEach(node => {
-      if (node !== except && !node.paused) node.pause();
-    });
-    document.querySelectorAll('video').forEach(node => {
-      if (node !== except && !node.paused) node.pause();
+  const stopVideos = except => {
+    document.querySelectorAll('video').forEach(video => {
+      if (video !== except && !video.paused) video.pause();
     });
   };
 
-  const updatePlayerChrome = (playing = true) => {
+  const removeObsoleteMidnightUI = () => {
+    [
+      '#midnightRodeoSiteSection',
+      '#midnightRodeoSweetvilleSection',
+      '#midnightRodeoSweetvilleCard'
+    ].forEach(selector => document.querySelector(selector)?.remove());
+
+    document.querySelectorAll('.mr-gallery-caption,[data-mr-cover-label]').forEach(node => node.remove());
+
+    // Remove the old non-music portrait that was added to the visual gallery.
+    document.querySelectorAll('#gallery .gallery-item[data-lightbox*="jahntella-official-v1.png"]').forEach(node => node.remove());
+  };
+
+  const saveState = (playing = false) => {
+    if (!midnightActive || !boots) return;
+    try {
+      sessionStorage.setItem(STATE_KEY, JSON.stringify({
+        active: true,
+        playing: Boolean(playing && !boots.paused && !boots.ended),
+        position: Number(boots.currentTime) || 0,
+        savedAt: Date.now()
+      }));
+    } catch {}
+  };
+
+  const clearState = () => {
+    try { sessionStorage.removeItem(STATE_KEY); } catch {}
+  };
+
+  const restoreBootsSource = () => {
+    if (!boots || !originalBootsSrc || restoring) return;
+    const current = boots.currentSrc || boots.src || '';
+    if (!current.includes('midnight-rodeo')) return;
+    restoring = true;
+    const wasPlaying = !boots.paused && !boots.ended;
+    boots.pause();
+    boots.src = originalBootsSrc;
+    boots.load();
+    if (!wasPlaying) {
+      try { boots.currentTime = 0; } catch {}
+    }
+    midnightActive = false;
+    clearState();
+    window.setTimeout(() => { restoring = false; }, 0);
+  };
+
+  const setPlayerChrome = playing => {
     if (isSweetville) return;
     const title = document.getElementById('playerTitle');
     const art = document.getElementById('playerArtwork');
     const toggle = document.getElementById('playerToggle');
     if (title) title.textContent = 'Midnight Rodeo';
     if (art) {
-      art.src = url(config.artwork);
+      art.src = midnightArtwork;
       art.alt = 'Midnight Rodeo artwork';
     }
     if (toggle) {
       toggle.textContent = playing ? '❚❚' : '▶';
       toggle.setAttribute('aria-label', playing ? 'Pause Midnight Rodeo' : 'Play Midnight Rodeo');
     }
-    document.getElementById('player')?.classList.toggle('playing', playing);
+    document.getElementById('player')?.classList.toggle('playing', Boolean(playing));
   };
 
-  const playMidnight = async (restart = false) => {
-    const audio = getAudio();
-    stopOtherMedia(audio);
-    if (restart) {
-      try { audio.currentTime = 0; } catch (_) {}
-    }
-    try { await audio.play(); } catch (_) {}
-    updatePlayerChrome(true);
-  };
+  const startMidnight = async (restart = false) => {
+    if (isSweetville) return;
+    rememberBootsSource();
+    if (!boots || !originalBootsSrc || typeof window.jahntellaSelectSiteTrack !== 'function') return;
 
-  const playFunDippAfterMidnight = () => {
-    if (isSweetville) {
-      const button = document.querySelector('[data-exp42-player="fun-dipp"] [data-exp42-play]');
-      if (button) {
-        button.click();
-        return;
-      }
-      const legacy = document.querySelector('[data-radio*="Fun Dipp"], [data-exp254-track="fun"]');
-      if (legacy) legacy.click();
-      return;
-    }
-    if (typeof window.jahntellaSelectSiteTrack === 'function') {
-      window.jahntellaSelectSiteTrack('fun-dipp', true, {fresh: true});
-      return;
-    }
-    const button = document.querySelector('.play-button[data-track="fun-dipp"]');
-    if (button) button.click();
-  };
-
-  const attachPlaylistBridge = () => {
-    const audio = getAudio();
-    if (audio.dataset.mrPlaylistBridge === '1') return;
-    audio.dataset.mrPlaylistBridge = '1';
-
-    audio.addEventListener('play', () => updatePlayerChrome(true));
-    audio.addEventListener('pause', () => updatePlayerChrome(false));
-    audio.addEventListener('ended', () => {
-      updatePlayerChrome(false);
-      playFunDippAfterMidnight();
+    stopVideos();
+    document.querySelectorAll('audio').forEach(audio => {
+      if (audio !== boots && !audio.paused) audio.pause();
     });
 
-    const boots = document.getElementById('audioBootsSmileAttitude');
-    if (boots && boots.dataset.mrAfterBoots !== '1') {
-      boots.dataset.mrAfterBoots = '1';
-      boots.addEventListener('ended', () => {
-        window.setTimeout(() => playMidnight(true), 0);
-      });
+    const wasMidnight = (boots.currentSrc || boots.src || '').includes('midnight-rodeo');
+    if (!wasMidnight) {
+      boots.pause();
+      boots.src = midnightAudioUrl;
+      boots.load();
+      midnightActive = true;
     }
+    if (restart) {
+      try { boots.currentTime = 0; } catch {}
+    }
+
+    midnightActive = true;
+    try { window.jahntellaSelectSiteTrack('boots-smile-attitude', true, {fresh: true}); } catch {}
+    window.setTimeout(() => {
+      setPlayerChrome(!boots.paused);
+      saveState(!boots.paused);
+    }, 20);
   };
 
-  const buildInlineVisualizer = () => {
-    if (isSweetville) return null;
-    const grid = document.querySelector('.exp66-shine-videos');
-    if (!grid) return null;
-    const existing = document.getElementById('midnightRodeoInlineVisualizer');
-    if (existing) return existing;
+  const patchUnifiedPlayer = () => {
+    rememberBootsSource();
+    if (!boots) return;
 
+    boots.addEventListener('play', () => {
+      const current = boots.currentSrc || boots.src || '';
+      if (midnightActive && current.includes('midnight-rodeo')) {
+        stopVideos();
+        setPlayerChrome(true);
+        saveState(true);
+      }
+    });
+
+    boots.addEventListener('pause', () => {
+      const current = boots.currentSrc || boots.src || '';
+      if (midnightActive && current.includes('midnight-rodeo')) {
+        setPlayerChrome(false);
+        saveState(false);
+      }
+    });
+
+    boots.addEventListener('timeupdate', () => {
+      const current = boots.currentSrc || boots.src || '';
+      if (midnightActive && current.includes('midnight-rodeo')) saveState(true);
+    });
+
+    boots.addEventListener('ended', () => {
+      const current = boots.currentSrc || boots.src || '';
+      if (!current.includes('midnight-rodeo')) return;
+      // The existing player owns the next-track transition. Because its current
+      // track key remains Boots, its normal next action is Fun Dipp.
+      window.setTimeout(restoreBootsSource, 50);
+    });
+
+    window.addEventListener('pagehide', () => saveState(!boots.paused && !boots.ended));
+
+    // If the visitor clicks another song while Midnight Rodeo is active,
+    // restore the real Boots source before the existing player handles the click.
+    document.addEventListener('click', event => {
+      const playButton = event.target.closest?.('.play-button[data-track]');
+      const playableCover = event.target.closest?.('[data-jahntella-cover-track]');
+      const prevNext = event.target.closest?.('#playerPrev,#playerNext');
+      const selectingOther = playButton && playButton.dataset.track !== 'boots-smile-attitude';
+      const otherCover = playableCover && playableCover.dataset.jahntellaCoverTrack !== 'boots-smile-attitude';
+      if (selectingOther || otherCover || prevNext) restoreBootsSource();
+      if (playButton?.dataset.track === 'boots-smile-attitude') restoreBootsSource();
+    }, true);
+
+    // Prevent any video visualizer from ever playing over the music bar.
+    document.addEventListener('play', event => {
+      const video = event.target;
+      if (!(video instanceof HTMLVideoElement)) return;
+      document.querySelectorAll('audio').forEach(audio => {
+        if (!audio.paused) audio.pause();
+      });
+      if (midnightActive) saveState(false);
+    }, true);
+  };
+
+  const addInlineVisualizer = () => {
+    if (isSweetville) return;
+    const grid = document.querySelector('.exp66-shine-videos');
+    if (!grid || document.getElementById('midnightRodeoInlineVisualizer')) return;
     grid.classList.add('mr-has-midnight');
     const card = document.createElement('article');
     card.id = 'midnightRodeoInlineVisualizer';
     card.className = 'exp60-shine-video-card mr-inline-midnight-card';
     card.innerHTML = `
       <div class="exp60-shine-video-heading">
-        <span><i aria-hidden="true"></i>FULL VISUALIZER</span>
+        <span>NEW ERA <i aria-hidden="true"></i> OFFICIAL VISUALIZER</span>
         <h3>Midnight Rodeo</h3>
       </div>
       <div class="exp60-shine-video-frame">
-        <video controls playsinline preload="metadata" poster="${url(config.artwork)}" aria-label="Midnight Rodeo official visualizer">
+        <video controls playsinline preload="none" poster="${midnightArtwork}" aria-label="Play the Midnight Rodeo official visualizer">
           <source src="${url(config.fullVideo)}" type="video/mp4">
         </video>
       </div>
       <div class="exp60-shine-video-note">
-        <span aria-hidden="true">🤠</span>
-        <p><strong>The latest Shine Era teaser.</strong> Full song + visualizer.</p>
-      </div>
-    `;
+        <span aria-hidden="true">◇</span>
+        <p><strong>Midnight Rodeo.</strong> Full song + visualizer from The Shine Era.</p>
+      </div>`;
     grid.appendChild(card);
-
-    const video = card.querySelector('video');
-    video?.addEventListener('play', () => {
-      const audio = document.getElementById(audioId);
-      if (audio && !audio.paused) audio.pause();
-      stopOtherMedia(video);
-    });
-    return card;
   };
 
   const addAestheticCover = () => {
-    if (isSweetville) return null;
+    if (isSweetville) return;
     const grid = document.querySelector('.gallery-section .gallery-grid');
-    if (!grid || document.getElementById('midnightRodeoAestheticCover')) return null;
-
-    // Aesthetic gallery must be artwork-only: no caption, no label, no button text.
+    if (!grid || document.getElementById('midnightRodeoAestheticCover')) return;
     const button = document.createElement('button');
     button.type = 'button';
     button.id = 'midnightRodeoAestheticCover';
@@ -157,50 +224,10 @@
     button.setAttribute('aria-label', 'Play or pause Midnight Rodeo');
     button.innerHTML = `
       <span class="mr-gallery-image-wrap">
-        <img src="${url('assets/album2/midnight-rodeo-cover-thumb.webp')}"
-             alt="Midnight Rodeo artwork by Jahntella"
-             loading="lazy"
-             fetchpriority="low"
-             decoding="async"
-             width="420"
-             height="420">
-      </span>
-    `;
-
-    // Insert into the same gallery grid; the cover itself is the only visual/interactive element.
+        <img src="${url('assets/album2/midnight-rodeo-cover-thumb.webp')}" alt="Midnight Rodeo artwork by Jahntella" loading="lazy" fetchpriority="low" decoding="async" width="420" height="420">
+      </span>`;
     grid.appendChild(button);
-
-    button.addEventListener('click', () => {
-      const audio = getAudio();
-      if (audio.paused) playMidnight();
-      else audio.pause();
-    });
-    return button;
-  };
-
-  const addSweetvilleCard = () => {
-    if (!isSweetville) return null;
-    const host = document.querySelector('.exp42-music-drop') || document.querySelector('.exp42-music-section') || document.querySelector('main');
-    if (!host || document.getElementById('midnightRodeoSweetvilleCard')) return null;
-    const card = document.createElement('article');
-    card.id = 'midnightRodeoSweetvilleCard';
-    card.className = 'mr-sweetville-card';
-    card.innerHTML = `
-      <img src="${url('assets/album2/midnight-rodeo-cover-thumb.webp')}"
-           alt="Midnight Rodeo artwork"
-           loading="lazy"
-           fetchpriority="low"
-           decoding="async"
-           width="420"
-           height="420">
-      <div><small>THE SHINE ERA</small><h3>Midnight Rodeo</h3><p>Tap the artwork to play.</p></div>`;
-    host.appendChild(card);
-    card.querySelector('img')?.addEventListener('click', () => {
-      const audio = getAudio();
-      if (audio.paused) playMidnight();
-      else audio.pause();
-    });
-    return card;
+    button.addEventListener('click', () => startMidnight(false));
   };
 
   const optimizeAestheticLoading = () => {
@@ -214,19 +241,33 @@
     });
   };
 
-  const updateHomepageCount = () => {
-    const heading = document.querySelector('.exp44-new-music-head h2');
-    if (heading) heading.innerHTML = heading.innerHTML.replace(/\b15 new songs\b/i, '16 new songs');
+  const restoreMidnightIfNeeded = () => {
+    if (isSweetville) return;
+    try {
+      const state = JSON.parse(sessionStorage.getItem(STATE_KEY) || '{}');
+      if (!state.active) return;
+      rememberBootsSource();
+      if (!boots || typeof window.jahntellaSelectSiteTrack !== 'function') return;
+      boots.src = midnightAudioUrl;
+      boots.load();
+      midnightActive = true;
+      const restore = () => {
+        try { boots.currentTime = Math.max(0, Number(state.position) || 0); } catch {}
+        try { window.jahntellaSelectSiteTrack('boots-smile-attitude', Boolean(state.playing), {fresh: true}); } catch {}
+        setPlayerChrome(Boolean(state.playing));
+      };
+      if (boots.readyState >= 1) restore();
+      else boots.addEventListener('loadedmetadata', restore, {once:true});
+    } catch {}
   };
 
   const init = () => {
-    getAudio();
-    attachPlaylistBridge();
-    buildInlineVisualizer();
+    removeObsoleteMidnightUI();
+    patchUnifiedPlayer();
+    addInlineVisualizer();
     addAestheticCover();
-    addSweetvilleCard();
     optimizeAestheticLoading();
-    if (!isSweetville) updateHomepageCount();
+    restoreMidnightIfNeeded();
   };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, {once:true});
