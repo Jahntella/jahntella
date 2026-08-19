@@ -42,24 +42,25 @@ window.JAHNTELLA_ALBUM2 = Object.freeze({
     if (window.__midnightRodeoSiteLoaded) return;
     window.__midnightRodeoSiteLoaded = true;
     const script = document.createElement('script');
-    script.src = new URL('midnight-rodeo-site.js?v=2026.08.19.4', document.baseURI).href;
+    script.src = new URL('midnight-rodeo-site.js?v=2026.08.19.5', document.baseURI).href;
     script.defer = true;
     document.head.appendChild(script);
     const css = document.createElement('link');
     css.rel = 'stylesheet';
-    css.href = new URL('midnight-rodeo-site.css?v=2026.08.19.4', document.baseURI).href;
+    css.href = new URL('midnight-rodeo-site.css?v=2026.08.19.5', document.baseURI).href;
     document.head.appendChild(css);
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load, {once:true});
   else load();
 })();
 
-/* Small homepage presentation updates for the current release count + gallery hint. */
+/* Homepage presentation updates. */
 (() => {
   const apply = () => {
-    document.querySelectorAll('#newMusicTitle').forEach(node => {
-      node.innerHTML = node.innerHTML.replace(/\b15 new songs\b/i, '16 new songs');
-    });
+    const count = document.getElementById('newMusicTitle');
+    if (count) {
+      count.innerHTML = count.innerHTML.replace(/\b15 new songs\b/gi, '16 new songs');
+    }
 
     const heading = document.querySelector('#gallery .section-heading');
     if (heading && !document.getElementById('galleryListenPrompt')) {
@@ -79,6 +80,13 @@ window.JAHNTELLA_ALBUM2 = Object.freeze({
     }
   };
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', apply, {once:true});
-  else apply();
+  const run = () => {
+    apply();
+    window.setTimeout(apply, 150);
+    window.setTimeout(apply, 600);
+    window.setTimeout(apply, 1500);
+  };
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run, {once:true});
+  else run();
 })();
