@@ -29,6 +29,8 @@
     });
   };
 
+  const format = seconds => Number.isFinite(seconds) ? `${Math.floor(seconds / 60)}:${Math.floor(seconds % 60).toString().padStart(2,'0')}` : '0:00';
+
   const chrome = playing => {
     const player = document.getElementById('player');
     const title = document.getElementById('playerTitle');
@@ -44,11 +46,18 @@
     if (audio && time) time.textContent = format(audio.currentTime);
   };
 
-  const format = seconds => Number.isFinite(seconds) ? `${Math.floor(seconds / 60)}:${Math.floor(seconds % 60).toString().padStart(2,'0')}` : '0:00';
-
   const startMidnight = (restart = false) => {
     getAudio();
     if (!audio) return;
+
+    // Make the existing player regard its shared transport as the active
+    // Boots track before we repurpose that same transport for Midnight Rodeo.
+    // This is what makes the existing scrubber, volume, play/pause and next/prev
+    // controls operate on Midnight Rodeo rather than a second hidden player.
+    if (typeof window.jahntellaSelectSiteTrack === 'function') {
+      window.jahntellaSelectSiteTrack('boots-smile-attitude', false, {fresh:true});
+    }
+
     stopOtherMedia(audio);
     const current = audio.currentSrc || audio.src || '';
     if (!current.includes('midnight-rodeo')) {
@@ -82,7 +91,6 @@
       const src = img?.getAttribute('src') || '';
       if (/jahntella-official-v1\.png/i.test(path + ' ' + src)) item.remove();
     });
-    // Remove any obsolete Midnight caption/card text from previous patches.
     document.querySelectorAll('#gallery .mr-gallery-caption,[data-mr-cover-label],#midnightRodeoSweetvilleCard').forEach(n => n.remove());
   };
 
@@ -123,8 +131,8 @@
     getAudio();
     if (!audio) return;
 
-    // Capture ended before the original player listener. This gives Midnight Rodeo
-    // its place between Boots, Smile & Attitude and Fun Dipp without replacing the player.
+    // Intercept the shared transport's ended event before the original player
+    // wraps to Fun Dipp. Midnight Rodeo therefore sits exactly between Boots and Fun Dipp.
     document.addEventListener('ended', event => {
       if (event.target !== audio || !midnightPlaying) return;
       event.stopPropagation();
@@ -142,14 +150,10 @@
     audio.addEventListener('timeupdate', () => { if (midnightPlaying) { midnightTime = audio.currentTime; chrome(true); } });
     audio.addEventListener('loadedmetadata', () => { if (midnightPlaying) chrome(!audio.paused); });
 
-    // Volume and scrubber are the site's existing controls, both of which operate
-    // on audioBootsSmileAttitude. Since Midnight Rodeo uses that same element,
-    // they automatically control Midnight Rodeo too.
     const volume = document.getElementById('playerVolume');
     volume?.addEventListener('input', () => { if (midnightPlaying) audio.volume = Number(volume.value); });
 
-    // Any other site track selection immediately ends Midnight Rodeo and lets the
-    // original player own playback again.
+    // Selecting another song immediately hands the transport back to the original player.
     document.addEventListener('click', event => {
       const target = event.target.closest?.('.play-button[data-track],#playerPrev,#playerNext,[data-jahntella-cover-track]');
       if (!target || !midnightPlaying) return;
@@ -159,6 +163,9 @@
       midnightPlaying = false;
       restoreBoots();
     }, true);
+
+    // No site audio may run alongside the shared transport.
+    audio.addEventListener('play', () => stopOtherMedia(audio));
   };
 
   const init = () => {
