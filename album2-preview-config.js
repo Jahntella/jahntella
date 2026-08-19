@@ -2,8 +2,8 @@
  * The Shine Era preview switch
  *
  * Keep `previewMode` false until the planned manual activation on August 26,
- * 2026. Changing this single value to true switches Sweet Dreams and We Are 1
- * to their prepared 60-second audio and video previews everywhere on the site.
+ * 2026. Changing this single value to true switches the prepared Shine Era
+ * teaser audio/video assets into preview mode.
  */
 window.JAHNTELLA_ALBUM2 = Object.freeze({
   previewMode: false,
@@ -27,6 +27,29 @@ window.JAHNTELLA_ALBUM2 = Object.freeze({
       previewAudio: "sweetville/previews/boots-smile-attitude-preview.mp3",
       fullVideo: "assets/album2/boots-smile-attitude-official-visualizer.mp4",
       previewVideo: "assets/album2/previews/boots-smile-attitude-preview.mp4"
+    }),
+    "midnight-rodeo": Object.freeze({
+      fullAudio: "assets/album2/midnight-rodeo.mp3",
+      fullVideo: "assets/album2/midnight-rodeo-official-visualizer.mp4",
+      artwork: "assets/album2/midnight-rodeo-cover.webp"
     })
   })
 });
+
+/* Load the Midnight Rodeo presentation on both the main site and Sweetville. */
+(() => {
+  const load = () => {
+    if (window.__midnightRodeoSiteLoaded) return;
+    window.__midnightRodeoSiteLoaded = true;
+    const script = document.createElement('script');
+    script.src = new URL('midnight-rodeo-site.js', document.baseURI).href;
+    script.defer = true;
+    document.head.appendChild(script);
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = new URL('midnight-rodeo-site.css', document.baseURI).href;
+    document.head.appendChild(css);
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load, {once:true});
+  else load();
+})();
