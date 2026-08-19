@@ -1,0 +1,11 @@
+/* Midnight Rodeo — additive site integration */
+.midnight-rodeo-card{position:relative;overflow:hidden;border-radius:28px;padding:1px;background:linear-gradient(135deg,#ff2ea6,#8a2be2 45%,#16d9ff);box-shadow:0 20px 60px rgba(132,20,190,.28)}
+.midnight-rodeo-card__inner{display:grid;grid-template-columns:minmax(180px,360px) 1fr;gap:24px;align-items:center;padding:20px;border-radius:27px;background:linear-gradient(135deg,rgba(18,0,30,.96),rgba(36,6,58,.94))}
+.midnight-rodeo-card img{width:100%;aspect-ratio:1;border-radius:20px;object-fit:cover;display:block;box-shadow:0 14px 35px rgba(0,0,0,.35)}
+.midnight-rodeo-card__copy small{letter-spacing:.16em;font-weight:800;color:#ff79d3}
+.midnight-rodeo-card__copy h3{margin:.25rem 0;font-size:clamp(2rem,4vw,3.5rem)}
+.midnight-rodeo-card__copy p{opacity:.86;max-width:48ch}
+.midnight-rodeo-card__button{appearance:none;border:0;border-radius:999px;padding:.85rem 1.2rem;font-weight:800;cursor:pointer;background:linear-gradient(90deg,#ff3cac,#8f5cff);color:#fff;box-shadow:0 10px 30px rgba(255,60,172,.28)}
+.midnight-rodeo-card__button.is-playing{background:linear-gradient(90deg,#13d9ff,#8f5cff)}
+.midnight-rodeo-card__badge{display:inline-flex;gap:.4rem;align-items:center;margin-top:12px;padding:.4rem .7rem;border-radius:999px;background:rgba(255,255,255,.08);font-size:.82rem}
+@media(max-width:700px){.midnight-rodeo-card__inner{grid-template-columns:1fr}.midnight-rodeo-card img{max-width:520px;margin:auto}}

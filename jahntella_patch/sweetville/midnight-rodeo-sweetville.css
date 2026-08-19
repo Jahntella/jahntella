@@ -1,0 +1,6 @@
+/* Midnight Rodeo — Sweetville visual treatment */
+#midnightRodeoSweetville{margin:4rem auto;max-width:1180px;padding:0 20px}
+.midnight-rodeo-sv-shell{display:grid;grid-template-columns:minmax(280px,480px) 1fr;gap:34px;align-items:center;padding:24px;border-radius:34px;background:linear-gradient(135deg,rgba(25,0,42,.96),rgba(55,8,83,.92));border:1px solid rgba(255,86,205,.55);box-shadow:0 24px 80px rgba(83,16,116,.35)}
+.midnight-rodeo-sv-art img{width:100%;border-radius:26px;display:block;box-shadow:0 18px 50px rgba(0,0,0,.4)}
+.midnight-rodeo-sv-copy small{letter-spacing:.16em;font-weight:800;color:#ff76d2}.midnight-rodeo-sv-copy h2{font-size:clamp(2.5rem,6vw,5rem);margin:.2rem 0}.midnight-rodeo-sv-copy p{max-width:52ch;opacity:.9}.midnight-rodeo-sv-play{border:0;border-radius:999px;padding:.9rem 1.25rem;font-weight:800;cursor:pointer;color:#fff;background:linear-gradient(90deg,#ff3cac,#7d5cff);box-shadow:0 12px 30px rgba(255,60,172,.25)}
+@media(max-width:760px){.midnight-rodeo-sv-shell{grid-template-columns:1fr}}

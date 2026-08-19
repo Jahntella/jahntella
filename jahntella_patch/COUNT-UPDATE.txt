@@ -1,0 +1,12 @@
+HOMEPAGE COPY UPDATE
+
+In index.html, change:
+  "15 new songs. One nonstop playlist."
+to:
+  "16 new songs. One nonstop playlist."
+
+The Sweeties birthday/social announcement should remain:
+  "Press play and explore the 18 track playlist"
+
+Why 16?
+The site currently has 15 newer songs in the New Music section; Midnight Rodeo is the 16th newer song. The two legacy releases (Fun Dipp and Pink Lips Remix) bring the continuous sitewide playlist to 18 tracks total.
