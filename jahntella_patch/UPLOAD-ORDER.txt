@@ -1,0 +1,4 @@
+1. Extract this package into the repository root.
+2. Merge/overwrite the included midnight-rodeo-home.js and midnight-rodeo-shine-visualizer.css.
+3. Keep the included assets/shine-era/midnight-rodeo-visualizer.mp4.
+4. This version includes ONLY the full 5:10.86 visualizer — no teaser.
