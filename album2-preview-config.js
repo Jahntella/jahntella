@@ -42,12 +42,12 @@ window.JAHNTELLA_ALBUM2 = Object.freeze({
     if (window.__midnightRodeoSiteLoaded) return;
     window.__midnightRodeoSiteLoaded = true;
     const script = document.createElement('script');
-    script.src = new URL('midnight-rodeo-site.js?v=2026.08.19.3', document.baseURI).href;
+    script.src = new URL('midnight-rodeo-site.js?v=2026.08.19.4', document.baseURI).href;
     script.defer = true;
     document.head.appendChild(script);
     const css = document.createElement('link');
     css.rel = 'stylesheet';
-    css.href = new URL('midnight-rodeo-site.css?v=2026.08.19.3', document.baseURI).href;
+    css.href = new URL('midnight-rodeo-site.css?v=2026.08.19.4', document.baseURI).href;
     document.head.appendChild(css);
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load, {once:true});
@@ -66,7 +66,7 @@ window.JAHNTELLA_ALBUM2 = Object.freeze({
       const prompt = document.createElement('p');
       prompt.id = 'galleryListenPrompt';
       prompt.className = 'gallery-listen-prompt';
-      prompt.textContent = 'Click Your Favorite Cover Art to Listen:';
+      prompt.textContent = 'Click Your Favorite Cover Art to Listen';
       heading.appendChild(prompt);
 
       const style = document.createElement('style');
