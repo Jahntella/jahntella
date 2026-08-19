@@ -44,6 +44,25 @@
           footer.parentNode.insertBefore(tribute, footer);
         }
 
+        // Update the Shine Era introduction to reflect all four visualizer teasers.
+        doc.querySelectorAll('.exp60-shine-heading p, .exp60-shine-heading header p, .exp60-shine-sneak-peek p').forEach(node => {
+          if (!node.textContent.includes('Get your first look at') || !node.textContent.includes('The Shine Era')) return;
+          node.innerHTML = node.innerHTML
+            .replace(/\bBoots, Smile &amp; Attitude\*?/, 'Boots, Smile &amp; Attitude**, **Midnight Rodeo')
+            .replace(/—three glimpses/, '—four glimpses');
+          const strong = node.querySelectorAll('strong');
+          if (strong.length === 3 && !node.textContent.includes('Midnight Rodeo')) {
+            node.innerHTML = node.innerHTML.replace('</strong>—three glimpses', '</strong>, <strong>Midnight Rodeo</strong>—four glimpses');
+          }
+        });
+
+        const shineIntro = Array.from(doc.querySelectorAll('p')).find(node =>
+          node.textContent.includes('Get your first look at') && node.textContent.includes('three glimpses of the sound')
+        );
+        if (shineIntro) {
+          shineIntro.innerHTML = 'Get your first look at <strong>The Shine Era</strong>—front and back—and step inside <strong>Sweet Dreams</strong>, <strong>We Are 1</strong>, <strong>Boots, Smile &amp; Attitude</strong>, and <strong>Midnight Rodeo</strong>—four glimpses of the sound, light, and world of Album II.';
+        }
+
         const style = doc.createElement('style');
         style.textContent = `
           .gallery-listen-prompt{margin:.45rem auto 0;color:rgba(255,255,255,.82);font-size:.9rem;font-weight:700;letter-spacing:.04em;text-align:center}
