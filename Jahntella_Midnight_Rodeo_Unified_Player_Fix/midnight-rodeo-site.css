@@ -1,0 +1,14 @@
+/* Midnight Rodeo: compact Shine Era visualizer + unified music controls. */
+.exp66-shine-videos.mr-has-midnight{grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(.65rem,1.35vw,1rem)}
+.mr-inline-midnight-card{min-width:0}
+.mr-inline-midnight-card .exp60-shine-video-frame{aspect-ratio:16/9}
+.mr-inline-midnight-card .exp60-shine-video-note{min-height:2.8rem}
+.mr-gallery-play-card{appearance:none;border:0;background:transparent;padding:0;color:inherit;text-align:left;cursor:pointer}
+.mr-gallery-image-wrap{display:block;overflow:hidden;aspect-ratio:1;border-radius:inherit;background:#09000f}
+.mr-gallery-play-card img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .22s ease,filter .22s ease}
+.mr-gallery-play-card:hover img{transform:scale(1.025);filter:brightness(1.06)}
+.mr-gallery-play-card:focus-visible{outline:3px solid #ff8dcc;outline-offset:4px}
+.mr-gallery-optimized{content-visibility:auto;contain-intrinsic-size:auto 1600px}
+.mr-gallery-optimized .gallery-grid{contain:layout paint style}
+@media(max-width:1050px){.exp66-shine-videos.mr-has-midnight{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.exp66-shine-videos.mr-has-midnight{grid-template-columns:1fr}}
