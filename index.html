@@ -83,6 +83,46 @@
           'midnight-rodeo-cover.webp':'assets/album2/midnight-rodeo-cover-thumb.webp',
           'redline-cover.webp':'assets/album2/redline-cover-thumb.webp'
         };
+
+        const galleryOrder = [
+          'fun-dipp-cover.webp',
+          'pink-lips-remix.webp',
+          'bite-lip-cover.webp',
+          'i-want-to-be-your-girl-cover.webp',
+          'gloss-cover.webp',
+          'embrace-me-cover.webp',
+          'we-come-together-cover.webp',
+          'play-with-me-cover.webp',
+          'carnival-cover.webp',
+          'made-of-light-cover.webp',
+          'candy-wrapper-cover.webp',
+          'playground-cover.webp',
+          'milk-shake-cover.webp',
+          'tonight-cover.webp',
+          'sweet-dreams-cover.webp',
+          'we-are-1-cover.webp',
+          'boots-smile-attitude-cover.webp',
+          'midnight-rodeo-cover.webp',
+          'redline-cover.webp'
+        ];
+        const galleryGrid = doc.querySelector('#gallery .gallery-grid');
+        if (galleryGrid) {
+          const orderMap = new Map(galleryOrder.map((name,index) => [name,index]));
+          const items = Array.from(galleryGrid.querySelectorAll(':scope > .gallery-item'));
+          items.sort((a,b) => {
+            const filename = item => {
+              const img = item.querySelector('img');
+              const path = (img?.getAttribute('src') || item.getAttribute('data-lightbox') || '').split(/[?#]/)[0];
+              return decodeURIComponent(path.split('/').pop() || '').toLowerCase();
+            };
+            const ai = orderMap.has(filename(a)) ? orderMap.get(filename(a)) : 10000;
+            const bi = orderMap.has(filename(b)) ? orderMap.get(filename(b)) : 10000;
+            return ai - bi;
+          });
+          items.forEach(item => galleryGrid.appendChild(item));
+          galleryGrid.style.gridAutoFlow = 'row';
+        }
+
         doc.querySelectorAll('#gallery .gallery-item').forEach(item => {
           const img = item.querySelector('img');
           if (!img) return;
@@ -102,7 +142,7 @@
           .gallery-listen-prompt{margin:.45rem auto 0;color:rgba(255,255,255,.82);font-size:.9rem;font-weight:700;letter-spacing:.04em;text-align:center}
           @media(max-width:600px){.gallery-listen-prompt{font-size:.82rem}}
           .gallery-section{content-visibility:auto;contain-intrinsic-size:1200px 1650px}
-          .gallery-section .gallery-grid{contain:layout paint style}
+          .gallery-section .gallery-grid{contain:layout paint style;grid-auto-flow:row!important}
           .shy-guy-shawn-tribute{padding:3.5rem 1.25rem 2.25rem;text-align:center;background:linear-gradient(180deg,rgba(18,0,21,0),rgba(18,0,21,.5))}
           .shy-guy-shawn-rule{width:72px;height:1px;margin:0 auto 1rem;background:linear-gradient(90deg,transparent,rgba(255,185,233,.8),transparent)}
           .shy-guy-shawn-tribute p{margin:0;color:rgba(255,255,255,.88);font-family:"Playfair Display",serif;font-size:clamp(1.05rem,2vw,1.35rem);letter-spacing:.02em}
