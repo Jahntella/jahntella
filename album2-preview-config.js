@@ -10,32 +10,74 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
 (()=>{
   const addScript=(src,version)=>{const s=document.createElement('script');s.src=new URL(`${src}?v=${version}`,document.baseURI).href;s.defer=true;document.head.appendChild(s);};
   const addCss=(href,version)=>{const l=document.createElement('link');l.rel='stylesheet';l.href=new URL(`${href}?v=${version}`,document.baseURI).href;document.head.appendChild(l);};
-  const createVisualizerCard=({id,title,video,poster})=>{const a=document.createElement('article');a.id=id;a.className='exp60-shine-video-card';a.innerHTML=`<div class="exp60-shine-video-heading"><span>NEW ERA <i aria-hidden="true"></i> OFFICIAL VISUALIZER</span><h3>${title}</h3></div><div class="exp60-shine-video-frame"><video controls playsinline preload="none" poster="${poster}" aria-label="Play the ${title} official visualizer"><source src="${video}" type="video/mp4"></video></div><div class="exp60-shine-video-note"><span aria-hidden="true">◇</span><p><strong>${title}.</strong> Full song + visualizer from The Shine Era.</p></div>`;return a;};
-  const wireExclusiveVisualizers=root=>root.querySelectorAll('.exp60-shine-video-frame video').forEach(v=>{if(v.dataset.exclusiveShineEra==='true')return;v.dataset.exclusiveShineEra='true';v.addEventListener('play',()=>{root.querySelectorAll('.exp60-shine-video-frame video').forEach(o=>{if(o!==v&&!o.paused)o.pause();});document.querySelectorAll('audio').forEach(a=>{if(!a.paused)a.pause();});});});
-  const addHomepageVisualizers=()=>{const g=document.querySelector('.exp66-shine-videos');if(!g)return;g.querySelectorAll(':scope > article').forEach(card=>{const title=card.querySelector('h3')?.textContent?.trim();if(title==='Midnight Rodeo'||title==='Redline')card.remove();});
-    const cards=[
-      {id:'midnightRodeoShineEraVisualizer',title:'Midnight Rodeo',video:'assets/album2/midnight-rodeo-official-visualizer.mp4',poster:'assets/album2/midnight-rodeo-cover.webp'},
-      {id:'redlineShineEraVisualizer',title:'Redline',video:'assets/album2/redline-official-visualizer.mp4',poster:'assets/album2/redline-cover.webp'}
-    ];
-    cards.forEach(cfg=>g.appendChild(createVisualizerCard(cfg)));
+
+  const createVisualizerCard=({id,title,video,poster})=>{
+    const a=document.createElement('article');
+    a.id=id;
+    a.className='exp60-shine-video-card';
+    a.innerHTML=`<div class="exp60-shine-video-heading"><span>NEW ERA <i aria-hidden="true"></i> OFFICIAL VISUALIZER</span><h3>${title}</h3></div><div class="exp60-shine-video-frame"><video controls playsinline preload="none" poster="${poster}" aria-label="Play the ${title} official visualizer"><source src="${video}" type="video/mp4"></video></div><div class="exp60-shine-video-note"><span aria-hidden="true">◇</span><p><strong>${title}.</strong> Full song + visualizer from The Shine Era.</p></div>`;
+    return a;
+  };
+
+  const wireExclusiveVisualizers=root=>root.querySelectorAll('.exp60-shine-video-frame video').forEach(v=>{
+    if(v.dataset.exclusiveShineEra==='true')return;
+    v.dataset.exclusiveShineEra='true';
+    v.addEventListener('play',()=>{
+      root.querySelectorAll('.exp60-shine-video-frame video').forEach(o=>{if(o!==v&&!o.paused)o.pause();});
+      document.querySelectorAll('audio').forEach(a=>{if(!a.paused)a.pause();});
+    });
+  });
+
+  const addHomepageVisualizers=()=>{
+    const g=document.querySelector('.exp66-shine-videos');
+    if(!g)return;
+    g.querySelectorAll(':scope > article').forEach(card=>{
+      const title=card.querySelector('h3')?.textContent?.trim();
+      if(title==='Midnight Rodeo'||title==='Redline')card.remove();
+    });
+    const ref=Array.from(g.children).find(card=>card.querySelector('h3')?.textContent?.trim()==='Boots, Smile & Attitude') || g.lastElementChild;
+    const midnight=createVisualizerCard({id:'midnightRodeoShineEraVisualizer',title:'Midnight Rodeo',video:'assets/album2/midnight-rodeo-official-visualizer.mp4',poster:'assets/album2/midnight-rodeo-cover.webp'});
+    const redline=createVisualizerCard({id:'redlineShineEraVisualizer',title:'Redline',video:'assets/album2/redline-official-visualizer.mp4',poster:'assets/album2/redline-cover.webp'});
+    if(ref?.parentNode){ref.parentNode.insertBefore(midnight,ref.nextSibling);ref.parentNode.insertBefore(redline,midnight.nextSibling);}else{g.append(midnight,redline);}
     wireExclusiveVisualizers(g);
   };
-  const removeNonMusicGalleryPortrait=()=>{const g=document.querySelector('.gallery-section .gallery-grid');if(!g)return;g.querySelectorAll('.gallery-item').forEach(i=>{const t=`${i.dataset.lightbox||''} ${i.querySelector('img')?.getAttribute('src')||''} ${i.querySelector('img')?.getAttribute('alt')||''}`.toLowerCase(),p=/official-v1|closeup|close-up|portrait|jahntella.*face|face.*jahntella/.test(t),m=/fun-dipp|pink-lips-remix|bite-lip|gloss|i-want-to-be-your-girl|embrace-me|we-come-together|play-with-me|carnival|made-of-light|candy-wrapper|playground|milk-shake|tonight|sweet-dreams|we-are-1|boots-smile-attitude|midnight-rodeo|redline/.test(t);if(p&&!m)i.remove();});};
-  const galleryKey=i=>{if(i.id==='midnightRodeoAestheticCover')return'midnight-rodeo';if(i.id==='redlineAestheticCover')return'redline';const t=`${i.dataset.lightbox||''} ${i.querySelector('img')?.getAttribute('src')||''} ${i.querySelector('img')?.getAttribute('alt')||''}`.toLowerCase();const map=[['fun-dipp','fun-dipp'],['pink-lips-remix','pink-lips-remix'],['bite-lip','bite-lip'],['gloss','gloss'],['i-want-to-be-your-girl','i-want-to-be-your-girl'],['embrace-me','embrace-me'],['we-come-together','we-come-together'],['play-with-me','play-with-me'],['carnival','carnival'],['made-of-light','made-of-light'],['candy-wrapper','candy-wrapper'],['playground','playground'],['milk-shake','milk-shake'],['tonight','tonight'],['sweet-dreams','sweet-dreams'],['we-are-1','we-are-1'],['boots-smile-attitude','boots-smile-attitude'],['midnight-rodeo','midnight-rodeo'],['redline','redline']];for(const [needle,key] of map)if(t.includes(needle))return key;return null;};
-  const organizeGallery=()=>{const g=document.querySelector('.gallery-section .gallery-grid');if(!g)return;removeNonMusicGalleryPortrait();const order=['fun-dipp','pink-lips-remix','bite-lip','gloss','i-want-to-be-your-girl','embrace-me','we-come-together','play-with-me','carnival','made-of-light','candy-wrapper','playground','milk-shake','tonight','sweet-dreams','we-are-1','boots-smile-attitude','midnight-rodeo','redline'];const itemMap=new Map(Array.from(g.querySelectorAll('.gallery-item')).map(item=>[galleryKey(item),item]));const allItems=order.map(key=>itemMap.get(key)).filter(Boolean);const sweetItems=allItems.filter(item=>!['sweet-dreams','we-are-1','boots-smile-attitude','midnight-rodeo','redline'].includes(galleryKey(item)));const shineItems=allItems.filter(item=>['sweet-dreams','we-are-1','boots-smile-attitude','midnight-rodeo','redline'].includes(galleryKey(item)));g.querySelectorAll(':scope > .gallery-era-block').forEach(n=>n.remove());const block=(id,title,items)=>{const wrap=document.createElement('section');wrap.id=id;wrap.className='gallery-era-block';wrap.setAttribute('aria-label',title);const h=document.createElement('h3');h.className='gallery-era-heading';h.textContent=title;const row=document.createElement('div');row.className='gallery-era-row';items.forEach(item=>row.appendChild(item));wrap.append(h,row);return wrap;};g.appendChild(block('sweetEraGalleryRow','THE SWEET ERA — ALBUM I',sweetItems));g.appendChild(block('shineEraGalleryRow','THE SHINE ERA — ALBUM II',shineItems));};
-  const style=()=>{if(document.getElementById('jahntellaGalleryEraStyles'))return;const s=document.createElement('style');s.id='jahntellaGalleryEraStyles';s.textContent=`
-.gallery-section .gallery-grid{display:block!important}
-.gallery-era-block{width:100%;margin:1.25rem 0 2.2rem}
-.gallery-era-heading{margin:0 0 .85rem;padding:.75rem 0 .55rem;color:#ffd1f2;text-align:left;font-family:"Playfair Display",serif;font-size:clamp(1.2rem,2vw,1.6rem);letter-spacing:.03em;border-bottom:1px solid rgba(255,141,204,.22)}
-.gallery-era-heading::after{content:"";display:block;width:3.5rem;height:2px;margin-top:.42rem;background:linear-gradient(90deg,#ff8dcc,#79e8ff,transparent)}
-.gallery-era-row{display:flex;flex-wrap:nowrap;gap:clamp(.75rem,1.2vw,1.1rem);overflow-x:auto;overflow-y:hidden;padding:.25rem .1rem 1rem;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
-.gallery-era-row>.gallery-item{flex:0 0 clamp(150px,15vw,210px);width:clamp(150px,15vw,210px);scroll-snap-align:start}
-.gallery-era-row>.gallery-item img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover}
-@media(max-width:700px){.gallery-era-row>.gallery-item{flex-basis:145px;width:145px}.gallery-era-block{margin-bottom:1.75rem}}
-`;
-document.head.appendChild(s);};
-  const scheduleGallery=()=>{let tries=0;const tick=()=>{tries++;style();organizeGallery();if(tries<18)setTimeout(tick,300);};tick();};
-  const ensureMusicScripts=()=>{if(window.__jahntellaShineEraExtensionsLoaded)return;window.__jahntellaShineEraExtensionsLoaded=true;addScript('shine-era-shared-transport.js','20260819.2');addScript('redline-site.js','20260819.7');addScript('midnight-rodeo-site.js','20260819.11');addCss('redline-site.css','20260819.7');addCss('midnight-rodeo-site.css','20260819.11');};
-  const run=()=>{const sweetville=/\/sweetville(?:\/|$)/i.test(location.pathname);if(sweetville){if(!window.__jahntellaSweetEraExtensionsLoaded){window.__jahntellaSweetEraExtensionsLoaded=true;addScript('sweetville/shine-era-sweetville-extensions.js','20260819.3');}return;}ensureMusicScripts();addHomepageVisualizers();removeNonMusicGalleryPortrait();scheduleGallery();const c=document.getElementById('newMusicTitle');if(c)c.innerHTML=c.innerHTML.replace(/\b(?:15|16) new songs\b/gi,'17 new songs');const gallery=document.getElementById('gallery'),story=document.getElementById('about');if(gallery&&story&&story.parentNode&&gallery!==story.previousElementSibling)story.parentNode.insertBefore(gallery,story);const intro=Array.from(document.querySelectorAll('p')).find(n=>n.textContent.includes('Get your first look at')&&n.textContent.includes('The Shine Era'));if(intro)intro.innerHTML='Get your first look at <strong>The Shine Era</strong>—front and back—and step inside <strong>Sweet Dreams</strong>, <strong>We Are 1</strong>, <strong>Boots, Smile &amp; Attitude</strong>, <strong>Redline</strong>, and <strong>Midnight Rodeo</strong>—five glimpses of the sound, light, and world of Album II.';};
+
+  const removeNonMusicGalleryPortrait=()=>{
+    const g=document.querySelector('.gallery-section .gallery-grid');
+    if(!g)return;
+    g.querySelectorAll('.gallery-item').forEach(i=>{
+      const t=`${i.dataset.lightbox||''} ${i.querySelector('img')?.getAttribute('src')||''} ${i.querySelector('img')?.getAttribute('alt')||''}`.toLowerCase();
+      if(/official-v1|closeup|close-up|portrait|jahntella.*face|face.*jahntella/.test(t) && !/cover|song|music|single/.test(t))i.remove();
+    });
+  };
+
+  const run=()=>{
+    const sweetville=/\/sweetville(?:\/|$)/i.test(location.pathname);
+    if(sweetville){
+      if(!window.__jahntellaSweetEraExtensionsLoaded){
+        window.__jahntellaSweetEraExtensionsLoaded=true;
+        addScript('sweetville/shine-era-sweetville-extensions.js','20260819.3');
+      }
+      return;
+    }
+    addScript('shine-era-shared-transport.js','20260819.3');
+    addScript('redline-site.js','20260819.8');
+    addScript('midnight-rodeo-site.js','20260819.12');
+    addCss('redline-site.css','20260819.8');
+    addCss('midnight-rodeo-site.css','20260819.12');
+    addHomepageVisualizers();
+    removeNonMusicGalleryPortrait();
+    window.setTimeout(removeNonMusicGalleryPortrait,250);
+
+    const c=document.getElementById('newMusicTitle');
+    if(c)c.innerHTML=c.innerHTML.replace(/\b(?:15|16) new songs\b/gi,'17 new songs');
+
+    const gallery=document.getElementById('gallery'),story=document.getElementById('about');
+    if(gallery&&story&&story.parentNode&&gallery!==story.previousElementSibling)story.parentNode.insertBefore(gallery,story);
+
+    const intro=Array.from(document.querySelectorAll('p')).find(n=>n.textContent.includes('Get your first look at')&&n.textContent.includes('The Shine Era'));
+    if(intro)intro.innerHTML='Get your first look at <strong>The Shine Era</strong>—front and back—and step inside <strong>Sweet Dreams</strong>, <strong>We Are 1</strong>, <strong>Boots, Smile &amp; Attitude</strong>, <strong>Redline</strong>, and <strong>Midnight Rodeo</strong>—five glimpses of the sound, light, and world of Album II.';
+  };
+
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});else run();
 })();
