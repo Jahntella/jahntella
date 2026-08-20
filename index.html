@@ -54,8 +54,6 @@
           shineIntro.innerHTML = 'Get your first look at <strong>The Shine Era</strong>—front and back—and step inside <strong>Sweet Dreams</strong>, <strong>We Are 1</strong>, <strong>Boots, Smile &amp; Attitude</strong>, and <strong>Midnight Rodeo</strong>—four glimpses of the sound, light, and world of Album II.';
         }
 
-        // Speed up the Visual World gallery by using the lightweight music thumbnails
-        // while preserving the full-resolution images in each tile's lightbox target.
         const galleryThumbs = {
           'bite-lip-cover.webp':'assets/music-thumbs/bite-lip.webp',
           'gloss-cover.webp':'assets/music-thumbs/gloss.webp',
@@ -101,6 +99,9 @@
           .shy-guy-shawn-tribute small{display:block;margin-top:.5rem;color:rgba(255,255,255,.55);font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
         `;
         doc.head.appendChild(style);
+
+        const album2Script = doc.querySelector('script[src*="album2-preview-config.js"]');
+        if (album2Script) album2Script.setAttribute('src', 'album2-preview-config.js?v=2026.08.19.3');
 
         const finalHtml = '<!doctype html>\n' + doc.documentElement.outerHTML;
         document.open();
