@@ -14,8 +14,8 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
   const wireExclusiveVisualizers=root=>root.querySelectorAll('.exp60-shine-video-frame video').forEach(v=>{if(v.dataset.exclusiveShineEra==='true')return;v.dataset.exclusiveShineEra='true';v.addEventListener('play',()=>{root.querySelectorAll('.exp60-shine-video-frame video').forEach(o=>{if(o!==v&&!o.paused)o.pause();});document.querySelectorAll('audio').forEach(a=>{if(!a.paused)a.pause();});});});
   const addHomepageVisualizers=()=>{const g=document.querySelector('.exp66-shine-videos');if(!g)return;g.querySelectorAll(':scope > article').forEach(card=>{const title=card.querySelector('h3')?.textContent?.trim();if(title==='Midnight Rodeo'||title==='Redline')card.remove();});
     const cards=[
-      {id:'redlineShineEraVisualizer',title:'Redline',video:'assets/album2/redline-official-visualizer.mp4',poster:'assets/album2/redline-cover.webp'},
-      {id:'midnightRodeoShineEraVisualizer',title:'Midnight Rodeo',video:'assets/album2/midnight-rodeo-official-visualizer.mp4',poster:'assets/album2/midnight-rodeo-cover.webp'}
+      {id:'midnightRodeoShineEraVisualizer',title:'Midnight Rodeo',video:'assets/album2/midnight-rodeo-official-visualizer.mp4',poster:'assets/album2/midnight-rodeo-cover.webp'},
+      {id:'redlineShineEraVisualizer',title:'Redline',video:'assets/album2/redline-official-visualizer.mp4',poster:'assets/album2/redline-cover.webp'}
     ];
     cards.forEach(cfg=>g.appendChild(createVisualizerCard(cfg)));
     wireExclusiveVisualizers(g);
