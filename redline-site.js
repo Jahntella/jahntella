@@ -23,6 +23,8 @@
     const grid = document.querySelector('.exp66-shine-videos');
     if (!grid) return;
     removeOldRedlineCards(grid);
+    if (grid.querySelector('[data-redline-shine="true"]')) return;
+
     const card = document.createElement('article');
     card.className = 'exp60-shine-video-card redline-inline-card';
     card.dataset.redlineShine = 'true';
@@ -41,7 +43,9 @@
         <p><strong>Redline.</strong> Full song + visualizer from The Shine Era.</p>
       </div>`;
     grid.appendChild(card);
-    card.querySelector('video')?.addEventListener('play', () => window.jahntellaStopShineEraTrack?.());
+
+    const player = card.querySelector('video');
+    player?.addEventListener('play', () => window.jahntellaStopShineEraTrack?.());
   };
 
   const addAestheticCover = () => {
@@ -53,11 +57,17 @@
     button.className = 'gallery-item redline-gallery-play';
     button.setAttribute('aria-label', 'Play or pause Redline');
     button.innerHTML = `<span class="redline-gallery-image"><img src="${thumb}" alt="Redline artwork by Jahntella" width="420" height="420" loading="lazy" decoding="async"></span>`;
-    button.addEventListener('click', () => window.jahntellaPlayShineEraTrack?.('redline', false));
+    button.addEventListener('click', () => {
+      window.jahntellaPlayShineEraTrack?.('redline', false);
+    });
     grid.appendChild(button);
   };
 
-  const init = () => { addVisualizer(); addAestheticCover(); };
+  const init = () => {
+    addVisualizer();
+    addAestheticCover();
+  };
+
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, {once:true});
   else init();
 })();

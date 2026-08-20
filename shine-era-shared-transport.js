@@ -5,78 +5,244 @@
   window.__jahntellaShineEraTransport = true;
 
   const EXT = {
-    'midnight-rodeo': {title:'Midnight Rodeo',audio:'assets/album2/midnight-rodeo.mp3',artwork:'assets/album2/midnight-rodeo-cover.webp',next:'redline',prev:'boots-smile-attitude'},
-    redline: {title:'Redline',audio:'assets/album2/redline.mp3',artwork:'assets/album2/redline-cover.webp',next:'fun-dipp',prev:'midnight-rodeo'}
+    'midnight-rodeo': {
+      title: 'Midnight Rodeo',
+      audio: 'assets/album2/midnight-rodeo.mp3',
+      artwork: 'assets/album2/midnight-rodeo-cover.webp',
+      next: 'redline',
+      prev: 'boots-smile-attitude'
+    },
+    redline: {
+      title: 'Redline',
+      audio: 'assets/album2/redline.mp3',
+      artwork: 'assets/album2/redline-cover.webp',
+      next: 'fun-dipp',
+      prev: 'midnight-rodeo'
+    }
   };
-  let audio = null, originalSrc = '', activeKey = null, savedPosition = 0;
+
+  let audio = null;
+  let originalSrc = '';
+  let activeKey = null;
+  let savedPosition = 0;
+
   const abs = p => new URL(p, document.baseURI).href;
   const getAudio = () => {
     if (!audio) audio = document.getElementById('audioBootsSmileAttitude');
     if (audio && !originalSrc) originalSrc = audio.currentSrc || audio.src || audio.querySelector('source')?.src || '';
     return audio;
   };
-  const stopOtherMedia = except => document.querySelectorAll('audio,video').forEach(n => { if (n !== except && !n.paused) n.pause(); });
-  const fmt = s => `${Math.floor((Number(s)||0)/60)}:${String(Math.floor((Number(s)||0)%60)).padStart(2,'0')}`;
-  const updatePlayer = playing => {
+
+  const isActive = () => !!activeKey && !!EXT[activeKey];
+
+  const stopOtherMedia = except => {
+    document.querySelectorAll('audio,video').forEach(node => {
+      if (node !== except && !node.paused) node.pause();
+    });
+  };
+
+  const formatTime = sec => {
+    const n = Number.isFinite(sec) ? Math.max(0, sec) : 0;
+    return `${Math.floor(n / 60)}:${String(Math.floor(n % 60)).padStart(2, '0')}`;
+  };
+
+  const updatePlayer = (playing = false) => {
     if (!activeKey || !audio) return;
     const cfg = EXT[activeKey];
-    document.getElementById('player')?.classList.add('visible');
-    const title = document.getElementById('playerTitle'); if (title) title.textContent = cfg.title;
-    const art = document.getElementById('playerArtwork'); if (art) { art.src = abs(cfg.artwork); art.alt = `${cfg.title} artwork by Jahntella`; }
-    const toggle = document.getElementById('playerToggle'); if (toggle) { toggle.textContent = playing ? '❚❚' : '▶'; toggle.setAttribute('aria-label', playing ? `Pause ${cfg.title}` : `Play ${cfg.title}`); }
-    const progress = document.getElementById('playerProgress'); if (progress) progress.value = audio.duration > 0 ? String(audio.currentTime / audio.duration * 100) : '0';
-    const time = document.getElementById('playerTime'); if (time) time.textContent = fmt(audio.currentTime);
+    const player = document.getElementById('player');
+    const title = document.getElementById('playerTitle');
+    const art = document.getElementById('playerArtwork');
+    const toggle = document.getElementById('playerToggle');
+    const progress = document.getElementById('playerProgress');
+    const time = document.getElementById('playerTime');
+
+    if (player) player.classList.add('visible');
+    if (title) title.textContent = cfg.title;
+    if (art) {
+      art.src = abs(cfg.artwork);
+      art.alt = `${cfg.title} artwork by Jahntella`;
+    }
+    if (toggle) {
+      toggle.textContent = playing ? '❚❚' : '▶';
+      toggle.setAttribute('aria-label', playing ? `Pause ${cfg.title}` : `Play ${cfg.title}`);
+    }
+    if (progress) progress.value = audio.duration > 0 ? String((audio.currentTime / audio.duration) * 100) : '0';
+    if (time) time.textContent = formatTime(audio.currentTime);
   };
-  const restore = () => {
-    if (!audio || !activeKey) return;
-    audio.pause();
-    if (originalSrc) { audio.src = originalSrc; audio.load(); }
-    activeKey = null; savedPosition = 0;
+
+  const restoreNormalTransport = () => {
+    const el = getAudio();
+    if (!el || !originalSrc || !activeKey) return;
+    el.pause();
+    el.src = originalSrc;
+    el.load();
+    activeKey = null;
+    savedPosition = 0;
   };
-  const start = (key, restart=true) => {
-    const el = getAudio(), cfg = EXT[key]; if (!el || !cfg) return;
-    stopOtherMedia(el); activeKey = key; if (restart) savedPosition = 0;
+
+  const startExtension = (key, restart = true) => {
+    const el = getAudio();
+    const cfg = EXT[key];
+    if (!el || !cfg) return;
+
+    stopOtherMedia(el);
+    activeKey = key;
+    if (restart) savedPosition = 0;
+
+    // Keep the site's original player logic pointed at the single BSA audio node;
+    // we temporarily repurpose that node so the bottom player stays the transport.
     try { window.jahntellaSelectSiteTrack?.('boots-smile-attitude', false, {fresh:true}); } catch {}
-    const target = abs(cfg.audio), current = el.currentSrc || el.src || '';
-    if (!current.includes(cfg.audio)) { el.pause(); el.src = target; el.load(); }
-    const begin = () => { try { el.currentTime = restart ? 0 : savedPosition; } catch {} el.play().then(()=>updatePlayer(true)).catch(()=>updatePlayer(false)); };
-    if (el.readyState >= 1) begin(); else el.addEventListener('loadedmetadata', begin, {once:true});
+
+    const target = abs(cfg.audio);
+    const current = el.currentSrc || el.src || '';
+    if (!current.includes(cfg.audio)) {
+      el.pause();
+      el.src = target;
+      el.load();
+    }
+
+    const begin = () => {
+      try { el.currentTime = restart ? 0 : savedPosition; } catch {}
+      el.play().then(() => updatePlayer(true)).catch(() => updatePlayer(false));
+    };
+    if (el.readyState >= 1) begin();
+    else el.addEventListener('loadedmetadata', begin, {once:true});
   };
-  const next = () => { if (!activeKey) return; const n=EXT[activeKey].next; if (EXT[n]) start(n,true); else { restore(); window.jahntellaSelectSiteTrack?.(n,true,{fresh:true}); } };
-  const prev = () => { if (!activeKey) return; const p=EXT[activeKey].prev; if (EXT[p]) start(p,true); else { restore(); window.jahntellaSelectSiteTrack?.(p,true,{fresh:true}); } };
 
-  document.addEventListener('ended', e => {
-    const el=getAudio(); if (e.target!==el) return;
-    e.stopImmediatePropagation();
-    if (!activeKey) return start('midnight-rodeo',true);
-    const n=EXT[activeKey].next;
-    if (EXT[n]) return start(n,true);
-    restore(); window.setTimeout(()=>window.jahntellaSelectSiteTrack?.('fun-dipp',true,{fresh:true}),0);
+  const playNext = () => {
+    if (!activeKey) return;
+    const next = EXT[activeKey].next;
+    if (EXT[next]) startExtension(next, true);
+    else {
+      restoreNormalTransport();
+      window.jahntellaSelectSiteTrack?.(next, true, {fresh:true});
+    }
+  };
+
+  const playPrev = () => {
+    if (!activeKey) return;
+    const prev = EXT[activeKey].prev;
+    if (EXT[prev]) startExtension(prev, true);
+    else {
+      restoreNormalTransport();
+      window.jahntellaSelectSiteTrack?.(prev, true, {fresh:true});
+    }
+  };
+
+  const handleEnded = event => {
+    const el = getAudio();
+    if (event.target !== el) return;
+
+    if (!activeKey) {
+      // The existing Boots, Smile & Attitude audio has reached its end.
+      event.stopImmediatePropagation();
+      startExtension('midnight-rodeo', true);
+      return;
+    }
+
+    event.stopImmediatePropagation();
+    const next = EXT[activeKey].next;
+    if (EXT[next]) {
+      startExtension(next, true);
+    } else {
+      const finished = activeKey;
+      restoreNormalTransport();
+      window.setTimeout(() => window.jahntellaSelectSiteTrack?.('fun-dipp', true, {fresh:true}), 0);
+      void finished;
+    }
+  };
+
+  document.addEventListener('ended', handleEnded, true);
+
+  document.addEventListener('click', event => {
+    const target = event.target.closest?.('#playerToggle,#playerNext,#playerPrev,.play-button[data-track],[data-jahntella-cover-track],#midnightRodeoAestheticCover,#redlineAestheticCover');
+    if (!target || !activeKey || !audio) return;
+
+    if (target.id === 'playerToggle') {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      if (audio.paused) audio.play().then(() => updatePlayer(true)).catch(() => updatePlayer(false));
+      else audio.pause();
+      return;
+    }
+    if (target.id === 'playerNext') {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      playNext();
+      return;
+    }
+    if (target.id === 'playerPrev') {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      playPrev();
+      return;
+    }
+
+    const coverKey = target.id === 'midnightRodeoAestheticCover' ? 'midnight-rodeo'
+      : target.id === 'redlineAestheticCover' ? 'redline' : '';
+    if (coverKey) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      if (activeKey === coverKey && !audio.paused) {
+        savedPosition = audio.currentTime;
+        audio.pause();
+        updatePlayer(false);
+      } else {
+        startExtension(coverKey, activeKey !== coverKey);
+      }
+      return;
+    }
+
+    // Let normal site playback resume cleanly when another regular track is chosen.
+    const otherTrack = target.dataset.track || target.dataset.jahntellaCoverTrack || '';
+    if (otherTrack && otherTrack !== 'midnight-rodeo' && otherTrack !== 'redline') {
+      restoreNormalTransport();
+    }
   }, true);
 
-  document.addEventListener('click', e => {
-    const t=e.target.closest?.('#playerToggle,#playerNext,#playerPrev,#midnightRodeoAestheticCover,#redlineAestheticCover,.play-button[data-track],[data-jahntella-cover-track]');
-    if (!t || !activeKey || !audio) return;
-    if (t.id==='playerToggle') { e.preventDefault(); e.stopImmediatePropagation(); audio.paused ? audio.play().then(()=>updatePlayer(true)).catch(()=>{}) : audio.pause(); return; }
-    if (t.id==='playerNext') { e.preventDefault(); e.stopImmediatePropagation(); next(); return; }
-    if (t.id==='playerPrev') { e.preventDefault(); e.stopImmediatePropagation(); prev(); return; }
-    if (t.id==='midnightRodeoAestheticCover' || t.id==='redlineAestheticCover') { e.preventDefault(); e.stopImmediatePropagation(); const k=t.id==='redlineAestheticCover'?'redline':'midnight-rodeo'; if(activeKey===k && !audio.paused){savedPosition=audio.currentTime;audio.pause();updatePlayer(false);}else start(k,activeKey!==k); return; }
-    const other=t.dataset.track || t.dataset.jahntellaCoverTrack || ''; if(other && other!=='midnight-rodeo' && other!=='redline') restore();
-  }, true);
-
-  document.addEventListener('input', e => {
-    if (!activeKey || !audio || e.target?.id!=='playerProgress') return;
-    e.stopImmediatePropagation(); if(audio.duration>0) audio.currentTime=(Number(e.target.value)/100)*audio.duration; savedPosition=audio.currentTime; updatePlayer(!audio.paused);
+  document.addEventListener('input', event => {
+    if (!activeKey || !audio) return;
+    const target = event.target;
+    if (target?.id === 'playerProgress') {
+      event.stopImmediatePropagation();
+      if (audio.duration > 0) audio.currentTime = (Number(target.value) / 100) * audio.duration;
+      savedPosition = audio.currentTime;
+      updatePlayer(!audio.paused);
+    }
+    // The site's existing volume handler writes directly to this same audio node.
   }, true);
 
   const wire = () => {
-    const el=getAudio(); if(!el) return false;
-    el.addEventListener('play',()=>{if(activeKey){stopOtherMedia(el);updatePlayer(true);}});
-    el.addEventListener('pause',()=>{if(activeKey){savedPosition=el.currentTime||savedPosition;updatePlayer(false);}});
-    el.addEventListener('timeupdate',()=>{if(activeKey){savedPosition=el.currentTime;updatePlayer(!el.paused);}});
+    const el = getAudio();
+    if (!el) return false;
+    el.addEventListener('play', () => {
+      if (activeKey) {
+        stopOtherMedia(el);
+        updatePlayer(true);
+      }
+    });
+    el.addEventListener('pause', () => {
+      if (activeKey) {
+        savedPosition = el.currentTime || savedPosition;
+        updatePlayer(false);
+      }
+    });
+    el.addEventListener('timeupdate', () => {
+      if (activeKey) {
+        savedPosition = el.currentTime;
+        updatePlayer(!el.paused);
+      }
+    });
     return true;
   };
-  if(!wire()){const timer=setInterval(()=>{if(wire())clearInterval(timer);},100);setTimeout(()=>clearInterval(timer),10000);}
-  window.jahntellaPlayShineEraTrack=start;
-  window.jahntellaStopShineEraTrack=restore;
+
+  if (!wire()) {
+    const timer = window.setInterval(() => {
+      if (wire()) window.clearInterval(timer);
+    }, 100);
+    window.setTimeout(() => window.clearInterval(timer), 10000);
+  }
+
+  window.jahntellaPlayShineEraTrack = startExtension;
+  window.jahntellaStopShineEraTrack = restoreNormalTransport;
 })();

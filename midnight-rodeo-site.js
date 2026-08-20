@@ -23,6 +23,7 @@
     const grid = document.querySelector('.exp66-shine-videos');
     if (!grid) return;
     removeOldCards(grid);
+    if (grid.querySelector('[data-midnight-shine="true"]')) return;
     const card = document.createElement('article');
     card.className = 'exp60-shine-video-card midnight-inline-card';
     card.dataset.midnightShine = 'true';
