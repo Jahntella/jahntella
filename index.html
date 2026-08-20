@@ -51,11 +51,9 @@
           node.textContent.includes('Get your first look at') && node.textContent.includes('The Shine Era')
         );
         if (shineIntro) {
-          shineIntro.innerHTML = 'Get your first look at <strong>The Shine Era</strong>—front and back—and step inside <strong>Sweet Dreams</strong>, <strong>We Are 1</strong>, <strong>Boots, Smile &amp; Attitude</strong>, and <strong>Midnight Rodeo</strong>—four glimpses of the sound, light, and world of Album II.';
+          shineIntro.innerHTML = 'Get your first look at <strong>The Shine Era</strong>—front and back—and step inside <strong>Sweet Dreams</strong>, <strong>We Are 1</strong>, <strong>Boots, Smile &amp; Attitude</strong>, <strong>Redline</strong>, and <strong>Midnight Rodeo</strong>—five glimpses of the sound, light, and world of Album II.';
         }
 
-        // Remove the non-music Jahntella closeup from the Visual World gallery.
-        // It is intentionally not playable and should never appear as a music cover.
         doc.querySelectorAll('#gallery .gallery-item').forEach(item => {
           const img = item.querySelector('img');
           const path = (img?.getAttribute('src') || item.getAttribute('data-lightbox') || '').split(/[?#]/)[0];
@@ -115,7 +113,7 @@
         doc.head.appendChild(style);
 
         const album2Script = doc.querySelector('script[src*="album2-preview-config.js"]');
-        if (album2Script) album2Script.setAttribute('src', 'album2-preview-config.js?v=2026.08.19.3');
+        if (album2Script) album2Script.setAttribute('src', 'album2-preview-config.js?v=2026.08.19.4');
 
         const finalHtml = '<!doctype html>\n' + doc.documentElement.outerHTML;
         document.open();
