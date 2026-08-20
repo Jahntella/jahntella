@@ -24,16 +24,18 @@
     if (!grid) return;
     removeOldCards(grid);
     if (grid.querySelector('[data-midnight-shine="true"]')) return;
+
     const card = document.createElement('article');
-    card.className = 'exp60-shine-video-card midnight-inline-card';
+    card.id = 'midnightRodeoShineEraVisualizer';
+    card.className = 'exp60-shine-video-card';
     card.dataset.midnightShine = 'true';
     card.innerHTML = `
       <div class="exp60-shine-video-heading">
         <span>THE SHINE ERA <i aria-hidden="true"></i> OFFICIAL VISUALIZER</span>
         <h3>Midnight Rodeo</h3>
       </div>
-      <div class="exp60-shine-video-frame midnight-video-frame">
-        <video controls playsinline preload="metadata" poster="${art}" aria-label="Play the Midnight Rodeo official visualizer">
+      <div class="exp60-shine-video-frame">
+        <video controls playsinline preload="none" poster="${art}" aria-label="Play the Midnight Rodeo official visualizer">
           <source src="${video}" type="video/mp4">
         </video>
       </div>
@@ -42,7 +44,6 @@
         <p><strong>Midnight Rodeo.</strong> Full song + visualizer from The Shine Era.</p>
       </div>`;
 
-    // Keep Midnight Rodeo immediately before Redline in the Shine Era visualizer row.
     const redlineCard = Array.from(grid.querySelectorAll(':scope > article')).find(item =>
       item.querySelector('h3')?.textContent?.trim().toLowerCase() === 'redline'
     );
