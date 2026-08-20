@@ -1,4 +1,5 @@
-.redline-sweetville-art{display:block;width:100%;padding:0;border:0;background:transparent;cursor:pointer}
-.redline-sweetville-art img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover}
-.redline-sweetville-card .redline-sweetville-art:hover img{filter:brightness(1.06)}
-.redline-sweetville-card .redline-sweetville-art:focus-visible{outline:3px solid #ff8dcc;outline-offset:4px}
+.redline-sweetville-art{display:block;width:100%;padding:0;border:0;background:transparent;cursor:pointer;overflow:hidden;border-radius:inherit}
+.redline-sweetville-art img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;transition:transform .2s ease,filter .2s ease}
+.redline-sweetville-art:hover img{transform:scale(1.02);filter:brightness(1.06)}
+.redline-sweetville-art:focus-visible{outline:3px solid #ff8dcc;outline-offset:4px}
+.redline-sweetville-card .exp43-release-copy{display:flex;flex-direction:column;gap:.35rem}
