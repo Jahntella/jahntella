@@ -63,9 +63,19 @@
     grid.appendChild(button);
   };
 
+  const loadGalleryOrderFix = () => {
+    if (window.__jahntellaGalleryEraOrderFixLoaded) return;
+    window.__jahntellaGalleryEraOrderFixLoaded = true;
+    const script = document.createElement('script');
+    script.defer = true;
+    script.src = new URL('gallery-era-order-fix.js?v=20260819.1', document.baseURI).href;
+    document.head.appendChild(script);
+  };
+
   const init = () => {
     addVisualizer();
     addAestheticCover();
+    window.setTimeout(loadGalleryOrderFix, 350);
   };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, {once:true});
