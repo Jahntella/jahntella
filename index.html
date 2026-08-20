@@ -54,6 +54,18 @@
           shineIntro.innerHTML = 'Get your first look at <strong>The Shine Era</strong>—front and back—and step inside <strong>Sweet Dreams</strong>, <strong>We Are 1</strong>, <strong>Boots, Smile &amp; Attitude</strong>, and <strong>Midnight Rodeo</strong>—four glimpses of the sound, light, and world of Album II.';
         }
 
+        // Remove the non-music Jahntella closeup from the Visual World gallery.
+        // It is intentionally not playable and should never appear as a music cover.
+        doc.querySelectorAll('#gallery .gallery-item').forEach(item => {
+          const img = item.querySelector('img');
+          const path = (img?.getAttribute('src') || item.getAttribute('data-lightbox') || '').split(/[?#]/)[0];
+          const filename = decodeURIComponent(path.split('/').pop() || '').toLowerCase();
+          const alt = (img?.getAttribute('alt') || '').toLowerCase();
+          const isNonMusicCloseup = /jahntella-official-v1\.png|jahntella-official\.png|jahntella-closeup|jahntella-portrait/.test(filename)
+            || (/jahntella/.test(alt) && /(close.?up|portrait|face)/.test(alt) && !/cover|song|music|single/.test(alt));
+          if (isNonMusicCloseup) item.remove();
+        });
+
         const galleryThumbs = {
           'bite-lip-cover.webp':'assets/music-thumbs/bite-lip.webp',
           'gloss-cover.webp':'assets/music-thumbs/gloss.webp',
@@ -69,7 +81,9 @@
           'tonight-cover.webp':'assets/music-thumbs/tonight.webp',
           'sweet-dreams-cover.webp':'assets/album2/sweet-dreams-cover-thumb.webp',
           'we-are-1-cover.webp':'assets/album2/we-are-1-cover-thumb.webp',
-          'boots-smile-attitude-cover.webp':'assets/album2/boots-smile-attitude-cover-thumb.webp'
+          'boots-smile-attitude-cover.webp':'assets/album2/boots-smile-attitude-cover-thumb.webp',
+          'midnight-rodeo-cover.webp':'assets/album2/midnight-rodeo-cover-thumb.webp',
+          'redline-cover.webp':'assets/album2/redline-cover-thumb.webp'
         };
         doc.querySelectorAll('#gallery .gallery-item').forEach(item => {
           const img = item.querySelector('img');
