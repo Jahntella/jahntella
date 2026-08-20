@@ -1,9 +1,5 @@
 /*
- * The Shine Era preview switch
- *
- * Keep `previewMode` false until the planned manual activation on August 26,
- * 2026. Changing this single value to true switches the prepared Shine Era
- * teaser audio/video assets into preview mode.
+ * The Shine Era preview switch + shared Album II presentation hooks
  */
 window.JAHNTELLA_ALBUM2 = Object.freeze({
   previewMode: false,
@@ -32,67 +28,50 @@ window.JAHNTELLA_ALBUM2 = Object.freeze({
       fullAudio: "assets/album2/midnight-rodeo.mp3",
       fullVideo: "assets/album2/midnight-rodeo-official-visualizer.mp4",
       artwork: "assets/album2/midnight-rodeo-cover.webp"
+    }),
+    "redline": Object.freeze({
+      fullAudio: "assets/album2/redline.mp3",
+      fullVideo: "assets/album2/redline-official-visualizer.mp4",
+      artwork: "assets/album2/redline-cover.webp",
+      artworkThumb: "assets/album2/redline-cover-thumb.webp"
     })
   })
 });
 
-/* Load the Midnight Rodeo presentation on both the main site and Sweetville. */
 (() => {
-  const load = () => {
-    if (window.__midnightRodeoSiteLoaded) return;
-    window.__midnightRodeoSiteLoaded = true;
-    const script = document.createElement('script');
-    script.src = new URL('midnight-rodeo-site.js?v=2026.08.19.6', document.baseURI).href;
-    script.defer = true;
-    document.head.appendChild(script);
-    const css = document.createElement('link');
-    css.rel = 'stylesheet';
-    css.href = new URL('midnight-rodeo-site.css?v=2026.08.19.6', document.baseURI).href;
-    document.head.appendChild(css);
-  };
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load, {once:true});
-  else load();
-})();
-
-/* Homepage presentation updates. */
-(() => {
-  const apply = () => {
-    const count = document.getElementById('newMusicTitle');
-    if (count) {
-      count.innerHTML = count.innerHTML.replace(/\b15 new songs\b/gi, '16 new songs');
+  const load = (src, css) => {
+    const s = document.createElement('script');
+    s.src = new URL(src, document.baseURI).href;
+    s.defer = true;
+    document.head.appendChild(s);
+    if (css) {
+      const l = document.createElement('link');
+      l.rel = 'stylesheet';
+      l.href = new URL(css, document.baseURI).href;
+      document.head.appendChild(l);
     }
-
+  };
+  const run = () => {
+    if (!window.__jahntellaRedlineLoader) {
+      window.__jahntellaRedlineLoader = true;
+      load('redline-site.js?v=2026.08.19.1', 'redline-site.css?v=2026.08.19.1');
+      if (/\/sweetville(?:\/|$)/i.test(location.pathname)) {
+        load('sweetville/redline-sweetville.js?v=2026.08.19.1', null);
+        const sl = document.createElement('link');
+        sl.rel = 'stylesheet';
+        sl.href = new URL('sweetville/redline-sweetville.css?v=2026.08.19.1', document.baseURI).href;
+        document.head.appendChild(sl);
+      }
+      // Midnight stays loaded after Redline so Redline captures Midnight's ended event first.
+      load('midnight-rodeo-site.js?v=2026.08.19.7', 'midnight-rodeo-site.css?v=2026.08.19.7');
+    }
+    const count = document.getElementById('newMusicTitle');
+    if (count) count.innerHTML = count.innerHTML.replace(/\b(?:15|16) new songs\b/gi, '17 new songs');
     const gallery = document.getElementById('gallery');
     const story = document.getElementById('about');
-    if (gallery && story && story.parentNode && gallery !== story.previousElementSibling) {
-      story.parentNode.insertBefore(gallery, story);
-    }
-
-    const heading = gallery?.querySelector('.section-heading');
-    if (heading && !document.getElementById('galleryListenPrompt')) {
-      const prompt = document.createElement('p');
-      prompt.id = 'galleryListenPrompt';
-      prompt.className = 'gallery-listen-prompt';
-      prompt.textContent = 'Click Your Favorite Cover Art to Listen';
-      heading.appendChild(prompt);
-
-      const style = document.createElement('style');
-      style.id = 'galleryListenPromptStyle';
-      style.textContent = `
-        .gallery-listen-prompt{margin:.45rem auto 0;color:rgba(255,255,255,.82);font-size:.9rem;font-weight:700;letter-spacing:.04em;text-align:center}
-        @media(max-width:600px){.gallery-listen-prompt{font-size:.82rem}}
-      `;
-      document.head.appendChild(style);
-    }
+    if (gallery && story && story.parentNode && gallery !== story.previousElementSibling) story.parentNode.insertBefore(gallery, story);
+    const shineIntro = Array.from(document.querySelectorAll('p')).find(node => node.textContent.includes('Get your first look at') && node.textContent.includes('The Shine Era'));
+    if (shineIntro) shineIntro.innerHTML = 'Get your first look at <strong>The Shine Era</strong>—front and back—and step inside <strong>Sweet Dreams</strong>, <strong>We Are 1</strong>, <strong>Boots, Smile &amp; Attitude</strong>, <strong>Midnight Rodeo</strong>, and <strong>Redline</strong>—five glimpses of the sound, light, and world of Album II.';
   };
-
-  const run = () => {
-    apply();
-    window.setTimeout(apply, 150);
-    window.setTimeout(apply, 600);
-    window.setTimeout(apply, 1500);
-  };
-
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run, {once:true});
-  else run();
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run, {once:true}); else run();
 })();
