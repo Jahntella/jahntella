@@ -51,6 +51,26 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
     });
   };
 
+  const orderAestheticsByAlbum=()=>{
+    const g=document.querySelector('.gallery-section .gallery-grid');
+    if(!g)return;
+    const order=[
+      'bite-lip-cover.webp','gloss-cover.webp','i-want-to-be-your-girl-cover.webp','embrace-me-cover.webp','we-come-together-cover.webp','play-with-me-cover.webp','carnival-cover.webp','made-of-light-cover.webp','candy-wrapper-cover.webp','playground-cover.webp','milk-shake-cover.webp','tonight-cover.webp',
+      'sweet-dreams-cover.webp','we-are-1-cover.webp','boots-smile-attitude-cover.webp','midnight-rodeo-cover.webp','redline-cover.webp'
+    ];
+    const rank=new Map(order.map((name,index)=>[name,index]));
+    Array.from(g.querySelectorAll(':scope > .gallery-item')).sort((a,b)=>{
+      const file=itemFilename(a), fileB=itemFilename(b);
+      const ra=rank.has(file)?rank.get(file):1000, rb=rank.has(fileB)?rank.get(fileB):1000;
+      return ra-rb;
+    }).forEach(item=>g.appendChild(item));
+    function itemFilename(item){
+      const img=item.querySelector('img');
+      const path=(img?.getAttribute('src')||item.getAttribute('data-lightbox')||'').split(/[?#]/)[0];
+      return decodeURIComponent(path.split('/').pop()||'').toLowerCase();
+    }
+  };
+
   const run=()=>{
     const sweetville=/\/sweetville(?:\/|$)/i.test(location.pathname);
     if(sweetville){
@@ -67,7 +87,8 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
     addCss('midnight-rodeo-site.css','20260819.12');
     addHomepageVisualizers();
     removeNonMusicGalleryPortrait();
-    window.setTimeout(removeNonMusicGalleryPortrait,250);
+    orderAestheticsByAlbum();
+    window.setTimeout(()=>{removeNonMusicGalleryPortrait();orderAestheticsByAlbum();},250);
 
     const c=document.getElementById('newMusicTitle');
     if(c)c.innerHTML=c.innerHTML.replace(/\b(?:15|16) new songs\b/gi,'17 new songs');
