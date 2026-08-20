@@ -3,3 +3,5 @@
 .redline-gallery-image img,.midnight-gallery-image img{display:block;width:100%;height:100%;object-fit:cover;transition:filter .2s ease,transform .2s ease;}
 .redline-gallery-play:hover img,.midnight-gallery-play:hover img{filter:brightness(1.06);transform:scale(1.02);}
 .redline-gallery-play:focus-visible,.midnight-gallery-play:focus-visible{outline:3px solid #ff8dcc;outline-offset:4px;}
+.redline-inline-card .exp60-shine-video-frame,.midnight-inline-card .exp60-shine-video-frame{aspect-ratio:16/9;}
+.redline-inline-card .exp60-shine-video-frame video,.midnight-inline-card .exp60-shine-video-frame video{display:block;width:100%;height:100%;object-fit:contain;background:#050008;}
