@@ -41,7 +41,14 @@
         <span aria-hidden="true">◇</span>
         <p><strong>Midnight Rodeo.</strong> Full song + visualizer from The Shine Era.</p>
       </div>`;
-    grid.appendChild(card);
+
+    // Keep Midnight Rodeo immediately before Redline in the Shine Era visualizer row.
+    const redlineCard = Array.from(grid.querySelectorAll(':scope > article')).find(item =>
+      item.querySelector('h3')?.textContent?.trim().toLowerCase() === 'redline'
+    );
+    if (redlineCard) grid.insertBefore(card, redlineCard);
+    else grid.appendChild(card);
+
     card.querySelector('video')?.addEventListener('play', () => window.jahntellaStopShineEraTrack?.());
   };
 
