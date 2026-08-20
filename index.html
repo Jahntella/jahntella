@@ -1,53 +1,16 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="robots" content="noindex">
-  <title>Jahntella™ — Loading</title>
-  <style>html,body{margin:0;background:#120015;color:#fff}body{min-height:100vh}</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Jahntella™ — Loading</title>
+<style>html,body{margin:0;background:#120015;color:#fff}body{min-height:100vh}</style>
 </head>
 <body>
-  <div aria-hidden="true" style="min-height:100vh;background:radial-gradient(circle at 50% 20%,#300034 0,#120015 55%,#09000f 100%);display:grid;place-items:center;font-family:system-ui,sans-serif"><div style="text-align:center;color:#ffd7f3;font-weight:700;letter-spacing:.08em">Jahntella<span style="color:#ff8dcc">♡</span><div style="width:92px;height:2px;margin:14px auto 0;background:linear-gradient(90deg,transparent,#ff8dcc,transparent);animation:loaderPulse 1s ease-in-out infinite alternate"></div></div></div>
-  <style>@keyframes loaderPulse{from{opacity:.35;transform:scaleX(.55)}to{opacity:1;transform:scaleX(1)}}</style>
-  <script>
-  (async()=>{
-    const source='https://raw.githubusercontent.com/Jahntella/jahntella/e331b6900f12b4cd1d9c16fcc6c9aa236f4c6e8c/index.html';
-    try{
-      const r=await fetch(source,{cache:'no-store'}); if(!r.ok) throw Error('load');
-      const parser=new DOMParser(), doc=parser.parseFromString(await r.text(),'text/html');
-
-      const gallery=doc.querySelector('#gallery.gallery-section'), about=doc.querySelector('#about.about-section');
-      if(gallery&&about){about.parentNode.insertBefore(gallery,about);const h=gallery.querySelector('.section-heading');if(h&&!h.querySelector('#galleryListenPrompt')){const p=doc.createElement('p');p.id='galleryListenPrompt';p.className='gallery-listen-prompt';p.textContent='Click Your Favorite Cover Art to Listen';h.appendChild(p)}}
-      const count=doc.querySelector('#newMusicTitle'); if(count) count.innerHTML=count.innerHTML.replace(/\b15 new songs\b/gi,'16 new songs');
-      const main=doc.querySelector('main'), footer=doc.querySelector('footer');
-      if(main&&footer&&!doc.getElementById('shyGuyShawnTribute')){const t=doc.createElement('section');t.id='shyGuyShawnTribute';t.className='shy-guy-shawn-tribute';t.innerHTML='<div class="shy-guy-shawn-rule" aria-hidden="true"></div><p>Peace to <strong>Shy Guy Shawn</strong> <span>♡</span></p><small>Thank You</small>';footer.parentNode.insertBefore(t,footer)}
-      const shineIntro=Array.from(doc.querySelectorAll('p')).find(n=>n.textContent.includes('Get your first look at')&&n.textContent.includes('The Shine Era'));
-      if(shineIntro) shineIntro.innerHTML='Get your first look at <strong>The Shine Era</strong>—front and back—and step inside <strong>Sweet Dreams</strong>, <strong>We Are 1</strong>, <strong>Boots, Smile &amp; Attitude</strong>, <strong>Redline</strong>, and <strong>Midnight Rodeo</strong>—five glimpses of the sound, light, and world of Album II.';
-
-      doc.querySelectorAll('#gallery .gallery-item').forEach(item=>{const img=item.querySelector('img');const path=(img?.getAttribute('src')||item.getAttribute('data-lightbox')||'').split(/[?#]/)[0];const fn=decodeURIComponent(path.split('/').pop()||'').toLowerCase();const alt=(img?.getAttribute('alt')||'').toLowerCase();if(/jahntella-official-v1\.png|jahntella-official\.png|jahntella-closeup|jahntella-portrait/.test(fn)||(/jahntella/.test(alt)&&/(close.?up|portrait|face)/.test(alt)&&!/cover|song|music|single/.test(alt))) item.remove()});
-
-      const order=['Fun Dipp','Pink Lips Remix','Bite Lip','I Want To Be Your Girl','Gloss','Embrace Me','We Come Together','Play With Me','Carnival','Made of Light','Candy Wrapper','Playground','Milk Shake','Tonight','Sweet Dreams','We Are 1','Boots, Smile & Attitude','Midnight Rodeo','Redline'];
-      const norm=s=>String(s||'').toLowerCase().replace(/[™®]/g,'').replace(/&amp;/g,'&').replace(/[^a-z0-9]+/g,' ').trim();
-      const rank=new Map(order.map((x,i)=>[norm(x),i]));
-      const identify=item=>{const img=item.querySelector('img');const a=[img?.alt,item.getAttribute('aria-label'),item.textContent,img?.getAttribute('src'),item.getAttribute('data-lightbox')].filter(Boolean).join(' ');const n=norm(a);for(const [title,i] of rank){if(n.includes(title)) return i}return 1000};
-      const sortGallery=()=>{const grid=doc.querySelector('#gallery .gallery-grid');if(!grid)return;const items=Array.from(grid.querySelectorAll(':scope > .gallery-item'));items.forEach((item,i)=>item.dataset.jahntellaGalleryRank=String(identify(item)*10+i));items.sort((a,b)=>Number(a.dataset.jahntellaGalleryRank)-Number(b.dataset.jahntellaGalleryRank));items.forEach(item=>grid.appendChild(item));grid.style.gridAutoFlow='row';items.forEach((item,i)=>item.style.order=String(i));};
-      sortGallery();
-
-      const thumbs={'bite-lip-cover.webp':'assets/music-thumbs/bite-lip.webp','gloss-cover.webp':'assets/music-thumbs/gloss.webp','i-want-to-be-your-girl-cover.webp':'assets/music-thumbs/i-want-to-be-your-girl.webp','embrace-me-cover.webp':'assets/music-thumbs/embrace-me.webp','we-come-together-cover.webp':'assets/music-thumbs/we-come-together.webp','play-with-me-cover.webp':'assets/music-thumbs/play-with-me.webp','carnival-cover.webp':'assets/music-thumbs/carnival.webp','made-of-light-cover.webp':'assets/music-thumbs/made-of-light.webp','candy-wrapper-cover.webp':'assets/music-thumbs/candy-wrapper.webp','playground-cover.webp':'assets/music-thumbs/playground.webp','milk-shake-cover.webp':'assets/music-thumbs/milk-shake.webp','tonight-cover.webp':'assets/music-thumbs/tonight.webp','sweet-dreams-cover.webp':'assets/album2/sweet-dreams-cover-thumb.webp','we-are-1-cover.webp':'assets/album2/we-are-1-cover-thumb.webp','boots-smile-attitude-cover.webp':'assets/album2/boots-smile-attitude-cover-thumb.webp','midnight-rodeo-cover.webp':'assets/album2/midnight-rodeo-cover-thumb.webp','redline-cover.webp':'assets/album2/redline-cover-thumb.webp'};
-      doc.querySelectorAll('#gallery .gallery-item img').forEach(img=>{const fn=decodeURIComponent((img.getAttribute('src')||'').split(/[?#]/)[0].split('/').pop()||'').toLowerCase();if(thumbs[fn])img.setAttribute('src',thumbs[fn]);img.setAttribute('loading','lazy');img.setAttribute('decoding','async');img.setAttribute('fetchpriority','low');if(!img.getAttribute('width'))img.setAttribute('width','420');if(!img.getAttribute('height'))img.setAttribute('height','420')});
-
-      const style=doc.createElement('style');style.textContent='.gallery-listen-prompt{margin:.45rem auto 0;color:rgba(255,255,255,.82);font-size:.9rem;font-weight:700;letter-spacing:.04em;text-align:center}.gallery-section .gallery-grid{grid-auto-flow:row!important}.gallery-section .gallery-grid>.gallery-item{order:initial}.shy-guy-shawn-tribute{padding:3.5rem 1.25rem 2.25rem;text-align:center;background:linear-gradient(180deg,rgba(18,0,21,0),rgba(18,0,21,.5))}.shy-guy-shawn-rule{width:72px;height:1px;margin:0 auto 1rem;background:linear-gradient(90deg,transparent,rgba(255,185,233,.8),transparent)}.shy-guy-shawn-tribute p{margin:0;color:rgba(255,255,255,.88);font-family:"Playfair Display",serif;font-size:clamp(1.05rem,2vw,1.35rem);letter-spacing:.02em}.shy-guy-shawn-tribute p strong{color:#ffd1f2;font-weight:700}.shy-guy-shawn-tribute p span{display:inline-block;margin-left:.25rem;color:#ff8dcc}.shy-guy-shawn-tribute small{display:block;margin-top:.5rem;color:rgba(255,255,255,.55);font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase}';doc.head.appendChild(style);
-
-      const inject=doc.createElement('script');inject.textContent='''
-      (()=>{const order=['Fun Dipp','Pink Lips Remix','Bite Lip','I Want To Be Your Girl','Gloss','Embrace Me','We Come Together','Play With Me','Carnival','Made of Light','Candy Wrapper','Playground','Milk Shake','Tonight','Sweet Dreams','We Are 1','Boots, Smile & Attitude','Midnight Rodeo','Redline'];const n=s=>String(s||'').toLowerCase().replace(/[™®]/g,'').replace(/[^a-z0-9]+/g,' ').trim();const m=new Map(order.map((x,i)=>[n(x),i]));const id=e=>{const i=e.querySelector('img');const s=[i?.alt,e.getAttribute('aria-label'),e.textContent,i?.src,e.getAttribute('data-lightbox')].filter(Boolean).join(' ');for(const [x,r] of m)if(n(s).includes(x))return r;return 999};const fix=()=>{const g=document.querySelector('#gallery .gallery-grid');if(!g)return;const a=[...g.children].filter(x=>x.classList.contains('gallery-item'));a.sort((x,y)=>id(x)-id(y));a.forEach((x,i)=>{x.style.order=i;g.appendChild(x)});g.style.gridAutoFlow='row'};const run=()=>{fix();setTimeout(fix,50);setTimeout(fix,250);setTimeout(fix,1000);const g=document.querySelector('#gallery');if(g&&!g.__jahntellaOrderObserver){const o=new MutationObserver(()=>fix());o.observe(g,{childList:true,subtree:true});g.__jahntellaOrderObserver=o}};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});else run()})();
-      ''';
-      doc.body.appendChild(inject);
-
-      ['album2-preview-config.js','midnight-rodeo-site.js','redline-site.js'].forEach(name=>{const s=doc.querySelector(`script[src*="${name}"]`);if(s)s.src=name+'?v=2026.08.20.9'});
-      document.open();document.write('<!doctype html>\n'+doc.documentElement.outerHTML);document.close();
-    }catch(e){document.body.innerHTML='<main style="font-family:system-ui;padding:3rem;background:#120015;color:#ffd7f3;min-height:100vh">Jahntella is loading. Please refresh the page.</main>'}
-  })();
-  </script>
-</body>
-</html>
+<div aria-hidden="true" style="min-height:100vh;background:radial-gradient(circle at 50% 20%,#300034 0,#120015 55%,#09000f 100%);display:grid;place-items:center;font-family:system-ui,sans-serif"><div style="text-align:center;color:#ffd7f3;font-weight:700;letter-spacing:.08em">Jahntella<span style="color:#ff8dcc">♡</span><div style="width:92px;height:2px;margin:14px auto 0;background:linear-gradient(90deg,transparent,#ff8dcc,transparent);animation:loaderPulse 1s ease-in-out infinite alternate"></div></div></div>
+<style>@keyframes loaderPulse{from{opacity:.35;transform:scaleX(.55)}to{opacity:1;transform:scaleX(1)}}</style>
+<script>
+(async()=>{const source='https://raw.githubusercontent.com/Jahntella/jahntella/e331b6900f12b4cd1d9c16fcc6c9aa236f4c6e8c/index.html';try{const r=await fetch(source,{cache:'no-store'});if(!r.ok)throw Error('load');const html=await r.text();document.open();document.write(html);document.close()}catch(e){document.body.innerHTML='<main style="font-family:system-ui;padding:3rem;background:#120015;color:#ffd7f3;min-height:100vh">Jahntella is loading. Please refresh the page.</main>'}})();
+</script>
+</body></html>
