@@ -10,46 +10,16 @@
   const thumb = abs(cfg.artworkThumb || 'assets/album2/midnight-rodeo-cover-thumb.webp');
   const video = abs(cfg.fullVideo || 'assets/album2/midnight-rodeo-official-visualizer.mp4');
 
-  const removeOldCards = grid => {
-    grid.querySelectorAll(':scope > article').forEach(card => {
-      const id = card.id || '';
-      const marked = card.dataset.midnightShine === 'true';
-      const title = card.querySelector('h3')?.textContent?.trim().toLowerCase() || '';
-      if (id === 'midnightRodeoInlineVisualizer' || marked || title === 'midnight rodeo') card.remove();
-    });
-  };
-
   const addVisualizer = () => {
     const grid = document.querySelector('.exp66-shine-videos');
     if (!grid) return;
-    removeOldCards(grid);
-    if (grid.querySelector('[data-midnight-shine="true"]')) return;
+    if (Array.from(grid.querySelectorAll(':scope > article')).some(card => card.querySelector('h3')?.textContent?.trim().toLowerCase() === 'midnight rodeo')) return;
 
     const card = document.createElement('article');
     card.id = 'midnightRodeoShineEraVisualizer';
     card.className = 'exp60-shine-video-card';
-    card.dataset.midnightShine = 'true';
-    card.innerHTML = `
-      <div class="exp60-shine-video-heading">
-        <span>THE SHINE ERA <i aria-hidden="true"></i> OFFICIAL VISUALIZER</span>
-        <h3>Midnight Rodeo</h3>
-      </div>
-      <div class="exp60-shine-video-frame">
-        <video controls playsinline preload="none" poster="${art}" aria-label="Play the Midnight Rodeo official visualizer">
-          <source src="${video}" type="video/mp4">
-        </video>
-      </div>
-      <div class="exp60-shine-video-note">
-        <span aria-hidden="true">◇</span>
-        <p><strong>Midnight Rodeo.</strong> Full song + visualizer from The Shine Era.</p>
-      </div>`;
-
-    const redlineCard = Array.from(grid.querySelectorAll(':scope > article')).find(item =>
-      item.querySelector('h3')?.textContent?.trim().toLowerCase() === 'redline'
-    );
-    if (redlineCard) grid.insertBefore(card, redlineCard);
-    else grid.appendChild(card);
-
+    card.innerHTML = `<div class="exp60-shine-video-heading"><span>THE SHINE ERA <i aria-hidden="true"></i> OFFICIAL VISUALIZER</span><h3>Midnight Rodeo</h3></div><div class="exp60-shine-video-frame"><video controls playsinline preload="none" poster="${art}" aria-label="Play the Midnight Rodeo official visualizer"><source src="${video}" type="video/mp4"></video></div><div class="exp60-shine-video-note"><span aria-hidden="true">◇</span><p><strong>Midnight Rodeo.</strong> Full song + visualizer from The Shine Era.</p></div>`;
+    grid.appendChild(card);
     card.querySelector('video')?.addEventListener('play', () => window.jahntellaStopShineEraTrack?.());
   };
 
