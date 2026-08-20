@@ -113,7 +113,11 @@
         doc.head.appendChild(style);
 
         const album2Script = doc.querySelector('script[src*="album2-preview-config.js"]');
-        if (album2Script) album2Script.setAttribute('src', 'album2-preview-config.js?v=2026.08.19.4');
+        if (album2Script) album2Script.setAttribute('src', 'album2-preview-config.js?v=2026.08.19.5');
+        const midnightScript = doc.querySelector('script[src*="midnight-rodeo-site.js"]');
+        if (midnightScript) midnightScript.setAttribute('src', 'midnight-rodeo-site.js?v=2026.08.20.1');
+        const redlineScript = doc.querySelector('script[src*="redline-site.js"]');
+        if (redlineScript) redlineScript.setAttribute('src', 'redline-site.js?v=2026.08.20.1');
 
         const finalHtml = '<!doctype html>\n' + doc.documentElement.outerHTML;
         document.open();
