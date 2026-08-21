@@ -23,8 +23,15 @@
       title: 'Smoke Show',
       audio: 'assets/album2/smoke-show.mp3',
       artwork: 'assets/album2/smoke-show-cover.webp',
-      next: 'fun-dipp',
+      next: 'chasing-me',
       prev: 'redline'
+    },
+    'chasing-me': {
+      title: 'Chasing Me',
+      audio: 'assets/album2/chasing-me.mp3',
+      artwork: 'assets/album2/chasing-me-cover.webp',
+      next: 'fun-dipp',
+      prev: 'smoke-show'
     }
   };
 
@@ -162,7 +169,7 @@
   document.addEventListener('ended', handleEnded, true);
 
   document.addEventListener('click', event => {
-    const target = event.target.closest?.('#playerToggle,#playerNext,#playerPrev,.play-button[data-track],[data-jahntella-cover-track],#midnightRodeoAestheticCover,#redlineAestheticCover,#smokeShowAestheticCover');
+    const target = event.target.closest?.('#playerToggle,#playerNext,#playerPrev,.play-button[data-track],[data-jahntella-cover-track],#midnightRodeoAestheticCover,#redlineAestheticCover,#smokeShowAestheticCover,#chasingMeAestheticCover');
     if (!target || !activeKey || !audio) return;
 
     if (target.id === 'playerToggle') {
@@ -187,7 +194,8 @@
 
     const coverKey = target.id === 'midnightRodeoAestheticCover' ? 'midnight-rodeo'
       : target.id === 'redlineAestheticCover' ? 'redline'
-      : target.id === 'smokeShowAestheticCover' ? 'smoke-show' : '';
+      : target.id === 'smokeShowAestheticCover' ? 'smoke-show'
+      : target.id === 'chasingMeAestheticCover' ? 'chasing-me' : '';
     if (coverKey) {
       event.preventDefault();
       event.stopImmediatePropagation();
@@ -203,7 +211,7 @@
 
     // Let normal site playback resume cleanly when another regular track is chosen.
     const otherTrack = target.dataset.track || target.dataset.jahntellaCoverTrack || '';
-    if (otherTrack && otherTrack !== 'midnight-rodeo' && otherTrack !== 'redline' && otherTrack !== 'smoke-show') {
+    if (otherTrack && otherTrack !== 'midnight-rodeo' && otherTrack !== 'redline' && otherTrack !== 'smoke-show' && otherTrack !== 'chasing-me') {
       restoreNormalTransport();
     }
   }, true);
