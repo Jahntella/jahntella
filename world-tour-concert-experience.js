@@ -5,6 +5,8 @@
   if (/\/sweetville(?:\/|$)/i.test(location.pathname)) return;
 
   const findSweetEraAlbumSection = () => {
+    const exactAlbumSection = document.getElementById('sweetEraAlbum');
+    if (exactAlbumSection) return exactAlbumSection;
     const label = Array.from(document.querySelectorAll('p,.eyebrow')).find(node =>
       node.textContent.trim().toUpperCase() === 'THE ALBUM'
     );
