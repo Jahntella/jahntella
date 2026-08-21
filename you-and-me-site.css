@@ -1,0 +1,4 @@
+.you-and-me-gallery-play{appearance:none;-webkit-appearance:none;padding:0;border:0;background:none;color:inherit;font:inherit;text-align:inherit;cursor:pointer}
+.you-and-me-gallery-image{display:block;overflow:hidden;border-radius:inherit}
+.you-and-me-gallery-image img{display:block;width:100%;height:100%;object-fit:cover}
+.you-and-me-gallery-play:focus-visible{outline:3px solid #ff65ca;outline-offset:5px}

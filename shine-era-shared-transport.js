@@ -37,8 +37,15 @@
       title: 'Coming Down',
       audio: 'assets/album2/coming-down.mp3',
       artwork: 'assets/album2/coming-down-cover.webp',
-      next: 'fun-dipp',
+      next: 'you-and-me',
       prev: 'chasing-me'
+    },
+    'you-and-me': {
+      title: 'You and Me',
+      audio: 'assets/album2/you-and-me.mp3',
+      artwork: 'assets/album2/you-and-me-cover.webp',
+      next: 'fun-dipp',
+      prev: 'coming-down'
     }
   };
 
@@ -176,7 +183,7 @@
   document.addEventListener('ended', handleEnded, true);
 
   document.addEventListener('click', event => {
-    const target = event.target.closest?.('#playerToggle,#playerNext,#playerPrev,.play-button[data-track],[data-jahntella-cover-track],#midnightRodeoAestheticCover,#redlineAestheticCover,#smokeShowAestheticCover,#chasingMeAestheticCover,#comingDownAestheticCover');
+    const target = event.target.closest?.('#playerToggle,#playerNext,#playerPrev,.play-button[data-track],[data-jahntella-cover-track],#midnightRodeoAestheticCover,#redlineAestheticCover,#smokeShowAestheticCover,#chasingMeAestheticCover,#comingDownAestheticCover,#youAndMeAestheticCover');
     if (!target || !activeKey || !audio) return;
 
     if (target.id === 'playerToggle') {
@@ -203,7 +210,8 @@
       : target.id === 'redlineAestheticCover' ? 'redline'
       : target.id === 'smokeShowAestheticCover' ? 'smoke-show'
       : target.id === 'chasingMeAestheticCover' ? 'chasing-me'
-      : target.id === 'comingDownAestheticCover' ? 'coming-down' : '';
+      : target.id === 'comingDownAestheticCover' ? 'coming-down'
+      : target.id === 'youAndMeAestheticCover' ? 'you-and-me' : '';
     if (coverKey) {
       event.preventDefault();
       event.stopImmediatePropagation();
@@ -219,7 +227,7 @@
 
     // Let normal site playback resume cleanly when another regular track is chosen.
     const otherTrack = target.dataset.track || target.dataset.jahntellaCoverTrack || '';
-    if (otherTrack && otherTrack !== 'midnight-rodeo' && otherTrack !== 'redline' && otherTrack !== 'smoke-show' && otherTrack !== 'chasing-me' && otherTrack !== 'coming-down') {
+    if (otherTrack && otherTrack !== 'midnight-rodeo' && otherTrack !== 'redline' && otherTrack !== 'smoke-show' && otherTrack !== 'chasing-me' && otherTrack !== 'coming-down' && otherTrack !== 'you-and-me') {
       restoreNormalTransport();
     }
   }, true);

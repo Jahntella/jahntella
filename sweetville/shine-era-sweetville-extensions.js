@@ -36,8 +36,15 @@
       title: 'Coming Down',
       audio: '../assets/album2/coming-down.mp3',
       artwork: '../assets/album2/coming-down-cover.webp',
-      next: 'fun-dipp',
+      next: 'you-and-me',
       prev: 'chasing-me'
+    },
+    'you-and-me': {
+      title: 'You and Me',
+      audio: '../assets/album2/you-and-me.mp3',
+      artwork: '../assets/album2/you-and-me-cover.webp',
+      next: 'fun-dipp',
+      prev: 'coming-down'
     }
   };
   const PLAYBACK_KEY = 'jahntellaSiteMusicV46';
@@ -170,7 +177,7 @@
     document.addEventListener('ended', handleEnded, true);
 
     document.addEventListener('click', event => {
-      const target = event.target.closest?.('[data-sv421-toggle],#redlineAestheticCover,#midnightRodeoAestheticCover,#smokeShowAestheticCover,#chasingMeAestheticCover,#comingDownAestheticCover,.play-button[data-track],.exp42-play');
+      const target = event.target.closest?.('[data-sv421-toggle],#redlineAestheticCover,#midnightRodeoAestheticCover,#smokeShowAestheticCover,#chasingMeAestheticCover,#comingDownAestheticCover,#youAndMeAestheticCover,.play-button[data-track],.exp42-play');
       if (!target || !activeKey) return;
       if (target.matches('[data-sv421-toggle]')) {
         event.preventDefault(); event.stopImmediatePropagation();
@@ -190,8 +197,9 @@
     addCard('smoke-show');
     addCard('chasing-me');
     addCard('coming-down');
+    addCard('you-and-me');
     const count=document.getElementById('latestMusicTitle');
-    if(count)count.innerHTML=count.innerHTML.replace(/\b(?:Twelve|Thirteen|Fourteen|Fifteen|Sixteen) new songs\b/i,'Seventeen new songs');
+    if(count)count.innerHTML=count.innerHTML.replace(/\b(?:Twelve|Thirteen|Fourteen|Fifteen|Sixteen|Seventeen) new songs\b/i,'Eighteen new songs');
     if (!bind()) window.setTimeout(init, 250);
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, {once:true}); else init();
