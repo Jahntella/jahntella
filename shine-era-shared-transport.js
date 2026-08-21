@@ -4,6 +4,8 @@
   if (/\/sweetville(?:\/|$)/i.test(location.pathname)) return;
   window.__jahntellaShineEraTransport = true;
 
+  const PLAYBACK_KEY = 'jahntellaShineEraPlaybackV74';
+
   const EXT = {
     'midnight-rodeo': {
       title: 'Midnight Rodeo',
@@ -53,6 +55,36 @@
   let originalSrc = '';
   let activeKey = null;
   let savedPosition = 0;
+  let lastSavedSecond = -1;
+
+  const readPlayback = () => {
+    try {
+      const saved = JSON.parse(sessionStorage.getItem(PLAYBACK_KEY) || '{}');
+      return EXT[saved.track] ? saved : {};
+    } catch {
+      return {};
+    }
+  };
+
+  const persistPlayback = (force = false) => {
+    if (!activeKey || !audio || !EXT[activeKey]) return;
+    const second = Math.floor(audio.currentTime || savedPosition || 0);
+    if (!force && second === lastSavedSecond) return;
+    lastSavedSecond = second;
+    try {
+      sessionStorage.setItem(PLAYBACK_KEY, JSON.stringify({
+        track: activeKey,
+        position: audio.currentTime || savedPosition || 0,
+        playing: !audio.paused && !audio.ended,
+        savedAt: Date.now()
+      }));
+    } catch {}
+  };
+
+  const clearPlayback = () => {
+    try { sessionStorage.removeItem(PLAYBACK_KEY); } catch {}
+    lastSavedSecond = -1;
+  };
 
   const abs = p => new URL(p, document.baseURI).href;
   const getAudio = () => {
@@ -106,9 +138,10 @@
     el.load();
     activeKey = null;
     savedPosition = 0;
+    clearPlayback();
   };
 
-  const startExtension = (key, restart = true) => {
+  const startExtension = (key, restart = true, options = {}) => {
     const el = getAudio();
     const cfg = EXT[key];
     if (!el || !cfg) return;
@@ -116,6 +149,8 @@
     stopOtherMedia(el);
     activeKey = key;
     if (restart) savedPosition = 0;
+    else if (Number(options.position) >= 0) savedPosition = Number(options.position) || 0;
+    lastSavedSecond = -1;
 
     // Keep the site's original player logic pointed at the single BSA audio node;
     // we temporarily repurpose that node so the bottom player stays the transport.
@@ -131,7 +166,18 @@
 
     const begin = () => {
       try { el.currentTime = restart ? 0 : savedPosition; } catch {}
-      el.play().then(() => updatePlayer(true)).catch(() => updatePlayer(false));
+      if (options.playing === false) {
+        updatePlayer(false);
+        persistPlayback(true);
+        return;
+      }
+      el.play().then(() => {
+        updatePlayer(true);
+        persistPlayback(true);
+      }).catch(() => {
+        updatePlayer(false);
+        persistPlayback(true);
+      });
     };
     if (el.readyState >= 1) begin();
     else el.addEventListener('loadedmetadata', begin, {once:true});
@@ -251,18 +297,21 @@
       if (activeKey) {
         stopOtherMedia(el);
         updatePlayer(true);
+        persistPlayback(true);
       }
     });
     el.addEventListener('pause', () => {
       if (activeKey) {
         savedPosition = el.currentTime || savedPosition;
         updatePlayer(false);
+        persistPlayback(true);
       }
     });
     el.addEventListener('timeupdate', () => {
       if (activeKey) {
         savedPosition = el.currentTime;
         updatePlayer(!el.paused);
+        persistPlayback();
       }
     });
     return true;
@@ -274,6 +323,19 @@
     }, 100);
     window.setTimeout(() => window.clearInterval(timer), 10000);
   }
+
+  const restoreSavedPlayback = () => {
+    const saved = readPlayback();
+    if (!saved.track) return;
+    startExtension(saved.track, false, {
+      position: Number(saved.position) || 0,
+      playing: saved.playing === true
+    });
+  };
+  if (getAudio()) restoreSavedPlayback();
+  else window.setTimeout(restoreSavedPlayback, 150);
+
+  window.addEventListener('pagehide', () => persistPlayback(true));
 
   window.jahntellaPlayShineEraTrack = startExtension;
   window.jahntellaStopShineEraTrack = restoreNormalTransport;

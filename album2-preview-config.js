@@ -117,7 +117,7 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
       }
       return;
     }
-    addScript('shine-era-shared-transport.js','20260819.3');
+    addScript('shine-era-shared-transport.js','74.0');
     addScript('redline-site.js','20260819.8');
     addScript('midnight-rodeo-site.js','20260819.12');
     addScript('smoke-show-site.js','70.0');

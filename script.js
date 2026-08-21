@@ -1,5 +1,6 @@
 (() => {
   const SITE_PLAYBACK_KEY = "jahntellaSiteMusicV46";
+  const SHINE_PLAYBACK_KEY = "jahntellaShineEraPlaybackV74";
   const album2Config = window.JAHNTELLA_ALBUM2 || {};
   const album2PreviewMode = album2Config.previewMode === true;
   const album2TrackConfig = key => album2Config.tracks?.[key] || {};
@@ -459,7 +460,12 @@
   });
 
   const savedPlayback = readSitePlayback();
-  if (savedPlayback.track) {
+  let hasSavedShinePlayback = false;
+  try {
+    const shinePlayback = JSON.parse(sessionStorage.getItem(SHINE_PLAYBACK_KEY) || "{}");
+    hasSavedShinePlayback = typeof shinePlayback.track === "string" && shinePlayback.track.length > 0;
+  } catch {}
+  if (savedPlayback.track && !hasSavedShinePlayback) {
     selectTrack(savedPlayback.track, false, {credited: savedPlayback.credited === true});
     const restored = currentTrack()?.audio;
     const restorePosition = () => {
