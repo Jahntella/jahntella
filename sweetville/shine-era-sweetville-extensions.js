@@ -29,8 +29,15 @@
       title: 'Chasing Me',
       audio: '../assets/album2/chasing-me.mp3',
       artwork: '../assets/album2/chasing-me-cover.webp',
-      next: 'fun-dipp',
+      next: 'coming-down',
       prev: 'smoke-show'
+    },
+    'coming-down': {
+      title: 'Coming Down',
+      audio: '../assets/album2/coming-down.mp3',
+      artwork: '../assets/album2/coming-down-cover.webp',
+      next: 'fun-dipp',
+      prev: 'chasing-me'
     }
   };
   const PLAYBACK_KEY = 'jahntellaSiteMusicV46';
@@ -163,7 +170,7 @@
     document.addEventListener('ended', handleEnded, true);
 
     document.addEventListener('click', event => {
-      const target = event.target.closest?.('[data-sv421-toggle],#redlineAestheticCover,#midnightRodeoAestheticCover,#smokeShowAestheticCover,#chasingMeAestheticCover,.play-button[data-track],.exp42-play');
+      const target = event.target.closest?.('[data-sv421-toggle],#redlineAestheticCover,#midnightRodeoAestheticCover,#smokeShowAestheticCover,#chasingMeAestheticCover,#comingDownAestheticCover,.play-button[data-track],.exp42-play');
       if (!target || !activeKey) return;
       if (target.matches('[data-sv421-toggle]')) {
         event.preventDefault(); event.stopImmediatePropagation();
@@ -182,8 +189,9 @@
     addCard('redline');
     addCard('smoke-show');
     addCard('chasing-me');
+    addCard('coming-down');
     const count=document.getElementById('latestMusicTitle');
-    if(count)count.innerHTML=count.innerHTML.replace(/\b(?:Twelve|Thirteen|Fourteen|Fifteen) new songs\b/i,'Sixteen new songs');
+    if(count)count.innerHTML=count.innerHTML.replace(/\b(?:Twelve|Thirteen|Fourteen|Fifteen|Sixteen) new songs\b/i,'Seventeen new songs');
     if (!bind()) window.setTimeout(init, 250);
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, {once:true}); else init();

@@ -30,8 +30,15 @@
       title: 'Chasing Me',
       audio: 'assets/album2/chasing-me.mp3',
       artwork: 'assets/album2/chasing-me-cover.webp',
-      next: 'fun-dipp',
+      next: 'coming-down',
       prev: 'smoke-show'
+    },
+    'coming-down': {
+      title: 'Coming Down',
+      audio: 'assets/album2/coming-down.mp3',
+      artwork: 'assets/album2/coming-down-cover.webp',
+      next: 'fun-dipp',
+      prev: 'chasing-me'
     }
   };
 
@@ -169,7 +176,7 @@
   document.addEventListener('ended', handleEnded, true);
 
   document.addEventListener('click', event => {
-    const target = event.target.closest?.('#playerToggle,#playerNext,#playerPrev,.play-button[data-track],[data-jahntella-cover-track],#midnightRodeoAestheticCover,#redlineAestheticCover,#smokeShowAestheticCover,#chasingMeAestheticCover');
+    const target = event.target.closest?.('#playerToggle,#playerNext,#playerPrev,.play-button[data-track],[data-jahntella-cover-track],#midnightRodeoAestheticCover,#redlineAestheticCover,#smokeShowAestheticCover,#chasingMeAestheticCover,#comingDownAestheticCover');
     if (!target || !activeKey || !audio) return;
 
     if (target.id === 'playerToggle') {
@@ -195,7 +202,8 @@
     const coverKey = target.id === 'midnightRodeoAestheticCover' ? 'midnight-rodeo'
       : target.id === 'redlineAestheticCover' ? 'redline'
       : target.id === 'smokeShowAestheticCover' ? 'smoke-show'
-      : target.id === 'chasingMeAestheticCover' ? 'chasing-me' : '';
+      : target.id === 'chasingMeAestheticCover' ? 'chasing-me'
+      : target.id === 'comingDownAestheticCover' ? 'coming-down' : '';
     if (coverKey) {
       event.preventDefault();
       event.stopImmediatePropagation();
@@ -211,7 +219,7 @@
 
     // Let normal site playback resume cleanly when another regular track is chosen.
     const otherTrack = target.dataset.track || target.dataset.jahntellaCoverTrack || '';
-    if (otherTrack && otherTrack !== 'midnight-rodeo' && otherTrack !== 'redline' && otherTrack !== 'smoke-show' && otherTrack !== 'chasing-me') {
+    if (otherTrack && otherTrack !== 'midnight-rodeo' && otherTrack !== 'redline' && otherTrack !== 'smoke-show' && otherTrack !== 'chasing-me' && otherTrack !== 'coming-down') {
       restoreNormalTransport();
     }
   }, true);

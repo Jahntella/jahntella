@@ -1,0 +1,5 @@
+.coming-down-gallery-play{padding:0;border:0;background:transparent;cursor:pointer;display:block;overflow:hidden;width:100%}
+.coming-down-gallery-image{display:block;aspect-ratio:1/1;overflow:hidden}
+.coming-down-gallery-image img{display:block;width:100%;height:100%;object-fit:cover;filter:none;transition:filter .2s ease,transform .2s ease}
+.coming-down-gallery-play:hover img{filter:brightness(1.06);transform:scale(1.02)}
+.coming-down-gallery-play:focus-visible{outline:3px solid #ff8dcc;outline-offset:4px}
