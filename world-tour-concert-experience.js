@@ -10,7 +10,7 @@
 
     const section = document.createElement('section');
     section.id = 'worldTourConcertExperience';
-    section.className = 'world-tour-concert-experience reveal';
+    section.className = 'world-tour-concert-experience';
     section.setAttribute('aria-labelledby', 'worldTourConcertTitle');
     section.innerHTML = `
       <div class="world-tour-concert-shell">

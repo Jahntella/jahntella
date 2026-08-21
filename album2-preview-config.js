@@ -124,14 +124,12 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
     addScript('chasing-me-site.js','71.0');
     addScript('coming-down-site.js','72.0');
     addScript('you-and-me-site.js','73.0');
-    addScript('world-tour-concert-experience.js','76.1');
     addCss('redline-site.css','20260819.8');
     addCss('midnight-rodeo-site.css','20260819.12');
     addCss('smoke-show-site.css','70.0');
     addCss('chasing-me-site.css','71.0');
     addCss('coming-down-site.css','72.0');
     addCss('you-and-me-site.css','73.0');
-    addCss('world-tour-concert-experience.css','76.1');
     addHomepageVisualizers();
     addShineEraThankYou();
     removeNonMusicGalleryPortrait();
