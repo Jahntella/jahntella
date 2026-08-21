@@ -16,8 +16,15 @@
       title: 'Redline',
       audio: 'assets/album2/redline.mp3',
       artwork: 'assets/album2/redline-cover.webp',
-      next: 'fun-dipp',
+      next: 'smoke-show',
       prev: 'midnight-rodeo'
+    },
+    'smoke-show': {
+      title: 'Smoke Show',
+      audio: 'assets/album2/smoke-show.mp3',
+      artwork: 'assets/album2/smoke-show-cover.webp',
+      next: 'fun-dipp',
+      prev: 'redline'
     }
   };
 
@@ -155,7 +162,7 @@
   document.addEventListener('ended', handleEnded, true);
 
   document.addEventListener('click', event => {
-    const target = event.target.closest?.('#playerToggle,#playerNext,#playerPrev,.play-button[data-track],[data-jahntella-cover-track],#midnightRodeoAestheticCover,#redlineAestheticCover');
+    const target = event.target.closest?.('#playerToggle,#playerNext,#playerPrev,.play-button[data-track],[data-jahntella-cover-track],#midnightRodeoAestheticCover,#redlineAestheticCover,#smokeShowAestheticCover');
     if (!target || !activeKey || !audio) return;
 
     if (target.id === 'playerToggle') {
@@ -179,7 +186,8 @@
     }
 
     const coverKey = target.id === 'midnightRodeoAestheticCover' ? 'midnight-rodeo'
-      : target.id === 'redlineAestheticCover' ? 'redline' : '';
+      : target.id === 'redlineAestheticCover' ? 'redline'
+      : target.id === 'smokeShowAestheticCover' ? 'smoke-show' : '';
     if (coverKey) {
       event.preventDefault();
       event.stopImmediatePropagation();
@@ -195,7 +203,7 @@
 
     // Let normal site playback resume cleanly when another regular track is chosen.
     const otherTrack = target.dataset.track || target.dataset.jahntellaCoverTrack || '';
-    if (otherTrack && otherTrack !== 'midnight-rodeo' && otherTrack !== 'redline') {
+    if (otherTrack && otherTrack !== 'midnight-rodeo' && otherTrack !== 'redline' && otherTrack !== 'smoke-show') {
       restoreNormalTransport();
     }
   }, true);
