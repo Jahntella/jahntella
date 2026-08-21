@@ -1,0 +1,27 @@
+.world-tour-concert-experience{
+  position:relative;
+  padding:clamp(3.5rem,7vw,6.5rem) 1.25rem;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 16%,rgba(183,55,255,.2),transparent 38%),
+    radial-gradient(circle at 50% 86%,rgba(255,37,151,.15),transparent 32%),
+    #0b0013;
+}
+.world-tour-concert-shell{width:min(100%,860px);margin:0 auto;text-align:center}
+.world-tour-concert-heading{margin:0 auto clamp(1.6rem,4vw,2.6rem);color:#fff}
+.world-tour-concert-heading p{margin:0 0 .65rem;color:#ff9fdb;font-size:.72rem;font-weight:800;letter-spacing:.22em}
+.world-tour-concert-heading p span{padding:0 .45rem;color:#bc78ff}
+.world-tour-concert-heading h2{margin:0;font-family:"Playfair Display",serif;font-size:clamp(2rem,5vw,3.75rem);line-height:1.02}
+.world-tour-concert-heading h2 em{color:#f6a7e4;font-weight:inherit}
+.world-tour-concert-heading>span{display:block;margin-top:.85rem;color:rgba(255,255,255,.78);font-size:clamp(.88rem,1.6vw,1.02rem)}
+.world-tour-concert-poster{position:relative;display:block;width:min(100%,680px);margin:0 auto;padding:0;border:1px solid rgba(255,137,223,.74);border-radius:18px;overflow:hidden;background:#13001d;cursor:pointer;box-shadow:0 28px 80px rgba(0,0,0,.58),0 0 38px rgba(222,55,255,.22);transition:transform .28s ease,box-shadow .28s ease}
+.world-tour-concert-poster:hover,.world-tour-concert-poster:focus-visible{transform:translateY(-6px) scale(1.006);box-shadow:0 34px 90px rgba(0,0,0,.66),0 0 54px rgba(255,52,178,.35)}
+.world-tour-concert-poster:focus-visible{outline:3px solid #fff;outline-offset:5px}
+.world-tour-concert-poster img{display:block;width:100%;height:auto}
+.world-tour-concert-play{position:absolute;left:50%;bottom:clamp(1rem,4vw,2rem);display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;align-items:center;column-gap:.8rem;width:max-content;max-width:calc(100% - 2rem);padding:.8rem 1.15rem;transform:translateX(-50%);border:1px solid rgba(255,255,255,.56);border-radius:999px;color:#fff;background:rgba(12,0,24,.82);box-shadow:0 8px 30px rgba(0,0,0,.55),inset 0 0 20px rgba(227,61,255,.18);backdrop-filter:blur(12px)}
+.world-tour-concert-play b{grid-row:1/3;display:grid;place-items:center;width:2.3rem;height:2.3rem;border-radius:50%;color:#170019;background:linear-gradient(135deg,#fff,#ff89d8);font-size:.92rem}
+.world-tour-concert-play strong,.world-tour-concert-play small{text-align:left;white-space:nowrap}
+.world-tour-concert-play strong{font-size:clamp(.7rem,1.6vw,.9rem);letter-spacing:.09em}
+.world-tour-concert-play small{margin-top:.12rem;color:#fface0;font-size:.62rem;font-weight:800;letter-spacing:.14em}
+@media(max-width:520px){.world-tour-concert-experience{padding-inline:.8rem}.world-tour-concert-poster{border-radius:12px}.world-tour-concert-play{bottom:.75rem;padding:.62rem .85rem;column-gap:.55rem}.world-tour-concert-play b{width:1.9rem;height:1.9rem}.world-tour-concert-play strong{font-size:.62rem}.world-tour-concert-play small{font-size:.54rem}}
+@media(prefers-reduced-motion:reduce){.world-tour-concert-poster{transition:none}}
