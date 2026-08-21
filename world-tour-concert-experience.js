@@ -4,9 +4,17 @@
   window.__jahntellaWorldTourExperience = true;
   if (/\/sweetville(?:\/|$)/i.test(location.pathname)) return;
 
+  const findSweetEraAlbumSection = () => {
+    const label = Array.from(document.querySelectorAll('p,.eyebrow')).find(node =>
+      node.textContent.trim().toUpperCase() === 'THE ALBUM'
+    );
+    return label?.closest('section') || Array.from(document.querySelectorAll('section')).find(section =>
+      /THE ALBUM/i.test(section.textContent) && /Welcome to\s*The Sweet Era/i.test(section.textContent)
+    );
+  };
+
   const build = () => {
-    const hero = document.querySelector('.hero-v5');
-    if (!hero || document.getElementById('worldTourConcertExperience')) return;
+    if (document.getElementById('worldTourConcertExperience')) return;
 
     const section = document.createElement('section');
     section.id = 'worldTourConcertExperience';
@@ -33,13 +41,16 @@
       }, 0);
     });
 
-    const placeDirectlyBelowHero = () => {
-      if (hero.nextElementSibling !== section) hero.parentNode?.insertBefore(section, hero.nextSibling);
+    const placeBeforeSweetEraAlbum = () => {
+      const albumSection = findSweetEraAlbumSection();
+      if (!albumSection?.parentNode) return false;
+      if (albumSection.previousElementSibling !== section) albumSection.parentNode.insertBefore(section, albumSection);
+      return true;
     };
 
-    placeDirectlyBelowHero();
-    [50, 250, 750, 1500, 3000].forEach(delay => window.setTimeout(placeDirectlyBelowHero, delay));
-    window.addEventListener('load', placeDirectlyBelowHero, {once:true});
+    if (!placeBeforeSweetEraAlbum()) document.body.appendChild(section);
+    [50, 250, 750, 1500, 3000].forEach(delay => window.setTimeout(placeBeforeSweetEraAlbum, delay));
+    window.addEventListener('load', placeBeforeSweetEraAlbum, {once:true});
   };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', build, {once:true});
