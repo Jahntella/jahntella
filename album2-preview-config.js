@@ -22,14 +22,25 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
     return a;
   };
 
-  const wireExclusiveVisualizers=root=>root.querySelectorAll('.exp60-shine-video-frame video').forEach(v=>{
-    if(v.dataset.exclusiveShineEra==='true')return;
-    v.dataset.exclusiveShineEra='true';
-    v.addEventListener('play',()=>{
-      root.querySelectorAll('.exp60-shine-video-frame video').forEach(o=>{if(o!==v&&!o.paused)o.pause();});
-      document.querySelectorAll('audio').forEach(a=>{if(!a.paused)a.pause();});
+  const wireExclusiveVisualizers=root=>{
+    const visualizers=Array.from(root.querySelectorAll('.exp60-shine-video-frame video'));
+    visualizers.forEach((v,index)=>{
+      if(v.dataset.exclusiveShineEra==='true')return;
+      v.dataset.exclusiveShineEra='true';
+      v.addEventListener('play',()=>{
+        visualizers.forEach(o=>{if(o!==v&&!o.paused)o.pause();});
+        document.querySelectorAll('audio').forEach(a=>{if(!a.paused)a.pause();});
+      });
+      v.addEventListener('ended',()=>{
+        const next=visualizers[index+1];
+        if(!next)return;
+        try{next.currentTime=0;}catch{}
+        next.play().then(()=>{
+          next.closest('.exp60-shine-video-card')?.scrollIntoView({behavior:'smooth',block:'center'});
+        }).catch(()=>{});
+      });
     });
-  });
+  };
 
   const addHomepageVisualizers=()=>{
     const g=document.querySelector('.exp66-shine-videos');
