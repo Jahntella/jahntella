@@ -11,6 +11,10 @@
     seconds: document.getElementById("exp67Seconds")
   };
   const message = document.getElementById("exp67Message");
+  const shineRelease = document.createElement("p");
+  shineRelease.className = "exp67-shine-release";
+  shineRelease.innerHTML = "<strong>THE SHINE ERA</strong><span>DROPPING SEPTEMBER 25TH</span>";
+  message?.insertAdjacentElement("afterend", shineRelease);
   const deadline = new Date(2026, 7, 27, 0, 0, 0, 0);
   const storageKey = "jahntellaAlbumCountdown67";
   let state = {};

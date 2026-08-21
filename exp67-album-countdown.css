@@ -108,6 +108,19 @@
 .exp67-message { display: flex; justify-content: space-between; gap: 8px; margin: 9px 0 0; font-size: .65rem; letter-spacing: .05em; }
 .exp67-message strong { color: var(--exp67-cyan); }
 .exp67-message span { color: #ffd1f5; }
+.exp67-shine-release {
+  display: grid;
+  gap: 2px;
+  margin: 8px 0 0;
+  padding: 7px 9px;
+  border: 1px solid rgba(143, 85, 255, .34);
+  border-radius: 9px;
+  background: linear-gradient(90deg, rgba(143, 85, 255, .14), rgba(255, 79, 216, .12));
+  text-align: center;
+  line-height: 1.25;
+}
+.exp67-shine-release strong { color: #d7c5ff; font-size: .66rem; letter-spacing: .14em; }
+.exp67-shine-release span { color: #ffb9ec; font-size: .58rem; font-weight: 800; letter-spacing: .08em; }
 .exp67-local { margin: 5px 0 0; color: rgba(255,255,255,.56); font-size: .52rem; }
 .exp67-collapsed-copy { display: none; }
 
