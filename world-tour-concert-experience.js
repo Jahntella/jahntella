@@ -33,7 +33,13 @@
       }, 0);
     });
 
-    hero.insertAdjacentElement('afterend', section);
+    const placeDirectlyBelowHero = () => {
+      if (hero.nextElementSibling !== section) hero.parentNode?.insertBefore(section, hero.nextSibling);
+    };
+
+    placeDirectlyBelowHero();
+    [50, 250, 750, 1500, 3000].forEach(delay => window.setTimeout(placeDirectlyBelowHero, delay));
+    window.addEventListener('load', placeDirectlyBelowHero, {once:true});
   };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', build, {once:true});
