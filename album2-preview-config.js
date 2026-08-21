@@ -63,13 +63,20 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
 
   const addShineEraThankYou=()=>{
     const shine=document.getElementById('shineEraSneakPeek');
-    if(!shine||document.getElementById('shineEraThankYou'))return;
-    const section=document.createElement('section');
-    section.id='shineEraThankYou';
-    section.className='exp58-thank-you reveal';
-    section.setAttribute('aria-label','A Shine Era thank-you from Jahntella to her Sweeties');
-    section.innerHTML='<div class="exp58-thank-you-shell"><figure class="exp58-thank-you-art"><img src="assets/album2/the-shine-era-thank-you.webp" alt="Jahntella thanks her Sweeties for believing in her and making The Shine Era shine" loading="lazy" decoding="async" width="1254" height="1254"></figure></div>';
-    shine.insertAdjacentElement('afterend',section);
+    if(!shine)return;
+    let section=document.getElementById('shineEraThankYou');
+    if(!section){
+      section=document.createElement('section');
+      section.id='shineEraThankYou';
+      section.className='exp58-thank-you reveal';
+      section.setAttribute('aria-label','A Shine Era thank-you from Jahntella to her Sweeties');
+      section.innerHTML='<div class="exp58-thank-you-shell"><figure class="exp58-thank-you-art"><img src="assets/album2/the-shine-era-thank-you.webp" alt="Jahntella thanks her Sweeties for believing in her and making The Shine Era shine" loading="lazy" decoding="async" width="1254" height="1254"></figure></div>';
+    }
+    const communityHeading=Array.from(document.querySelectorAll('h1,h2,h3,p,strong')).find(node=>/WELCOME TO THE COMMUNITY/i.test(node.textContent||''))
+      || Array.from(document.querySelectorAll('h1,h2,h3')).find(node=>/Be A\s*[“\"]?SWEETIE/i.test(node.textContent||''));
+    const communitySection=communityHeading?.closest('section');
+    if(communitySection?.parentNode)communitySection.parentNode.insertBefore(section,communitySection);
+    else shine.insertAdjacentElement('afterend',section);
   };
 
   const removeNonMusicGalleryPortrait=()=>{
