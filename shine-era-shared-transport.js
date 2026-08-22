@@ -10,7 +10,7 @@
     'midnight-rodeo': {
       title: 'Midnight Rodeo',
       audio: 'assets/album2/midnight-rodeo.mp3',
-      artwork: 'assets/album2/midnight-rodeo-cover.webp',
+      artwork: 'assets/album2/midnight-rodeo-cover.webp?v=77.0',
       next: 'redline',
       prev: 'boots-smile-attitude'
     },

@@ -3,7 +3,7 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
   'sweet-dreams':Object.freeze({fullAudio:'sweetville/sweet-dreams.mp3',previewAudio:'sweetville/previews/sweet-dreams-preview.mp3',fullVideo:'assets/album2/sweet-dreams-official-visualizer.mp4',previewVideo:'assets/album2/previews/sweet-dreams-preview.mp4'}),
   'we-are-1':Object.freeze({fullAudio:'sweetville/we-are-1.mp3',previewAudio:'sweetville/previews/we-are-1-preview.mp3',fullVideo:'assets/album2/we-are-1-official-visualizer.mp4',previewVideo:'assets/album2/previews/we-are-1-preview.mp4'}),
   'boots-smile-attitude':Object.freeze({fullAudio:'sweetville/boots-smile-attitude.mp3',previewAudio:'sweetville/previews/boots-smile-attitude-preview.mp3',fullVideo:'assets/album2/boots-smile-attitude-official-visualizer.mp4',previewVideo:'assets/album2/previews/boots-smile-attitude-preview.mp4'}),
-  'midnight-rodeo':Object.freeze({fullAudio:'assets/album2/midnight-rodeo.mp3',fullVideo:'assets/album2/midnight-rodeo-official-visualizer.mp4',artwork:'assets/album2/midnight-rodeo-cover.webp',artworkThumb:'assets/album2/midnight-rodeo-cover-thumb.webp'}),
+  'midnight-rodeo':Object.freeze({fullAudio:'assets/album2/midnight-rodeo.mp3',fullVideo:'assets/album2/midnight-rodeo-official-visualizer.mp4?v=77.0',artwork:'assets/album2/midnight-rodeo-cover.webp?v=77.0',artworkThumb:'assets/album2/midnight-rodeo-cover-thumb.webp?v=77.0'}),
   redline:Object.freeze({fullAudio:'assets/album2/redline.mp3',fullVideo:'assets/album2/redline-official-visualizer.mp4',artwork:'assets/album2/redline-cover.webp',artworkThumb:'assets/album2/redline-cover-thumb.webp'}),
   'smoke-show':Object.freeze({fullAudio:'assets/album2/smoke-show.mp3',fullVideo:'assets/album2/smoke-show-official-visualizer.mp4',artwork:'assets/album2/smoke-show-cover.webp',artworkThumb:'assets/album2/smoke-show-cover-thumb.webp'}),
   'chasing-me':Object.freeze({fullAudio:'assets/album2/chasing-me.mp3',fullVideo:'assets/album2/chasing-me-official-visualizer.mp4',artwork:'assets/album2/chasing-me-cover.webp',artworkThumb:'assets/album2/chasing-me-cover-thumb.webp'}),
@@ -51,7 +51,7 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
       if(title==='Midnight Rodeo'||title==='Redline'||title==='Smoke Show'||title==='Chasing Me'||title==='Coming Down'||title==='You and Me')card.remove();
     });
     const ref=Array.from(g.children).find(card=>card.querySelector('h3')?.textContent?.trim()==='Boots, Smile & Attitude') || g.lastElementChild;
-    const midnight=createVisualizerCard({id:'midnightRodeoShineEraVisualizer',title:'Midnight Rodeo',video:'assets/album2/midnight-rodeo-official-visualizer.mp4',poster:'assets/album2/midnight-rodeo-cover.webp'});
+    const midnight=createVisualizerCard({id:'midnightRodeoShineEraVisualizer',title:'Midnight Rodeo',video:'assets/album2/midnight-rodeo-official-visualizer.mp4?v=77.0',poster:'assets/album2/midnight-rodeo-cover.webp?v=77.0'});
     const redline=createVisualizerCard({id:'redlineShineEraVisualizer',title:'Redline',video:'assets/album2/redline-official-visualizer.mp4',poster:'assets/album2/redline-cover.webp'});
     const smoke=createVisualizerCard({id:'smokeShowShineEraVisualizer',title:'Smoke Show',video:'assets/album2/smoke-show-official-visualizer.mp4',poster:'assets/album2/smoke-show-cover.webp'});
     const chasing=createVisualizerCard({id:'chasingMeShineEraVisualizer',title:'Chasing Me',video:'assets/album2/chasing-me-official-visualizer.mp4',poster:'assets/album2/chasing-me-cover.webp'});
