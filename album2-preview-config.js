@@ -92,8 +92,8 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
     const g=document.querySelector('.gallery-section .gallery-grid');
     if(!g)return;
     const order=[
-      'bite-lip-cover.webp','gloss-cover.webp','i-want-to-be-your-girl-cover.webp','embrace-me-cover.webp','we-come-together-cover.webp','play-with-me-cover.webp','carnival-cover.webp','made-of-light-cover.webp','candy-wrapper-cover.webp','playground-cover.webp','milk-shake-cover.webp','tonight-cover.webp',
-      'sweet-dreams-cover.webp','we-are-1-cover.webp','boots-smile-attitude-cover.webp','midnight-rodeo-cover.webp','redline-cover.webp','smoke-show-cover.webp','chasing-me-cover.webp','coming-down-cover.webp','you-and-me-cover.webp'
+      'fun-dipp-cover','pink-lips-remix','bite-lip-cover','gloss-cover','i-want-to-be-your-girl-cover','embrace-me-cover','we-come-together-cover','play-with-me-cover','carnival-cover','made-of-light-cover','candy-wrapper-cover','playground-cover','milk-shake-cover','tonight-cover',
+      'sweet-dreams-cover','we-are-1-cover','boots-smile-attitude-cover','midnight-rodeo-cover','redline-cover','smoke-show-cover','chasing-me-cover','coming-down-cover','you-and-me-cover'
     ];
     const rank=new Map(order.map((name,index)=>[name,index]));
     Array.from(g.querySelectorAll(':scope > .gallery-item')).sort((a,b)=>{
@@ -104,7 +104,7 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
     function itemFilename(item){
       const img=item.querySelector('img');
       const path=(img?.getAttribute('src')||item.getAttribute('data-lightbox')||'').split(/[?#]/)[0];
-      return decodeURIComponent(path.split('/').pop()||'').toLowerCase();
+      return decodeURIComponent(path.split('/').pop()||'').toLowerCase().replace(/\.[^.]+$/,'');
     }
   };
 
@@ -136,7 +136,7 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
     addShineEraThankYou();
     removeNonMusicGalleryPortrait();
     orderAestheticsByAlbum();
-    window.setTimeout(()=>{removeNonMusicGalleryPortrait();orderAestheticsByAlbum();},250);
+    [250,1000,2500].forEach(delay=>window.setTimeout(()=>{removeNonMusicGalleryPortrait();orderAestheticsByAlbum();},delay));
 
     const c=document.getElementById('newMusicTitle');
     if(c)c.innerHTML=c.innerHTML.replace(/\b(?:15|16|17|18|19|20) new songs\b/gi,'21 new songs');
