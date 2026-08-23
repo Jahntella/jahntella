@@ -16,15 +16,15 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
   const addCss=(href,version)=>{const l=document.createElement('link');l.rel='stylesheet';l.href=new URL(`${href}?v=${version}`,document.baseURI).href;document.head.appendChild(l);};
 
   const shineTracks=[
-    {key:'sweet-dreams',title:'Sweet Dreams',tag:'DREAM POP · ALBUM II',art:'assets/album2/sweet-dreams-cover.webp',description:'A neon after-dark escape where the beat, the lights, and one unforgettable connection turn into a perfect dream.'},
-    {key:'we-are-1',title:'We Are 1',tag:'UNITY POP · ALBUM II',art:'assets/album2/we-are-1-cover.webp',description:'A glowing celebration of togetherness—made for raised hands, shared hearts, and one beautiful moment in the light.'},
-    {key:'boots-smile-attitude',title:'Boots, Smile & Attitude',tag:'POP COUNTRY EDM · ALBUM II',art:'assets/album2/boots-smile-attitude-cover.webp',description:'Boots on, confidence up—a sparkling country-pop dance-floor rush with a smile that owns the room.'},
-    {key:'midnight-rodeo',title:'Midnight Rodeo',tag:'NEON RODEO · ALBUM II',art:'assets/album2/midnight-rodeo-cover.webp?v=77.0',description:'A wild moonlit ride where country attitude meets crystal-pop energy and the night refuses to be tamed.'},
-    {key:'redline',title:'Redline',tag:'HIGH-SPEED POP · ALBUM II',art:'assets/album2/redline-cover.webp',description:'A fearless, full-throttle anthem built for open roads, racing hearts, and the thrill of going all the way.'},
-    {key:'smoke-show',title:'Smoke Show',tag:'AFTER-DARK POP · ALBUM II',art:'assets/album2/smoke-show-cover.webp',description:'Sultry, self-assured, and impossible to ignore—pure heat wrapped in purple smoke and electric confidence.'},
-    {key:'chasing-me',title:'Chasing Me',tag:'CLUB POP · ALBUM II',art:'assets/album2/chasing-me-cover.webp',description:'A sleek no-chaser anthem for knowing your worth, setting the pace, and letting everybody else try to keep up.'},
-    {key:'coming-down',title:'Coming Down',tag:'CONCERT POP · ALBUM II',art:'assets/album2/coming-down-cover.webp',description:'The lights are high and the feeling is higher—a concert-sized rush you never want to come down from.'},
-    {key:'you-and-me',title:'You and Me',tag:'GALAXY POP · ALBUM II',art:'assets/album2/you-and-me-cover.webp',description:'A cosmic final ride made for two hearts, one neon galaxy, and a love built to keep shining forever.'}
+    {key:'sweet-dreams',title:'Sweet Dreams',tag:'DREAM POP · ALBUM II',art:'assets/album2/sweet-dreams-cover-thumb.webp?v=82.0',description:'A neon after-dark escape where the beat, the lights, and one unforgettable connection turn into a perfect dream.'},
+    {key:'we-are-1',title:'We Are 1',tag:'UNITY POP · ALBUM II',art:'assets/album2/we-are-1-cover-thumb.webp?v=82.0',description:'A glowing celebration of togetherness—made for raised hands, shared hearts, and one beautiful moment in the light.'},
+    {key:'boots-smile-attitude',title:'Boots, Smile & Attitude',tag:'POP COUNTRY EDM · ALBUM II',art:'assets/album2/boots-smile-attitude-cover-thumb.webp?v=82.0',description:'Boots on, confidence up—a sparkling country-pop dance-floor rush with a smile that owns the room.'},
+    {key:'midnight-rodeo',title:'Midnight Rodeo',tag:'NEON RODEO · ALBUM II',art:'assets/album2/midnight-rodeo-cover-thumb.webp?v=82.0',description:'A wild moonlit ride where country attitude meets crystal-pop energy and the night refuses to be tamed.'},
+    {key:'redline',title:'Redline',tag:'HIGH-SPEED POP · ALBUM II',art:'assets/album2/redline-cover-thumb.webp?v=82.0',description:'A fearless, full-throttle anthem built for open roads, racing hearts, and the thrill of going all the way.'},
+    {key:'smoke-show',title:'Smoke Show',tag:'AFTER-DARK POP · ALBUM II',art:'assets/album2/smoke-show-cover-thumb.webp?v=82.0',description:'Sultry, self-assured, and impossible to ignore—pure heat wrapped in purple smoke and electric confidence.'},
+    {key:'chasing-me',title:'Chasing Me',tag:'CLUB POP · ALBUM II',art:'assets/album2/chasing-me-cover-thumb.webp?v=82.0',description:'A sleek no-chaser anthem for knowing your worth, setting the pace, and letting everybody else try to keep up.'},
+    {key:'coming-down',title:'Coming Down',tag:'CONCERT POP · ALBUM II',art:'assets/album2/coming-down-cover-thumb.webp?v=82.0',description:'The lights are high and the feeling is higher—a concert-sized rush you never want to come down from.'},
+    {key:'you-and-me',title:'You and Me',tag:'GALAXY POP · ALBUM II',art:'assets/album2/you-and-me-cover-thumb.webp?v=82.0',description:'A cosmic final ride made for two hearts, one neon galaxy, and a love built to keep shining forever.'}
   ];
 
   const createShineSongCard=track=>{
