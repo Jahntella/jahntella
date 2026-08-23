@@ -1,26 +1,973 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex">
-<title>Jahntella™ — Loading</title>
-<style>
-html,body{margin:0;background:#120015;color:#fff}
-#jahntellaLoadCover{position:fixed;z-index:2147483647;inset:0;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 50% 43%,rgba(184,43,255,.22),transparent 31%),radial-gradient(circle at 35% 62%,rgba(255,45,180,.16),transparent 28%),linear-gradient(145deg,#07000f,#190024 52%,#090014);font-family:Arial,sans-serif}
-#jahntellaLoadCover .load-inner{text-align:center;padding:2rem}
-#jahntellaLoadCover .load-crown{display:block;color:#f6b4ff;font-size:2.1rem;filter:drop-shadow(0 0 14px #d84dff)}
-#jahntellaLoadCover strong{display:block;margin:.45rem 0 .55rem;color:#fff;font-family:Georgia,serif;font-size:clamp(2rem,8vw,4.7rem);font-style:italic;font-weight:500;letter-spacing:.03em;text-shadow:0 0 10px #ff4fc8,0 0 28px #a642ff}
-#jahntellaLoadCover p{margin:0;color:#bff7ff;font-size:.7rem;font-weight:800;letter-spacing:.24em;text-transform:uppercase}
-#jahntellaLoadCover .load-line{width:min(260px,62vw);height:2px;margin:1.15rem auto 0;overflow:hidden;border-radius:9px;background:rgba(255,255,255,.12)}
-#jahntellaLoadCover .load-line::after{content:"";display:block;width:42%;height:100%;background:linear-gradient(90deg,#ff58d2,#9c5cff,#72f1ff);box-shadow:0 0 14px #ff58d2;animation:jahntellaLoading 1.1s ease-in-out infinite alternate}
-@keyframes jahntellaLoading{from{transform:translateX(-10%)}to{transform:translateX(150%)}}
-@media(prefers-reduced-motion:reduce){#jahntellaLoadCover .load-line::after{animation:none;width:100%}}
-</style>
-</head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#120015">
+  <meta name="description" content="The official home of Jahntella. Listen to Fun Dipp, Pink Lips Remix, and the newest music from the World of Sweet.">
+  <title>Jahntella™ — The World of Sweet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Sacramento&display=swap"></noscript>
+  <link rel="stylesheet" href="styles.css?v=5.1-recovery">
+  <link rel="stylesheet" href="poster-downloads.css?v=4">
+  <link rel="stylesheet" href="girly-nav-home.css?v=15.5">
+<link rel="stylesheet" href="exp19-1-ticket.css?v=19.1">
+<link rel="stylesheet" href="exp19-5-popstar.css?v=19.5">
+<link rel="stylesheet" href="exp20-3-investor-button.css?v=20.3">
+<link rel="stylesheet" href="exp21-0-performance.css?v=21.0">
+<link rel="stylesheet" href="exp25-1-sweet-express.css?v=25.5">
+<link rel="stylesheet" href="exp29-4-contact.css?v=29.4">
+<link rel="stylesheet" href="exp30-6-poster-fix.css?v=30.6">
+<link rel="stylesheet" href="exp44-new-music.css?v=48.1">
+<link rel="stylesheet" href="exp53-sweet-era.css?v=53.0">
+<link rel="stylesheet" href="exp56-flow-fix.css?v=56.0">
+  <link rel="stylesheet" href="exp48-3-fixed-player.css?v=48.3">
+  <link rel="stylesheet" href="exp48-4-hide-homepage-posters.css?v=48.4">
+  <link rel="stylesheet" href="exp50-2-mobile-music-fix.css?v=50.2">
+  <link rel="stylesheet" href="exp57-gallery-lightbox.css?v=63.0">
+  <link rel="stylesheet" href="exp58-sweeties-thank-you.css?v=58.0">
+  <link rel="stylesheet" href="exp60-shine-era-sneak-peek.css?v=66.3">
+  <link rel="stylesheet" href="exp67-album-countdown.css?v=75.0">
+<style>#siteLoader{display:none!important}</style><style>.hero-album-actions{align-items:stretch}.hero-album-actions a{display:inline-flex;align-items:center;justify-content:center;text-align:center}.hero-playlist-invite{max-width:620px;margin:1rem auto 0;color:rgba(255,255,255,.88);font-size:clamp(.82rem,1.55vw,1rem);font-weight:600;letter-spacing:.025em;text-shadow:0 2px 16px rgba(0,0,0,.72)}@media(max-width:640px){.hero-album-actions{width:min(92vw,390px);margin-inline:auto}.hero-album-actions a{width:100%}.hero-playlist-invite{max-width:330px;line-height:1.45}}</style><style>.shy-guy-shawn-tribute{padding:3.5rem 1.25rem 2.25rem;text-align:center;background:linear-gradient(180deg,rgba(18,0,21,0),rgba(18,0,21,.5))}.shy-guy-shawn-rule{width:72px;height:1px;margin:0 auto 1rem;background:linear-gradient(90deg,transparent,rgba(255,185,233,.8),transparent)}.shy-guy-shawn-tribute p{margin:0;color:rgba(255,255,255,.88);font-family:"Playfair Display",serif;font-size:clamp(1.05rem,2vw,1.35rem);letter-spacing:.02em}.shy-guy-shawn-tribute p strong{color:#ffd1f2;font-weight:700}.shy-guy-shawn-tribute p span{display:inline-block;margin-left:.25rem;color:#ff8dcc}.shy-guy-shawn-tribute small{display:block;margin-top:.5rem;color:rgba(255,255,255,.55);font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase}</style><link rel="stylesheet" href="sweetie-access.css?v=79.0"></head>
 <body>
-<div id="jahntellaLoadCover" role="status" aria-live="polite"><div class="load-inner"><span class="load-crown" aria-hidden="true">♕</span><strong>Jahntella</strong><p>Preparing something sweet</p><div class="load-line" aria-hidden="true"></div></div></div>
-<script>
-(async()=>{const source='https://raw.githubusercontent.com/Jahntella/jahntella/e331b6900f12b4cd1d9c16fcc6c9aa236f4c6e8c/index.html',cacheKey='jahntellaHomepageShellV810';try{const cached=sessionStorage.getItem(cacheKey);if(cached&&cached.includes('<main')){document.open();document.write(cached);document.close();return}const r=await fetch(source,{cache:'force-cache'});if(!r.ok)throw Error('load');let html=await r.text();html=html.replace('</head>','<style>#siteLoader{display:none!important}</style></head>');html=html.replace('album2-preview-config.js?v=66.0','album2-preview-config.js?v=78.0').replace('script.js?v=66.0','script.js?v=74.0').replace('exp67-album-countdown.css?v=67.0','exp67-album-countdown.css?v=75.0').replace('exp67-album-countdown.js?v=67.0','exp67-album-countdown.js?v=81.0');html=html.replace('Free listening expires','Sweetie Roll Call ♡');html=html.replace("THE WORLD'S <span>#1 POP STAR</span>","THE WORLD'S <span>#1 ALL-IMMERSIVE POP STAR</span>");const oldHeroActions='<div class="hero-actions">\n          <a class="primary-button" href="#music">Listen now</a>\n          <a class="secondary-button" href="#about">Discover the story</a>\n          <a class="secondary-button sweetville-entry-button" href="sweetville/"><span>OPEN THE GATES</span><small>ENTER SWEETVILLE →</small></a>\n        </div>';const newHeroActions='<div class="hero-actions hero-album-actions">\n          <a class="primary-button" href="#music">The Sweet Era - Album I</a>\n          <a class="secondary-button" href="#shineEraSneakPeek">The Shine Era - Album II</a>\n        </div>\n        <p class="hero-playlist-invite">Enjoy the full playlist by clicking on any cover art below.</p>';html=html.replace(oldHeroActions,newHeroActions);if(!html.includes('hero-playlist-invite{'))html=html.replace('</head>','<style>.hero-album-actions{align-items:stretch}.hero-album-actions a{display:inline-flex;align-items:center;justify-content:center;text-align:center}.hero-playlist-invite{max-width:620px;margin:1rem auto 0;color:rgba(255,255,255,.88);font-size:clamp(.82rem,1.55vw,1rem);font-weight:600;letter-spacing:.025em;text-shadow:0 2px 16px rgba(0,0,0,.72)}@media(max-width:640px){.hero-album-actions{width:min(92vw,390px);margin-inline:auto}.hero-album-actions a{width:100%}.hero-playlist-invite{max-width:330px;line-height:1.45}}</style></head>');if(!html.includes('id="shyGuyShawnTribute"')){const tribute='<section id="shyGuyShawnTribute" class="shy-guy-shawn-tribute"><div class="shy-guy-shawn-rule" aria-hidden="true"></div><p>Peace to <strong>Shy Guy Shawn</strong> <span>♡</span></p><small>Thank You</small></section>';const style='<style>.shy-guy-shawn-tribute{padding:3.5rem 1.25rem 2.25rem;text-align:center;background:linear-gradient(180deg,rgba(18,0,21,0),rgba(18,0,21,.5))}.shy-guy-shawn-rule{width:72px;height:1px;margin:0 auto 1rem;background:linear-gradient(90deg,transparent,rgba(255,185,233,.8),transparent)}.shy-guy-shawn-tribute p{margin:0;color:rgba(255,255,255,.88);font-family:"Playfair Display",serif;font-size:clamp(1.05rem,2vw,1.35rem);letter-spacing:.02em}.shy-guy-shawn-tribute p strong{color:#ffd1f2;font-weight:700}.shy-guy-shawn-tribute p span{display:inline-block;margin-left:.25rem;color:#ff8dcc}.shy-guy-shawn-tribute small{display:block;margin-top:.5rem;color:rgba(255,255,255,.55);font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase}</style>';if(html.includes('</footer>'))html=html.replace('</footer>',tribute+'</footer>');else html=html.replace('</body>',tribute+'</body>');html=html.replace('</head>',style+'</head>')}html=html.replace('</head>','<link rel="stylesheet" href="sweetie-access.css?v=79.0"></head>').replace('</body>','<script defer src="sweetie-access.js?v=80.0"><\/script></body>');try{sessionStorage.setItem(cacheKey,html)}catch{}document.open();document.write(html);document.close()}catch(e){document.body.innerHTML='<main style="font-family:system-ui;padding:3rem;background:#120015;color:#ffd7f3;min-height:100vh">Jahntella is loading. Please refresh the page.</main>'}})();
-</script>
-</body></html>
+  <div id="siteLoader" class="site-loader" aria-hidden="true">
+    <div class="loader-mark">Jahntella™<span>♡</span></div>
+    <div class="loader-line"><i></i></div>
+  </div>
+
+  <div id="scrollProgress" class="scroll-progress" aria-hidden="true"></div>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <div class="sparkles" aria-hidden="true"></div>
+  <div class="shooting-stars" id="shootingStars" aria-hidden="true"></div>
+  <div class="twinkle-stars" id="twinkleStars" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="logo" href="#home">Jahntella™<span>♡</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav id="siteNav" aria-label="Main navigation">
+      <a href="#music">Music</a>
+      <a href="#sweetEraAlbum">Album</a>
+      <a href="#about">Story</a>
+      <a href="#downloads">Downloads</a>
+      <a href="#magazine">Magazine</a>
+      <a href="#merch">Merch</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#connect">Connect</a>
+      <a href="sweetville/">Sweetville</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-v5" id="home">
+      <video class="hero-v5-video" autoplay muted loop playsinline preload="none" aria-hidden="true">
+        <source data-src="videos/Hero.mp4" type="video/mp4">
+      </video>
+
+      <div class="hero-v5-overlay" aria-hidden="true"></div>
+
+      <div class="hero-v5-content">
+        <p class="eyebrow">WELCOME TO THE WORLD OF SWEET</p>
+        <h1 class="hero-v5-logo">Jahntella™<span>♡</span></h1>
+        <p class="hero-v5-tagline">Sweet hooks. Big choruses. Good vibes.</p>
+        <p class="artist-line">Pop Artist • Songwriter • Creator of the World of Sweet</p>
+
+        <div class="hero-actions hero-album-actions">
+          <a class="primary-button" href="#music">The Sweet Era - Album I</a>
+          <a class="secondary-button" href="#shineEraSneakPeek">The Shine Era - Album II</a>
+        </div>
+        <p class="hero-playlist-invite">Enjoy the full playlist by clicking on any cover art below.</p>
+      </div>
+
+      <a class="hero-v5-scroll" href="#music" aria-label="Scroll to music">
+        <span>SCROLL</span>
+        <i></i>
+      </a>
+    </section>
+
+<section class="exp195-popstar-section" id="worldsNumberOnePopStar" aria-label="The World's Number One Pop Star">
+      <div class="exp195-popstar-wrap">
+        <article class="exp195-popstar-badge">
+          <div class="exp195-sparkles" id="exp195Sparkles" aria-hidden="true"></div>
+          <span class="exp195-crown" aria-hidden="true">👑</span>
+          <p class="exp195-kicker">WELCOME TO THE OFFICIAL WORLD OF</p>
+          <h2 class="exp195-name">Jahntella™</h2>
+          <h3 class="exp195-title">THE WORLD'S <span>#1 ALL-IMMERSIVE POP STAR</span></h3>
+          <p class="exp195-subtitle">Music, fashion, stories, and the magical world of Sweetville—all wrapped in pink lights, big dreams, and something sweet.</p>
+
+          <div class="exp195-meta" aria-label="Jahntella worlds">
+            <span>🎵 Music</span>
+            <span>💖 Sweetville</span>
+            <span>✨ Stories</span>
+            <span>👗 Fashion</span>
+          </div>
+
+          <div class="exp195-recognition">✨ OFFICIAL SWEETVILLE ENTERTAINMENT RECOGNITION</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="exp53-album-section reveal" id="sweetEraAlbum" aria-labelledby="sweetEraTitle">
+      <div class="exp53-album-shell">
+        <header class="exp53-album-head">
+          <p class="eyebrow">THE ALBUM</p>
+          <h2 id="sweetEraTitle">Welcome to <em>The Sweet Era.</em></h2>
+          <p>Fourteen tracks bring Jahntella’s music, color, confidence, and Sweetville magic together in one unforgettable era. Tap either side to explore the official album artwork.</p>
+        </header>
+
+        <div class="exp53-album-grid">
+          <button class="exp53-album-art" type="button" data-lightbox="assets/album/the-sweet-era-front.webp" aria-label="Enlarge The Sweet Era front album cover">
+            <span class="exp53-album-image">
+              <img src="assets/album/the-sweet-era-front-thumb.webp" alt="The Sweet Era front album cover by Jahntella" loading="lazy" decoding="async" width="720" height="720">
+            </span>
+            <span class="exp53-album-label"><small>OFFICIAL FRONT COVER</small><strong>Tap to enlarge ↗</strong></span>
+          </button>
+
+          <button class="exp53-album-art" type="button" data-lightbox="assets/album/the-sweet-era-back.webp" aria-label="Enlarge The Sweet Era back album cover and track list">
+            <span class="exp53-album-image">
+              <img src="assets/album/the-sweet-era-back-thumb.webp" alt="The Sweet Era back album cover with official track list" loading="lazy" decoding="async" width="720" height="720">
+            </span>
+            <span class="exp53-album-label"><small>OFFICIAL BACK COVER</small><strong>Tap to enlarge ↗</strong></span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="music-section reveal" id="music">
+      <div class="section-heading">
+        <p class="eyebrow">MUSIC</p>
+        <h2>Press play on <em>something sweet.</em></h2>
+      </div>
+
+      <div class="release-grid">
+        <article class="release-card" data-card="fun-dipp">
+          <div class="record-stage">
+            <div class="record-sleeve">
+              <img src="assets/fun-dipp-cover.webp" alt="Fun Dipp sleeve artwork" loading="eager" fetchpriority="high" decoding="async">
+            </div>
+            <div class="record-slider">
+              <div class="record-wrap" id="funDippRecordWrap">
+                <img class="record-cover" src="assets/fun-dipp-cover.webp" alt="Fun Dipp vinyl record artwork" loading="lazy" decoding="async">
+                <span class="record-shine"></span>
+              </div>
+            </div>
+          </div>
+          <div class="release-copy">
+            <p class="release-label">DEBUT SINGLE</p>
+            <h3>Fun Dipp</h3>
+            <p>Bright pop energy, playful hooks, and a candy-coated chorus.</p>
+            <button class="play-button" data-track="fun-dipp">▶ Play Fun Dipp</button>
+          </div>
+        </article>
+
+        <article class="release-card" data-card="pink-lips">
+          <div class="record-stage">
+            <div class="record-sleeve">
+              <img src="assets/pink-lips-remix.webp" alt="Pink Lips Remix sleeve artwork" loading="eager" fetchpriority="high" decoding="async">
+            </div>
+            <div class="record-slider">
+              <div class="record-wrap" id="pinkLipsRecordWrap">
+                <img class="record-cover" src="assets/pink-lips-remix.webp" alt="Pink Lips Remix vinyl record artwork" loading="lazy" decoding="async">
+                <span class="record-shine"></span>
+              </div>
+            </div>
+          </div>
+          <div class="release-copy">
+            <p class="release-label">REMIX</p>
+            <h3>Pink Lips Remix</h3>
+            <p>A glossy remix with bigger energy and late-night sparkle.</p>
+            <button class="play-button" data-track="pink-lips">▶ Play Pink Lips Remix</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="exp44-new-music reveal" id="newMusic" aria-labelledby="newMusicTitle">
+      <header class="exp44-new-music-head">
+        <div>
+          <p class="eyebrow">NEW MUSIC</p>
+          <h2 id="newMusicTitle">15 new songs. <em>One nonstop playlist.</em></h2>
+          <p>Press play on any release and Jahntella’s music will roll right into the next song.</p>
+        </div>
+        <a href="sweetville/melody-studio.html#latestMusic">Enter Melody Studio →</a>
+      </header>
+
+      <div class="exp44-new-music-grid">
+        <article class="exp44-new-music-card" data-card="bite-lip">
+          <img src="assets/music-thumbs/bite-lip.webp" alt="Bite Lip single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
+          <div>
+            <small>NEW · NEON POP</small>
+            <h3>Bite Lip</h3>
+            <p>Flirty pop energy with that left-hip, right-dip attitude.</p>
+            <button class="play-button" type="button" data-track="bite-lip">▶ Play Bite Lip</button>
+          </div>
+        </article>
+
+        <article class="exp44-new-music-card" data-card="gloss">
+          <img src="assets/music-thumbs/gloss.webp" alt="Gloss single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
+          <div>
+            <small>NEW · GLOSSY POP</small>
+            <h3>Gloss</h3>
+            <p>Polished pink-pop sparkle made for one more kiss.</p>
+            <button class="play-button" type="button" data-track="gloss">▶ Play Gloss</button>
+          </div>
+        </article>
+
+        <article class="exp44-new-music-card" data-card="your-girl">
+          <img src="assets/music-thumbs/i-want-to-be-your-girl.webp" alt="I Want To Be Your Girl single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
+          <div>
+            <small>HOUSE / EDM</small>
+            <h3>I Want To Be Your Girl</h3>
+            <p>A heart-forward rush built for the Sweetville dance floor.</p>
+            <button class="play-button" type="button" data-track="your-girl">▶ Play I Want To Be Your Girl</button>
+          </div>
+        </article>
+
+        <article class="exp44-new-music-card" data-card="embrace-me">
+          <img src="assets/music-thumbs/embrace-me.webp" alt="Embrace Me single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
+          <div>
+            <small>HOUSE / EDM · NEW</small>
+            <h3>Embrace Me</h3>
+            <p>Give in to the rush and let the moment take us higher.</p>
+            <button class="play-button" type="button" data-track="embrace-me">▶ Play Embrace Me</button>
+          </div>
+        </article>
+
+        <article class="exp44-new-music-card" data-card="we-come-together">
+          <img src="assets/music-thumbs/we-come-together.webp" alt="We Come Together single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
+          <div>
+            <small>POP / DANCE · NEW</small>
+            <h3>We Come Together</h3>
+            <p>Magnetic pop energy and a left-right hook made to move together.</p>
+            <button class="play-button" type="button" data-track="we-come-together">▶ Play We Come Together</button>
+          </div>
+        </article>
+
+        <article class="exp44-new-music-card" data-card="play-with-me">
+          <img src="assets/music-thumbs/play-with-me.webp" alt="Play With Me single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
+          <div>
+            <small>POP / ARCADE · NEW</small>
+            <h3>Play With Me</h3>
+            <p>Flirty arcade-pop with secret levels, bold moves, and a bonus-round hook.</p>
+            <button class="play-button" type="button" data-track="play-with-me">▶ Play With Me</button>
+          </div>
+        </article>
+
+        <article class="exp44-new-music-card" data-card="carnival">
+          <img src="assets/music-thumbs/carnival.webp" alt="Carnival single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
+          <div>
+            <small>CARNIVAL POP · NEW</small>
+            <h3>Carnival</h3>
+            <p>A dazzling one-more-ride anthem with neon thrills and after-dark attraction.</p>
+            <button class="play-button" type="button" data-track="carnival">▶ Play Carnival</button>
+          </div>
+        </article>
+
+        <article class="exp44-new-music-card" data-card="made-of-light">
+          <img src="assets/music-thumbs/made-of-light.webp" alt="Made of Light single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
+          <div>
+            <small>FESTIVAL EDM · NEW</small>
+            <h3>Made of Light</h3>
+            <p>A euphoric anthem that rises from a spark into a festival-sized celebration.</p>
+            <button class="play-button" type="button" data-track="made-of-light">▶ Play Made of Light</button>
+          </div>
+        </article>
+
+        <article class="exp44-new-music-card" data-card="candy-wrapper">
+          <img src="assets/music-thumbs/candy-wrapper.webp" alt="Candy Wrapper single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
+          <div>
+            <small>CANDY POP · NEW</small>
+            <h3>Candy Wrapper</h3>
+            <p>A bright, flirty pop rush with irresistible flavor and a hook made to unwrap.</p>
+            <button class="play-button" type="button" data-track="candy-wrapper">▶ Play Candy Wrapper</button>
+          </div>
+        </article>
+
+        <article class="exp44-new-music-card" data-card="playground">
+          <img src="assets/music-thumbs/playground.webp" alt="Playground single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
+          <div>
+            <small>AFTER-HOURS POP · NEW</small>
+            <h3>Playground</h3>
+            <p>A neon after-hours pop rush with playful tension, glossy hooks, and a teasing promise to let you win.</p>
+            <button class="play-button" type="button" data-track="playground">▶ Play Playground</button>
+          </div>
+        </article>
+
+        <article class="exp44-new-music-card" data-card="milk-shake">
+          <img src="assets/music-thumbs/milk-shake.webp" alt="Milk Shake single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
+          <div>
+            <small>RETRO POP · NEW</small>
+            <h3>Milk Shake</h3>
+            <p>A playful neon-diner pop treat with a flirty hook made to shake the room.</p>
+            <button class="play-button" type="button" data-track="milk-shake">▶ Play Milk Shake</button>
+          </div>
+        </article>
+
+        <article class="exp44-new-music-card" data-card="tonight">
+          <img src="assets/music-thumbs/tonight.webp" alt="Tonight single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
+          <div>
+            <small>ISLAND CLUB · NEW</small>
+            <h3>Tonight</h3>
+            <p>A moonlit island-club escape filled with rhythm, passion, and a moment made for two.</p>
+            <button class="play-button" type="button" data-track="tonight">▶ Play Tonight</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="exp58-thank-you reveal" aria-label="A thank-you from Jahntella to her Sweeties">
+      <div class="exp58-thank-you-shell">
+        <figure class="exp58-thank-you-art">
+          <img
+            src="assets/JBeachThankYouNote.webp"
+            alt="Jahntella walking along a pink, purple, and cyan moonlit beach beside a handwritten thank-you to her Sweeties"
+            loading="lazy"
+            decoding="async"
+            width="984"
+            height="1599">
+        </figure>
+      </div>
+    </section>
+
+    <section class="exp60-shine-sneak-peek reveal" id="shineEraSneakPeek" aria-labelledby="shineEraSneakPeekTitle">
+      <div class="exp60-shine-shell">
+        <header class="exp60-shine-heading">
+          <p class="exp60-shine-kicker">SNEAK PEEK <span aria-hidden="true">✦</span> ALBUM II</p>
+          <h2 id="shineEraSneakPeekTitle">A new era is beginning to <em>shine.</em></h2>
+          <p>Get your first look at <strong>The Shine Era</strong>—front and back—and step inside <strong>Sweet Dreams</strong>, <strong>We Are 1</strong>, and <strong>Boots, Smile &amp; Attitude</strong>—three glimpses of the sound, light, and world of Album II.</p>
+        </header>
+
+        <div class="exp60-shine-grid">
+          <div class="exp60-shine-covers" aria-label="The Shine Era Album II front and back covers">
+            <button
+              class="exp60-shine-cover-card exp60-shine-cover-front"
+              type="button"
+              data-lightbox="assets/album2/the-shine-era-cover.webp"
+              aria-label="Enlarge The Shine Era Album II front cover">
+              <span class="exp60-shine-cover-frame">
+                <img
+                  src="assets/album2/the-shine-era-cover.webp"
+                  alt="The Shine Era Album II front cover featuring Jahntella performing in a crystal purple stage outfit"
+                  loading="lazy"
+                  decoding="async"
+                  width="1254"
+                  height="1254">
+              </span>
+              <span class="exp60-shine-cover-caption">
+                <small>OFFICIAL FRONT COVER</small>
+                <strong>Tap to enlarge ↗</strong>
+              </span>
+            </button>
+
+            <button
+              class="exp60-shine-cover-card exp60-shine-cover-back"
+              type="button"
+              data-lightbox="assets/album2/the-shine-era-back.webp"
+              aria-label="Enlarge The Shine Era Album II clean back cover">
+              <span class="exp60-shine-cover-frame">
+                <img
+                  src="assets/album2/the-shine-era-back.webp"
+                  alt="The Shine Era Album II clean back cover with a purple diamond-framed concert stage"
+                  loading="lazy"
+                  decoding="async"
+                  width="1254"
+                  height="1254">
+              </span>
+              <span class="exp60-shine-cover-caption">
+                <small>CLEAN BACK COVER</small>
+                <strong>Tap to enlarge ↗</strong>
+              </span>
+            </button>
+          </div>
+
+          <div class="exp66-shine-videos" aria-label="The Shine Era Album II songs">
+          <article class="exp60-shine-video-card" aria-labelledby="sweetDreamsPreviewTitle">
+            <div class="exp60-shine-video-heading">
+              <span>FIRST LOOK <i aria-hidden="true"></i> OFFICIAL VISUALIZER</span>
+              <h3 id="sweetDreamsPreviewTitle">Sweet Dreams</h3>
+            </div>
+            <div class="exp60-shine-video-frame">
+              <video
+                id="exp60SweetDreamsVideo"
+                controls
+                playsinline
+                preload="none"
+                poster="assets/album2/sweet-dreams-poster.webp"
+                aria-label="Play the Sweet Dreams official visualizer">
+                <source src="assets/album2/sweet-dreams-official-visualizer.mp4" type="video/mp4">
+                Your browser does not support the Sweet Dreams video player.
+              </video>
+            </div>
+            <div class="exp60-shine-video-note">
+              <span aria-hidden="true">◇</span>
+              <p><strong>Enter the dream.</strong> Press play for the full visualizer and your first taste of The Shine Era.</p>
+            </div>
+          </article>
+
+          <article class="exp60-shine-video-card" aria-labelledby="weAre1PreviewTitle">
+            <div class="exp60-shine-video-heading">
+              <span>NEW ERA <i aria-hidden="true"></i> OFFICIAL VISUALIZER</span>
+              <h3 id="weAre1PreviewTitle">We Are 1</h3>
+            </div>
+            <div class="exp60-shine-video-frame">
+              <video
+                id="exp61WeAre1Video"
+                controls
+                playsinline
+                preload="none"
+                poster="assets/album2/we-are-1-poster.webp"
+                aria-label="Play the We Are 1 official visualizer">
+                <source src="assets/album2/we-are-1-official-visualizer.mp4" type="video/mp4">
+                Your browser does not support the We Are 1 video player.
+              </video>
+            </div>
+            <div class="exp60-shine-video-note">
+              <span aria-hidden="true">◇</span>
+              <p><strong>For the length of this song.</strong> Press play and become one with The Shine Era.</p>
+            </div>
+          </article>
+
+          <article class="exp60-shine-video-card" aria-labelledby="bootsSmileAttitudePreviewTitle" data-card="boots-smile-attitude">
+            <div class="exp60-shine-video-heading">
+              <span>NEW ERA <i aria-hidden="true"></i> OFFICIAL VISUALIZER</span>
+              <h3 id="bootsSmileAttitudePreviewTitle">Boots, Smile &amp; Attitude</h3>
+            </div>
+            <div class="exp60-shine-video-frame">
+              <video
+                id="exp66BootsSmileAttitudeVideo"
+                controls
+                playsinline
+                preload="none"
+                poster="assets/album2/boots-smile-attitude-poster.webp"
+                aria-label="Play the Boots, Smile &amp; Attitude official visualizer">
+                <source src="assets/album2/boots-smile-attitude-official-visualizer.mp4" type="video/mp4">
+                Your browser does not support the Boots, Smile &amp; Attitude video player.
+              </video>
+            </div>
+            <div class="exp60-shine-video-note">
+              <span aria-hidden="true">◇</span>
+              <p><strong>Put your drink down.</strong> Step onto the floor for a pop-country-EDM rush from The Shine Era.</p>
+            </div>
+          </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="exp56-sweetie-section reveal" id="beASweetie" aria-labelledby="beASweetieTitle">
+  <div class="exp53-album-shell">
+    <section class="exp53-sweetie-community" aria-labelledby="beASweetieTitle">
+      <p class="exp53-sweetie-kicker">WELCOME TO THE COMMUNITY</p>
+      <h3 id="beASweetieTitle">Be A <span>“SWEETIE”!</span> ♡</h3>
+      <p class="exp53-sweetie-copy">Follow <strong>@jahntella</strong> on <strong>ALL socials!</strong> Stay close to the music, visuals, Sweetville moments, behind-the-scenes magic, and everything coming next in The Sweet Era.</p>
+
+      <div class="exp53-social-grid" aria-label="Follow Jahntella on social media">
+        <a class="exp53-social" href="https://www.instagram.com/jahntella" target="_blank" rel="noopener">
+          <span class="exp53-social-icon" aria-hidden="true">◎</span>
+          <span class="exp53-social-copy"><strong>Instagram</strong><span>@jahntella</span></span>
+        </a>
+        <a class="exp53-social" href="https://www.tiktok.com/@jahntella" target="_blank" rel="noopener">
+          <span class="exp53-social-icon" aria-hidden="true">♪</span>
+          <span class="exp53-social-copy"><strong>TikTok</strong><span>@jahntella</span></span>
+        </a>
+        <a class="exp53-social" href="https://open.spotify.com/search/Jahntella" target="_blank" rel="noopener">
+          <span class="exp53-social-icon" aria-hidden="true">●</span>
+          <span class="exp53-social-copy"><strong>Spotify</strong><span>@jahntella</span></span>
+        </a>
+        <a class="exp53-social" href="https://www.youtube.com/@Jahntella" target="_blank" rel="noopener">
+          <span class="exp53-social-icon" aria-hidden="true">▶</span>
+          <span class="exp53-social-copy"><strong>YouTube</strong><span>@jahntella</span></span>
+        </a>
+      </div>
+    </section>
+  </div>
+</section>
+
+<section class="exp250-station-section reveal" id="sweet-express">
+  <div class="exp250-station-shell">
+    <div class="exp250-station-image">
+      <img src="assets/sweet-express-conductor.png" alt="Jahntella standing beside the glowing Sweet Express at the station" loading="lazy" decoding="async">
+      <div class="exp250-steam exp250-steam-one" aria-hidden="true"></div>
+      <div class="exp250-steam exp250-steam-two" aria-hidden="true"></div>
+      <div class="exp250-station-glow" aria-hidden="true"></div>
+    </div>
+    <div class="exp250-station-copy">
+      <p class="eyebrow">THE SWEET EXPRESS</p>
+      <h2>Music powers the journey.</h2>
+      <p class="exp250-greeting">Hi Sweetie! I’m your conductor today. This train doesn’t run on coal—it runs on music, smiles, and Sweeties.</p>
+      <div class="exp250-ticket-card">
+        <div><span>DESTINATION</span><strong>Bubblegum Bay Waterpark</strong></div>
+        <div class="exp250-ticket-stamp">FUN DIPP EXPRESS</div>
+      </div>
+      <div class="exp250-progress-card">
+        <div class="exp250-progress-heading">
+          <span>Complete any Jahntella song 10 times</span>
+          <strong><span id="exp250PlayCount">0</span> / 10</strong>
+        </div>
+        <div class="exp250-progress-track"><i id="exp250ProgressBar"></i></div>
+        <p id="exp250Status">Complete a full listen to add power to the train.</p>
+      </div>
+      <div class="exp250-actions">
+        <button class="primary-button exp250-listen-button" id="exp250ListenButton">🎵 Power the Express with Jahntella</button>
+        <button class="secondary-button exp250-board-button" id="exp250BoardButton" disabled>🚂 All Aboard — Locked</button>
+      </div>
+      <p class="exp250-small-note">Your completed listens are saved on this device.</p>
+    </div>
+  </div>
+</section>
+
+
+<div class="exp251-departure" id="exp251Departure" aria-hidden="true">
+  <div class="exp251-departure-backdrop"></div>
+  <div class="exp251-travel-stage">
+    <div class="exp251-train-window">
+      <div class="exp251-sky"></div><div class="exp251-city"></div><div class="exp251-track"></div><div class="exp251-motion-lines"></div>
+      <div class="exp251-train-copy"><p id="exp251JourneyLabel">ALL ABOARD!</p><h2 id="exp251JourneyTitle">The Sweet Express is leaving the station...</h2></div>
+    </div>
+  </div>
+</div>
+
+<section class="about-section reveal" id="about">
+      <div class="about-card">
+        <div>
+          <p class="eyebrow">THE STORY</p>
+          <h2>A colorful pop world built around <em>confidence and joy.</em></h2>
+        </div>
+        <div class="about-copy">
+          <p>Jahntella blends bright pop hooks, playful visual storytelling, and feel-good energy into one growing creative universe.</p>
+          <blockquote>“Welcome to a world where confidence sounds colorful and every chorus feels like a celebration.”</blockquote>
+        </div>
+      </div>
+      <div class="milestones">
+        <article><strong>01</strong><span>World of Sweet created</span></article>
+        <article><strong>17</strong><span>Original songs released</span></article>
+        <article><strong>∞</strong><span>Big ideas still ahead</span></article>
+      </div>
+    </section>
+
+    <section class="downloads-section reveal" id="downloads">
+      <div class="section-heading centered">
+        <p class="eyebrow">FREE DOWNLOADS</p>
+        <h2>Collect the official <em>Jahntella posters.</em></h2>
+        <img class="downloads-signature" src="branding/jahntella-signature.png" alt="Jahntella signature" loading="lazy" decoding="async" width="520" height="180">
+      </div>
+
+      <div class="poster-gallery">
+        <article class="poster-card">
+          <div class="poster-image">
+            <img src="thumbnails/01-rooftop-lights-thumb.jpg" alt="Rooftop Lights official Jahntella poster" loading="lazy" decoding="async">
+          </div>
+          <div class="poster-download-only">
+            <a class="primary-button" href="originals/01-rooftop-lights.png" download="Jahntella-01-rooftop-lights.png">⬇ Download Poster 01</a>
+          </div>
+        </article>
+        <article class="poster-card">
+          <div class="poster-image">
+            <img src="thumbnails/02-fun-dipp-nights-thumb.jpg" alt="Fun Dipp Nights official Jahntella poster" loading="lazy" decoding="async">
+          </div>
+          <div class="poster-download-only">
+            <a class="primary-button" href="originals/02-fun-dipp-nights.png" download="Jahntella-02-fun-dipp-nights.png">⬇ Download Poster 02</a>
+          </div>
+        </article>
+        <article class="poster-card">
+          <div class="poster-image">
+            <img src="thumbnails/03-studio-spark-thumb.jpg" alt="Studio Spark official Jahntella poster" loading="lazy" decoding="async">
+          </div>
+          <div class="poster-download-only">
+            <a class="primary-button" href="originals/03-studio-spark.png" download="Jahntella-03-studio-spark.png">⬇ Download Poster 03</a>
+          </div>
+        </article>
+        <article class="poster-card">
+          <div class="poster-image">
+            <img src="thumbnails/04-lagoon-dream-thumb.jpg" alt="Lagoon Dream official Jahntella poster" loading="lazy" decoding="async">
+          </div>
+          <div class="poster-download-only">
+            <a class="primary-button" href="originals/04-lagoon-dream.png" download="Jahntella-04-lagoon-dream.png">⬇ Download Poster 04</a>
+          </div>
+        </article>
+        <article class="poster-card">
+          <div class="poster-image">
+            <img src="thumbnails/05-bubblegum-beach-thumb.jpg" alt="Bubblegum Beach official Jahntella poster" loading="lazy" decoding="async">
+          </div>
+          <div class="poster-download-only">
+            <a class="primary-button" href="originals/05-bubblegum-beach.png" download="Jahntella-05-bubblegum-beach.png">⬇ Download Poster 05</a>
+          </div>
+        </article>
+        <article class="poster-card">
+          <div class="poster-image">
+            <img src="thumbnails/06-pink-carpet-premiere-thumb.jpg" alt="Pink Carpet Premiere official Jahntella poster" loading="lazy" decoding="async">
+          </div>
+          <div class="poster-download-only">
+            <a class="primary-button" href="originals/06-pink-carpet-premiere.png" download="Jahntella-06-pink-carpet-premiere.png">⬇ Download Poster 06</a>
+          </div>
+        </article>
+        <article class="poster-card">
+          <div class="poster-image">
+            <img src="thumbnails/07-candy-castle-royal-thumb.jpg" alt="Candy Castle Royal official Jahntella poster" loading="lazy" decoding="async">
+          </div>
+          <div class="poster-download-only">
+            <a class="primary-button" href="originals/07-candy-castle-royal.png" download="Jahntella-07-candy-castle-royal.png">⬇ Download Poster 07</a>
+          </div>
+        </article>
+        <article class="poster-card">
+          <div class="poster-image">
+            <img src="thumbnails/08-pink-diaries-thumb.jpg" alt="Pink Diaries official Jahntella poster" loading="lazy" decoding="async">
+          </div>
+          <div class="poster-download-only">
+            <a class="primary-button" href="originals/08-pink-diaries.png" download="Jahntella-08-pink-diaries.png">⬇ Download Poster 08</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="wallpaper-divider"><span>Phone Funloads</span></div>
+
+      <div class="downloads-grid">
+        <article class="download-card">
+          <div class="download-preview">
+            <img src="assets/jahntella-phone-wallpaper-01.png" alt="Jahntella Fun Dipp phone wallpaper preview" loading="lazy" decoding="async">
+          </div>
+          <div class="download-copy">
+            <h3>Fun Dipp World</h3>
+            <div class="download-actions">
+              <a class="primary-button" href="assets/jahntella-phone-wallpaper-01.png" download="Jahntella-Fun-Dipp-World-Wallpaper.png">⬇ Download</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="download-card">
+          <div class="download-preview">
+            <img src="assets/jahntella-phone-wallpaper-02.png" alt="Jahntella Sweet Collection phone wallpaper preview" loading="lazy" decoding="async">
+          </div>
+          <div class="download-copy">
+            <h3>Sweet Collection</h3>
+            <div class="download-actions">
+              <a class="primary-button" href="assets/jahntella-phone-wallpaper-02.png" download="Jahntella-Sweet-Collection-Wallpaper.png">⬇ Download</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="download-card">
+          <div class="download-preview">
+            <img src="assets/jahntella-phone-wallpaper-03.png" alt="Jahntella Good Nights phone wallpaper preview" loading="lazy" decoding="async">
+          </div>
+          <div class="download-copy">
+            <h3>Good Nights, Sweet Dreams</h3>
+            <div class="download-actions">
+              <a class="primary-button" href="assets/jahntella-phone-wallpaper-03.png" download="Jahntella-Good-Nights-Wallpaper.png">⬇ Download</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="magazine-home-section reveal" id="magazine">
+      <div class="magazine-home-copy">
+        <p class="eyebrow">SWEETIES MAGAZINE</p>
+        <h2>Step inside Jahntella’s <em>click-through magazine.</em></h2>
+        <p>Flip through the official interactive issue featuring Jahntella’s story, music, style, world, and vision for what comes next.</p>
+        <a class="primary-button" href="sweeties-magazine/index.html">OPEN THE MAGAZINE →</a>
+      </div>
+      <a class="magazine-home-cover" href="sweeties-magazine/index.html" aria-label="Open Sweeties Magazine">
+        <img src="sweeties-magazine/images/cover.png" alt="Sweeties Magazine cover" loading="lazy" decoding="async">
+        <span>CLICK TO FLIP THROUGH</span>
+      </a>
+    </section>
+
+    <section class="pop-merch-section reveal" id="merch">
+      <div class="merch-hero-card">
+        <div class="merch-era-mark" aria-hidden="true">
+          <span class="merch-j">J</span>
+          <span class="merch-star">★</span>
+          <span class="merch-ring ring-one"></span>
+          <span class="merch-ring ring-two"></span>
+        </div>
+        <div class="merch-hero-copy">
+          <p class="eyebrow">OFFICIAL MERCH</p>
+          <h2>The <em>Fun Dipp Era</em> begins here.</h2>
+          <p class="merch-small-line">FIRST DROP • COMING SOON</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section reveal" id="gallery">
+      <div class="section-heading centered">
+        <p class="eyebrow">VISUAL WORLD</p>
+        <h2>Step inside the <em>Jahntella aesthetic.</em></h2>
+      </div>
+      <div class="gallery-grid">
+        <button class="gallery-item gallery-tall" data-lightbox="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/jahntella-official-v1.png">
+          <img src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/jahntella-official-v1.png" alt="Jahntella official artwork" loading="lazy" decoding="async">
+        </button>
+        <button class="gallery-item" data-lightbox="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/fun-dipp-cover.png">
+          <img src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/fun-dipp-cover.png" alt="Fun Dipp artwork" loading="lazy" decoding="async">
+        </button>
+        <button class="gallery-item" data-lightbox="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/pink-lips-remix.png">
+          <img src="https://raw.githubusercontent.com/Jahntella/jahntella/8cfaca00c38476cb9df062b724c8e9104d3001bb/assets/pink-lips-remix.png" alt="Pink Lips Remix artwork" loading="lazy" decoding="async">
+        </button>
+        <button class="gallery-item" data-lightbox="sweetville/bite-lip-cover.webp">
+          <img src="sweetville/bite-lip-cover.webp" alt="Bite Lip artwork" loading="lazy" decoding="async">
+        </button>
+        <button class="gallery-item" data-lightbox="sweetville/gloss-cover.webp">
+          <img src="sweetville/gloss-cover.webp" alt="Gloss artwork" loading="lazy" decoding="async">
+        </button>
+        <button class="gallery-item" data-lightbox="sweetville/i-want-to-be-your-girl-cover.webp">
+          <img src="sweetville/i-want-to-be-your-girl-cover.webp" alt="I Want To Be Your Girl artwork" loading="lazy" decoding="async">
+        </button>
+        <button class="gallery-item" data-lightbox="sweetville/embrace-me-cover.webp">
+          <img src="sweetville/embrace-me-cover.webp" alt="Embrace Me artwork" loading="lazy" decoding="async">
+        </button>
+        <button class="gallery-item" data-lightbox="sweetville/we-come-together-cover.webp">
+          <img src="sweetville/we-come-together-cover.webp" alt="We Come Together artwork" loading="lazy" decoding="async">
+        </button>
+        <button class="gallery-item" data-lightbox="sweetville/play-with-me-cover.webp">
+          <img src="sweetville/play-with-me-cover.webp" alt="Play With Me artwork" loading="lazy" decoding="async">
+        </button>
+        <button class="gallery-item" data-lightbox="sweetville/carnival-cover.webp">
+          <img src="sweetville/carnival-cover.webp" alt="Carnival artwork" loading="lazy" decoding="async">
+        </button>
+        <button class="gallery-item" data-lightbox="sweetville/made-of-light-cover.webp">
+          <img src="sweetville/made-of-light-cover.webp" alt="Made of Light artwork" loading="lazy" decoding="async">
+        </button>
+        <button class="gallery-item" data-lightbox="sweetville/candy-wrapper-cover.webp">
+          <img src="sweetville/candy-wrapper-cover.webp" alt="Candy Wrapper artwork" loading="lazy" decoding="async">
+        </button>
+        <button class="gallery-item" data-lightbox="sweetville/playground-cover.webp">
+          <img src="sweetville/playground-cover.webp" alt="Playground artwork" loading="lazy" decoding="async">
+        </button>
+        <button class="gallery-item" data-lightbox="sweetville/milk-shake-cover.webp">
+          <img src="sweetville/milk-shake-cover.webp" alt="Milk Shake artwork" loading="lazy" decoding="async">
+        </button>
+        <button class="gallery-item" data-lightbox="sweetville/tonight-cover.webp">
+          <img src="sweetville/tonight-cover.webp" alt="Tonight artwork" loading="lazy" decoding="async">
+        </button>
+        <button class="gallery-item" data-lightbox="assets/album2/sweet-dreams-cover.webp">
+          <img src="assets/album2/sweet-dreams-cover-thumb.webp" alt="Sweet Dreams artwork" loading="lazy" decoding="async" width="720" height="720">
+        </button>
+        <button class="gallery-item" data-lightbox="assets/album2/we-are-1-cover.webp">
+          <img src="assets/album2/we-are-1-cover-thumb.webp" alt="We Are 1 artwork" loading="lazy" decoding="async" width="720" height="720">
+        </button>
+        <button class="gallery-item" data-lightbox="assets/album2/boots-smile-attitude-cover.webp">
+          <img src="assets/album2/boots-smile-attitude-cover-thumb.webp" alt="Boots, Smile &amp; Attitude artwork" loading="lazy" decoding="async" width="720" height="720">
+        </button>
+      </div>
+    </section>
+
+    <section class="coming-soon-section reveal">
+      <div class="coming-soon-card">
+        <p class="eyebrow">COMING SOON</p>
+        <h2>More music. More visuals. More <em>World of Sweet.</em></h2>
+        <p>Future releases, videos, collectibles, and exclusive fan experiences are on the way.</p>
+      </div>
+    </section>
+
+
+    <section class="connect-section reveal" id="connect">
+      <p class="eyebrow">CONNECT</p>
+      <h2>Stay inside the <em>World of Sweet.</em></h2>
+      <div class="social-links">
+        <a href="https://www.instagram.com/jahntella" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.tiktok.com/@jahntella" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://www.youtube.com/@Jahntella" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://open.spotify.com/search/Jahntella" target="_blank" rel="noopener">Spotify</a>
+      </div>
+    </section>
+  </main>
+
+  
+<section class="exp203-investor-entry" aria-label="Investor portal">
+  <div class="exp203-investor-card">
+    <span class="exp203-investor-kicker">PRIVATE PRESENTATION</span>
+    <h2>Explore the world behind <em>Jahntella.</em></h2>
+    <p>View the brand vision, original music, Sweetville, creative direction, growth roadmap, and investment opportunity.</p>
+    <a class="exp203-investor-button" href="investors/">Enter the Investor Portal <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+<footer><span>© <span id="year"></span> Jahntella™</span><section id="shyGuyShawnTribute" class="shy-guy-shawn-tribute"><div class="shy-guy-shawn-rule" aria-hidden="true"></div><p>Peace to <strong>Shy Guy Shawn</strong> <span>♡</span></p><small>Thank You</small></section></footer>
+
+  <div class="player visible" id="player" aria-live="polite">
+    <button class="player-skip" id="playerPrev" aria-label="Previous track">⏮</button>
+    <img id="playerArtwork" src="assets/fun-dipp-cover.webp" alt="" loading="eager" decoding="async">
+    <div class="player-info">
+      <strong id="playerTitle">Fun Dipp</strong>
+      <span class="now-playing"><span class="equalizer"><i></i><i></i><i></i><i></i></span> Jahntella</span>
+    </div>
+    <button id="playerToggle" aria-label="Play or pause">▶</button>
+    <button class="player-skip" id="playerNext" aria-label="Next track">⏭</button>
+    <input id="playerProgress" type="range" min="0" max="100" value="0" aria-label="Track progress">
+    <span id="playerTime">0:00</span>
+    <label class="volume-control" aria-label="Volume">
+      <span>🔊</span>
+      <input id="playerVolume" type="range" min="0" max="1" step="0.01" value="0.85">
+    </label>
+  </div>
+
+  <div class="lightbox exp63-true-color-lightbox" id="lightbox" aria-hidden="true">
+    <button id="lightboxClose" aria-label="Close image">×</button>
+    <img id="lightboxImage" alt="" loading="lazy" decoding="async">
+  </div>
+
+  <audio id="audioFunDipp" preload="none">
+    <source src="fun-dipp-v430.mp4" type="audio/mp4">
+  </audio>
+
+  <audio id="audioPinkLips" preload="none">
+    <source src="pink-lips-remix-v430.mp4" type="audio/mp4">
+  </audio>
+
+  <audio id="audioBiteLip" preload="none">
+    <source src="sweetville/bite-lip-remastered.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="audioGloss" preload="none">
+    <source src="sweetville/gloss-remastered.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="audioYourGirl" preload="none">
+    <source src="sweetville/i-want-to-be-your-girl.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="audioEmbraceMe" preload="none">
+    <source src="sweetville/embrace-me.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="audioWeComeTogether" preload="none">
+    <source src="sweetville/we-come-together.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="audioPlayWithMe" preload="none">
+    <source src="sweetville/play-with-me.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="audioCarnival" preload="none">
+    <source src="sweetville/carnival.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="audioMadeOfLight" preload="none">
+    <source src="sweetville/made-of-light.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="audioCandyWrapper" preload="none">
+    <source src="sweetville/candy-wrapper.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="audioPlayground" preload="none">
+    <source src="sweetville/playground.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="audioMilkShake" preload="none">
+    <source src="sweetville/milk-shake.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="audioTonight" preload="none">
+    <source src="sweetville/tonight.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="audioSweetDreams" preload="none">
+    <source src="sweetville/sweet-dreams.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="audioWeAre1" preload="none">
+    <source src="sweetville/we-are-1.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="audioBootsSmileAttitude" preload="none">
+    <source src="sweetville/boots-smile-attitude.mp3" type="audio/mpeg">
+  </audio>
+
+  <script defer src="album2-preview-config.js?v=82.0"></script>
+  <script defer src="script.js?v=74.0"></script>
+  <script defer src="exp57-gallery-lightbox.js?v=63.0"></script>
+  <script defer src="exp60-shine-era-sneak-peek.js?v=66.0"></script>
+
+  <!-- Temporarily hidden while Sweetville is under construction. -->
+  <div class="exp191-ticket-wrap" hidden aria-hidden="true">
+    <a class="exp191-ticket" href="sweetville/" aria-label="Use your Ticket to Sweetville">
+      <span class="exp191-ticket-icon">🎟️</span>
+      <span class="exp191-ticket-copy">
+        <small>ADMIT ONE SWEETIE</small>
+        <strong>Ticket to Sweetville</strong>
+        <span>Open the portal →</span>
+      </span>
+    </a>
+  </div>
+
+  <aside class="exp67-countdown" id="exp67Countdown" aria-label="Countdown to The Sweet Era album release">
+    <div class="exp67-ticket-edge" aria-hidden="true"></div>
+    <button class="exp67-drag-handle" id="exp67DragHandle" type="button" aria-label="Move countdown ticket">
+      <span aria-hidden="true">✦</span>
+      <strong>THE SWEET ERA</strong>
+      <small>ALBUM I</small>
+    </button>
+    <button class="exp67-toggle" id="exp67Toggle" type="button" aria-expanded="true" aria-controls="exp67CountdownBody" aria-label="Minimize album countdown">−</button>
+    <div class="exp67-countdown-body" id="exp67CountdownBody">
+      <p class="exp67-kicker">AUGUST 27 • MIDNIGHT</p>
+      <div class="exp67-time" role="timer" aria-live="off" aria-label="Time remaining until The Sweet Era album release">
+        <span><strong id="exp67Days">00</strong><small>DAYS</small></span>
+        <i aria-hidden="true">:</i>
+        <span><strong id="exp67Hours">00</strong><small>HRS</small></span>
+        <i aria-hidden="true">:</i>
+        <span><strong id="exp67Minutes">00</strong><small>MIN</small></span>
+        <i aria-hidden="true">:</i>
+        <span><strong id="exp67Seconds">00</strong><small>SEC</small></span>
+      </div>
+      <p class="exp67-message" id="exp67Message"><strong>ALBUM DROP</strong><span>Sweetie Roll Call ♡</span></p>
+      <p class="exp67-local">Countdown uses your local time.</p>
+    </div>
+    <span class="exp67-collapsed-copy" aria-hidden="true">⏳ ALBUM COUNTDOWN</span>
+  </aside>
+
+<script src="exp19-5-popstar.js?v=19.5" defer></script>
+<script src="exp21-0-performance.js?v=21.0" defer></script>
+<script src="exp56-hero-video.js?v=56.0" defer></script>
+<script src="exp25-1-sweet-express.js?v=62.0" defer></script>
+<script src="exp67-album-countdown.js?v=81.0" defer></script>
+
+<div class="exp294-contact-modal" id="exp294ContactModal" aria-hidden="true">
+  <div class="exp294-contact-card" role="dialog" aria-modal="true" aria-labelledby="exp294ContactTitle">
+    <button class="exp294-contact-close" type="button" data-exp294-close aria-label="Close contact form">×</button>
+    <small>CONTACT JAHNTELLA</small>
+    <h2 id="exp294ContactTitle">Send us a message.</h2>
+    <p>Your message will be delivered directly to the Jahntella team.</p>
+
+    <form action="https://formsubmit.co/jahntella@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Jahntella Inquiry">
+      <input type="hidden" name="inquiry_type" value="General Inquiry">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="https://jahntella.com/thank-you.html">
+
+      <div class="exp294-contact-grid">
+        <div class="exp294-contact-field full">
+          <label>Recipient</label>
+          <input type="email" value="jahntella@gmail.com" readonly>
+        </div>
+        <div class="exp294-contact-field full">
+          <label>Subject</label>
+          <input type="text" name="subject_display" value="Jahntella Inquiry" readonly>
+        </div>
+        <div class="exp294-contact-field">
+          <label for="exp294Name">Your Name</label>
+          <input id="exp294Name" type="text" name="name" required>
+        </div>
+        <div class="exp294-contact-field">
+          <label for="exp294Email">Your Email</label>
+          <input id="exp294Email" type="email" name="email" required>
+        </div>
+        <div class="exp294-contact-field full">
+          <label for="exp294Message">Message</label>
+          <textarea id="exp294Message" name="message" required></textarea>
+        </div>
+      </div>
+      <button class="exp294-contact-submit" type="submit">Send Inquiry 💖</button>
+      <p class="exp294-contact-note">The first live submission may require a one-time confirmation in the Jahntella inbox before future messages are delivered automatically.</p>
+    </form>
+  </div>
+</div>
+
+<script src="exp29-4-contact.js?v=29.4" defer></script>
+<script src="exp30-6-poster-fix.js?v=30.6" defer></script>
+<script defer src="sweetie-access.js?v=80.0"><\/script></body>
+</html>
