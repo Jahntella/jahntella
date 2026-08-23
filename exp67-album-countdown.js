@@ -49,7 +49,7 @@
     if (remaining <= 0) {
       Object.values(units).forEach(unit => { if (unit) unit.textContent = "00"; });
       ticket.classList.add("is-expired");
-      if (message) message.innerHTML = "<strong>ALBUM AVAILABLE NOW</strong><span>Free listening has ended</span>";
+      if (message) message.innerHTML = "<strong>ALBUM AVAILABLE NOW</strong><span>Sweetie Roll Call is open ♡</span>";
       return;
     }
     const totalSeconds = Math.floor(remaining / 1000);
