@@ -153,6 +153,65 @@
     badge.setAttribute('aria-label',isMember()?'Signed in as a Sweetie. Click to sign out.':'Unlock the full Jahntella playlist');
   };
 
+  const PRIVATE_AUDIO_BUCKET='jahntella-private';
+  const AUDIO_ID_TITLES={
+    audioFunDipp:'fun dipp',audioPinkLips:'fun dipp pink lips remix',audioBiteLip:'bite lip',audioGloss:'gloss',
+    audioYourGirl:'i want to be your girl',audioEmbraceMe:'embrace me',audioWeComeTogether:'we come together',
+    audioPlayWithMe:'play with me',audioCarnival:'carnival',audioMadeOfLight:'made of light',
+    audioCandyWrapper:'candy wrapper',audioPlayground:'playground',audioMilkShake:'milk shake',audioTonight:'tonight',
+    audioSweetDreams:'sweet dreams',audioWeAre1:'we are 1',audioBootsSmileAttitude:'boots smile attitude'
+  };
+  const normalizeTrack=value=>String(value||'').toLowerCase().replace(/%20/g,' ').replace(/&/g,' and ').replace(/remastered/g,'').replace(/[^a-z0-9]+/g,' ').trim();
+  let privateAudioPromise=null;
+
+  const findPrivateTrack=(files,wanted)=>{
+    const key=normalizeTrack(wanted);
+    return files.find(file=>normalizeTrack(file.name)===key)||
+      files.find(file=>normalizeTrack(file.name).startsWith(key))||
+      files.find(file=>key.startsWith(normalizeTrack(file.name)));
+  };
+
+  async function preparePrivateAudio(){
+    if(!gateActive||!isMember()||!client)return;
+    if(privateAudioPromise)return privateAudioPromise;
+    privateAudioPromise=(async()=>{
+      try{
+        const [rootResult,folderResult]=await Promise.all([
+          client.storage.from(PRIVATE_AUDIO_BUCKET).list('',{limit:100,sortBy:{column:'name',order:'asc'}}),
+          client.storage.from(PRIVATE_AUDIO_BUCKET).list('audio',{limit:100,sortBy:{column:'name',order:'asc'}})
+        ]);
+        const files=[...(rootResult.data||[]).filter(file=>/\\.mp3$/i.test(file.name)).map(file=>({...file,path:file.name})),
+          ...(folderResult.data||[]).filter(file=>/\\.mp3$/i.test(file.name)).map(file=>({...file,path:'audio/'+file.name}))];
+        const assignments=[];
+        document.querySelectorAll('audio').forEach(audio=>{
+          const source=audio.querySelector('source');
+          const current=source?.getAttribute('src')||audio.getAttribute('src')||'';
+          const basename=decodeURIComponent(current.split('/').pop()?.split('?')[0]||'').replace(/\\.(mp3|mp4)$/i,'');
+          const wanted=AUDIO_ID_TITLES[audio.id]||basename;
+          const file=findPrivateTrack(files,wanted);
+          if(file)assignments.push({audio,source,path:file.path});
+        });
+        const uniquePaths=[...new Set(assignments.map(item=>item.path))];
+        if(!uniquePaths.length)return;
+        const {data,error}=await client.storage.from(PRIVATE_AUDIO_BUCKET).createSignedUrls(uniquePaths,3600);
+        if(error)throw error;
+        const signed=new Map((data||[]).filter(item=>item.signedUrl).map(item=>[item.path,item.signedUrl]));
+        assignments.forEach(({audio,source,path})=>{
+          const url=signed.get(path);if(!url)return;
+          audio.pause();audio.removeAttribute('src');
+          if(source)source.setAttribute('src',url);else audio.setAttribute('src',url);
+          audio.load();
+        });
+        document.documentElement.dataset.privateAudioReady='true';
+        document.documentElement.dataset.privateAudioCount=String(assignments.length);
+      }catch(error){
+        privateAudioPromise=null;
+        console.warn('Private Sweetie audio could not be prepared.',error);
+      }
+    })();
+    return privateAudioPromise;
+  }
+
   const readCutoff=async()=>{
     try{
       const {data}=await client.from('site_settings').select('setting_value').eq('setting_key','full_listening_public_until').maybeSingle();
@@ -170,7 +229,8 @@
       gateActive=TEST_MODE||Date.now()>=Date.parse(cutoff);
       ensureModal();
       updateMemberBadge();
-      client.auth.onAuthStateChange((_event,nextSession)=>{session=nextSession;updateMemberBadge();if(session)closeModal();});
+      if(session)preparePrivateAudio();
+      client.auth.onAuthStateChange((_event,nextSession)=>{session=nextSession;updateMemberBadge();if(session){closeModal();preparePrivateAudio();}else privateAudioPromise=null;});
       document.documentElement.dataset.sweetieAccessReady='true';
       document.documentElement.dataset.sweetieGateActive=String(gateActive);
     }catch(error){
