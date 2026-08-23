@@ -57,6 +57,5 @@
   $('campaignForm').addEventListener('submit',sendCampaign);
   $('adminLoginForm').addEventListener('submit',requestAdminLink);
   $('signOut').addEventListener('click',async()=>{await client.auth.signOut();location.reload()});
-  client.auth.onAuthStateChange((_event,session)=>{if(session){location.reload()}else if(document.body)location.reload()});
   init();
 })();
