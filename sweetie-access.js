@@ -199,7 +199,7 @@
         assignments.forEach(({audio,source,path})=>{
           const url=signed.get(path);if(!url)return;
           audio.pause();audio.removeAttribute('src');
-          if(source)source.setAttribute('src',url);else audio.setAttribute('src',url);
+          if(source){source.setAttribute('src',url);source.setAttribute('type','audio/mpeg');}else audio.setAttribute('src',url);
           audio.load();
         });
         document.documentElement.dataset.privateAudioReady='true';
