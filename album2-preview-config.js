@@ -15,50 +15,49 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
   const addScript=(src,version)=>{const s=document.createElement('script');s.src=new URL(`${src}?v=${version}`,document.baseURI).href;s.defer=true;document.head.appendChild(s);};
   const addCss=(href,version)=>{const l=document.createElement('link');l.rel='stylesheet';l.href=new URL(`${href}?v=${version}`,document.baseURI).href;document.head.appendChild(l);};
 
-  const createVisualizerCard=({id,title,video,poster})=>{
+  const shineTracks=[
+    {key:'sweet-dreams',title:'Sweet Dreams',tag:'DREAM POP · ALBUM II',art:'assets/album2/sweet-dreams-cover.webp',description:'A neon after-dark escape where the beat, the lights, and one unforgettable connection turn into a perfect dream.'},
+    {key:'we-are-1',title:'We Are 1',tag:'UNITY POP · ALBUM II',art:'assets/album2/we-are-1-cover.webp',description:'A glowing celebration of togetherness—made for raised hands, shared hearts, and one beautiful moment in the light.'},
+    {key:'boots-smile-attitude',title:'Boots, Smile & Attitude',tag:'POP COUNTRY EDM · ALBUM II',art:'assets/album2/boots-smile-attitude-cover.webp',description:'Boots on, confidence up—a sparkling country-pop dance-floor rush with a smile that owns the room.'},
+    {key:'midnight-rodeo',title:'Midnight Rodeo',tag:'NEON RODEO · ALBUM II',art:'assets/album2/midnight-rodeo-cover.webp?v=77.0',description:'A wild moonlit ride where country attitude meets crystal-pop energy and the night refuses to be tamed.'},
+    {key:'redline',title:'Redline',tag:'HIGH-SPEED POP · ALBUM II',art:'assets/album2/redline-cover.webp',description:'A fearless, full-throttle anthem built for open roads, racing hearts, and the thrill of going all the way.'},
+    {key:'smoke-show',title:'Smoke Show',tag:'AFTER-DARK POP · ALBUM II',art:'assets/album2/smoke-show-cover.webp',description:'Sultry, self-assured, and impossible to ignore—pure heat wrapped in purple smoke and electric confidence.'},
+    {key:'chasing-me',title:'Chasing Me',tag:'CLUB POP · ALBUM II',art:'assets/album2/chasing-me-cover.webp',description:'A sleek no-chaser anthem for knowing your worth, setting the pace, and letting everybody else try to keep up.'},
+    {key:'coming-down',title:'Coming Down',tag:'CONCERT POP · ALBUM II',art:'assets/album2/coming-down-cover.webp',description:'The lights are high and the feeling is higher—a concert-sized rush you never want to come down from.'},
+    {key:'you-and-me',title:'You and Me',tag:'GALAXY POP · ALBUM II',art:'assets/album2/you-and-me-cover.webp',description:'A cosmic final ride made for two hearts, one neon galaxy, and a love built to keep shining forever.'}
+  ];
+
+  const createShineSongCard=track=>{
     const a=document.createElement('article');
-    a.id=id;
-    a.className='exp60-shine-video-card';
-    a.innerHTML=`<div class="exp60-shine-video-heading"><span>NEW ERA <i aria-hidden="true"></i> OFFICIAL VISUALIZER</span><h3>${title}</h3></div><div class="exp60-shine-video-frame"><video controls playsinline preload="none" poster="${poster}" aria-label="Play the ${title} official visualizer"><source src="${video}" type="video/mp4"></video></div><div class="exp60-shine-video-note"><span aria-hidden="true">◇</span><p><strong>${title}.</strong> Full song + visualizer from The Shine Era.</p></div>`;
+    a.className='exp44-new-music-card shine-era-song-card';
+    a.dataset.card=track.key;
+    a.innerHTML=`<button class="shine-era-cover-play" type="button" data-shine-track="${track.key}" aria-label="Play ${track.title}"><img src="${track.art}" alt="${track.title} song cover by Jahntella" loading="lazy" decoding="async" width="480" height="480"><span aria-hidden="true">▶</span></button><div><small>${track.tag}</small><h3>${track.title}</h3><p>${track.description}</p><button class="play-button shine-era-play-button" type="button" data-track="${track.key}" data-shine-track="${track.key}">▶ Play ${track.title}</button></div>`;
     return a;
   };
 
-  const wireExclusiveVisualizers=root=>{
-    const visualizers=Array.from(root.querySelectorAll('.exp60-shine-video-frame video'));
-    visualizers.forEach((v,index)=>{
-      if(v.dataset.exclusiveShineEra==='true')return;
-      v.dataset.exclusiveShineEra='true';
-      v.addEventListener('play',()=>{
-        visualizers.forEach(o=>{if(o!==v&&!o.paused)o.pause();});
-        document.querySelectorAll('audio').forEach(a=>{if(!a.paused)a.pause();});
-      });
-      v.addEventListener('ended',()=>{
-        const next=visualizers[index+1];
-        if(!next)return;
-        try{next.currentTime=0;}catch{}
-        next.play().then(()=>{
-          next.closest('.exp60-shine-video-card')?.scrollIntoView({behavior:'smooth',block:'center'});
-        }).catch(()=>{});
-      });
-    });
-  };
-
-  const addHomepageVisualizers=()=>{
+  const addHomepageSongCards=()=>{
     const g=document.querySelector('.exp66-shine-videos');
     if(!g)return;
-    g.querySelectorAll(':scope > article').forEach(card=>{
-      const title=card.querySelector('h3')?.textContent?.trim();
-      if(title==='Midnight Rodeo'||title==='Redline'||title==='Smoke Show'||title==='Chasing Me'||title==='Coming Down'||title==='You and Me')card.remove();
-    });
-    const ref=Array.from(g.children).find(card=>card.querySelector('h3')?.textContent?.trim()==='Boots, Smile & Attitude') || g.lastElementChild;
-    const midnight=createVisualizerCard({id:'midnightRodeoShineEraVisualizer',title:'Midnight Rodeo',video:'assets/album2/midnight-rodeo-official-visualizer.mp4?v=77.0',poster:'assets/album2/midnight-rodeo-cover.webp?v=77.0'});
-    const redline=createVisualizerCard({id:'redlineShineEraVisualizer',title:'Redline',video:'assets/album2/redline-official-visualizer.mp4',poster:'assets/album2/redline-cover.webp'});
-    const smoke=createVisualizerCard({id:'smokeShowShineEraVisualizer',title:'Smoke Show',video:'assets/album2/smoke-show-official-visualizer.mp4',poster:'assets/album2/smoke-show-cover.webp'});
-    const chasing=createVisualizerCard({id:'chasingMeShineEraVisualizer',title:'Chasing Me',video:'assets/album2/chasing-me-official-visualizer.mp4',poster:'assets/album2/chasing-me-cover.webp'});
-    const coming=createVisualizerCard({id:'comingDownShineEraVisualizer',title:'Coming Down',video:'assets/album2/coming-down-official-visualizer.mp4',poster:'assets/album2/coming-down-cover.webp'});
-    const youAndMe=createVisualizerCard({id:'youAndMeShineEraVisualizer',title:'You and Me',video:'assets/album2/you-and-me-official-visualizer.mp4',poster:'assets/album2/you-and-me-cover.webp'});
-    if(ref?.parentNode){ref.parentNode.insertBefore(midnight,ref.nextSibling);ref.parentNode.insertBefore(redline,midnight.nextSibling);ref.parentNode.insertBefore(smoke,redline.nextSibling);ref.parentNode.insertBefore(chasing,smoke.nextSibling);ref.parentNode.insertBefore(coming,chasing.nextSibling);ref.parentNode.insertBefore(youAndMe,coming.nextSibling);}else{g.append(midnight,redline,smoke,chasing,coming,youAndMe);}
-    wireExclusiveVisualizers(g);
+    g.classList.add('shine-era-song-grid');
+    g.setAttribute('aria-label','Play The Shine Era Album II songs in album order');
+    g.replaceChildren(...shineTracks.map(createShineSongCard));
+  };
+
+  const wireShineSongCards=()=>{
+    document.addEventListener('click',event=>{
+      const button=event.target.closest?.('[data-shine-track]');
+      if(!button)return;
+      const key=button.dataset.shineTrack;
+      if(!key)return;
+      if(['midnight-rodeo','redline','smoke-show','chasing-me','coming-down','you-and-me'].includes(key)){
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        window.jahntellaPlayShineEraTrack?.(key,true);
+      }else if(button.classList.contains('shine-era-cover-play')){
+        event.preventDefault();
+        window.jahntellaSelectSiteTrack?.(key,true,{fresh:true});
+      }
+    },true);
   };
 
   const addShineEraThankYou=()=>{
@@ -132,7 +131,9 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
     addCss('coming-down-site.css','72.0');
     addCss('you-and-me-site.css','73.0');
     addCss('world-tour-concert-experience.css','76.8');
-    addHomepageVisualizers();
+    addCss('shine-era-song-cards.css','78.0');
+    addHomepageSongCards();
+    wireShineSongCards();
     addShineEraThankYou();
     removeNonMusicGalleryPortrait();
     orderAestheticsByAlbum();
