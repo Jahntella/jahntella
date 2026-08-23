@@ -38,5 +38,5 @@
 .shine-era-cover-play:focus-visible{outline:3px solid #ff79d8;outline-offset:-3px}
 .shine-era-play-button{width:100%;margin-top:auto}
 @media(max-width:900px){.exp66-shine-videos.shine-era-song-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:600px){.exp66-shine-videos.shine-era-song-grid{grid-template-columns:1fr}.shine-era-song-card>div{padding:1rem}}
+@media(max-width:600px){.exp66-shine-videos.shine-era-song-grid{grid-template-columns:1fr;justify-items:center}.shine-era-song-card{width:min(88vw,350px)}.shine-era-song-card>div{padding:.85rem .9rem 1rem}.shine-era-song-card p{font-size:.92rem;line-height:1.45}.shine-era-cover-play img{width:100%;height:auto;aspect-ratio:1}}
 @media(prefers-reduced-motion:reduce){.shine-era-cover-play img{transition:none}}
