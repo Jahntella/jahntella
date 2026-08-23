@@ -19,6 +19,16 @@
       </div>
     </header>
 
+    <section id="loginCard" class="card login-card" hidden>
+      <h2>Admin sign in</h2>
+      <p>Use the email address authorized for Sweeties Marketing. We'll send you a secure sign-in link — no password needed.</p>
+      <form id="adminLoginForm">
+        <label>Your admin email<input id="adminEmail" name="email" type="email" autocomplete="email" required placeholder="you@example.com"></label>
+        <button id="adminLoginButton" class="primary" type="submit">EMAIL ME A SECURE SIGN-IN LINK ♡</button>
+        <p id="loginStatus" class="form-status" aria-live="polite"></p>
+      </form>
+    </section>
+
     <section id="app" class="card" hidden>
       <div class="recipient-bar">
         <div><strong id="recipientCount">—</strong><span> verified marketing subscribers</span></div>
@@ -26,15 +36,15 @@
       </div>
 
       <form id="campaignForm">
-        <label>Subject<input id="subject" maxlength="120" required placeholder="💖 Something special just dropped!" /></label>
-        <label>Preheader<input id="preheader" maxlength="160" placeholder="A little Sweeties surprise is waiting for you…" /></label>
-        <label>Headline<input id="headline" maxlength="120" required placeholder="Sweeties, look what just arrived!" /></label>
+        <label>Subject<input id="subject" maxlength="120" required placeholder="💖 Something special just dropped!"></label>
+        <label>Preheader<input id="preheader" maxlength="160" placeholder="A little Sweeties surprise is waiting for you…"></label>
+        <label>Headline<input id="headline" maxlength="120" required placeholder="Sweeties, look what just arrived!"></label>
         <label>Message<textarea id="message" rows="7" maxlength="4000" required placeholder="Write your email body here. Line breaks are preserved."></textarea></label>
         <div class="two-col">
-          <label>Button text<input id="buttonText" maxlength="60" placeholder="SHOP NOW ♡" /></label>
-          <label>Button link<input id="buttonUrl" type="url" maxlength="1000" placeholder="https://jahntella.com/" /></label>
+          <label>Button text<input id="buttonText" maxlength="60" placeholder="SHOP NOW ♡"></label>
+          <label>Button link<input id="buttonUrl" type="url" maxlength="1000" placeholder="https://jahntella.com/"></label>
         </div>
-        <label>Optional image URL<input id="imageUrl" type="url" maxlength="1000" placeholder="https://…/your-image.jpg" /></label>
+        <label>Optional image URL<input id="imageUrl" type="url" maxlength="1000" placeholder="https://…/your-image.jpg"></label>
         <div class="actions">
           <button id="preview" class="secondary" type="button">Preview Email</button>
           <button id="sendTest" class="secondary" type="button">Send Test To Me</button>
@@ -50,7 +60,7 @@
     </section>
 
     <section class="setup-note">
-      <strong>First-time setup:</strong> this page uses the existing Supabase Auth session. The Resend API key stays server-side in the Supabase Edge Function and is never placed in this repository or browser code.
+      <strong>Private admin area:</strong> this page uses your existing Supabase Auth session. The Resend API key stays server-side in the Supabase Edge Function and is never placed in this repository or browser code.
     </section>
   </main>
 
