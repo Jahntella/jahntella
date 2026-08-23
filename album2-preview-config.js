@@ -16,22 +16,27 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
   const addCss=(href,version)=>{const l=document.createElement('link');l.rel='stylesheet';l.href=new URL(`${href}?v=${version}`,document.baseURI).href;document.head.appendChild(l);};
 
   const shineTracks=[
-    {key:'sweet-dreams',title:'Sweet Dreams',tag:'DREAM POP · ALBUM II',art:'assets/album2/sweet-dreams-cover-thumb.webp?v=82.0',description:'A neon after-dark escape where the beat, the lights, and one unforgettable connection turn into a perfect dream.'},
-    {key:'we-are-1',title:'We Are 1',tag:'UNITY POP · ALBUM II',art:'assets/album2/we-are-1-cover-thumb.webp?v=82.0',description:'A glowing celebration of togetherness—made for raised hands, shared hearts, and one beautiful moment in the light.'},
-    {key:'boots-smile-attitude',title:'Boots, Smile & Attitude',tag:'POP COUNTRY EDM · ALBUM II',art:'assets/album2/boots-smile-attitude-cover-thumb.webp?v=82.0',description:'Boots on, confidence up—a sparkling country-pop dance-floor rush with a smile that owns the room.'},
-    {key:'midnight-rodeo',title:'Midnight Rodeo',tag:'NEON RODEO · ALBUM II',art:'assets/album2/midnight-rodeo-cover-thumb.webp?v=82.0',description:'A wild moonlit ride where country attitude meets crystal-pop energy and the night refuses to be tamed.'},
-    {key:'redline',title:'Redline',tag:'HIGH-SPEED POP · ALBUM II',art:'assets/album2/redline-cover-thumb.webp?v=82.0',description:'A fearless, full-throttle anthem built for open roads, racing hearts, and the thrill of going all the way.'},
-    {key:'smoke-show',title:'Smoke Show',tag:'AFTER-DARK POP · ALBUM II',art:'assets/album2/smoke-show-cover-thumb.webp?v=82.0',description:'Sultry, self-assured, and impossible to ignore—pure heat wrapped in purple smoke and electric confidence.'},
-    {key:'chasing-me',title:'Chasing Me',tag:'CLUB POP · ALBUM II',art:'assets/album2/chasing-me-cover-thumb.webp?v=82.0',description:'A sleek no-chaser anthem for knowing your worth, setting the pace, and letting everybody else try to keep up.'},
-    {key:'coming-down',title:'Coming Down',tag:'CONCERT POP · ALBUM II',art:'assets/album2/coming-down-cover-thumb.webp?v=82.0',description:'The lights are high and the feeling is higher—a concert-sized rush you never want to come down from.'},
-    {key:'you-and-me',title:'You and Me',tag:'GALAXY POP · ALBUM II',art:'assets/album2/you-and-me-cover-thumb.webp?v=82.0',description:'A cosmic final ride made for two hearts, one neon galaxy, and a love built to keep shining forever.'}
+    {key:'sweet-dreams',title:'Sweet Dreams',tag:'DREAM POP · ALBUM II',art:'assets/album2/sweet-dreams-cover-thumb.webp?v=83.0',description:'A neon after-dark escape where the beat, the lights, and one unforgettable connection turn into a perfect dream.'},
+    {key:'we-are-1',title:'We Are 1',tag:'UNITY POP · ALBUM II',art:'assets/album2/we-are-1-cover-thumb.webp?v=83.0',description:'A glowing celebration of togetherness—made for raised hands, shared hearts, and one beautiful moment in the light.'},
+    {key:'boots-smile-attitude',title:'Boots, Smile & Attitude',tag:'POP COUNTRY EDM · ALBUM II',art:'assets/album2/boots-smile-attitude-cover-thumb.webp?v=83.0',description:'Boots on, confidence up—a sparkling country-pop dance-floor rush with a smile that owns the room.'},
+    {key:'midnight-rodeo',title:'Midnight Rodeo',tag:'NEON RODEO · ALBUM II',art:'assets/album2/midnight-rodeo-cover-thumb.webp?v=83.0',description:'A wild moonlit ride where country attitude meets crystal-pop energy and the night refuses to be tamed.'},
+    {key:'redline',title:'Redline',tag:'HIGH-SPEED POP · ALBUM II',art:'assets/album2/redline-cover-thumb.webp?v=83.0',description:'A fearless, full-throttle anthem built for open roads, racing hearts, and the thrill of going all the way.'},
+    {key:'smoke-show',title:'Smoke Show',tag:'AFTER-DARK POP · ALBUM II',art:'assets/album2/smoke-show-cover-thumb.webp?v=83.0',description:'Sultry, self-assured, and impossible to ignore—pure heat wrapped in purple smoke and electric confidence.'},
+    {key:'chasing-me',title:'Chasing Me',tag:'CLUB POP · ALBUM II',art:'assets/album2/chasing-me-cover-thumb.webp?v=83.0',description:'A sleek no-chaser anthem for knowing your worth, setting the pace, and letting everybody else try to keep up.'},
+    {key:'coming-down',title:'Coming Down',tag:'CONCERT POP · ALBUM II',art:'assets/album2/coming-down-cover-thumb.webp?v=83.0',description:'The lights are high and the feeling is higher—a concert-sized rush you never want to come down from.'},
+    {key:'you-and-me',title:'You and Me',tag:'GALAXY POP · ALBUM II',art:'assets/album2/you-and-me-cover-thumb.webp?v=83.0',description:'A cosmic final ride made for two hearts, one neon galaxy, and a love built to keep shining forever.'}
   ];
 
   const createShineSongCard=track=>{
     const a=document.createElement('article');
+    const position=shineTracks.indexOf(track);
+    const fullArt=track.art.replace('-cover-thumb.webp?v=83.0','-cover.webp');
+    const priority=position<3?'high':'auto';
     a.className='exp44-new-music-card shine-era-song-card';
     a.dataset.card=track.key;
-    a.innerHTML=`<button class="shine-era-cover-play" type="button" data-shine-track="${track.key}" aria-label="Play ${track.title}"><img src="${track.art}" alt="${track.title} song cover by Jahntella" loading="lazy" decoding="async" width="480" height="480"><span aria-hidden="true">▶</span></button><div><small>${track.tag}</small><h3>${track.title}</h3><p>${track.description}</p><button class="play-button shine-era-play-button" type="button" data-track="${track.key}" data-shine-track="${track.key}">▶ Play ${track.title}</button></div>`;
+    a.innerHTML=`<button class="shine-era-cover-play" type="button" data-shine-track="${track.key}" aria-label="Play ${track.title}"><img src="${track.art}" alt="${track.title} song cover by Jahntella" loading="eager" fetchpriority="${priority}" decoding="async" width="480" height="480"><span aria-hidden="true">▶</span></button><div><small>${track.tag}</small><h3>${track.title}</h3><p>${track.description}</p><button class="play-button shine-era-play-button" type="button" data-track="${track.key}" data-shine-track="${track.key}">▶ Play ${track.title}</button></div>`;
+    const image=a.querySelector('img');
+    image.addEventListener('error',()=>{if(image.src!==new URL(fullArt,document.baseURI).href)image.src=fullArt;},{once:true});
     return a;
   };
 
@@ -131,7 +136,7 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
     addCss('coming-down-site.css','72.0');
     addCss('you-and-me-site.css','73.0');
     addCss('world-tour-concert-experience.css','76.8');
-    addCss('shine-era-song-cards.css','82.0');
+    addCss('shine-era-song-cards.css','83.0');
     addHomepageSongCards();
     wireShineSongCards();
     addShineEraThankYou();
