@@ -131,7 +131,7 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
     addCss('coming-down-site.css','72.0');
     addCss('you-and-me-site.css','73.0');
     addCss('world-tour-concert-experience.css','76.8');
-    addCss('shine-era-song-cards.css','78.0');
+    addCss('shine-era-song-cards.css','82.0');
     addHomepageSongCards();
     wireShineSongCards();
     addShineEraThankYou();
