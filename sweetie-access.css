@@ -1,0 +1,25 @@
+/* Jahntella Sweetie member access */
+.sweetie-access-modal[hidden]{display:none!important}
+.sweetie-access-modal{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:20px}
+.sweetie-access-backdrop{position:absolute;inset:0;background:rgba(8,0,18,.84);backdrop-filter:blur(10px)}
+.sweetie-access-dialog{position:relative;width:min(760px,calc(100vw - 28px));max-height:calc(100vh - 34px);overflow:auto;padding:clamp(24px,4vw,44px);border:1px solid rgba(255,116,223,.7);border-radius:28px;background:radial-gradient(circle at 80% 0,rgba(111,55,255,.28),transparent 38%),linear-gradient(145deg,#19001f 0%,#26002d 52%,#0d102c 100%);box-shadow:0 28px 100px rgba(0,0,0,.72),0 0 50px rgba(255,49,190,.22);color:#fff;font-family:"DM Sans",system-ui,sans-serif}
+.sweetie-access-dialog:before{content:"";position:absolute;inset:7px;border:1px solid rgba(127,220,255,.22);border-radius:22px;pointer-events:none}
+.sweetie-access-close{position:absolute;right:15px;top:12px;width:40px;height:40px;border:0;background:transparent;color:#ffc7ef;font-size:34px;line-height:1;cursor:pointer}
+.sweetie-access-kicker{margin:0 42px 8px 0;color:#83e8ff;font-size:.72rem;font-weight:800;letter-spacing:.2em}
+.sweetie-access-dialog h2{margin:0;font-family:"Playfair Display",serif;font-size:clamp(1.8rem,5vw,3rem);line-height:1.05;color:#ffd3f2;text-shadow:0 0 22px rgba(255,61,192,.4)}
+.sweetie-access-intro{max-width:620px;margin:14px 0 24px;color:rgba(255,255,255,.82);line-height:1.6}
+.sweetie-access-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.sweetie-access-grid label>span{display:block;margin:0 0 6px;color:#f8c8ed;font-size:.76rem;font-weight:800;letter-spacing:.04em}
+.sweetie-access-grid input,.sweetie-access-grid select{box-sizing:border-box;width:100%;min-height:47px;padding:11px 13px;border:1px solid rgba(255,144,224,.32);border-radius:12px;outline:0;background:rgba(5,1,20,.68);color:#fff;font:inherit}
+.sweetie-access-grid input:focus,.sweetie-access-grid select:focus{border-color:#71dfff;box-shadow:0 0 0 3px rgba(80,207,255,.13)}
+.sweetie-access-check{display:flex;align-items:flex-start;gap:10px;margin-top:16px;color:rgba(255,255,255,.78);font-size:.78rem;line-height:1.45}
+.sweetie-access-check input{margin-top:3px;accent-color:#ff52c8}
+.sweetie-access-submit{width:100%;min-height:52px;margin-top:20px;border:1px solid rgba(255,255,255,.28);border-radius:999px;background:linear-gradient(90deg,#ff37b7,#a04cff 52%,#24c9f2);color:white;font-weight:900;letter-spacing:.08em;cursor:pointer;box-shadow:0 12px 35px rgba(185,44,207,.35)}
+.sweetie-access-submit:disabled{cursor:wait;opacity:.6}
+.sweetie-access-status{min-height:1.4em;margin:14px 0 0;text-align:center;color:#ffd2f1;font-weight:800}
+.sweetie-access-status[data-type="success"]{color:#8fffd3}
+.sweetie-access-status[data-type="error"]{color:#ff9db3}
+.sweetie-access-note{margin:8px 0 0;text-align:center;color:rgba(255,255,255,.55);font-size:.72rem}
+.sweetie-member-badge{position:fixed;right:14px;bottom:82px;z-index:2147482000;max-width:210px;padding:11px 16px;border:1px solid rgba(255,166,232,.62);border-radius:999px;background:linear-gradient(135deg,rgba(39,0,53,.96),rgba(35,22,90,.96));color:#ffd7f3;font:800 .67rem/1.2 "DM Sans",system-ui,sans-serif;letter-spacing:.1em;box-shadow:0 10px 35px rgba(0,0,0,.42),0 0 22px rgba(255,61,190,.18);cursor:pointer}
+html.sweetie-access-open,html.sweetie-access-open body{overflow:hidden}
+@media(max-width:640px){.sweetie-access-modal{padding:10px}.sweetie-access-dialog{max-height:calc(100vh - 20px);padding:25px 18px;border-radius:22px}.sweetie-access-grid{grid-template-columns:1fr;gap:11px}.sweetie-member-badge{right:10px;bottom:72px;max-width:180px;font-size:.6rem}}
