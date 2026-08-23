@@ -23,3 +23,8 @@
 .sweetie-member-badge{position:fixed;right:14px;bottom:82px;z-index:2147482000;max-width:210px;padding:11px 16px;border:1px solid rgba(255,166,232,.62);border-radius:999px;background:linear-gradient(135deg,rgba(39,0,53,.96),rgba(35,22,90,.96));color:#ffd7f3;font:800 .67rem/1.2 "DM Sans",system-ui,sans-serif;letter-spacing:.1em;box-shadow:0 10px 35px rgba(0,0,0,.42),0 0 22px rgba(255,61,190,.18);cursor:pointer}
 html.sweetie-access-open,html.sweetie-access-open body{overflow:hidden}
 @media(max-width:640px){.sweetie-access-modal{padding:10px}.sweetie-access-dialog{max-height:calc(100vh - 20px);padding:25px 18px;border-radius:22px}.sweetie-access-grid{grid-template-columns:1fr;gap:11px}.sweetie-member-badge{right:10px;bottom:72px;max-width:180px;font-size:.6rem}}
+/* Keep the persistent music controls from covering the access dialog. */
+html.sweetie-access-open #player,
+html.sweetie-access-open .player{visibility:hidden!important;pointer-events:none!important}
+html.sweetie-access-open .sweetie-member-badge{visibility:hidden!important;pointer-events:none!important}
+@media(max-width:640px){.sweetie-access-status{padding:2px 8px 10px;line-height:1.45}.sweetie-access-note{padding-bottom:12px}}
