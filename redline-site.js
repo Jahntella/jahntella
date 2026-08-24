@@ -54,4 +54,13 @@
   else init();
   const observer = new MutationObserver(orderAesthetic);
   observer.observe(document.documentElement, {childList:true, subtree:true});
+
+  const loadUnifiedControls = () => {
+    if (window.__jahntellaShineUnifiedControls) return;
+    const s = document.createElement('script');
+    s.src = new URL('shine-era-unified-controls.js?v=20260824.1', document.baseURI).href;
+    s.defer = true;
+    document.head.appendChild(s);
+  };
+  loadUnifiedControls();
 })();
