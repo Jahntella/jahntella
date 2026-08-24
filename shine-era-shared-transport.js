@@ -5,6 +5,7 @@
   window.__jahntellaShineEraTransport = true;
 
   const PLAYBACK_KEY = 'jahntellaShineEraPlaybackV74';
+  const SPOTIFY_ARTIST_URL = 'https://open.spotify.com/artist/49N5q7aQ2NOM68dZwdU9jK';
 
   const EXT = {
     'midnight-rodeo': {
@@ -152,8 +153,6 @@
     else if (Number(options.position) >= 0) savedPosition = Number(options.position) || 0;
     lastSavedSecond = -1;
 
-    // Keep the site's original player logic pointed at the single BSA audio node;
-    // we temporarily repurpose that node so the bottom player stays the transport.
     try { window.jahntellaSelectSiteTrack?.('boots-smile-attitude', false, {fresh:true}); } catch {}
 
     const target = abs(cfg.audio);
@@ -208,7 +207,6 @@
     if (event.target !== el) return;
 
     if (!activeKey) {
-      // The existing Boots, Smile & Attitude audio has reached its end.
       event.stopImmediatePropagation();
       startExtension('midnight-rodeo', true);
       return;
@@ -271,7 +269,6 @@
       return;
     }
 
-    // Let normal site playback resume cleanly when another regular track is chosen.
     const otherTrack = target.dataset.track || target.dataset.jahntellaCoverTrack || '';
     if (otherTrack && otherTrack !== 'midnight-rodeo' && otherTrack !== 'redline' && otherTrack !== 'smoke-show' && otherTrack !== 'chasing-me' && otherTrack !== 'coming-down' && otherTrack !== 'you-and-me') {
       restoreNormalTransport();
@@ -287,7 +284,6 @@
       savedPosition = audio.currentTime;
       updatePlayer(!audio.paused);
     }
-    // The site's existing volume handler writes directly to this same audio node.
   }, true);
 
   const wire = () => {
@@ -336,6 +332,39 @@
   else window.setTimeout(restoreSavedPlayback, 150);
 
   window.addEventListener('pagehide', () => persistPlayback(true));
+
+  const addSpotifyLink = (section, label) => {
+    if (!section || section.querySelector('.jahntella-spotify-link')) return;
+    const link = document.createElement('a');
+    link.className = 'primary-button jahntella-spotify-link';
+    link.href = SPOTIFY_ARTIST_URL;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.textContent = `🎧 ${label}`;
+    const anchor = section.querySelector('.section-heading, .exp44-new-music-head, .exp60-shine-heading, .exp53-album-head');
+    if (anchor) anchor.appendChild(link);
+    else section.insertBefore(link, section.firstChild);
+  };
+
+  const connectSpotifyEverywhere = () => {
+    document.querySelectorAll('a[href="https://open.spotify.com/search/Jahntella"],a[href="https://open.spotify.com/search/Jahntella/"]').forEach(link => {
+      link.href = SPOTIFY_ARTIST_URL;
+    });
+    addSpotifyLink(document.getElementById('sweetEraAlbum'), 'Listen on Spotify');
+    addSpotifyLink(document.getElementById('music'), 'Jahntella on Spotify');
+    addSpotifyLink(document.getElementById('newMusic'), 'The Sweet Era on Spotify');
+    addSpotifyLink(document.getElementById('shineEraSneakPeek'), 'The Shine Era on Spotify');
+  };
+
+  const spotifyStyle = document.createElement('style');
+  spotifyStyle.textContent = `
+    .jahntella-spotify-link{display:inline-flex!important;align-items:center;justify-content:center;gap:.35rem;margin:.8rem auto 0;text-decoration:none!important;}
+    .section-heading .jahntella-spotify-link,.exp44-new-music-head .jahntella-spotify-link,.exp60-shine-heading .jahntella-spotify-link,.exp53-album-head .jahntella-spotify-link{width:auto;min-width:210px;}
+    @media(max-width:640px){.jahntella-spotify-link{width:100%!important;max-width:330px;margin:.9rem auto 0;}}
+  `;
+  document.head.appendChild(spotifyStyle);
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', connectSpotifyEverywhere, {once:true});
+  else connectSpotifyEverywhere();
 
   window.jahntellaPlayShineEraTrack = startExtension;
   window.jahntellaStopShineEraTrack = restoreNormalTransport;
