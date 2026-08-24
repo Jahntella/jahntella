@@ -1,0 +1,20 @@
+JAHNTELLA — THE SWEET ERA BACK COVER REPLACEMENT
+
+These files are meant to replace the existing Sweet Era back-cover assets in:
+assets/album/
+
+UPLOAD / OVERWRITE THESE EXACT FILES:
+1. the-sweet-era-back.webp
+2. the-sweet-era-back-thumb.webp
+
+IMPORTANT:
+- Do NOT rename either file.
+- Do NOT put them in a different folder.
+- GitHub should show the two files at exactly:
+  assets/album/the-sweet-era-back.webp
+  assets/album/the-sweet-era-back-thumb.webp
+
+The current site already references these exact filenames. The package uses the corrected back-cover artwork as the source for BOTH the full-size image and thumbnail, so the two versions cannot accidentally show different artwork.
+
+CACHE NOTE:
+The current index.html references the back cover with ?v=84.0. If the old artwork still appears immediately after GitHub Pages deploys, do a hard refresh (Ctrl+F5) first. If it remains cached, change both occurrences of v=84.0 to v=85.0 in index.html for the back-cover references.
