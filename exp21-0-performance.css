@@ -60,3 +60,28 @@ img{
     display:none!important;
   }
 }
+
+/* MOBILE RENDERING RECOVERY
+   Some Chromium/Samsung mobile builds can leave content-visibility:auto
+   sections unpainted even though their DOM and controls are interactive.
+   Keep the desktop optimization, but render sections normally on phones. */
+@media(max-width:760px){
+  html{
+    content-visibility:visible !important;
+  }
+
+  .reveal,
+  .music-section,
+  .about-section,
+  .sweet-vault-section,
+  .downloads-section,
+  .magazine-section,
+  .merch-section,
+  .gallery-section,
+  .contact-section,
+  .exp195-popstar-section{
+    content-visibility:visible !important;
+    contain:initial !important;
+    contain-intrinsic-size:auto !important;
+  }
+}
