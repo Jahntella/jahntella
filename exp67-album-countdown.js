@@ -107,15 +107,19 @@
     }
   });
 
-  // Sweet Era back-cover cache-bust: the corrected artwork now lives at the
-  // live asset path. Force the browser/CDN to request the replacement instead
-  // of reusing the old ?v=84.0 image cached by earlier deployments.
+  // Sweet Era back-cover cache-bust: force the browser/CDN to request the newest live artwork.
   const refreshSweetEraBackCover = () => {
     document.querySelectorAll('[data-lightbox="assets/album/the-sweet-era-back.webp?v=84.0"]').forEach(node => {
-      node.dataset.lightbox = 'assets/album/the-sweet-era-back.webp?v=85.0';
+      node.dataset.lightbox = 'assets/album/the-sweet-era-back.webp?v=86.0';
     });
     document.querySelectorAll('img[src="assets/album/the-sweet-era-back-thumb.webp?v=84.0"]').forEach(img => {
-      img.src = 'assets/album/the-sweet-era-back-thumb.webp?v=85.0';
+      img.src = 'assets/album/the-sweet-era-back-thumb.webp?v=86.0';
+    });
+    document.querySelectorAll('[data-lightbox="assets/album/the-sweet-era-back.webp?v=85.0"]').forEach(node => {
+      node.dataset.lightbox = 'assets/album/the-sweet-era-back.webp?v=86.0';
+    });
+    document.querySelectorAll('img[src="assets/album/the-sweet-era-back-thumb.webp?v=85.0"]').forEach(img => {
+      img.src = 'assets/album/the-sweet-era-back-thumb.webp?v=86.0';
     });
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', refreshSweetEraBackCover, { once: true });
