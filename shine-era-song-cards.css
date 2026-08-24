@@ -3,6 +3,8 @@
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:clamp(1rem,2vw,1.6rem);
   align-items:stretch;
+  opacity:1!important;
+  visibility:visible!important;
 }
 .shine-era-song-card{
   height:100%;
@@ -10,6 +12,9 @@
   border:1px solid rgba(215,151,255,.28);
   background:linear-gradient(160deg,rgba(35,10,63,.94),rgba(12,4,29,.97));
   box-shadow:0 18px 46px rgba(5,0,20,.38),inset 0 1px rgba(255,255,255,.05);
+  opacity:1!important;
+  visibility:visible!important;
+  transform:none;
 }
 .shine-era-song-card>div{display:flex;flex-direction:column;height:auto;padding:1rem 1.05rem 1.15rem}
 .shine-era-song-card h3{margin:.3rem 0 .55rem}
@@ -24,6 +29,8 @@
   overflow:hidden;
   background:radial-gradient(circle at 50% 42%,rgba(219,77,255,.3),transparent 34%),linear-gradient(145deg,#2a073d,#10041d);
   cursor:pointer;
+  opacity:1!important;
+  visibility:visible!important;
 }
 .shine-era-cover-play img{
   display:block;
@@ -31,6 +38,8 @@
   aspect-ratio:1;
   object-fit:cover;
   filter:none!important;
+  opacity:1!important;
+  visibility:visible!important;
   transition:transform .35s ease,filter .35s ease;
 }
 .shine-era-cover-play span{display:none}
