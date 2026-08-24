@@ -84,4 +84,21 @@ img{
     contain:initial !important;
     contain-intrinsic-size:auto !important;
   }
+
+  /* Aesthetics / Visual World is a gallery-section.reveal. Its older
+     reveal animation can leave it transparent on mobile if no observer
+     adds .in-view, even though the section itself is present. */
+  .gallery-section.reveal,
+  #gallery.gallery-section.reveal{
+    opacity:1 !important;
+    visibility:visible !important;
+    transform:none !important;
+  }
+
+  #gallery .gallery-grid,
+  #gallery .gallery-item,
+  #gallery .gallery-item img{
+    visibility:visible !important;
+    opacity:1 !important;
+  }
 }
