@@ -54,13 +54,10 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
       if(!button)return;
       const key=button.dataset.shineTrack;
       if(!key)return;
-      if(['midnight-rodeo','redline','smoke-show','chasing-me','coming-down','you-and-me'].includes(key)){
+      if(shineTracks.some(track=>track.key===key)){
         event.preventDefault();
         event.stopImmediatePropagation();
         window.jahntellaPlayShineEraTrack?.(key,true);
-      }else if(button.classList.contains('shine-era-cover-play')){
-        event.preventDefault();
-        window.jahntellaSelectSiteTrack?.(key,true,{fresh:true});
       }
     },true);
   };
