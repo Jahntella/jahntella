@@ -11,6 +11,20 @@
   const EXT = new Set(['midnight-rodeo','redline','smoke-show','chasing-me','coming-down','you-and-me']);
   const all = new Set([...Object.keys(CORE), ...EXT]);
 
+  const installMobileVisibilityFix = () => {
+    if (document.getElementById('jahntellaShineMobileVisibilityFix')) return;
+    const style = document.createElement('style');
+    style.id = 'jahntellaShineMobileVisibilityFix';
+    style.textContent = `
+      .exp60-shine-sneak-peek{content-visibility:visible!important}
+      .exp66-shine-videos.shine-era-song-grid,.shine-era-song-card,.shine-era-cover-play,.shine-era-cover-play img{
+        opacity:1!important;visibility:visible!important;transform:none;
+      }
+      .shine-era-cover-play img{display:block!important}
+    `;
+    document.head.appendChild(style);
+  };
+
   const buttonFor = key => document.querySelector(`.shine-era-play-button[data-shine-track="${key}"]`);
   const setButtonState = (key, playing) => {
     const button = buttonFor(key);
@@ -71,6 +85,7 @@
   };
 
   const init = () => {
+    installMobileVisibilityFix();
     wrapExtensionTransport();
     bindAudioState();
     const timer = setInterval(() => {
