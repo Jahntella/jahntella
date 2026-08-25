@@ -29,14 +29,4 @@
       if (!video.paused) video.pause();
     });
   });
-
-  const loadThreeCardFix = () => {
-    if (document.querySelector('script[data-jahntella-three-card-fix]')) return;
-    const script = document.createElement('script');
-    script.src = 'shine-era-three-card-fix.js?v=1';
-    script.dataset.jahntellaThreeCardFix = '1';
-    document.head.appendChild(script);
-  };
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', loadThreeCardFix, {once:true});
-  else loadThreeCardFix();
 })();
