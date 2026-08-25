@@ -8,6 +8,27 @@
   const SPOTIFY_ARTIST_URL = 'https://open.spotify.com/artist/49N5q7aQ2NOM68dZwdU9jK';
 
   const EXT = {
+    'sweet-dreams': {
+      title: 'Sweet Dreams',
+      audio: 'sweetville/sweet-dreams.mp3',
+      artwork: 'assets/album2/sweet-dreams-cover.webp',
+      next: 'we-are-1',
+      prev: 'fun-dipp'
+    },
+    'we-are-1': {
+      title: 'We Are 1',
+      audio: 'sweetville/we-are-1.mp3',
+      artwork: 'assets/album2/we-are-1-cover.webp',
+      next: 'boots-smile-attitude',
+      prev: 'sweet-dreams'
+    },
+    'boots-smile-attitude': {
+      title: 'Boots, Smile & Attitude',
+      audio: 'sweetville/boots-smile-attitude.mp3',
+      artwork: 'assets/album2/boots-smile-attitude-cover.webp',
+      next: 'midnight-rodeo',
+      prev: 'we-are-1'
+    },
     'midnight-rodeo': {
       title: 'Midnight Rodeo',
       audio: 'assets/album2/midnight-rodeo.mp3',
