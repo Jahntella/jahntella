@@ -8,24 +8,9 @@
     'we-are-1': 'audioWeAre1',
     'boots-smile-attitude': 'audioBootsSmileAttitude'
   };
-  const EXT = new Set(['midnight-rodeo','redline','smoke-show','chasing-me','coming-down','you-and-me']);
-  const all = new Set([...Object.keys(CORE), ...EXT]);
-
-  const installMobileVisibilityFix = () => {
-    if (document.getElementById('jahntellaShineMobileVisibilityFix')) return;
-    const style = document.createElement('style');
-    style.id = 'jahntellaShineMobileVisibilityFix';
-    style.textContent = `
-      .exp60-shine-sneak-peek{content-visibility:visible!important}
-      .exp66-shine-videos.shine-era-song-grid,.shine-era-song-card,.shine-era-cover-play,.shine-era-cover-play img{
-        opacity:1!important;visibility:visible!important;transform:none;
-      }
-      .shine-era-cover-play img{display:block!important}
-    `;
-    document.head.appendChild(style);
-  };
 
   const buttonFor = key => document.querySelector(`.shine-era-play-button[data-shine-track="${key}"]`);
+
   const setButtonState = (key, playing) => {
     const button = buttonFor(key);
     if (!button) return;
@@ -42,24 +27,19 @@
   const toggleCore = key => {
     const audio = document.getElementById(CORE[key]);
     if (!audio) return;
+
     if (!audio.paused && !audio.ended) {
       audio.pause();
       setButtonState(key, false);
       return;
     }
 
-    // These three special Shine Era cards use the same existing site-player
-    // selection path as the other Shine Era cards. The key difference is that
-    // this explicitly requests autoplay so a click on the cover starts the
-    // song instead of only loading it into the player bar.
-    const select = window.jahntellaSelectSiteTrack;
-    if (typeof select === 'function') {
-      Promise.resolve(select(key, true, {fresh:false}))
-        .then(() => audio.play())
-        .then(() => setButtonState(key, true))
-        .catch(() => setButtonState(key, false));
+    // Use the exact same site-player selection path as the other music cards.
+    // Passing true is what makes the artwork click immediately start playback.
+    if (typeof window.jahntellaSelectSiteTrack === 'function') {
+      window.jahntellaSelectSiteTrack(key, true, {fresh:false});
     } else {
-      audio.play().then(() => setButtonState(key, true)).catch(() => setButtonState(key, false));
+      audio.play().catch(() => {});
     }
   };
 
@@ -68,23 +48,40 @@
       const audio = document.getElementById(id);
       if (!audio || audio.__shineButtonStateBound) return;
       audio.__shineButtonStateBound = true;
-      ['play','playing','pause','ended'].forEach(eventName => audio.addEventListener(eventName, () => syncCoreButton(key)));
+      ['play','playing','pause','ended'].forEach(eventName => {
+        audio.addEventListener(eventName, () => syncCoreButton(key));
+      });
       syncCoreButton(key);
     });
   };
 
   const init = () => {
-    installMobileVisibilityFix();
     bindAudioState();
     const timer = setInterval(bindAudioState, 100);
     setTimeout(() => clearInterval(timer), 10000);
   };
 
+  // The three special Shine Era cards use data-card rather than the normal
+  // play-button wiring. Capture the artwork/card click before the generic
+  // card handler can merely load the track into the player bar.
   document.addEventListener('click', event => {
-    const button = event.target.closest?.('[data-shine-track]');
+    const card = event.target.closest?.('[data-card="sweet-dreams"],[data-card="we-are-1"],[data-card="boots-smile-attitude"]');
+    if (!card) return;
+
+    const key = card.dataset.card;
+    const clickedPlayButton = event.target.closest('.shine-era-play-button,.play-button');
+    if (clickedPlayButton) return;
+
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    toggleCore(key);
+  }, true);
+
+  document.addEventListener('click', event => {
+    const button = event.target.closest?.('.shine-era-play-button[data-shine-track]');
     if (!button) return;
     const key = button.dataset.shineTrack;
-    if (!all.has(key) || !CORE[key]) return;
+    if (!CORE[key]) return;
     event.preventDefault();
     event.stopImmediatePropagation();
     toggleCore(key);
