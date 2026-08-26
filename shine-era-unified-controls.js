@@ -9,86 +9,84 @@
     'boots-smile-attitude': 'audioBootsSmileAttitude'
   };
 
-  const CARD_SELECTORS = {
-    'sweet-dreams': '#sweetDreamsPreviewTitle',
-    'we-are-1': '#weAre1PreviewTitle',
-    'boots-smile-attitude': '#bootsSmileAttitudePreviewTitle'
-  };
+  const EXT = new Set([
+    'midnight-rodeo',
+    'redline',
+    'smoke-show',
+    'chasing-me',
+    'coming-down',
+    'you-and-me'
+  ]);
 
-  const findCard = key => {
-    const heading = document.querySelector(CARD_SELECTORS[key]);
-    return heading?.closest('.exp60-shine-video-card') || null;
-  };
+  const installTransportWrapper = () => {
+    const original = window.jahntellaPlayShineEraTrack;
+    if (typeof original !== 'function' || original.__jahntellaUnifiedToggle) return false;
 
-  const syncVisual = key => {
-    const audio = document.getElementById(CORE[key]);
-    const card = findCard(key);
-    if (!audio || !card) return;
-    const playing = !audio.paused && !audio.ended;
-    card.classList.toggle('is-active', playing);
-    const playButton = card.querySelector('.play-button, .shine-era-play-button');
-    if (playButton) {
-      const title = playButton.dataset.shineTitle || playButton.textContent.replace(/^[▶❚❚]\s*(?:Play|Pause)\s*/i, '').trim();
-      playButton.dataset.shineTitle = title;
-      playButton.textContent = `${playing ? '❚❚ Pause' : '▶ Play'} ${title}`;
-    }
-  };
+    const wrapped = function(key, restart = true, options = {}) {
+      // The first three Shine Era tracks belong to the site's native player.
+      // Route them through that player so the bottom bar, artwork, and card
+      // state all stay synchronized.
+      if (Object.prototype.hasOwnProperty.call(CORE, key)) {
+        const audio = document.getElementById(CORE[key]);
+        const select = window.jahntellaSelectSiteTrack;
+        if (!audio || typeof select !== 'function') return;
 
-  const toggle = key => {
-    const audio = document.getElementById(CORE[key]);
-    const select = window.jahntellaSelectSiteTrack;
-    if (!audio || typeof select !== 'function') return;
+        if (!audio.paused && !audio.ended) {
+          audio.pause();
+          // selectTrack(..., false) updates the native player's visual state
+          // without resetting the current playback position.
+          select(key, false, {fresh:false});
+          return;
+        }
 
-    if (!audio.paused && !audio.ended) {
-      audio.pause();
-      return;
-    }
+        select(key, true, {fresh:false});
+        return;
+      }
 
-    select(key, true, {fresh:false});
-  };
+      // The remaining six use the existing shared Shine Era transport.
+      // Preserve their current position when toggling pause/resume instead
+      // of restarting the song on every card click.
+      if (EXT.has(key)) {
+        const audio = document.getElementById('audioBootsSmileAttitude');
+        const cfg = window.JAHNTELLA_ALBUM2?.tracks?.[key];
+        if (audio && cfg) {
+          const src = audio.currentSrc || audio.src || audio.querySelector('source')?.src || '';
+          const sameTrack = src.includes(cfg.fullAudio);
 
-  const bindCard = (key) => {
-    const card = findCard(key);
-    if (!card || card.dataset.jahntellaNativePlayerBound) return;
-    card.dataset.jahntellaNativePlayerBound = 'true';
+          if (sameTrack && !audio.paused && !audio.ended) {
+            audio.pause();
+            return;
+          }
 
-    // The picture itself is the play/pause surface, matching the other music cards.
-    const image = card.querySelector('.exp60-shine-video-frame img, img');
-    const surface = image || card.querySelector('.exp60-shine-video-frame');
-    if (surface) {
-      surface.style.cursor = 'pointer';
-      surface.setAttribute('role', 'button');
-      surface.setAttribute('tabindex', '0');
-      surface.setAttribute('aria-label', `Play or pause ${CORE[key] ? key.replaceAll('-', ' ') : key}`);
-      surface.addEventListener('click', event => {
-        event.preventDefault();
-        event.stopPropagation();
-        toggle(key);
-      });
-      surface.addEventListener('keydown', event => {
-        if (event.key !== 'Enter' && event.key !== ' ') return;
-        event.preventDefault();
-        event.stopPropagation();
-        toggle(key);
-      });
-    }
-  };
+          if (sameTrack && audio.paused) {
+            return original.call(this, key, false, {
+              ...options,
+              position: audio.currentTime || 0,
+              playing: true
+            });
+          }
+        }
+      }
 
-  const bindAudio = (key) => {
-    const audio = document.getElementById(CORE[key]);
-    if (!audio || audio.__shineNativePlayerSync) return;
-    audio.__shineNativePlayerSync = true;
-    ['play','playing','pause','ended'].forEach(eventName => audio.addEventListener(eventName, () => syncVisual(key)));
-    syncVisual(key);
+      return original.call(this, key, restart, options);
+    };
+
+    wrapped.__jahntellaUnifiedToggle = true;
+    window.jahntellaPlayShineEraTrack = wrapped;
+    return true;
   };
 
   const init = () => {
-    Object.keys(CORE).forEach(key => {
-      bindCard(key);
-      bindAudio(key);
-    });
+    if (installTransportWrapper()) return;
+    const timer = setInterval(() => {
+      if (installTransportWrapper()) clearInterval(timer);
+    }, 50);
+    setTimeout(() => clearInterval(timer), 10000);
   };
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, {once:true});
-  else init();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, {once:true});
+  } else {
+    init();
+  }
 })();
