@@ -47,31 +47,20 @@
       setButtonState(key, false);
       return;
     }
-    window.jahntellaSelectSiteTrack?.(key, true, {fresh:false});
-    setButtonState(key, true);
-  };
 
-  const wrapExtensionTransport = () => {
-    const original = window.jahntellaPlayShineEraTrack;
-    if (typeof original !== 'function' || original.__jahntellaToggleWrapped) return false;
-    const wrapped = function(key, restart = true, options = {}) {
-      if (!EXT.has(key)) return original.call(this, key, restart, options);
-      const audio = document.getElementById('audioBootsSmileAttitude');
-      const expected = `/${key}.mp3`;
-      if (audio && (audio.currentSrc || audio.src || '').includes(expected)) {
-        if (!audio.paused && !audio.ended) {
-          audio.pause();
-          setButtonState(key, false);
-          return;
-        }
-        audio.play().then(() => setButtonState(key, true)).catch(() => setButtonState(key, false));
-        return;
-      }
-      return original.call(this, key, restart, options);
-    };
-    wrapped.__jahntellaToggleWrapped = true;
-    window.jahntellaPlayShineEraTrack = wrapped;
-    return true;
+    // These three special Shine Era cards use the same existing site-player
+    // selection path as the other Shine Era cards. The key difference is that
+    // this explicitly requests autoplay so a click on the cover starts the
+    // song instead of only loading it into the player bar.
+    const select = window.jahntellaSelectSiteTrack;
+    if (typeof select === 'function') {
+      Promise.resolve(select(key, true, {fresh:false}))
+        .then(() => audio.play())
+        .then(() => setButtonState(key, true))
+        .catch(() => setButtonState(key, false));
+    } else {
+      audio.play().then(() => setButtonState(key, true)).catch(() => setButtonState(key, false));
+    }
   };
 
   const bindAudioState = () => {
@@ -86,12 +75,8 @@
 
   const init = () => {
     installMobileVisibilityFix();
-    wrapExtensionTransport();
     bindAudioState();
-    const timer = setInterval(() => {
-      wrapExtensionTransport();
-      bindAudioState();
-    }, 100);
+    const timer = setInterval(bindAudioState, 100);
     setTimeout(() => clearInterval(timer), 10000);
   };
 
