@@ -9,41 +9,84 @@
     'boots-smile-attitude': 'audioBootsSmileAttitude'
   };
 
-  const cardFor = key => document.querySelector(`[data-card="${key}"]`);
-  const buttonFor = key => cardFor(key)?.querySelector('.play-button, .shine-era-play-button');
-
-  const syncVisual = (key) => {
-    const audio = document.getElementById(CORE[key]);
-    const card = cardFor(key);
-    const button = buttonFor(key);
-    if (!audio) return;
-    const playing = !audio.paused && !audio.ended;
-    card?.classList.toggle('is-active', playing);
-    if (button) {
-      const title = button.dataset.shineTitle || button.dataset.trackTitle || button.textContent.replace(/^[▶❚❚]\s*(?:Play|Pause)\s*/i, '').trim();
-      button.dataset.shineTitle = title;
-      button.textContent = `${playing ? '❚❚ Pause' : '▶ Play'} ${title}`;
-    }
-    const player = document.getElementById('player');
-    const playerToggle = document.getElementById('playerToggle');
-    if (player && player.classList.contains('visible')) player.classList.toggle('playing', playing);
-    if (playerToggle) playerToggle.textContent = playing ? '❚❚' : '▶';
+  const CARD_SELECTORS = {
+    'sweet-dreams': '#sweetDreamsPreviewTitle',
+    'we-are-1': '#weAre1PreviewTitle',
+    'boots-smile-attitude': '#bootsSmileAttitudePreviewTitle'
   };
 
-  const bind = () => {
-    Object.entries(CORE).forEach(([key, id]) => {
-      const audio = document.getElementById(id);
-      if (!audio || audio.__shineVisualSyncBound) return;
-      audio.__shineVisualSyncBound = true;
-      ['play','playing','pause','ended'].forEach(name => audio.addEventListener(name, () => syncVisual(key)));
-      syncVisual(key);
-    });
+  const findCard = key => {
+    const heading = document.querySelector(CARD_SELECTORS[key]);
+    return heading?.closest('.exp60-shine-video-card') || null;
+  };
+
+  const syncVisual = key => {
+    const audio = document.getElementById(CORE[key]);
+    const card = findCard(key);
+    if (!audio || !card) return;
+    const playing = !audio.paused && !audio.ended;
+    card.classList.toggle('is-active', playing);
+    const playButton = card.querySelector('.play-button, .shine-era-play-button');
+    if (playButton) {
+      const title = playButton.dataset.shineTitle || playButton.textContent.replace(/^[▶❚❚]\s*(?:Play|Pause)\s*/i, '').trim();
+      playButton.dataset.shineTitle = title;
+      playButton.textContent = `${playing ? '❚❚ Pause' : '▶ Play'} ${title}`;
+    }
+  };
+
+  const toggle = key => {
+    const audio = document.getElementById(CORE[key]);
+    const select = window.jahntellaSelectSiteTrack;
+    if (!audio || typeof select !== 'function') return;
+
+    if (!audio.paused && !audio.ended) {
+      audio.pause();
+      return;
+    }
+
+    select(key, true, {fresh:false});
+  };
+
+  const bindCard = (key) => {
+    const card = findCard(key);
+    if (!card || card.dataset.jahntellaNativePlayerBound) return;
+    card.dataset.jahntellaNativePlayerBound = 'true';
+
+    // The picture itself is the play/pause surface, matching the other music cards.
+    const image = card.querySelector('.exp60-shine-video-frame img, img');
+    const surface = image || card.querySelector('.exp60-shine-video-frame');
+    if (surface) {
+      surface.style.cursor = 'pointer';
+      surface.setAttribute('role', 'button');
+      surface.setAttribute('tabindex', '0');
+      surface.setAttribute('aria-label', `Play or pause ${CORE[key] ? key.replaceAll('-', ' ') : key}`);
+      surface.addEventListener('click', event => {
+        event.preventDefault();
+        event.stopPropagation();
+        toggle(key);
+      });
+      surface.addEventListener('keydown', event => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        event.stopPropagation();
+        toggle(key);
+      });
+    }
+  };
+
+  const bindAudio = (key) => {
+    const audio = document.getElementById(CORE[key]);
+    if (!audio || audio.__shineNativePlayerSync) return;
+    audio.__shineNativePlayerSync = true;
+    ['play','playing','pause','ended'].forEach(eventName => audio.addEventListener(eventName, () => syncVisual(key)));
+    syncVisual(key);
   };
 
   const init = () => {
-    bind();
-    const timer = setInterval(bind, 100);
-    setTimeout(() => clearInterval(timer), 10000);
+    Object.keys(CORE).forEach(key => {
+      bindCard(key);
+      bindAudio(key);
+    });
   };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, {once:true});
