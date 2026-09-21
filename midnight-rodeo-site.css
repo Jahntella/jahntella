@@ -50,5 +50,6 @@ main > #gallery{order:12}
 #gallery .gallery-grid{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))!important;gap:1rem!important;content-visibility:visible!important;contain:none!important}
 #gallery .gallery-item{display:block!important;position:relative!important;min-height:0!important;aspect-ratio:1/1!important;overflow:hidden!important;padding:0!important;border:1px solid rgba(255,136,206,.42)!important;border-radius:14px!important;background:#120015!important}
 #gallery .gallery-item img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;transform:none!important;filter:none!important;-webkit-filter:none!important;mix-blend-mode:normal!important}
+#gallery .gallery-item[data-lightbox$="strip-cover.webp"] img{object-fit:contain!important;object-position:center top!important;background:#120015!important}
 
 @media(max-width:600px){.mr-sweetville-card{grid-template-columns:88px 1fr}.mr-sweetville-card img{width:88px;height:88px}}
