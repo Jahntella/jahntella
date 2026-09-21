@@ -1,0 +1,8 @@
+THE SPARKLE ERA — GITHUB UPLOAD
+
+1. Upload the contents of sparkle-era-assets.zip to the root of the Jahntella/jahntella repository. Preserve folders and replace files if GitHub asks.
+2. Upload the contents of sparkle-era-site-update.zip to the repository root. Preserve folders and replace files.
+3. Commit all files together with this message: Add The Sparkle Era album playback
+
+The assets ZIP contains assets/album3/ cover artwork and sweetville/ MP3 files.
+The site-update ZIP contains the three updated website files plus the Sweetville Sparkle player script.

@@ -43,7 +43,7 @@
   };
 
   applyAlbum2PreviewMode();
-  const order = ["fun-dipp", "pink-lips", "bite-lip", "gloss", "your-girl", "embrace-me", "we-come-together", "play-with-me", "carnival", "made-of-light", "candy-wrapper", "playground", "milk-shake", "tonight", "sweet-dreams", "we-are-1", "boots-smile-attitude"];
+  const order = ["fun-dipp", "pink-lips", "bite-lip", "gloss", "your-girl", "embrace-me", "we-come-together", "play-with-me", "carnival", "made-of-light", "candy-wrapper", "playground", "milk-shake", "tonight", "sweet-dreams", "we-are-1", "boots-smile-attitude", "come-here-come-close", "touch", "pull-me-in", "strip", "what-you-do-to-me", "exist", "escape", "pink-petals"];
   const tracks = {
     "fun-dipp": {
       audio: document.getElementById("audioFunDipp"),
@@ -148,7 +148,15 @@
       title: "Boots, Smile & Attitude",
       artwork: "assets/album2/boots-smile-attitude-cover.webp",
       card: document.querySelector('[data-card="boots-smile-attitude"]')
-    }
+    },
+    "come-here-come-close": { audio: document.getElementById("audioComeHereComeClose"), title: "Come Here Come Close", artwork: "assets/album3/come-here-come-close-cover.webp", card: document.querySelector('[data-card="come-here-come-close"]') },
+    touch: { audio: document.getElementById("audioTouch"), title: "Touch", artwork: "assets/album3/touch-cover.webp", card: document.querySelector('[data-card="touch"]') },
+    "pull-me-in": { audio: document.getElementById("audioPullMeIn"), title: "Pull Me In", artwork: "assets/album3/pull-me-in-cover.webp", card: document.querySelector('[data-card="pull-me-in"]') },
+    strip: { audio: document.getElementById("audioStrip"), title: "Strip", artwork: "assets/album3/strip-cover.webp", card: document.querySelector('[data-card="strip"]') },
+    "what-you-do-to-me": { audio: document.getElementById("audioWhatYouDoToMe"), title: "What You Do to Me", artwork: "assets/album3/what-you-do-to-me-cover.webp", card: document.querySelector('[data-card="what-you-do-to-me"]') },
+    exist: { audio: document.getElementById("audioExist"), title: "Exist", artwork: "assets/album3/exist-cover.webp", card: document.querySelector('[data-card="exist"]') },
+    escape: { audio: document.getElementById("audioEscape"), title: "Escape", artwork: "assets/album3/escape-cover.webp", card: document.querySelector('[data-card="escape"]') },
+    "pink-petals": { audio: document.getElementById("audioPinkPetals"), title: "Pink Petals", artwork: "assets/album3/pink-petals-cover.webp", card: document.querySelector('[data-card="pink-petals"]') }
   };
 
   const player = document.getElementById("player");
@@ -396,7 +404,15 @@
     "tonight-cover.webp": "tonight",
     "sweet-dreams-cover.webp": "sweet-dreams",
     "we-are-1-cover.webp": "we-are-1",
-    "boots-smile-attitude-cover.webp": "boots-smile-attitude"
+    "boots-smile-attitude-cover.webp": "boots-smile-attitude",
+    "come-here-come-close-cover.webp": "come-here-come-close",
+    "touch-cover.webp": "touch",
+    "pull-me-in-cover.webp": "pull-me-in",
+    "strip-cover.webp": "strip",
+    "what-you-do-to-me-cover.webp": "what-you-do-to-me",
+    "exist-cover.webp": "exist",
+    "escape-cover.webp": "escape",
+    "pink-petals-cover.webp": "pink-petals"
   };
 
   document.querySelectorAll("#gallery [data-lightbox]").forEach(cover => {
@@ -421,6 +437,12 @@
       } else selectTrack(key);
     });
   });
+  document.querySelectorAll(".sparkle-cover-play").forEach(button => button.addEventListener("click", () => {
+    const key = button.dataset.track, track = tracks[key];
+    if (!track) return;
+    if (currentKey === key && !track.audio.paused) { track.audio.pause(); setPlaying(false); }
+    else selectTrack(key);
+  }));
 
   toggle.addEventListener("click", () => {
     if (!currentKey) return selectTrack("fun-dipp");
