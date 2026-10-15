@@ -8,3 +8,6 @@
 #sirenEraAlbum .shine-era-song-card,#sirenEraAlbum .exp60-shine-cover-card{background:linear-gradient(155deg,rgba(18,58,51,.96),rgba(5,19,21,.98))}
 #sirenEraAlbum .exp60-shine-cover-caption small{color:#c9e7de}
 .siren-sweetville-card{background:linear-gradient(155deg,rgba(18,58,51,.96),rgba(5,19,21,.98))!important}
+
+/* Keep Album IV after Sparkle and before the Sweetie community. */
+main > #sirenEraAlbum{order:8!important}
