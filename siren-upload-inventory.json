@@ -1,0 +1,79 @@
+[
+  {
+    "number": 1,
+    "title": "Obsessed with Me",
+    "path": "assets/album4/obsessed-with-me.mp3",
+    "seconds": 209.47,
+    "sha256": "27c6591477b5aeae4df45957206f1204c731caee030a339e222ffb42510fdfa8"
+  },
+  {
+    "number": 2,
+    "title": "Kiss Me Like A Secret",
+    "path": "assets/album4/kiss-me-like-a-secret.mp3",
+    "seconds": 209.64,
+    "sha256": "45a0140c0fc83877f42c9485e9609c170a881a25d0f25fd25f5016d99e887db4"
+  },
+  {
+    "number": 3,
+    "title": "Pretty Little Problem",
+    "path": "assets/album4/pretty-little-problem.mp3",
+    "seconds": 220.39,
+    "sha256": "9c202ae13af4f4657941d1be9d8c0d6a150f71361eab5f895ba3327d1aaa4220"
+  },
+  {
+    "number": 4,
+    "title": "Can't Look Away",
+    "path": "assets/album4/cant-look-away.mp3",
+    "seconds": 307.2,
+    "sha256": "d2221e0a5ca62343c9bef325fb8f73293dbd3d14a85491dad3dd2c58be79a662"
+  },
+  {
+    "number": 5,
+    "title": "Knock Your Boots Off",
+    "path": "assets/album4/knock-your-boots-off.mp3",
+    "seconds": 211.92,
+    "sha256": "49f4ba63a481f3e0a4332abc4f6d9934724b95a84df98ab405a5e203d979e098"
+  },
+  {
+    "number": 6,
+    "title": "Snap Me",
+    "path": "assets/album4/snap-me.mp3",
+    "seconds": 204.26,
+    "sha256": "91f1045852199490803799f312404e334cdf56c4ebdc9d5b036a7090a43ac7c9"
+  },
+  {
+    "number": 7,
+    "title": "Hold My Hand To Heaven",
+    "path": "assets/album4/hold-my-hand-to-heaven.mp3",
+    "seconds": 337.87,
+    "sha256": "a0a11664bbe8d694786bf28f6667d2945d02328af632eb05183d6f051ae83062"
+  },
+  {
+    "number": 8,
+    "title": "Read My Lips",
+    "path": "assets/album4/read-my-lips.mp3",
+    "seconds": 251.54,
+    "sha256": "fe7298b6840fe26e13cb0d4a98a478acc153af2427f883d680e0997eb58401e3"
+  },
+  {
+    "number": 9,
+    "title": "Viral Spiral",
+    "path": "assets/album4/viral-spiral.mp3",
+    "seconds": 197.64,
+    "sha256": "aee1c39de78587a470e95604dbf0ad05829fb5cdb23803de14b81ff53d1f80a5"
+  },
+  {
+    "number": 10,
+    "title": "Hotter in Person",
+    "path": "assets/album4/hotter-in-person.mp3",
+    "seconds": 175.63,
+    "sha256": "fa39a0fafb86f3a0b981ae1ae421c15d3bd52fee963ec53bc5f777195aa23663"
+  },
+  {
+    "number": 11,
+    "title": "Show Me Something Real",
+    "path": "assets/album4/show-me-something-real.mp3",
+    "seconds": 357.12,
+    "sha256": "0fbd168008731d952195d46e5d044d82a29ef351c8e4aec8cba678581bd7aee3"
+  }
+]

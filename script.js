@@ -43,7 +43,7 @@
   };
 
   applyAlbum2PreviewMode();
-  const order = ["fun-dipp", "pink-lips", "bite-lip", "gloss", "your-girl", "embrace-me", "we-come-together", "play-with-me", "carnival", "made-of-light", "candy-wrapper", "playground", "milk-shake", "tonight", "sweet-dreams", "we-are-1", "boots-smile-attitude", "come-here-come-close", "touch", "pull-me-in", "strip", "what-you-do-to-me", "exist", "escape", "pink-petals"];
+  const order = window.JAHNTELLA_TRACK_ORDER || ["fun-dipp", "pink-lips", "bite-lip", "gloss", "your-girl", "embrace-me", "we-come-together", "play-with-me", "carnival", "made-of-light", "candy-wrapper", "playground", "milk-shake", "tonight", "sweet-dreams", "we-are-1", "boots-smile-attitude", "midnight-rodeo", "redline", "smoke-show", "chasing-me", "coming-down", "you-and-me", "come-here-come-close", "touch", "pull-me-in", "strip", "what-you-do-to-me", "exist", "escape", "pink-petals", "obsessed-with-me", "kiss-me-like-a-secret", "pretty-little-problem", "cant-look-away", "knock-your-boots-off", "snap-me", "hold-my-hand-to-heaven", "read-my-lips", "viral-spiral", "hotter-in-person", "show-me-something-real"];
   const tracks = {
     "fun-dipp": {
       audio: document.getElementById("audioFunDipp"),
@@ -158,6 +158,16 @@
     escape: { audio: document.getElementById("audioEscape"), title: "Escape", artwork: "assets/album3/escape-cover.webp", card: document.querySelector('[data-card="escape"]') },
     "pink-petals": { audio: document.getElementById("audioPinkPetals"), title: "Pink Petals", artwork: "assets/album3/pink-petals-cover.webp", card: document.querySelector('[data-card="pink-petals"]') }
   };
+
+  // Register every album with the same player, progress, volume and saved state.
+  (window.JAHNTELLA_EXTRA_TRACKS || []).forEach(track => {
+    if (tracks[track.key]) return;
+    const audio = document.createElement('audio');
+    audio.preload = 'none'; audio.src = track.src;
+    document.body.appendChild(audio);
+    tracks[track.key] = {audio, title:track.title, artwork:track.artwork,
+      card:document.querySelector(`[data-card="${track.key}"]`)};
+  });
 
   const player = document.getElementById("player");
   const toggle = document.getElementById("playerToggle");
@@ -414,6 +424,8 @@
     "escape-cover.webp": "escape",
     "pink-petals-cover.webp": "pink-petals"
   };
+
+  (window.JAHNTELLA_EXTRA_TRACKS || []).forEach(track => { galleryCoverTracks[track.artwork.split('/').pop()] = track.key; });
 
   document.querySelectorAll("#gallery [data-lightbox]").forEach(cover => {
     const path = cover.dataset.lightbox?.split(/[?#]/)[0] || "";

@@ -127,7 +127,12 @@
     }
   };
 
-  const TRACK_ORDER = ['fun-dipp', 'pink-lips', 'bite-lip', 'gloss', 'your-girl', 'embrace-me', 'we-come-together', 'play-with-me', 'carnival', 'made-of-light', 'candy-wrapper', 'playground', 'milk-shake', 'tonight', 'sweet-dreams', 'we-are-1', 'boots-smile-attitude'];
+  (window.JAHNTELLA_EXTRA_TRACKS || []).forEach(track => {
+    TRACKS[track.key] = {title:track.title,src:new URL(track.src,siteRoot).href,
+      artwork:new URL(track.artwork,siteRoot).href,destination:`../index.html#${track.era==='Siren'?'sirenEraAlbum':track.era==='Sparkle'?'sparkleEraAlbum':'shineEraSneakPeek'}`};
+  });
+
+  const TRACK_ORDER = window.JAHNTELLA_TRACK_ORDER || ["fun-dipp", "pink-lips", "bite-lip", "gloss", "your-girl", "embrace-me", "we-come-together", "play-with-me", "carnival", "made-of-light", "candy-wrapper", "playground", "milk-shake", "tonight", "sweet-dreams", "we-are-1", "boots-smile-attitude"];
 
   const COVER_FILE_TRACKS = {
     'fun-dipp-cover.png': 'fun-dipp',
@@ -164,6 +169,8 @@
     'we-are-1-cover.webp': 'we-are-1',
     'boots-smile-attitude-cover.webp': 'boots-smile-attitude'
   };
+
+  (window.JAHNTELLA_EXTRA_TRACKS || []).forEach(track => { COVER_FILE_TRACKS[track.artwork.split('/').pop()] = track.key; });
 
   const safeJSON = (value, fallback) => {
     try { return JSON.parse(value) ?? fallback; } catch { return fallback; }
@@ -608,6 +615,8 @@
       image.title = `Play or pause ${TRACKS[track].title}`;
     });
   };
+
+  window.jahntellaSweetvilleToggleTrack = toggleTrack;
 
   const handlePlayableCover = event => {
     const cover = event.target.closest?.('[data-sv64-cover-track]');

@@ -1,0 +1,10 @@
+/* Siren accents follow the existing album layout. */
+#sirenEraAlbum{background:radial-gradient(ellipse at top,rgba(127,212,190,.15),transparent 70%);--siren-green:#a4ddcc;--siren-silver:#e4eceb}
+#sirenEraAlbum .exp60-shine-kicker,#sirenEraAlbum h2 em,#sirenEraAlbum .shine-era-song-card small{color:var(--siren-green)}
+#sirenEraAlbum .exp60-shine-cover-card,#sirenEraAlbum .shine-era-song-card{border-color:rgba(164,221,204,.4);box-shadow:0 10px 40px rgba(92,192,166,.08)}
+#sirenEraAlbum .play-button{background:linear-gradient(120deg,#a4ddcc,#e4eceb);color:#102c29}
+#sirenEraAlbum .shine-era-cover-play img{object-fit:contain;background:#092320}
+.siren-sweetville-card{border-color:rgba(164,221,204,.5)!important}.siren-sweetville-card .exp43-cover img{object-fit:contain;background:#092320}
+#sirenEraAlbum .shine-era-song-card,#sirenEraAlbum .exp60-shine-cover-card{background:linear-gradient(155deg,rgba(18,58,51,.96),rgba(5,19,21,.98))}
+#sirenEraAlbum .exp60-shine-cover-caption small{color:#c9e7de}
+.siren-sweetville-card{background:linear-gradient(155deg,rgba(18,58,51,.96),rgba(5,19,21,.98))!important}
