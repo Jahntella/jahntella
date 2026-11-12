@@ -5,26 +5,20 @@
   if(existing){
    const siren=document.getElementById('sirenEraAlbum');
    const community=document.getElementById('beASweetie');
-   // Keep Album V directly after Album IV, even if other page scripts move it later.
+   // The album is authored directly between Siren and Sweetie in index.html.
+   // Reinsert only Surge if an older extension moves it; never move Sweetie.
+   let placing=false;
    const place=()=>{
-     if(!siren||!community)return;
-     if(siren.nextElementSibling!==existing)siren.insertAdjacentElement('afterend',existing);
-     if(existing.nextElementSibling!==community)existing.insertAdjacentElement('afterend',community);
+     if(placing||!siren?.isConnected||!community?.isConnected||!existing.isConnected)return;
+     if(existing.parentNode===community.parentNode && existing.nextElementSibling===community && siren.compareDocumentPosition(existing)&Node.DOCUMENT_POSITION_FOLLOWING)return;
+     placing=true;
+     try{community.parentNode.insertBefore(existing,community);}finally{placing=false;}
    };
    place();
-   // Some late-loading page extensions rearrange album sections. Restore the
-   // exact Siren → Surge → Sweetie sequence whenever that happens.
-   let arranging=false;
-   const keepOrder=()=>{
-     if(arranging||!siren.isConnected||!existing.isConnected||!community.isConnected)return;
-     if(siren.nextElementSibling===existing&&existing.nextElementSibling===community)return;
-     arranging=true;
-     try{place();}finally{arranging=false;}
-   };
-   const observer=new MutationObserver(keepOrder);
+   const observer=new MutationObserver(place);
    observer.observe(document.body,{childList:true,subtree:true});
-   window.addEventListener('load',keepOrder,{once:true});
-   [250,1200,3000,6000].forEach(ms=>setTimeout(keepOrder,ms));
+   window.addEventListener('load',place,{once:true});
+   [250,1200,3000,6000].forEach(ms=>setTimeout(place,ms));
    const list=existing.querySelector('.shine-era-song-grid');
    if(list&&!list.querySelector('[data-card="playlist"]')){
      const article=document.createElement('article');
