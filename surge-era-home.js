@@ -1,7 +1,12 @@
 /* Inject Album V in the precise landing-page position. */
 (function(){
  const init=()=>{
-  if(document.getElementById('surgeEraAlbum'))return;
+  const existing=document.getElementById('surgeEraAlbum');
+  if(existing){
+   const community=document.getElementById('beASweetie');
+   if(community&&existing.nextElementSibling!==community)community.parentNode.insertBefore(existing,community);
+   return;
+  }
   const siren=document.getElementById('sirenEraAlbum');
   const community=document.getElementById('beASweetie');
   if(!siren||!community){console.warn('Surge Era: insertion anchor missing');return;}
