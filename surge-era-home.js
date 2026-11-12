@@ -4,15 +4,17 @@
   const existing=document.getElementById('surgeEraAlbum');
   if(existing){
    const siren=document.getElementById('sirenEraAlbum');
+   const sparkle=document.getElementById('sparkleEraAlbum');
    const community=document.getElementById('beASweetie');
-   // The album is authored directly between Siren and Sweetie in index.html.
-   // Reinsert only Surge if an older extension moves it; never move Sweetie.
+   // Keep the three album sections contiguous in their intended sequence.
    let placing=false;
    const place=()=>{
-     if(placing||!siren?.isConnected||!community?.isConnected||!existing.isConnected)return;
-     if(existing.parentNode===community.parentNode && existing.nextElementSibling===community && siren.compareDocumentPosition(existing)&Node.DOCUMENT_POSITION_FOLLOWING)return;
+     if(placing||!sparkle?.isConnected||!siren?.isConnected||!existing.isConnected)return;
      placing=true;
-     try{community.parentNode.insertBefore(existing,community);}finally{placing=false;}
+     try{
+       if(sparkle.nextElementSibling!==siren) sparkle.after(siren);
+       if(siren.nextElementSibling!==existing) siren.after(existing);
+     }finally{placing=false;}
    };
    place();
    const observer=new MutationObserver(place);
