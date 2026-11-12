@@ -329,7 +329,7 @@
     artwork.onerror = () => {
       const currentSrc = artwork.getAttribute("src") || "";
       if (!currentSrc.includes("-thumb.webp") && currentSrc.endsWith(".webp")) {
-        artwork.src = currentSrc.replace(/\\.webp$/, "-thumb.webp");
+        artwork.src = currentSrc.slice(0, -5) + "-thumb.webp";
       } else {
         artwork.onerror = null;
         artwork.src = "assets/fun-dipp-cover.webp";
