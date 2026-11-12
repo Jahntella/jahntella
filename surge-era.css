@@ -6,3 +6,9 @@
 #surgeEraAlbum .shine-era-cover-play img{object-fit:contain;background:#210c20}
 .surge-sweetville-card{border-color:rgba(255,149,85,.5)!important}
 .surge-sweetville-card .exp43-cover img{object-fit:contain;background:#210c20}
+
+/* Playable Surge Era covers in Visual World */
+#gallery .surge-gallery-item{position:relative;overflow:hidden;background:#190e1b;display:block}
+#gallery .surge-gallery-item img{width:100%;height:100%;object-fit:cover;display:block}
+#gallery .surge-gallery-play{position:absolute;left:8%;right:8%;bottom:8%;z-index:2;border:1px solid rgba(255,255,255,.6);border-radius:30px;padding:10px 8px;background:rgba(25,10,27,.88);color:#fff;font:600 13px/1.2 inherit;cursor:pointer;backdrop-filter:blur(8px);box-shadow:0 3px 18px #0008}
+#gallery .surge-gallery-play:hover,#gallery .surge-gallery-play:focus-visible{background:#f77d42;color:#1c0c18}
