@@ -324,8 +324,20 @@
     if (changing || options.fresh) currentCredited = false;
     if (typeof options.credited === "boolean") currentCredited = options.credited;
     title.textContent = track.title;
+    // Some full-resolution cover files are placeholders; use the thumbnail
+    // when the original cannot load, without exposing alt text in the player.
+    artwork.onerror = () => {
+      const currentSrc = artwork.getAttribute("src") || "";
+      if (!currentSrc.includes("-thumb.webp") && currentSrc.endsWith(".webp")) {
+        artwork.src = currentSrc.replace(/\\.webp$/, "-thumb.webp");
+      } else {
+        artwork.onerror = null;
+        artwork.src = "assets/fun-dipp-cover.webp";
+      }
+    };
+    artwork.alt = "";
+    artwork.setAttribute("aria-hidden", "true");
     artwork.src = track.artwork;
-    artwork.alt = `${track.title} artwork`;
     player.classList.add("visible");
     Object.entries(tracks).forEach(([trackKey, item]) => item.card?.classList.toggle("is-active", trackKey === key));
     if (autoplay) {
