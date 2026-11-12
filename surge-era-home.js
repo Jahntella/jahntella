@@ -3,17 +3,21 @@
  const init=()=>{
   const existing=document.getElementById('surgeEraAlbum');
   if(existing){
-   const siren=document.getElementById('sirenEraAlbum');
+   const sweet=document.getElementById('sweetEraAlbum');
+   const shine=document.getElementById('shineEraSneakPeek');
    const sparkle=document.getElementById('sparkleEraAlbum');
+   const siren=document.getElementById('sirenEraAlbum');
    const community=document.getElementById('beASweetie');
-   // Keep the three album sections contiguous in their intended sequence.
    let placing=false;
    const place=()=>{
-     if(placing||!sparkle?.isConnected||!siren?.isConnected||!existing.isConnected)return;
+     if(placing||![sweet,shine,sparkle,siren,existing].every(el=>el?.isConnected))return;
      placing=true;
      try{
-       if(sparkle.nextElementSibling!==siren) sparkle.after(siren);
-       if(siren.nextElementSibling!==existing) siren.after(existing);
+       // Use the actual Sweet album as the stable anchor, not the community footer.
+       if(sweet.nextElementSibling!==shine)sweet.after(shine);
+       if(shine.nextElementSibling!==sparkle)shine.after(sparkle);
+       if(sparkle.nextElementSibling!==siren)sparkle.after(siren);
+       if(siren.nextElementSibling!==existing)siren.after(existing);
      }finally{placing=false;}
    };
    place();
