@@ -1,0 +1,38 @@
+JAHNTELLA — SURGE ERA (ALBUM V) — THREE ZIP UPLOADS
+
+1. Download all three ZIPs. Extract all three ZIPs to ONE folder, merging their contents.
+2. On GitHub open Jahntella/jahntella (main branch), Add file > Upload files.
+3. Drag the contents of the merged folder, preserving the assets/album5 and sweetville/ folder paths. Commit.
+   NOTE: GitHub's web uploader may not preserve nested folders when dragging individual files. A desktop Git client is safer for folder structure.
+4. In the existing root index.html, just before </head>, add:
+   <link rel="stylesheet" href="surge-era.css?v=1">
+5. In root index.html, find the script tag that loads era-music-catalog.js and IMMEDIATELY AFTER IT add:
+   <script defer src="surge-era-catalog.js?v=1"></script>
+6. In root index.html, just before </body>, add:
+   <script defer src="surge-era-home.js?v=1"></script>
+7. In sweetville/index.html, find the script tag loading siren-era-sweetville.js and AFTER IT add:
+   <script defer src="surge-era-sweetville.js?v=1"></script>
+8. In sweetville/index.html, find the script tag loading ../era-music-catalog.js and IMMEDIATELY AFTER IT add:
+   <script defer src="../surge-era-catalog.js?v=1"></script>
+   If it already loads the root catalog through another file, still load the Surge catalog before the main Sweetville player script.
+9. In sweetville/index.html, before </head>, add:
+   <link rel="stylesheet" href="../surge-era.css?v=1">
+10. Commit these HTML edits. Check https://jahntella.com/ after deployment.
+
+SURGE ALBUM ORDER
+01. Anxiety
+02. Body Potion
+03. Doll Face
+04. Electric Tangerine
+05. Future Ex
+06. Going Down
+07. Overload
+08. Spit
+09. Tik Tok
+10. Untouchable
+11. Wild Card
+12. Playlist (BONUS TRACK)
+
+All original MP3s remain untouched. Website copies are optimized 128–160kbps MP3 for smaller uploads.
+All artwork is optimized WebP; the original PNGs remain untouched.
+NOTE: Site player integration has not been tested live. If playback does not start, inspect browser console and the existing site's track registration behavior.

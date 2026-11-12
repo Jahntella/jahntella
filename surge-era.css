@@ -1,0 +1,8 @@
+/* Album V: neon tangerine, electric pink and violet */
+#surgeEraAlbum{background:radial-gradient(ellipse at top,rgba(255,101,45,.18),transparent 70%),linear-gradient(145deg,#18091c,#200c25 55%,#160c20);--surge-orange:#ff9655;--surge-pink:#ff70b8;color:#fff}
+#surgeEraAlbum .exp60-shine-kicker,#surgeEraAlbum h2 em,#surgeEraAlbum .shine-era-song-card small{color:#ffad70}
+#surgeEraAlbum .exp60-shine-cover-card,#surgeEraAlbum .shine-era-song-card{border-color:rgba(255,149,85,.42);box-shadow:0 10px 40px rgba(255,100,90,.09)}
+#surgeEraAlbum .play-button{background:linear-gradient(120deg,#ff9955,#ff6ab6);color:#200d20}
+#surgeEraAlbum .shine-era-cover-play img{object-fit:contain;background:#210c20}
+.surge-sweetville-card{border-color:rgba(255,149,85,.5)!important}
+.surge-sweetville-card .exp43-cover img{object-fit:contain;background:#210c20}
