@@ -3,8 +3,28 @@
  const init=()=>{
   const existing=document.getElementById('surgeEraAlbum');
   if(existing){
+   const siren=document.getElementById('sirenEraAlbum');
    const community=document.getElementById('beASweetie');
-   if(community&&existing.nextElementSibling!==community)community.parentNode.insertBefore(existing,community);
+   // Keep Album V directly after Album IV, even if other page scripts move it later.
+   const place=()=>{
+     if(!siren||!community)return;
+     if(siren.nextElementSibling!==existing)siren.insertAdjacentElement('afterend',existing);
+     if(existing.nextElementSibling!==community)existing.insertAdjacentElement('afterend',community);
+   };
+   place();
+   // Other landing-page enhancements run after DOMContentLoaded.
+   window.addEventListener('load',place,{once:true});
+   setTimeout(place,250);
+   setTimeout(place,1200);
+   const list=existing.querySelector('.shine-era-song-grid');
+   if(list&&!list.querySelector('[data-card="playlist"]')){
+     const article=document.createElement('article');
+     article.className='exp44-new-music-card shine-era-song-card';
+     article.dataset.card='playlist';
+     article.innerHTML='<button class="shine-era-cover-play sparkle-cover-play" type="button" data-track="playlist" aria-label="Play Playlist"><img src="assets/album5/playlist-cover-thumb.webp" alt="Playlist song cover by Jahntella" loading="lazy" decoding="async"><span aria-hidden="true">▶</span></button><div><small>THE SURGE ERA · 12 · BONUS TRACK</small><h3>Playlist</h3><button class="play-button" type="button" data-track="playlist">▶ Play Playlist</button></div>';
+     list.appendChild(article);
+     article.querySelectorAll('[data-track]').forEach(button=>button.addEventListener('click',()=>window.jahntellaSelectSiteTrack?.('playlist')));
+   }
    return;
   }
   const siren=document.getElementById('sirenEraAlbum');
