@@ -328,8 +328,12 @@
     artwork.alt = `${track.title} artwork`;
     player.classList.add("visible");
     Object.entries(tracks).forEach(([trackKey, item]) => item.card?.classList.toggle("is-active", trackKey === key));
-    if (autoplay) track.audio.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
-    else setPlaying(false);
+    if (autoplay) {
+      track.audio.play().then(() => setPlaying(true)).catch(error => {
+        console.warn('Jahntella playback could not start:', track.title, error);
+        setPlaying(false);
+      });
+    } else setPlaying(false);
   };
 
   window.jahntellaSelectSiteTrack = (key, autoplay = true, options = {}) => {
@@ -482,7 +486,11 @@
       persistSitePlayback();
     });
     track.audio.addEventListener("ended", () => {
-      if (currentTrack() === track) moveTrack(1);
+      // Continuous listening across all five albums, including Album V bonus track.
+      if (currentTrack() !== track) return;
+      const position = order.indexOf(currentKey);
+      const nextKey = order[(position + 1) % order.length];
+      if (nextKey && tracks[nextKey]?.audio) selectTrack(nextKey, true, {fresh:true});
     });
   });
 
