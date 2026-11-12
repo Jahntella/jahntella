@@ -12,10 +12,19 @@
      if(existing.nextElementSibling!==community)existing.insertAdjacentElement('afterend',community);
    };
    place();
-   // Other landing-page enhancements run after DOMContentLoaded.
-   window.addEventListener('load',place,{once:true});
-   setTimeout(place,250);
-   setTimeout(place,1200);
+   // Some late-loading page extensions rearrange album sections. Restore the
+   // exact Siren → Surge → Sweetie sequence whenever that happens.
+   let arranging=false;
+   const keepOrder=()=>{
+     if(arranging||!siren.isConnected||!existing.isConnected||!community.isConnected)return;
+     if(siren.nextElementSibling===existing&&existing.nextElementSibling===community)return;
+     arranging=true;
+     try{place();}finally{arranging=false;}
+   };
+   const observer=new MutationObserver(keepOrder);
+   observer.observe(document.body,{childList:true,subtree:true});
+   window.addEventListener('load',keepOrder,{once:true});
+   [250,1200,3000,6000].forEach(ms=>setTimeout(keepOrder,ms));
    const list=existing.querySelector('.shine-era-song-grid');
    if(list&&!list.querySelector('[data-card="playlist"]')){
      const article=document.createElement('article');
