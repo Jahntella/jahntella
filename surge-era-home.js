@@ -20,11 +20,14 @@
        if(siren.nextElementSibling!==existing)siren.after(existing);
        // Keep the featured singles, New Music, and thank-you content below all five eras.
        // Move the existing nodes rather than cloning them so audio and event handlers survive.
+       const communitySection=document.getElementById('beASweetie');
+       const gallery=document.getElementById('gallery');
        const featured=document.getElementById('music');
        const newMusic=document.getElementById('newMusic');
        const thankYou=document.querySelector('section.exp58-thank-you');
        let anchor=existing;
-       for(const section of [featured,newMusic,thankYou]){
+       // Explicitly move the two sections reported as interrupting the albums.
+       for(const section of [communitySection,gallery,featured,newMusic,thankYou]){
          if(section?.isConnected && section.parentElement===anchor.parentElement){
            if(anchor.nextElementSibling!==section)anchor.after(section);
            anchor=section;
