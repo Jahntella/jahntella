@@ -30,7 +30,7 @@
      const article=document.createElement('article');
      article.className='exp44-new-music-card shine-era-song-card';
      article.dataset.card='playlist';
-     article.innerHTML='<button class="shine-era-cover-play sparkle-cover-play" type="button" data-track="playlist" aria-label="Play Playlist"><img src="assets/album5/playlist-cover-thumb.webp" alt="Playlist song cover by Jahntella" loading="lazy" decoding="async"><span aria-hidden="true">▶</span></button><div><small>THE SURGE ERA · 12 · BONUS TRACK</small><h3>Playlist</h3><button class="play-button" type="button" data-track="playlist">▶ Play Playlist</button></div>';
+     article.innerHTML='<button class="shine-era-cover-play sparkle-cover-play" type="button" data-track="playlist" aria-label="Play Playlist"><img src="assets/album5/playlist-cover-thumb.webp" alt="Playlist song cover by Jahntella" loading="lazy" decoding="async"><span aria-hidden="true">▶</span></button><div><small>THE SURGE ERA · 12 · BONUS TRACK</small><h3>Playlist</h3><p>One more song for the Sweeties who never hit pause.</p><button class="play-button" type="button" data-track="playlist">▶ Play Playlist</button></div>';
      list.appendChild(article);
      article.querySelectorAll('[data-track]').forEach(button=>button.addEventListener('click',()=>window.jahntellaSelectSiteTrack?.('playlist')));
    }
