@@ -1,7 +1,7 @@
 /* Album V - appended to the existing four-era catalog. */
 (function(){
   const surge=[
-  {"key":"tik-tok","title":"Tik Tok","src":"assets/album5/tik-tok.mp3","artwork":"assets/album5/tik-tok-cover.webp","era":"Surge","number":1},
+  {"key":"tik-tok","title":"Tick Tock","src":"assets/album5/tik-tok.mp3","artwork":"assets/album5/tik-tok-cover.webp","era":"Surge","number":1},
   {"key":"doll-face","title":"Doll Face","src":"assets/album5/doll-face.mp3","artwork":"assets/album5/doll-face-cover.webp","era":"Surge","number":2},
   {"key":"future-ex","title":"Future Ex","src":"assets/album5/future-ex.mp3","artwork":"assets/album5/future-ex-cover.webp","era":"Surge","number":3},
   {"key":"going-down","title":"Going Down","src":"assets/album5/going-down.mp3","artwork":"assets/album5/going-down-cover.webp","era":"Surge","number":4},
