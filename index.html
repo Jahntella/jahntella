@@ -81,7 +81,33 @@
 </style>
 <style id="featured-now-polish">
 .featured-now{padding:clamp(2rem,5vw,4rem) 1.25rem;background:linear-gradient(125deg,#14091f,#16101b);color:#fff}.featured-now-inner{max-width:1130px;margin:auto}.featured-now-eyebrow{color:#f2bee0;letter-spacing:.13em;font-size:.72rem;font-weight:800}.featured-now h2{font-size:clamp(1.6rem,3.5vw,2.5rem);margin:.4rem 0}.featured-now h2 em{color:#f3c4e7}.featured-now-inner>p:not(.featured-now-eyebrow){color:#e5dbe5}.featured-now-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1.5rem}.featured-now-card{display:flex;gap:1rem;align-items:center;padding:1rem;border:1px solid rgba(255,255,255,.27);border-radius:18px;background:rgba(255,255,255,.06)}.featured-now-card.siren{border-color:#6dcbb8}.featured-now-card.surge{border-color:#ffa45b}.featured-now-card img{width:clamp(85px,29%,150px);height:auto;aspect-ratio:1;object-fit:contain;border-radius:12px;flex:none}.featured-now-card h3{font-size:clamp(1.06rem,2vw,1.4rem);margin:.3rem 0}.featured-now-card small{font-size:.7rem;letter-spacing:.05em}.featured-now-card p{font-size:.88rem;line-height:1.4;margin:.3rem 0 .7rem;color:#e6dfe6}.featured-now-actions{display:flex;flex-wrap:wrap;gap:.4rem}.featured-now-actions a,.featured-now-actions button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:.45rem .7rem;border:1px solid rgba(255,255,255,.5);border-radius:99px;color:#fff;background:rgba(255,255,255,.12);text-decoration:none;font:inherit;font-size:.8rem;cursor:pointer}.featured-now-actions a:focus-visible,.featured-now-actions button:focus-visible{outline:2px solid white;outline-offset:2px}#gallery .gallery-item--uncropped{display:flex!important;align-items:center;justify-content:center;background:#17101d!important;overflow:hidden}#gallery .gallery-item--uncropped img{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;opacity:1!important;visibility:visible!important}@media(max-width:760px){.featured-now-grid{grid-template-columns:1fr}}@media(max-width:440px){.featured-now-card{padding:.7rem;gap:.6rem}.featured-now-card img{width:90px}.featured-now-actions a,.featured-now-actions button{font-size:.72rem;padding:.4rem .55rem}}
-</style></head>
+</style><!-- Album visibility and document-order recovery. Keep the five albums before the Sweeties community on mobile and desktop. -->
+<style id="era-visibility-recovery">
+/* Main is a normal vertical document, never a flex/grid-ordered assortment of sections. */
+main{display:block!important}
+/* These two albums already exist in the HTML between Sparkle and the community.
+   Override legacy reveal/containment optimizations that can blank them on mobile. */
+main > #sirenEraAlbum,
+main > #surgeEraAlbum{
+  display:block!important;
+  position:relative!important;
+  visibility:visible!important;
+  opacity:1!important;
+  transform:none!important;
+  content-visibility:visible!important;
+  contain:none!important;
+  contain-intrinsic-size:auto!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+}
+main > #sirenEraAlbum .exp60-shine-shell,
+main > #surgeEraAlbum .exp60-shine-shell{
+  visibility:visible!important;
+  opacity:1!important;
+}
+</style>
+</head>
 <body>
   <div id="siteLoader" class="site-loader" aria-hidden="true">
     <div class="loader-mark">Jahntella™<span>♡</span></div>
