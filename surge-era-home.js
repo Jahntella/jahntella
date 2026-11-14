@@ -18,6 +18,18 @@
        if(shine.nextElementSibling!==sparkle)shine.after(sparkle);
        if(sparkle.nextElementSibling!==siren)sparkle.after(siren);
        if(siren.nextElementSibling!==existing)siren.after(existing);
+       // Keep the featured singles, New Music, and thank-you content below all five eras.
+       // Move the existing nodes rather than cloning them so audio and event handlers survive.
+       const featured=document.getElementById('music');
+       const newMusic=document.getElementById('newMusic');
+       const thankYou=document.querySelector('section.exp58-thank-you');
+       let anchor=existing;
+       for(const section of [featured,newMusic,thankYou]){
+         if(section?.isConnected && section.parentElement===anchor.parentElement){
+           if(anchor.nextElementSibling!==section)anchor.after(section);
+           anchor=section;
+         }
+       }
      }finally{placing=false;}
    };
    place();
