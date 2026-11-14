@@ -25,12 +25,12 @@
     section.innerHTML = `
       <div class="world-tour-concert-shell">
         <header class="world-tour-concert-heading">
-          <p>THE SWEET ERA <span aria-hidden="true">✦</span> THE SHINE ERA</p>
+          <p>THE SWEET ERA <span aria-hidden="true">✦</span> THE SHINE ERA <span aria-hidden="true">✦</span> THE SPARKLE ERA <span aria-hidden="true">✦</span> THE SIREN ERA <span aria-hidden="true">✦</span> THE SURGE ERA</p>
           <h2 id="worldTourConcertTitle">Enter the <em>Concert Experience.</em></h2>
           <span>Click the poster to begin the complete playlist with Fun Dipp.</span>
         </header>
         <button class="world-tour-concert-poster" type="button" aria-label="Start the Concert Experience playlist with Fun Dipp">
-          <img src="assets/jahntella-imagine-world-tour.webp" alt="Jahntella Imagine World Tour poster featuring The Sweet Era and The Shine Era" width="1024" height="1536" decoding="async">
+          <img src="assets/jahntella-imagine-world-tour.webp" alt="Jahntella Imagine World Tour poster celebrating all five eras: Sweet, Shine, Sparkle, Siren and Surge" width="1024" height="1536" decoding="async">
           <span class="world-tour-concert-play" aria-hidden="true"><b>▶</b><strong>START THE CONCERT EXPERIENCE</strong><small>PLAY FROM FUN DIPP</small></span>
         </button>
       </div>`;
