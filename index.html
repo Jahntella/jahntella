@@ -1108,7 +1108,9 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
     const communityHeading=Array.from(document.querySelectorAll('h1,h2,h3,p,strong')).find(node=>/WELCOME TO THE COMMUNITY/i.test(node.textContent||''))
       || Array.from(document.querySelectorAll('h1,h2,h3')).find(node=>/Be A\s*[“\"]?SWEETIE/i.test(node.textContent||''));
     const communitySection=communityHeading?.closest('section');
-    if(communitySection?.parentNode)communitySection.parentNode.insertBefore(section,communitySection);
+    const surge=document.getElementById('surgeEraAlbum');
+    if(surge?.parentNode)surge.after(section);
+    else if(communitySection?.parentNode)communitySection.parentNode.insertBefore(section,communitySection);
     else shine.insertAdjacentElement('afterend',section);
   };
 
@@ -1179,7 +1181,7 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
     });
 
     const gallery=document.getElementById('gallery'),story=document.getElementById('about');
-    if(gallery&&story&&story.parentNode&&gallery!==story.previousElementSibling)story.parentNode.insertBefore(gallery,story);
+    // Keep Visual World in its authored position after all five eras; do not move it before About.
 
     const intro=Array.from(document.querySelectorAll('p')).find(n=>n.textContent.includes('Get your first look at')&&n.textContent.includes('The Shine Era'));
     if(intro)intro.innerHTML='Get your first look at <strong>The Shine Era</strong>—front and back—and step inside <strong>Sweet Dreams</strong>, <strong>We Are 1</strong>, <strong>Boots, Smile &amp; Attitude</strong>, <strong>Midnight Rodeo</strong>, <strong>Redline</strong>, <strong>Smoke Show</strong>, <strong>Chasing Me</strong>, <strong>Coming Down</strong>, and <strong>You and Me</strong>—nine glimpses of the sound, light, and world of Album II.';
