@@ -1360,10 +1360,14 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
       setTimeout(function(){card.classList.remove('is-changing');},60);
     };
     const choosePair=function(){
-      // Rotate every song over successive matchups, never two from the same era.
-      const first=tracks[index%tracks.length];index++;
-      let second=tracks[index%tracks.length],attempt=0;
-      while((second.era===first.era||second.key===first.key)&&attempt<tracks.length){index++;second=tracks[index%tracks.length];attempt++;}
+      // Advance the lead selection one track at a time so no songs are skipped.
+      // Choose an opponent from the other half of the catalog, from a different era.
+      const first=tracks[index%tracks.length];
+      let offset=Math.max(1,Math.floor(tracks.length/2));
+      let second=tracks[(index+offset)%tracks.length],attempt=0;
+      while((second.era===first.era||second.key===first.key)&&attempt<tracks.length){
+        offset++;second=tracks[(index+offset)%tracks.length];attempt++;
+      }
       index++;
       if(!second||second.key===first.key)return;
       current=[first.key,second.key];
