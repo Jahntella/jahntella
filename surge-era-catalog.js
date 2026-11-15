@@ -8,7 +8,7 @@
   {"key":"body-potion","title":"Body Potion","src":"assets/album5/body-potion.mp3","artwork":"assets/album5/body-potion-cover.webp","era":"Surge","number":5},
   {"key":"untouchable","title":"Untouchable","src":"assets/album5/untouchable.mp3","artwork":"assets/album5/untouchable-cover.webp","era":"Surge","number":6},
   {"key":"electric-tangerine","title":"Electric Tangerine","src":"assets/album5/electric-tangerine.mp3","artwork":"assets/album5/electric-tangerine-cover.webp","era":"Surge","number":7},
-  {"key":"anxiety","title":"Anxiety","src":"assets/album5/anxiety.mp3","artwork":"assets/album5/anxiety-cover.webp","era":"Surge","number":8},
+  {"key":"anxiety","title":"Anxiety","src":"assets/album5/anxiety.mp3","artwork":"assets/album5/assets/album5/anxiety-cover.webp?v=20261115","era":"Surge","number":8},
   {"key":"spit","title":"Spit","src":"assets/album5/Spit.mp3?v=full-20261114","artwork":"assets/album5/spit-cover.webp","era":"Surge","number":9},
   {"key":"wild-card","title":"Wild Card","src":"assets/album5/wild-card.mp3","artwork":"assets/album5/wild-card-cover.webp","era":"Surge","number":10},
   {"key":"overload","title":"Overload","src":"assets/album5/overload.mp3","artwork":"assets/album5/overload-cover.webp","era":"Surge","number":11},
