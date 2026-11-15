@@ -107,7 +107,25 @@ main > #surgeEraAlbum .exp60-shine-shell{
   opacity:1!important;
 }
 </style>
-</head>
+<style id="sweet-era-tracks-integrated">
+/* Keep the Sweet album covers and all playable song cards in one section. */
+#sweetEraAlbum #music,#sweetEraAlbum #newMusic{width:100%;margin:1.5rem auto 0;scroll-margin-top:100px}
+#sweetEraAlbum #music{padding-top:clamp(1rem,3vw,2rem);padding-bottom:1.5rem}
+#sweetEraAlbum #newMusic{padding:clamp(1.5rem,3vw,2.5rem) clamp(.35rem,2vw,1.5rem);border-radius:20px}
+#sweetEraAlbum .release-grid,#sweetEraAlbum .exp44-new-music-grid{width:100%}
+#featuredNow .featured-now-card{transition:opacity .25s ease,border-color .25s ease}
+#featuredNow .featured-now-card.is-changing{opacity:.30}
+#featuredNow .featured-now-card.sweet{border-color:#f19dcc}
+#featuredNow .featured-now-card.shine{border-color:#b492f1}
+#featuredNow .featured-now-card.sparkle{border-color:#73d7ed}
+#featuredNow .featured-now-card.siren{border-color:#6dcbb8}
+#featuredNow .featured-now-card.surge{border-color:#ffa45b}
+.featured-now-controls{display:flex;justify-content:center;align-items:center;gap:.75rem;flex-wrap:wrap;margin:1.3rem auto 0}
+.featured-now-controls button{min-height:44px;padding:.55rem 1rem;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.55);border-radius:999px;font:inherit;font-size:.9rem;cursor:pointer}
+.featured-now-controls button:focus-visible{outline:2px solid white;outline-offset:3px}
+.featured-now-controls span{font-size:.82rem;color:#e2d4df}
+@media(prefers-reduced-motion:reduce){#featuredNow .featured-now-card{transition:none}}
+</style></head>
 <body>
   <div id="siteLoader" class="site-loader" aria-hidden="true">
     <div class="loader-mark">Jahntella™<span>♡</span></div>
@@ -164,10 +182,10 @@ main > #surgeEraAlbum .exp60-shine-shell{
       </a>
     </section>
 
-<section class="featured-now" id="featuredNow" aria-labelledby="featuredNowTitle"><div class="featured-now-inner"><p class="featured-now-eyebrow">FEATURED RIGHT NOW · LISTEN TO JAHNTELLA</p><h2 id="featuredNowTitle">Two songs. <em>Two different feelings.</em></h2><p>Experience romantic Siren Era soul or electric Surge Era energy, then explore all five eras.</p><div class="featured-now-grid">
+<section class="featured-now" id="featuredNow" aria-labelledby="featuredNowTitle"><div class="featured-now-inner"><p class="featured-now-eyebrow">FEATURED RIGHT NOW · LISTEN TO JAHNTELLA</p><h2 id="featuredNowTitle">Two songs. <em>Two different feelings.</em></h2><p>Every pairing is a new discovery. Listen to both, then choose your favorite Sweetie sound.</p><div class="featured-now-grid">
 <article class="featured-now-card siren"><img src="assets/album4/show-me-something-real-cover-thumb.webp" alt="Show Me Something Real cover art" loading="lazy" decoding="async" width="150" height="150"><div><small>💚 SIREN ERA · SOULFUL POP / R&amp;B</small><h3>Show Me Something Real</h3><p>Real love, warm saxophone, and a heartfelt chorus.</p><div class="featured-now-actions"><button class="play-button" type="button" data-track="show-me-something-real">▶ Play here</button><a href="#sirenEraAlbum">Siren Era</a><a href="https://open.spotify.com/artist/49N5q7aQ2NOM68dZwdU9jK" target="_blank" rel="noopener noreferrer">Spotify artist</a></div></div></article>
 <article class="featured-now-card surge"><img src="assets/album5/tik-tok-cover-thumb.webp" alt="Tick Tock cover art" loading="lazy" decoding="async" width="150" height="150"><div><small>🧡 SURGE ERA · ELECTRIC POP</small><h3>Tick Tock</h3><p>Electric tangerine and irresistible energy.</p><div class="featured-now-actions"><button class="play-button" type="button" data-track="tik-tok">▶ Play here</button><a href="#surgeEraAlbum">Surge Era</a><a href="https://open.spotify.com/album/40CeJXzJWfGQdoG0q3LT6G" target="_blank" rel="noopener noreferrer">Spotify</a></div></div></article>
-</div></div></section>
+</div><div class="featured-now-controls" aria-label="Featured song matchups"><button id="featuredNextPair" type="button">↻ Next matchup</button><button id="featuredPausePairs" type="button" aria-pressed="false">Pause rotation</button><span id="featuredPairStatus" role="status" aria-live="polite">A new pairing every 20 seconds</span></div></div></section>
     <section class="exp53-album-section reveal" id="sweetEraAlbum" aria-labelledby="sweetEraTitle">
       <div class="exp53-album-shell">
         <header class="exp53-album-head">
@@ -195,6 +213,194 @@ main > #surgeEraAlbum .exp60-shine-shell{
             <span class="exp53-album-label"><small>OFFICIAL BACK COVER</small><strong>Tap to enlarge ↗</strong></span>
           </button>
         </div>
+
+    <!-- The Sweet Era playable songs belong with its album artwork. -->
+    <section class="music-section reveal" id="music">
+      <div class="section-heading">
+        <p class="eyebrow">THE SWEET ERA · FEATURED SINGLES</p>
+        <h2>Press play on <em>something sweet.</em></h2>
+      </div>
+      <div class="streaming-links" role="group" aria-label="Listen to Jahntella">
+        <a href="https://open.spotify.com/artist/49N5q7aQ2NOM68dZwdU9jK" aria-label="Jahntella on Spotify" target="_blank" rel="noopener">Spotify</a>
+        <a href="https://music.apple.com/us/artist/jahntella/6801612665" aria-label="Jahntella on Apple Music" target="_blank" rel="noopener">Apple Music</a>
+      </div>
+
+      <div class="release-grid">
+        <article class="release-card" data-card="fun-dipp">
+          <div class="record-stage">
+            <div class="record-sleeve">
+              <img src="assets/fun-dipp-cover.webp" alt="Fun Dipp sleeve artwork" loading="eager" fetchpriority="high" decoding="async">
+            </div>
+            <div class="record-slider">
+              <div class="record-wrap" id="funDippRecordWrap">
+                <img class="record-cover" src="assets/fun-dipp-cover.webp" alt="Fun Dipp vinyl record artwork" loading="lazy" decoding="async">
+                <span class="record-shine"></span>
+              </div>
+            </div>
+          </div>
+          <div class="release-copy">
+            <p class="release-label">DEBUT SINGLE</p>
+            <h3>Fun Dipp</h3>
+            <p>Bright pop energy, playful hooks, and a candy-coated chorus.</p>
+            <button class="play-button" data-track="fun-dipp">▶ Play Fun Dipp</button>
+          </div>
+        </article>
+
+        <article class="release-card" data-card="pink-lips">
+          <div class="record-stage">
+            <div class="record-sleeve">
+              <img src="assets/pink-lips-remix.webp" alt="Pink Lips Remix sleeve artwork" loading="eager" fetchpriority="high" decoding="async">
+            </div>
+            <div class="record-slider">
+              <div class="record-wrap" id="pinkLipsRecordWrap">
+                <img class="record-cover" src="assets/pink-lips-remix.webp" alt="Pink Lips Remix vinyl record artwork" loading="lazy" decoding="async">
+                <span class="record-shine"></span>
+              </div>
+            </div>
+          </div>
+          <div class="release-copy">
+            <p class="release-label">REMIX</p>
+            <h3>Pink Lips Remix</h3>
+            <p>A glossy remix with bigger energy and late-night sparkle.</p>
+            <button class="play-button" data-track="pink-lips">▶ Play Pink Lips Remix</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="exp44-new-music reveal" id="newMusic" aria-labelledby="newMusicTitle">
+      <header class="exp44-new-music-head">
+        <div>
+          <p class="eyebrow">THE SWEET ERA · ALL SONGS</p>
+          <h2 id="newMusicTitle">The Sweet Era. <em>Press play.</em></h2>
+          <p>All fourteen Sweet Era songs, together with the album covers. Pick any track to start listening.</p>
+        </div>
+        <a href="sweetville/melody-studio.html#latestMusic">Enter Melody Studio →</a>
+      </header>
+
+      <div class="exp44-new-music-grid">
+        <article class="exp44-new-music-card" data-card="bite-lip">
+          <img src="assets/music-thumbs/bite-lip.webp" alt="Bite Lip single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
+          <div>
+            <small>NEW · NEON POP</small>
+            <h3>Bite Lip</h3>
+            <p>Flirty pop energy with that left-hip, right-dip attitude.</p>
+            <button class="play-button" type="button" data-track="bite-lip">▶ Play Bite Lip</button>
+          </div>
+        </article>
+
+        <article class="exp44-new-music-card" data-card="gloss">
+          <img src="assets/music-thumbs/gloss.webp" alt="Gloss single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
+          <div>
+            <small>NEW · GLOSSY POP</small>
+            <h3>Gloss</h3>
+            <p>Polished pink-pop sparkle made for one more kiss.</p>
+            <button class="play-button" type="button" data-track="gloss">▶ Play Gloss</button>
+          </div>
+        </article>
+
+        <article class="exp44-new-music-card" data-card="your-girl">
+          <img src="assets/music-thumbs/i-want-to-be-your-girl.webp" alt="I Want To Be Your Girl single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
+          <div>
+            <small>HOUSE / EDM</small>
+            <h3>I Want To Be Your Girl</h3>
+            <p>A heart-forward rush built for the Sweetville dance floor.</p>
+            <button class="play-button" type="button" data-track="your-girl">▶ Play I Want To Be Your Girl</button>
+          </div>
+        </article>
+
+        <article class="exp44-new-music-card" data-card="embrace-me">
+          <img src="assets/music-thumbs/embrace-me.webp" alt="Embrace Me single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
+          <div>
+            <small>HOUSE / EDM · NEW</small>
+            <h3>Embrace Me</h3>
+            <p>Give in to the rush and let the moment take us higher.</p>
+            <button class="play-button" type="button" data-track="embrace-me">▶ Play Embrace Me</button>
+          </div>
+        </article>
+
+        <article class="exp44-new-music-card" data-card="we-come-together">
+          <img src="assets/music-thumbs/we-come-together.webp" alt="We Come Together single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
+          <div>
+            <small>POP / DANCE · NEW</small>
+            <h3>We Come Together</h3>
+            <p>Magnetic pop energy and a left-right hook made to move together.</p>
+            <button class="play-button" type="button" data-track="we-come-together">▶ Play We Come Together</button>
+          </div>
+        </article>
+
+        <article class="exp44-new-music-card" data-card="play-with-me">
+          <img src="assets/music-thumbs/play-with-me.webp" alt="Play With Me single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
+          <div>
+            <small>POP / ARCADE · NEW</small>
+            <h3>Play With Me</h3>
+            <p>Flirty arcade-pop with secret levels, bold moves, and a bonus-round hook.</p>
+            <button class="play-button" type="button" data-track="play-with-me">▶ Play With Me</button>
+          </div>
+        </article>
+
+        <article class="exp44-new-music-card" data-card="carnival">
+          <img src="assets/music-thumbs/carnival.webp" alt="Carnival single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
+          <div>
+            <small>CARNIVAL POP · NEW</small>
+            <h3>Carnival</h3>
+            <p>A dazzling one-more-ride anthem with neon thrills and after-dark attraction.</p>
+            <button class="play-button" type="button" data-track="carnival">▶ Play Carnival</button>
+          </div>
+        </article>
+
+        <article class="exp44-new-music-card" data-card="made-of-light">
+          <img src="assets/music-thumbs/made-of-light.webp" alt="Made of Light single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
+          <div>
+            <small>FESTIVAL EDM · NEW</small>
+            <h3>Made of Light</h3>
+            <p>A euphoric anthem that rises from a spark into a festival-sized celebration.</p>
+            <button class="play-button" type="button" data-track="made-of-light">▶ Play Made of Light</button>
+          </div>
+        </article>
+
+        <article class="exp44-new-music-card" data-card="candy-wrapper">
+          <img src="assets/music-thumbs/candy-wrapper.webp" alt="Candy Wrapper single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
+          <div>
+            <small>CANDY POP · NEW</small>
+            <h3>Candy Wrapper</h3>
+            <p>A bright, flirty pop rush with irresistible flavor and a hook made to unwrap.</p>
+            <button class="play-button" type="button" data-track="candy-wrapper">▶ Play Candy Wrapper</button>
+          </div>
+        </article>
+
+        <article class="exp44-new-music-card" data-card="playground">
+          <img src="assets/music-thumbs/playground.webp" alt="Playground single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
+          <div>
+            <small>AFTER-HOURS POP · NEW</small>
+            <h3>Playground</h3>
+            <p>A neon after-hours pop rush with playful tension, glossy hooks, and a teasing promise to let you win.</p>
+            <button class="play-button" type="button" data-track="playground">▶ Play Playground</button>
+          </div>
+        </article>
+
+        <article class="exp44-new-music-card" data-card="milk-shake">
+          <img src="assets/music-thumbs/milk-shake.webp" alt="Milk Shake single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
+          <div>
+            <small>RETRO POP · NEW</small>
+            <h3>Milk Shake</h3>
+            <p>A playful neon-diner pop treat with a flirty hook made to shake the room.</p>
+            <button class="play-button" type="button" data-track="milk-shake">▶ Play Milk Shake</button>
+          </div>
+        </article>
+
+        <article class="exp44-new-music-card" data-card="tonight">
+          <img src="assets/music-thumbs/tonight.webp" alt="Tonight single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
+          <div>
+            <small>ISLAND CLUB · NEW</small>
+            <h3>Tonight</h3>
+            <p>A moonlit island-club escape filled with rhythm, passion, and a moment made for two.</p>
+            <button class="play-button" type="button" data-track="tonight">▶ Play Tonight</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
 
       </div>
     </section>
@@ -375,193 +581,6 @@ main > #surgeEraAlbum .exp60-shine-shell{
     </div>
     <div class="exp60-shine-grid"><div class="exp60-shine-covers" aria-label="The Surge Era front and back covers"><button class="exp60-shine-cover-card exp60-shine-cover-front" type="button" data-lightbox="assets/album5/the-surge-era-front.webp" aria-label="Enlarge The Surge Era front cover"><span class="exp60-shine-cover-frame"><img src="assets/album5/the-surge-era-front-thumb.webp" alt="The Surge Era Album V front cover" loading="lazy"></span><span class="exp60-shine-cover-caption"><small>OFFICIAL FRONT COVER</small><strong>Tap to enlarge ↗</strong></span></button><button class="exp60-shine-cover-card exp60-shine-cover-back" type="button" data-lightbox="assets/album5/the-surge-era-back.webp" aria-label="Enlarge The Surge Era back cover"><span class="exp60-shine-cover-frame"><img src="assets/album5/the-surge-era-back-thumb.webp" alt="The Surge Era Album V back cover" loading="lazy"></span><span class="exp60-shine-cover-caption"><small>OFFICIAL BACK COVER</small><strong>Tap to enlarge ↗</strong></span></button></div><div class="exp66-shine-videos shine-era-song-grid" aria-label="The Surge Era songs in album order"><article class="exp44-new-music-card shine-era-song-card" data-card="tik-tok"><button class="shine-era-cover-play sparkle-cover-play" type="button" data-track="tik-tok" aria-label="Play Tick Tock"><img src="assets/album5/tik-tok-cover-thumb.webp" alt="Tick Tock song cover by Jahntella" loading="lazy" decoding="async"><span aria-hidden="true">▶</span></button><div><small>THE SURGE ERA · 01</small><h3>Tick Tock</h3><p>The clock is ticking, and the chemistry is electric.</p><button class="play-button" type="button" data-track="tik-tok">▶ Play Tick Tock</button></div></article><article class="exp44-new-music-card shine-era-song-card" data-card="doll-face"><button class="shine-era-cover-play sparkle-cover-play" type="button" data-track="doll-face" aria-label="Play Doll Face"><img src="assets/album5/doll-face-cover-thumb.webp" alt="Doll Face song cover by Jahntella" loading="lazy" decoding="async"><span aria-hidden="true">▶</span></button><div><small>THE SURGE ERA · 02</small><h3>Doll Face</h3><p>Pretty looks, playful confidence, and a mischievous streak.</p><button class="play-button" type="button" data-track="doll-face">▶ Play Doll Face</button></div></article><article class="exp44-new-music-card shine-era-song-card" data-card="future-ex"><button class="shine-era-cover-play sparkle-cover-play" type="button" data-track="future-ex" aria-label="Play Future Ex"><img src="assets/album5/future-ex-cover-thumb.webp" alt="Future Ex song cover by Jahntella" loading="lazy" decoding="async"><span aria-hidden="true">▶</span></button><div><small>THE SURGE ERA · 03</small><h3>Future Ex</h3><p>A tempting romance with an expiration date.</p><button class="play-button" type="button" data-track="future-ex">▶ Play Future Ex</button></div></article><article class="exp44-new-music-card shine-era-song-card" data-card="going-down"><button class="shine-era-cover-play sparkle-cover-play" type="button" data-track="going-down" aria-label="Play Going Down"><img src="assets/album5/going-down-cover-thumb.webp" alt="Going Down song cover by Jahntella" loading="lazy" decoding="async"><span aria-hidden="true">▶</span></button><div><small>THE SURGE ERA · 04</small><h3>Going Down</h3><p>A daring rush that turns up the heat.</p><button class="play-button" type="button" data-track="going-down">▶ Play Going Down</button></div></article><article class="exp44-new-music-card shine-era-song-card" data-card="body-potion"><button class="shine-era-cover-play sparkle-cover-play" type="button" data-track="body-potion" aria-label="Play Body Potion"><img src="assets/album5/body-potion-cover-thumb.webp" alt="Body Potion song cover by Jahntella" loading="lazy" decoding="async"><span aria-hidden="true">▶</span></button><div><small>THE SURGE ERA · 05</small><h3>Body Potion</h3><p>A little magic, a little mystery, and irresistible chemistry.</p><button class="play-button" type="button" data-track="body-potion">▶ Play Body Potion</button></div></article><article class="exp44-new-music-card shine-era-song-card" data-card="untouchable"><button class="shine-era-cover-play sparkle-cover-play" type="button" data-track="untouchable" aria-label="Play Untouchable"><img src="assets/album5/untouchable-cover-thumb.webp" alt="Untouchable song cover by Jahntella" loading="lazy" decoding="async"><span aria-hidden="true">▶</span></button><div><small>THE SURGE ERA · 06</small><h3>Untouchable</h3><p>Unshakable confidence with a shine all her own.</p><button class="play-button" type="button" data-track="untouchable">▶ Play Untouchable</button></div></article><article class="exp44-new-music-card shine-era-song-card" data-card="electric-tangerine"><button class="shine-era-cover-play sparkle-cover-play" type="button" data-track="electric-tangerine" aria-label="Play Electric Tangerine"><img src="assets/album5/electric-tangerine-cover-thumb.webp" alt="Electric Tangerine song cover by Jahntella" loading="lazy" decoding="async"><span aria-hidden="true">▶</span></button><div><small>THE SURGE ERA · 07</small><h3>Electric Tangerine</h3><p>Turn up the voltage and feel the tangerine rush.</p><button class="play-button" type="button" data-track="electric-tangerine">▶ Play Electric Tangerine</button></div></article><article class="exp44-new-music-card shine-era-song-card" data-card="anxiety"><button class="shine-era-cover-play sparkle-cover-play" type="button" data-track="anxiety" aria-label="Play Anxiety"><img src="assets/album5/anxiety-cover-thumb.webp" alt="Anxiety song cover by Jahntella" loading="lazy" decoding="async"><span aria-hidden="true">▶</span></button><div><small>THE SURGE ERA · 08</small><h3>Anxiety</h3><p>When the noise gets loud, the heart speaks louder.</p><button class="play-button" type="button" data-track="anxiety">▶ Play Anxiety</button></div></article><article class="exp44-new-music-card shine-era-song-card" data-card="spit"><button class="shine-era-cover-play sparkle-cover-play" type="button" data-track="spit" aria-label="Play Spit"><img src="assets/album5/spit-cover-thumb.webp" alt="Spit song cover by Jahntella" loading="lazy" decoding="async"><span aria-hidden="true">▶</span></button><div><small>THE SURGE ERA · 09</small><h3>Spit</h3><p>No holding back, no sugarcoating the truth.</p><button class="play-button" type="button" data-track="spit">▶ Play Spit</button></div></article><article class="exp44-new-music-card shine-era-song-card" data-card="wild-card"><button class="shine-era-cover-play sparkle-cover-play" type="button" data-track="wild-card" aria-label="Play Wild Card"><img src="assets/album5/wild-card-cover-thumb.webp" alt="Wild Card song cover by Jahntella" loading="lazy" decoding="async"><span aria-hidden="true">▶</span></button><div><small>THE SURGE ERA · 10</small><h3>Wild Card</h3><p>Unpredictable moves and a fearless little grin.</p><button class="play-button" type="button" data-track="wild-card">▶ Play Wild Card</button></div></article><article class="exp44-new-music-card shine-era-song-card" data-card="overload"><button class="shine-era-cover-play sparkle-cover-play" type="button" data-track="overload" aria-label="Play Overload"><img src="assets/album5/overload-cover-thumb.webp" alt="Overload song cover by Jahntella" loading="lazy" decoding="async"><span aria-hidden="true">▶</span></button><div><small>THE SURGE ERA · 11</small><h3>Overload</h3><p>Too much energy to contain, too bright to ignore.</p><button class="play-button" type="button" data-track="overload">▶ Play Overload</button></div></article></div></div></div></section>
 
-
-    <!-- Featured singles, new music, and Sweeties thank-you follow the five album eras. -->
-    <section class="music-section reveal" id="music">
-      <div class="section-heading">
-        <p class="eyebrow">MUSIC</p>
-        <h2>Press play on <em>something sweet.</em></h2>
-      </div>
-      <div class="streaming-links" role="group" aria-label="Listen to Jahntella">
-        <a href="https://open.spotify.com/artist/49N5q7aQ2NOM68dZwdU9jK" aria-label="Jahntella on Spotify" target="_blank" rel="noopener">Spotify</a>
-        <a href="https://music.apple.com/us/artist/jahntella/6801612665" aria-label="Jahntella on Apple Music" target="_blank" rel="noopener">Apple Music</a>
-      </div>
-
-      <div class="release-grid">
-        <article class="release-card" data-card="fun-dipp">
-          <div class="record-stage">
-            <div class="record-sleeve">
-              <img src="assets/fun-dipp-cover.webp" alt="Fun Dipp sleeve artwork" loading="eager" fetchpriority="high" decoding="async">
-            </div>
-            <div class="record-slider">
-              <div class="record-wrap" id="funDippRecordWrap">
-                <img class="record-cover" src="assets/fun-dipp-cover.webp" alt="Fun Dipp vinyl record artwork" loading="lazy" decoding="async">
-                <span class="record-shine"></span>
-              </div>
-            </div>
-          </div>
-          <div class="release-copy">
-            <p class="release-label">DEBUT SINGLE</p>
-            <h3>Fun Dipp</h3>
-            <p>Bright pop energy, playful hooks, and a candy-coated chorus.</p>
-            <button class="play-button" data-track="fun-dipp">▶ Play Fun Dipp</button>
-          </div>
-        </article>
-
-        <article class="release-card" data-card="pink-lips">
-          <div class="record-stage">
-            <div class="record-sleeve">
-              <img src="assets/pink-lips-remix.webp" alt="Pink Lips Remix sleeve artwork" loading="eager" fetchpriority="high" decoding="async">
-            </div>
-            <div class="record-slider">
-              <div class="record-wrap" id="pinkLipsRecordWrap">
-                <img class="record-cover" src="assets/pink-lips-remix.webp" alt="Pink Lips Remix vinyl record artwork" loading="lazy" decoding="async">
-                <span class="record-shine"></span>
-              </div>
-            </div>
-          </div>
-          <div class="release-copy">
-            <p class="release-label">REMIX</p>
-            <h3>Pink Lips Remix</h3>
-            <p>A glossy remix with bigger energy and late-night sparkle.</p>
-            <button class="play-button" data-track="pink-lips">▶ Play Pink Lips Remix</button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="exp44-new-music reveal" id="newMusic" aria-labelledby="newMusicTitle">
-      <header class="exp44-new-music-head">
-        <div>
-          <p class="eyebrow">NEW MUSIC</p>
-          <h2 id="newMusicTitle">Five eras. <em>One nonstop playlist.</em></h2>
-          <p>Press play on any release and Jahntella’s music will roll right into the next song.</p>
-        </div>
-        <a href="sweetville/melody-studio.html#latestMusic">Enter Melody Studio →</a>
-      </header>
-
-      <div class="exp44-new-music-grid">
-        <article class="exp44-new-music-card" data-card="bite-lip">
-          <img src="assets/music-thumbs/bite-lip.webp" alt="Bite Lip single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
-          <div>
-            <small>NEW · NEON POP</small>
-            <h3>Bite Lip</h3>
-            <p>Flirty pop energy with that left-hip, right-dip attitude.</p>
-            <button class="play-button" type="button" data-track="bite-lip">▶ Play Bite Lip</button>
-          </div>
-        </article>
-
-        <article class="exp44-new-music-card" data-card="gloss">
-          <img src="assets/music-thumbs/gloss.webp" alt="Gloss single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
-          <div>
-            <small>NEW · GLOSSY POP</small>
-            <h3>Gloss</h3>
-            <p>Polished pink-pop sparkle made for one more kiss.</p>
-            <button class="play-button" type="button" data-track="gloss">▶ Play Gloss</button>
-          </div>
-        </article>
-
-        <article class="exp44-new-music-card" data-card="your-girl">
-          <img src="assets/music-thumbs/i-want-to-be-your-girl.webp" alt="I Want To Be Your Girl single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
-          <div>
-            <small>HOUSE / EDM</small>
-            <h3>I Want To Be Your Girl</h3>
-            <p>A heart-forward rush built for the Sweetville dance floor.</p>
-            <button class="play-button" type="button" data-track="your-girl">▶ Play I Want To Be Your Girl</button>
-          </div>
-        </article>
-
-        <article class="exp44-new-music-card" data-card="embrace-me">
-          <img src="assets/music-thumbs/embrace-me.webp" alt="Embrace Me single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
-          <div>
-            <small>HOUSE / EDM · NEW</small>
-            <h3>Embrace Me</h3>
-            <p>Give in to the rush and let the moment take us higher.</p>
-            <button class="play-button" type="button" data-track="embrace-me">▶ Play Embrace Me</button>
-          </div>
-        </article>
-
-        <article class="exp44-new-music-card" data-card="we-come-together">
-          <img src="assets/music-thumbs/we-come-together.webp" alt="We Come Together single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
-          <div>
-            <small>POP / DANCE · NEW</small>
-            <h3>We Come Together</h3>
-            <p>Magnetic pop energy and a left-right hook made to move together.</p>
-            <button class="play-button" type="button" data-track="we-come-together">▶ Play We Come Together</button>
-          </div>
-        </article>
-
-        <article class="exp44-new-music-card" data-card="play-with-me">
-          <img src="assets/music-thumbs/play-with-me.webp" alt="Play With Me single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
-          <div>
-            <small>POP / ARCADE · NEW</small>
-            <h3>Play With Me</h3>
-            <p>Flirty arcade-pop with secret levels, bold moves, and a bonus-round hook.</p>
-            <button class="play-button" type="button" data-track="play-with-me">▶ Play With Me</button>
-          </div>
-        </article>
-
-        <article class="exp44-new-music-card" data-card="carnival">
-          <img src="assets/music-thumbs/carnival.webp" alt="Carnival single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
-          <div>
-            <small>CARNIVAL POP · NEW</small>
-            <h3>Carnival</h3>
-            <p>A dazzling one-more-ride anthem with neon thrills and after-dark attraction.</p>
-            <button class="play-button" type="button" data-track="carnival">▶ Play Carnival</button>
-          </div>
-        </article>
-
-        <article class="exp44-new-music-card" data-card="made-of-light">
-          <img src="assets/music-thumbs/made-of-light.webp" alt="Made of Light single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
-          <div>
-            <small>FESTIVAL EDM · NEW</small>
-            <h3>Made of Light</h3>
-            <p>A euphoric anthem that rises from a spark into a festival-sized celebration.</p>
-            <button class="play-button" type="button" data-track="made-of-light">▶ Play Made of Light</button>
-          </div>
-        </article>
-
-        <article class="exp44-new-music-card" data-card="candy-wrapper">
-          <img src="assets/music-thumbs/candy-wrapper.webp" alt="Candy Wrapper single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
-          <div>
-            <small>CANDY POP · NEW</small>
-            <h3>Candy Wrapper</h3>
-            <p>A bright, flirty pop rush with irresistible flavor and a hook made to unwrap.</p>
-            <button class="play-button" type="button" data-track="candy-wrapper">▶ Play Candy Wrapper</button>
-          </div>
-        </article>
-
-        <article class="exp44-new-music-card" data-card="playground">
-          <img src="assets/music-thumbs/playground.webp" alt="Playground single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
-          <div>
-            <small>AFTER-HOURS POP · NEW</small>
-            <h3>Playground</h3>
-            <p>A neon after-hours pop rush with playful tension, glossy hooks, and a teasing promise to let you win.</p>
-            <button class="play-button" type="button" data-track="playground">▶ Play Playground</button>
-          </div>
-        </article>
-
-        <article class="exp44-new-music-card" data-card="milk-shake">
-          <img src="assets/music-thumbs/milk-shake.webp" alt="Milk Shake single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
-          <div>
-            <small>RETRO POP · NEW</small>
-            <h3>Milk Shake</h3>
-            <p>A playful neon-diner pop treat with a flirty hook made to shake the room.</p>
-            <button class="play-button" type="button" data-track="milk-shake">▶ Play Milk Shake</button>
-          </div>
-        </article>
-
-        <article class="exp44-new-music-card" data-card="tonight">
-          <img src="assets/music-thumbs/tonight.webp" alt="Tonight single cover by Jahntella" loading="eager" decoding="async" width="480" height="480">
-          <div>
-            <small>ISLAND CLUB · NEW</small>
-            <h3>Tonight</h3>
-            <p>A moonlit island-club escape filled with rhythm, passion, and a moment made for two.</p>
-            <button class="play-button" type="button" data-track="tonight">▶ Play Tonight</button>
-          </div>
-        </article>
-      </div>
-    </section>
 
     <section class="exp58-thank-you reveal" aria-label="A thank-you from Jahntella to her Sweeties">
       <div class="exp58-thank-you-shell">
@@ -1270,5 +1289,109 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
 <script src="exp29-4-contact.js?v=29.4" defer></script>
 <script src="exp30-6-poster-fix.js?v=30.6" defer></script>
 <!-- Sweetie signup gate removed: visitors can browse and play music without signing in. --><script defer src="surge-era-home.js?v=11"></script>
+<script id="featured-matchups-20261114">
+/* Rotate existing playable track buttons instead of rebuilding them:
+   the site's audio player attaches its click handlers to these nodes. */
+(function(){
+  const run=function(){
+    const root=document.getElementById('featuredNow');
+    if(!root)return;
+    const cards=Array.from(root.querySelectorAll('.featured-now-card'));
+    const next=document.getElementById('featuredNextPair');
+    const pause=document.getElementById('featuredPausePairs');
+    const status=document.getElementById('featuredPairStatus');
+    if(cards.length!==2||!next||!pause)return;
+    const eras={
+      Sweet:{emoji:'💗',anchor:'#sweetEraAlbum',css:'sweet'},
+      Shine:{emoji:'💜',anchor:'#shineEraSneakPeek',css:'shine'},
+      Sparkle:{emoji:'🩵',anchor:'#sparkleEraAlbum',css:'sparkle'},
+      Siren:{emoji:'💚',anchor:'#sirenEraAlbum',css:'siren'},
+      Surge:{emoji:'🧡',anchor:'#surgeEraAlbum',css:'surge'}
+    };
+    const tracks=[];
+    const seen=new Set();
+    const add=function(track){
+      if(!track||!track.key||!track.title||!eras[track.era]||seen.has(track.key))return;
+      seen.add(track.key);tracks.push(track);
+    };
+    const roots=[['#music','Sweet'],['#newMusic','Sweet'],['#shineEraSneakPeek','Shine'],['#sparkleEraAlbum','Sparkle'],['#sirenEraAlbum','Siren'],['#surgeEraAlbum','Surge']];
+    roots.forEach(function(pair){
+      const section=document.querySelector(pair[0]);if(!section)return;
+      section.querySelectorAll('[data-card]').forEach(function(card){
+        const btn=card.querySelector('[data-track], [data-shine-track]');
+        const title=card.querySelector('h3');
+        const img=card.querySelector('img');
+        const key=btn&&(btn.dataset.track||btn.dataset.shineTrack);
+        if(!key||!title||!img)return;
+        add({key:key,title:title.textContent.trim(),artwork:img.getAttribute('src'),era:pair[1]});
+      });
+    });
+    (window.JAHNTELLA_EXTRA_TRACKS||[]).forEach(function(t){
+      add({key:t.key,title:t.title,artwork:t.artwork,era:t.era});
+    });
+    [
+      {key:'sweet-dreams',title:'Sweet Dreams',artwork:'assets/album2/sweet-dreams-cover-thumb.webp',era:'Shine'},
+      {key:'we-are-1',title:'We Are 1',artwork:'assets/album2/we-are-1-cover-thumb.webp',era:'Shine'},
+      {key:'boots-smile-attitude',title:'Boots, Smile & Attitude',artwork:'assets/album2/boots-smile-attitude-cover-thumb.webp',era:'Shine'}
+    ].forEach(add);
+    if(tracks.length<3)return;
+    let current=[cards[0].querySelector('[data-track]')?.dataset.track,cards[1].querySelector('[data-track]')?.dataset.track];
+    let paused=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let engagedUntil=0;
+    let timer=null;
+    let index=0;
+    const render=function(card,t){
+      const era=eras[t.era];
+      card.classList.remove('sweet','shine','sparkle','siren','surge');
+      card.classList.add(era.css,'is-changing');
+      const img=card.querySelector('img');
+      const label=card.querySelector('small');
+      const h=card.querySelector('h3');
+      const desc=card.querySelector('p');
+      const button=card.querySelector('.play-button');
+      const links=card.querySelectorAll('.featured-now-actions a');
+      if(img){img.src=t.artwork;img.alt=t.title+' cover art';}
+      if(label)label.textContent=era.emoji+' '+t.era.toUpperCase()+' ERA · YOUR NEXT DISCOVERY';
+      if(h)h.textContent=t.title;
+      if(desc)desc.textContent='Take a listen and decide if this is your favorite '+t.era+' Era song.';
+      if(button){button.dataset.track=t.key;button.textContent='▶ Play '+t.title;button.setAttribute('aria-label','Play '+t.title);}
+      if(links[0]){links[0].href=era.anchor;links[0].textContent='Explore '+t.era;}
+      if(links[1]){links[1].href='https://open.spotify.com/artist/49N5q7aQ2NOM68dZwdU9jK';links[1].textContent='Spotify artist';}
+      setTimeout(function(){card.classList.remove('is-changing');},60);
+    };
+    const choosePair=function(){
+      // Rotate every song over successive matchups, never two from the same era.
+      const first=tracks[index%tracks.length];index++;
+      let second=tracks[index%tracks.length],attempt=0;
+      while((second.era===first.era||second.key===first.key)&&attempt<tracks.length){index++;second=tracks[index%tracks.length];attempt++;}
+      index++;
+      if(!second||second.key===first.key)return;
+      current=[first.key,second.key];
+      render(cards[0],first);render(cards[1],second);
+      if(status)status.textContent=first.title+' vs '+second.title;
+    };
+    const schedule=function(){
+      clearTimeout(timer);
+      timer=setTimeout(function tick(){
+        if(!paused&&!document.hidden&&Date.now()>engagedUntil&&!root.matches(':hover')&&!root.contains(document.activeElement))choosePair();
+        schedule();
+      },20000);
+    };
+    next.addEventListener('click',function(){choosePair();engagedUntil=Date.now()+20000;});
+    pause.addEventListener('click',function(){
+      paused=!paused;pause.textContent=paused?'Resume rotation':'Pause rotation';
+      pause.setAttribute('aria-pressed',String(paused));
+      if(status)status.textContent=paused?'Pairing paused':'A new pairing every 20 seconds';
+      schedule();
+    });
+    root.querySelectorAll('.featured-now-card .play-button').forEach(function(b){
+      b.addEventListener('click',function(){engagedUntil=Date.now()+90000;});
+    });
+    if(paused){pause.textContent='Resume rotation';pause.setAttribute('aria-pressed','true');}
+    schedule();
+  };
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});else run();
+})();
+</script>
 </body>
 </html>
