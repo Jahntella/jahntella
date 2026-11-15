@@ -108,6 +108,25 @@ main > #surgeEraAlbum .exp60-shine-shell{
 }
 </style>
 <style id="sweet-era-tracks-integrated">
+/* Tall Sweet Era sections must not depend on IntersectionObserver's 14%
+   threshold: the section can exceed the viewport and stay invisible,
+   even though its play controls still receive clicks. */
+#sweetEraAlbum,
+#sweetEraAlbum #music,
+#sweetEraAlbum #newMusic{
+  opacity:1!important;
+  visibility:visible!important;
+  transform:none!important;
+  content-visibility:visible!important;
+  contain:none!important;
+}
+#sweetEraAlbum .exp53-album-shell,
+#sweetEraAlbum #music .release-grid,
+#sweetEraAlbum #newMusic .exp44-new-music-grid{
+  opacity:1!important;
+  visibility:visible!important;
+}
+
 /* Keep the Sweet album covers and all playable song cards in one section. */
 #sweetEraAlbum #music,#sweetEraAlbum #newMusic{width:100%;margin:1.5rem auto 0;scroll-margin-top:100px}
 #sweetEraAlbum #music{padding-top:clamp(1rem,3vw,2rem);padding-bottom:1.5rem}
@@ -186,7 +205,7 @@ main > #surgeEraAlbum .exp60-shine-shell{
 <article class="featured-now-card siren"><img src="assets/album4/show-me-something-real-cover-thumb.webp" alt="Show Me Something Real cover art" loading="lazy" decoding="async" width="150" height="150"><div><small>💚 SIREN ERA · SOULFUL POP / R&amp;B</small><h3>Show Me Something Real</h3><p>Real love, warm saxophone, and a heartfelt chorus.</p><div class="featured-now-actions"><button class="play-button" type="button" data-track="show-me-something-real">▶ Play here</button><a href="#sirenEraAlbum">Siren Era</a><a href="https://open.spotify.com/artist/49N5q7aQ2NOM68dZwdU9jK" target="_blank" rel="noopener noreferrer">Spotify artist</a></div></div></article>
 <article class="featured-now-card surge"><img src="assets/album5/tik-tok-cover-thumb.webp" alt="Tick Tock cover art" loading="lazy" decoding="async" width="150" height="150"><div><small>🧡 SURGE ERA · ELECTRIC POP</small><h3>Tick Tock</h3><p>Electric tangerine and irresistible energy.</p><div class="featured-now-actions"><button class="play-button" type="button" data-track="tik-tok">▶ Play here</button><a href="#surgeEraAlbum">Surge Era</a><a href="https://open.spotify.com/album/40CeJXzJWfGQdoG0q3LT6G" target="_blank" rel="noopener noreferrer">Spotify</a></div></div></article>
 </div><div class="featured-now-controls" aria-label="Featured song matchups"><button id="featuredNextPair" type="button">↻ Next matchup</button><button id="featuredPausePairs" type="button" aria-pressed="false">Pause rotation</button><span id="featuredPairStatus" role="status" aria-live="polite">A new pairing every 20 seconds</span></div></div></section>
-    <section class="exp53-album-section reveal" id="sweetEraAlbum" aria-labelledby="sweetEraTitle">
+    <section class="exp53-album-section" id="sweetEraAlbum" aria-labelledby="sweetEraTitle">
       <div class="exp53-album-shell">
         <header class="exp53-album-head">
           <p class="eyebrow">THE ALBUM</p>
@@ -215,7 +234,7 @@ main > #surgeEraAlbum .exp60-shine-shell{
         </div>
 
     <!-- The Sweet Era playable songs belong with its album artwork. -->
-    <section class="music-section reveal" id="music">
+    <section class="music-section" id="music">
       <div class="section-heading">
         <p class="eyebrow">THE SWEET ERA · FEATURED SINGLES</p>
         <h2>Press play on <em>something sweet.</em></h2>
@@ -268,7 +287,7 @@ main > #surgeEraAlbum .exp60-shine-shell{
       </div>
     </section>
 
-    <section class="exp44-new-music reveal" id="newMusic" aria-labelledby="newMusicTitle">
+    <section class="exp44-new-music" id="newMusic" aria-labelledby="newMusicTitle">
       <header class="exp44-new-music-head">
         <div>
           <p class="eyebrow">THE SWEET ERA · ALL SONGS</p>
