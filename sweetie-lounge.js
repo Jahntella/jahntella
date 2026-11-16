@@ -11,7 +11,7 @@ const mount=()=>{
  <button class="mood" data-mood="Surge" aria-pressed="false">🧡 Surge</button></div>
  <div class="lounge-stage"><div class="lounge-art"><div class="lounge-art-label" data-lounge-era>💗 THE SWEET ERA</div><div class="lounge-bars" aria-hidden="true">${Array.from({length:24},()=>'<i></i>').join('')}</div></div>
  <div><p class="lounge-now">YOUR JAHNTELLA SOUNDTRACK</p><p class="lounge-song" data-lounge-title>Pick your mood</p><p class="lounge-subtext" data-lounge-desc>Find a song that fits how you're feeling.</p>
- <div class="lounge-actions"><button type="button" class="secondary" data-lounge-prev aria-label="Previous song in this era">⏮ Previous</button><button type="button" data-lounge-start>▶ Play this song</button><button type="button" class="secondary" data-lounge-next aria-label="Next song in this era">Next ⏭</button><button type="button" class="secondary" data-lounge-surprise>✦ Surprise Me</button><button type="button" class="secondary" data-lounge-chill>☾ Work & Chill: Off</button></div>
+ <div class="lounge-actions"><button type="button" class="secondary" data-lounge-prev aria-label="Previous song in this era">⏮ Previous</button><button type="button" data-lounge-start>▶ Play this song</button><button type="button" class="secondary" data-lounge-next aria-label="Next song in this era">Next ⏭</button><button type="button" class="secondary" data-lounge-surprise>✦ Surprise Me</button><button type="button" class="secondary" data-lounge-chill>☾ Work & Chill: Off</button><button type="button" class="secondary" data-lounge-share aria-expanded="false" aria-controls="loungeShareChoices">♡ Share this song</button></div><div class="lounge-share-options" id="loungeShareChoices" hidden><p data-share-preview></p><a data-share-facebook target="_blank" rel="noopener noreferrer">Facebook</a><a data-share-x target="_blank" rel="noopener noreferrer">X / Twitter</a><button type="button" data-share-copy>Copy caption + link</button><button type="button" data-share-native hidden>More apps…</button></div>
  <p class="lounge-note" data-lounge-status role="status" aria-live="polite"></p></div></div>
  <div class="lounge-footer"><p>♡ Want first dibs on songs, Living Ebooks, beauty, and future Little Luxuries? Just your email. No birthdays, no gate.</p>
  <button class="lounge-signup-button" type="button" data-lounge-signup>♡ Join the Sweeties</button></div>
@@ -24,35 +24,45 @@ const mount=()=>{
  <button type="submit">♡ Send my verification email</button><p class="signup-status" id="simpleSweetieStatus" role="status" aria-live="polite"></p></form>
  <p style="font-size:.8rem">Free, optional and never required to listen. Please verify your email to complete the signup.</p></div>`;
  document.body.appendChild(signup);
+ const order=Array.isArray(window.JAHNTELLA_TRACK_ORDER)?window.JAHNTELLA_TRACK_ORDER:[];
+ const albumSongs=(first,last)=>{const i=order.indexOf(first);if(i<0)return [];const j=last?order.indexOf(last):order.length;return order.slice(i,j>i?j:order.length);};
  const moods={
- Sweet:{color:'#f48ac3',icon:'💗',description:'Playful, flirty, feel-good pop.',songs:['fun-dipp','pink-lips','we-come-together','gloss','play-with-me']},
- Shine:{color:'#b58be8',icon:'💜',description:'Confidence, attitude and dancing.',songs:['boots-smile-attitude','sweet-dreams','midnight-rodeo','we-are-1']},
- Sparkle:{color:'#6fcee2',icon:'🩵',description:'Dreamy, hypnotic and discovering yourself.',songs:['pink-petals','touch','what-you-do-to-me','exist']},
- Siren:{color:'#75d1b2',icon:'💚',description:'Emotion, romance and real connection.',songs:['show-me-something-real','pretty-little-problem','obsessed-with-me','read-my-lips']},
- Surge:{color:'#f6a15a',icon:'🧡',description:'Fearless, electric and unstoppable.',songs:['tik-tok','untouchable','electric-tangerine','anxiety']}
+ Sweet:{color:'#f48ac3',icon:'💗',description:'Playful, flirty, feel-good pop.',songs:albumSongs('fun-dipp','sweet-dreams')},
+ Shine:{color:'#b58be8',icon:'💜',description:'Confidence, attitude and dancing.',songs:albumSongs('sweet-dreams','come-here-come-close')},
+ Sparkle:{color:'#6fcee2',icon:'🩵',description:'Dreamy, hypnotic and discovering yourself.',songs:albumSongs('come-here-come-close','obsessed-with-me')},
+ Siren:{color:'#75d1b2',icon:'💚',description:'Emotion, romance and real connection.',songs:albumSongs('obsessed-with-me','tik-tok')},
+ Surge:{color:'#f6a15a',icon:'🧡',description:'Fearless, electric and unstoppable.',songs:albumSongs('tik-tok')}
  };
  const extra=Array.isArray(window.JAHNTELLA_EXTRA_TRACKS)?window.JAHNTELLA_EXTRA_TRACKS:[];
  const names=Object.fromEntries(extra.map(t=>[t.key,t.title]));
  Object.assign(names,{'fun-dipp':'Fun Dipp','pink-lips':'Fun Dipp (Pink Lips Remix)','we-come-together':'We Come Together','gloss':'Gloss','play-with-me':'Play With Me','boots-smile-attitude':'Boots, Smile & Attitude','sweet-dreams':'Sweet Dreams','we-are-1':'We Are 1'});
- const eraFromKey=key=>extra.find(t=>t.key===key)?.era||Object.entries(moods).find(([,m])=>m.songs.includes(key))?.[0]||'Sweet';
+ const displayName=key=>names[key]||key.split('-').map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join(' ');
+ const eraFromKey=key=>Object.entries(moods).find(([,m])=>m.songs.includes(key))?.[0]||extra.find(t=>t.key===key)?.era||'Sweet';
  const titleNode=lounge.querySelector('[data-lounge-title]'),descNode=lounge.querySelector('[data-lounge-desc]'),eraNode=lounge.querySelector('[data-lounge-era]'),statusNode=lounge.querySelector('[data-lounge-status]');
- let mood='Sweet',chill=false,selectedIndex=0;
+ let mood='Sweet',chill=false,selectedIndex=0,selectedKey=moods.Sweet.songs[0]||'fun-dipp';
  const refreshMood=()=>{const data=moods[mood];lounge.style.setProperty('--lounge',data.color);lounge.querySelectorAll('[data-mood]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mood===mood)));eraNode.textContent=data.icon+' THE '+mood.toUpperCase()+' ERA';descNode.textContent=data.description;};
- const setMood=name=>{mood=name;selectedIndex=0;refreshMood();const key=moods[mood].songs[0];titleNode.textContent=names[key]||key;statusNode.textContent='Ready to play '+(names[key]||key)+'.';};
+ const setMood=name=>{mood=name;selectedIndex=0;selectedKey=moods[mood].songs[0];refreshMood();titleNode.textContent=displayName(selectedKey);statusNode.textContent='Ready to play '+displayName(selectedKey)+'.';};
  const playKey=key=>{if(typeof window.jahntellaSelectSiteTrack!=='function'){statusNode.textContent='Player is still loading. Please choose a song in the album section.';return;}
-   const era=eraFromKey(key);
-   if(moods[era]){mood=era;selectedIndex=Math.max(0,moods[era].songs.indexOf(key));refreshMood();}
-   window.jahntellaSelectSiteTrack(key,true);
-   titleNode.textContent=names[key]||key;
-   statusNode.textContent='Now playing '+(names[key]||key)+' in the existing music player.';
+   const era=eraFromKey(key);if(moods[era]){mood=era;selectedIndex=Math.max(0,moods[era].songs.indexOf(key));refreshMood();}
+   selectedKey=key;window.jahntellaSelectSiteTrack(key,true);titleNode.textContent=displayName(key);
+   statusNode.textContent='Now playing '+displayName(key)+' in the existing music player.';
  };
  const pick=arr=>arr[Math.floor(Math.random()*arr.length)];
- const moveSong=step=>{const songs=moods[mood].songs;selectedIndex=(selectedIndex+step+songs.length)%songs.length;playKey(songs[selectedIndex]);};
+ const moveSong=step=>{const songs=moods[mood].songs;if(!songs.length)return;selectedIndex=(selectedIndex+step+songs.length)%songs.length;playKey(songs[selectedIndex]);};
  lounge.querySelectorAll('[data-mood]').forEach(b=>b.addEventListener('click',()=>setMood(b.dataset.mood)));
- lounge.querySelector('[data-lounge-start]').addEventListener('click',()=>playKey(moods[mood].songs[selectedIndex]));
+ lounge.querySelector('[data-lounge-start]').addEventListener('click',()=>playKey(selectedKey));
  lounge.querySelector('[data-lounge-prev]').addEventListener('click',()=>moveSong(-1));
  lounge.querySelector('[data-lounge-next]').addEventListener('click',()=>moveSong(1));
- lounge.querySelector('[data-lounge-surprise]').addEventListener('click',()=>{const keys=Object.values(moods).flatMap(m=>m.songs);playKey(pick(keys))});
+ lounge.querySelector('[data-lounge-surprise]').addEventListener('click',()=>{const keys=Object.values(moods).flatMap(m=>m.songs);if(keys.length)playKey(pick(keys));});
+ const shareButton=lounge.querySelector('[data-lounge-share]'),shareChoices=lounge.querySelector('#loungeShareChoices');
+ const shareLink=()=>{const url=new URL(window.location.origin+window.location.pathname);url.searchParams.set('song',selectedKey);url.hash='sweetieLounge';return url.toString();};
+ const shareLabel=()=> 'OMG 💗 My fave song right now is '+displayName(selectedKey)+' by Jahntella! 🎶 Come listen with me!';
+ const shareText=()=>shareLabel()+' '+shareLink();
+ const updateShare=()=>{lounge.querySelector('[data-share-preview]').textContent=shareLabel();lounge.querySelector('[data-share-facebook]').href='https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(shareLink());
+ lounge.querySelector('[data-share-x]').href='https://twitter.com/intent/tweet?text='+encodeURIComponent(shareLabel())+'&url='+encodeURIComponent(shareLink());};
+ shareButton.addEventListener('click',()=>{updateShare();shareChoices.hidden=!shareChoices.hidden;shareButton.setAttribute('aria-expanded',String(!shareChoices.hidden));});
+ lounge.querySelector('[data-share-copy]').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(shareText());statusNode.textContent='Sweetie caption and song link copied! ♡';}catch(err){window.prompt('Copy your caption and link:',shareText());}});
+ if(typeof navigator.share==='function'){const more=lounge.querySelector('[data-share-native]');more.hidden=false;more.addEventListener('click',async()=>{try{await navigator.share({title:displayName(selectedKey)+' — Jahntella',text:shareLabel(),url:shareLink()});}catch(err){if(err.name!=='AbortError')statusNode.textContent='Use Copy caption + link to share your song.';}});}
  const chillButton=lounge.querySelector('[data-lounge-chill]');
  chillButton.addEventListener('click',()=>{chill=!chill;chillButton.textContent=chill?'☾ Work & Chill: On':'☾ Work & Chill: Off';lounge.classList.toggle('is-chill',chill);statusNode.textContent=chill?'Work & Chill: the player remains available; distractions stay minimal.':'Work & Chill is off.'});
  const open=()=>{signup.hidden=false;signup.querySelector('#simpleSweetieEmail').focus()};
@@ -62,10 +72,10 @@ const mount=()=>{
  signup.addEventListener('click',e=>{if(e.target===signup)close()});
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!signup.hidden)close()});
  const audioNodes=()=>[...document.querySelectorAll('audio')].filter(a=>a.id&&a.id!=='simpleSweetieAudio');
- function sync(){const live=audioNodes().find(a=>!a.paused&&!a.ended);lounge.classList.toggle('is-playing',Boolean(live));const playerTitle=document.getElementById('playerTitle');if(live&&playerTitle?.textContent?.trim()){titleNode.textContent=playerTitle.textContent.trim();const matching=Object.entries(names).find(([,name])=>name.toLowerCase()===titleNode.textContent.toLowerCase());if(matching){const era=eraFromKey(matching[0]);if(moods[era]){mood=era;selectedIndex=Math.max(0,moods[era].songs.indexOf(matching[0]));refreshMood();}}}}
+ function sync(){const live=audioNodes().find(a=>!a.paused&&!a.ended);lounge.classList.toggle('is-playing',Boolean(live));const playerTitle=document.getElementById('playerTitle');if(live&&playerTitle?.textContent?.trim()){titleNode.textContent=playerTitle.textContent.trim();const matching=Object.entries(names).find(([,name])=>name.toLowerCase()===titleNode.textContent.toLowerCase());if(matching){const era=eraFromKey(matching[0]);if(moods[era]){mood=era;selectedIndex=Math.max(0,moods[era].songs.indexOf(matching[0]));selectedKey=matching[0];refreshMood();}}}}
  document.addEventListener('play',sync,true);document.addEventListener('pause',sync,true);document.addEventListener('ended',sync,true);
  const playerTitle=document.getElementById('playerTitle');if(playerTitle)new MutationObserver(sync).observe(playerTitle,{childList:true,subtree:true,characterData:true});
- setMood('Sweet');sync();
+ setMood('Sweet');const requested=new URL(window.location.href).searchParams.get('song');if(requested&&order.includes(requested)){mood=eraFromKey(requested);selectedIndex=moods[mood].songs.indexOf(requested);selectedKey=requested;refreshMood();titleNode.textContent=displayName(requested);statusNode.textContent='Your Sweetie shared '+displayName(requested)+'! Press Play this song to listen ♡';}else sync();
  const form=signup.querySelector('form'),msg=signup.querySelector('#simpleSweetieStatus');
  const getClient=async()=>{if(!window.supabase?.createClient){await new Promise((resolve,reject)=>{const el=document.createElement('script');el.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';el.onload=resolve;el.onerror=reject;document.head.appendChild(el)})}return window.supabase.createClient('https://mchyedehbudsqixvfvbm.supabase.co','sb_publishable_3rnNUWJVSUIUiGyFXCvJTA_d68suwx1',{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}})};
  form.addEventListener('submit',async e=>{e.preventDefault();if(!form.reportValidity())return;
