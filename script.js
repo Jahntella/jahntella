@@ -340,6 +340,17 @@
     artwork.src = track.artwork;
     player.classList.add("visible");
     Object.entries(tracks).forEach(([trackKey, item]) => item.card?.classList.toggle("is-active", trackKey === key));
+    if (key === 'bite-lip' && changing) {
+      // Force this particular file to use the refreshed MP3 URL rather than a cached failed load.
+      const source = track.audio.querySelector('source');
+      if (source) {
+        const url = source.getAttribute('src');
+        if (track.audio.getAttribute('src') !== url) {
+          track.audio.src = url;
+        }
+      }
+      track.audio.load();
+    }
     if (autoplay) {
       track.audio.play().then(() => setPlaying(true)).catch(error => {
         console.warn('Jahntella playback could not start:', track.title, error);
