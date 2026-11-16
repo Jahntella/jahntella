@@ -71,7 +71,7 @@ const mount=()=>{
  lounge.querySelector('[data-lounge-signup]').addEventListener('click',open);signup.querySelector('.signup-close').addEventListener('click',close);
  signup.addEventListener('click',e=>{if(e.target===signup)close()});
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!signup.hidden)close()});
- const audioNodes=()=>[...document.querySelectorAll('audio')].filter(a=>a.id&&a.id!=='simpleSweetieAudio');
+ const audioNodes=()=>[...document.querySelectorAll('audio')].filter(a=>a.id!=='simpleSweetieAudio'&&(a.currentSrc||a.src||a.querySelector('source')));
  function sync(){const live=audioNodes().find(a=>!a.paused&&!a.ended);lounge.classList.toggle('is-playing',Boolean(live));const playerTitle=document.getElementById('playerTitle');if(live&&playerTitle?.textContent?.trim()){titleNode.textContent=playerTitle.textContent.trim();const matching=Object.entries(names).find(([,name])=>name.toLowerCase()===titleNode.textContent.toLowerCase());if(matching){const era=eraFromKey(matching[0]);if(moods[era]){mood=era;selectedIndex=Math.max(0,moods[era].songs.indexOf(matching[0]));selectedKey=matching[0];refreshMood();}}}}
  document.addEventListener('play',sync,true);document.addEventListener('pause',sync,true);document.addEventListener('ended',sync,true);
  const playerTitle=document.getElementById('playerTitle');if(playerTitle)new MutationObserver(sync).observe(playerTitle,{childList:true,subtree:true,characterData:true});
