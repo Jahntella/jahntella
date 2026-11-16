@@ -149,14 +149,14 @@
       artwork: "assets/album2/JBoots,Smile,AttitudeNEW.png",
       card: document.querySelector('[data-card="boots-smile-attitude"]')
     },
-    "come-here-come-close": { audio: document.getElementById("audioComeHereComeClose"), title: "Come Here Come Close", artwork: "assets/album3/come-here-come-close-cover.png", card: document.querySelector('[data-card="come-here-come-close"]') },
-    touch: { audio: document.getElementById("audioTouch"), title: "Touch", artwork: "assets/album3/touch-cover.png", card: document.querySelector('[data-card="touch"]') },
-    "pull-me-in": { audio: document.getElementById("audioPullMeIn"), title: "Pull Me In", artwork: "assets/album3/pull-me-in-cover.png", card: document.querySelector('[data-card="pull-me-in"]') },
-    strip: { audio: document.getElementById("audioStrip"), title: "Strip", artwork: "assets/album3/strip-cover.png", card: document.querySelector('[data-card="strip"]') },
-    "what-you-do-to-me": { audio: document.getElementById("audioWhatYouDoToMe"), title: "What You Do to Me", artwork: "assets/album3/what-you-do-to-me-cover.png", card: document.querySelector('[data-card="what-you-do-to-me"]') },
-    exist: { audio: document.getElementById("audioExist"), title: "Exist", artwork: "assets/album3/exist-cover.png", card: document.querySelector('[data-card="exist"]') },
-    escape: { audio: document.getElementById("audioEscape"), title: "Escape", artwork: "assets/album3/escape-cover.png", card: document.querySelector('[data-card="escape"]') },
-    "pink-petals": { audio: document.getElementById("audioPinkPetals"), title: "Pink Petals", artwork: "assets/album3/pink-petals-cover.png", card: document.querySelector('[data-card="pink-petals"]') }
+    "come-here-come-close": { audio: document.getElementById("audioComeHereComeClose"), title: "Come Here Come Close", artwork: "assets/album3/JComeHereComeCloseNEW.png", card: document.querySelector('[data-card="come-here-come-close"]') },
+    touch: { audio: document.getElementById("audioTouch"), title: "Touch", artwork: "assets/album3/JTouchNEW.png", card: document.querySelector('[data-card="touch"]') },
+    "pull-me-in": { audio: document.getElementById("audioPullMeIn"), title: "Pull Me In", artwork: "assets/album3/JPullMeIn.png", card: document.querySelector('[data-card="pull-me-in"]') },
+    strip: { audio: document.getElementById("audioStrip"), title: "Strip", artwork: "assets/album3/JStripNEW.png", card: document.querySelector('[data-card="strip"]') },
+    "what-you-do-to-me": { audio: document.getElementById("audioWhatYouDoToMe"), title: "What You Do to Me", artwork: "assets/album3/JWhatYouDoToMe.png", card: document.querySelector('[data-card="what-you-do-to-me"]') },
+    exist: { audio: document.getElementById("audioExist"), title: "Exist", artwork: "assets/album3/JExistNEW.png", card: document.querySelector('[data-card="exist"]') },
+    escape: { audio: document.getElementById("audioEscape"), title: "Escape", artwork: "assets/album3/JEscape.png", card: document.querySelector('[data-card="escape"]') },
+    "pink-petals": { audio: document.getElementById("audioPinkPetals"), title: "Pink Petals", artwork: "assets/album3/JPinkPetalsNEW.png", card: document.querySelector('[data-card="pink-petals"]') }
   };
 
   // Register every album with the same player, progress, volume and saved state.
@@ -442,14 +442,14 @@
     "jsweetdreamsnew.png": "sweet-dreams",
     "jweare1new.png": "we-are-1",
     "jboots,smile,attitudenew.png": "boots-smile-attitude",
-    "come-here-come-close-cover.png": "come-here-come-close",
-    "touch-cover.png": "touch",
-    "pull-me-in-cover.png": "pull-me-in",
-    "strip-cover.png": "strip",
-    "what-you-do-to-me-cover.png": "what-you-do-to-me",
-    "exist-cover.png": "exist",
-    "escape-cover.png": "escape",
-    "pink-petals-cover.png": "pink-petals"
+    "jcomeherecomeclosenew.png": "come-here-come-close",
+    "jtouchnew.png": "touch",
+    "jpullmein.png": "pull-me-in",
+    "jstripnew.png": "strip",
+    "jwhatyoudotome.png": "what-you-do-to-me",
+    "jexistnew.png": "exist",
+    "jescape.png": "escape",
+    "jpinkpetalsnew.png": "pink-petals"
   };
 
   (window.JAHNTELLA_EXTRA_TRACKS || []).forEach(track => { galleryCoverTracks[decodeURIComponent(track.artwork.split(/[?#]/)[0].split('/').pop()).toLowerCase()] = track.key; });
