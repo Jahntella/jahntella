@@ -96,3 +96,46 @@
     margin:0 auto;
   }
 }
+
+/* Investor overview and official artist links. */
+main section[id] { scroll-margin-top: 5rem; }
+a:focus-visible { outline: 2px solid var(--soft); outline-offset: 4px; }
+.btn:hover { border-color: var(--soft); }
+.btn.primary:hover { filter: brightness(1.12); }
+.cards .eyebrow { margin: 0; }
+.listen-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+  gap: clamp(1rem, 4vw, 3rem);
+  align-items: center;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.listen-portrait { width: 100%; height: auto; border-radius: 26px; }
+.platform-grid { display: grid; gap: 1rem; }
+.platform-group {
+  padding: 1.2rem;
+  border: 1px solid #ffffff24;
+  border-radius: 20px;
+  background: #ffffff07;
+}
+.platform-group h3 { margin: 0 0 .8rem; font-size: 1.45rem; }
+.platform-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .65rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.platform-links a { background: #ffffff10; }
+@media (max-width: 620px) {
+  .topbar { justify-content: space-between; }
+  .hero h1 { font-size: clamp(2.3rem, 10vw, 3.5rem); }
+  .listen-layout { grid-template-columns: 1fr; }
+  .listen-portrait { max-width: 280px; justify-self: center; }
+  .timeline article { grid-template-columns: 2rem 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
