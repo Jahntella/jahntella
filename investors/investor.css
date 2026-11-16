@@ -175,3 +175,11 @@ a:focus-visible { outline: 2px solid var(--soft); outline-offset: 4px; }
 @media (max-width: 750px) {
   .luxuries-content { grid-template-columns: 1fr; }
 }
+
+/* Business and investment overview. */
+#businessModel .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.investment-contact { margin: 2.25rem auto 0; }
+.investment-contact p { margin-bottom: 0; }
+@media (max-width: 620px) {
+  #businessModel .cards { grid-template-columns: 1fr; }
+}
