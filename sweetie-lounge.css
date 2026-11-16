@@ -40,3 +40,10 @@
 #sweetieSignup .signup-status{font-size:.85rem;color:#753654;min-height:20px;margin-top:10px}
 @media(max-width:700px){#sweetieLounge .lounge-stage{grid-template-columns:1fr;text-align:center}#sweetieLounge .lounge-actions{justify-content:center}#sweetieLounge .lounge-footer p{text-align:center}}
 @media(prefers-reduced-motion:reduce){#sweetieLounge .lounge-bars i{animation:none!important;height:40%}}
+
+/* Work & Chill keeps music playing, minimizes motion and hides extra mood buttons. */
+#sweetieLounge.is-chill .lounge-bars i{animation:none!important;height:22%;opacity:.5}
+#sweetieLounge.is-chill .lounge-moods{display:none}
+#sweetieLounge.is-chill .lounge-art{min-height:125px;background:#140e20}
+#sweetieLounge.is-chill .lounge-art:before{opacity:.04}
+#sweetieLounge.is-chill .lounge-art-label{opacity:.8}
