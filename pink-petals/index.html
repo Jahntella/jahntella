@@ -10,18 +10,41 @@
 :root{color-scheme:light;--ink:#482540;--rose:#aa376d;--line:#ecc9d9}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 95% 0,#f9d2e5,transparent 28%),radial-gradient(circle at 0 62%,#f6e0eb,transparent 38%),#fff8f7;color:var(--ink);font:16px/1.6 "DM Sans",sans-serif}
 a{color:inherit}button{font:inherit;cursor:pointer}.topbar{background:#34152c;color:white;padding:13px max(18px,calc((100vw - 1080px)/2));display:flex;justify-content:space-between;gap:14px;align-items:center}.topbar a{text-decoration:none;font-weight:800}.topbar span{font-size:.7rem;color:#ffd7e7;letter-spacing:.14em}
 main{max-width:1060px;margin:0 auto;padding:22px 20px 110px}.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(20px,5vw,64px);align-items:center;padding:32px 0 40px}.hero img{width:100%;max-height:560px;object-fit:contain;background:#f9e1ed;border-radius:22px;box-shadow:0 20px 48px #7a275533}.eyebrow{font-size:.7rem;letter-spacing:.17em;color:var(--rose);text-transform:uppercase;font-weight:900}h1,h2,h3{font-family:"Playfair Display",serif;line-height:1.15}h1{font-size:clamp(3rem,6vw,5.2rem);margin:.08em 0 .18em}h2{font-size:clamp(1.8rem,3.8vw,2.5rem);margin:0 0 15px}h3{font-size:1.38rem;margin:5px 0 10px}p{margin:0 0 15px}.lead{font-size:1.13rem}.micro{font-size:.86rem;color:#77576e}.buttons{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}.btn{display:inline-flex;justify-content:center;align-items:center;gap:7px;min-height:46px;padding:10px 17px;border-radius:99px;border:1px solid #c66996;background:#fff;color:#842d5b;text-decoration:none;font-weight:800}.btn.primary{background:linear-gradient(120deg,#a83a72,#dc76a6);color:white;border-color:#a83a72;box-shadow:0 7px 19px #bd5c8530}.btn:focus-visible,button:focus-visible{outline:3px solid #7d2b5b;outline-offset:3px}.panel{background:#fffefd;border:1px solid var(--line);border-radius:22px;padding:clamp(20px,4vw,36px);margin:25px 0;box-shadow:0 10px 25px #9a447313}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.reader{width:100%;height:min(76vw,760px);min-height:440px;background:#f5ddea;border:1px solid #e7bed3;border-radius:15px;margin:18px 0;overflow:hidden}.reader iframe{display:block;width:100%;height:100%;border:0}.file-needed{border:1px dashed #d3a1bb;border-radius:14px;padding:23px;background:#fff1f7;color:#723750;margin:13px 0}.moments{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:22px 0}.moment{border:1px solid #ecc8d9;border-radius:15px;padding:18px;background:#fff9fc}.moment video{display:block;width:100%;height:330px;object-fit:contain;background:#281322;border-radius:12px}.moment p{color:#76566a}.moment .file-needed{font-size:.88rem}.smallcaps{text-transform:uppercase;font-size:.7rem;letter-spacing:.14em;color:#ae4477;font-weight:900}.share-actions{display:flex;gap:10px;flex-wrap:wrap}.status{min-height:20px;font-size:.86rem;color:#91416e}.musicbar{position:fixed;z-index:5;bottom:0;left:0;right:0;background:#341729;color:#fff;display:flex;align-items:center;justify-content:center;gap:13px;padding:11px 15px;flex-wrap:wrap;box-shadow:0 -9px 28px #411a3255}.musicbar button{background:#efa3c6;color:#411832;border:0;padding:9px 15px;border-radius:99px;font-weight:900}.musicbar input{width:160px;accent-color:#ef91bb}.musicbar strong{font-size:.88rem}.musicbar small{font-size:.73rem;color:#f2cce0}.footer{text-align:center;color:#87687a;font-size:.83rem;padding:25px}.footer a{color:#8a2c5c}@media(max-width:740px){.hero{grid-template-columns:1fr}.hero img{order:-1;max-width:370px;margin:auto;max-height:450px}.moments{grid-template-columns:1fr}.reader{height:65vh;min-height:420px}.topbar span{display:none}.musicbar{gap:7px;padding:8px}.musicbar input{width:100px}.musicbar strong{font-size:.77rem}}
-</style></head>
+
+/* Living ebook: the original PDF page becomes the interactive picture surface. */
+.interactive-reader{height:auto;min-height:0;overflow:visible;padding:0;background:transparent;border:0}
+.page-toolbar{display:flex;align-items:center;justify-content:center;gap:clamp(12px,4vw,35px);padding:12px;background:#fff0f6;border:1px solid #eac0d5;border-radius:14px 14px 0 0}
+.page-toolbar button{background:white;color:#8e3060;border:1px solid #ce86aa;border-radius:99px;padding:9px 16px;font-weight:800;min-height:42px}
+.page-toolbar button:disabled{opacity:.35;cursor:default}.page-toolbar span{font-weight:800;font-size:.89rem}
+.ebook-stage{display:flex;align-items:center;justify-content:center;min-height:380px;padding:clamp(8px,2vw,24px);background:linear-gradient(135deg,#f3d1e2,#fff6f8);border:1px solid #eac0d5;border-top:0;border-radius:0 0 16px 16px}
+.ebook-sheet{position:relative;width:100%;max-width:650px;margin:auto;box-shadow:0 8px 28px #5c25492c;line-height:0}
+.ebook-sheet canvas{display:block;width:100%;height:auto;background:#fff8f8}
+.page-play{position:absolute;z-index:2;left:50%;top:73%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:10px;white-space:nowrap;padding:11px 17px;color:#fff;background:#9a2e64;border:3px solid #fff5fa;border-radius:999px;box-shadow:0 5px 24px #3c1535aa;font-weight:900;line-height:1.2}
+.page-play .play-symbol{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#ffd5e7;color:#7f2f58;font-size:13px}
+.page-play:hover{background:#bd417f}.page-play[hidden]{display:none!important}
+.reader-hint{text-align:center;color:#8c3c67;font-size:.89rem;margin:12px 0 2px}
+#pdfFallback{width:100%;text-align:center}#pdfFallback iframe{height:70vh;width:100%;border:0;background:white}#pdfFallback[hidden]{display:none}
+.video-lightbox{position:fixed;inset:0;z-index:100;background:rgba(23,4,20,.9);padding:24px;display:flex;align-items:center;justify-content:center;overflow:auto}
+.video-lightbox[hidden]{display:none}.video-shell{position:relative;text-align:center;background:#fff5f9;padding:clamp(14px,3vw,25px);border-radius:20px;width:min(100%,480px)}
+.video-shell h2{font-size:1.7rem}.video-shell video{display:block;max-width:100%;width:auto;height:auto;max-height:min(65vh,570px);margin:12px auto;border-radius:12px;background:#31132b}
+.close-video{position:absolute;right:10px;top:7px;width:44px;height:44px;border-radius:50%;border:0;background:#8f2959;color:white;font-size:30px}
+body.video-open{overflow:hidden}
+@media(max-width:540px){.page-toolbar{gap:9px}.page-toolbar button{font-size:.83rem;padding:7px 10px}.page-play{padding:8px 10px;gap:5px;font-size:.78rem;border-width:2px}.page-play .play-symbol{width:23px;height:23px}}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" defer></script></head>
 <body>
 <header class="topbar"><a href="../">Jahntella ♡</a><span>THE SPARKLE ERA · FOCUS ON THE ARTIST</span><a href="../#sparkleEraAlbum">Explore Sparkle</a></header>
 <main>
 <section class="hero" aria-labelledby="mainTitle"><div><p class="eyebrow">🌸 Focus on the artist · The living ebook</p><h1 id="mainTitle">Pink Petals</h1><p class="lead">A little softness. A little self-love. A world that blooms.</p><p>Enter an illustrated journey through music, confidence, and self-discovery. Read the book, hear four short personal messages from Jahntella, and let <em>Pink Petals</em> be your soundtrack.</p><p class="micro">27 pages · Four video moments · Original deep-house track · Shareable with your Sweeties · 18+</p><div class="buttons"><a class="btn primary" href="#book">🌸 Read the ebook</a><button class="btn" id="shareTop" type="button">♡ Share a petal</button></div><p class="micro">Jahntella's in-character stories are creative fiction. The self-discovery material is intended for adults.</p></div><img src="../assets/album3/pink-petals-cover.webp" alt="Pink Petals — Jahntella cover art" loading="eager"></section>
-<section class="panel" id="book"><div class="panel-head"><div><p class="eyebrow">The illustrated edition</p><h2>Read while you listen.</h2></div><a class="btn primary" href="../pink-petals-living-ebook.pdf" download="Jahntella-Pink-Petals-Living-Ebook.pdf" id="download">↓ Download the book</a></div><p>Open the 27-page visual book, then use the pink music player at the bottom while you turn the pages. On some phones, your PDF reader may open separately.</p><div id="bookLoading" class="file-needed">The ebook PDF will appear here once its file is uploaded to the website.</div><div class="reader" id="reader" hidden><iframe id="pdf" title="Pink Petals living ebook" loading="lazy"></iframe></div></section>
-<section class="panel" id="videos"><p class="eyebrow">Four moments with Jahntella</p><h2>Tap to hear from me, Sweetie.</h2><p>Four short personal messages to accompany the story. Tap play on any available chapter.</p><div class="moments">
-<article class="moment"><div class="smallcaps">01 · Author's foreword</div><h3>Hey, Sweetie</h3><p>A personal welcome to the world of Pink Petals.</p><video controls playsinline preload="none" data-src="../welcome.mp4" aria-label="Jahntella's welcome video" hidden></video><div class="file-needed">Video being added to the website.</div></article>
-<article class="moment"><div class="smallcaps">02 · Behind the song</div><h3>Why Pink Petals?</h3><p>The inspiration behind her slower, deeper sound.</p><video controls playsinline preload="none" data-src="../behind-the-song.mp4" aria-label="Jahntella discusses Pink Petals" hidden></video><div class="file-needed">Video being added to the website.</div></article>
-<article class="moment"><div class="smallcaps">03 · Self-discovery</div><h3>Your Own Kind of Pleasure</h3><p>A playful reminder that confidence belongs to you.</p><video controls playsinline preload="none" data-src="../self-discovery.mp4" aria-label="Jahntella on self-discovery" hidden></video><div class="file-needed">Video being added to the website.</div></article>
-<article class="moment"><div class="smallcaps">04 · A note for you</div><h3>Keep Blooming</h3><p>A warm goodbye to carry into the rest of your day.</p><video controls playsinline preload="none" data-src="../keep-blooming.mp4" aria-label="Jahntella's closing message" hidden></video><div class="file-needed">Video being added to the website.</div></article>
+<section class="panel" id="book"><div class="panel-head"><div><p class="eyebrow">The illustrated edition</p><h2>Read while you listen.</h2></div><a class="btn primary" href="../pink-petals-living-ebook.pdf" download="Jahntella-Pink-Petals-Living-Ebook.pdf" id="download">↓ Download the book</a></div><p>Open the 27-page visual book, then use the pink music player at the bottom while you turn the pages. On some phones, your PDF reader may open separately.</p><div id="bookLoading" class="file-needed">The ebook PDF will appear here once its file is uploaded to the website.</div><div class="reader interactive-reader" id="reader" hidden>
+  <div class="page-toolbar" aria-label="Book page controls"><button id="prevPage" type="button" aria-label="Previous page">‹ Previous</button><span id="pageCount" aria-live="polite">Page 1 of 27</span><button id="nextPage" type="button" aria-label="Next page">Next ›</button></div>
+  <div class="ebook-stage" id="ebookStage" aria-label="Interactive ebook page">
+    <div class="ebook-sheet" id="ebookSheet"><canvas id="pageCanvas" aria-label="Illustrated ebook page"></canvas><button id="pagePlay" class="page-play" type="button" hidden><span class="play-symbol" aria-hidden="true">▶</span><span id="playLabel">Hear Jahntella</span></button></div>
+    <div id="pdfFallback" hidden><p class="micro">Your browser can still open the illustrated PDF below.</p><iframe id="pdf" title="Pink Petals illustrated ebook" loading="lazy"></iframe></div>
+  </div>
+  <p class="reader-hint">🌸 Turn the pages. Tap the pink play button on Jahntella’s picture to hear her speak.</p>
 </div></section>
+<div class="video-lightbox" id="videoLightbox" hidden role="dialog" aria-modal="true" aria-labelledby="videoDialogTitle"><div class="video-shell"><button type="button" class="close-video" id="closeVideo" aria-label="Close video">×</button><p class="smallcaps">🌸 A moment with Jahntella</p><h2 id="videoDialogTitle">Hey, Sweetie</h2><video id="chapterVideo" controls playsinline preload="none"></video><p class="micro">Close the video to continue reading where you left off.</p></div></div>
 <section class="panel" id="share"><p class="eyebrow">Pass a petal forward</p><h2>Share a little self-love.</h2><p>Know someone who could use warmth, confidence, or a moment just for themselves? Send them Pink Petals. Sometimes a little kindness blossoms into something beautiful.</p><div class="share-actions"><button class="btn primary" id="shareNative" type="button">♡ Share this experience</button><button class="btn" id="copyLink" type="button">Copy link</button><a id="shareFacebook" class="btn" target="_blank" rel="noopener noreferrer">Facebook</a><a id="shareWhatsApp" class="btn" target="_blank" rel="noopener noreferrer">WhatsApp</a></div><p class="micro">Instagram and TikTok may require pasting the link into a message or Story. Share a favorite page with permission and a link to the complete book.</p><p class="status" id="status" role="status" aria-live="polite"></p></section>
 <div class="footer">🌸 Keep blooming, Sweetie. XOXO ♡ <a href="../">Back to Jahntella.com</a></div>
 </main>
@@ -43,7 +66,68 @@ document.getElementById('shareTop').addEventListener('click',share);document.get
 document.getElementById('shareFacebook').href='https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(shareUrl);
 document.getElementById('shareWhatsApp').href='https://api.whatsapp.com/send?text='+encodeURIComponent(shareText);
 const exists=async(path)=>{try{const r=await fetch(path,{method:'HEAD',cache:'no-cache'});return r.ok&&!(r.headers.get('content-type')||'').includes('text/html')}catch(_){return false}};
-(async()=>{if(await exists('../pink-petals-living-ebook.pdf')){document.getElementById('bookLoading').hidden=true;document.getElementById('reader').hidden=false;document.getElementById('pdf').src='../pink-petals-living-ebook.pdf#view=FitH'}else{document.getElementById('download').hidden=true}for(const video of document.querySelectorAll('video[data-src]')){const src=video.dataset.src;if(await exists(src)){video.src=src;video.hidden=false;video.nextElementSibling.hidden=true;video.addEventListener('play',()=>{audio.pause();document.querySelectorAll('video[data-src]').forEach(other=>{if(other!==video)other.pause()})})}}})();
+(async()=>{if(await exists('../pink-petals-living-ebook.pdf')){document.getElementById('bookLoading').hidden=true;document.getElementById('reader').hidden=false;window.dispatchEvent(new Event('pinkPetalsBookAvailable'))}else{document.getElementById('download').hidden=true}}})();
+})();
+</script>
+<script>
+/* Keep original PDF pages and artwork intact; add interactive play hotspots only to selected pictures. */
+(()=>{
+'use strict';
+const pdfPath='../pink-petals-living-ebook.pdf';
+const chapters={
+  2:{title:"Hey, Sweetie — Author's Foreword",src:"../welcome.mp4",top:39},
+  10:{title:"Behind the Song — Pink Petals",src:"../behind-the-song.mp4",top:73},
+  8:{title:"Your Own Kind of Pleasure",src:"../self-discovery.mp4",top:72},
+  24:{title:"Keep Blooming, Sweetie",src:"../keep-blooming.mp4",top:73}
+};
+const canvas=document.getElementById('pageCanvas'),stage=document.getElementById('ebookStage'),sheet=document.getElementById('ebookSheet');
+const pagePlay=document.getElementById('pagePlay'),playLabel=document.getElementById('playLabel');
+const counter=document.getElementById('pageCount'),prev=document.getElementById('prevPage'),next=document.getElementById('nextPage');
+const overlay=document.getElementById('videoLightbox'),close=document.getElementById('closeVideo'),video=document.getElementById('chapterVideo'),title=document.getElementById('videoDialogTitle');
+let doc=null,pageNo=1,rendering=false,queued=null;
+const song=document.getElementById('audio');
+function closeVideo(){video.pause();video.removeAttribute('src');video.load();overlay.hidden=true;document.body.classList.remove('video-open');pagePlay.focus()}
+function openVideo(chapter){if(!chapter)return;song.pause();title.textContent=chapter.title;video.src=chapter.src;overlay.hidden=false;document.body.classList.add('video-open');close.focus();video.play().catch(()=>{})}
+pagePlay.addEventListener('click',()=>openVideo(chapters[pageNo]));
+close.addEventListener('click',closeVideo);
+overlay.addEventListener('click',e=>{if(e.target===overlay)closeVideo()});
+window.addEventListener('keydown',e=>{if(e.key==='Escape'&&!overlay.hidden)closeVideo()});
+function fallback(){document.getElementById('ebookSheet').hidden=true;document.getElementById('pdfFallback').hidden=false;document.getElementById('pdf').src=pdfPath+'#view=FitH';document.querySelector('.page-toolbar').hidden=true}
+async function render(n){
+ if(!doc)return;
+ if(rendering){queued=n;return}rendering=true;
+ try{
+   const page=await doc.getPage(n);
+   const raw=page.getViewport({scale:1});
+   const width=Math.min(650,Math.max(250,stage.clientWidth-24));
+   const scale=width/raw.width;
+   const viewport=page.getViewport({scale});
+   const dpr=Math.min(window.devicePixelRatio||1,2);
+   canvas.width=Math.round(viewport.width*dpr);canvas.height=Math.round(viewport.height*dpr);
+   canvas.style.width=viewport.width+'px';canvas.style.height=viewport.height+'px';
+   sheet.style.maxWidth=viewport.width+'px';
+   const ctx=canvas.getContext('2d',{alpha:false});
+   await page.render({canvasContext:ctx,viewport,transform:[dpr,0,0,dpr,0,0]}).promise;
+   pageNo=n;counter.textContent='Page '+n+' of '+doc.numPages;prev.disabled=n===1;next.disabled=n===doc.numPages;
+   const ch=chapters[n];pagePlay.hidden=!ch;
+   if(ch){pagePlay.style.top=ch.top+'%';playLabel.textContent=ch.title.startsWith('Hey')?'Play my welcome':'Hear Jahntella'}
+ }catch(e){console.warn('Reader page issue',e)}finally{rendering=false;if(queued!==null&&queued!==pageNo){const q=queued;queued=null;render(q)}else queued=null}
+}
+prev.addEventListener('click',()=>render(Math.max(1,pageNo-1)));
+next.addEventListener('click',()=>render(Math.min(doc?.numPages||27,pageNo+1)));
+let resizeTimer;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if(doc)render(pageNo)},250)});
+let started=false;
+async function start(){
+ if(started)return;started=true;
+ try{
+  if(!window.pdfjsLib)throw Error('PDF.js not loaded');
+  window.pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  doc=await window.pdfjsLib.getDocument(pdfPath).promise;
+  await render(1);
+ }catch(e){console.warn('Showing standard PDF reader:',e);fallback()}
+}
+window.addEventListener('pinkPetalsBookAvailable',start);
+if(!document.getElementById('reader').hidden)start();
 })();
 </script>
 </body></html>
