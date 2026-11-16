@@ -47,3 +47,10 @@
 #sweetieLounge.is-chill .lounge-art{min-height:125px;background:#140e20}
 #sweetieLounge.is-chill .lounge-art:before{opacity:.04}
 #sweetieLounge.is-chill .lounge-art-label{opacity:.8}
+
+/* Shareable song discovery: keep this small and easy to use on phones. */
+#sweetieLounge .lounge-share-options[hidden]{display:none!important}
+#sweetieLounge .lounge-share-options{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:12px 0 0;padding:13px;border:1px solid #ffffff48;border-radius:15px;background:#ffffff0d}
+#sweetieLounge .lounge-share-options p{flex-basis:100%;margin:0 0 5px;color:#ffe0ef;font-size:.9rem}
+#sweetieLounge .lounge-share-options a,#sweetieLounge .lounge-share-options button{display:inline-flex;align-items:center;justify-content:center;border-radius:99px;border:1px solid #ffd8ec;background:#ffffff16;color:#fff;padding:9px 13px;text-decoration:none;font-family:inherit;font-size:.84rem;font-weight:700;cursor:pointer}
+#sweetieLounge .lounge-share-options a:focus-visible,#sweetieLounge .lounge-share-options button:focus-visible{outline:3px solid #ffe4f2;outline-offset:3px}
