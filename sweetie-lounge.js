@@ -38,10 +38,10 @@ const mount=()=>{
  const titleNode=lounge.querySelector('[data-lounge-title]'),descNode=lounge.querySelector('[data-lounge-desc]'),eraNode=lounge.querySelector('[data-lounge-era]'),statusNode=lounge.querySelector('[data-lounge-status]');
  let mood='Sweet',chill=false;
  const setMood=name=>{mood=name;const data=moods[name];lounge.style.setProperty('--lounge',data.color);lounge.querySelectorAll('[data-mood]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mood===name)));eraNode.textContent=data.icon+' THE '+name.toUpperCase()+' ERA';descNode.textContent=data.description;titleNode.textContent=(names[data.songs[0]]||data.songs[0]);};
- const playKey=key=>{if(typeof window.jahntellaSelectSiteTrack!=='function'){statusNode.textContent='Player is still loading. Please choose a song in the album section.';return}window.jahntellaSelectSiteTrack(key,true);statusNode.textContent='Now playing '+(names[key]||key)+' in the existing music player.';};
+ const playKey=key=>{if(typeof window.jahntellaSelectSiteTrack!=='function'){statusNode.textContent='Player is still loading. Please choose a song in the album section.';return}window.jahntellaSelectSiteTrack(key,true);titleNode.textContent=names[key]||key;statusNode.textContent='Now playing +(names[key]||key)+' in the existing music player.';};
  const pick=arr=>arr[Math.floor(Math.random()*arr.length)];
  lounge.querySelectorAll('[data-mood]').forEach(b=>b.addEventListener('click',()=>setMood(b.dataset.mood)));
- lounge.querySelector('[data-lounge-start]').addEventListener('click',()=>playKey(pick(moods[mood].songs)));
+ lounge.querySelector('[data-lounge-start]').addEventListener('click',()=>playKey(moods[mood].songs[0]));
  lounge.querySelector('[data-lounge-surprise]').addEventListener('click',()=>{const keys=Object.values(moods).flatMap(m=>m.songs);playKey(pick(keys))});
  const chillButton=lounge.querySelector('[data-lounge-chill]');
  chillButton.addEventListener('click',()=>{chill=!chill;chillButton.textContent=chill?'☾ Work & Chill: On':'☾ Work & Chill: Off';lounge.classList.toggle('is-chill',chill);statusNode.textContent=chill?'Work & Chill: the player remains available; distractions stay minimal.':'Work & Chill is off.'});
