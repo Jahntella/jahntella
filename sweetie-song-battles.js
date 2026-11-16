@@ -50,8 +50,10 @@
     document.head.appendChild(style);
     const wrap=document.createElement('section');
     wrap.id='sweetieSongBattles';wrap.setAttribute('aria-labelledby','sweetieBattlesTitle');
-    wrap.innerHTML=`<div class="battle-inner"><p class="battle-kicker">💗 SWEETIE SONG BATTLES</p><h2 id="sweetieBattlesTitle">Which one is your vibe?</h2><p class="battle-intro">Two songs. Two feelings. Listen to both, pick your fave, and share it with your Sweeties!</p><div class="battle-grid"><article class="battle-card" data-battle-card="0"><img alt="" loading="lazy"><div class="battle-era"></div><h3></h3><button class="battle-listen" type="button">▶ Listen</button><button class="battle-vote" type="button">♡ This one!</button></article><span class="battle-vs" aria-hidden="true">VS</span><article class="battle-card" data-battle-card="1"><img alt="" loading="lazy"><div class="battle-era"></div><h3></h3><button class="battle-listen" type="button">▶ Listen</button><button class="battle-vote" type="button">♡ This one!</button></article></div><p class="battle-outcome" role="status" aria-live="polite">Which song wins your heart?</p><div class="battle-footer"><button data-battle-share type="button" disabled>♡ Share my pick</button><button data-battle-next type="button">↻ New matchup</button></div><p class="battle-intro" style="font-size:.76rem;margin-top:16px">Just for fun! Your pick is yours; this is not a public vote tally.</p></div>`;
-    lounge.after(wrap);
+    wrap.innerHTML=`<div class="battle-inner"><p class="battle-kicker">💗 SWEETIE SONG BATTLES</p><h2 id="sweetieBattlesTitle">Which one is your vibe?</h2><p class="battle-intro">Two songs. Two feelings. Listen to both, pick your fave, and share it with your Sweeties!</p><div class="battle-grid"><article class="battle-card" data-battle-card="0"><img alt="" loading="lazy"><div class="battle-era"></div><h3></h3><button class="battle-listen" type="button">▶ Listen</button><button class="battle-vote" type="button">♡ Pick &amp; Share</button></article><span class="battle-vs" aria-hidden="true">VS</span><article class="battle-card" data-battle-card="1"><img alt="" loading="lazy"><div class="battle-era"></div><h3></h3><button class="battle-listen" type="button">▶ Listen</button><button class="battle-vote" type="button">♡ This one!</button></article></div><p class="battle-outcome" role="status" aria-live="polite">Which song wins your heart?</p><div class="battle-footer"><button data-battle-share type="button" disabled>♡ Share my pick</button><button data-battle-next type="button">↻ New matchup</button></div><p class="battle-intro" style="font-size:.76rem;margin-top:16px">Just for fun! Your pick is yours; this is not a public vote tally.</p></div>`;
+    // Feature the VS battle near the top instead of duplicating the featured-song picker.
+    const featured = document.getElementById('featuredNow');
+    if (featured) featured.before(wrap); else lounge.after(wrap);
     const cards=[...wrap.querySelectorAll('[data-battle-card]')],outcome=wrap.querySelector('.battle-outcome');
     const share=wrap.querySelector('[data-battle-share]');
     let pair=[],winner=null,previous='';
@@ -66,17 +68,17 @@
       outcome.textContent='Which song wins your heart?';
     };
     const listen=i=>{const t=pair[i];if(typeof window.jahntellaSelectSiteTrack==='function'){window.jahntellaSelectSiteTrack(t.key,true);outcome.textContent='Now playing '+t.title+'. Pick your fave when you’re ready!';}else outcome.textContent='Player is still loading. Try again in a moment.';};
-    const vote=i=>{winner=pair[i];share.disabled=false;outcome.textContent='♡ '+winner.title+' wins your heart! Share your pick or try another matchup.';};
+    const vote=i=>{winner=pair[i];share.disabled=false;outcome.textContent='♡ '+winner.title+' wins your heart! Opening your sharing options…';};
     const shareWinner=async()=>{
       if(!winner)return;
       const url=new URL(location.origin+location.pathname);url.searchParams.set('song',winner.key);url.hash='sweetieLounge';
       const caption='OMG 💗 I picked '+winner.title+' by Jahntella in a Sweetie Song Battle! 🎶 What’s YOUR fave?';
       const text=caption+' '+url.toString();
-      if(navigator.share){try{await navigator.share({title:'Sweetie Song Battle — '+winner.title,text:caption,url:url.toString()});return;}catch(e){if(e.name==='AbortError')return;}}
-      try{await navigator.clipboard.writeText(text);outcome.textContent='Your winning song + share message were copied! ♡';}
-      catch(e){window.prompt('Copy your Sweetie Song Battle message:',text);}
+      if(navigator.share){try{await navigator.share({title:'Sweetie Song Battle — '+winner.title,text:caption,url:url.toString()});outcome.textContent='♡ '+winner.title+' is your Sweetie Song Battle pick!';return;}catch(e){if(e.name==='AbortError'){outcome.textContent='♡ '+winner.title+' is your pick. Tap Share my pick whenever you’re ready.';return;}}}
+      try{await navigator.clipboard.writeText(text);outcome.textContent='♡ Your winning song and share message were copied! Paste them in any app to share.';}
+      catch(e){window.prompt('Copy your Sweetie Song Battle message:',text);outcome.textContent='♡ Your pick is ready to share!';}
     };
-    cards.forEach((card,i)=>{card.querySelector('.battle-listen').addEventListener('click',()=>listen(i));card.querySelector('.battle-vote').addEventListener('click',()=>vote(i));});
+    cards.forEach((card,i)=>{card.querySelector('.battle-listen').addEventListener('click',()=>listen(i));card.querySelector('.battle-vote').addEventListener('click',()=>{vote(i);shareWinner();});});
     wrap.querySelector('[data-battle-next]').addEventListener('click',choose);
     share.addEventListener('click',shareWinner);
     choose();
