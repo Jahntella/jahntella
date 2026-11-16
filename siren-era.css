@@ -10,3 +10,7 @@
 .siren-sweetville-card{background:linear-gradient(155deg,rgba(18,58,51,.96),rgba(5,19,21,.98))!important}
 
 /* Album sections follow their actual HTML order: Sparkle, Siren, Surge, Sweetie. */
+
+/* Pretty Little Problem only: fill its square song-card artwork like neighboring tracks. */
+#sirenEraAlbum .shine-era-song-card[data-card="pretty-little-problem"] .shine-era-cover-play img{object-fit:cover!important;object-position:center center!important;transform:scale(1.055);transform-origin:center center}
+#sirenEraAlbum .shine-era-song-card[data-card="pretty-little-problem"] .shine-era-cover-play:hover img,#sirenEraAlbum .shine-era-song-card[data-card="pretty-little-problem"] .shine-era-cover-play:focus-visible img{transform:scale(1.07)}
