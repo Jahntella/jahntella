@@ -139,3 +139,39 @@ a:focus-visible { outline: 2px solid var(--soft); outline-offset: 4px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* Future Little Luxuries collection. */
+.roadmap-link { color: var(--soft); font-weight: 800; text-underline-offset: .2em; }
+.luxuries {
+  background: radial-gradient(ellipse at top, #ff4eae1a, transparent 60%), #1b061d;
+  border-block: 1px solid #ffb1d727;
+}
+.luxuries-tagline {
+  color: var(--soft);
+  font: italic 700 clamp(1.15rem, 2.6vw, 1.6rem)/1.4 "Playfair Display", serif;
+}
+.luxuries-content {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.3rem, 4vw, 3rem);
+  max-width: 1100px;
+  margin-inline: auto;
+}
+.luxuries-content h3 { margin: 0 0 .85rem; font-size: 1.45rem; }
+.luxuries-categories { display: grid; gap: .65rem; margin: 0; padding: 0; list-style: none; }
+.luxuries-categories li { padding: .75rem .95rem; border: 1px solid #ffffff24; border-radius: 14px; background: #ffffff07; }
+.luxuries-categories strong, .luxuries-categories span { display: block; }
+.luxuries-categories span, .luxuries-eras td { color: #dfc7d7; line-height: 1.5; }
+.luxuries-eras { width: 100%; text-align: left; border-collapse: collapse; }
+.luxuries-eras th, .luxuries-eras td { padding: .65rem .65rem .65rem 0; border-bottom: 1px solid #ffffff20; }
+.luxuries-eras thead th { color: #fff7fb; font-size: .78rem; }
+.luxuries-eras tbody th { color: var(--era-accent); }
+.luxuries-sweet { --era-accent: #ff9ecc; }
+.luxuries-shine { --era-accent: #d7b2ff; }
+.luxuries-sparkle { --era-accent: #99eaff; }
+.luxuries-siren { --era-accent: #a9ecd4; }
+.luxuries-surge { --era-accent: #ffb477; }
+.luxuries-note { max-width: 1100px; margin: 1.35rem auto 0; font-size: .88rem; }
+@media (max-width: 750px) {
+  .luxuries-content { grid-template-columns: 1fr; }
+}
