@@ -11,6 +11,15 @@
 
 /* Album sections follow their actual HTML order: Sparkle, Siren, Surge, Sweetie. */
 
-/* Pretty Little Problem only: fill its square song-card artwork like neighboring tracks. */
-#sirenEraAlbum .shine-era-song-card[data-card="pretty-little-problem"] .shine-era-cover-play img{object-fit:cover!important;object-position:center center!important;transform:scale(1.055);transform-origin:center center}
-#sirenEraAlbum .shine-era-song-card[data-card="pretty-little-problem"] .shine-era-cover-play:hover img,#sirenEraAlbum .shine-era-song-card[data-card="pretty-little-problem"] .shine-era-cover-play:focus-visible img{transform:scale(1.07)}
+/* Pretty Little Problem: preserve the complete portrait and title within the existing square, with no zoom or layout change. */
+#sirenEraAlbum .shine-era-song-card[data-card="pretty-little-problem"] .shine-era-cover-play img{
+  object-fit:contain!important;
+  object-position:center center!important;
+  transform:none!important;
+  transform-origin:center center!important;
+  background:#092320!important;
+}
+#sirenEraAlbum .shine-era-song-card[data-card="pretty-little-problem"] .shine-era-cover-play:hover img,
+#sirenEraAlbum .shine-era-song-card[data-card="pretty-little-problem"] .shine-era-cover-play:focus-visible img{
+  transform:none!important;
+}
