@@ -11,7 +11,7 @@ const mount=()=>{
  <button class="mood" data-mood="Surge" aria-pressed="false">🧡 Surge</button></div>
  <div class="lounge-stage"><div class="lounge-art"><div class="lounge-art-label" data-lounge-era>💗 THE SWEET ERA</div><div class="lounge-bars" aria-hidden="true">${Array.from({length:24},()=>'<i></i>').join('')}</div></div>
  <div><p class="lounge-now">YOUR JAHNTELLA SOUNDTRACK</p><p class="lounge-song" data-lounge-title>Pick your mood</p><p class="lounge-subtext" data-lounge-desc>Find a song that fits how you're feeling.</p>
- <div class="lounge-actions"><button type="button" data-lounge-start>▶ Play this mood</button><button type="button" class="secondary" data-lounge-surprise>✦ Surprise Me</button><button type="button" class="secondary" data-lounge-chill>☾ Work & Chill: Off</button></div>
+ <div class="lounge-actions"><button type="button" class="secondary" data-lounge-prev aria-label="Previous song in this era">⏮ Previous</button><button type="button" data-lounge-start>▶ Play this song</button><button type="button" class="secondary" data-lounge-next aria-label="Next song in this era">Next ⏭</button><button type="button" class="secondary" data-lounge-surprise>✦ Surprise Me</button><button type="button" class="secondary" data-lounge-chill>☾ Work & Chill: Off</button></div>
  <p class="lounge-note" data-lounge-status role="status" aria-live="polite"></p></div></div>
  <div class="lounge-footer"><p>♡ Want first dibs on songs, Living Ebooks, beauty, and future Little Luxuries? Just your email. No birthdays, no gate.</p>
  <button class="lounge-signup-button" type="button" data-lounge-signup>♡ Join the Sweeties</button></div>
@@ -34,25 +34,35 @@ const mount=()=>{
  const extra=Array.isArray(window.JAHNTELLA_EXTRA_TRACKS)?window.JAHNTELLA_EXTRA_TRACKS:[];
  const names=Object.fromEntries(extra.map(t=>[t.key,t.title]));
  Object.assign(names,{'fun-dipp':'Fun Dipp','pink-lips':'Fun Dipp (Pink Lips Remix)','we-come-together':'We Come Together','gloss':'Gloss','play-with-me':'Play With Me','boots-smile-attitude':'Boots, Smile & Attitude','sweet-dreams':'Sweet Dreams','we-are-1':'We Are 1'});
- const eraFromKey=key=>Object.entries(moods).find(([,m])=>m.songs.includes(key))?.[0]||extra.find(t=>t.key===key)?.era||'Sweet';
+ const eraFromKey=key=>extra.find(t=>t.key===key)?.era||Object.entries(moods).find(([,m])=>m.songs.includes(key))?.[0]||'Sweet';
  const titleNode=lounge.querySelector('[data-lounge-title]'),descNode=lounge.querySelector('[data-lounge-desc]'),eraNode=lounge.querySelector('[data-lounge-era]'),statusNode=lounge.querySelector('[data-lounge-status]');
- let mood='Sweet',chill=false;
- const setMood=name=>{mood=name;const data=moods[name];lounge.style.setProperty('--lounge',data.color);lounge.querySelectorAll('[data-mood]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mood===name)));eraNode.textContent=data.icon+' THE '+name.toUpperCase()+' ERA';descNode.textContent=data.description;titleNode.textContent=(names[data.songs[0]]||data.songs[0]);};
- const playKey=key=>{if(typeof window.jahntellaSelectSiteTrack!=='function'){statusNode.textContent='Player is still loading. Please choose a song in the album section.';return}window.jahntellaSelectSiteTrack(key,true);titleNode.textContent=names[key]||key;statusNode.textContent='Now playing +(names[key]||key)+' in the existing music player.';};
+ let mood='Sweet',chill=false,selectedIndex=0;
+ const refreshMood=()=>{const data=moods[mood];lounge.style.setProperty('--lounge',data.color);lounge.querySelectorAll('[data-mood]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mood===mood)));eraNode.textContent=data.icon+' THE '+mood.toUpperCase()+' ERA';descNode.textContent=data.description;};
+ const setMood=name=>{mood=name;selectedIndex=0;refreshMood();const key=moods[mood].songs[0];titleNode.textContent=names[key]||key;statusNode.textContent='Ready to play '+(names[key]||key)+'.';};
+ const playKey=key=>{if(typeof window.jahntellaSelectSiteTrack!=='function'){statusNode.textContent='Player is still loading. Please choose a song in the album section.';return;}
+   const era=eraFromKey(key);
+   if(moods[era]){mood=era;selectedIndex=Math.max(0,moods[era].songs.indexOf(key));refreshMood();}
+   window.jahntellaSelectSiteTrack(key,true);
+   titleNode.textContent=names[key]||key;
+   statusNode.textContent='Now playing '+(names[key]||key)+' in the existing music player.';
+ };
  const pick=arr=>arr[Math.floor(Math.random()*arr.length)];
+ const moveSong=step=>{const songs=moods[mood].songs;selectedIndex=(selectedIndex+step+songs.length)%songs.length;playKey(songs[selectedIndex]);};
  lounge.querySelectorAll('[data-mood]').forEach(b=>b.addEventListener('click',()=>setMood(b.dataset.mood)));
- lounge.querySelector('[data-lounge-start]').addEventListener('click',()=>playKey(moods[mood].songs[0]));
+ lounge.querySelector('[data-lounge-start]').addEventListener('click',()=>playKey(moods[mood].songs[selectedIndex]));
+ lounge.querySelector('[data-lounge-prev]').addEventListener('click',()=>moveSong(-1));
+ lounge.querySelector('[data-lounge-next]').addEventListener('click',()=>moveSong(1));
  lounge.querySelector('[data-lounge-surprise]').addEventListener('click',()=>{const keys=Object.values(moods).flatMap(m=>m.songs);playKey(pick(keys))});
  const chillButton=lounge.querySelector('[data-lounge-chill]');
  chillButton.addEventListener('click',()=>{chill=!chill;chillButton.textContent=chill?'☾ Work & Chill: On':'☾ Work & Chill: Off';lounge.classList.toggle('is-chill',chill);statusNode.textContent=chill?'Work & Chill: the player remains available; distractions stay minimal.':'Work & Chill is off.'});
  const open=()=>{signup.hidden=false;signup.querySelector('#simpleSweetieEmail').focus()};
- const close=()=>{signup.hidden=true;lounge.querySelector('[data-lounge-signup]').focus()};
+ const close=()=>{signup.hidden=true;(document.activeElement?.matches('[data-sweetie-signup-open]')?document.activeElement:lounge.querySelector('[data-lounge-signup]')).focus()};
+ document.addEventListener('click',e=>{if(e.target.closest('[data-sweetie-signup-open]'))open()});
  lounge.querySelector('[data-lounge-signup]').addEventListener('click',open);signup.querySelector('.signup-close').addEventListener('click',close);
  signup.addEventListener('click',e=>{if(e.target===signup)close()});
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!signup.hidden)close()});
  const audioNodes=()=>[...document.querySelectorAll('audio')].filter(a=>a.id&&a.id!=='simpleSweetieAudio');
- function sync(){const live=audioNodes().find(a=>!a.paused&&!a.ended);lounge.classList.toggle('is-playing',Boolean(live));const playerTitle=document.getElementById('playerTitle');if(live&&playerTitle?.textContent?.trim()){titleNode.textContent=playerTitle.textContent.trim();const matching=Object.entries(names).find(([,name])=>name.toLowerCase()===titleNode.textContent.toLowerCase());if(matching){const era=eraFromKey(matching[0]);if(moods[era])setMoodVisualOnly(era)}}}
- function setMoodVisualOnly(name){if(mood===name)return;const data=moods[name];lounge.style.setProperty('--lounge',data.color);eraNode.textContent=data.icon+' THE '+name.toUpperCase()+' ERA';}
+ function sync(){const live=audioNodes().find(a=>!a.paused&&!a.ended);lounge.classList.toggle('is-playing',Boolean(live));const playerTitle=document.getElementById('playerTitle');if(live&&playerTitle?.textContent?.trim()){titleNode.textContent=playerTitle.textContent.trim();const matching=Object.entries(names).find(([,name])=>name.toLowerCase()===titleNode.textContent.toLowerCase());if(matching){const era=eraFromKey(matching[0]);if(moods[era]){mood=era;selectedIndex=Math.max(0,moods[era].songs.indexOf(matching[0]));refreshMood();}}}}
  document.addEventListener('play',sync,true);document.addEventListener('pause',sync,true);document.addEventListener('ended',sync,true);
  const playerTitle=document.getElementById('playerTitle');if(playerTitle)new MutationObserver(sync).observe(playerTitle,{childList:true,subtree:true,characterData:true});
  setMood('Sweet');sync();
