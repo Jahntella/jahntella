@@ -46,56 +46,56 @@ window.JAHNTELLA_EXTRA_TRACKS = [
     "key": "come-here-come-close",
     "title": "Come Here Come Close",
     "src": "sweetville/come-here-come-close.mp3",
-    "artwork": "assets/album3/come-here-come-close-cover.png",
+    "artwork": "assets/album3/JComeHereComeCloseNEW.png",
     "era": "Sparkle"
   },
   {
     "key": "touch",
     "title": "Touch",
     "src": "sweetville/touch.mp3",
-    "artwork": "assets/album3/touch-cover.png",
+    "artwork": "assets/album3/JTouchNEW.png",
     "era": "Sparkle"
   },
   {
     "key": "pull-me-in",
     "title": "Pull Me In",
     "src": "sweetville/pull-me-in.mp3",
-    "artwork": "assets/album3/pull-me-in-cover.png",
+    "artwork": "assets/album3/JPullMeIn.png",
     "era": "Sparkle"
   },
   {
     "key": "strip",
     "title": "Strip",
     "src": "sweetville/strip.mp3",
-    "artwork": "assets/album3/strip-cover.png",
+    "artwork": "assets/album3/JStripNEW.png",
     "era": "Sparkle"
   },
   {
     "key": "what-you-do-to-me",
     "title": "What You Do to Me",
     "src": "sweetville/what-you-do-to-me.mp3",
-    "artwork": "assets/album3/what-you-do-to-me-cover.png",
+    "artwork": "assets/album3/JWhatYouDoToMe.png",
     "era": "Sparkle"
   },
   {
     "key": "exist",
     "title": "Exist",
     "src": "sweetville/exist.mp3",
-    "artwork": "assets/album3/exist-cover.png",
+    "artwork": "assets/album3/JExistNEW.png",
     "era": "Sparkle"
   },
   {
     "key": "escape",
     "title": "Escape",
     "src": "sweetville/escape.mp3",
-    "artwork": "assets/album3/escape-cover.png",
+    "artwork": "assets/album3/JEscape.png",
     "era": "Sparkle"
   },
   {
     "key": "pink-petals",
     "title": "Pink Petals",
     "src": "sweetville/pink-petals.mp3",
-    "artwork": "assets/album3/pink-petals-cover.png",
+    "artwork": "assets/album3/JPinkPetalsNEW.png",
     "era": "Sparkle"
   },
   {
