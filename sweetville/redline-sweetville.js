@@ -5,8 +5,8 @@
   window.__jahntellaSweetvilleRedlineLoaded = true;
 
   const audioUrl = new URL('../assets/album2/redline.mp3', document.baseURI).href;
-  const artworkUrl = new URL('../assets/album2/redline-cover.webp', document.baseURI).href;
-  const thumbUrl = new URL('../assets/album2/redline-cover-thumb.webp', document.baseURI).href;
+  const artworkUrl = new URL('../assets/album2/JRedlineNEW.png', document.baseURI).href;
+  const thumbUrl = new URL('../assets/album2/JRedlineNEW.png', document.baseURI).href;
   const PLAYBACK_KEY = 'jahntellaSiteMusicV46';
   let audio = null;
   let active = false;

@@ -84,12 +84,12 @@
     'sweet-dreams': {
       title: 'Sweet Dreams',
       src: asset('sweetville/sweet-dreams.mp3'),
-      artwork: asset('assets/album2/sweet-dreams-cover.webp')
+      artwork: asset('assets/album2/JSweetDreamsNEW.png')
     },
     'we-are-1': {
       title: 'We Are 1',
       src: asset('sweetville/we-are-1.mp3'),
-      artwork: asset('assets/album2/we-are-1-cover.webp')
+      artwork: asset('assets/album2/JWeAre1NEW.png')
     }
   };
 

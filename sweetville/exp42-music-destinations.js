@@ -111,19 +111,19 @@
       title: 'Sweet Dreams',
       src: album2AudioUrl('sweet-dreams', 'sweet-dreams.mp3'),
       destination: '../index.html#shineEraSneakPeek',
-      artwork: new URL('../assets/album2/sweet-dreams-cover.webp', document.baseURI).href
+      artwork: new URL('../assets/album2/JSweetDreamsNEW.png', document.baseURI).href
     },
     'we-are-1': {
       title: 'We Are 1',
       src: album2AudioUrl('we-are-1', 'we-are-1.mp3'),
       destination: '../index.html#shineEraSneakPeek',
-      artwork: new URL('../assets/album2/we-are-1-cover.webp', document.baseURI).href
+      artwork: new URL('../assets/album2/JWeAre1NEW.png', document.baseURI).href
     },
     'boots-smile-attitude': {
       title: 'Boots, Smile & Attitude',
       src: album2AudioUrl('boots-smile-attitude', 'boots-smile-attitude.mp3'),
       destination: '../index.html#shineEraSneakPeek',
-      artwork: new URL('../assets/album2/boots-smile-attitude-cover.webp', document.baseURI).href
+      artwork: new URL('../assets/album2/JBoots,Smile,AttitudeNEW.png', document.baseURI).href
     }
   };
 
@@ -165,12 +165,12 @@
     'milk-shake-cover.webp': 'milk-shake',
     'tonight.webp': 'tonight',
     'tonight-cover.webp': 'tonight',
-    'sweet-dreams-cover.webp': 'sweet-dreams',
-    'we-are-1-cover.webp': 'we-are-1',
-    'boots-smile-attitude-cover.webp': 'boots-smile-attitude'
+    'jsweetdreamsnew.png': 'sweet-dreams',
+    'jweare1new.png': 'we-are-1',
+    'jboots,smile,attitudenew.png': 'boots-smile-attitude'
   };
 
-  (window.JAHNTELLA_EXTRA_TRACKS || []).forEach(track => { COVER_FILE_TRACKS[track.artwork.split('/').pop()] = track.key; });
+  (window.JAHNTELLA_EXTRA_TRACKS || []).forEach(track => { COVER_FILE_TRACKS[decodeURIComponent(track.artwork.split(/[?#]/)[0].split('/').pop()).toLowerCase()] = track.key; });
 
   const safeJSON = (value, fallback) => {
     try { return JSON.parse(value) ?? fallback; } catch { return fallback; }

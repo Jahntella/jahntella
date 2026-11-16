@@ -6,7 +6,7 @@
 
   const cfg = window.JAHNTELLA_ALBUM2?.tracks?.['coming-down'] || {};
   const abs = path => new URL(path, document.baseURI).href;
-  const thumb = abs(cfg.artworkThumb || 'assets/album2/coming-down-cover-thumb.webp');
+  const thumb = abs(cfg.artworkThumb || 'assets/album2/JComingDownNEW.png');
 
   const orderAesthetic = () => {
     const grid = document.querySelector('.gallery-section .gallery-grid');

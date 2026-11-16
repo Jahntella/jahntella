@@ -4,42 +4,42 @@ window.JAHNTELLA_EXTRA_TRACKS = [
     "key": "midnight-rodeo",
     "title": "Midnight Rodeo",
     "src": "assets/album2/midnight-rodeo.mp3",
-    "artwork": "assets/album2/midnight-rodeo-cover.webp",
+    "artwork": "assets/album2/JMidnightRodeoNEW.png",
     "era": "Shine"
   },
   {
     "key": "redline",
     "title": "Redline",
     "src": "assets/album2/redline.mp3",
-    "artwork": "assets/album2/redline-cover.webp",
+    "artwork": "assets/album2/JRedlineNEW.png",
     "era": "Shine"
   },
   {
     "key": "smoke-show",
     "title": "Smoke Show",
     "src": "assets/album2/smoke-show.mp3",
-    "artwork": "assets/album2/smoke-show-cover.webp",
+    "artwork": "assets/album2/JSmokeShowNEW.png",
     "era": "Shine"
   },
   {
     "key": "chasing-me",
     "title": "Chasing Me",
     "src": "assets/album2/chasing-me.mp3",
-    "artwork": "assets/album2/chasing-me-cover.webp",
+    "artwork": "assets/album2/JChasingMeNEW.png",
     "era": "Shine"
   },
   {
     "key": "coming-down",
     "title": "Coming Down",
     "src": "assets/album2/coming-down.mp3",
-    "artwork": "assets/album2/coming-down-cover.webp",
+    "artwork": "assets/album2/JComingDownNEW.png",
     "era": "Shine"
   },
   {
     "key": "you-and-me",
     "title": "You and Me",
     "src": "assets/album2/you-and-me.mp3",
-    "artwork": "assets/album2/you-and-me-cover.webp",
+    "artwork": "assets/album2/JYouandMENEW.png",
     "era": "Shine"
   },
   {

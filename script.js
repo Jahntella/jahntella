@@ -134,19 +134,19 @@
     "sweet-dreams": {
       audio: document.getElementById("audioSweetDreams"),
       title: "Sweet Dreams",
-      artwork: "assets/album2/sweet-dreams-cover.webp",
+      artwork: "assets/album2/JSweetDreamsNEW.png",
       card: document.querySelector('[data-card="sweet-dreams"]')
     },
     "we-are-1": {
       audio: document.getElementById("audioWeAre1"),
       title: "We Are 1",
-      artwork: "assets/album2/we-are-1-cover.webp",
+      artwork: "assets/album2/JWeAre1NEW.png",
       card: document.querySelector('[data-card="we-are-1"]')
     },
     "boots-smile-attitude": {
       audio: document.getElementById("audioBootsSmileAttitude"),
       title: "Boots, Smile & Attitude",
-      artwork: "assets/album2/boots-smile-attitude-cover.webp",
+      artwork: "assets/album2/JBoots,Smile,AttitudeNEW.png",
       card: document.querySelector('[data-card="boots-smile-attitude"]')
     },
     "come-here-come-close": { audio: document.getElementById("audioComeHereComeClose"), title: "Come Here Come Close", artwork: "assets/album3/come-here-come-close-cover.webp", card: document.querySelector('[data-card="come-here-come-close"]') },
@@ -439,9 +439,9 @@
     "playground-cover.webp": "playground",
     "milk-shake-cover.webp": "milk-shake",
     "tonight-cover.webp": "tonight",
-    "sweet-dreams-cover.webp": "sweet-dreams",
-    "we-are-1-cover.webp": "we-are-1",
-    "boots-smile-attitude-cover.webp": "boots-smile-attitude",
+    "jsweetdreamsnew.png": "sweet-dreams",
+    "jweare1new.png": "we-are-1",
+    "jboots,smile,attitudenew.png": "boots-smile-attitude",
     "come-here-come-close-cover.webp": "come-here-come-close",
     "touch-cover.webp": "touch",
     "pull-me-in-cover.webp": "pull-me-in",
@@ -452,7 +452,7 @@
     "pink-petals-cover.webp": "pink-petals"
   };
 
-  (window.JAHNTELLA_EXTRA_TRACKS || []).forEach(track => { galleryCoverTracks[track.artwork.split('/').pop()] = track.key; });
+  (window.JAHNTELLA_EXTRA_TRACKS || []).forEach(track => { galleryCoverTracks[decodeURIComponent(track.artwork.split(/[?#]/)[0].split('/').pop()).toLowerCase()] = track.key; });
 
   document.querySelectorAll("#gallery [data-lightbox]").forEach(cover => {
     const path = cover.dataset.lightbox?.split(/[?#]/)[0] || "";

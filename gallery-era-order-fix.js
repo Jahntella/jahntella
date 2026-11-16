@@ -18,11 +18,11 @@
     'playground-cover.webp',
     'milk-shake-cover.webp',
     'tonight-cover.webp',
-    'sweet-dreams-cover.webp',
-    'we-are-1-cover.webp',
-    'boots-smile-attitude-cover.webp',
-    'midnight-rodeo-cover.webp',
-    'redline-cover.webp'
+    'jsweetdreamsnew.png',
+    'jweare1new.png',
+    'jboots,smile,attitudenew.png',
+    'jmidnightrodeonew.png',
+    'jredlinenew.png'
   ];
 
   const normalize = value => decodeURIComponent(String(value || ''))

@@ -6,7 +6,7 @@
 
   const cfg = window.JAHNTELLA_ALBUM2?.tracks?.['chasing-me'] || {};
   const abs = path => new URL(path, document.baseURI).href;
-  const thumb = abs(cfg.artworkThumb || 'assets/album2/chasing-me-cover-thumb.webp');
+  const thumb = abs(cfg.artworkThumb || 'assets/album2/JChasingMeNEW.png');
 
   const orderAesthetic = () => {
     const grid = document.querySelector('.gallery-section .gallery-grid');

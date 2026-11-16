@@ -6,8 +6,8 @@
 
   const cfg = window.JAHNTELLA_ALBUM2?.tracks?.['midnight-rodeo'] || {};
   const abs = p => new URL(p, document.baseURI).href;
-  const art = abs(cfg.artwork || 'assets/album2/midnight-rodeo-cover.webp');
-  const thumb = abs(cfg.artworkThumb || 'assets/album2/midnight-rodeo-cover-thumb.webp');
+  const art = abs(cfg.artwork || 'assets/album2/JMidnightRodeoNEW.png');
+  const thumb = abs(cfg.artworkThumb || 'assets/album2/JMidnightRodeoNEW.png');
   const video = abs(cfg.fullVideo || 'assets/album2/midnight-rodeo-official-visualizer.mp4');
 
   const orderAesthetic = () => {

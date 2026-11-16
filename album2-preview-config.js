@@ -4,42 +4,42 @@ window.JAHNTELLA_EXTRA_TRACKS = [
     "key": "midnight-rodeo",
     "title": "Midnight Rodeo",
     "src": "assets/album2/midnight-rodeo.mp3",
-    "artwork": "assets/album2/midnight-rodeo-cover.webp",
+    "artwork": "assets/album2/JMidnightRodeoNEW.png",
     "era": "Shine"
   },
   {
     "key": "redline",
     "title": "Redline",
     "src": "assets/album2/redline.mp3",
-    "artwork": "assets/album2/redline-cover.webp",
+    "artwork": "assets/album2/JRedlineNEW.png",
     "era": "Shine"
   },
   {
     "key": "smoke-show",
     "title": "Smoke Show",
     "src": "assets/album2/smoke-show.mp3",
-    "artwork": "assets/album2/smoke-show-cover.webp",
+    "artwork": "assets/album2/JSmokeShowNEW.png",
     "era": "Shine"
   },
   {
     "key": "chasing-me",
     "title": "Chasing Me",
     "src": "assets/album2/chasing-me.mp3",
-    "artwork": "assets/album2/chasing-me-cover.webp",
+    "artwork": "assets/album2/JChasingMeNEW.png",
     "era": "Shine"
   },
   {
     "key": "coming-down",
     "title": "Coming Down",
     "src": "assets/album2/coming-down.mp3",
-    "artwork": "assets/album2/coming-down-cover.webp",
+    "artwork": "assets/album2/JComingDownNEW.png",
     "era": "Shine"
   },
   {
     "key": "you-and-me",
     "title": "You and Me",
     "src": "assets/album2/you-and-me.mp3",
-    "artwork": "assets/album2/you-and-me-cover.webp",
+    "artwork": "assets/album2/JYouandMENEW.png",
     "era": "Shine"
   },
   {
@@ -193,12 +193,12 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
   'sweet-dreams':Object.freeze({fullAudio:'sweetville/sweet-dreams.mp3',previewAudio:'sweetville/previews/sweet-dreams-preview.mp3',fullVideo:'assets/album2/sweet-dreams-official-visualizer.mp4',previewVideo:'assets/album2/previews/sweet-dreams-preview.mp4'}),
   'we-are-1':Object.freeze({fullAudio:'sweetville/we-are-1.mp3',previewAudio:'sweetville/previews/we-are-1-preview.mp3',fullVideo:'assets/album2/we-are-1-official-visualizer.mp4',previewVideo:'assets/album2/previews/we-are-1-preview.mp4'}),
   'boots-smile-attitude':Object.freeze({fullAudio:'sweetville/boots-smile-attitude.mp3',previewAudio:'sweetville/previews/boots-smile-attitude-preview.mp3',fullVideo:'assets/album2/boots-smile-attitude-official-visualizer.mp4',previewVideo:'assets/album2/previews/boots-smile-attitude-preview.mp4'}),
-  'midnight-rodeo':Object.freeze({fullAudio:'assets/album2/midnight-rodeo.mp3',fullVideo:'assets/album2/midnight-rodeo-official-visualizer.mp4?v=77.0',artwork:'assets/album2/midnight-rodeo-cover.webp?v=77.0',artworkThumb:'assets/album2/midnight-rodeo-cover-thumb.webp?v=77.0'}),
-  redline:Object.freeze({fullAudio:'assets/album2/redline.mp3',fullVideo:'assets/album2/redline-official-visualizer.mp4',artwork:'assets/album2/redline-cover.webp',artworkThumb:'assets/album2/redline-cover-thumb.webp'}),
-  'smoke-show':Object.freeze({fullAudio:'assets/album2/smoke-show.mp3',fullVideo:'assets/album2/smoke-show-official-visualizer.mp4',artwork:'assets/album2/smoke-show-cover.webp',artworkThumb:'assets/album2/smoke-show-cover-thumb.webp'}),
-  'chasing-me':Object.freeze({fullAudio:'assets/album2/chasing-me.mp3',fullVideo:'assets/album2/chasing-me-official-visualizer.mp4',artwork:'assets/album2/chasing-me-cover.webp',artworkThumb:'assets/album2/chasing-me-cover-thumb.webp'}),
-  'coming-down':Object.freeze({fullAudio:'assets/album2/coming-down.mp3',fullVideo:'assets/album2/coming-down-official-visualizer.mp4',artwork:'assets/album2/coming-down-cover.webp',artworkThumb:'assets/album2/coming-down-cover-thumb.webp'}),
-  'you-and-me':Object.freeze({fullAudio:'assets/album2/you-and-me.mp3',fullVideo:'assets/album2/you-and-me-official-visualizer.mp4',artwork:'assets/album2/you-and-me-cover.webp',artworkThumb:'assets/album2/you-and-me-cover-thumb.webp'})
+  'midnight-rodeo':Object.freeze({fullAudio:'assets/album2/midnight-rodeo.mp3',fullVideo:'assets/album2/midnight-rodeo-official-visualizer.mp4?v=77.0',artwork:'assets/album2/JMidnightRodeoNEW.png',artworkThumb:'assets/album2/JMidnightRodeoNEW.png'}),
+  redline:Object.freeze({fullAudio:'assets/album2/redline.mp3',fullVideo:'assets/album2/redline-official-visualizer.mp4',artwork:'assets/album2/JRedlineNEW.png',artworkThumb:'assets/album2/JRedlineNEW.png'}),
+  'smoke-show':Object.freeze({fullAudio:'assets/album2/smoke-show.mp3',fullVideo:'assets/album2/smoke-show-official-visualizer.mp4',artwork:'assets/album2/JSmokeShowNEW.png',artworkThumb:'assets/album2/JSmokeShowNEW.png'}),
+  'chasing-me':Object.freeze({fullAudio:'assets/album2/chasing-me.mp3',fullVideo:'assets/album2/chasing-me-official-visualizer.mp4',artwork:'assets/album2/JChasingMeNEW.png',artworkThumb:'assets/album2/JChasingMeNEW.png'}),
+  'coming-down':Object.freeze({fullAudio:'assets/album2/coming-down.mp3',fullVideo:'assets/album2/coming-down-official-visualizer.mp4',artwork:'assets/album2/JComingDownNEW.png',artworkThumb:'assets/album2/JComingDownNEW.png'}),
+  'you-and-me':Object.freeze({fullAudio:'assets/album2/you-and-me.mp3',fullVideo:'assets/album2/you-and-me-official-visualizer.mp4',artwork:'assets/album2/JYouandMENEW.png',artworkThumb:'assets/album2/JYouandMENEW.png'})
 })});
 
 (()=>{
@@ -206,27 +206,22 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
   const addCss=(href,version)=>{const l=document.createElement('link');l.rel='stylesheet';l.href=new URL(`${href}?v=${version}`,document.baseURI).href;document.head.appendChild(l);};
 
   const shineTracks=[
-    {key:'sweet-dreams',title:'Sweet Dreams',tag:'DREAM POP · ALBUM II',art:'assets/album2/sweet-dreams-cover-thumb.webp?v=83.0',description:'A neon after-dark escape where the beat, the lights, and one unforgettable connection turn into a perfect dream.'},
-    {key:'we-are-1',title:'We Are 1',tag:'UNITY POP · ALBUM II',art:'assets/album2/we-are-1-cover-thumb.webp?v=83.0',description:'A glowing celebration of togetherness—made for raised hands, shared hearts, and one beautiful moment in the light.'},
-    {key:'boots-smile-attitude',title:'Boots, Smile & Attitude',tag:'POP COUNTRY EDM · ALBUM II',art:'assets/album2/boots-smile-attitude-cover-thumb.webp?v=83.0',description:'Boots on, confidence up—a sparkling country-pop dance-floor rush with a smile that owns the room.'},
-    {key:'midnight-rodeo',title:'Midnight Rodeo',tag:'NEON RODEO · ALBUM II',art:'assets/album2/midnight-rodeo-cover-thumb.webp?v=83.0',description:'A wild moonlit ride where country attitude meets crystal-pop energy and the night refuses to be tamed.'},
-    {key:'redline',title:'Redline',tag:'HIGH-SPEED POP · ALBUM II',art:'assets/album2/redline-cover-thumb.webp?v=83.0',description:'A fearless, full-throttle anthem built for open roads, racing hearts, and the thrill of going all the way.'},
-    {key:'smoke-show',title:'Smoke Show',tag:'AFTER-DARK POP · ALBUM II',art:'assets/album2/smoke-show-cover-thumb.webp?v=83.0',description:'Sultry, self-assured, and impossible to ignore—pure heat wrapped in purple smoke and electric confidence.'},
-    {key:'chasing-me',title:'Chasing Me',tag:'CLUB POP · ALBUM II',art:'assets/album2/chasing-me-cover-thumb.webp?v=83.0',description:'A sleek no-chaser anthem for knowing your worth, setting the pace, and letting everybody else try to keep up.'},
-    {key:'coming-down',title:'Coming Down',tag:'CONCERT POP · ALBUM II',art:'assets/album2/coming-down-cover-thumb.webp?v=83.0',description:'The lights are high and the feeling is higher—a concert-sized rush you never want to come down from.'},
-    {key:'you-and-me',title:'You and Me',tag:'GALAXY POP · ALBUM II',art:'assets/album2/you-and-me-cover-thumb.webp?v=83.0',description:'A cosmic final ride made for two hearts, one neon galaxy, and a love built to keep shining forever.'}
+    {key:'sweet-dreams',title:'Sweet Dreams',tag:'DREAM POP · ALBUM II',art:'assets/album2/JSweetDreamsNEW.png',description:'A neon after-dark escape where the beat, the lights, and one unforgettable connection turn into a perfect dream.'},
+    {key:'we-are-1',title:'We Are 1',tag:'UNITY POP · ALBUM II',art:'assets/album2/JWeAre1NEW.png',description:'A glowing celebration of togetherness—made for raised hands, shared hearts, and one beautiful moment in the light.'},
+    {key:'boots-smile-attitude',title:'Boots, Smile & Attitude',tag:'POP COUNTRY EDM · ALBUM II',art:'assets/album2/JBoots,Smile,AttitudeNEW.png',description:'Boots on, confidence up—a sparkling country-pop dance-floor rush with a smile that owns the room.'},
+    {key:'midnight-rodeo',title:'Midnight Rodeo',tag:'NEON RODEO · ALBUM II',art:'assets/album2/JMidnightRodeoNEW.png',description:'A wild moonlit ride where country attitude meets crystal-pop energy and the night refuses to be tamed.'},
+    {key:'redline',title:'Redline',tag:'HIGH-SPEED POP · ALBUM II',art:'assets/album2/JRedlineNEW.png',description:'A fearless, full-throttle anthem built for open roads, racing hearts, and the thrill of going all the way.'},
+    {key:'smoke-show',title:'Smoke Show',tag:'AFTER-DARK POP · ALBUM II',art:'assets/album2/JSmokeShowNEW.png',description:'Sultry, self-assured, and impossible to ignore—pure heat wrapped in purple smoke and electric confidence.'},
+    {key:'chasing-me',title:'Chasing Me',tag:'CLUB POP · ALBUM II',art:'assets/album2/JChasingMeNEW.png',description:'A sleek no-chaser anthem for knowing your worth, setting the pace, and letting everybody else try to keep up.'},
+    {key:'coming-down',title:'Coming Down',tag:'CONCERT POP · ALBUM II',art:'assets/album2/JComingDownNEW.png',description:'The lights are high and the feeling is higher—a concert-sized rush you never want to come down from.'},
+    {key:'you-and-me',title:'You and Me',tag:'GALAXY POP · ALBUM II',art:'assets/album2/JYouandMENEW.png',description:'A cosmic final ride made for two hearts, one neon galaxy, and a love built to keep shining forever.'}
   ];
 
   const createShineSongCard=track=>{
     const a=document.createElement('article');
-    const position=shineTracks.indexOf(track);
-    const fullArt=track.art.replace('-cover-thumb.webp?v=83.0','-cover.webp');
-    const priority=position<3?'high':'auto';
     a.className='exp44-new-music-card shine-era-song-card';
     a.dataset.card=track.key;
-    a.innerHTML=`<button class="shine-era-cover-play" type="button" data-shine-track="${track.key}" aria-label="Play ${track.title}"><img src="${track.art}" alt="${track.title} song cover by Jahntella" loading="eager" fetchpriority="${priority}" decoding="async" width="480" height="480"><span aria-hidden="true">▶</span></button><div><small>${track.tag}</small><h3>${track.title}</h3><p>${track.description}</p><button class="play-button shine-era-play-button" type="button" data-track="${track.key}" data-shine-track="${track.key}">▶ Play ${track.title}</button></div>`;
-    const image=a.querySelector('img');
-    image.addEventListener('error',()=>{if(image.src!==new URL(fullArt,document.baseURI).href)image.src=fullArt;},{once:true});
+    a.innerHTML=`<button class="shine-era-cover-play" type="button" data-shine-track="${track.key}" aria-label="Play ${track.title}"><img src="${track.art}" alt="${track.title} song cover by Jahntella" loading="lazy" decoding="async" width="480" height="480"><span aria-hidden="true">▶</span></button><div><small>${track.tag}</small><h3>${track.title}</h3><p>${track.description}</p><button class="play-button shine-era-play-button" type="button" data-track="${track.key}" data-shine-track="${track.key}">▶ Play ${track.title}</button></div>`;
     return a;
   };
 
@@ -284,7 +279,7 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
     if(!g)return;
     const order=[
       'fun-dipp-cover','pink-lips-remix','bite-lip-cover','gloss-cover','i-want-to-be-your-girl-cover','embrace-me-cover','we-come-together-cover','play-with-me-cover','carnival-cover','made-of-light-cover','candy-wrapper-cover','playground-cover','milk-shake-cover','tonight-cover',
-      'sweet-dreams-cover','we-are-1-cover','boots-smile-attitude-cover','midnight-rodeo-cover','redline-cover','smoke-show-cover','chasing-me-cover','coming-down-cover','you-and-me-cover'
+      'jsweetdreamsnew','jweare1new','jboots,smile,attitudenew','jmidnightrodeonew','jredlinenew','jsmokeshownew','jchasingmenew','jcomingdownnew','jyouandmenew'
     ];
     const rank=new Map(order.map((name,index)=>[name,index]));
     Array.from(g.querySelectorAll(':scope > .gallery-item')).sort((a,b)=>{
@@ -309,12 +304,12 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
       return;
     }
     addScript('shine-era-shared-transport.js','siren-1');
-    addScript('redline-site.js','20260819.8');
-    addScript('midnight-rodeo-site.js','20260819.12');
-    addScript('smoke-show-site.js','70.0');
-    addScript('chasing-me-site.js','71.0');
-    addScript('coming-down-site.js','72.0');
-    addScript('you-and-me-site.js','73.0');
+    addScript('redline-site.js','shine-cover-refresh-1');
+    addScript('midnight-rodeo-site.js','shine-cover-refresh-1');
+    addScript('smoke-show-site.js','shine-cover-refresh-1');
+    addScript('chasing-me-site.js','shine-cover-refresh-1');
+    addScript('coming-down-site.js','shine-cover-refresh-1');
+    addScript('you-and-me-site.js','shine-cover-refresh-1');
     addScript('world-tour-concert-experience.js','76.8');
     addCss('redline-site.css','20260819.8');
     addCss('midnight-rodeo-site.css','20260819.12');

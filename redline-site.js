@@ -6,8 +6,8 @@
 
   const cfg = window.JAHNTELLA_ALBUM2?.tracks?.redline || {};
   const abs = p => new URL(p, document.baseURI).href;
-  const art = abs(cfg.artwork || 'assets/album2/redline-cover.webp');
-  const thumb = abs(cfg.artworkThumb || 'assets/album2/redline-cover-thumb.webp');
+  const art = abs(cfg.artwork || 'assets/album2/JRedlineNEW.png');
+  const thumb = abs(cfg.artworkThumb || 'assets/album2/JRedlineNEW.png');
   const video = abs(cfg.fullVideo || 'assets/album2/redline-official-visualizer.mp4');
 
   const orderAesthetic = () => {
