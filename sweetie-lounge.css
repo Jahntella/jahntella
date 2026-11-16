@@ -1,0 +1,49 @@
+/* Optional music discovery lounge — isolated from the existing audio player. */
+#sweetieLounge{--lounge:#f08bbf;position:relative;isolation:isolate;overflow:hidden;padding:clamp(22px,5vw,45px) 16px;background:linear-gradient(145deg,#180b24,#30152d 50%,#101829);color:#fff;text-align:center}
+#sweetieLounge *{box-sizing:border-box}#sweetieLounge button,#sweetieLounge input{font:inherit}
+#sweetieLounge .lounge-shell{max-width:1040px;margin:auto}
+#sweetieLounge .lounge-kicker{color:#ffc3e4;font-weight:800;font-size:.77rem;letter-spacing:.18em}
+#sweetieLounge h2{font:700 clamp(1.9rem,4vw,3.1rem) Georgia,serif;margin:8px 0;color:#fff}
+#sweetieLounge .lounge-desc{color:#e7cee1;margin:0 auto 18px;max-width:650px}
+#sweetieLounge .lounge-moods{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:20px auto}
+#sweetieLounge .mood{border:1px solid #e7b3d3;border-radius:18px;background:#ffffff12;padding:12px 14px;color:white;min-height:65px;min-width:104px;cursor:pointer;font-weight:800}
+#sweetieLounge .mood[aria-pressed=true]{background:var(--lounge);color:#1c1024;border-color:white;box-shadow:0 0 24px color-mix(in srgb,var(--lounge),transparent 55%)}
+#sweetieLounge .lounge-stage{border:1px solid #ffffff40;border-radius:24px;background:linear-gradient(135deg,#ffffff11,#ffffff04);padding:20px;display:grid;grid-template-columns:1.2fr 1fr;gap:16px;align-items:center;text-align:left}
+#sweetieLounge .lounge-art{position:relative;border:1px solid #ffffff30;border-radius:19px;min-height:204px;overflow:hidden;display:grid;place-items:center;background:radial-gradient(circle at 50% 65%,color-mix(in srgb,var(--lounge),transparent 66%),transparent 60%),#0f0c25}
+#sweetieLounge .lounge-art:before{content:'♡';position:absolute;font-size:185px;line-height:1;color:var(--lounge);opacity:.18;transform:rotate(-13deg)}
+#sweetieLounge .lounge-art-label{position:relative;text-align:center;padding:8px;font:800 1.05rem Georgia,serif;letter-spacing:.08em;text-shadow:0 2px 20px #000}
+#sweetieLounge .lounge-bars{position:absolute;bottom:16px;left:14px;right:14px;height:40px;display:flex;justify-content:center;align-items:end;gap:5px}
+#sweetieLounge .lounge-bars i{width:6px;height:15%;border-radius:8px;background:var(--lounge);box-shadow:0 0 12px var(--lounge);animation:loungePulse 1.2s ease-in-out infinite alternate;animation-play-state:paused}
+#sweetieLounge.is-playing .lounge-bars i{animation-play-state:running}
+#sweetieLounge .lounge-bars i:nth-child(3n){animation-duration:.7s}#sweetieLounge .lounge-bars i:nth-child(3n + 2){animation-duration:1.7s}
+@keyframes loungePulse{from{height:12%}to{height:94%}}
+#sweetieLounge .lounge-now{color:#ffd7e7;font-size:.76rem;font-weight:800;letter-spacing:.12em}
+#sweetieLounge .lounge-song{font:700 clamp(1.45rem,3vw,2.1rem) Georgia,serif;margin:4px 0}
+#sweetieLounge .lounge-subtext{font-size:.91rem;color:#e7cddd;min-height:35px}
+#sweetieLounge .lounge-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:13px}
+#sweetieLounge .lounge-actions button,#sweetieLounge .lounge-signup-button{border:1px solid #ffd8ec;border-radius:99px;background:var(--lounge);color:#231027;cursor:pointer;padding:10px 16px;font-weight:800}
+#sweetieLounge .lounge-actions .secondary{background:#ffffff0f;color:#fff}
+#sweetieLounge .lounge-footer{display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:center;margin-top:18px}
+#sweetieLounge .lounge-footer p{margin:0;max-width:490px;text-align:left;color:#f6d8e9;font-size:.88rem}
+#sweetieLounge .lounge-note{font-size:.73rem;color:#d1b6c8;margin-top:12px}
+#sweetieSignup[hidden]{display:none!important}
+#sweetieSignup{position:fixed;inset:0;z-index:2147483100;display:grid;place-items:center;background:#140618db;padding:16px}
+#sweetieSignup .signup-card{position:relative;border:2px solid #f3b6d8;border-radius:25px;width:min(100%,440px);padding:32px 22px;background:#fff8fc;color:#55213c;box-shadow:0 20px 60px #0007;text-align:left}
+#sweetieSignup .signup-card h2{font:700 2rem Georgia,serif;margin:5px 0 12px}
+#sweetieSignup .signup-card p{font-size:.92rem}
+#sweetieSignup .signup-card label{font-weight:800;font-size:.85rem;display:block;margin:12px 0}
+#sweetieSignup input[type=email]{width:100%;padding:12px;border:1px solid #ab7595;border-radius:12px;font-size:1rem}
+#sweetieSignup .signup-optin{display:flex!important;gap:10px;align-items:flex-start;font-size:.83rem!important;font-weight:500!important}
+#sweetieSignup .signup-optin input{margin-top:5px}
+#sweetieSignup button[type=submit]{background:#b83f7c;border:0;border-radius:99px;color:white;font-weight:900;padding:13px 22px;cursor:pointer}
+#sweetieSignup .signup-close{position:absolute;right:12px;top:10px;background:transparent;border:0;font-size:28px;cursor:pointer;color:#58213e}
+#sweetieSignup .signup-status{font-size:.85rem;color:#753654;min-height:20px;margin-top:10px}
+@media(max-width:700px){#sweetieLounge .lounge-stage{grid-template-columns:1fr;text-align:center}#sweetieLounge .lounge-actions{justify-content:center}#sweetieLounge .lounge-footer p{text-align:center}}
+@media(prefers-reduced-motion:reduce){#sweetieLounge .lounge-bars i{animation:none!important;height:40%}}
+
+/* Work & Chill keeps music playing, minimizes motion and hides extra mood buttons. */
+#sweetieLounge.is-chill .lounge-bars i{animation:none!important;height:22%;opacity:.5}
+#sweetieLounge.is-chill .lounge-moods{display:none}
+#sweetieLounge.is-chill .lounge-art{min-height:125px;background:#140e20}
+#sweetieLounge.is-chill .lounge-art:before{opacity:.04}
+#sweetieLounge.is-chill .lounge-art-label{opacity:.8}
