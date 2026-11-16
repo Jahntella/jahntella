@@ -237,6 +237,23 @@
     window.__jahntellaStarResize = window.setTimeout(buildTwinkleStars, 250);
   });
 
+  // One playlist queue at a time; all audio still uses the existing site player.
+  const curatedPlaylists = {
+    country: {name:'Country Sweetheart',songs:['boots-smile-attitude','midnight-rodeo','knock-your-boots-off','wild-card']},
+    afterdark: {name:'After Dark',songs:['touch','snap-me','strip','come-here-come-close']},
+    electric: {name:'Electric Sweetie',songs:['tik-tok','electric-tangerine','overload','playlist']},
+    confidence: {name:'Confidence Boost',songs:['obsessed-with-me','untouchable','pretty-little-problem','cant-look-away']}
+  };
+  window.JAHNTELLA_CURATED_PLAYLISTS = curatedPlaylists;
+  let activePlaylist = null;
+  let playlistPosition = -1;
+  const playlistStatus = () => {
+    const data=activePlaylist && curatedPlaylists[activePlaylist];
+    window.dispatchEvent(new CustomEvent('jahntella:playlistchange',{detail:{
+      id:activePlaylist,name:data?.name||'',index:playlistPosition,
+      total:data?.songs.length||0,key:currentKey
+    }}));
+  };
   let currentKey = null;
   let currentCredited = false;
   let lastSavedSecond = -1;
@@ -318,9 +335,13 @@
   const selectTrack = (key, autoplay = true, options = {}) => {
     const track = tracks[key];
     if (!track?.audio) return;
+    if (activePlaylist && !options.fromPlaylist) {
+      activePlaylist=null;playlistPosition=-1;playlistStatus();
+    }
     const changing = currentKey !== key;
     stopOthers(track.audio);
     currentKey = key;
+    if (activePlaylist) playlistStatus();
     if (changing || options.fresh) currentCredited = false;
     if (typeof options.credited === "boolean") currentCredited = options.credited;
     title.textContent = track.title;
@@ -362,6 +383,20 @@
   window.jahntellaSelectSiteTrack = (key, autoplay = true, options = {}) => {
     selectTrack(key, autoplay, options);
   };
+  window.jahntellaPlayPlaylist = id => {
+    const data=curatedPlaylists[id];
+    if (!data || !data.songs.every(k => tracks[k]?.audio)) return false;
+    activePlaylist=id;playlistPosition=0;
+    selectTrack(data.songs[0],true,{fromPlaylist:true,fresh:true});
+    return true;
+  };
+  window.jahntellaStopPlaylist = () => {
+    activePlaylist=null;playlistPosition=-1;playlistStatus();
+  };
+  window.jahntellaPlaylistState = () => ({
+    id:activePlaylist,index:playlistPosition,
+    total:activePlaylist?curatedPlaylists[activePlaylist].songs.length:0
+  });
 
   const coverPlayStyles = document.createElement("style");
   coverPlayStyles.id = "jahntellaPlayableCoverStyles";
@@ -462,6 +497,15 @@
   });
 
   const moveTrack = direction => {
+    if (activePlaylist) {
+      const songs=curatedPlaylists[activePlaylist].songs;
+      const nextPosition=playlistPosition+direction;
+      if (nextPosition>=0 && nextPosition<songs.length) {
+        playlistPosition=nextPosition;
+        selectTrack(songs[playlistPosition],true,{fromPlaylist:true,fresh:true});
+      }
+      return;
+    }
     const index = currentKey ? order.indexOf(currentKey) : 0;
     selectTrack(order[(index + direction + order.length) % order.length]);
   };
@@ -509,8 +553,19 @@
       persistSitePlayback();
     });
     track.audio.addEventListener("ended", () => {
-      // Continuous listening across all five albums, including Album V bonus track.
+      // Curated playlists play in the selected order, ending after song four.
       if (currentTrack() !== track) return;
+      if (activePlaylist) {
+        const songs=curatedPlaylists[activePlaylist].songs;
+        if (playlistPosition+1<songs.length) {
+          playlistPosition++;
+          selectTrack(songs[playlistPosition],true,{fromPlaylist:true,fresh:true});
+        } else {
+          activePlaylist=null;playlistPosition=-1;playlistStatus();setPlaying(false);
+        }
+        return;
+      }
+      // Ordinary listening retains the original five-era continuous sequence.
       const position = order.indexOf(currentKey);
       const nextKey = order[(position + 1) % order.length];
       if (nextKey && tracks[nextKey]?.audio) selectTrack(nextKey, true, {fresh:true});
