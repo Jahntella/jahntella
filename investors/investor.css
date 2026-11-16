@@ -29,6 +29,8 @@
 }
 
 .investor-director-image{
+  width:100%;
+  aspect-ratio:4/5;
   overflow:hidden;
   border-radius:23px;
   background:#100011;
@@ -36,7 +38,7 @@
 
 .investor-director-image img{
   width:100%;
-  aspect-ratio:4/5;
+  height:100%;
   object-fit:cover;
   object-position:center top;
 }
