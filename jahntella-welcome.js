@@ -2,8 +2,8 @@
    Does not autoplay, alter the song catalog, or restart paused music. */
 (function(){
   'use strict';
-  var videoUrl='videos/jahntella-welcome.mp4';
-  var posterUrl='videos/jahntella-welcome-poster.jpg';
+  var videoUrl='videos/videos/jahntella-welcome.mp4';
+  var posterUrl='videos/videos/jahntella-welcome-poster.jpg';
   var hero=document.getElementById('home');
   if(!hero||document.getElementById('meetJahntella'))return;
   function mount(){
