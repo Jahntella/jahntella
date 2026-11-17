@@ -1,0 +1,21 @@
+/* Sweeties Spotlight: future showcase, self-contained and intentionally light. */
+#sweetiesSpotlight{padding:clamp(3rem,6vw,5.25rem) 1.2rem;background:radial-gradient(ellipse at 18% 0%,rgba(253,118,190,.19),transparent 60%),radial-gradient(ellipse at 95% 85%,rgba(122,215,206,.12),transparent 50%),#170f21;color:#fff;text-align:center;scroll-margin-top:90px}
+#sweetiesSpotlight *{box-sizing:border-box}
+#sweetiesSpotlight .ss-shell{width:min(1080px,100%);margin:auto}
+#sweetiesSpotlight .ss-kicker{letter-spacing:.16em;font-size:.72rem;color:#fec6e8;font-weight:800;text-transform:uppercase;margin:0 0 .9rem}
+#sweetiesSpotlight h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,5vw,3.6rem);color:#fff;margin:0 0 .7rem;line-height:1.17}
+#sweetiesSpotlight h2 span{color:#ffc1ee}
+#sweetiesSpotlight .ss-intro{font-size:clamp(.96rem,1.8vw,1.13rem);color:#f2e4f4;max-width:730px;line-height:1.7;margin:0 auto 1.8rem}
+#sweetiesSpotlight .ss-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.7rem,2vw,1.3rem);max-width:850px;margin:0 auto 1.6rem}
+#sweetiesSpotlight .ss-tile{aspect-ratio:4/4.7;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:.75rem;border:1px solid rgba(255,208,242,.36);border-radius:19px;background:linear-gradient(145deg,rgba(239,125,192,.16),rgba(116,63,178,.15) 58%,rgba(89,174,189,.12));box-shadow:0 12px 35px rgba(0,0,0,.18)}
+#sweetiesSpotlight .ss-tile::before{content:'';position:absolute;inset:8px;border:1px solid rgba(255,255,255,.15);border-radius:13px;pointer-events:none}
+#sweetiesSpotlight .ss-icon{font-size:clamp(2.6rem,6vw,4.2rem);line-height:1}
+#sweetiesSpotlight .ss-tile strong{font-size:clamp(.8rem,1.7vw,1rem);color:#fff;position:relative}
+#sweetiesSpotlight .ss-note{font-size:.8rem;max-width:730px;margin:0 auto 1.4rem;line-height:1.6;color:#d9c7db}
+#sweetiesSpotlight .ss-steps{font-size:.95rem;color:#ffe5f8;max-width:750px;line-height:1.7;margin:0 auto 1.3rem}
+#sweetiesSpotlight .ss-actions{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap}
+#sweetiesSpotlight .ss-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:.68rem 1.15rem;border-radius:99px;text-decoration:none;font-weight:800;border:1px solid #f3c0e5;color:#fff;background:#47223d}
+#sweetiesSpotlight .ss-actions a:first-child{background:linear-gradient(120deg,#f2b9e2,#b9a8f3);color:#28102f}
+#sweetiesSpotlight .ss-actions a:focus-visible{outline:3px solid white;outline-offset:3px}
+#sweetiesSpotlight .ss-footer{margin:1.4rem 0 0;color:#f8caeb;font-weight:700;font-size:.88rem}
+@media(max-width:580px){#sweetiesSpotlight .ss-gallery{gap:7px}#sweetiesSpotlight .ss-tile{border-radius:12px;gap:.5rem}#sweetiesSpotlight .ss-tile::before{inset:5px;border-radius:9px}#sweetiesSpotlight .ss-tile strong{font-size:.7rem}#sweetiesSpotlight .ss-note{font-size:.75rem}}
