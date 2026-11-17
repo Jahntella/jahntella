@@ -62,13 +62,13 @@
     "bite-lip": {
       audio: document.getElementById("audioBiteLip"),
       title: "Bite Lip",
-      artwork: "assets/music-thumbs/bite-lip.webp",
+      artwork: "assets/album/sweet-era-art/bite-lip-cover.png",
       card: document.querySelector('[data-card="bite-lip"]')
     },
     "gloss": {
       audio: document.getElementById("audioGloss"),
       title: "Gloss",
-      artwork: "assets/music-thumbs/gloss.webp",
+      artwork: "assets/album/sweet-era-art/gloss-cover.png",
       card: document.querySelector('[data-card="gloss"]')
     },
     "your-girl": {
@@ -86,49 +86,49 @@
     "we-come-together": {
       audio: document.getElementById("audioWeComeTogether"),
       title: "We Come Together",
-      artwork: "assets/music-thumbs/we-come-together.webp",
+      artwork: "assets/album/sweet-era-art/we-come-together-cover.png",
       card: document.querySelector('[data-card="we-come-together"]')
     },
     "play-with-me": {
       audio: document.getElementById("audioPlayWithMe"),
       title: "Play With Me",
-      artwork: "assets/music-thumbs/play-with-me.webp",
+      artwork: "assets/album/sweet-era-art/play-with-me-cover.png",
       card: document.querySelector('[data-card="play-with-me"]')
     },
     carnival: {
       audio: document.getElementById("audioCarnival"),
       title: "Carnival",
-      artwork: "assets/music-thumbs/carnival.webp",
+      artwork: "assets/album/sweet-era-art/carnival-cover.png",
       card: document.querySelector('[data-card="carnival"]')
     },
     "made-of-light": {
       audio: document.getElementById("audioMadeOfLight"),
       title: "Made of Light",
-      artwork: "assets/music-thumbs/made-of-light.webp",
+      artwork: "assets/album/sweet-era-art/made-of-light-cover.png",
       card: document.querySelector('[data-card="made-of-light"]')
     },
     "candy-wrapper": {
       audio: document.getElementById("audioCandyWrapper"),
       title: "Candy Wrapper",
-      artwork: "assets/music-thumbs/candy-wrapper.webp",
+      artwork: "assets/album/sweet-era-art/candy-wrapper-cover.png",
       card: document.querySelector('[data-card="candy-wrapper"]')
     },
     playground: {
       audio: document.getElementById("audioPlayground"),
       title: "Playground",
-      artwork: "assets/music-thumbs/playground.webp",
+      artwork: "assets/album/sweet-era-art/playground-cover.png",
       card: document.querySelector('[data-card="playground"]')
     },
     "milk-shake": {
       audio: document.getElementById("audioMilkShake"),
       title: "Milk Shake",
-      artwork: "assets/music-thumbs/milk-shake.webp",
+      artwork: "assets/album/sweet-era-art/milk-shake-cover.png",
       card: document.querySelector('[data-card="milk-shake"]')
     },
     tonight: {
       audio: document.getElementById("audioTonight"),
       title: "Tonight",
-      artwork: "assets/music-thumbs/tonight.webp",
+      artwork: "assets/album/sweet-era-art/tonight-cover.png",
       card: document.querySelector('[data-card="tonight"]')
     },
     "sweet-dreams": {
@@ -462,18 +462,18 @@
     "fun-dipp-cover.webp": "fun-dipp",
     "pink-lips-remix.png": "pink-lips",
     "pink-lips-remix.webp": "pink-lips",
-    "bite-lip-cover.webp": "bite-lip",
-    "gloss-cover.webp": "gloss",
+    "bite-lip-cover.png": "bite-lip",
+    "gloss-cover.png": "gloss",
     "i-want-to-be-your-girl-cover.webp": "your-girl",
     "embrace-me-cover.webp": "embrace-me",
-    "we-come-together-cover.webp": "we-come-together",
-    "play-with-me-cover.webp": "play-with-me",
-    "carnival-cover.webp": "carnival",
-    "made-of-light-cover.webp": "made-of-light",
-    "candy-wrapper-cover.webp": "candy-wrapper",
-    "playground-cover.webp": "playground",
-    "milk-shake-cover.webp": "milk-shake",
-    "tonight-cover.webp": "tonight",
+    "we-come-together-cover.png": "we-come-together",
+    "play-with-me-cover.png": "play-with-me",
+    "carnival-cover.png": "carnival",
+    "made-of-light-cover.png": "made-of-light",
+    "candy-wrapper-cover.png": "candy-wrapper",
+    "playground-cover.png": "playground",
+    "milk-shake-cover.png": "milk-shake",
+    "tonight-cover.png": "tonight",
     "jsweetdreamsnew.png": "sweet-dreams",
     "jweare1new.png": "we-are-1",
     "jboots,smile,attitudenew.png": "boots-smile-attitude",

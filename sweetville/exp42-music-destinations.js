@@ -39,13 +39,13 @@
       title: 'Bite Lip',
       src: new URL('bite-lip-remastered.mp3', document.baseURI).href,
       destination: 'melody-studio.html#latestMusic',
-      artwork: new URL('bite-lip-cover.webp', document.baseURI).href
+      artwork: new URL('../assets/album/sweet-era-art/bite-lip-cover.png', document.baseURI).href
     },
     gloss: {
       title: 'Gloss',
       src: new URL('gloss-remastered.mp3', document.baseURI).href,
       destination: 'melody-studio.html#latestMusic',
-      artwork: new URL('gloss-cover.webp', document.baseURI).href
+      artwork: new URL('../assets/album/sweet-era-art/gloss-cover.png', document.baseURI).href
     },
     'your-girl': {
       title: 'I Want To Be Your Girl',
@@ -63,49 +63,49 @@
       title: 'We Come Together',
       src: new URL('we-come-together.mp3', document.baseURI).href,
       destination: 'melody-studio.html#latestMusic',
-      artwork: new URL('we-come-together-cover.webp', document.baseURI).href
+      artwork: new URL('../assets/album/sweet-era-art/we-come-together-cover.png', document.baseURI).href
     },
     'play-with-me': {
       title: 'Play With Me',
       src: new URL('play-with-me.mp3', document.baseURI).href,
       destination: 'melody-studio.html#latestMusic',
-      artwork: new URL('play-with-me-cover.webp', document.baseURI).href
+      artwork: new URL('../assets/album/sweet-era-art/play-with-me-cover.png', document.baseURI).href
     },
     carnival: {
       title: 'Carnival',
       src: new URL('carnival.mp3', document.baseURI).href,
       destination: 'carnival.html',
-      artwork: new URL('carnival-cover.webp', document.baseURI).href
+      artwork: new URL('../assets/album/sweet-era-art/carnival-cover.png', document.baseURI).href
     },
     'made-of-light': {
       title: 'Made of Light',
       src: new URL('made-of-light.mp3', document.baseURI).href,
       destination: 'starlight-stage.html',
-      artwork: new URL('made-of-light-cover.webp', document.baseURI).href
+      artwork: new URL('../assets/album/sweet-era-art/made-of-light-cover.png', document.baseURI).href
     },
     'candy-wrapper': {
       title: 'Candy Wrapper',
       src: new URL('candy-wrapper.mp3', document.baseURI).href,
       destination: 'candy-lane.html',
-      artwork: new URL('candy-wrapper-cover.webp', document.baseURI).href
+      artwork: new URL('../assets/album/sweet-era-art/candy-wrapper-cover.png', document.baseURI).href
     },
     playground: {
       title: 'Playground',
       src: new URL('playground.mp3', document.baseURI).href,
       destination: 'bubblegum-bay.html',
-      artwork: new URL('playground-cover.webp', document.baseURI).href
+      artwork: new URL('../assets/album/sweet-era-art/playground-cover.png', document.baseURI).href
     },
     'milk-shake': {
       title: 'Milk Shake',
       src: new URL('milk-shake.mp3', document.baseURI).href,
       destination: 'pink-cafe.html',
-      artwork: new URL('milk-shake-cover.webp', document.baseURI).href
+      artwork: new URL('../assets/album/sweet-era-art/milk-shake-cover.png', document.baseURI).href
     },
     tonight: {
       title: 'Tonight',
       src: new URL('tonight.mp3', document.baseURI).href,
       destination: 'pink-lips-after-dark.html',
-      artwork: new URL('tonight-cover.webp', document.baseURI).href
+      artwork: new URL('../assets/album/sweet-era-art/tonight-cover.png', document.baseURI).href
     },
     'sweet-dreams': {
       title: 'Sweet Dreams',
@@ -142,29 +142,29 @@
     'pink-lips-cover.png': 'pink-lips',
     'pink-lips-cover.webp': 'pink-lips',
     'bite-lip.webp': 'bite-lip',
-    'bite-lip-cover.webp': 'bite-lip',
+    'bite-lip-cover.png': 'bite-lip',
     'gloss.webp': 'gloss',
-    'gloss-cover.webp': 'gloss',
+    'gloss-cover.png': 'gloss',
     'i-want-to-be-your-girl.webp': 'your-girl',
     'i-want-to-be-your-girl-cover.webp': 'your-girl',
     'embrace-me.webp': 'embrace-me',
     'embrace-me-cover.webp': 'embrace-me',
     'we-come-together.webp': 'we-come-together',
-    'we-come-together-cover.webp': 'we-come-together',
+    'we-come-together-cover.png': 'we-come-together',
     'play-with-me.webp': 'play-with-me',
-    'play-with-me-cover.webp': 'play-with-me',
+    'play-with-me-cover.png': 'play-with-me',
     'carnival.webp': 'carnival',
-    'carnival-cover.webp': 'carnival',
+    'carnival-cover.png': 'carnival',
     'made-of-light.webp': 'made-of-light',
-    'made-of-light-cover.webp': 'made-of-light',
+    'made-of-light-cover.png': 'made-of-light',
     'candy-wrapper.webp': 'candy-wrapper',
-    'candy-wrapper-cover.webp': 'candy-wrapper',
+    'candy-wrapper-cover.png': 'candy-wrapper',
     'playground.webp': 'playground',
-    'playground-cover.webp': 'playground',
+    'playground-cover.png': 'playground',
     'milk-shake.webp': 'milk-shake',
-    'milk-shake-cover.webp': 'milk-shake',
+    'milk-shake-cover.png': 'milk-shake',
     'tonight.webp': 'tonight',
-    'tonight-cover.webp': 'tonight',
+    'tonight-cover.png': 'tonight',
     'jsweetdreamsnew.png': 'sweet-dreams',
     'jweare1new.png': 'we-are-1',
     'jboots,smile,attitudenew.png': 'boots-smile-attitude'

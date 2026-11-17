@@ -24,12 +24,12 @@
     'bite-lip': {
       title: 'Bite Lip',
       src: asset('sweetville/bite-lip-remastered.mp3'),
-      artwork: asset('sweetville/bite-lip-cover.webp')
+      artwork: asset('assets/album/sweet-era-art/bite-lip-cover.png')
     },
     gloss: {
       title: 'Gloss',
       src: asset('sweetville/gloss-remastered.mp3'),
-      artwork: asset('sweetville/gloss-cover.webp')
+      artwork: asset('assets/album/sweet-era-art/gloss-cover.png')
     },
     'your-girl': {
       title: 'I Want To Be Your Girl',
@@ -44,42 +44,42 @@
     'we-come-together': {
       title: 'We Come Together',
       src: asset('sweetville/we-come-together.mp3'),
-      artwork: asset('sweetville/we-come-together-cover.webp')
+      artwork: asset('assets/album/sweet-era-art/we-come-together-cover.png')
     },
     'play-with-me': {
       title: 'Play With Me',
       src: asset('sweetville/play-with-me.mp3'),
-      artwork: asset('sweetville/play-with-me-cover.webp')
+      artwork: asset('assets/album/sweet-era-art/play-with-me-cover.png')
     },
     carnival: {
       title: 'Carnival',
       src: asset('sweetville/carnival.mp3'),
-      artwork: asset('sweetville/carnival-cover.webp')
+      artwork: asset('assets/album/sweet-era-art/carnival-cover.png')
     },
     'made-of-light': {
       title: 'Made of Light',
       src: asset('sweetville/made-of-light.mp3'),
-      artwork: asset('sweetville/made-of-light-cover.webp')
+      artwork: asset('assets/album/sweet-era-art/made-of-light-cover.png')
     },
     'candy-wrapper': {
       title: 'Candy Wrapper',
       src: asset('sweetville/candy-wrapper.mp3'),
-      artwork: asset('sweetville/candy-wrapper-cover.webp')
+      artwork: asset('assets/album/sweet-era-art/candy-wrapper-cover.png')
     },
     playground: {
       title: 'Playground',
       src: asset('sweetville/playground.mp3'),
-      artwork: asset('sweetville/playground-cover.webp')
+      artwork: asset('assets/album/sweet-era-art/playground-cover.png')
     },
     'milk-shake': {
       title: 'Milk Shake',
       src: asset('sweetville/milk-shake.mp3'),
-      artwork: asset('sweetville/milk-shake-cover.webp')
+      artwork: asset('assets/album/sweet-era-art/milk-shake-cover.png')
     },
     tonight: {
       title: 'Tonight',
       src: asset('sweetville/tonight.mp3'),
-      artwork: asset('sweetville/tonight-cover.webp')
+      artwork: asset('assets/album/sweet-era-art/tonight-cover.png')
     },
     'sweet-dreams': {
       title: 'Sweet Dreams',
