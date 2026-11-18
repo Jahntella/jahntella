@@ -373,7 +373,18 @@
       track.audio.load();
     }
     if (autoplay) {
-      track.audio.play().then(() => setPlaying(true)).catch(error => {
+      track.audio.play().then(() => {
+        if (currentKey !== key || track.audio.paused) return;
+        setPlaying(true);
+        // Celebrate confirmed new selections and autoplay transitions, not resume/pause.
+        if (changing || options.fresh) {
+          window.dispatchEvent(new CustomEvent('jahntella:trackstarted', {detail:{
+            key, title:track.title, artwork:track.artwork,
+            era:track.era || track.card?.closest('[id$="EraAlbum"],#shineEraSneakPeek')?.id
+              ?.replace('EraAlbum','').replace('EraSneakPeek','') || ''
+          }}));
+        }
+      }).catch(error => {
         console.warn('Jahntella playback could not start:', track.title, error);
         setPlaying(false);
       });
