@@ -32,6 +32,12 @@
   };
   window.addEventListener('jahntella:trackstarted',(event)=>{
     const data=event.detail||{};
+    // The VS battle has its own two-cover showdown. Never stack the usual
+    // spinning single-cover effect on top of that selected song.
+    if(window.__jahntellaBattleSuppressKey===data.key){
+      window.__jahntellaBattleSuppressKey=null;
+      if(Date.now()<Number(window.__jahntellaBattleSuppressUntil||0))return;
+    }
     if(!data.artwork||document.hidden)return;
     if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
     remove();
@@ -73,5 +79,6 @@
     active=root;
     cleanupId=window.setTimeout(()=>{if(active===root)remove()},2450);
   });
+  window.addEventListener('jahntella:battle-showdown',remove);
   document.addEventListener('visibilitychange',()=>{if(document.hidden)remove()});
 })();
