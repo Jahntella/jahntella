@@ -1,5 +1,5 @@
 /* Five-era lyric sheets. Independent of player and existing song covers. */
-.era-lyric-button{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:38px;margin:8px 4px 6px;padding:9px 15px;border-radius:99px;border:1px solid var(--lyric-accent,#f8aad5);color:#fff;background:linear-gradient(135deg,#5a2758,#341d49);box-shadow:0 0 12px var(--lyric-halo,rgba(255,126,200,.2));font:800 .82rem/1.2 "DM Sans",Arial,sans-serif;cursor:pointer;white-space:nowrap;transition:filter .18s,transform .18s}
+.era-lyric-button{display:inline-flex;align-items:center;justify-content:center;gap:6px;box-sizing:border-box;min-height:42px;min-width:104px;margin:8px 4px 6px;padding:9px 15px;border-radius:99px;border:1px solid var(--lyric-accent,#f8aad5);color:#fff;background:linear-gradient(135deg,#5a2758,#341d49);box-shadow:0 0 12px var(--lyric-halo,rgba(255,126,200,.2));font:800 .82rem/1.2 "DM Sans",Arial,sans-serif;cursor:pointer;white-space:nowrap;transition:filter .18s,transform .18s}
 .era-lyric-button:hover{filter:brightness(1.22);transform:translateY(-1px)}
 .era-lyric-button:focus-visible{outline:3px solid white;outline-offset:3px}
 .era-lyric-button[data-era="sweet"]{--lyric-accent:#ff90cc;--lyric-halo:#ff90cc66}
@@ -32,7 +32,7 @@
 .era-lyrics-dialog[data-era="sparkle"]{--era-accent:#6ad3f3;--era-glow:#44c9f044;--era-soft:#e4f9ff}
 .era-lyrics-dialog[data-era="siren"]{--era-accent:#72d8ba;--era-glow:#50b89644;--era-soft:#e8fff4}
 .era-lyrics-dialog[data-era="surge"]{--era-accent:#ffa25b;--era-glow:#f9903744;--era-soft:#fff0db}
-@media(max-width:550px){.era-lyrics-dialog .eld-hero{align-items:center}.era-lyrics-dialog .eld-art{width:110px}.era-lyrics-dialog .eld-desc{font-size:.76rem}.era-lyric-button{font-size:.76rem;padding:9px 11px}}
+@media(max-width:550px){.era-lyrics-dialog .eld-hero{align-items:center}.era-lyrics-dialog .eld-art{width:110px}.era-lyrics-dialog .eld-desc{font-size:.76rem}.era-lyric-button{font-size:.82rem;padding:10px 15px}}
 @media(prefers-reduced-motion:reduce){.era-lyric-button{transition:none}}
 
 /* Lyric-complete pages get gentle animated atmosphere in their own era palette. */
