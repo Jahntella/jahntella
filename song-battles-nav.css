@@ -1,0 +1,22 @@
+/* Song Battles header shortcut; leaves the five-era equalizer untouched. */
+#siteNav a.song-battles-nav{
+  border-color:rgba(255,199,238,.78);
+  background:linear-gradient(135deg,rgba(243,80,179,.42),rgba(152,79,234,.33));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 0 16px rgba(220,90,219,.17);
+  color:#fff;
+  white-space:nowrap;
+}
+#siteNav a.song-battles-nav::after{content:none!important}
+#sweetieSongBattles{scroll-margin-top:105px}
+@media(min-width:981px){
+  /* Tighten only nav spacing at narrower desktop widths; never shrink/remove the equalizer. */
+  #siteNav{gap:clamp(.14rem,.28vw,.38rem)!important}
+  #siteNav a.song-battles-nav{padding-inline:clamp(.4rem,.5vw,.65rem)!important}
+}
+@media(min-width:981px) and (max-width:1320px){
+  #siteNav a{padding-inline:.43rem!important;font-size:.61rem!important}
+  #siteNav .sweetie-playlists-menu summary{padding-inline:.43rem!important}
+}
+@media(max-width:980px){
+  #siteNav a.song-battles-nav{justify-content:flex-start;width:100%;min-height:43px;padding:.85rem 1rem}
+}
