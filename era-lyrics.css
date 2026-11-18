@@ -58,3 +58,7 @@
 @keyframes eld-laser-drift{0%,9%{opacity:0;translate:-25% 0}20%{opacity:.2}44%{opacity:.42}61%,100%{opacity:0;translate:235% 0}}
 @keyframes eld-comet-pass{0%,65%{opacity:0;translate:0 0}69%{opacity:.8}79%{opacity:.95;translate:calc(100vw - 40px) -95px}81%,100%{opacity:0;translate:calc(110vw + 20px) -110px}}
 @media(prefers-reduced-motion:reduce){.era-lyrics-dialog .eld-fx-stage{opacity:.38}.era-lyrics-dialog .eld-star,.era-lyrics-dialog .eld-laser,.era-lyrics-dialog .eld-comet{animation:none!important}.era-lyrics-dialog .eld-laser,.era-lyrics-dialog .eld-comet{display:none}.era-lyrics-dialog .eld-star{opacity:.5}}
+
+/* Make Sweet Era lyric buttons the same touch-target size as all other eras. */
+#sweetEraAlbum .era-lyric-button{box-sizing:border-box;min-height:42px;min-width:104px;padding:10px 15px;font-family:"DM Sans",Arial,sans-serif;font-size:.82rem;font-weight:800;line-height:1.2;flex-shrink:0}
+@media(max-width:550px){#sweetEraAlbum .era-lyric-button{min-height:42px;min-width:104px;padding:10px 15px;font-size:.82rem}}
