@@ -50,7 +50,7 @@
     document.head.appendChild(style);
     const wrap=document.createElement('section');
     wrap.id='sweetieSongBattles';wrap.setAttribute('aria-labelledby','sweetieBattlesTitle');
-    wrap.innerHTML=`<div class="battle-inner"><p class="battle-kicker">💗 SWEETIE SONG BATTLES</p><h2 id="sweetieBattlesTitle">Which one is your vibe?</h2><p class="battle-intro">Two songs. Two feelings. Listen to both, pick your fave, and share it with your Sweeties!</p><div class="battle-grid"><article class="battle-card" data-battle-card="0"><img alt="" loading="lazy"><div class="battle-era"></div><h3></h3><button class="battle-listen" type="button">▶ Listen</button><button class="battle-vote" type="button">♡ Pick &amp; Share</button></article><span class="battle-vs" aria-hidden="true">VS</span><article class="battle-card" data-battle-card="1"><img alt="" loading="lazy"><div class="battle-era"></div><h3></h3><button class="battle-listen" type="button">▶ Listen</button><button class="battle-vote" type="button">♡ Pick &amp; Share</button></article></div><p class="battle-outcome" role="status" aria-live="polite">Which song wins your heart?</p><div class="battle-footer"><button data-battle-share type="button" disabled>♡ Share my pick</button><button data-battle-next type="button">↻ New matchup</button></div><p class="battle-intro" style="font-size:.76rem;margin-top:16px">Just for fun! Your pick is yours; this is not a public vote tally.</p></div>`;
+    wrap.innerHTML=`<div class="battle-inner"><p class="battle-kicker">💗 SWEETIE SONG BATTLES</p><h2 id="sweetieBattlesTitle">Which one is your vibe?</h2><p class="battle-intro">Two songs. Two feelings. Listen to both, pick your fave, and share it with your Sweeties!</p><div class="battle-grid"><article class="battle-card" data-battle-card="0"><img alt="" loading="lazy"><div class="battle-era"></div><h3></h3><button class="battle-listen" type="button">▶ Listen</button><button class="battle-vote" type="button">♡ Pick Winner</button></article><span class="battle-vs" aria-hidden="true">VS</span><article class="battle-card" data-battle-card="1"><img alt="" loading="lazy"><div class="battle-era"></div><h3></h3><button class="battle-listen" type="button">▶ Listen</button><button class="battle-vote" type="button">♡ Pick Winner</button></article></div><p class="battle-outcome" role="status" aria-live="polite">Which song wins your heart?</p><div class="battle-footer"><button data-battle-share type="button" disabled>♡ Share my pick</button><button data-battle-next type="button">↻ New matchup</button></div><p class="battle-intro" style="font-size:.76rem;margin-top:16px">Just for fun! Your pick is yours; this is not a public vote tally.</p></div>`;
     // Feature the VS battle near the top instead of duplicating the featured-song picker.
     const featured = document.getElementById('featuredNow');
     if (featured) featured.before(wrap); else lounge.after(wrap);
@@ -87,8 +87,8 @@
     };
     const vote=i=>{
       winner=pair[i];share.disabled=false;
-      showdown(i);
-      outcome.textContent='♡ '+winner.title+' wins your heart! Opening your sharing options…';
+      listen(i);
+      outcome.textContent='♡ '+winner.title+' wins your heart! Enjoy the victory, then tap Share my pick!';
     };
     const shareWinner=async()=>{
       if(!winner)return;
@@ -99,7 +99,18 @@
       try{await navigator.clipboard.writeText(text);outcome.textContent='♡ Your winning song and share message were copied! Paste them in any app to share.';}
       catch(e){window.prompt('Copy your Sweetie Song Battle message:',text);outcome.textContent='♡ Your pick is ready to share!';}
     };
-    cards.forEach((card,i)=>{card.querySelector('.battle-listen').addEventListener('click',()=>listen(i));card.querySelector('.battle-vote').addEventListener('click',()=>{vote(i);shareWinner();});});
+    cards.forEach((card,i)=>{
+      const cover=card.querySelector('img');
+      cover.setAttribute('role','button');
+      cover.tabIndex=0;
+      cover.title='Listen and start the VS showdown';
+      cover.setAttribute('aria-label','Listen to this song and start the VS showdown');
+      cover.style.cursor='pointer';
+      cover.addEventListener('click',()=>listen(i));
+      cover.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();listen(i);}});
+      card.querySelector('.battle-listen').addEventListener('click',()=>listen(i));
+      card.querySelector('.battle-vote').addEventListener('click',()=>vote(i));
+    });
     wrap.querySelector('[data-battle-next]').addEventListener('click',choose);
     share.addEventListener('click',shareWinner);
     choose();
