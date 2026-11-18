@@ -92,14 +92,19 @@ function addToCard(card){
  button.textContent='♡ Lyrics';
  button.setAttribute('aria-label','Open '+info.title+' lyric sheet');
  button.addEventListener('click',()=>open(card,button));
- const host=card.querySelector('.release-copy')||
-  card.querySelector('.exp60-shine-video-note')||
-  card.querySelector('.exp44-new-music-info')||
-  card.querySelector('.shine-era-song-info')||
-  card.querySelector('.song-card-copy')||card;
- const playButton=host.querySelector('[data-track],.play-button,.sparkle-cover-play');
- if(playButton&&playButton.parentNode===host)playButton.insertAdjacentElement('afterend',button);
- else host.appendChild(button);
+ // Find the text/actions area by its actual Play button, not an era-specific class.
+ // Sparkle, Siren and Surge cards use a plain <div> immediately after the cover.
+ // This also works for the Playlist card created dynamically by surge-era-home.js.
+ const playButton=Array.from(card.querySelectorAll('button.play-button[data-track]'))
+   .find(el=>el.closest('[data-card]')===card);
+ if(playButton){
+  playButton.insertAdjacentElement('afterend',button);
+ }else{
+  // Non-playing items may still offer a lyrics sheet, without changing playback.
+  const title=card.querySelector('h3');
+  const area=title?.parentElement||card.querySelector('.release-copy')||card;
+  area.appendChild(button);
+ }
 }
 function scan(){
  document.querySelectorAll('#sweetEraAlbum [data-card],#shineEraSneakPeek [data-card],#sparkleEraAlbum [data-card],#sirenEraAlbum [data-card],#surgeEraAlbum [data-card]').forEach(addToCard);
