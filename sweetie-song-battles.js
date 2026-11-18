@@ -79,6 +79,7 @@
     const listen=i=>{
       const t=pair[i];
       if(typeof window.jahntellaSelectSiteTrack==='function'){
+        window.__jahntellaBattleSuppressKey=t.key;
         showdown(i);
         window.jahntellaSelectSiteTrack(t.key,true);
         outcome.textContent='Now playing '+t.title+'. Pick your fave when you’re ready!';
