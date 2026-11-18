@@ -35,7 +35,7 @@ function sheet(){
  book.setAttribute('aria-label','Jahntella lyrics sheet');
  book.innerHTML='<div class="eld-head"><strong>♡ World of Sweet · Song Lyrics</strong><button class="eld-close" type="button">✕ Close</button></div>'+
  '<div class="eld-hero"><img class="eld-art" alt=""><div class="eld-meta"><p class="eld-era"></p><h2></h2><p class="eld-desc">Your own little lyrical escape ♡</p></div></div>'+
- '<div class="eld-scroll"><div class="eld-verses"></div></div>'+
+ '<div class="eld-scroll"><div class="eld-fx" aria-hidden="true"><div class="eld-fx-stage"><span class="eld-star">✦</span><span class="eld-star">✧</span><span class="eld-star">✦</span><span class="eld-star">✧</span><span class="eld-star">✧</span><span class="eld-star">✦</span><span class="eld-laser"></span><span class="eld-laser"></span><span class="eld-comet"></span><span class="eld-comet"></span></div></div><div class="eld-verses"></div></div>'+
  '<p class="eld-foot">♡ Keep listening while you read · Progressing is a Blessing ♡</p>';
  document.body.appendChild(book);
  book.querySelector('.eld-close').addEventListener('click',()=>book.close());
@@ -70,6 +70,7 @@ async function open(card,trigger){
  if(dialog.dataset.song!==current)return;
  target.replaceChildren();
  const parts=library[current];
+ dialog.querySelector('.eld-fx').hidden=!(Array.isArray(parts)&&parts.length);
  if(!Array.isArray(parts)||!parts.length){
   const message=document.createElement('p');message.className='eld-coming';
   message.textContent='♡ This '+info.era+' Era lyric sheet is dressed and ready! The original lyrics for '+info.title+' are being added. You can keep enjoying the song while we prepare the words.';
