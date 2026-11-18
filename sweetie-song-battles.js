@@ -67,8 +67,28 @@
       cards.forEach((card,i)=>{const t=pair[i];card.querySelector('img').src=t.art;card.querySelector('img').alt=t.title+' cover';card.querySelector('.battle-era').textContent=t.era+' Era';card.querySelector('h3').textContent=t.title;card.querySelector('.battle-vote').setAttribute('aria-label','Pick '+t.title+' as your favorite');});
       outcome.textContent='Which song wins your heart?';
     };
-    const listen=i=>{const t=pair[i];if(typeof window.jahntellaSelectSiteTrack==='function'){window.jahntellaSelectSiteTrack(t.key,true);outcome.textContent='Now playing '+t.title+'. Pick your fave when you’re ready!';}else outcome.textContent='Player is still loading. Try again in a moment.';};
-    const vote=i=>{winner=pair[i];share.disabled=false;outcome.textContent='♡ '+winner.title+' wins your heart! Opening your sharing options…';};
+    // Battle interactions use a unique overlay instead of the standard song-start reveal.
+    const showdown=i=>{
+      if(!pair[i]||!pair[1-i])return;
+      window.__jahntellaBattleSuppressUntil=Date.now()+4500;
+      window.dispatchEvent(new CustomEvent('jahntella:battle-showdown',{detail:{
+        pair:pair.map(t=>({key:t.key,title:t.title,art:t.art,era:t.era})),
+        winnerIndex:i
+      }}));
+    };
+    const listen=i=>{
+      const t=pair[i];
+      if(typeof window.jahntellaSelectSiteTrack==='function'){
+        showdown(i);
+        window.jahntellaSelectSiteTrack(t.key,true);
+        outcome.textContent='Now playing '+t.title+'. Pick your fave when you’re ready!';
+      }else outcome.textContent='Player is still loading. Try again in a moment.';
+    };
+    const vote=i=>{
+      winner=pair[i];share.disabled=false;
+      showdown(i);
+      outcome.textContent='♡ '+winner.title+' wins your heart! Opening your sharing options…';
+    };
     const shareWinner=async()=>{
       if(!winner)return;
       const url=new URL(location.origin+location.pathname);url.searchParams.set('song',winner.key);url.hash='sweetieLounge';
