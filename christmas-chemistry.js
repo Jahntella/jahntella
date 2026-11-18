@@ -3,8 +3,8 @@
 'use strict';
 const LINK='https://jahntella.com/christmas-chemistry/';
 const MESSAGE='Jahntella Frost just gave us Sweeties an early Christmas gift 🎁❤️ I’m listening to Christmas Chemistry now! jahntella.com';
-const COVER='/assets/christmas-chemistry-cover.png';
-const TRACK='/assets/christmas-chemistry.mp3';
+const COVER='/JChristmasChemistryCover.png';
+const TRACK='/Christmas%20Chemistry.mp3';
 function fmt(v){v=Math.floor(Math.max(0,Number(v)||0));return Math.floor(v/60)+':'+String(v%60).padStart(2,'0')}
 function reveal(){
  if(document.hidden||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
