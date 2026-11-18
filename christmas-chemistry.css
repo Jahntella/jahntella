@@ -1,0 +1,53 @@
+/* Jahntella Frost — separate Sweeties Christmas gift, unrelated to five-era player */
+#christmasChemistryGift,.cc-lyrics-dialog{--cc-red:#fa384f;--cc-pale:#ffdfdd;--cc-silver:#f6f5ff;--cc-dark:#1d0613;font-family:"DM Sans",Arial,sans-serif}
+#christmasChemistryGift{position:relative;isolation:isolate;overflow:hidden;margin:0;padding:clamp(45px,7vw,94px) 18px;background:radial-gradient(ellipse at 12% 10%,#b5283d 0,transparent 45%),radial-gradient(ellipse at 91% 79%,#65212e,transparent 50%),linear-gradient(140deg,#280713,#470917 53%,#210611);color:#fff;text-align:center;scroll-margin-top:105px}
+#christmasChemistryGift *,.cc-lyrics-dialog *{box-sizing:border-box}
+#christmasChemistryGift:before,#christmasChemistryGift:after{content:"✧  ❄   ✦   ❄     ✧   ✦   ❄   ✧   ✦  ❄  ✧";position:absolute;inset:0;pointer-events:none;white-space:nowrap;overflow:hidden;word-spacing:34px;font-size:clamp(16px,3.1vw,39px);color:#fff;opacity:.28;text-shadow:0 0 12px #fff,0 0 25px #ff4b56;animation:cc-fall 15s linear infinite}
+#christmasChemistryGift:after{animation-duration:21s;animation-delay:-9s;transform:translateX(12%);opacity:.2}
+@keyframes cc-fall{from{translate:0 -8%}to{translate:0 110%}}
+#christmasChemistryGift .cc-shell{position:relative;z-index:1;max-width:1120px;margin:0 auto}
+#christmasChemistryGift .cc-kicker{font-size:.79rem;font-weight:900;letter-spacing:.23em;color:#ffe1e7;text-transform:uppercase;margin:0 0 13px;text-shadow:0 0 12px #f12a46}
+#christmasChemistryGift h2{font-family:"Playfair Display",Georgia,serif;color:#fff;font-size:clamp(2rem,5.6vw,4.2rem);margin:0 0 10px;line-height:1.1;text-shadow:0 4px 15px #1c0612}
+#christmasChemistryGift .cc-subtitle{font-family:"Sacramento",cursive,Georgia,serif;color:#f8e0e5;font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.25;margin:0 auto 24px}
+#christmasChemistryGift .cc-panel{display:grid;grid-template-columns:minmax(220px,420px) 1fr;gap:clamp(22px,4vw,52px);align-items:center;text-align:left;max-width:980px;margin:0 auto}
+#christmasChemistryGift .cc-art{position:relative;aspect-ratio:1;border:2px solid #eebcbe;border-radius:22px;background:radial-gradient(circle at 48% 37%,#a31d31,#270712 68%);box-shadow:0 0 26px #dc3b5288,0 15px 52px #08010688;overflow:hidden}
+#christmasChemistryGift .cc-art img{display:block;width:100%;height:100%;object-fit:contain}
+#christmasChemistryGift .cc-art .cc-art-fallback{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font-size:clamp(4rem,10vw,8rem);color:#fff0f1;text-shadow:0 0 20px #fff,0 0 34px #fa536b;pointer-events:none}
+#christmasChemistryGift .cc-art:has(img:not([hidden])) .cc-art-fallback{display:none}
+#christmasChemistryGift .cc-copy{max-width:540px}
+#christmasChemistryGift .cc-copy p{color:#fff1f2;font-size:clamp(.98rem,1.6vw,1.1rem);line-height:1.7;margin:0 0 17px}
+#christmasChemistryGift .cc-tag{font-size:.75rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:#ffe9ed;border:1px solid #e5cbd3;padding:7px 12px;border-radius:30px;display:inline-flex;margin-bottom:16px;background:#ffffff12}
+#christmasChemistryGift .cc-controls{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 10px}
+#christmasChemistryGift button,#christmasChemistryGift a.cc-button{font:800 .91rem/1.25 "DM Sans",sans-serif;display:inline-flex;justify-content:center;align-items:center;gap:6px;padding:12px 17px;min-height:48px;border-radius:99px;cursor:pointer;text-decoration:none;border:1px solid #f7d1d2;color:#fff;background:linear-gradient(135deg,#8e162d,#651a39);box-shadow:0 7px 16px #0c031144;transition:filter .2s,transform .2s}
+#christmasChemistryGift button:hover,#christmasChemistryGift a.cc-button:hover{filter:brightness(1.16);transform:translateY(-2px)}
+#christmasChemistryGift button:focus-visible,#christmasChemistryGift a.cc-button:focus-visible,.cc-lyrics-dialog button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+#christmasChemistryGift button.cc-play{background:linear-gradient(135deg,#fff8f7,#ffcbd3);color:#71102b;border-color:#fff}
+#christmasChemistryGift .cc-status{min-height:24px;font-size:.85rem;color:#ffdedf;line-height:1.6;margin:7px 0}
+#christmasChemistryGift .cc-progress{display:flex;align-items:center;gap:12px;margin:12px 0 0;color:#ffe8eb;font-size:.77rem;font-weight:800}
+#christmasChemistryGift .cc-progress input{width:100%;accent-color:#f13c60;cursor:pointer}
+#christmasChemistryGift .cc-foot{font-size:.8rem;color:#ffdadc;margin:23px 0 0;text-align:center;font-weight:700}
+#christmasChemistryGift .cc-share-panel{padding:14px;border:1px solid #eeaab7;border-radius:15px;background:#2e0719cc;margin-top:14px;display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-start}
+#christmasChemistryGift .cc-share-panel[hidden]{display:none}
+#christmasChemistryGift .cc-share-panel button{min-height:39px;padding:8px 13px;font-size:.83rem}
+#christmasChemistryGift .cc-share-note{width:100%;font-size:.8rem;margin:0;color:#f9dedf}
+.cc-lyrics-dialog{position:fixed;inset:2vh auto auto;max-width:min(850px,calc(100vw - 20px));width:100%;max-height:94vh;padding:0;border:1px solid #f4bdc7;border-radius:25px;background:radial-gradient(circle at 90% 0,#832338,transparent 40%),linear-gradient(145deg,#340a1a,#170915);color:#fff;box-shadow:0 25px 90px #000c;overflow:auto}
+.cc-lyrics-dialog::backdrop{background:#15020cdb;backdrop-filter:blur(9px)}
+.cc-lyrics-dialog .cc-lyrics-head{position:sticky;top:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:17px clamp(16px,4vw,34px);background:#380c1df5;border-bottom:1px solid #dd7283}
+.cc-lyrics-dialog .cc-lyrics-head strong{font:800 clamp(1rem,2.5vw,1.35rem)/1.3 "Playfair Display",serif;color:#fff}
+.cc-lyrics-dialog .cc-lyrics-close{border:1px solid #f9d7dc;color:#fff;background:#9e2340;border-radius:99px;padding:9px 15px;font:800 .9rem "DM Sans",sans-serif;cursor:pointer}
+.cc-lyrics-dialog .cc-lyrics-paper{padding:clamp(20px,4vw,42px);text-align:center;background:repeating-linear-gradient(125deg,transparent 0,transparent 55px,#ffffff04 56px,transparent 57px)}
+.cc-lyrics-dialog .cc-lyrics-paper h2{font:700 clamp(2rem,5vw,3.5rem) "Playfair Display",Georgia,serif;color:#ffe7ee;margin:0 0 7px}
+.cc-lyrics-dialog .cc-lyrics-paper .cc-lyrics-by{color:#ffbfc8;font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;margin:0 0 28px}
+.cc-lyrics-dialog .cc-verse{margin:0 auto 26px;max-width:590px;padding:4px 2px}
+.cc-lyrics-dialog .cc-verse h3{font:800 .77rem "DM Sans",sans-serif;color:#ffb1c5;letter-spacing:.16em;text-transform:uppercase;margin:0 0 15px}
+.cc-lyrics-dialog .cc-verse p{font:500 clamp(1rem,2.1vw,1.16rem)/1.86 "DM Sans",sans-serif;color:#fff6f8;white-space:pre-line;margin:0}
+.cc-lyrics-dialog .cc-lyrics-tail{color:#f7d7df;font-style:italic;padding-bottom:20px}
+.cc-launch{position:fixed;inset:0;display:grid;place-items:center;z-index:2147482000;pointer-events:none;overflow:hidden;animation:cc-launch-out 2.5s ease forwards}
+.cc-launch .cc-cover{width:clamp(155px,35vw,330px);aspect-ratio:1;border:3px solid #ffdbe2;border-radius:22px;overflow:hidden;box-shadow:0 0 33px #fa314d,0 0 80px #f8c9d35e;background:#430d24;animation:cc-cover-spin 2.5s cubic-bezier(.15,.6,.25,1) both}
+.cc-launch .cc-cover img{width:100%;height:100%;object-fit:contain}
+.cc-launch .cc-particle{position:absolute;left:50%;top:50%;font-size:clamp(20px,3.2vw,37px);color:#fff;text-shadow:0 0 14px #f82950,0 0 25px #fff;animation:cc-particle-move 2.5s ease-out both}
+@keyframes cc-cover-spin{0%{opacity:0;transform:translateX(-55vw) scale(.2) rotate(-240deg)}35%{opacity:1;transform:translateX(0) scale(1.13) rotate(15deg)}65%{opacity:1;transform:scale(1) rotate(380deg)}85%{opacity:1;transform:scale(1.06) rotate(390deg)}100%{opacity:0;transform:scale(.15) rotate(540deg)}}
+@keyframes cc-launch-out{0%,75%{opacity:1}100%{opacity:0}}
+@keyframes cc-particle-move{0%,24%{opacity:0;transform:translate(-50%,-50%) scale(.2)}45%{opacity:1}80%{opacity:1;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(1.2) rotate(160deg)}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.3) rotate(220deg)}}
+@media(max-width:720px){#christmasChemistryGift .cc-panel{grid-template-columns:1fr;text-align:center;justify-items:center;gap:20px}#christmasChemistryGift .cc-art{width:min(86vw,380px)}#christmasChemistryGift .cc-copy{text-align:center}#christmasChemistryGift .cc-controls,#christmasChemistryGift .cc-share-panel{justify-content:center}#christmasChemistryGift .cc-progress{max-width:430px;margin:12px auto 0}}
+@media(prefers-reduced-motion:reduce){#christmasChemistryGift:before,#christmasChemistryGift:after,.cc-launch,.cc-launch *{animation:none!important}#christmasChemistryGift button{transition:none}}
