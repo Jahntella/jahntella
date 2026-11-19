@@ -172,7 +172,7 @@ async function placeProductHeadings(pg,viewport,n){
   let used=new Set();
   for(const row of rows){
    row.parts.sort((a,b)=>a.x-b.x);
-   const text=row.parts.map(p=>p.str).join(' ').replace(/\\s+/g,' ').trim();
+   const text=row.parts.map(p=>p.str).join(' ').replace(/\s+/g,' ').trim();
    const found=productMatches(text).filter(i=>!used.has(i));
    if(!found.length)continue;
    const start=Math.min(...row.parts.map(p=>p.x)),end=Math.max(...row.parts.map(p=>p.x+p.width));
