@@ -1,5 +1,5 @@
 /* Halfway-through Jahntella Radio moment. Uses original cover-spin keyframe styling. */
-#jahntella-radio-midpoint{position:fixed;inset:0;z-index:2147480950;pointer-events:none;isolation:isolate;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(28px,5vh,49px);padding:12vh 12px 8vh;--radio-color:#ff79c7;--radio-soft:#ffe6f4;--radio-glow:rgba(255,121,199,.42)}
+#jahntella-radio-midpoint{position:fixed;inset:0;z-index:2147483646;pointer-events:none;isolation:isolate;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(28px,5vh,49px);padding:12vh 12px 8vh;--radio-color:#ff79c7;--radio-soft:#ffe6f4;--radio-glow:rgba(255,121,199,.42)}
 #jahntella-radio-midpoint .jrm-halo{position:absolute;top:50%;left:50%;width:min(78vw,480px);aspect-ratio:1;transform:translate(-50%,-59%);background:radial-gradient(circle,transparent 27%,var(--radio-glow) 45%,transparent 73%);filter:blur(14px);border-radius:50%;animation:jrm-halo 3.9s ease-out both}
 #jahntella-radio-midpoint .jrm-stage{position:relative;flex:none;width:clamp(155px,30vw,280px);aspect-ratio:1;animation:jrm-cover 3.9s cubic-bezier(.18,.7,.3,1) both;filter:drop-shadow(0 0 18px var(--radio-color)) drop-shadow(0 14px 29px #000a)}
 #jahntella-radio-midpoint .jrm-stage:before{content:"";position:absolute;inset:-13px;border:2px solid var(--radio-color);border-radius:22px;box-shadow:0 0 16px var(--radio-color),inset 0 0 16px var(--radio-color);animation:jrm-halo 3.9s both}
@@ -52,4 +52,21 @@
   #jahntella-radio-midpoint{padding-top:8px;padding-bottom:182px}
   #jahntella-radio-midpoint .jrm-stage{width:clamp(100px,22vh,145px)}
   #jahntella-radio-midpoint .jrm-caption{bottom:calc(110px + env(safe-area-inset-bottom,0px));padding:8px 10px}
+}
+
+/* Keep the full radio greeting above the player's z-index 2147483640.
+   The overlay is pointer-events:none, so music controls remain clickable. */
+#jahntella-radio-midpoint .jrm-caption{
+  z-index:1;
+  bottom:calc(156px + env(safe-area-inset-bottom, 0px));
+}
+@media(max-width:760px){
+  #jahntella-radio-midpoint .jrm-caption{
+    bottom:calc(160px + env(safe-area-inset-bottom, 0px));
+  }
+}
+@media(max-height:610px){
+  #jahntella-radio-midpoint .jrm-caption{
+    bottom:calc(126px + env(safe-area-inset-bottom, 0px));
+  }
 }
