@@ -553,6 +553,54 @@
     Object.values(tracks).forEach(track => track.audio.volume = level);
   });
 
+  // Signal one exact halfway-through radio moment for each uninterrupted song
+  // playthrough. The main player knows the active track, unlike document-wide
+  // media listeners, and can distinguish actual progress from seeking.
+  const radioProgress = new WeakMap();
+  Object.values(tracks).forEach(track => {
+    const audio=track.audio;
+    radioProgress.set(audio,{last:0,fired:false,seeked:false});
+    audio.addEventListener('seeking',()=>{
+      const state=radioProgress.get(audio);
+      if(state)state.seeked=true;
+    });
+    audio.addEventListener('seeked',()=>{
+      const state=radioProgress.get(audio);
+      if(!state)return;
+      state.last=audio.currentTime;
+      state.fired=Number.isFinite(audio.duration)&&audio.currentTime>=audio.duration/2;
+      state.seeked=false;
+    });
+    audio.addEventListener('play',()=>{
+      const state=radioProgress.get(audio);
+      if(state&&audio.currentTime<1){
+        state.last=0;
+        state.fired=false;
+        state.seeked=false;
+      }
+    });
+    audio.addEventListener('timeupdate',()=>{
+      if(currentTrack()!==track||audio.paused||audio.seeking||document.hidden)return;
+      const state=radioProgress.get(audio);
+      const now=audio.currentTime,duration=audio.duration;
+      if(!state||!Number.isFinite(duration)||duration<30)return;
+      const midpoint=duration/2;
+      // Reset state on a real restart, not merely an audio pause/resume.
+      if(now<1&&state.last>3){state.fired=false;state.last=0;}
+      const crossed=!state.fired&&!state.seeked&&state.last<midpoint&&now>=midpoint;
+      if(crossed){
+        state.fired=true;
+        if(now-midpoint<3){
+          const key=Object.keys(tracks).find(k=>tracks[k]===track)||'';
+          window.dispatchEvent(new CustomEvent('jahntella:radio-midpoint',{
+            detail:{key,title:track.title,artwork:track.artwork,era:track.era||track.card?.closest('[id$="EraAlbum"],#shineEraSneakPeek')?.id||''}
+          }));
+        }
+      }
+      state.last=now;
+    });
+  });
+
   Object.values(tracks).forEach(track => {
     track.audio.volume = Number(volume.value);
     track.audio.addEventListener("play", () => { if (currentTrack() === track) setPlaying(true); });
