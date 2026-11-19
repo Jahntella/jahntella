@@ -2,6 +2,27 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#36142d"><title>Pink Petals Living Pages — Jahntella</title><meta name="description" content="Tap Jahntella's pictures inside the illustrated Pink Petals ebook to hear her speak.">
 <style>
 :root{--ink:#421b38;--pink:#bd487d;--pale:#fff2f7}*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#fff5f9,#f4dbe9);font:16px/1.5 system-ui,Arial,sans-serif;color:var(--ink)}header{background:#3c1931;color:white;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px}header a{color:white;text-decoration:none;font-weight:700}main{max-width:820px;margin:0 auto;padding:24px 15px 130px}.intro{text-align:center}.eyebrow{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#9a3b69;font-weight:800}h1{font-family:Georgia,serif;font-size:clamp(2rem,5vw,3.6rem);margin:.15em 0}h2{font-family:Georgia,serif}p{margin:.5em 0 1.2em}.controls{display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;padding:15px;border-radius:16px 16px 0 0;background:#fff7fa;border:1px solid #eed0e1}.controls button,.pill{border:1px solid #c66d96;background:white;color:#7f2b56;border-radius:100px;padding:10px 17px;font:700 14px system-ui;cursor:pointer;text-decoration:none}.controls button:disabled{opacity:.35;cursor:default}.reader{border:1px solid #eed0e1;border-top:0;background:#f8e5ee;padding:10px 10px 22px;min-height:460px;border-radius:0 0 16px 16px;display:flex;justify-content:center;align-items:center}.sheet{position:relative;max-width:100%;margin:auto;box-shadow:0 10px 32px #41182a33;line-height:0}canvas{display:block;max-width:100%;height:auto;background:#fff}.play-picture{position:absolute;left:50%;top:75%;transform:translate(-50%,-50%);z-index:2;background:#a22f68;color:white;border:3px solid #fff2fa;border-radius:99px;padding:12px 17px;font:bold 14px system-ui;cursor:pointer;box-shadow:0 5px 20px #42142acc;line-height:1.25;white-space:nowrap}.play-picture[hidden], [hidden]{display:none!important}.play-picture:hover{background:#cb4e8c}.reader-note{text-align:center;font-size:.88rem;color:#7a4966;margin:15px 0}.fallback{background:white;padding:20px;border-radius:14px;width:100%}.fallback iframe{width:100%;height:65vh;min-height:440px;border:0}.fallback a{color:#982c65}.chapter-links{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:14px 0 25px}.chapter-links button{padding:8px 13px;background:#fff;border:1px solid #dd98ba;border-radius:99px;color:#853558;cursor:pointer;font-weight:700;font-size:.82rem}.chapter-links button:hover{background:#fce8f2}.modal{position:fixed;inset:0;z-index:50;background:#1d0919eb;display:flex;justify-content:center;align-items:center;padding:20px}.modalbox{position:relative;background:#fff6fa;border-radius:22px;padding:20px;width:min(100%,480px);text-align:center}.modal video{display:block;max-width:100%;max-height:66vh;margin:12px auto;border-radius:12px;background:#290d25}.close{position:absolute;right:7px;top:7px;background:#8e2a5c;color:white;border:0;border-radius:50%;font-size:25px;width:44px;height:44px;cursor:pointer}.music{position:fixed;bottom:0;left:0;right:0;z-index:20;background:#36142d;color:white;display:flex;gap:10px;align-items:center;justify-content:center;padding:11px;flex-wrap:wrap}.music button{background:#efa3c7;border:0;border-radius:20px;padding:8px 15px;font-weight:bold;cursor:pointer}.music input{width:min(22vw,160px);accent-color:#e38bbb}.music small{white-space:nowrap}.sharebar{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin:25px 0}.status{min-height:18px;text-align:center;color:#8b3564;font-size:.86rem}button:focus-visible,a:focus-visible{outline:3px solid #a73a73;outline-offset:3px}@media(max-width:540px){main{padding:16px 8px 140px}.controls{gap:7px;padding:9px}.controls button{padding:7px 10px;font-size:.8rem}.play-picture{font-size:12px;padding:8px 10px;border-width:2px}.music{gap:7px}.music input{width:92px}.music strong{font-size:.85rem}}
+
+/* Illustrated page navigation: unobtrusive pink edge arrows */
+.sheet{isolation:isolate}
+.petals-edge-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:6;display:grid;place-items:center;width:48px;height:74px;padding:0;border:1.5px solid rgba(255,255,255,.95);border-radius:100px;background:linear-gradient(160deg,rgba(255,183,214,.97),rgba(216,73,134,.96));color:#fff;font:700 46px/1 Georgia,serif;text-shadow:0 2px 4px #7c184a80;box-shadow:0 6px 23px #7b214e88,0 0 0 4px #ffd2e266;cursor:pointer;transition:background .15s,box-shadow .15s,transform .15s}
+.petals-edge-arrow:hover:not(:disabled){background:linear-gradient(160deg,#ff95c8,#bf2f73);box-shadow:0 6px 27px #80244bba,0 0 0 5px #ffd2e2a6;transform:translateY(-50%) scale(1.06)}
+.petals-edge-arrow:disabled{opacity:.16;cursor:default;box-shadow:none}
+.petals-edge-prev{left:0;transform:translate(-30%,-50%)}
+.petals-edge-next{right:0;transform:translate(30%,-50%)}
+.petals-edge-prev:hover:not(:disabled){transform:translate(-30%,-50%) scale(1.06)}
+.petals-edge-next:hover:not(:disabled){transform:translate(30%,-50%) scale(1.06)}
+.petals-edge-arrow:focus-visible{outline:4px solid #73134b;outline-offset:3px}
+.petals-product-hotspot{position:absolute;z-index:5;border:2px solid #e87bae;border-radius:8px;background:#fff0f557;box-shadow:0 0 0 2px #fff8;cursor:pointer;line-height:1;text-decoration:none}
+.petals-product-hotspot:hover,.petals-product-hotspot:focus-visible{background:#ffe4f4a3;border-color:#b72f72;outline:2px solid #ad286d}
+.petals-page-products{max-width:720px;margin:12px auto 0;padding:15px 17px;background:#fff8fc;border:1px solid #e3a7c5;border-radius:17px;text-align:center}
+.petals-page-products[hidden]{display:none!important}
+.petals-page-products strong{display:block;color:#8b2f60;font-size:.89rem;margin-bottom:8px}
+.petals-page-products .product-heading-links{display:flex;justify-content:center;gap:7px;flex-wrap:wrap}
+.petals-page-products a{display:inline-flex;align-items:center;border:1px solid #e1a5c4;background:#fff;border-radius:99px;padding:7px 11px;color:#922c63;font-weight:750;font-size:.78rem;text-decoration:none}
+.petals-page-products a:hover{text-decoration:underline;background:#ffedf6}
+@media(max-width:540px){.petals-edge-arrow{width:34px;height:60px;font-size:34px}.petals-edge-prev{transform:translate(-7%,-50%)}.petals-edge-next{transform:translate(7%,-50%)}.petals-edge-prev:hover:not(:disabled){transform:translate(-7%,-50%) scale(1.05)}.petals-edge-next:hover:not(:disabled){transform:translate(7%,-50%) scale(1.05)}}
+@media(prefers-reduced-motion:reduce){.petals-edge-arrow{transition:none}}
 </style><script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script><style id="pink-petals-wellness-links">
 .wellness-jump{text-align:center;margin:15px 0}.wellness-jump[hidden]{display:none!important}
 .wellness-jump a{color:#fff;background:#a7356b;text-decoration:none;padding:11px 19px;border-radius:99px;font-weight:800;display:inline-block}
@@ -17,8 +38,9 @@
 <section class="intro"><p class="eyebrow">🌸 The Sparkle Era · An interactive book</p><h1>Pink Petals: Living Pages</h1><p>Turn the original illustrated pages. When you find a pink play button on Jahntella's picture, tap it to hear her speak.</p></section>
 <div class="chapter-links" aria-label="Jump to four special moments"><button data-page="2">👑 Foreword</button><button data-page="4">🌸 Behind the song</button><button data-page="10">💗 Self-discovery</button><button data-page="12">🌸 Wellness guide</button><button data-page="24">💋 Keep blooming</button></div>
 <div id="readerTop"><div class="controls"><button id="prev" type="button" disabled>‹ Previous</button><strong id="indicator" aria-live="polite">Opening your book…</strong><button id="next" type="button" disabled>Next ›</button></div>
-<div class="reader" id="reader"><div class="sheet" id="sheet"><canvas id="page" role="img" aria-label="Illustrated Pink Petals ebook page"></canvas><button class="play-picture" id="playPhoto" type="button" hidden>▶ Tap to hear Jahntella</button></div>
+<div class="reader" id="reader"><div class="sheet" id="sheet"><canvas id="page" role="img" aria-label="Illustrated Pink Petals ebook page"></canvas><div id="pageProductHotspots" aria-label="Product title links"></div><button class="petals-edge-arrow petals-edge-prev" type="button" id="edgePrev" aria-label="Previous ebook page" title="Previous page" disabled>‹</button><button class="petals-edge-arrow petals-edge-next" type="button" id="edgeNext" aria-label="Next ebook page" title="Next page" disabled>›</button><button class="play-picture" id="playPhoto" type="button" hidden>▶ Tap to hear Jahntella</button></div>
 <div class="fallback" id="fallback" hidden><p>The original Pink Petals book is still here, even if interactive pages aren't supported by this browser.</p><iframe id="pdf" title="Pink Petals illustrated PDF"></iframe><a class="pill" href="../pink-petals-living-ebook.pdf" download>↓ Download the original book</a></div></div></div>
+<div id="pageProductLinks" class="petals-page-products" hidden aria-label="Product headings on pages 11 through 14"><strong>♡ Explore the little luxuries mentioned in these pages</strong><div class="product-heading-links" id="productHeadingLinks"></div></div>
 <p id="wellnessJump" class="wellness-jump" hidden><a href="#wellnessGuide">🌸 See examples of the products mentioned on these pages</a></p><p class="reader-note">♡ Four special portraits come to life · The 27-page book itself remains unchanged.</p>
 <section id="wellnessGuide" class="wellness-guide" aria-labelledby="wellnessTitle">
 <p class="eyebrow">Pink Petals · 18+ · An optional guide</p><h2 id="wellnessTitle">Curious about the little luxuries?</h2>
@@ -48,11 +70,49 @@ const chapters={
 24:{src:'../keep-blooming.mp4',title:'Keep Blooming, Sweetie',top:75,left:50}};
 const byId=id=>document.getElementById(id), canvas=byId('page'),sheet=byId('sheet'),indicator=byId('indicator'),prev=byId('prev'),next=byId('next'),playPhoto=byId('playPhoto'),frame=byId('reader');
 const pop=byId('modal'),popVideo=byId('popVideo'),popTitle=byId('popTitle'),song=byId('song'),songPlay=byId('songPlay'),seek=byId('seek'),clock=byId('clock'),status=byId('status');
+const edgePrev=byId('edgePrev'),edgeNext=byId('edgeNext'),hotspots=byId('pageProductHotspots'),productPanel=byId('pageProductLinks'),productHeadingLinks=byId('productHeadingLinks');
+const shopProducts=Array.from(document.querySelectorAll('.wellness-card')).map(card=>({title:card.querySelector('h3')?.textContent.trim()||'',url:card.querySelector('a')?.href||''})).filter(p=>p.title&&p.url);
+const productPatterns=[/compact|external massag|beginner|bullet/i,/wand massag|massage wand/i,/air.pulse|air suction|air pressure/i,/mini vibrat|bullet|egg.style/i,/insertable|internal vibrat|g.spot/i,/dual.function|dual stimul|multi.function/i,/wearable|remote.control|hands.free/i,/couples|partner/i,/water.based lub|lubricant/i];
+function productMatches(text){return productPatterns.map((re,i)=>re.test(text)?i:-1).filter(i=>i>=0)}
+function openProductPanel(n){
+ const active=n>=11&&n<=14;
+ productPanel.hidden=!active;
+ if(!active){hotspots.replaceChildren();return}
+ productHeadingLinks.replaceChildren();
+ shopProducts.forEach(p=>{const a=document.createElement('a');a.href=p.url;a.target='_blank';a.rel='noopener noreferrer external';a.textContent=p.title+' ↗';a.setAttribute('aria-label','See '+p.title+' examples at independent retailer');productHeadingLinks.appendChild(a)});
+}
+async function placeProductHeadings(pg,viewport,n){
+ hotspots.replaceChildren();if(n<11||n>14)return;
+ try{
+  const content=await pg.getTextContent();
+  const rows=[];
+  for(const item of content.items){if(!item.str?.trim()||!item.transform)continue;
+   const pt=pdfjsLib.Util.transform(viewport.transform,item.transform);const y=pt[5],x=pt[4];
+   let row=rows.find(r=>Math.abs(r.y-y)<7);
+   if(!row){row={y,parts:[]};rows.push(row)}
+   row.parts.push({str:item.str,x,y,width:(item.width||0)*viewport.scale,height:Math.max(11,Math.abs(pt[3])||13)});
+  }
+  let used=new Set();
+  for(const row of rows){
+   row.parts.sort((a,b)=>a.x-b.x);
+   const text=row.parts.map(p=>p.str).join(' ').replace(/\\s+/g,' ').trim();
+   const found=productMatches(text).filter(i=>!used.has(i));
+   if(!found.length)continue;
+   const start=Math.min(...row.parts.map(p=>p.x)),end=Math.max(...row.parts.map(p=>p.x+p.width));
+   const top=Math.min(...row.parts.map(p=>p.y-p.height));
+   for(const index of found){const product=shopProducts[index];if(!product)continue;
+    const a=document.createElement('a');a.className='petals-product-hotspot';a.href=product.url;a.target='_blank';a.rel='noopener noreferrer external';a.title='Explore '+product.title+' ↗';a.setAttribute('aria-label','Shop examples: '+product.title);
+    a.style.left=Math.max(0,start-4)+'px';a.style.top=Math.max(0,top-5)+'px';a.style.width=Math.max(70,end-start+9)+'px';a.style.height=Math.max(20,...row.parts.map(p=>p.height))+8+'px';hotspots.appendChild(a);used.add(index);
+   }
+  }
+ }catch(err){console.warn('Product text overlays unavailable; linked product headings remain below the page.',err)}
+}
+
 let doc=null,current=1,pending=null,rendering=false,resizeHandle=null;
 const fmt=n=>!Number.isFinite(n)?'0:00':Math.floor(n/60)+':'+String(Math.floor(n%60)).padStart(2,'0');
 function showFallback(message){
  byId('fallback').hidden=false;sheet.hidden=true;byId('pdf').src=pdfUrl+'#view=FitH';
- indicator.textContent='PDF edition';prev.disabled=true;next.disabled=true;playPhoto.hidden=true;
+ indicator.textContent='PDF edition';prev.disabled=true;next.disabled=true;edgePrev.disabled=true;edgeNext.disabled=true;playPhoto.hidden=true;productPanel.hidden=true;hotspots.replaceChildren();
  status.textContent=message||'The original PDF remains available.';
 }
 async function render(n){
@@ -70,7 +130,10 @@ async function render(n){
   canvas.style.width=size.width+'px';canvas.style.height=size.height+'px';
   sheet.style.width=size.width+'px';
   await pg.render({canvasContext:canvas.getContext('2d'),viewport:size,transform:[pixelRatio,0,0,pixelRatio,0,0]}).promise;
+  await placeProductHeadings(pg,size,n);
   current=n;indicator.textContent='Page '+n+' of '+doc.numPages;
+  openProductPanel(n);
+  edgePrev.disabled=n<=1;edgeNext.disabled=n>=doc.numPages;
   byId('wellnessJump').hidden=!(n>=11&&n<=14);
   prev.disabled=n<=1;next.disabled=n>=doc.numPages;
   const ch=chapters[n];
@@ -90,6 +153,8 @@ pop.addEventListener('click',e=>{if(e.target===pop)closeChapter()});
 window.addEventListener('keydown',e=>{if(e.key==='Escape'&&!pop.hidden)closeChapter();else if(pop.hidden&&e.key==='ArrowRight')render(Math.min(current+1,doc?.numPages||27));else if(pop.hidden&&e.key==='ArrowLeft')render(Math.max(1,current-1))});
 prev.addEventListener('click',()=>render(Math.max(1,current-1)));
 next.addEventListener('click',()=>render(Math.min(current+1,doc?.numPages||27)));
+edgePrev.addEventListener('click',()=>render(Math.max(1,current-1)));
+edgeNext.addEventListener('click',()=>render(Math.min(current+1,doc?.numPages||27)));
 document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>{const n=+b.dataset.page;if(doc){render(n);window.scrollTo({top:byId('readerTop').getBoundingClientRect().top+window.scrollY-10,behavior:'smooth'})}else status.textContent='Open the illustrated PDF to read this chapter.'}));
 window.addEventListener('resize',()=>{clearTimeout(resizeHandle);resizeHandle=setTimeout(()=>{if(doc)render(current)},180)});
 songPlay.addEventListener('click',()=>song.paused?song.play().catch(()=>{}):song.pause());
