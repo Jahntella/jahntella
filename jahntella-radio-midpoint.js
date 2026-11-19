@@ -75,7 +75,11 @@
     const heading=document.createElement('strong');
     const station=document.createElement('span');
     const thanks=document.createElement('small');
-    if(kind==='share'){
+    if(kind==='lyrics'){
+      heading.textContent='Hit the Lyrics button, Sweetie! 🎤';
+      station.textContent='Follow along with Jahntella…';
+      thanks.textContent='And sing it like YOU wrote it! LOL! ♡';
+    }else if(kind==='share'){
       heading.textContent='Enjoying “'+meta.title+'”, Sweetie? ♡';
       station.textContent='Tap the ♡ heart on this song’s card to share!';
       thanks.textContent='Let the world know your favorite! 💗';
@@ -95,6 +99,11 @@
     if(!detail)return;
     lastStarted=detail;
     show(detail);
+  });
+  window.addEventListener('jahntella:radio-lyrics-reminder',({detail})=>{
+    if(!detail)return;
+    lastStarted=detail;
+    show(detail,'lyrics');
   });
   window.addEventListener('jahntella:radio-share-reminder',({detail})=>{
     if(!detail)return;
