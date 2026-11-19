@@ -1,0 +1,35 @@
+/* A delicate, site-wide dance for the five-era song cards while music plays.
+   Pure transform animation: never changes card dimensions or button geometry. */
+@keyframes jahntella-gentle-card-dance {
+  0%, 100% { transform: rotate(-1.15deg) translateY(0); }
+  25% { transform: rotate(.3deg) translateY(-2px); }
+  50% { transform: rotate(1.15deg) translateY(0); }
+  75% { transform: rotate(-.3deg) translateY(-2px); }
+}
+body.jahntella-song-cards-playing .release-card[data-card],
+body.jahntella-song-cards-playing .exp44-new-music-card[data-card] {
+  animation: jahntella-gentle-card-dance 4.2s ease-in-out infinite;
+  transform-origin: 50% 70%;
+  will-change: transform;
+}
+body.jahntella-song-cards-playing .release-card[data-card]:nth-child(2n),
+body.jahntella-song-cards-playing .exp44-new-music-card[data-card]:nth-child(2n) {
+  animation-delay: -2.1s;
+}
+body.jahntella-song-cards-playing .release-card[data-card]:nth-child(3n),
+body.jahntella-song-cards-playing .exp44-new-music-card[data-card]:nth-child(3n) {
+  animation-delay: -1.05s;
+}
+/* Make hovering or keyboard interaction steady and comfortable. */
+body.jahntella-song-cards-playing .release-card[data-card]:is(:hover,:focus-within),
+body.jahntella-song-cards-playing .exp44-new-music-card[data-card]:is(:hover,:focus-within) {
+  animation-play-state: paused;
+}
+/* Keep animation out of view for users who request less motion. */
+@media (prefers-reduced-motion: reduce) {
+  body.jahntella-song-cards-playing .release-card[data-card],
+  body.jahntella-song-cards-playing .exp44-new-music-card[data-card] {
+    animation: none !important;
+    will-change: auto;
+  }
+}
