@@ -15,6 +15,23 @@
 .petals-edge-arrow:focus-visible{outline:4px solid #73134b;outline-offset:3px}
 .petals-product-hotspot{position:absolute;z-index:5;border:2px solid #e87bae;border-radius:8px;background:#fff0f557;box-shadow:0 0 0 2px #fff8;cursor:pointer;line-height:1;text-decoration:none}
 .petals-product-hotspot:hover,.petals-product-hotspot:focus-visible{background:#ffe4f4a3;border-color:#b72f72;outline:2px solid #ad286d}
+
+/* Page-native Jahntella notes: anchored to the actual product headings on PDF pages 11–14. */
+.petals-product-note-trigger{position:absolute;z-index:8;display:inline-flex;align-items:center;justify-content:center;min-height:27px;padding:4px 9px;border-radius:99px;border:1.5px solid #a82e70;background:linear-gradient(115deg,#fff6fb,#f6bbd6);color:#852354;box-shadow:0 2px 11px #69234666;font:bold 10px/1.2 system-ui,Arial,sans-serif;cursor:pointer;white-space:nowrap}
+.petals-product-note-trigger:hover,.petals-product-note-trigger:focus-visible{background:#ffd3e8;outline:2px solid #bd397e;outline-offset:2px}
+.petals-product-note-trigger:after{content:"";position:absolute;inset:-3px;border-radius:inherit;pointer-events:none}
+.petals-in-page-note{position:absolute;z-index:11;width:min(345px,92%);max-height:48%;overflow:auto;padding:16px 18px 15px;background:linear-gradient(135deg,#fff7fc,#ffe6f1);border:2px solid #df80af;border-radius:17px;box-shadow:0 13px 40px #4b122c88;color:#703052;line-height:1.45;font-family:Georgia,serif}
+.petals-in-page-note[hidden]{display:none!important}
+.petals-in-page-note b{display:block;padding-right:25px;font:800 11px/1.4 system-ui,Arial,sans-serif;text-transform:uppercase;letter-spacing:.045em;color:#a63675}
+.petals-in-page-note h4{margin:5px 24px 7px 0;font:700 1.12rem/1.2 Georgia,serif;color:#852951}
+.petals-in-page-note p{font:italic .92rem/1.48 Georgia,serif;margin:0 0 12px}
+.petals-in-page-note .petals-note-shop{display:inline-block;background:#9b356d;color:#fff;border-radius:40px;padding:9px 12px;text-decoration:none;font:700 12px/1.3 system-ui,Arial,sans-serif}
+.petals-in-page-note .petals-note-shop:hover{text-decoration:underline;background:#7a2353}
+.petals-note-close{position:absolute;right:9px;top:8px;width:31px;height:31px;display:grid;place-items:center;background:#f6d3e5;color:#7b2558;border:1px solid #df9ec0;border-radius:50%;font-size:19px;cursor:pointer}
+.petals-note-page-list{position:absolute;z-index:7;right:7px;bottom:8px;max-width:calc(100% - 22px);text-align:right}
+.petals-note-page-list button{background:#fff0f9;border:1px solid #c95b99;border-radius:99px;color:#80345b;padding:7px 10px;font:750 11px system-ui;box-shadow:0 3px 12px #531a3966;cursor:pointer}
+@media(max-width:540px){.petals-product-note-trigger{font-size:9px;min-height:24px;padding:4px 7px}.petals-in-page-note{padding:12px 13px;max-height:54%;width:min(300px,92%)}.petals-in-page-note p{font-size:.85rem}}
+
 .petals-page-products{max-width:720px;margin:12px auto 0;padding:15px 17px;background:#fff8fc;border:1px solid #e3a7c5;border-radius:17px;text-align:center}
 .petals-page-products[hidden]{display:none!important}
 .petals-page-products strong{display:block;color:#8b2f60;font-size:.89rem;margin-bottom:8px}
@@ -30,8 +47,6 @@
 .wellness-guide h2{margin:5px 0 12px}.wellness-guide>p{line-height:1.6}.retailer-note{color:#78576a;font-size:.85rem}
 .wellness-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0}
 .wellness-card{background:white;border:1px solid #edd1df;border-radius:14px;padding:15px}.wellness-card h3{font:700 1.05rem Georgia,serif;margin:0 0 8px}.wellness-card p{font-size:.85rem;color:#6f4b60;margin:0 0 12px}.wellness-card a{font-size:.86rem;font-weight:800;color:#973563}
-.wellness-card .jahntella-whisper{margin:12px 0 15px;padding:13px 14px;border-left:3px solid #e58ab4;border-radius:0 12px 12px 0;background:linear-gradient(105deg,#fff2f8,#fff9fc);color:#863d63;font:italic .94rem/1.63 Georgia,serif}
-.wellness-card .jahntella-whisper span{display:block;margin:0 0 6px;font:800 .68rem/1.4 system-ui,sans-serif;letter-spacing:.035em;text-transform:uppercase;font-style:normal;color:#a74177}
 .wellness-foot{background:#fff0f7;border-radius:12px;padding:14px;font-size:.85rem;color:#734a61}
 @media(max-width:560px){.wellness-grid{grid-template-columns:1fr}}
 
@@ -61,7 +76,7 @@
 <section class="intro"><p class="eyebrow">🌸 The Sparkle Era · An interactive book</p><h1>Pink Petals: Living Pages</h1><p>Turn the original illustrated pages. When you find a pink play button on Jahntella's picture, tap it to hear her speak.</p></section>
 <div class="chapter-links" aria-label="Jump to four special moments"><button data-page="2">👑 Foreword</button><button data-page="4">🌸 Behind the song</button><button data-page="10">💗 Self-discovery</button><button data-page="12">🌸 Wellness guide</button><button data-page="24">💋 Keep blooming</button><a class="pill" href="#pinkPetalsAfterDark" style="background:#7b3059;color:white;border-color:#ad5380">🌙 After Dark — a mini story</a></div>
 <div id="readerTop"><div class="controls"><button id="prev" type="button" disabled>‹ Previous</button><strong id="indicator" aria-live="polite">Opening your book…</strong><button id="next" type="button" disabled>Next ›</button></div>
-<div class="reader" id="reader"><div class="sheet" id="sheet"><canvas id="page" role="img" aria-label="Illustrated Pink Petals ebook page"></canvas><div id="pageProductHotspots" aria-label="Product title links"></div><button class="petals-edge-arrow petals-edge-prev" type="button" id="edgePrev" aria-label="Previous ebook page" title="Previous page" disabled>‹</button><button class="petals-edge-arrow petals-edge-next" type="button" id="edgeNext" aria-label="Next ebook page" title="Next page" disabled>›</button><button class="play-picture" id="playPhoto" type="button" hidden>▶ Tap to hear Jahntella</button></div>
+<div class="reader" id="reader"><div class="sheet" id="sheet"><canvas id="page" role="img" aria-label="Illustrated Pink Petals ebook page"></canvas><div id="pageProductHotspots" aria-label="Product title links"></div><div id="pageNoteTriggers" aria-label="Jahntella product notes"></div><aside id="pageNotePopup" class="petals-in-page-note" hidden aria-label="Jahntella product message"><button type="button" class="petals-note-close" id="pageNoteClose" aria-label="Close Jahntella note">×</button><b>♡ A little note from Jahntella</b><h4 id="pageNoteTitle"></h4><p id="pageNoteText"></p><a id="pageNoteShop" class="petals-note-shop" target="_blank" rel="noopener noreferrer external">See examples & shopping options ↗</a></aside><div class="petals-note-page-list" id="pageNoteFallback" hidden><button type="button" id="pageNoteChoose">♡ Jahntella’s product notes</button></div><button class="petals-edge-arrow petals-edge-prev" type="button" id="edgePrev" aria-label="Previous ebook page" title="Previous page" disabled>‹</button><button class="petals-edge-arrow petals-edge-next" type="button" id="edgeNext" aria-label="Next ebook page" title="Next page" disabled>›</button><button class="play-picture" id="playPhoto" type="button" hidden>▶ Tap to hear Jahntella</button></div>
 <div class="fallback" id="fallback" hidden><p>The original Pink Petals book is still here, even if interactive pages aren't supported by this browser.</p><iframe id="pdf" title="Pink Petals illustrated PDF"></iframe><a class="pill" href="../pink-petals-living-ebook.pdf" download>↓ Download the original book</a></div></div></div>
 <div id="pageProductLinks" class="petals-page-products" hidden aria-label="Product headings on pages 11 through 14"><strong>♡ Explore the little luxuries mentioned in these pages</strong><div class="product-heading-links" id="productHeadingLinks"></div></div>
 <aside id="ppIntimateNote" class="pp-intimate-note" hidden aria-live="polite"><p class="eyebrow">A little moment with Jahntella ♡</p><h3 id="ppIntimateTitle"></h3><div id="ppIntimateBody"></div></aside>
@@ -70,15 +85,15 @@
 <p class="eyebrow">Pink Petals · 18+ · An optional guide</p><h2 id="wellnessTitle">Curious about the little luxuries?</h2>
 <p>The ebook's self-discovery chapter (pages 11–14) describes several intimate wellness accessories. These links show real examples from an independent retailer, so you can see what each product type looks like before deciding whether it's right for you.</p>
 <p class="retailer-note">The retailer is independent of Jahntella. These are category links, not recommendations of specific products or affiliate links. Shopping, payments, delivery and returns take place entirely on the retailer’s website.</p>
-<div class="wellness-grid"><article class="wellness-card"><h3>Compact external massager</h3><p>Targeted external vibration; often an approachable first option.</p><p class="jahntella-whisper"><span>♡ A little note from Jahntella</span>“Sweetie, I love the thought of beginning with something uncomplicated. Sometimes the sweetest feeling is realizing I can slow down, listen to my comfort, and let curiosity be enough.”</p><a href="https://www.goodvibes.com/sex-toys/c/gv268/vibrators/beginner-vibes/" target="_blank" rel="noopener noreferrer external">See examples &amp; shopping options ↗</a></article>
-<article class="wellness-card"><h3>Wand massager</h3><p>Broader vibration and adjustable intensity for external massage.</p><p class="jahntella-whisper"><span>♡ A little note from Jahntella</span>“A longer exhale, a softer room, a moment without rushing—that’s the feeling I want to invite in. I like knowing I can adjust the experience to what feels comfortable for me.”</p><a href="https://www.goodvibes.com/sex-toys/c/gv114/vibrators/wand-style-vibrators/" target="_blank" rel="noopener noreferrer external">See examples &amp; shopping options ↗</a></article>
-<article class="wellness-card"><h3>Air-pulse stimulator</h3><p>Pulsing air pressure for external sensation.</p><p class="jahntella-whisper"><span>♡ A little note from Jahntella</span>“There’s something lovely about exploring a new sensation without knowing exactly what to expect. For me, the important part of that curiosity is feeling relaxed, informed, and completely free to pause.”</p><a href="https://www.goodvibes.com/sex-toys/c/gv721/vibrators/air-suction-pleasure/" target="_blank" rel="noopener noreferrer external">See examples &amp; shopping options ↗</a></article>
-<article class="wellness-card"><h3>Mini vibrating accessory</h3><p>Compact portable designs such as bullet and egg styles.</p><p class="jahntella-whisper"><span>♡ A little note from Jahntella</span>“Little luxuries can make an ordinary evening feel like a private celebration. I love the idea of choosing something small simply because the moment is mine.”</p><a href="https://www.goodvibes.com/sex-toys/c/gv104/vibrators/bullet-egg-style/" target="_blank" rel="noopener noreferrer external">See examples &amp; shopping options ↗</a></article>
-<article class="wellness-card"><h3>Insertable vibrator</h3><p>Different shapes intended for internal use; comfort and materials matter.</p><p class="jahntella-whisper"><span>♡ A little note from Jahntella</span>“Sweetie, being in tune with my body means respecting my comfort as much as my curiosity. I’d want every choice to feel easy, unhurried, and entirely mine.”</p><a href="https://www.goodvibes.com/sex-toys/c/gv105/vibrators/g-spot-vibrators/" target="_blank" rel="noopener noreferrer external">See examples &amp; shopping options ↗</a></article>
-<article class="wellness-card"><h3>Dual-function device</h3><p>Combines more than one type of stimulation.</p><p class="jahntella-whisper"><span>♡ A little note from Jahntella</span>“I like the idea that there’s no single way to enjoy a little time for myself. The most beautiful part is being able to choose what feels right, and change my mind whenever I want.”</p><a href="https://www.goodvibes.com/sex-toys/c/gv608/vibrators/multi-function-vibes/" target="_blank" rel="noopener noreferrer external">See examples &amp; shopping options ↗</a></article>
-<article class="wellness-card"><h3>Wearable / remote-control option</h3><p>Hands-free or remote options; consider privacy and battery safety.</p><p class="jahntella-whisper"><span>♡ A little note from Jahntella</span>“The sweetest kind of freedom is knowing I’m in charge of my own moment. Privacy, comfort, and the ability to stop whenever I choose matter more to me than any feature.”</p><a href="https://www.goodvibes.com/sex-toys/c/gv109/vibrators/wearable-vibrators/" target="_blank" rel="noopener noreferrer external">See examples &amp; shopping options ↗</a></article>
-<article class="wellness-card"><h3>Couples’ intimacy accessory</h3><p>Designed for adult partners to explore together with consent.</p><p class="jahntella-whisper"><span>♡ A little note from Jahntella</span>“For me, closeness begins long before a kiss—with trust, a shared smile, and the relief of being understood. I love the idea of two people feeling safe enough to say what they enjoy.”</p><a href="https://www.goodvibes.com/sex-toys/c/gv200/couples-toys/?sref=gv_mega_menu_more" target="_blank" rel="noopener noreferrer external">See examples &amp; shopping options ↗</a></article>
-<article class="wellness-card"><h3>Water-based lubricant</h3><p>A versatile companion; check material compatibility and skin sensitivities.</p><p class="jahntella-whisper"><span>♡ A little note from Jahntella</span>“I want tenderness to feel as gentle as it sounds. Taking care of comfort isn’t less romantic; to me, it’s part of making any intimate moment feel considerate and calm.”</p><a href="https://www.goodvibes.com/sex-toys/c/gv630/lubricants/water-based-lubricants/?sref=gv_mega_menu_lube" target="_blank" rel="noopener noreferrer external">See examples &amp; shopping options ↗</a></article></div>
+<div class="wellness-grid"><article class="wellness-card"><h3>Compact external massager</h3><p>Targeted external vibration; often an approachable first option.</p><a href="https://www.goodvibes.com/sex-toys/c/gv268/vibrators/beginner-vibes/" target="_blank" rel="noopener noreferrer external">See examples &amp; shopping options ↗</a></article>
+<article class="wellness-card"><h3>Wand massager</h3><p>Broader vibration and adjustable intensity for external massage.</p><a href="https://www.goodvibes.com/sex-toys/c/gv114/vibrators/wand-style-vibrators/" target="_blank" rel="noopener noreferrer external">See examples &amp; shopping options ↗</a></article>
+<article class="wellness-card"><h3>Air-pulse stimulator</h3><p>Pulsing air pressure for external sensation.</p><a href="https://www.goodvibes.com/sex-toys/c/gv721/vibrators/air-suction-pleasure/" target="_blank" rel="noopener noreferrer external">See examples &amp; shopping options ↗</a></article>
+<article class="wellness-card"><h3>Mini vibrating accessory</h3><p>Compact portable designs such as bullet and egg styles.</p><a href="https://www.goodvibes.com/sex-toys/c/gv104/vibrators/bullet-egg-style/" target="_blank" rel="noopener noreferrer external">See examples &amp; shopping options ↗</a></article>
+<article class="wellness-card"><h3>Insertable vibrator</h3><p>Different shapes intended for internal use; comfort and materials matter.</p><a href="https://www.goodvibes.com/sex-toys/c/gv105/vibrators/g-spot-vibrators/" target="_blank" rel="noopener noreferrer external">See examples &amp; shopping options ↗</a></article>
+<article class="wellness-card"><h3>Dual-function device</h3><p>Combines more than one type of stimulation.</p><a href="https://www.goodvibes.com/sex-toys/c/gv608/vibrators/multi-function-vibes/" target="_blank" rel="noopener noreferrer external">See examples &amp; shopping options ↗</a></article>
+<article class="wellness-card"><h3>Wearable / remote-control option</h3><p>Hands-free or remote options; consider privacy and battery safety.</p><a href="https://www.goodvibes.com/sex-toys/c/gv109/vibrators/wearable-vibrators/" target="_blank" rel="noopener noreferrer external">See examples &amp; shopping options ↗</a></article>
+<article class="wellness-card"><h3>Couples’ intimacy accessory</h3><p>Designed for adult partners to explore together with consent.</p><a href="https://www.goodvibes.com/sex-toys/c/gv200/couples-toys/?sref=gv_mega_menu_more" target="_blank" rel="noopener noreferrer external">See examples &amp; shopping options ↗</a></article>
+<article class="wellness-card"><h3>Water-based lubricant</h3><p>A versatile companion; check material compatibility and skin sensitivities.</p><a href="https://www.goodvibes.com/sex-toys/c/gv630/lubricants/water-based-lubricants/?sref=gv_mega_menu_lube" target="_blank" rel="noopener noreferrer external">See examples &amp; shopping options ↗</a></article></div>
 <p class="wellness-foot"><strong>Care matters:</strong> Adults 18+ only. Check body-safe materials, product directions, care, cleaning and compatibility. Stop if anything causes discomfort. You never need to buy anything to enjoy Pink Petals. Available products and shipping depend on your location.</p></section>
 
 <section id="pinkPetalsAfterDark" class="pp-after-dark" aria-labelledby="ppAfterDarkHeading"><div class="pp-after-dark-inner">
@@ -103,6 +118,35 @@ const byId=id=>document.getElementById(id), canvas=byId('page'),sheet=byId('shee
 const pop=byId('modal'),popVideo=byId('popVideo'),popTitle=byId('popTitle'),song=byId('song'),songPlay=byId('songPlay'),seek=byId('seek'),clock=byId('clock'),status=byId('status');
 const edgePrev=byId('edgePrev'),edgeNext=byId('edgeNext'),hotspots=byId('pageProductHotspots'),productPanel=byId('pageProductLinks'),productHeadingLinks=byId('productHeadingLinks');
 const shopProducts=Array.from(document.querySelectorAll('.wellness-card')).map(card=>({title:card.querySelector('h3')?.textContent.trim()||'',url:card.querySelector('a')?.href||''})).filter(p=>p.title&&p.url);
+const productWhispers=["“Sweetie, I love the thought of beginning with something uncomplicated. Sometimes the sweetest feeling is realizing I can slow down, listen to my comfort, and let curiosity be enough.”","“A longer exhale, a softer room, a moment without rushing—that’s the feeling I want to invite in. I like knowing I can adjust the experience to what feels comfortable for me.”","“There’s something lovely about exploring a new sensation without knowing exactly what to expect. For me, the important part of that curiosity is feeling relaxed, informed, and completely free to pause.”","“Little luxuries can make an ordinary evening feel like a private celebration. I love the idea of choosing something small simply because the moment is mine.”","“Sweetie, being in tune with my body means respecting my comfort as much as my curiosity. I’d want every choice to feel easy, unhurried, and entirely mine.”","“I like the idea that there’s no single way to enjoy a little time for myself. The most beautiful part is being able to choose what feels right, and change my mind whenever I want.”","“The sweetest kind of freedom is knowing I’m in charge of my own moment. Privacy, comfort, and the ability to stop whenever I choose matter more to me than any feature.”","“For me, closeness begins long before a kiss—with trust, a shared smile, and the relief of being understood. I love the idea of two people feeling safe enough to say what they enjoy.”","“I want tenderness to feel as gentle as it sounds. Taking care of comfort isn’t less romantic; to me, it’s part of making any intimate moment feel considerate and calm.”"];
+const noteTriggers=byId('pageNoteTriggers'),notePopup=byId('pageNotePopup'),noteFallback=byId('pageNoteFallback');
+let lastNoteIndex=0;
+function showProductNote(index,anchorEl){
+ const p=shopProducts[index];if(!p)return;
+ lastNoteIndex=index;
+ byId('pageNoteTitle').textContent=p.title;
+ byId('pageNoteText').textContent=productWhispers[index]||'';
+ byId('pageNoteShop').href=p.url;
+ notePopup.hidden=false;
+ const pageWidth=sheet.clientWidth,pageHeight=sheet.clientHeight;
+ const anchorRect=anchorEl?.getBoundingClientRect(),sheetRect=sheet.getBoundingClientRect();
+ const x=anchorRect?anchorRect.left-sheetRect.left:pageWidth*.5;
+ const y=anchorRect?anchorRect.bottom-sheetRect.top:pageHeight*.5;
+ const noteWidth=Math.min(345,pageWidth*.92);
+ const left=Math.max(5,Math.min(pageWidth-noteWidth-5,x));
+ // Position inside the page; move above a bottom-of-page heading if necessary.
+ const estimatedHeight=Math.min(230,pageHeight*.48);
+ const top=y+estimatedHeight+12<pageHeight?y+6:Math.max(6,y-estimatedHeight-9);
+ notePopup.style.left=left+'px';notePopup.style.top=top+'px';
+}
+byId('pageNoteClose').addEventListener('click',()=>{notePopup.hidden=true});
+byId('pageNoteChoose').addEventListener('click',()=>{
+ const indices=Array.from(noteTriggers.querySelectorAll('[data-note-index]')).map(b=>Number(b.dataset.noteIndex));
+ const options=indices.length?indices:shopProducts.map((_,i)=>i);
+ const next=options[(options.indexOf(lastNoteIndex)+1)%options.length];
+ showProductNote(next,noteFallback);
+});
+
 const productPatterns=[/compact|external massag|beginner|bullet/i,/wand massag|massage wand/i,/air.pulse|air suction|air pressure/i,/mini vibrat|bullet|egg.style/i,/insertable|internal vibrat|g.spot/i,/dual.function|dual stimul|multi.function/i,/wearable|remote.control|hands.free/i,/couples|partner/i,/water.based lub|lubricant/i];
 function productMatches(text){return productPatterns.map((re,i)=>re.test(text)?i:-1).filter(i=>i>=0)}
 function openProductPanel(n){
@@ -113,7 +157,9 @@ function openProductPanel(n){
  shopProducts.forEach(p=>{const a=document.createElement('a');a.href=p.url;a.target='_blank';a.rel='noopener noreferrer external';a.textContent=p.title+' ↗';a.setAttribute('aria-label','See '+p.title+' examples at independent retailer');productHeadingLinks.appendChild(a)});
 }
 async function placeProductHeadings(pg,viewport,n){
- hotspots.replaceChildren();if(n<11||n>14)return;
+ hotspots.replaceChildren();noteTriggers.replaceChildren();notePopup.hidden=true;
+ noteFallback.hidden=!(n>=11&&n<=14);
+ if(n<11||n>14)return;
  try{
   const content=await pg.getTextContent();
   const rows=[];
@@ -126,17 +172,30 @@ async function placeProductHeadings(pg,viewport,n){
   let used=new Set();
   for(const row of rows){
    row.parts.sort((a,b)=>a.x-b.x);
-   const text=row.parts.map(p=>p.str).join(' ').replace(/\s+/g,' ').trim();
+   const text=row.parts.map(p=>p.str).join(' ').replace(/\\s+/g,' ').trim();
    const found=productMatches(text).filter(i=>!used.has(i));
    if(!found.length)continue;
    const start=Math.min(...row.parts.map(p=>p.x)),end=Math.max(...row.parts.map(p=>p.x+p.width));
    const top=Math.min(...row.parts.map(p=>p.y-p.height));
    for(const index of found){const product=shopProducts[index];if(!product)continue;
+    const headerTop=Math.max(0,top-5),headerHeight=Math.max(20,...row.parts.map(p=>p.height))+8;
     const a=document.createElement('a');a.className='petals-product-hotspot';a.href=product.url;a.target='_blank';a.rel='noopener noreferrer external';a.title='Explore '+product.title+' ↗';a.setAttribute('aria-label','Shop examples: '+product.title);
-    a.style.left=Math.max(0,start-4)+'px';a.style.top=Math.max(0,top-5)+'px';a.style.width=Math.max(70,end-start+9)+'px';a.style.height=Math.max(20,...row.parts.map(p=>p.height))+8+'px';hotspots.appendChild(a);used.add(index);
+    a.style.left=Math.max(0,start-4)+'px';a.style.top=headerTop+'px';a.style.width=Math.min(viewport.width-start-5,Math.max(70,end-start+9))+'px';a.style.height=headerHeight+'px';hotspots.appendChild(a);
+    const b=document.createElement('button');b.type='button';b.className='petals-product-note-trigger';b.textContent='♡ Jahntella’s note';b.dataset.noteIndex=String(index);
+    // Position the label immediately after the heading when there is room, otherwise below it.
+    const right=end+12;const putOnRight=right+125<viewport.width;
+    b.style.left=(putOnRight?right:Math.max(8,start))+'px';b.style.top=(putOnRight?Math.max(0,top-4):Math.min(viewport.height-34,top+headerHeight+1))+'px';
+    b.title='Read Jahntella’s note about '+product.title;
+    b.setAttribute('aria-label','Read Jahntella’s note about '+product.title);
+    b.addEventListener('click',()=>showProductNote(index,b));noteTriggers.appendChild(b);
+    used.add(index);
    }
   }
- }catch(err){console.warn('Product text overlays unavailable; linked product headings remain below the page.',err)}
+  // The notes are available even when embedded PDF headings are rasterized.
+  noteFallback.hidden=false;
+  const present=Array.from(noteTriggers.querySelectorAll('[data-note-index]'));
+  if(present.length)showProductNote(Number(present[0].dataset.noteIndex),present[0]);
+ }catch(err){console.warn('PDF heading matching unavailable; note selector remains on page.',err);noteFallback.hidden=false}
 }
 
 let doc=null,current=1,pending=null,rendering=false,resizeHandle=null;
@@ -233,7 +292,7 @@ paintAfterDark();
 const fmt=n=>!Number.isFinite(n)?'0:00':Math.floor(n/60)+':'+String(Math.floor(n%60)).padStart(2,'0');
 function showFallback(message){
  byId('fallback').hidden=false;sheet.hidden=true;byId('pdf').src=pdfUrl+'#view=FitH';
- indicator.textContent='PDF edition';prev.disabled=true;next.disabled=true;edgePrev.disabled=true;edgeNext.disabled=true;playPhoto.hidden=true;productPanel.hidden=true;hotspots.replaceChildren();byId('ppIntimateNote').hidden=true;
+ indicator.textContent='PDF edition';prev.disabled=true;next.disabled=true;edgePrev.disabled=true;edgeNext.disabled=true;playPhoto.hidden=true;productPanel.hidden=true;hotspots.replaceChildren();notePopup.hidden=true;noteTriggers.replaceChildren();noteFallback.hidden=true;byId('ppIntimateNote').hidden=true;
  status.textContent=message||'The original PDF remains available.';
 }
 async function render(n){
