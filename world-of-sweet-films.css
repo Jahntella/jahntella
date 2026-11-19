@@ -1,0 +1,45 @@
+/* World of Sweet: three cinematic artist invitation videos. */
+#wosFilmRoom{position:relative;padding:clamp(58px,7vw,100px) 16px 80px;background:radial-gradient(ellipse at 22% 20%,#a540b52b,transparent 44%),radial-gradient(ellipse at 88% 75%,#ff81bb1d,transparent 46%),linear-gradient(180deg,#160b20,#1b0e2b 52%,#100815);color:#fff;overflow:hidden;scroll-margin-top:100px;isolation:isolate}
+#wosFilmRoom:before,#wosFilmRoom:after{content:"✦";position:absolute;color:#ffc0f0;font-size:26px;opacity:.38;pointer-events:none;text-shadow:0 0 25px #fca5ff;animation:wosTwinkle 4s ease-in-out infinite alternate}
+#wosFilmRoom:before{top:15%;left:7%}#wosFilmRoom:after{right:7%;bottom:21%;animation-delay:-2s}
+.wos-film-shell{max-width:1140px;margin:auto;position:relative;z-index:1}
+.wos-film-top{text-align:center;max-width:800px;margin:0 auto 35px}
+.wos-film-kicker{color:#ffbfe3;letter-spacing:.22em;text-transform:uppercase;font-size:.73rem;font-weight:800;margin:0 0 15px}
+.wos-film-top h2{font-family:"Playfair Display",Georgia,serif;font-size:clamp(2.1rem,5vw,4.2rem);line-height:1.12;color:#fff;margin:0 0 14px;text-shadow:0 0 35px #a34fbe77}
+.wos-film-top h2 em{font-style:normal;background:linear-gradient(95deg,#ffafd8,#d2a0ff,#80e9ed);-webkit-background-clip:text;background-clip:text;color:transparent}
+.wos-film-intro{font-size:clamp(.98rem,1.5vw,1.15rem);color:#f4dff3;line-height:1.7;margin:0 auto;max-width:730px}
+.wos-film-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(15px,2.3vw,27px)}
+.wos-film-card{--film-accent:#ff9ed5;position:relative;border:1px solid color-mix(in srgb,var(--film-accent),transparent 51%);background:linear-gradient(165deg,#321a40de,#1e112be8);border-radius:26px;padding:11px 11px 23px;box-shadow:0 25px 40px #0005,0 0 30px color-mix(in srgb,var(--film-accent),transparent 90%);min-width:0;transition:transform .25s,box-shadow .25s}
+.wos-film-card:nth-child(2){--film-accent:#bda0ff}.wos-film-card:nth-child(3){--film-accent:#83e9d3}
+.wos-film-card:hover{transform:translateY(-5px);box-shadow:0 28px 45px #0008,0 0 34px color-mix(in srgb,var(--film-accent),transparent 76%)}
+.wos-film-visual{position:relative;width:100%;aspect-ratio:9/13.5;background:linear-gradient(155deg,#442452,#1e0d2b);border-radius:19px;overflow:hidden;isolation:isolate}
+.wos-film-visual img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top}
+.wos-film-visual:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,#1b0f27c9);pointer-events:none}
+.wos-film-number{position:absolute;z-index:2;left:14px;top:14px;padding:6px 11px;color:#fff;border:1px solid #ffffff7b;background:#29132dba;backdrop-filter:blur(7px);border-radius:99px;font-size:.69rem;font-weight:800;letter-spacing:.12em}
+.wos-film-play{position:absolute;z-index:3;left:50%;top:52%;transform:translate(-50%,-50%);width:68px;height:68px;border-radius:50%;border:1.5px solid #fff7;background:#ffb8e64d;color:#fff;backdrop-filter:blur(12px);font-size:25px;cursor:pointer;box-shadow:0 0 0 8px #ffffff18,0 0 35px var(--film-accent);transition:scale .2s,background .2s}
+.wos-film-play:hover{scale:1.09;background:#b76cce99}.wos-film-play:focus-visible{outline:3px solid white;outline-offset:8px}
+.wos-film-duration{position:absolute;z-index:2;right:13px;bottom:12px;color:#fff;background:#1b1024c0;border:1px solid #ffffff4d;padding:5px 9px;border-radius:99px;font-size:.73rem}
+.wos-film-card-body{padding:19px 12px 0;text-align:center}
+.wos-film-card-label{color:var(--film-accent);font-weight:800;font-size:.71rem;text-transform:uppercase;letter-spacing:.15em;margin:0 0 8px}
+.wos-film-card h3{font:700 clamp(1.25rem,2vw,1.65rem)/1.2 "Playfair Display",Georgia,serif;color:#fff;margin:0 0 10px}
+.wos-film-card-desc{font-size:.88rem;line-height:1.56;color:#ead4ef;margin:0 auto 16px;max-width:300px;min-height:68px}
+.wos-film-watch{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:43px;border-radius:99px;border:1px solid var(--film-accent);background:#3a204b;color:#fff;padding:10px 21px;font-weight:800;font-size:.86rem;cursor:pointer}
+.wos-film-watch:hover{background:#60336f}.wos-film-watch:focus-visible{outline:3px solid white;outline-offset:3px}
+.wos-film-bottom{text-align:center;margin:34px auto 0;max-width:680px}
+.wos-film-bottom p{color:#ffe5f5;font-size:1rem;margin:0 0 20px}
+.wos-film-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.wos-film-links a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 20px;border-radius:99px;border:1px solid #efb9f7;background:#35194b;color:#fff;font-weight:800;text-decoration:none}
+.wos-film-links a:first-child{background:linear-gradient(110deg,#b54b9a,#7545b3)}
+.wos-film-links a:hover{filter:brightness(1.2)}
+.wos-film-footer{font-size:.8rem!important;color:#d0a5d2!important;margin-top:17px!important}
+.wos-film-dialog{position:fixed;inset:0;margin:auto;padding:10px;width:min(500px,96vw);max-width:96vw;max-height:96dvh;overflow:auto;background:linear-gradient(135deg,#251333,#110a1d);color:#fff;border:1px solid #ffc3f1;border-radius:22px;box-shadow:0 30px 80px #000d}
+.wos-film-dialog::backdrop{background:#07040be8;backdrop-filter:blur(8px)}
+.wos-film-dialog .wos-dialog-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px 6px 12px}
+.wos-film-dialog strong{font-family:"Playfair Display",Georgia,serif;font-size:1.13rem}
+.wos-film-dialog .wos-close{border:1px solid #fff9;border-radius:99px;background:#502551;color:#fff;font-weight:700;padding:9px 14px;cursor:pointer}
+.wos-film-dialog video{width:100%;max-height:74dvh;display:block;aspect-ratio:9/16;object-fit:contain;background:#0a0810;border-radius:14px}
+.wos-film-dialog .wos-dialog-note{text-align:center;color:#efcbea;font-size:.81rem;line-height:1.5;margin:12px 0 4px}
+@keyframes wosTwinkle{0%{opacity:.1;transform:scale(.7)}100%{opacity:.65;transform:scale(1.1)}}
+@media(max-width:800px){.wos-film-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:740px;margin:auto}.wos-film-card:last-child{grid-column:1/-1;max-width:350px;width:100%;justify-self:center}}
+@media(max-width:540px){#wosFilmRoom{padding:52px 12px 62px}.wos-film-grid{grid-template-columns:1fr;max-width:360px}.wos-film-card:last-child{grid-column:auto;max-width:none}.wos-film-visual{aspect-ratio:9/12}.wos-film-card-desc{min-height:0}.wos-film-card{padding-bottom:20px}}
+@media(prefers-reduced-motion:reduce){#wosFilmRoom:before,#wosFilmRoom:after{animation:none}.wos-film-card,.wos-film-play{transition:none}}
