@@ -198,6 +198,23 @@ main > #surgeEraAlbum .exp60-shine-shell{
   object-position: center !important;
 }
 </style>
+
+<style id="jahntella-global-intro-styles">
+  .jahntella-global-intro[hidden]{display:none!important}
+  .jahntella-global-intro{padding:clamp(35px,6vw,80px) 18px;background:radial-gradient(ellipse at 70% 15%,rgba(106,214,205,.14),transparent 47%),radial-gradient(ellipse at 18% 25%,rgba(249,113,197,.16),transparent 51%),#160b20;color:#fff}
+  .jahntella-global-intro-inner{width:min(1100px,100%);margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(250px,390px);align-items:center;gap:clamp(26px,6vw,80px)}
+  .jahntella-global-intro-kicker{font-weight:800;letter-spacing:.15em;font-size:.75rem;color:#f5b7df}
+  .jahntella-global-intro h2{font-size:clamp(2rem,4.2vw,3.6rem);line-height:1.14;max-width:680px;margin:16px 0;color:#fff}
+  .jahntella-global-intro h2 em{color:#f6b3df}
+  .jahntella-global-intro-copy>p:not(.jahntella-global-intro-kicker){font-size:clamp(1rem,1.6vw,1.14rem);line-height:1.65;max-width:600px;color:#f2e4f0}
+  .jahntella-global-intro-note{font-size:.95rem!important;color:#bdeee8!important}
+  .jahntella-global-intro-listen{display:inline-flex;margin-top:16px;align-items:center;min-height:44px;padding:12px 24px;background:#bb4c96;color:white;text-decoration:none;border-radius:99px;font-weight:800;border:1px solid #ffc5eb}
+  .jahntella-global-intro-listen:hover,.jahntella-global-intro-listen:focus-visible{background:#d66aae;outline-offset:3px}
+  .jahntella-global-intro-media{max-width:390px;width:100%;margin:auto;text-align:center}
+  .jahntella-global-intro-media video{display:block;width:100%;height:auto;aspect-ratio:480/854;max-height:min(75vh,700px);object-fit:contain;border:2px solid rgba(244,178,229,.65);border-radius:22px;background:#210e2b;box-shadow:0 20px 55px #0009,0 0 30px rgba(213,111,207,.18)}
+  .jahntella-global-intro-media p{font-weight:700;color:#eac7e7;font-size:.85rem;margin:12px 0 0}
+  @media(max-width:730px){.jahntella-global-intro-inner{grid-template-columns:1fr;text-align:center}.jahntella-global-intro-copy>p,.jahntella-global-intro h2{margin-left:auto;margin-right:auto}.jahntella-global-intro-media{max-width:340px}}
+</style>
 </head>
 <body>
   <div id="siteLoader" class="site-loader" aria-hidden="true">
@@ -274,6 +291,27 @@ main > #surgeEraAlbum .exp60-shine-shell{
         <span>SCROLL</span>
         <i></i>
       </a>
+    </section>
+
+
+    <!-- This welcome feature appears only when its video file is available. -->
+    <section class="jahntella-global-intro" id="jahntellaGlobalIntro" aria-labelledby="jahntellaGlobalIntroTitle" hidden>
+      <div class="jahntella-global-intro-inner">
+        <div class="jahntella-global-intro-copy">
+          <p class="jahntella-global-intro-kicker">♡ A LITTLE HELLO FROM JAHNTELLA</p>
+          <h2 id="jahntellaGlobalIntroTitle">Five albums. Five eras. <em>One World of Sweet.</em></h2>
+          <p>Over 50 songs, five incredible moods, and so much more on the way. Jahntella has a little invitation for Sweeties everywhere. ♡</p>
+          <p class="jahntella-global-intro-note">Press play to hear her welcome — with a little wink along the way!</p>
+          <a class="jahntella-global-intro-listen" href="#sweetEraAlbum">Explore the five eras ♡</a>
+        </div>
+        <div class="jahntella-global-intro-media">
+          <video id="jahntellaGlobalIntroVideo" controls playsinline preload="metadata" aria-label="Jahntella introduces her five eras and invites Sweeties around the world" width="480" height="854">
+            <source src="videos/jahntella-global-welcome-30s.mp4" type="video/mp4">
+            Your browser does not support this video.
+          </video>
+          <p>♡ A welcome from Jahntella · 30 seconds</p>
+        </div>
+      </div>
     </section>
 
 <section class="featured-now" id="featuredNow" aria-labelledby="featuredNowTitle"><div class="featured-now-inner"><p class="featured-now-eyebrow">FEATURED RIGHT NOW · LISTEN TO JAHNTELLA</p><h2 id="featuredNowTitle">Two songs. <em>Two different feelings.</em></h2><p>Every pairing is a new discovery. Listen to both, then choose your favorite Sweetie sound.</p><div class="featured-now-grid">
@@ -1507,6 +1545,25 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
     schedule();
   };
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});else run();
+})();
+</script>
+
+<script id="jahntella-global-intro-init">
+(function(){
+  'use strict';
+  const section=document.getElementById('jahntellaGlobalIntro');
+  const video=document.getElementById('jahntellaGlobalIntroVideo');
+  if(!section||!video)return;
+  // Never display a broken video: the MP4 is deliberately uploaded separately.
+  video.addEventListener('loadedmetadata',()=>{section.hidden=false;},{once:true});
+  video.addEventListener('error',()=>{section.hidden=true;});
+  // Pause radio when Sweeties choose to watch the spoken introduction.
+  video.addEventListener('play',()=>{
+    document.querySelectorAll('audio').forEach(audio=>{if(!audio.paused)audio.pause();});
+    document.querySelectorAll('video').forEach(other=>{if(other!==video&&!other.paused)other.pause();});
+  });
+  // The viewer is in control: no surprise spoken autoplay.
+  video.muted=false;
 })();
 </script>
 </body>
