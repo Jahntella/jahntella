@@ -1,5 +1,5 @@
 /* Five-era lyric sheets. Independent of player and existing song covers. */
-.era-lyric-button{display:inline-flex;align-items:center;justify-content:center;gap:6px;box-sizing:border-box;min-height:42px;min-width:104px;margin:8px 4px 6px;padding:9px 15px;border-radius:99px;border:1px solid var(--lyric-accent,#f8aad5);color:#fff;background:linear-gradient(135deg,#5a2758,#341d49);box-shadow:0 0 12px var(--lyric-halo,rgba(255,126,200,.2));font:800 .82rem/1.2 "DM Sans",Arial,sans-serif;cursor:pointer;white-space:nowrap;transition:filter .18s,transform .18s}
+.era-lyric-button{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;border:1px solid var(--lyric-accent,#f8aad5);box-shadow:0 0 12px var(--lyric-halo,rgba(255,126,200,.2));cursor:pointer;white-space:nowrap;transition:filter .18s,transform .18s}
 .era-lyric-button:hover{filter:brightness(1.22);transform:translateY(-1px)}
 .era-lyric-button:focus-visible{outline:3px solid white;outline-offset:3px}
 .era-lyric-button[data-era="sweet"]{--lyric-accent:#ff90cc;--lyric-halo:#ff90cc66}
@@ -32,7 +32,7 @@
 .era-lyrics-dialog[data-era="sparkle"]{--era-accent:#6ad3f3;--era-glow:#44c9f044;--era-soft:#e4f9ff}
 .era-lyrics-dialog[data-era="siren"]{--era-accent:#72d8ba;--era-glow:#50b89644;--era-soft:#e8fff4}
 .era-lyrics-dialog[data-era="surge"]{--era-accent:#ffa25b;--era-glow:#f9903744;--era-soft:#fff0db}
-@media(max-width:550px){.era-lyrics-dialog .eld-hero{align-items:center}.era-lyrics-dialog .eld-art{width:110px}.era-lyrics-dialog .eld-desc{font-size:.76rem}.era-lyric-button{font-size:.82rem;padding:10px 15px}}
+@media(max-width:550px){.era-lyrics-dialog .eld-hero{align-items:center}.era-lyrics-dialog .eld-art{width:110px}.era-lyrics-dialog .eld-desc{font-size:.76rem}}
 @media(prefers-reduced-motion:reduce){.era-lyric-button{transition:none}}
 
 /* Lyric-complete pages get gentle animated atmosphere in their own era palette. */
@@ -58,15 +58,3 @@
 @keyframes eld-laser-drift{0%,9%{opacity:0;translate:-25% 0}20%{opacity:.2}44%{opacity:.42}61%,100%{opacity:0;translate:235% 0}}
 @keyframes eld-comet-pass{0%,65%{opacity:0;translate:0 0}69%{opacity:.8}79%{opacity:.95;translate:calc(100vw - 40px) -95px}81%,100%{opacity:0;translate:calc(110vw + 20px) -110px}}
 @media(prefers-reduced-motion:reduce){.era-lyrics-dialog .eld-fx-stage{opacity:.38}.era-lyrics-dialog .eld-star,.era-lyrics-dialog .eld-laser,.era-lyrics-dialog .eld-comet{animation:none!important}.era-lyrics-dialog .eld-laser,.era-lyrics-dialog .eld-comet{display:none}.era-lyrics-dialog .eld-star{opacity:.5}}
-
-/* Make Sweet Era lyric buttons the same touch-target size as all other eras. */
-#sweetEraAlbum .era-lyric-button{box-sizing:border-box;min-height:42px;min-width:104px;padding:10px 15px;font-family:"DM Sans",Arial,sans-serif;font-size:.82rem;font-weight:800;line-height:1.2;flex-shrink:0}
-@media(max-width:550px){#sweetEraAlbum .era-lyric-button{min-height:42px;min-width:104px;padding:10px 15px;font-size:.82rem}}
-
-/* All eras: exact same button length and height; overrides older Sweet card styles. */
-#sweetEraAlbum button.era-lyric-button,
-#shineEraSneakPeek button.era-lyric-button,
-#sparkleEraAlbum button.era-lyric-button,
-#sirenEraAlbum button.era-lyric-button,
-#surgeEraAlbum button.era-lyric-button{display:inline-flex;width:152px;min-width:152px;max-width:152px;height:46px;min-height:46px;padding:10px 12px;margin:9px 4px 6px;box-sizing:border-box;flex:0 0 152px;justify-content:center;align-items:center;font-size:.83rem;line-height:1.2;letter-spacing:.01em;white-space:nowrap}
-@media(max-width:420px){#sweetEraAlbum button.era-lyric-button,#shineEraSneakPeek button.era-lyric-button,#sparkleEraAlbum button.era-lyric-button,#sirenEraAlbum button.era-lyric-button,#surgeEraAlbum button.era-lyric-button{width:142px;min-width:142px;max-width:142px;flex-basis:142px}}
