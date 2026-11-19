@@ -19,8 +19,21 @@
   section.className='jvh-wrap';
   section.setAttribute('aria-label','Jahntella welcome and fan experience films');
   const escape=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
-  section.innerHTML='<div class="jvh-inner">'+sets.map(group=>'<div class="jvh-group jvh-group-'+group.id+'" id="jahntellaVideos-'+group.id+'"><header class="jvh-head"><p>'+escape(group.kicker)+'</p><h2>'+escape(group.heading)+'</h2><span>'+escape(group.intro)+'</span></header><div class="jvh-grid">'+group.videos.map((v,index)=>'<article class="jvh-card" data-video-path="'+escape(v.src)+'" hidden><div class="jvh-media"><video controls playsinline preload="metadata"'+(v.poster?' poster="'+escape(v.poster)+'"':'')+' aria-label="'+escape(v.name)+'"><source data-src="'+escape(v.src)+'" type="video/mp4">Your browser does not support HTML5 video.</video></div><div class="jvh-copy"><small>'+escape(v.label)+'</small><h3>'+escape(v.name)+'</h3><p>'+escape(v.text)+'</p></div></article>').join('')+'</div></div>').join('')+'</div>';
+  section.innerHTML='<div class="jvh-inner">'+sets.map(group=>'<div class="jvh-group jvh-group-'+group.id+'" id="jahntellaVideos-'+group.id+'"><header class="jvh-head"><p>'+escape(group.kicker)+'</p><h2>'+escape(group.heading)+'</h2><span>'+escape(group.intro)+'</span></header><div class="jvh-grid">'+group.videos.map((v,index)=>'<article class="jvh-card" data-video-path="'+escape(v.src)+'" hidden><div class="jvh-media"><video controls playsinline preload="metadata"'+(v.poster?' poster="'+escape(v.poster)+'"':'')+' aria-label="'+escape(v.name)+'"><source data-src="'+escape(v.src)+'" type="video/mp4">Your browser does not support HTML5 video.</video>'+(group.id==='welcome'&&index===0?'<button class="jvh-intro-play" type="button" aria-label="Play Jahntella’s 30-second welcome">▶ <span>Watch Jahntella’s welcome ♡</span></button>':'')+'</div><div class="jvh-copy"><small>'+escape(v.label)+'</small><h3>'+escape(v.name)+'</h3><p>'+escape(v.text)+'</p><a class="jvh-open-file" href="'+escape(v.src)+'" target="_blank" rel="noopener">Open video directly ↗</a></div></article>').join('')+'</div></div>').join('')+'</div>';
   root.insertAdjacentElement('afterend',section);
+  const welcomeVideo=section.querySelector('.jvh-group-welcome .jvh-card video');
+  const welcomeButton=section.querySelector('.jvh-intro-play');
+  if(welcomeVideo&&welcomeButton){
+    welcomeButton.addEventListener('click',()=>{
+      const result=welcomeVideo.play();
+      if(result && typeof result.catch==='function'){
+        result.catch(()=>{welcomeButton.hidden=false;});
+      }
+    });
+    welcomeVideo.addEventListener('play',()=>{welcomeButton.hidden=true;});
+    welcomeVideo.addEventListener('pause',()=>{if(!welcomeVideo.ended)welcomeButton.hidden=false;});
+    welcomeVideo.addEventListener('ended',()=>{welcomeButton.hidden=false;});
+  }
   const allVideos=[...section.querySelectorAll('video')];
   allVideos.forEach(video=>{
     video.addEventListener('play',()=>{
@@ -35,8 +48,12 @@
     const path=card.dataset.videoPath;
     return fetch(path,{method:'HEAD'}).then(r=>{
       if(!r.ok)return;
-      const source=card.querySelector('source');
-      source.src=source.dataset.src;
+      const video=card.querySelector('video');
+      const source=video.querySelector('source');
+      source.src=new URL(source.dataset.src,document.baseURI).href;
+      // A <source> added after DOM insertion is not reliably picked up
+      // on mobile Safari / Chromium until the media element is reloaded.
+      video.load();
       card.hidden=false;
       return true;
     }).catch(()=>false);
