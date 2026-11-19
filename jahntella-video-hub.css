@@ -39,3 +39,8 @@
 #jahntellaVideoHub .jvh-media .jvh-intro-play:focus-visible{outline:3px solid white;outline-offset:-7px}
 #jahntellaVideoHub .jvh-open-file{display:inline-block;margin-top:12px;color:#ffd3ee;font-size:.83rem;font-weight:750;text-decoration:underline;text-underline-offset:3px}
 #jahntellaVideoHub .jvh-open-file:focus-visible{outline:2px solid white;outline-offset:4px}
+
+/* Simplified homepage: two welcome videos and one confidence video. */
+#jahntellaVideoHub .jvh-group-welcome .jvh-grid{grid-template-columns:repeat(2,minmax(0,380px));justify-content:center}
+#jahntellaVideoHub .jvh-group-fans .jvh-grid{grid-template-columns:minmax(0,380px);justify-content:center}
+@media(max-width:575px){#jahntellaVideoHub .jvh-group-welcome .jvh-grid,#jahntellaVideoHub .jvh-group-fans .jvh-grid{grid-template-columns:minmax(0,390px)}}
