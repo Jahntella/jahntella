@@ -75,3 +75,15 @@
     scroll-behavior:auto;
   }
 }
+
+/* Family welcome card replaces the earlier tall beach thank-you artwork.
+   Give the horizontal photograph room without affecting other thank-you sections. */
+.laurent-family-welcome{contain-intrinsic-size:984px 860px}
+.laurent-family-welcome .exp58-thank-you-shell{width:min(100%,72rem)}
+.laurent-family-welcome .exp58-thank-you-art{background:linear-gradient(125deg,#f9b5dc,#d98ae8 45%,#f0ce99);border-radius:clamp(16px,3vw,28px)}
+.laurent-family-welcome .exp58-thank-you-art img{width:100%;height:auto;aspect-ratio:3/2;object-fit:contain;border-radius:clamp(12px,2.4vw,22px)}
+.laurent-family-fallback{padding:clamp(38px,8vw,90px) 18px;text-align:center;display:flex;flex-direction:column;gap:17px;background:linear-gradient(150deg,#51123c,#200a2e);color:#ffeffa;border-radius:18px}
+.laurent-family-fallback[hidden]{display:none}
+.laurent-family-fallback strong{font:italic 700 clamp(1.7rem,4vw,3.4rem)/1.15 Georgia,serif}
+.laurent-family-fallback span{font:400 clamp(.96rem,2vw,1.3rem)/1.5 Georgia,serif}
+.laurent-family-fallback small{font:italic .96rem Georgia,serif;color:#f8b6df}
