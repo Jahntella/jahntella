@@ -24,7 +24,7 @@
     document.head.appendChild(css);
     const overlay = document.createElement('div');
     overlay.id = 'sweetieCardShareDialog';overlay.hidden = true;
-    overlay.innerHTML = '<div class="sweetie-card-share-panel" role="dialog" aria-modal="true" aria-labelledby="sweetieCardShareTitle"><button class="sweetie-share-close" type="button" aria-label="Close sharing">×</button><h2 id="sweetieCardShareTitle">♡ Share your fave!</h2><p data-sweetie-share-caption></p><div class="sweetie-share-buttons"><a data-sweetie-share-facebook target="_blank" rel="noopener noreferrer">Facebook quick share</a><button data-sweetie-share-facebook-post type="button">Copy link + open Facebook</button><a data-sweetie-share-x target="_blank" rel="noopener noreferrer">X / Twitter</a><button data-sweetie-share-copy type="button">Copy caption + link</button><button data-sweetie-share-native type="button" hidden>More apps…</button></div><div class="sweetie-share-feedback" role="status" aria-live="polite"></div></div>';
+    overlay.innerHTML = '<div class="sweetie-card-share-panel" role="dialog" aria-modal="true" aria-labelledby="sweetieCardShareTitle"><button class="sweetie-share-close" type="button" aria-label="Close sharing">×</button><h2 id="sweetieCardShareTitle">♡ Share your fave!</h2><p data-sweetie-share-caption></p><div class="sweetie-share-buttons"><a data-sweetie-share-facebook target="_blank" rel="noopener noreferrer">Facebook (paste caption)</a><button data-sweetie-share-facebook-post type="button">Copy link + open Facebook</button><a data-sweetie-share-x target="_blank" rel="noopener noreferrer">X / Twitter</a><button data-sweetie-share-copy type="button">Copy caption + link</button><button data-sweetie-share-native type="button" hidden>More apps…</button></div><div class="sweetie-share-feedback" role="status" aria-live="polite"></div></div>';
     document.body.appendChild(overlay);
     let previousFocus=null, shareUrl='',shareCaption='';
     const close=()=>{overlay.hidden=true;previousFocus?.focus();};
@@ -46,6 +46,16 @@
         window.prompt('Copy your song link:',shareUrl);
       }
       if(!facebook)feedback.textContent+=' If Facebook did not open, allow pop-ups or open facebook.com.';
+    });
+    // Facebook's link sharer ignores the custom quote in many clients.
+    // Copy the fan's exact caption first; they can paste into the post field.
+    overlay.querySelector('[data-sweetie-share-facebook]').addEventListener('click',()=>{
+      const feedback=overlay.querySelector('.sweetie-share-feedback');
+      if(navigator.clipboard?.writeText){
+        navigator.clipboard.writeText(shareCaption).then(()=>{
+          feedback.textContent='Caption copied! Paste it into the Facebook post before posting. ♡';
+        }).catch(()=>{feedback.textContent='Facebook may omit the caption. Use Copy caption + link below if needed.';});
+      }else feedback.textContent='Facebook may omit the caption. Use Copy caption + link below if needed.';
     });
     const native=overlay.querySelector('[data-sweetie-share-native]');
     if(typeof navigator.share==='function'){native.hidden=false;native.addEventListener('click',async()=>{try{await navigator.share({title:'Jahntella — my fave song',text:shareCaption,url:shareUrl});}catch(e){if(e.name!=='AbortError')overlay.querySelector('.sweetie-share-feedback').textContent='Try Copy caption + link.';}});}
