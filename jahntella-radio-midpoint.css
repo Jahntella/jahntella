@@ -16,3 +16,40 @@
 @keyframes jrm-spark{0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}30%{opacity:1}73%{opacity:.95;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) rotate(190deg)}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.15) rotate(250deg)}}
 @keyframes jrm-caption{0%,13%{opacity:0;transform:translateY(13px)}28%,76%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-12px)}}
 @media(prefers-reduced-motion:reduce){#jahntella-radio-midpoint{display:none!important}}
+
+/* Reserve a safe, visible band above the fixed music player for the full
+   three-line greeting. The player stays fully accessible and unchanged. */
+#jahntella-radio-midpoint{
+  padding:clamp(15px,4vh,48px) 12px clamp(220px,28vh,270px);
+  gap:clamp(9px,2vh,22px);
+}
+#jahntella-radio-midpoint .jrm-stage{width:clamp(145px,27vw,250px)}
+#jahntella-radio-midpoint .jrm-caption{
+  position:fixed;
+  bottom:calc(120px + env(safe-area-inset-bottom,0px));
+  left:50%;
+  transform:translateX(-50%);
+  width:max-content;
+  max-width:min(92vw,630px);
+  z-index:2147480955;
+  animation:jrm-caption-safe 3.9s ease both;
+}
+@keyframes jrm-caption-safe{
+  0%,13%{opacity:0;translate:0 12px}
+  28%,76%{opacity:1;translate:0 0}
+  100%{opacity:0;translate:0 -12px}
+}
+@media(max-width:760px){
+  #jahntella-radio-midpoint{padding:clamp(14px,4vh,35px) 9px clamp(210px,32vh,270px)}
+  #jahntella-radio-midpoint .jrm-stage{width:clamp(132px,42vw,200px)}
+  #jahntella-radio-midpoint .jrm-caption{
+    bottom:calc(128px + env(safe-area-inset-bottom,0px));
+    padding:10px 13px;
+    max-width:calc(100vw - 24px);
+  }
+}
+@media(max-height:610px){
+  #jahntella-radio-midpoint{padding-top:8px;padding-bottom:182px}
+  #jahntella-radio-midpoint .jrm-stage{width:clamp(100px,22vh,145px)}
+  #jahntella-radio-midpoint .jrm-caption{bottom:calc(110px + env(safe-area-inset-bottom,0px));padding:8px 10px}
+}
