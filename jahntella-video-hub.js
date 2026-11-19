@@ -5,7 +5,7 @@
   if(!root || document.getElementById('jahntellaVideoHub'))return;
   const sets=[
     {id:'welcome',heading:'Welcome to Jahntella’s World',kicker:'♡ MEET JAHNTELLA',intro:'Five albums. Five eras. More than 50 songs. Come say hello, discover the music, and make this world your own.',videos:[
-      {name:'A Little Hello from Jahntella',label:'START HERE · 30 SECONDS',text:'Jahntella personally invites Sweeties around the world into her five eras and all-immersive world of music.',src:'videos/jahntella-global-welcome-30s.mp4',poster:'JWORLDOFSWEET.png'},
+      {name:'A Little Hello from Jahntella',label:'START HERE · 30 SECONDS',text:'Jahntella personally invites Sweeties around the world into her five eras and all-immersive world of music.',src:'videos/jahntella-global-welcome-30s.mp4',poster:''},
       {name:'Discover the Music Store',label:'EXPLORE THE MUSIC',text:'Find your sound, pick your era, and discover the Jahntella songs that speak to you.',src:'videos/videos/videos/videos/find-your-sound.mp4',poster:'videos/videos/videos/videos/find-your-sound-poster.webp'},
       {name:'Share Your Moment to Reels',label:'CREATE · SHARE · SHINE',text:'Make a Reel with Jahntella’s music, share your creativity, and invite other Sweeties into the fun.',src:'videos/videos/videos/videos/sweeties-spotlight-invite.mp4',poster:'videos/videos/videos/videos/sweeties-spotlight-invite-poster.webp'}
     ]},
@@ -19,7 +19,7 @@
   section.className='jvh-wrap';
   section.setAttribute('aria-label','Jahntella welcome and fan experience films');
   const escape=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
-  section.innerHTML='<div class="jvh-inner">'+sets.map(group=>'<div class="jvh-group jvh-group-'+group.id+'" id="jahntellaVideos-'+group.id+'"><header class="jvh-head"><p>'+escape(group.kicker)+'</p><h2>'+escape(group.heading)+'</h2><span>'+escape(group.intro)+'</span></header><div class="jvh-grid">'+group.videos.map((v,index)=>'<article class="jvh-card" data-video-path="'+escape(v.src)+'" hidden><div class="jvh-media"><video controls playsinline preload="none"'+(v.poster?' poster="'+escape(v.poster)+'"':'')+' aria-label="'+escape(v.name)+'"><source data-src="'+escape(v.src)+'" type="video/mp4">Your browser does not support HTML5 video.</video></div><div class="jvh-copy"><small>'+escape(v.label)+'</small><h3>'+escape(v.name)+'</h3><p>'+escape(v.text)+'</p></div></article>').join('')+'</div></div>').join('')+'</div>';
+  section.innerHTML='<div class="jvh-inner">'+sets.map(group=>'<div class="jvh-group jvh-group-'+group.id+'" id="jahntellaVideos-'+group.id+'"><header class="jvh-head"><p>'+escape(group.kicker)+'</p><h2>'+escape(group.heading)+'</h2><span>'+escape(group.intro)+'</span></header><div class="jvh-grid">'+group.videos.map((v,index)=>'<article class="jvh-card" data-video-path="'+escape(v.src)+'" hidden><div class="jvh-media"><video controls playsinline preload="metadata"'+(v.poster?' poster="'+escape(v.poster)+'"':'')+' aria-label="'+escape(v.name)+'"><source data-src="'+escape(v.src)+'" type="video/mp4">Your browser does not support HTML5 video.</video></div><div class="jvh-copy"><small>'+escape(v.label)+'</small><h3>'+escape(v.name)+'</h3><p>'+escape(v.text)+'</p></div></article>').join('')+'</div></div>').join('')+'</div>';
   root.insertAdjacentElement('afterend',section);
   const allVideos=[...section.querySelectorAll('video')];
   allVideos.forEach(video=>{
