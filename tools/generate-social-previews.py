@@ -73,5 +73,4 @@ for page in sorted(SONGS.glob("*.html")):
     done.append(page.name)
 print("Generated",len(done),"share images:",", ".join(done))
 if skipped:
-    print("Skipped:",skipped)
-    raise SystemExit("Some song share images could not be built")
+    print("Skipped (original cover missing):",skipped)
