@@ -339,7 +339,10 @@
   const playbackNotice = document.createElement('button');
   playbackNotice.type = 'button';
   playbackNotice.setAttribute('aria-live','polite');
-  playbackNotice.style.cssText = 'display:none;position:relative;z-index:5;margin:5px auto;padding:7px 13px;border:1px solid #ffb2dc;border-radius:20px;background:#3a123a;color:white;font:600 12px Arial,sans-serif;cursor:pointer';
+  // Keep the recovery action outside the player grid layout, so displaying
+  // it cannot create an extra row or make the mobile dock taller.
+  playbackNotice.className = 'jahntella-resume-notice';
+  playbackNotice.style.display = 'none';
   playbackNotice.textContent = '♡ Tap to resume this song';
   player.appendChild(playbackNotice);
   const hidePlaybackNotice = () => { playbackNotice.style.display = 'none'; };
@@ -373,7 +376,7 @@
             if(serial===transitionSerial && currentKey===key) {
               setPlaying(true);
               transitionWatchdog=setTimeout(()=>{
-                if(currentKey===key && serial===transitionSerial && audio.currentTime<=from+0.35)showPlaybackNotice();
+                if(currentKey===key && serial===transitionSerial && !audio.paused && !audio.ended && !document.hidden && audio.currentTime<=from+0.35)showPlaybackNotice();
               },6500);
             }
           }).catch(()=>showPlaybackNotice());
@@ -381,7 +384,7 @@
         if(audio.readyState>=2)restart();
         else audio.addEventListener('canplay',restart,{once:true});
         transitionWatchdog=setTimeout(()=>{
-          if(serial===transitionSerial && currentKey===key && audio.currentTime<=from+0.35)showPlaybackNotice();
+          if(serial===transitionSerial && currentKey===key && !audio.paused && !audio.ended && !document.hidden && audio.currentTime<=from+0.35)showPlaybackNotice();
         },9000);
       }
     };
