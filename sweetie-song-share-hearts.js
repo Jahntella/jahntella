@@ -39,8 +39,7 @@
     if(typeof navigator.share==='function'){native.hidden=false;native.addEventListener('click',async()=>{try{await navigator.share({title:'Jahntella — my fave song',text:shareCaption,url:shareUrl});}catch(e){if(e.name!=='AbortError')overlay.querySelector('.sweetie-share-feedback').textContent='Try Copy caption + link.';}});}
     const open=(key,card,button)=>{
       previousFocus=button;
-      const url=new URL(window.location.origin+window.location.pathname);
-      url.searchParams.set('song',key);url.hash='sweetieLounge';
+      const url=new URL('/songs/'+encodeURIComponent(key)+'.html',window.location.origin);
       shareUrl=url.toString();
       shareCaption='OMG 💗 My fave song right now is '+songName(key,card)+' by Jahntella! 🎶 Come listen with me!';
       overlay.querySelector('[data-sweetie-share-caption]').textContent=shareCaption;
