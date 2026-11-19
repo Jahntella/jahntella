@@ -5,11 +5,11 @@
   if(!root || document.getElementById('jahntellaVideoHub'))return;
   const sets=[
     {id:'welcome',heading:'Welcome to Jahntella’s World',kicker:'♡ MEET JAHNTELLA',intro:'Five albums. Five eras. More than 50 songs. Come say hello, discover the music, and make this world your own.',videos:[
-      {name:'A Little Hello from Jahntella',label:'START HERE · 30 SECONDS',text:'Jahntella personally invites Sweeties around the world into her five eras and all-immersive world of music.',src:'videos/jahntella-global-welcome-30s.mp4',poster:''},
-      {name:'Share Your Moment to Reels',label:'CREATE · SHARE · SHINE',text:'Make a Reel with Jahntella’s music, share your creativity, and invite other Sweeties into the fun.',src:'videos/videos/videos/videos/sweeties-spotlight-invite.mp4',poster:'videos/videos/videos/videos/sweeties-spotlight-invite-poster.webp'}
+      {name:'A Little Hello from Jahntella',label:'START HERE · 30 SECONDS',text:'Jahntella personally invites Sweeties around the world into her five eras and all-immersive world of music.',src:'videos/jahntella-global-welcome-30s.mp4',poster:'c6670e60-a503-48df-981b-536c21542b00.png'},
+      {name:'Share Your Moment to Reels',label:'CREATE · SHARE · SHINE',text:'Make a Reel with Jahntella’s music, share your creativity, and invite other Sweeties into the fun.',src:'videos/videos/videos/videos/sweeties-spotlight-invite.mp4',poster:'98aacb45-e77c-45c2-a3e7-c8d2bfb25c93.png'}
     ]},
     {id:'fans',heading:'Your Fan Experience',kicker:'♡ YOU BELONG HERE',intro:'A personal message about confidence, kindness, and knowing you belong in the World of Sweet.',videos:[
-      {name:'You Are Beautiful Just as You Are',label:'A MESSAGE FROM JAHNTELLA',text:'For the days you don’t feel beautiful, handsome, or confident: a little encouragement from Jahntella, just for you.',src:'videos/videos/jahntella-welcome.mp4',poster:'videos/videos/jahntella-welcome-poster.jpg'},
+      {name:'You Are Beautiful Just as You Are',label:'A MESSAGE FROM JAHNTELLA',text:'For the days you don’t feel beautiful, handsome, or confident: a little encouragement from Jahntella, just for you.',src:'videos/videos/jahntella-welcome.mp4',poster:'0396f96b-d115-4227-81bd-135fc937305c.png'},
     ]}
   ];
   const section=document.createElement('section');
