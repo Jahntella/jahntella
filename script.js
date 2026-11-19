@@ -332,6 +332,61 @@
     });
   };
 
+  // Mobile browsers sometimes report play() success while the next remote file
+  // is still stalled. Recover this transition once without reloading the site.
+  let transitionWatchdog = null;
+  let transitionSerial = 0;
+  const playbackNotice = document.createElement('button');
+  playbackNotice.type = 'button';
+  playbackNotice.setAttribute('aria-live','polite');
+  playbackNotice.style.cssText = 'display:none;position:relative;z-index:5;margin:5px auto;padding:7px 13px;border:1px solid #ffb2dc;border-radius:20px;background:#3a123a;color:white;font:600 12px Arial,sans-serif;cursor:pointer';
+  playbackNotice.textContent = '♡ Tap to resume this song';
+  player.appendChild(playbackNotice);
+  const hidePlaybackNotice = () => { playbackNotice.style.display = 'none'; };
+  const showPlaybackNotice = () => { playbackNotice.style.display = 'block'; };
+  playbackNotice.addEventListener('click', () => {
+    const audio=currentTrack()?.audio;
+    if(!audio)return;
+    hidePlaybackNotice();
+    audio.play().then(()=>setPlaying(true)).catch(()=>showPlaybackNotice());
+  });
+  const watchMobileTransition = (key, audio) => {
+    clearTimeout(transitionWatchdog);
+    const serial=++transitionSerial;
+    const from=audio.currentTime;
+    let recoveryUsed=false;
+    const check=()=>{
+      if(serial!==transitionSerial || currentKey!==key || audio.ended || audio.paused || document.hidden)return;
+      if(audio.currentTime>from+0.35){hidePlaybackNotice();return;}
+      if(!recoveryUsed){
+        recoveryUsed=true;
+        const position=audio.currentTime;
+        // One load retry only, preserving position when metadata is available.
+        audio.pause();
+        audio.load();
+        const restart=()=>{
+          if(serial!==transitionSerial || currentKey!==key)return;
+          if(position>0 && audio.seekable.length){
+            try{audio.currentTime=position;}catch(e){}
+          }
+          audio.play().then(()=>{
+            if(serial===transitionSerial && currentKey===key) {
+              setPlaying(true);
+              transitionWatchdog=setTimeout(()=>{
+                if(currentKey===key && serial===transitionSerial && audio.currentTime<=from+0.35)showPlaybackNotice();
+              },6500);
+            }
+          }).catch(()=>showPlaybackNotice());
+        };
+        if(audio.readyState>=2)restart();
+        else audio.addEventListener('canplay',restart,{once:true});
+        transitionWatchdog=setTimeout(()=>{
+          if(serial===transitionSerial && currentKey===key && audio.currentTime<=from+0.35)showPlaybackNotice();
+        },9000);
+      }
+    };
+    transitionWatchdog=setTimeout(check,8500);
+  };
   const selectTrack = (key, autoplay = true, options = {}) => {
     const track = tracks[key];
     if (!track?.audio) return;
@@ -339,6 +394,9 @@
       activePlaylist=null;playlistPosition=-1;playlistStatus();
     }
     const changing = currentKey !== key;
+    clearTimeout(transitionWatchdog);
+    ++transitionSerial;
+    hidePlaybackNotice();
     stopOthers(track.audio);
     currentKey = key;
     if (activePlaylist) playlistStatus();
@@ -376,6 +434,7 @@
       track.audio.play().then(() => {
         if (currentKey !== key || track.audio.paused) return;
         setPlaying(true);
+        if(changing || options.fresh)watchMobileTransition(key,track.audio);
         // Celebrate confirmed new selections and autoplay transitions, not resume/pause.
         if (changing || options.fresh) {
           window.dispatchEvent(new CustomEvent('jahntella:trackstarted', {detail:{
@@ -387,6 +446,7 @@
       }).catch(error => {
         console.warn('Jahntella playback could not start:', track.title, error);
         setPlaying(false);
+        if(currentKey===key)showPlaybackNotice();
       });
     } else setPlaying(false);
   };
@@ -607,6 +667,7 @@
     track.audio.addEventListener("pause", () => { if (currentTrack() === track && !track.audio.ended) setPlaying(false); });
     track.audio.addEventListener("timeupdate", () => {
       if (currentTrack() !== track) return;
+      if(!track.audio.paused && track.audio.currentTime>0.5)hidePlaybackNotice();
       progress.value = track.audio.duration ? (track.audio.currentTime / track.audio.duration) * 100 : 0;
       time.textContent = formatTime(track.audio.currentTime);
       persistSitePlayback();
