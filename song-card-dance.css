@@ -20,9 +20,16 @@ body.jahntella-song-cards-playing .release-card[data-card]:nth-child(3n),
 body.jahntella-song-cards-playing .exp44-new-music-card[data-card]:nth-child(3n) {
   animation-delay: -1.05s;
 }
-/* Make hovering or keyboard interaction steady and comfortable. */
-body.jahntella-song-cards-playing .release-card[data-card]:is(:hover,:focus-within),
-body.jahntella-song-cards-playing .exp44-new-music-card[data-card]:is(:hover,:focus-within) {
+/* Pause only for a real hover device or visible keyboard focus.
+   Mobile taps leave :hover/:focus-within stuck and previously froze the cards. */
+@media (hover: hover) and (pointer: fine) {
+  body.jahntella-song-cards-playing .release-card[data-card]:hover,
+  body.jahntella-song-cards-playing .exp44-new-music-card[data-card]:hover {
+    animation-play-state: paused;
+  }
+}
+body.jahntella-song-cards-playing .release-card[data-card]:has(:focus-visible),
+body.jahntella-song-cards-playing .exp44-new-music-card[data-card]:has(:focus-visible) {
   animation-play-state: paused;
 }
 /* Keep animation out of view for users who request less motion. */
