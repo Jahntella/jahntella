@@ -62,3 +62,11 @@
 /* Make Sweet Era lyric buttons the same touch-target size as all other eras. */
 #sweetEraAlbum .era-lyric-button{box-sizing:border-box;min-height:42px;min-width:104px;padding:10px 15px;font-family:"DM Sans",Arial,sans-serif;font-size:.82rem;font-weight:800;line-height:1.2;flex-shrink:0}
 @media(max-width:550px){#sweetEraAlbum .era-lyric-button{min-height:42px;min-width:104px;padding:10px 15px;font-size:.82rem}}
+
+/* All eras: exact same button length and height; overrides older Sweet card styles. */
+#sweetEraAlbum button.era-lyric-button,
+#shineEraSneakPeek button.era-lyric-button,
+#sparkleEraAlbum button.era-lyric-button,
+#sirenEraAlbum button.era-lyric-button,
+#surgeEraAlbum button.era-lyric-button{display:inline-flex;width:152px;min-width:152px;max-width:152px;height:46px;min-height:46px;padding:10px 12px;margin:9px 4px 6px;box-sizing:border-box;flex:0 0 152px;justify-content:center;align-items:center;font-size:.83rem;line-height:1.2;letter-spacing:.01em;white-space:nowrap}
+@media(max-width:420px){#sweetEraAlbum button.era-lyric-button,#shineEraSneakPeek button.era-lyric-button,#sparkleEraAlbum button.era-lyric-button,#sirenEraAlbum button.era-lyric-button,#surgeEraAlbum button.era-lyric-button{width:142px;min-width:142px;max-width:142px;flex-basis:142px}}
