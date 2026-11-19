@@ -24,7 +24,7 @@
     document.head.appendChild(css);
     const overlay = document.createElement('div');
     overlay.id = 'sweetieCardShareDialog';overlay.hidden = true;
-    overlay.innerHTML = '<div class="sweetie-card-share-panel" role="dialog" aria-modal="true" aria-labelledby="sweetieCardShareTitle"><button class="sweetie-share-close" type="button" aria-label="Close sharing">×</button><h2 id="sweetieCardShareTitle">♡ Share your fave!</h2><p data-sweetie-share-caption></p><div class="sweetie-share-buttons"><a data-sweetie-share-facebook target="_blank" rel="noopener noreferrer">Facebook</a><a data-sweetie-share-x target="_blank" rel="noopener noreferrer">X / Twitter</a><button data-sweetie-share-copy type="button">Copy caption + link</button><button data-sweetie-share-native type="button" hidden>More apps…</button></div><div class="sweetie-share-feedback" role="status" aria-live="polite"></div></div>';
+    overlay.innerHTML = '<div class="sweetie-card-share-panel" role="dialog" aria-modal="true" aria-labelledby="sweetieCardShareTitle"><button class="sweetie-share-close" type="button" aria-label="Close sharing">×</button><h2 id="sweetieCardShareTitle">♡ Share your fave!</h2><p data-sweetie-share-caption></p><div class="sweetie-share-buttons"><a data-sweetie-share-facebook target="_blank" rel="noopener noreferrer">Facebook quick share</a><button data-sweetie-share-facebook-post type="button">Copy link + open Facebook</button><a data-sweetie-share-x target="_blank" rel="noopener noreferrer">X / Twitter</a><button data-sweetie-share-copy type="button">Copy caption + link</button><button data-sweetie-share-native type="button" hidden>More apps…</button></div><div class="sweetie-share-feedback" role="status" aria-live="polite"></div></div>';
     document.body.appendChild(overlay);
     let previousFocus=null, shareUrl='',shareCaption='';
     const close=()=>{overlay.hidden=true;previousFocus?.focus();};
@@ -34,6 +34,18 @@
     overlay.querySelector('[data-sweetie-share-copy]').addEventListener('click',async()=>{
       try{await navigator.clipboard.writeText(shareCaption+' '+shareUrl);overlay.querySelector('.sweetie-share-feedback').textContent='Copied! ♡';}
       catch(e){window.prompt('Copy your message:',shareCaption+' '+shareUrl);}
+    });
+    overlay.querySelector('[data-sweetie-share-facebook-post]').addEventListener('click',async()=>{
+      const feedback=overlay.querySelector('.sweetie-share-feedback');
+      const facebook=window.open('https://www.facebook.com/','_blank','noopener,noreferrer');
+      try{
+        await navigator.clipboard.writeText(shareCaption+'\n'+shareUrl);
+        feedback.textContent='Copied! In Facebook, choose Create post, paste, then press Post. ♡';
+      }catch(e){
+        feedback.textContent='Copy the song link below, then paste into a new Facebook post.';
+        window.prompt('Copy your song link:',shareUrl);
+      }
+      if(!facebook)feedback.textContent+=' If Facebook did not open, allow pop-ups or open facebook.com.';
     });
     const native=overlay.querySelector('[data-sweetie-share-native]');
     if(typeof navigator.share==='function'){native.hidden=false;native.addEventListener('click',async()=>{try{await navigator.share({title:'Jahntella — my fave song',text:shareCaption,url:shareUrl});}catch(e){if(e.name!=='AbortError')overlay.querySelector('.sweetie-share-feedback').textContent='Try Copy caption + link.';}});}
