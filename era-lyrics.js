@@ -88,7 +88,7 @@ function addToCard(card){
  if(card.querySelector('.era-lyric-button'))return;
  const info=details(card);if(!info)return;
  const button=document.createElement('button');button.type='button';
- button.className='play-button era-lyric-button';button.dataset.era=info.era;
+ button.className='era-lyric-button';button.dataset.era=info.era;
  button.textContent='♡ Lyrics';
  button.setAttribute('aria-label','Open '+info.title+' lyric sheet');
  button.addEventListener('click',()=>open(card,button));
@@ -99,28 +99,6 @@ function addToCard(card){
    .find(el=>el.closest('[data-card]')===card);
  if(playButton){
   playButton.insertAdjacentElement('afterend',button);
-  // Match the actual Play button on this card, not a fixed global width.
-  const matchPlay=()=>{
-   if(!playButton.isConnected||!button.isConnected)return;
-   const cs=getComputedStyle(playButton);
-   const width=playButton.getBoundingClientRect().width;
-   const height=playButton.getBoundingClientRect().height;
-   if(width>0){button.style.width=width+'px';button.style.minWidth=width+'px';button.style.maxWidth=width+'px';button.style.flex='0 0 '+width+'px';}
-   if(height>0){button.style.height=height+'px';button.style.minHeight=height+'px';}
-   button.style.borderRadius=cs.borderRadius;
-   button.style.padding=cs.padding;
-   button.style.fontSize=cs.fontSize;
-   button.style.fontWeight=cs.fontWeight;
-   button.style.marginTop=cs.marginTop;
-   button.style.marginBottom=cs.marginBottom;
-   button.style.marginLeft=cs.marginLeft;
-   button.style.marginRight=cs.marginRight;
-  };
-  requestAnimationFrame(matchPlay);
-  if(typeof ResizeObserver!=='undefined'){
-   const ro=new ResizeObserver(()=>requestAnimationFrame(matchPlay));
-   ro.observe(playButton);
-  }
  }else{
   // Non-playing items may still offer a lyrics sheet, without changing playback.
   const title=card.querySelector('h3');
