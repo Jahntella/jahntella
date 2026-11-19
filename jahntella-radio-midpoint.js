@@ -80,42 +80,17 @@
     active=root;
     clearTimer=window.setTimeout(()=>{if(active===root)remove()},3900);
   }
-  window.addEventListener('jahntella:trackstarted',(e)=>{lastStarted=e.detail||null;});
-  document.addEventListener('timeupdate',(e)=>{
-    const audio=e.target;
-    if(!(audio instanceof HTMLAudioElement)||!audio.id.startsWith('audio'))return;
-    const duration=audio.duration;
-    if(!Number.isFinite(duration)||duration<30)return;
-    const position=audio.currentTime,half=duration/2;
-    let state=states.get(audio);
-    if(!state){state={previous:position,fired:position>=half};states.set(audio,state);return}
-    // A fresh replay from the beginning can have its own midpoint moment.
-    if(position<1.5&&state.previous>3)state.fired=false;
-    if(!state.fired&&state.previous<half&&position>=half){
-      state.fired=true;
-      // Do not show a belated moment after somebody scrubs past halfway.
-      if(!audio.paused&&!audio.seeking&&position-half<2.5&&player()?.classList.contains('playing'))show(currentMeta());
-    }
-    state.previous=position;
-  },true);
-  document.addEventListener('play',(e)=>{
-    const audio=e.target;
-    if(!(audio instanceof HTMLAudioElement)||!audio.id.startsWith('audio'))return;
-    const half=Number.isFinite(audio.duration)?audio.duration/2:Infinity;
-    const previous=states.get(audio);
-    // Preserve halfway state when resuming, reset only on a new play from zero.
-    if(!previous||audio.currentTime<1){states.set(audio,{previous:audio.currentTime,fired:audio.currentTime>=half})}
-  },true);
-  document.addEventListener('seeked',(e)=>{
-    const audio=e.target;
-    if(!(audio instanceof HTMLAudioElement))return;
-    const state=states.get(audio);
-    if(!state)return;
-    state.previous=audio.currentTime;
-    // Seeking ahead of the midpoint shouldn't summon a delayed overlay.
-    if(Number.isFinite(audio.duration)&&audio.currentTime>=audio.duration/2)state.fired=true;
-    if(audio.currentTime<1.5)state.fired=false;
-  },true);
+  // Driven by the main music player's active-track timeupdate event.
+  // This keeps the radio moment synced through playlists and next-song changes.
+  window.addEventListener('jahntella:radio-midpoint',({detail})=>{
+    if(!detail)return;
+    lastStarted=detail;
+    show(detail);
+  });
+  window.addEventListener('jahntella:trackstarted',(e)=>{
+    lastStarted=e.detail||null;
+    remove();
+  });
   document.addEventListener('pause',(e)=>{
     if(e.target instanceof HTMLAudioElement)remove();
   },true);
