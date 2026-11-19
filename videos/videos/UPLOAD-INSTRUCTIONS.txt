@@ -1,0 +1,36 @@
+JAHNTELLA — WORLD OF SWEET VIDEO SHOWCASE
+========================================
+
+The website code has already been committed to the main repository.
+
+NEXT STEP: Upload these SIX media files to the existing repository folder:
+  Jahntella/jahntella -> videos -> videos
+
+Upload the individual files INSIDE this ZIP's videos/videos/ folder, NOT the ZIP itself:
+
+  find-your-sound.mp4
+  find-your-sound-poster.webp
+  sweetie-community.mp4
+  sweetie-community-poster.webp
+  sweeties-spotlight-invite.mp4
+  sweeties-spotlight-invite-poster.webp
+
+GitHub upload instructions:
+  1. Open github.com/Jahntella/jahntella/tree/main/videos/videos
+  2. Click Add file -> Upload files.
+  3. Drag all six unzipped files into that folder.
+  4. Click Commit changes.
+
+The section "Step Into the World of Sweet" will then automatically appear
+below Jahntella's existing welcome video on jahntella.com.
+
+The three playable cards are:
+  1. Find Your Sound (10 seconds)
+  2. Come Be a Sweetie (15 seconds)
+  3. Your Moment to Shine (30 seconds)
+
+The videos only play when clicked. Playing one pauses other on-page audio.
+The website checks that all six video/poster files exist before showing
+this section, so visitors won't see broken cards before upload.
+
+This package was optimized for quick website loading from the three uploaded originals.
