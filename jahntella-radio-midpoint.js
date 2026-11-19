@@ -42,7 +42,7 @@
     const card=Array.from(document.querySelectorAll('[data-card]')).find(x=>x.querySelector('h3')?.textContent?.trim()===title);
     return {key:known?.key||card?.dataset.card||'',title,artwork:known?.artwork||art,era:known?.era||card?.closest('#sweetEraAlbum,#shineEraSneakPeek,#sparkleEraAlbum,#sirenEraAlbum,#surgeEraAlbum')?.id||''};
   };
-  function show(meta){
+  function show(meta,kind='thanks'){
     if(document.hidden||reduceMotion()||document.getElementById('sweetie-battle-showdown'))return;
     if(!meta.artwork)return;
     remove();
@@ -72,9 +72,18 @@
       sparkle.style.setProperty('--delay',(i%4)*.08+'s');stage.appendChild(sparkle);
     });
     const message=document.createElement('div');message.className='jrm-caption';
-    const heading=document.createElement('strong');heading.textContent='You’re listening to “'+meta.title+'”';
-    const station=document.createElement('span');station.textContent='on Jahntella Radio ♡';
-    const thanks=document.createElement('small');thanks.textContent='Thank you for being here, Sweetie!';
+    const heading=document.createElement('strong');
+    const station=document.createElement('span');
+    const thanks=document.createElement('small');
+    if(kind==='share'){
+      heading.textContent='Enjoying “'+meta.title+'”, Sweetie? ♡';
+      station.textContent='Tap the ♡ heart on this song’s card to share!';
+      thanks.textContent='Let the world know your favorite! 💗';
+    }else{
+      heading.textContent='You’re listening to “'+meta.title+'”';
+      station.textContent='on Jahntella Radio ♡';
+      thanks.textContent='Thank you for being here, Sweetie!';
+    }
     message.append(heading,station,thanks);
     root.append(halo,stage,message);document.body.appendChild(root);
     active=root;
@@ -86,6 +95,11 @@
     if(!detail)return;
     lastStarted=detail;
     show(detail);
+  });
+  window.addEventListener('jahntella:radio-share-reminder',({detail})=>{
+    if(!detail)return;
+    lastStarted=detail;
+    show(detail,'share');
   });
   window.addEventListener('jahntella:trackstarted',(e)=>{
     lastStarted=e.detail||null;
