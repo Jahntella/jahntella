@@ -1,0 +1,24 @@
+/* Cohesive, lightweight 5-video welcome and fan experience hub */
+#jahntellaVideoHub[hidden],#jahntellaVideoHub .jvh-group[hidden],#jahntellaVideoHub .jvh-card[hidden]{display:none!important}
+#jahntellaVideoHub{background:radial-gradient(ellipse at 10% 9%,rgba(255,128,197,.18),transparent 42%),radial-gradient(ellipse at 90% 70%,rgba(92,218,214,.13),transparent 48%),linear-gradient(165deg,#1c0c26,#140a22 55%,#180d27);color:#fff;padding:clamp(35px,6vw,80px) 16px;scroll-margin-top:90px}
+#jahntellaVideoHub *{box-sizing:border-box}
+#jahntellaVideoHub .jvh-inner{max-width:1160px;margin:auto}
+#jahntellaVideoHub .jvh-group+.jvh-group{border-top:1px solid rgba(255,212,244,.22);margin-top:clamp(48px,7vw,86px);padding-top:clamp(42px,5vw,65px)}
+#jahntellaVideoHub .jvh-head{text-align:center;max-width:780px;margin:0 auto 30px}
+#jahntellaVideoHub .jvh-head>p{letter-spacing:.18em;font-weight:800;font-size:.77rem;color:#ffbade;margin:0 0 12px}
+#jahntellaVideoHub .jvh-head h2{font:700 clamp(2rem,4.5vw,3.6rem)/1.12 Georgia,serif;color:#fff;margin:0 0 16px}
+#jahntellaVideoHub .jvh-head>span{font:400 clamp(.95rem,1.5vw,1.12rem)/1.6 Arial,sans-serif;color:#e8d5e9;display:block}
+#jahntellaVideoHub .jvh-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch;gap:clamp(13px,2.1vw,24px)}
+#jahntellaVideoHub .jvh-group-fans .jvh-grid{grid-template-columns:repeat(2,minmax(0,380px));justify-content:center}
+#jahntellaVideoHub .jvh-card{border:1px solid rgba(255,194,240,.40);background:linear-gradient(150deg,#351a41,#1c102e);border-radius:24px;overflow:hidden;min-width:0;box-shadow:0 18px 50px #0005;display:flex;flex-direction:column}
+#jahntellaVideoHub .jvh-card:nth-child(2){border-color:rgba(136,231,237,.4)}
+#jahntellaVideoHub .jvh-card:nth-child(3){border-color:rgba(255,166,106,.44)}
+#jahntellaVideoHub .jvh-media{background:#1a1029;position:relative;aspect-ratio:9/12;display:flex;align-items:center;justify-content:center}
+#jahntellaVideoHub .jvh-media video{width:100%;height:100%;display:block;object-fit:contain;background:#120b1c}
+#jahntellaVideoHub .jvh-copy{padding:19px 19px 23px;flex:1}
+#jahntellaVideoHub .jvh-copy small{color:#f6b2e1;font-weight:800;letter-spacing:.12em;font-size:.7rem}
+#jahntellaVideoHub .jvh-copy h3{font:700 clamp(1.16rem,2vw,1.5rem)/1.25 Georgia,serif;margin:9px 0;color:#fff}
+#jahntellaVideoHub .jvh-copy p{margin:0;color:#eadbed;font:400 .92rem/1.55 Arial,sans-serif}
+#jahntellaVideoHub .jvh-card:focus-within{outline:2px solid #fff;outline-offset:3px}
+@media(max-width:800px){#jahntellaVideoHub .jvh-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#jahntellaVideoHub .jvh-grid>.jvh-card:nth-child(3){grid-column:1/-1;width:min(100%,380px);justify-self:center}}
+@media(max-width:575px){#jahntellaVideoHub{padding:44px 12px 58px}#jahntellaVideoHub .jvh-grid,#jahntellaVideoHub .jvh-group-fans .jvh-grid{grid-template-columns:1fr;max-width:390px;margin:auto}#jahntellaVideoHub .jvh-grid>.jvh-card:nth-child(3){grid-column:auto;width:auto}#jahntellaVideoHub .jvh-media{aspect-ratio:9/12}#jahntellaVideoHub .jvh-copy{padding:16px 17px 21px}}
