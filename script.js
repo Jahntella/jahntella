@@ -619,7 +619,7 @@
   const radioProgress = new WeakMap();
   Object.values(tracks).forEach(track => {
     const audio=track.audio;
-    radioProgress.set(audio,{last:0,fired:false,shareFired:false,seeked:false});
+    radioProgress.set(audio,{last:0,lyricsFired:false,fired:false,shareFired:false,seeked:false});
     audio.addEventListener('seeking',()=>{
       const state=radioProgress.get(audio);
       if(state)state.seeked=true;
@@ -628,6 +628,7 @@
       const state=radioProgress.get(audio);
       if(!state)return;
       state.last=audio.currentTime;
+      state.lyricsFired=Number.isFinite(audio.duration)&&audio.currentTime>=audio.duration*.25;
       state.fired=Number.isFinite(audio.duration)&&audio.currentTime>=audio.duration/2;
       state.shareFired=Number.isFinite(audio.duration)&&audio.currentTime>=audio.duration*.75;
       state.seeked=false;
@@ -636,6 +637,7 @@
       const state=radioProgress.get(audio);
       if(state&&audio.currentTime<1){
         state.last=0;
+        state.lyricsFired=false;
         state.fired=false;
         state.shareFired=false;
         state.seeked=false;
@@ -646,9 +648,21 @@
       const state=radioProgress.get(audio);
       const now=audio.currentTime,duration=audio.duration;
       if(!state||!Number.isFinite(duration)||duration<30)return;
+      const lyricsPoint=duration*.25;
       const midpoint=duration/2;
       // Reset state on a real restart, not merely an audio pause/resume.
-      if(now<1&&state.last>3){state.fired=false;state.shareFired=false;state.last=0;}
+      if(now<1&&state.last>3){state.lyricsFired=false;state.fired=false;state.shareFired=false;state.last=0;}
+      // Invite a singalong only when playback naturally crosses the quarter mark.
+      const lyricsCrossed=!state.lyricsFired&&!state.seeked&&state.last<lyricsPoint&&now>=lyricsPoint;
+      if(lyricsCrossed){
+        state.lyricsFired=true;
+        if(now-lyricsPoint<3){
+          const key=Object.keys(tracks).find(k=>tracks[k]===track)||'';
+          window.dispatchEvent(new CustomEvent('jahntella:radio-lyrics-reminder',{
+            detail:{key,title:track.title,artwork:track.artwork,era:track.era||track.card?.closest('[id$="EraAlbum"],#shineEraSneakPeek')?.id||''}
+          }));
+        }
+      }
       const crossed=!state.fired&&!state.seeked&&state.last<midpoint&&now>=midpoint;
       if(crossed){
         state.fired=true;
