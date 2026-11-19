@@ -1,4 +1,4 @@
-/* Unified five-video Jahntella experience. The originals are never re-encoded. */
+/* Focused three-video Jahntella experience. The originals are never re-encoded. */
 (() => {
   'use strict';
   const root=document.getElementById('home');
@@ -6,12 +6,10 @@
   const sets=[
     {id:'welcome',heading:'Welcome to Jahntella’s World',kicker:'♡ MEET JAHNTELLA',intro:'Five albums. Five eras. More than 50 songs. Come say hello, discover the music, and make this world your own.',videos:[
       {name:'A Little Hello from Jahntella',label:'START HERE · 30 SECONDS',text:'Jahntella personally invites Sweeties around the world into her five eras and all-immersive world of music.',src:'videos/jahntella-global-welcome-30s.mp4',poster:''},
-      {name:'Discover the Music Store',label:'EXPLORE THE MUSIC',text:'Find your sound, pick your era, and discover the Jahntella songs that speak to you.',src:'videos/videos/videos/videos/find-your-sound.mp4',poster:'videos/videos/videos/videos/find-your-sound-poster.webp'},
       {name:'Share Your Moment to Reels',label:'CREATE · SHARE · SHINE',text:'Make a Reel with Jahntella’s music, share your creativity, and invite other Sweeties into the fun.',src:'videos/videos/videos/videos/sweeties-spotlight-invite.mp4',poster:'videos/videos/videos/videos/sweeties-spotlight-invite-poster.webp'}
     ]},
-    {id:'fans',heading:'Your Fan Experience',kicker:'♡ YOU BELONG HERE',intro:'Beyond the songs: confidence, connection, creativity, and the world Jahntella is building together with her Sweeties.',videos:[
+    {id:'fans',heading:'Your Fan Experience',kicker:'♡ YOU BELONG HERE',intro:'A personal message about confidence, kindness, and knowing you belong in the World of Sweet.',videos:[
       {name:'You Are Beautiful Just as You Are',label:'A MESSAGE FROM JAHNTELLA',text:'For the days you don’t feel beautiful, handsome, or confident: a little encouragement from Jahntella, just for you.',src:'videos/videos/jahntella-welcome.mp4',poster:'videos/videos/jahntella-welcome-poster.jpg'},
-      {name:'The AI & Fan Experience',label:'BEHIND THE MAGIC',text:'Meet the creativity, technology, and community behind Jahntella’s all-immersive world.',src:'videos/videos/videos/videos/sweetie-community.mp4',poster:'videos/videos/videos/videos/sweetie-community-poster.webp'}
     ]}
   ];
   const section=document.createElement('section');
