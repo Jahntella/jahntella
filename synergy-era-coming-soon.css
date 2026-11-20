@@ -32,3 +32,33 @@
 #synergyEraPreview .synergy-foot{font-size:.85rem;color:#ffb7c5;margin-top:18px}
 @media(max-width:730px){#synergyEraPreview .synergy-frame{grid-template-columns:1fr;text-align:center}#synergyEraPreview .synergy-intro,#synergyEraPreview .synergy-quote{margin-left:auto;margin-right:auto}#synergyEraPreview .synergy-actions{justify-content:center}#synergyEraPreview .synergy-cover-placeholder{max-width:340px}#synergyEraPreview h2{font-size:clamp(2.7rem,12vw,5rem)}}
 @media(prefers-reduced-motion:reduce){#synergyEraPreview *{scroll-behavior:auto}}
+
+/* Official single cover and integrated Jahntella Radio listening card. */
+#synergyEraPreview .synergy-cover-live{margin:auto;width:min(100%,420px);text-align:center}
+#synergyEraPreview .synergy-cover-live img{
+ display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain;
+ border:1px solid #ff7f94;border-radius:17px;
+ box-shadow:0 0 24px #ee2d5655,0 20px 60px #0008;background:#250912
+}
+#synergyEraPreview .synergy-cover-live p{
+ font:800 .76rem/1.5 Arial,sans-serif;letter-spacing:.12em;
+ color:#ffb8c6;margin:14px 0 0
+}
+#synergyEraPreview .synergy-song-card{
+ max-width:620px;margin:22px 0 3px;padding:17px 20px;
+ border:1px solid #ee748990;border-radius:18px;
+ background:linear-gradient(140deg,#300e19e8,#160a11d9);
+ box-shadow:0 14px 48px #0005
+}
+#synergyEraPreview .synergy-song-kicker{font:800 .71rem/1.4 Arial,sans-serif;letter-spacing:.15em;color:#ff9cae;margin:0 0 8px}
+#synergyEraPreview .synergy-song-card h3{font:900 clamp(1.28rem,2.5vw,1.85rem)/1.2 Arial,sans-serif;margin:0 0 6px;color:white}
+#synergyEraPreview .synergy-song-card>p:not(.synergy-song-kicker):not(.synergy-song-tagline){font-size:.89rem;color:#f3cad2;margin:0 0 10px}
+#synergyEraPreview .synergy-song-controls{display:flex;flex-wrap:wrap;gap:9px;align-items:center}
+#synergyEraPreview .synergy-song-controls button{
+ min-height:44px;padding:10px 17px;border-radius:999px;border:1px solid #ffb5c0;
+ background:#ae1b3a;color:#fff;font:800 .85rem Arial,sans-serif;cursor:pointer
+}
+#synergyEraPreview .synergy-song-controls button:hover{filter:brightness(1.2)}
+#synergyEraPreview .synergy-song-controls button:focus-visible{outline:3px solid white;outline-offset:3px}
+#synergyEraPreview .synergy-song-tagline{font:800 .9rem/1.6 Arial,sans-serif;color:#ffd7df;margin:15px 0 0}
+@media(max-width:730px){#synergyEraPreview .synergy-song-card{margin-left:auto;margin-right:auto}#synergyEraPreview .synergy-song-controls{justify-content:center}}
