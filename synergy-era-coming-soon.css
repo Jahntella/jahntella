@@ -64,35 +64,35 @@
 @media(max-width:730px){#synergyEraPreview .synergy-song-card{margin-left:auto;margin-right:auto}#synergyEraPreview .synergy-song-controls{justify-content:center}}
 
 /* Official front-and-back Synergy Era album artwork reveal. */
-#synergyEraPreview .synergy-album-gallery{
+#synergyAlbumReveal{
   position:relative;z-index:1;width:min(100%,1050px);margin:clamp(44px,7vw,78px) auto 0;
   padding-top:clamp(28px,5vw,50px);border-top:1px solid #ff819058
 }
-#synergyEraPreview .synergy-gallery-heading{text-align:center;max-width:750px;margin:0 auto 24px}
-#synergyEraPreview .synergy-album-eyebrow{font:800 .73rem Arial,sans-serif;letter-spacing:.2em;color:#ff99ac;margin:0 0 11px}
-#synergyEraPreview .synergy-gallery-heading h3{font:italic 900 clamp(1.75rem,4vw,2.75rem)/1.15 Arial,sans-serif;color:#fff;margin:0 0 12px;text-shadow:0 0 23px #d6264588}
-#synergyEraPreview .synergy-gallery-heading>p:last-child{font-size:1rem;line-height:1.55;color:#f4d7dc;margin:0}
-#synergyEraPreview .synergy-gallery-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,3vw,30px);max-width:890px;margin:auto}
-#synergyEraPreview .synergy-gallery-cover{
+#synergyAlbumReveal .synergy-gallery-heading{text-align:center;max-width:750px;margin:0 auto 24px}
+#synergyAlbumReveal .synergy-album-eyebrow{font:800 .73rem Arial,sans-serif;letter-spacing:.2em;color:#ff99ac;margin:0 0 11px}
+#synergyAlbumReveal .synergy-gallery-heading h3{font:italic 900 clamp(1.75rem,4vw,2.75rem)/1.15 Arial,sans-serif;color:#fff;margin:0 0 12px;text-shadow:0 0 23px #d6264588}
+#synergyAlbumReveal .synergy-gallery-heading>p:last-child{font-size:1rem;line-height:1.55;color:#f4d7dc;margin:0}
+#synergyAlbumReveal .synergy-gallery-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,3vw,30px);max-width:890px;margin:auto}
+#synergyAlbumReveal .synergy-gallery-cover{
   display:block;cursor:zoom-in;text-align:left;min-width:0;width:100%;border-radius:18px;
   border:1px solid #e8677f7a;padding:10px 10px 13px;color:#fff;
   background:linear-gradient(135deg,#360d1b,#1d0811);
   box-shadow:0 15px 36px #0007;transition:transform .2s ease,border-color .2s ease
 }
-#synergyEraPreview .synergy-gallery-cover:hover{transform:translateY(-4px);border-color:#ffc0cb}
-#synergyEraPreview .synergy-gallery-cover:focus-visible{outline:3px solid #fff;outline-offset:4px}
-#synergyEraPreview .synergy-gallery-cover img{
+#synergyAlbumReveal .synergy-gallery-cover:hover{transform:translateY(-4px);border-color:#ffc0cb}
+#synergyAlbumReveal .synergy-gallery-cover:focus-visible{outline:3px solid #fff;outline-offset:4px}
+#synergyAlbumReveal .synergy-gallery-cover img{
   display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:contain;
   border-radius:11px;background:#1b070d
 }
-#synergyEraPreview .synergy-gallery-cover>span{display:flex;justify-content:space-between;gap:9px;align-items:center;padding:12px 4px 0;font:800 .8rem Arial,sans-serif;letter-spacing:.12em}
-#synergyEraPreview .synergy-gallery-cover small{font:.75rem Arial,sans-serif;letter-spacing:normal;color:#ffb2c3}
-#synergyEraPreview .synergy-gallery-foot{text-align:center;font-size:.88rem;color:#ffb2c3;margin:19px 0 0}
+#synergyAlbumReveal .synergy-gallery-cover>span{display:flex;justify-content:space-between;gap:9px;align-items:center;padding:12px 4px 0;font:800 .8rem Arial,sans-serif;letter-spacing:.12em}
+#synergyAlbumReveal .synergy-gallery-cover small{font:.75rem Arial,sans-serif;letter-spacing:normal;color:#ffb2c3}
+#synergyAlbumReveal .synergy-gallery-foot{text-align:center;font-size:.88rem;color:#ffb2c3;margin:19px 0 0}
 @media(max-width:580px){
-  #synergyEraPreview .synergy-gallery-grid{grid-template-columns:1fr;max-width:410px}
-  #synergyEraPreview .synergy-gallery-cover>span{flex-wrap:wrap}
+  #synergyAlbumReveal .synergy-gallery-grid{grid-template-columns:1fr;max-width:410px}
+  #synergyAlbumReveal .synergy-gallery-cover>span{flex-wrap:wrap}
 }
-@media(prefers-reduced-motion:reduce){#synergyEraPreview .synergy-gallery-cover{transition:none}}
+@media(prefers-reduced-motion:reduce){#synergyAlbumReveal .synergy-gallery-cover{transition:none}}
 
 /* Synergy presentation order: introduction + front/back album covers,
    followed by the Keep Up With Me single, all before the Sweeties community. */
@@ -103,7 +103,7 @@
 #synergyEraPreview .synergy-era-intro .synergy-intro{
  margin:0 auto;max-width:760px
 }
-#synergyEraPreview .synergy-album-gallery{
+#synergyAlbumReveal{
  margin:clamp(22px,4vw,40px) auto 0;
  padding-top:clamp(20px,3vw,30px)
 }
@@ -121,7 +121,7 @@
 /* The album covers lead the Synergy reveal immediately after Surge track cards.
    Its story/aesthetic introduction follows the covers, then the single. */
 #synergyEraPreview{padding-top:clamp(26px,4vw,48px)}
-#synergyEraPreview .synergy-album-gallery{
+#synergyAlbumReveal{
  border-top:0;margin-top:0;padding-top:0
 }
 #synergyEraPreview .synergy-era-intro{
@@ -129,3 +129,19 @@
  padding-top:clamp(28px,4vw,45px);
  border-top:1px solid #ff819058
 }
+
+/* The front/back album reveal is now its own top-level section directly
+   after the Surge playing cards (before the song and community). */
+#synergyAlbumReveal{
+  display:block;position:relative;isolation:isolate;
+  width:100%;max-width:none;margin:0;box-sizing:border-box;
+  padding:clamp(44px,6vw,75px) 18px clamp(45px,7vw,82px);
+  background:radial-gradient(ellipse at 75% 5%,#c52a3f5c,transparent 45%),
+    linear-gradient(150deg,#15070e,#300914 54%,#0b060a);
+  color:#fff;border-top:1px solid #b3394b;border-bottom:1px solid #ae3042;
+  scroll-margin-top:94px;overflow:hidden;
+}
+#synergyAlbumReveal *{box-sizing:border-box}
+#synergyAlbumReveal .synergy-gallery-heading,
+#synergyAlbumReveal .synergy-gallery-grid,
+#synergyAlbumReveal .synergy-gallery-foot{position:relative;z-index:1}
