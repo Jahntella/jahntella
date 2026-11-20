@@ -202,7 +202,7 @@ main > #surgeEraAlbum .exp60-shine-shell{
 
 <link rel="stylesheet" href="jahntella-video-hub.css?v=4-native-controls">
 <link rel="stylesheet" href="player-mobile-resume-layout.css?v=3-mobile-timeline">
-<link rel="stylesheet" href="synergy-era-coming-soon.css?v=4-covers-before-single">
+<link rel="stylesheet" href="synergy-era-coming-soon.css?v=5-covers-directly-after-surge">
 </head>
 <body>
   <div id="siteLoader" class="site-loader" aria-hidden="true">
@@ -689,12 +689,7 @@ main > #surgeEraAlbum .exp60-shine-shell{
 
 <section id="synergyEraPreview" aria-labelledby="synergyEraTitle">
   <div class="synergy-grid" aria-hidden="true"></div>
-  <header class="synergy-era-intro">
-    <span class="synergy-label">COMING SOON ♡ A NEW JAHNTELLA ERA</span>
-    <h2 id="synergyEraTitle">SYNERGY</h2>
-    <p class="synergy-subtitle">The Synergy Era · 80s Electro · Crimson &amp; Chrome</p>
-    <p class="synergy-intro">Turn the dial back to the electric eighties—then turn the energy all the way up. Red lasers, chrome, punchy electro beats, fresh breakdance attitude, and a whole lot of Jahntella confidence. No heartbreak. Just chemistry, momentum, and a dance floor waiting for you.</p>
-  </header>
+
   <div class="synergy-album-gallery" aria-labelledby="synergyAlbumArtTitle">
     <div class="synergy-gallery-heading">
       <p class="synergy-album-eyebrow">THE SYNERGY ERA · ALBUM ART REVEAL</p>
@@ -713,6 +708,12 @@ main > #surgeEraAlbum .exp60-shine-shell{
     </div>
     <p class="synergy-gallery-foot">The artwork is here. The full Synergy Era is still coming soon. ❤️</p>
   </div>
+  <header class="synergy-era-intro">
+    <span class="synergy-label">COMING SOON ♡ A NEW JAHNTELLA ERA</span>
+    <h2 id="synergyEraTitle">SYNERGY</h2>
+    <p class="synergy-subtitle">The Synergy Era · 80s Electro · Crimson &amp; Chrome</p>
+    <p class="synergy-intro">Turn the dial back to the electric eighties—then turn the energy all the way up. Red lasers, chrome, punchy electro beats, fresh breakdance attitude, and a whole lot of Jahntella confidence. No heartbreak. Just chemistry, momentum, and a dance floor waiting for you.</p>
+  </header>
   <div class="synergy-single-section" aria-labelledby="synergySongTitle">
     <div class="synergy-frame">
       <div class="synergy-copy">
@@ -1304,8 +1305,11 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
     const communityHeading=Array.from(document.querySelectorAll('h1,h2,h3,p,strong')).find(node=>/WELCOME TO THE COMMUNITY/i.test(node.textContent||''))
       || Array.from(document.querySelectorAll('h1,h2,h3')).find(node=>/Be A\s*[“\"]?SWEETIE/i.test(node.textContent||''));
     const communitySection=communityHeading?.closest('section');
+    const synergy=document.getElementById('synergyEraPreview');
     const surge=document.getElementById('surgeEraAlbum');
-    if(surge?.parentNode)surge.after(section);
+    // Keep the Synergy album artwork directly after the Surge playing cards.
+    if(synergy?.parentNode)synergy.after(section);
+    else if(surge?.parentNode)surge.after(section);
     else if(communitySection?.parentNode)communitySection.parentNode.insertBefore(section,communitySection);
     else shine.insertAdjacentElement('afterend',section);
   };
