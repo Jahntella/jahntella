@@ -336,23 +336,6 @@
   // is still stalled. Recover this transition once without reloading the site.
   let transitionWatchdog = null;
   let transitionSerial = 0;
-  const playbackNotice = document.createElement('button');
-  playbackNotice.type = 'button';
-  playbackNotice.setAttribute('aria-live','polite');
-  // Keep the recovery action outside the player grid layout, so displaying
-  // it cannot create an extra row or make the mobile dock taller.
-  playbackNotice.className = 'jahntella-resume-notice';
-  playbackNotice.style.display = 'none';
-  playbackNotice.textContent = '♡ Tap to resume this song';
-  player.appendChild(playbackNotice);
-  const hidePlaybackNotice = () => { playbackNotice.style.display = 'none'; };
-  const showPlaybackNotice = () => { playbackNotice.style.display = 'block'; };
-  playbackNotice.addEventListener('click', () => {
-    const audio=currentTrack()?.audio;
-    if(!audio)return;
-    hidePlaybackNotice();
-    audio.play().then(()=>setPlaying(true)).catch(()=>showPlaybackNotice());
-  });
   const watchMobileTransition = (key, audio) => {
     clearTimeout(transitionWatchdog);
     const serial=++transitionSerial;
@@ -360,7 +343,7 @@
     let recoveryUsed=false;
     const check=()=>{
       if(serial!==transitionSerial || currentKey!==key || audio.ended || audio.paused || document.hidden)return;
-      if(audio.currentTime>from+0.35){hidePlaybackNotice();return;}
+      if(audio.currentTime>from+0.35)return;
       if(!recoveryUsed){
         recoveryUsed=true;
         const position=audio.currentTime;
@@ -373,19 +356,12 @@
             try{audio.currentTime=position;}catch(e){}
           }
           audio.play().then(()=>{
-            if(serial===transitionSerial && currentKey===key) {
-              setPlaying(true);
-              transitionWatchdog=setTimeout(()=>{
-                if(currentKey===key && serial===transitionSerial && !audio.paused && !audio.ended && !document.hidden && audio.currentTime<=from+0.35)showPlaybackNotice();
-              },6500);
-            }
-          }).catch(()=>showPlaybackNotice());
+            if(serial===transitionSerial && currentKey===key)setPlaying(true);
+          }).catch(()=>{if(serial===transitionSerial && currentKey===key)setPlaying(false);});
         };
         if(audio.readyState>=2)restart();
         else audio.addEventListener('canplay',restart,{once:true});
-        transitionWatchdog=setTimeout(()=>{
-          if(serial===transitionSerial && currentKey===key && !audio.paused && !audio.ended && !document.hidden && audio.currentTime<=from+0.35)showPlaybackNotice();
-        },9000);
+
       }
     };
     transitionWatchdog=setTimeout(check,8500);
@@ -399,7 +375,6 @@
     const changing = currentKey !== key;
     clearTimeout(transitionWatchdog);
     ++transitionSerial;
-    hidePlaybackNotice();
     stopOthers(track.audio);
     currentKey = key;
     if (activePlaylist) playlistStatus();
@@ -449,7 +424,6 @@
       }).catch(error => {
         console.warn('Jahntella playback could not start:', track.title, error);
         setPlaying(false);
-        if(currentKey===key)showPlaybackNotice();
       });
     } else setPlaying(false);
   };
@@ -699,7 +673,6 @@
     track.audio.addEventListener("pause", () => { if (currentTrack() === track && !track.audio.ended) setPlaying(false); });
     track.audio.addEventListener("timeupdate", () => {
       if (currentTrack() !== track) return;
-      if(!track.audio.paused && track.audio.currentTime>0.5)hidePlaybackNotice();
       progress.value = track.audio.duration ? (track.audio.currentTime / track.audio.duration) * 100 : 0;
       time.textContent = formatTime(track.audio.currentTime);
       persistSitePlayback();
