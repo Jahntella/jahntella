@@ -177,6 +177,7 @@
   const artwork = document.getElementById("playerArtwork");
   const progress = document.getElementById("playerProgress");
   const time = document.getElementById("playerTime");
+  const durationDisplay = document.getElementById("playerDuration");
   const volume = document.getElementById("playerVolume");
   const scrollProgress = document.getElementById("scrollProgress");
   const navToggle = document.getElementById("navToggle");
@@ -304,6 +305,7 @@
   };
 
   const currentTrack = () => currentKey ? tracks[currentKey] : null;
+  const setDurationDisplay = audio => { if (durationDisplay) durationDisplay.textContent = formatTime(audio?.duration); };
   const formatTime = seconds => {
     if (!Number.isFinite(seconds)) return "0:00";
     return `${Math.floor(seconds / 60)}:${Math.floor(seconds % 60).toString().padStart(2, "0")}`;
@@ -381,6 +383,9 @@
     if (changing || options.fresh) currentCredited = false;
     if (typeof options.credited === "boolean") currentCredited = options.credited;
     title.textContent = track.title;
+    progress.value = Number.isFinite(track.audio.duration) && track.audio.duration > 0 ? (track.audio.currentTime / track.audio.duration) * 100 : 0;
+    time.textContent = formatTime(track.audio.currentTime);
+    setDurationDisplay(track.audio);
     // Some full-resolution cover files are placeholders; use the thumbnail
     // when the original cannot load, without exposing alt text in the player.
     artwork.onerror = () => {
@@ -671,10 +676,13 @@
     track.audio.volume = Number(volume.value);
     track.audio.addEventListener("play", () => { if (currentTrack() === track) setPlaying(true); });
     track.audio.addEventListener("pause", () => { if (currentTrack() === track && !track.audio.ended) setPlaying(false); });
+    track.audio.addEventListener("loadedmetadata", () => { if (currentTrack() === track) setDurationDisplay(track.audio); });
+    track.audio.addEventListener("durationchange", () => { if (currentTrack() === track) setDurationDisplay(track.audio); });
     track.audio.addEventListener("timeupdate", () => {
       if (currentTrack() !== track) return;
       progress.value = track.audio.duration ? (track.audio.currentTime / track.audio.duration) * 100 : 0;
       time.textContent = formatTime(track.audio.currentTime);
+      setDurationDisplay(track.audio);
       persistSitePlayback();
     });
     track.audio.addEventListener("ended", () => {
@@ -718,6 +726,7 @@
       try { restored.currentTime = Math.max(0, Math.min(Number(savedPlayback.position) || 0, max)); } catch {}
       progress.value = restored.duration ? (restored.currentTime / restored.duration) * 100 : 0;
       time.textContent = formatTime(restored.currentTime);
+      setDurationDisplay(restored);
       if (savedPlayback.playing) {
         restored.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
       }
