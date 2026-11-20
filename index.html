@@ -201,7 +201,7 @@ main > #surgeEraAlbum .exp60-shine-shell{
 
 
 <link rel="stylesheet" href="jahntella-video-hub.css?v=4-native-controls">
-<link rel="stylesheet" href="player-mobile-resume-layout.css?v=2-no-resume-popup">
+<link rel="stylesheet" href="player-mobile-resume-layout.css?v=3-mobile-timeline">
 </head>
 <body>
   <div id="siteLoader" class="site-loader" aria-hidden="true">
@@ -1078,8 +1078,9 @@ main > #surgeEraAlbum .exp60-shine-shell{
     </div>
     <button id="playerToggle" aria-label="Play or pause">▶</button>
     <button class="player-skip" id="playerNext" aria-label="Next track">⏭</button>
-    <input id="playerProgress" type="range" min="0" max="100" value="0" aria-label="Track progress">
     <span id="playerTime">0:00</span>
+    <input id="playerProgress" type="range" min="0" max="100" value="0" aria-label="Song position — drag to skip within the song">
+    <span id="playerDuration">0:00</span>
     <label class="volume-control" aria-label="Volume">
       <span>🔊</span>
       <input id="playerVolume" type="range" min="0" max="1" step="0.01" value="0.85">
@@ -1329,7 +1330,7 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
 </script>
   <script defer src="era-music-catalog.js?v=sparkle-cover-refresh-1"></script>
 <script defer src="surge-era-catalog.js?v=5-tick-tock-art"></script>
-  <script defer src="script.js?v=radio-lyrics-no-resume-popup-v3"></script>
+  <script defer src="script.js?v=radio-lyrics-song-timeline-v4"></script>
   <script defer src="exp57-gallery-lightbox.js?v=63.0"></script>
   <script defer src="exp60-shine-era-sneak-peek.js?v=66.0"></script>
 
