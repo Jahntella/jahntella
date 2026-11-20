@@ -1,3 +1,5 @@
+/* Song-length seek bar: full-width on phones, native desktop layout preserved. */
+#playerDuration{display:none}
 /* Compact mobile player grid. The recovery popup was removed;
    the standard play/pause button is the only manual resume control. */
 @media(max-width:760px){
@@ -5,7 +7,7 @@
   html body #player.player,
   html body #player.player.visible{
     grid-template-columns:34px 46px minmax(0,1fr) 46px 34px !important;
-    grid-template-rows:minmax(46px,auto) 22px !important;
+    grid-template-rows:minmax(46px,auto) 24px !important;
     align-items:center !important;
     column-gap:7px !important;
     row-gap:7px !important;
@@ -21,18 +23,45 @@
   #player.player .player-info strong{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   #player.player #playerToggle{grid-column:4;grid-row:1}
   #player.player #playerNext{grid-column:5;grid-row:1}
-  #player.player #playerProgress{
-    grid-column:1 / 5 !important;
+  #player.player #playerTime{
+    display:block !important;
+    grid-column:1 !important;
     grid-row:2 !important;
     min-width:0 !important;
-    width:100% !important;
     margin:0 !important;
+    white-space:nowrap !important;
+    text-align:center !important;
+    font-size:10px !important;
   }
-  #player.player #playerTime{
+  #player.player #playerProgress{
+    display:block !important;
+    visibility:visible !important;
+    opacity:1 !important;
+    grid-column:2 / 5 !important;
+    grid-row:2 !important;
+    align-self:center !important;
+    min-width:0 !important;
+    width:100% !important;
+    height:20px !important;
+    max-height:20px !important;
+    margin:0 !important;
+    padding:0 !important;
+    appearance:auto !important;
+    -webkit-appearance:auto !important;
+    accent-color:#ff65bd !important;
+    cursor:pointer !important;
+  }
+  #player.player #playerDuration{
+    display:block !important;
     grid-column:5 !important;
     grid-row:2 !important;
+    min-width:0 !important;
     margin:0 !important;
+    white-space:nowrap !important;
+    text-align:center !important;
+    color:#ffd7ed !important;
     font-size:10px !important;
+    font-variant-numeric:tabular-nums !important;
   }
   #player.player .volume-control{display:none !important}
 }
