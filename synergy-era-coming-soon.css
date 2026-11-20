@@ -62,3 +62,34 @@
 #synergyEraPreview .synergy-song-controls button:focus-visible{outline:3px solid white;outline-offset:3px}
 #synergyEraPreview .synergy-song-tagline{font:800 .9rem/1.6 Arial,sans-serif;color:#ffd7df;margin:15px 0 0}
 @media(max-width:730px){#synergyEraPreview .synergy-song-card{margin-left:auto;margin-right:auto}#synergyEraPreview .synergy-song-controls{justify-content:center}}
+
+/* Official front-and-back Synergy Era album artwork reveal. */
+#synergyEraPreview .synergy-album-gallery{
+  position:relative;z-index:1;width:min(100%,1050px);margin:clamp(44px,7vw,78px) auto 0;
+  padding-top:clamp(28px,5vw,50px);border-top:1px solid #ff819058
+}
+#synergyEraPreview .synergy-gallery-heading{text-align:center;max-width:750px;margin:0 auto 24px}
+#synergyEraPreview .synergy-album-eyebrow{font:800 .73rem Arial,sans-serif;letter-spacing:.2em;color:#ff99ac;margin:0 0 11px}
+#synergyEraPreview .synergy-gallery-heading h3{font:italic 900 clamp(1.75rem,4vw,2.75rem)/1.15 Arial,sans-serif;color:#fff;margin:0 0 12px;text-shadow:0 0 23px #d6264588}
+#synergyEraPreview .synergy-gallery-heading>p:last-child{font-size:1rem;line-height:1.55;color:#f4d7dc;margin:0}
+#synergyEraPreview .synergy-gallery-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,3vw,30px);max-width:890px;margin:auto}
+#synergyEraPreview .synergy-gallery-cover{
+  display:block;cursor:zoom-in;text-align:left;min-width:0;width:100%;border-radius:18px;
+  border:1px solid #e8677f7a;padding:10px 10px 13px;color:#fff;
+  background:linear-gradient(135deg,#360d1b,#1d0811);
+  box-shadow:0 15px 36px #0007;transition:transform .2s ease,border-color .2s ease
+}
+#synergyEraPreview .synergy-gallery-cover:hover{transform:translateY(-4px);border-color:#ffc0cb}
+#synergyEraPreview .synergy-gallery-cover:focus-visible{outline:3px solid #fff;outline-offset:4px}
+#synergyEraPreview .synergy-gallery-cover img{
+  display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:contain;
+  border-radius:11px;background:#1b070d
+}
+#synergyEraPreview .synergy-gallery-cover>span{display:flex;justify-content:space-between;gap:9px;align-items:center;padding:12px 4px 0;font:800 .8rem Arial,sans-serif;letter-spacing:.12em}
+#synergyEraPreview .synergy-gallery-cover small{font:.75rem Arial,sans-serif;letter-spacing:normal;color:#ffb2c3}
+#synergyEraPreview .synergy-gallery-foot{text-align:center;font-size:.88rem;color:#ffb2c3;margin:19px 0 0}
+@media(max-width:580px){
+  #synergyEraPreview .synergy-gallery-grid{grid-template-columns:1fr;max-width:410px}
+  #synergyEraPreview .synergy-gallery-cover>span{flex-wrap:wrap}
+}
+@media(prefers-reduced-motion:reduce){#synergyEraPreview .synergy-gallery-cover{transition:none}}
