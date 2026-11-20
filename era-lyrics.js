@@ -2,10 +2,10 @@
    Never modifies the existing track audio or playlist queue. */
 (function(){
 'use strict';
-const COLORS=['sweet','shine','sparkle','siren','surge'];
+const COLORS=['sweet','shine','sparkle','siren','surge','synergy'];
 const SECTION_ERA={
  sweetEraAlbum:'sweet',shineEraSneakPeek:'shine',sparkleEraAlbum:'sparkle',
- sirenEraAlbum:'siren',surgeEraAlbum:'surge'
+ sirenEraAlbum:'siren',surgeEraAlbum:'surge',synergyEraPreview:'synergy'
 };
 const FALLBACK='assets/fun-dipp-cover.webp';
 let book=null,lyricsPromise=null,returnFocus=null,scanTimer=null;
@@ -13,7 +13,7 @@ function lookupEra(key,card){
  const track=(window.JAHNTELLA_EXTRA_TRACKS||[]).find(t=>t.key===key);
  const tEra=String(track?.era||'').toLowerCase();
  if(COLORS.includes(tEra))return tEra;
- const section=card.closest('#sweetEraAlbum,#shineEraSneakPeek,#sparkleEraAlbum,#sirenEraAlbum,#surgeEraAlbum');
+ const section=card.closest('#sweetEraAlbum,#shineEraSneakPeek,#sparkleEraAlbum,#sirenEraAlbum,#surgeEraAlbum,#synergyEraPreview');
  if(section&&SECTION_ERA[section.id])return SECTION_ERA[section.id];
  // Older Shine entries are not included in the shared extra-track catalog.
  if(['sweet-dreams','we-are-1','boots-smile-attitude','midnight-rodeo','redline','smoke-show','chasing-me','coming-down','you-and-me'].includes(key))return 'shine';
@@ -107,7 +107,7 @@ function addToCard(card){
  }
 }
 function scan(){
- document.querySelectorAll('#sweetEraAlbum [data-card],#shineEraSneakPeek [data-card],#sparkleEraAlbum [data-card],#sirenEraAlbum [data-card],#surgeEraAlbum [data-card]').forEach(addToCard);
+ document.querySelectorAll('#sweetEraAlbum [data-card],#shineEraSneakPeek [data-card],#sparkleEraAlbum [data-card],#sirenEraAlbum [data-card],#surgeEraAlbum [data-card],#synergyEraPreview [data-card]').forEach(addToCard);
 }
 function init(){
  scan();
