@@ -165,7 +165,7 @@
     const audio = document.createElement('audio');
     audio.preload = 'none'; audio.src = track.src;
     document.body.appendChild(audio);
-    tracks[track.key] = {audio, title:track.title, artwork:track.artwork,
+    tracks[track.key] = {audio, title:track.title, artwork:track.artwork, era:track.era,
       card:document.querySelector(`[data-card="${track.key}"]`)};
   });
 
@@ -700,6 +700,9 @@
       }
       // Ordinary listening retains the original five-era continuous sequence.
       const position = order.indexOf(currentKey);
+      // Songs previewing an upcoming era play on demand; they do not
+      // silently jump into the five-era continuous radio after ending.
+      if(position === -1){setPlaying(false);return;}
       const nextKey = order[(position + 1) % order.length];
       if (nextKey && tracks[nextKey]?.audio) selectTrack(nextKey, true, {fresh:true});
     });
