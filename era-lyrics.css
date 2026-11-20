@@ -7,6 +7,7 @@
 .era-lyric-button[data-era="sparkle"]{--lyric-accent:#68d6ef;--lyric-halo:#68d6ef66}
 .era-lyric-button[data-era="siren"]{--lyric-accent:#74dbbe;--lyric-halo:#74dbbe66}
 .era-lyric-button[data-era="surge"]{--lyric-accent:#ffa45a;--lyric-halo:#ffa45a66}
+.era-lyric-button[data-era="synergy"]{--lyric-accent:#ff526e;--lyric-halo:#ff526e66}
 .era-lyrics-dialog{--era-accent:#ff90cc;--era-glow:#f771b644;--era-soft:#ffe5f2;position:fixed;inset:2.5vh auto auto;max-width:min(900px,calc(100vw - 20px));width:100%;max-height:95vh;margin:auto;padding:0;overflow:auto;border:1px solid var(--era-accent);border-radius:24px;color:#fff;background:radial-gradient(ellipse at 0% 0%,var(--era-glow),transparent 60%),linear-gradient(130deg,#170e22,#130e1d 80%);box-shadow:0 28px 90px #000c,0 0 38px var(--era-glow)}
 .era-lyrics-dialog::backdrop{background:#07040ce0;backdrop-filter:blur(7px)}
 .era-lyrics-dialog *{box-sizing:border-box}
