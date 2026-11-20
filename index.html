@@ -1460,7 +1460,7 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
 
 <script src="exp29-4-contact.js?v=29.4" defer></script>
 <script src="exp30-6-poster-fix.js?v=30.6" defer></script>
-<!-- Sweetie signup gate removed: visitors can browse and play music without signing in. --><script defer src="surge-era-home.js?v=12-tick-tock-art"></script>
+<!-- Sweetie signup gate removed: visitors can browse and play music without signing in. --><script defer src="surge-era-home.js?v=13-synergy-order-fix"></script>
 <script defer src="sweetie-lounge.js?v=6-position-share"></script>
 <script defer src="sweetie-song-share-hearts.js?v=4-facebook-caption"></script>
 <script defer src="sweetie-song-battles.js?v=4-showdown-fix"></script>
@@ -1584,24 +1584,7 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
 </script>
 
 
-<script id="synergy-position-guard">
-(function(){
-  // Keep Synergy album covers as the immediate sibling after Surge's song cards,
-  // including after legacy page scripts have finished inserting their content.
-  function ensureSynergyOrder(){
-    const surge=document.getElementById('surgeEraAlbum');
-    const covers=document.getElementById('synergyAlbumReveal');
-    const song=document.getElementById('synergyEraPreview');
-    if(!surge||!covers||!song||!surge.parentElement)return;
-    if(surge.nextElementSibling!==covers)surge.insertAdjacentElement('afterend',covers);
-    if(covers.nextElementSibling!==song)covers.insertAdjacentElement('afterend',song);
-  }
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ensureSynergyOrder,{once:true});
-  else ensureSynergyOrder();
-  window.addEventListener('load',ensureSynergyOrder,{once:true});
-  [350,1200,2500].forEach(ms=>setTimeout(ensureSynergyOrder,ms));
-})();
-</script>
+
 <script defer src="jahntella-video-hub.js?v=5-crisp-uploaded-posters"></script>
 </body>
 </html>
