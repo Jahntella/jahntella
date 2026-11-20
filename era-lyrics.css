@@ -33,6 +33,7 @@
 .era-lyrics-dialog[data-era="sparkle"]{--era-accent:#6ad3f3;--era-glow:#44c9f044;--era-soft:#e4f9ff}
 .era-lyrics-dialog[data-era="siren"]{--era-accent:#72d8ba;--era-glow:#50b89644;--era-soft:#e8fff4}
 .era-lyrics-dialog[data-era="surge"]{--era-accent:#ffa25b;--era-glow:#f9903744;--era-soft:#fff0db}
+.era-lyrics-dialog[data-era="synergy"]{--era-accent:#ff607c;--era-glow:#d528504d;--era-soft:#ffe0e6}
 @media(max-width:550px){.era-lyrics-dialog .eld-hero{align-items:center}.era-lyrics-dialog .eld-art{width:110px}.era-lyrics-dialog .eld-desc{font-size:.76rem}.era-lyric-button{font-size:.76rem;padding:9px 11px}}
 @media(prefers-reduced-motion:reduce){.era-lyric-button{transition:none}}
 
