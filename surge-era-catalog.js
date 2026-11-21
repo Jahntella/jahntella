@@ -18,4 +18,12 @@
   surge.forEach(t=>{if(!window.JAHNTELLA_EXTRA_TRACKS.some(x=>x.key===t.key))window.JAHNTELLA_EXTRA_TRACKS.push(t);});
   window.JAHNTELLA_TRACK_ORDER=window.JAHNTELLA_TRACK_ORDER||[];
   surge.forEach(t=>{if(!window.JAHNTELLA_TRACK_ORDER.includes(t.key))window.JAHNTELLA_TRACK_ORDER.push(t.key);});
+  // Keep Synergy previews at the end of the main Jahntella Radio queue.
+  // Additional Synergy singles can be appended here as they arrive.
+  ['keep-up-with-me'].forEach(key=>{
+    const order=window.JAHNTELLA_TRACK_ORDER;
+    const index=order.indexOf(key);
+    if(index>=0)order.splice(index,1);
+    if(window.JAHNTELLA_EXTRA_TRACKS.some(track=>track.key===key))order.push(key);
+  });
 })();
