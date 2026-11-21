@@ -54,6 +54,10 @@ for page in sorted(SONGS.glob("*.html")):
         skipped.append((page.name, "no og:image"))
         continue
     path = unquote(urlparse(old_image).path).lstrip("/")
+    # Previews already pointing to our generated wide cards are complete.
+    # Never feed a 1200x630 preview back into the square-cover renderer.
+    if path.startswith("assets/social/"):
+        continue
     source = ROOT / path
     if not source.is_file():
         skipped.append((page.name, "missing original cover " + path))
@@ -62,9 +66,15 @@ for page in sorted(SONGS.glob("*.html")):
     outfile = OUTPUT / filename
     make_card(source, outfile)
     new_url = "https://jahntella.com/assets/social/" + filename
+    # A distinct URL makes Facebook fetch the newly corrected cover instead
+    # of continuing to use an older square-card preview from its cache.
+    if page.stem == "keep-up-with-me":
+        new_url += "?v=20261121-full-cover"
     html = replace_image_tag(html, "og:image", new_url)
     html = replace_image_tag(html, "og:image:secure_url", new_url)
     html = replace_image_tag(html, "og:image:type", "image/jpeg")
+    if 'property="og:image:type"' not in html:
+        html = html.replace('<meta property="og:image"', '<meta property="og:image:type" content="image/jpeg"><meta property="og:image"', 1)
     html = replace_image_tag(html, "twitter:image", new_url)
     # Explicit dimensions support Facebook's crawler.
     if 'property="og:image:width"' not in html:
