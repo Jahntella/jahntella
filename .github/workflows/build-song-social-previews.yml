@@ -5,6 +5,8 @@ on:
     paths:
       - 'tools/generate-social-previews.py'
       - '.github/workflows/build-song-social-previews.yml'
+      - 'songs/*.html'
+      - 'JKeepUpWithMeFixed.png'
   workflow_dispatch:
 
 permissions:
