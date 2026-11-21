@@ -79,6 +79,13 @@
         btn.textContent='♡';btn.setAttribute('aria-label','Share '+songName(key,card)+' by Jahntella');btn.title='Share '+songName(key,card);
         btn.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();open(key,card,btn);});
         card.classList.add('sweetie-share-card');card.appendChild(btn);
+        // The upcoming Synergy single also has a full-size Share button:
+        // open the exact same share panel used by the other song cards.
+        const shareLink=card.querySelector('.synergy-share-song');
+        if(shareLink)shareLink.addEventListener('click',event=>{
+          event.preventDefault();
+          btn.click();
+        });
       });
     };
     decorate();
