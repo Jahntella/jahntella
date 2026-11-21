@@ -6,7 +6,8 @@
     shine:['#bb74ff','#f3dcff','rgba(187,116,255,.44)'],
     sparkle:['#66d4f7','#e5fbff','rgba(102,212,247,.44)'],
     siren:['#7ed4b7','#e0fff1','rgba(126,212,183,.44)'],
-    surge:['#ff964f','#fff1ce','rgba(255,150,79,.44)']
+    surge:['#ff964f','#fff1ce','rgba(255,150,79,.44)'],
+    synergy:['#ee345d','#ffe2e9','rgba(238,52,93,.48)']
   };
   let active=null,cleanupTimer=0;
   const clear=()=>{
