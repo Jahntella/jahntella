@@ -15,7 +15,7 @@
       const prev = records.get(key) || {};
       records.set(key, {...prev,key,title:prev.title || title,art:prev.art || art});
     });
-    const starts = [{era:'Sweet',from:'fun-dipp',to:'sweet-dreams'},{era:'Shine',from:'sweet-dreams',to:'come-here-come-close'},{era:'Sparkle',from:'come-here-come-close',to:'obsessed-with-me'},{era:'Siren',from:'obsessed-with-me',to:'tik-tok'},{era:'Surge',from:'tik-tok',to:null}];
+    const starts = [{era:'Sweet',from:'fun-dipp',to:'sweet-dreams'},{era:'Shine',from:'sweet-dreams',to:'come-here-come-close'},{era:'Sparkle',from:'come-here-come-close',to:'obsessed-with-me'},{era:'Siren',from:'obsessed-with-me',to:'tik-tok'},{era:'Surge',from:'tik-tok',to:'keep-up-with-me'},{era:'Synergy',from:'keep-up-with-me',to:null}];
     starts.forEach(({era,from,to}) => {
       const a=order.indexOf(from), b=to?order.indexOf(to):order.length;
       if(a<0)return;
