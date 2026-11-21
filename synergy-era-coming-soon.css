@@ -158,3 +158,18 @@
 #synergyEraPreview .synergy-song-controls .synergy-share-song:hover{background:#81203c}
 #synergyEraPreview .synergy-song-controls .synergy-share-song:focus-visible{outline:3px solid white;outline-offset:3px}
 #synergyEraPreview .synergy-song-card>.sweetie-share-heart{top:10px!important;right:10px!important}
+
+/* Growing Synergy singles stack: maintain consistent cover sizing and spacing. */
+#synergyEraPreview .synergy-single-section + .synergy-single-section{
+  margin-top:clamp(30px,5vw,65px);
+  padding-top:clamp(32px,5vw,55px);
+}
+#gallery .gallery-item.synergy-gallery-item{
+  background:linear-gradient(135deg,#250710,#4b0b1a);
+  border-color:#b92e4b;
+}
+#gallery .gallery-item.synergy-gallery-item img{
+  object-fit:contain!important;
+  object-position:center!important;
+  background:linear-gradient(135deg,#21080f,#3a0c17);
+}
