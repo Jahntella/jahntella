@@ -1,4 +1,4 @@
-/* Five Eras ambient equalizer — decorative, never tied to audio playback. */
+/* Six Eras ambient equalizer — decorative, never tied to audio playback. */
 .site-header > .jahntella-era-eq{
   display:flex;align-items:center;justify-content:center;gap:clamp(3px,.48vw,7px);
   flex:1 1 150px;min-width:80px;max-width:215px;
@@ -29,6 +29,7 @@
 .jee-era--sparkle{--jee-color:#62cef3;--jee-light:#e0f8ff}
 .jee-era--siren{--jee-color:#75d9b6;--jee-light:#e6fff3}
 .jee-era--surge{--jee-color:#ff994f;--jee-light:#ffefce}
+.jee-era--synergy{--jee-color:#ed274e;--jee-light:#ffafbf}
 .jahntella-era-eq .jee-bar:nth-child(1){--jee-speed:.82s;--jee-delay:-.61s}
 .jahntella-era-eq .jee-bar:nth-child(2){--jee-speed:1.31s;--jee-delay:-.18s}
 .jahntella-era-eq .jee-bar:nth-child(3){--jee-speed:.94s;--jee-delay:-.76s}
