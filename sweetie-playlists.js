@@ -22,7 +22,7 @@
       status.textContent=records[active.id].name+' · Song '+(active.index+1)+' of '+active.total;
       shareButton.classList.add('is-visible');
     }else if(selected){
-      status.textContent='Pick a playlist to play its four songs in order.';
+      status.textContent='Pick a playlist to play its songs in order.';
       shareButton.classList.add('is-visible');
     }else{
       status.textContent='Choose a vibe and let the music play ♡';
@@ -46,7 +46,8 @@
   shareButton.addEventListener('click',async()=>{
     if(!selected||!records[selected])return;
     const url=new URL(window.location.href);url.searchParams.set('playlist',selected);url.hash='sweetiePlaylistsMenu';
-    const caption='💗 Listen to '+records[selected].name+' by Jahntella! Four songs, one sweet vibe. '+url.href;
+    const count=records[selected].songs?.length||4;
+    const caption='💗 Listen to '+records[selected].name+' by Jahntella! '+count+' songs, one sweet vibe. '+url.href;
     if(navigator.share){
       try{await navigator.share({title:records[selected].name+' · Jahntella',text:caption,url:url.href});return}
       catch(e){if(e.name==='AbortError')return}
