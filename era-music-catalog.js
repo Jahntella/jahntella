@@ -187,7 +187,7 @@ window.JAHNTELLA_EXTRA_TRACKS = [
     "number": 11
   }
 ];
-// Synergy Era is a coming-soon preview, not part of the five-era autoplay rotation.
+// Synergy Era — Album VI, part of the continuous six-era Jahntella Radio rotation.
 window.JAHNTELLA_EXTRA_TRACKS.push({
   key:"keep-up-with-me", title:"Keep Up With Me",
   src:"Keep%20Up%20With%20Me.mp3", artwork:"JKeepUpWithMeFixed.png?v=20261120-arm-fix",
@@ -197,5 +197,10 @@ window.JAHNTELLA_EXTRA_TRACKS.push({
   key:"red-light-go", title:"Red Light Go",
   src:"Red%20Light%20Go.mp3", artwork:"JRedLightGo.png",
   era:"Synergy", number:2
+});
+window.JAHNTELLA_EXTRA_TRACKS.push({
+  key:"spotlight", title:"Spotlight",
+  src:"Spotlight.mp3", artwork:"JSpotlight.png",
+  era:"Synergy", number:3
 });
 window.JAHNTELLA_TRACK_ORDER = ["fun-dipp", "pink-lips", "bite-lip", "gloss", "your-girl", "embrace-me", "we-come-together", "play-with-me", "carnival", "made-of-light", "candy-wrapper", "playground", "milk-shake", "tonight", "sweet-dreams", "we-are-1", "boots-smile-attitude", "midnight-rodeo", "redline", "smoke-show", "chasing-me", "coming-down", "you-and-me", "come-here-come-close", "touch", "pull-me-in", "strip", "what-you-do-to-me", "exist", "escape", "pink-petals", "obsessed-with-me", "kiss-me-like-a-secret", "pretty-little-problem", "cant-look-away", "knock-your-boots-off", "snap-me", "hold-my-hand-to-heaven", "read-my-lips", "viral-spiral", "hotter-in-person", "show-me-something-real"];
