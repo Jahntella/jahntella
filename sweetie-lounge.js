@@ -4,11 +4,11 @@ const mount=()=>{
  const featured=document.getElementById('featuredNow');if(!featured)return;
  const lounge=document.createElement('section');lounge.id='sweetieLounge';lounge.setAttribute('aria-label','Sweetie Music Lounge');
  lounge.innerHTML=`<div class="lounge-shell"><p class="lounge-kicker">🌸 THE WORLD OF SWEET · MUSIC LOUNGE</p><h2>What's your mood, Sweetie?</h2>
- <p class="lounge-desc">Put on a song, keep working, or find a new favorite. Five eras. Every mood. Your soundtrack.</p>
+ <p class="lounge-desc">Put on a song, keep working, or find a new favorite. Six eras. Every mood. Your soundtrack.</p>
  <div class="lounge-moods" role="group" aria-label="Choose a Jahntella era">
  <button class="mood" data-mood="Sweet" aria-pressed="true">💗 Sweet</button><button class="mood" data-mood="Shine" aria-pressed="false">💜 Shine</button>
  <button class="mood" data-mood="Sparkle" aria-pressed="false">🩵 Sparkle</button><button class="mood" data-mood="Siren" aria-pressed="false">💚 Siren</button>
- <button class="mood" data-mood="Surge" aria-pressed="false">🧡 Surge</button></div>
+ <button class="mood" data-mood="Surge" aria-pressed="false">🧡 Surge</button><button class="mood" data-mood="Synergy" aria-pressed="false">❤️ Synergy</button></div>
  <div class="lounge-stage"><div class="lounge-art"><div class="lounge-art-label" data-lounge-era>💗 THE SWEET ERA</div><div class="lounge-bars" aria-hidden="true">${Array.from({length:24},()=>'<i></i>').join('')}</div></div>
  <div><p class="lounge-now">YOUR JAHNTELLA SOUNDTRACK</p><p class="lounge-song" data-lounge-title>Pick your mood</p><p class="lounge-track-position" data-lounge-position aria-live="off"></p><p class="lounge-subtext" data-lounge-desc>Find a song that fits how you're feeling.</p>
  <div class="lounge-actions"><button type="button" class="secondary" data-lounge-prev aria-label="Previous song in this era">⏮ Previous</button><button type="button" data-lounge-start>▶ Play this song</button><button type="button" class="secondary" data-lounge-next aria-label="Next song in this era">Next ⏭</button><button type="button" class="secondary" data-lounge-surprise>✦ Surprise Me</button><button type="button" class="secondary" data-lounge-chill>☾ Work & Chill: Off</button><button type="button" class="secondary" data-lounge-share aria-expanded="false" aria-controls="loungeShareChoices">♡ Share this song</button></div><div class="lounge-share-options" id="loungeShareChoices" hidden><p data-share-preview></p><a data-share-facebook target="_blank" rel="noopener noreferrer">Facebook</a><a data-share-x target="_blank" rel="noopener noreferrer">X / Twitter</a><button type="button" data-share-copy>Copy caption + link</button><button type="button" data-share-link>Copy song link</button><button type="button" data-share-native hidden>More apps…</button></div>
@@ -31,7 +31,8 @@ const mount=()=>{
  Shine:{color:'#b58be8',icon:'💜',description:'Confidence, attitude and dancing.',songs:albumSongs('sweet-dreams','come-here-come-close')},
  Sparkle:{color:'#6fcee2',icon:'🩵',description:'Dreamy, hypnotic and discovering yourself.',songs:albumSongs('come-here-come-close','obsessed-with-me')},
  Siren:{color:'#75d1b2',icon:'💚',description:'Emotion, romance and real connection.',songs:albumSongs('obsessed-with-me','tik-tok')},
- Surge:{color:'#f6a15a',icon:'🧡',description:'Fearless, electric and unstoppable.',songs:albumSongs('tik-tok')}
+ Surge:{color:'#f6a15a',icon:'🧡',description:'Fearless, electric and unstoppable.',songs:albumSongs('tik-tok','keep-up-with-me')},
+ Synergy:{color:'#ed274e',icon:'❤️',description:'80s-inspired energy, ambition and the road to the spotlight.',songs:albumSongs('keep-up-with-me')}
  };
  const extra=Array.isArray(window.JAHNTELLA_EXTRA_TRACKS)?window.JAHNTELLA_EXTRA_TRACKS:[];
  const names=Object.fromEntries(extra.map(t=>[t.key,t.title]));
