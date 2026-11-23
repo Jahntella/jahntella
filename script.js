@@ -242,7 +242,7 @@
   const curatedPlaylists = {
     country: {name:'Country Sweetheart',songs:['boots-smile-attitude','midnight-rodeo','knock-your-boots-off','wild-card']},
     afterdark: {name:'After Dark',songs:['touch','snap-me','strip','come-here-come-close']},
-    electric: {name:'Electric Sweetie',songs:['tik-tok','electric-tangerine','overload','playlist','keep-up-with-me','red-light-go']},
+    electric: {name:'Electric Sweetie',songs:['tik-tok','electric-tangerine','overload','playlist','keep-up-with-me','red-light-go','spotlight']},
     confidence: {name:'Confidence Boost',songs:['obsessed-with-me','untouchable','pretty-little-problem','cant-look-away']}
   };
   window.JAHNTELLA_CURATED_PLAYLISTS = curatedPlaylists;
@@ -686,7 +686,7 @@
       persistSitePlayback();
     });
     track.audio.addEventListener("ended", () => {
-      // Curated playlists play in the selected order, ending after song four.
+      // Curated playlists play in their configured order.
       if (currentTrack() !== track) return;
       if (activePlaylist) {
         const songs=curatedPlaylists[activePlaylist].songs;
@@ -698,10 +698,10 @@
         }
         return;
       }
-      // Ordinary listening retains the original five-era continuous sequence.
+      // Ordinary listening retains the original six-era continuous sequence.
       const position = order.indexOf(currentKey);
       // Songs previewing an upcoming era play on demand; they do not
-      // silently jump into the five-era continuous radio after ending.
+      // silently jump into the six-era continuous radio after ending.
       if(position === -1){setPlaying(false);return;}
       const nextKey = order[(position + 1) % order.length];
       if (nextKey && tracks[nextKey]?.audio) selectTrack(nextKey, true, {fresh:true});
