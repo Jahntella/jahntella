@@ -9,7 +9,7 @@ from urllib.parse import urlparse, unquote
 from html import unescape
 import re
 
-from PIL import Image, ImageOps, ImageFilter, ImageDraw, ImageFont
+from PIL import Image, ImageOps, ImageFilter, ImageDraw, ImageFont, UnidentifiedImageError
 
 ROOT = Path(__file__).resolve().parents[1]
 SONGS = ROOT / "songs"
@@ -64,7 +64,13 @@ for page in sorted(SONGS.glob("*.html")):
         continue
     filename = page.stem + "-share.jpg"
     outfile = OUTPUT / filename
-    make_card(source, outfile)
+    try:
+        make_card(source, outfile)
+    except (OSError, UnidentifiedImageError, ValueError) as exc:
+        # Some legacy .webp paths are placeholders or incomplete image files.
+        # One bad cover must never prevent unrelated official song previews.
+        skipped.append((page.name, "unreadable cover " + path + ": " + str(exc)))
+        continue
     new_url = "https://jahntella.com/assets/social/" + filename
     # A distinct URL makes Facebook fetch the newly corrected cover instead
     # of continuing to use an older square-card preview from its cache.
