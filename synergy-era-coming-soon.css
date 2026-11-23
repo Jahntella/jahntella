@@ -185,7 +185,8 @@
 #synergyEraPreview .synergy-era-song-grid .exp44-new-music-card{min-width:0!important;max-width:none!important;display:flex!important;flex-direction:column!important;gap:12px;background:linear-gradient(145deg,#370b1b,#160710)!important;border:1px solid #e85a7988!important;border-radius:22px!important;box-shadow:0 16px 38px #0007,0 0 25px #de2b5230;padding:clamp(13px,2vw,21px)!important;color:#fff;text-align:left}
 #synergyEraPreview .synergy-era-song-grid .shine-era-cover-play{display:block!important;position:relative!important;width:100%!important;max-width:none!important;aspect-ratio:1/1;overflow:hidden;border:1px solid #fe8ea9a6;border-radius:16px;padding:0!important;cursor:pointer;background:#230711}
 #synergyEraPreview .synergy-era-song-grid .shine-era-cover-play img{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;background:#19070e}
-#synergyEraPreview .synergy-era-song-grid .shine-era-cover-play>span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:54px;height:54px;display:grid;place-items:center;border-radius:50%;background:#15050cbb;color:#fff;font-size:23px;border:1px solid #fff8}
+/* Artwork remains clickable, with no centered circular play overlay. */
+#synergyEraPreview .synergy-era-song-grid .shine-era-cover-play>span{display:none!important}
 #synergyEraPreview .synergy-era-song-grid .exp44-new-music-card>div{display:flex!important;flex:1;flex-direction:column!important;gap:8px!important;width:100%!important}
 #synergyEraPreview .synergy-era-song-grid small{font:800 .7rem/1.45 Arial,sans-serif!important;letter-spacing:.12em!important;color:#ff9fb1!important}
 #synergyEraPreview .synergy-era-song-grid h3{font:900 clamp(1.2rem,2.4vw,1.7rem)/1.16 Arial,sans-serif!important;color:#fff!important;margin:0!important}
