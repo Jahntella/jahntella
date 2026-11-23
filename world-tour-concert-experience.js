@@ -30,7 +30,7 @@
           <span>Click the poster to begin the complete playlist with Fun Dipp.</span>
         </header>
         <button class="world-tour-concert-poster" type="button" aria-label="Start the Concert Experience playlist with Fun Dipp">
-          <img src="https://raw.githubusercontent.com/Jahntella/jahntella/main/jahntella-imagine-world-tour.webp?v=20261113-new" alt="Jahntella Imagine World Tour poster celebrating all five eras: Sweet, Shine, Sparkle, Siren and Surge" width="1024" height="1536" decoding="async">
+          <img src="https://raw.githubusercontent.com/Jahntella/jahntella/main/jahntella-imagine-world-tour.webp?v=20261113-new" alt="Jahntella Imagine World Tour poster celebrating the World of Sweet; six eras from Sweet through Synergy" width="1024" height="1536" decoding="async">
           <span class="world-tour-concert-play" aria-hidden="true"><b>▶</b><strong>START THE CONCERT EXPERIENCE</strong><small>PLAY FROM FUN DIPP</small></span>
         </button>
       </div>`;
