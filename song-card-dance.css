@@ -1,4 +1,4 @@
-/* A delicate, site-wide dance for the five-era song cards while music plays.
+/* A delicate, site-wide dance for the six-era song cards while music plays.
    Pure transform animation: never changes card dimensions or button geometry. */
 @keyframes jahntella-gentle-card-dance {
   0%, 100% { transform: rotate(-1.15deg) translateY(0); }
