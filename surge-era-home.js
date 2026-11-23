@@ -18,7 +18,7 @@
        if(shine.nextElementSibling!==sparkle)shine.after(sparkle);
        if(sparkle.nextElementSibling!==siren)sparkle.after(siren);
        if(siren.nextElementSibling!==existing)siren.after(existing);
-       // Keep the featured singles, New Music, and thank-you content below all five eras.
+       // Keep the featured singles, New Music, and thank-you content below all six eras.
        // Move the existing nodes rather than cloning them so audio and event handlers survive.
        const synergyCovers=document.getElementById('synergyAlbumReveal');
        const synergySong=document.getElementById('synergyEraPreview');
