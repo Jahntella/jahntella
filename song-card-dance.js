@@ -1,4 +1,4 @@
-/* Keep the five-era card dance in sync with actual audio playback.
+/* Keep the six-era card dance in sync with actual audio playback.
    Standalone: doesn't modify the music player, its events, or card controls. */
 (function(){
   'use strict';
