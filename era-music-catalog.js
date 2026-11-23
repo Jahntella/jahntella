@@ -1,4 +1,4 @@
-// Shared album order and media paths for all four eras.
+// Shared album order and media paths for all six eras.
 window.JAHNTELLA_EXTRA_TRACKS = [
   {
     "key": "midnight-rodeo",
