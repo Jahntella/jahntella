@@ -7,6 +7,8 @@ on:
       - '.github/workflows/build-song-social-previews.yml'
       - 'songs/*.html'
       - 'JKeepUpWithMeFixed.png'
+      - 'JRedLightGo.png'
+      - 'JSpotlight.png'
   workflow_dispatch:
 
 permissions:
