@@ -67,10 +67,16 @@ for page in sorted(SONGS.glob("*.html")):
     try:
         make_card(source, outfile)
     except (OSError, UnidentifiedImageError, ValueError) as exc:
-        # Some legacy .webp paths are placeholders or incomplete image files.
-        # One bad cover must never prevent unrelated official song previews.
-        skipped.append((page.name, "unreadable cover " + path + ": " + str(exc)))
-        continue
+        # Some legacy full-size covers are empty GitHub placeholders. Prefer the
+        # real song thumbnail rather than leaving Facebook without a share card.
+        alternate = source.with_name(source.stem + "-thumb" + source.suffix)
+        try:
+            if not alternate.is_file():
+                raise FileNotFoundError(alternate)
+            make_card(alternate, outfile)
+        except (OSError, UnidentifiedImageError, ValueError):
+            skipped.append((page.name, "unreadable cover " + path + ": " + str(exc)))
+            continue
     new_url = "https://jahntella.com/assets/social/" + filename
     # A distinct URL makes Facebook fetch the newly corrected cover instead
     # of continuing to use an older square-card preview from its cache.
