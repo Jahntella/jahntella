@@ -1,4 +1,4 @@
-/* Era-styled lyrical sheets for the five Jahntella music eras.
+/* Era-styled lyrical sheets for the six Jahntella music eras.
    Never modifies the existing track audio or playlist queue. */
 (function(){
 'use strict';
