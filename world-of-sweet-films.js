@@ -3,7 +3,7 @@
 (function(){
 'use strict';
 const clips=[
-  {id:'find',title:'Find Your Sound',label:'01 · Discover Your Vibe',description:'Five eras. Every feeling. Find the Jahntella song that feels like yours.',file:'find-your-sound',duration:'0:10'},
+  {id:'find',title:'Find Your Sound',label:'01 · Discover Your Vibe',description:'Six eras. Every feeling. Find the Jahntella song that feels like yours.',file:'find-your-sound',duration:'0:10'},
   {id:'community',title:'Come Be a Sweetie',label:'02 · Find Your People',description:'You belong here. A place for music, creativity, confidence, and cheering each other on.',file:'sweetie-community',duration:'0:15'},
   {id:'spotlight',title:'Your Moment to Shine',label:'03 · Join the Movement',description:'Make the moment yours. Use Jahntella’s music, tag her, and share your creativity with the Sweeties.',file:'sweeties-spotlight-invite',duration:'0:30'}
 ];
