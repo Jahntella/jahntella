@@ -24,7 +24,7 @@
     document.head.appendChild(css);
     const overlay = document.createElement('div');
     overlay.id = 'sweetieCardShareDialog';overlay.hidden = true;
-    overlay.innerHTML = '<div class="sweetie-card-share-panel" role="dialog" aria-modal="true" aria-labelledby="sweetieCardShareTitle"><button class="sweetie-share-close" type="button" aria-label="Close sharing">×</button><h2 id="sweetieCardShareTitle">♡ Share your fave!</h2><p data-sweetie-share-caption></p><div class="sweetie-share-buttons"><a data-sweetie-share-facebook target="_blank" rel="noopener noreferrer">Facebook (paste caption)</a><button data-sweetie-share-facebook-post type="button">Copy link + open Facebook</button><a data-sweetie-share-x target="_blank" rel="noopener noreferrer">X / Twitter</a><button data-sweetie-share-copy type="button">Copy caption + link</button><button data-sweetie-share-native type="button" hidden>More apps…</button></div><div class="sweetie-share-feedback" role="status" aria-live="polite"></div></div>';
+    overlay.innerHTML = '<div class="sweetie-card-share-panel" role="dialog" aria-modal="true" aria-labelledby="sweetieCardShareTitle"><button class="sweetie-share-close" type="button" aria-label="Close sharing">×</button><h2 id="sweetieCardShareTitle">♡ Share your fave!</h2><p data-sweetie-share-caption></p><div class="sweetie-share-buttons"><button data-sweetie-share-facebook-post type="button">Facebook: Copy post + open</button><a data-sweetie-share-facebook target="_blank" rel="noopener noreferrer">Try Facebook share dialog</a><a data-sweetie-share-x target="_blank" rel="noopener noreferrer">X / Twitter</a><button data-sweetie-share-copy type="button">Copy caption + link</button><button data-sweetie-share-native type="button" hidden>More apps…</button></div><div class="sweetie-share-feedback" role="status" aria-live="polite"></div></div>';
     document.body.appendChild(overlay);
     let previousFocus=null, shareUrl='',shareCaption='';
     const close=()=>{overlay.hidden=true;previousFocus?.focus();};
@@ -40,9 +40,9 @@
       const facebook=window.open('https://www.facebook.com/','_blank','noopener,noreferrer');
       try{
         await navigator.clipboard.writeText(shareCaption+'\n'+shareUrl);
-        feedback.textContent='Copied! In Facebook, choose Create post, paste, then press Post. ♡';
+        feedback.textContent='Post text and song link copied! In Facebook, choose What’s on your mind?, paste, then press Post. ♡';
       }catch(e){
-        feedback.textContent='Copy the song link below, then paste into a new Facebook post.';
+        feedback.textContent='In Facebook, choose What’s on your mind? and paste the song link into a new post.';
         window.prompt('Copy your song link:',shareUrl);
       }
       if(!facebook)feedback.textContent+=' If Facebook did not open, allow pop-ups or open facebook.com.';
