@@ -92,7 +92,7 @@
     };
     const shareWinner=async()=>{
       if(!winner)return;
-      const url=new URL(location.origin+location.pathname);url.searchParams.set('song',winner.key);url.hash='sweetieLounge';
+      const url=winner.key==='turn-around'?new URL('/songs/turn-around.html',location.origin):new URL(location.origin+location.pathname);if(winner.key!=='turn-around'){url.searchParams.set('song',winner.key);url.hash='sweetieLounge';}
       const caption='OMG 💗 I picked '+winner.title+' by Jahntella in a Sweetie Song Battle! 🎶 What’s YOUR fave?';
       const text=caption+' '+url.toString();
       if(navigator.share){try{await navigator.share({title:'Sweetie Song Battle — '+winner.title,text:caption,url:url.toString()});outcome.textContent='♡ '+winner.title+' is your Sweetie Song Battle pick!';return;}catch(e){if(e.name==='AbortError'){outcome.textContent='♡ '+winner.title+' is your pick. Tap Share my pick whenever you’re ready.';return;}}}
