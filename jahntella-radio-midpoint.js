@@ -43,7 +43,7 @@
     return {key:known?.key||card?.dataset.card||'',title,artwork:known?.artwork||art,era:known?.era||card?.closest('#sweetEraAlbum,#shineEraSneakPeek,#sparkleEraAlbum,#sirenEraAlbum,#surgeEraAlbum')?.id||''};
   };
   function show(meta,kind='thanks'){
-    if(document.hidden||reduceMotion()||document.getElementById('sweetie-battle-showdown'))return;
+    if(document.hidden||reduceMotion()||document.getElementById('sweetie-battle-showdown')||window.__jahntellaBattleProgressKey===meta.key)return;
     if(!meta.artwork)return;
     remove();
     const colors=palettes[eraFor(meta)]||palettes.sweet;
