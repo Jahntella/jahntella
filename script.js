@@ -242,7 +242,7 @@
   const curatedPlaylists = {
     country: {name:'Country Sweetheart',songs:['boots-smile-attitude','midnight-rodeo','knock-your-boots-off','wild-card']},
     afterdark: {name:'After Dark',songs:['touch','snap-me','strip','come-here-come-close','you-saw-me','when-the-sun-comes-back']},
-    electric: {name:'Electric Sweetie',songs:['tik-tok','electric-tangerine','overload','playlist','keep-up-with-me']},
+    electric: {name:'Electric Sweetie',songs:['tik-tok','electric-tangerine','overload','playlist','keep-up-with-me','losing-it']},
     confidence: {name:'Confidence Boost',songs:['obsessed-with-me','untouchable','pretty-little-problem','cant-look-away']}
   };
   window.JAHNTELLA_CURATED_PLAYLISTS = curatedPlaylists;
