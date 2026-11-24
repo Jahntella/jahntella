@@ -9,6 +9,7 @@ on:
       - 'JKeepUpWithMeFixed.png'
       - 'JRedLightGo.png'
       - 'JSpotlight.png'
+      - 'JTurnAround.png'
   workflow_dispatch:
 
 permissions:
