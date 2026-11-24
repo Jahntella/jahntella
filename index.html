@@ -1364,11 +1364,13 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
   const orderAestheticsByAlbum=()=>{
     const g=document.querySelector('.gallery-section .gallery-grid');
     if(!g)return;
-    const order=["fun-dipp-cover", "pink-lips-remix", "bite-lip-cover", "gloss-cover", "i-want-to-be-your-girl-cover", "embrace-me-cover", "we-come-together-cover", "play-with-me-cover", "carnival-cover", "made-of-light-cover", "candy-wrapper-cover", "playground-cover", "milk-shake-cover", "tonight-cover", "jsweetdreamsnew", "jweare1new", "jboots,smile,attitudenew", "jmidnightrodeonew", "jredlinenew", "jsmokeshownew", "jchasingmenew", "jcomingdownnew", "jyouandmenew", "jcomeherecomeclosenew", "jtouchnew", "jpullmein", "jstripnew", "jwhatyoudotome", "jexistnew", "jescape", "jpinkpetalsnew", "obsessed-with-me-cover", "kiss-me-like-a-secret-cover", "pretty-little-problem-cover", "cant-look-away-cover", "knock-your-boots-off-cover", "snap-me-cover", "hold-my-hand-to-heaven-cover", "read-my-lips-cover", "viral-spiral-cover", "hotter-in-person-cover", "show-me-something-real-cover", "jkeepupwithmefixed", "jredlightgo", "jspotlight", "jturnaround", "jwhatsyoursign", "jyousawme"];
+    const order=["fun-dipp-cover", "pink-lips-remix", "bite-lip-cover", "gloss-cover", "i-want-to-be-your-girl-cover", "embrace-me-cover", "we-come-together-cover", "play-with-me-cover", "carnival-cover", "made-of-light-cover", "candy-wrapper-cover", "playground-cover", "milk-shake-cover", "tonight-cover", "jsweetdreamsnew", "jweare1new", "jboots,smile,attitudenew", "jmidnightrodeonew", "jredlinenew", "jsmokeshownew", "jchasingmenew", "jcomingdownnew", "jyouandmenew", "jcomeherecomeclosenew", "jtouchnew", "jpullmein", "jstripnew", "jwhatyoudotome", "jexistnew", "jescape", "jpinkpetalsnew", "obsessed-with-me-cover", "kiss-me-like-a-secret-cover", "pretty-little-problem-cover", "cant-look-away-cover", "knock-your-boots-off-cover", "snap-me-cover", "hold-my-hand-to-heaven-cover", "read-my-lips-cover", "viral-spiral-cover", "hotter-in-person-cover", "show-me-something-real-cover", "tick-tock-cover", "doll-face-cover", "future-ex-cover", "going-down-cover", "body-potion-cover", "untouchable-cover", "electric-tangerine-cover", "anxiety-cover", "spit-cover", "wild-card-cover", "overload-cover", "playlist-cover", "jkeepupwithmefixed", "jredlightgo", "jspotlight", "jturnaround", "jwhatsyoursign", "jyousawme"];
     const rank=new Map(order.map((name,index)=>[name,index]));
     Array.from(g.querySelectorAll(':scope > .gallery-item')).sort((a,b)=>{
       const file=itemFilename(a), fileB=itemFilename(b);
-      const ra=rank.has(file)?rank.get(file):1000, rb=rank.has(fileB)?rank.get(fileB):1000;
+      // Keep Synergy as the final six covers, after every Surge and other gallery tile.
+      const ra=a.classList.contains('synergy-gallery-item')?2000+(rank.get(file)??0):rank.has(file)?rank.get(file):1000;
+      const rb=b.classList.contains('synergy-gallery-item')?2000+(rank.get(fileB)??0):rank.has(fileB)?rank.get(fileB):1000;
       return ra-rb;
     }).forEach(item=>g.appendChild(item));
     function itemFilename(item){
