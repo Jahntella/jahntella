@@ -51,7 +51,7 @@
     }
     const label=document.createElement('div');label.className='sbs-victory';
     const title=document.createElement('strong');title.textContent=winner.title||'Your pick';
-    const subtitle=document.createElement('small');subtitle.textContent='♡ YOUR SWEETIE SONG WINNER ♡';
+    const subtitle=document.createElement('small');subtitle.textContent=[25,50,75].includes(d.milestone)?('⚡ '+d.milestone+'% · NOW PLAYING WINS THIS ROUND ⚡'):'♡ NOW PLAYING · SONG BATTLE ♡';
     label.append(title,subtitle);stage.appendChild(label);
     root.append(wash,stage);document.body.appendChild(root);
     active=root;
