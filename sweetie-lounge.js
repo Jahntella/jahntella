@@ -56,7 +56,7 @@ const mount=()=>{
  lounge.querySelector('[data-lounge-next]').addEventListener('click',()=>moveSong(1));
  lounge.querySelector('[data-lounge-surprise]').addEventListener('click',()=>{const keys=Object.values(moods).flatMap(m=>m.songs);if(keys.length)playKey(pick(keys));});
  const shareButton=lounge.querySelector('[data-lounge-share]'),shareChoices=lounge.querySelector('#loungeShareChoices');
- const shareLink=()=>{if(selectedKey==='turn-around')return new URL('/songs/turn-around.html',window.location.origin).toString();const url=new URL(window.location.origin+window.location.pathname);url.searchParams.set('song',selectedKey);url.hash='sweetieLounge';return url.toString();};
+ const shareLink=()=>{if(['turn-around','whats-your-sign'].includes(selectedKey))return new URL('/songs/'+selectedKey+'.html',window.location.origin).toString();const url=new URL(window.location.origin+window.location.pathname);url.searchParams.set('song',selectedKey);url.hash='sweetieLounge';return url.toString();};
  const shareLabel=()=> 'OMG 💗 My fave song right now is '+displayName(selectedKey)+' by Jahntella! 🎶 Come listen with me!';
  const shareText=()=>shareLabel()+' '+shareLink();
  const updateShare=()=>{lounge.querySelector('[data-share-preview]').textContent=shareLabel();lounge.querySelector('[data-share-facebook]').href='https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(shareLink());
