@@ -1411,7 +1411,7 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
     if(!g)return;
     const artName=value=>{
       const path=String(value||'').split(/[?#]/)[0];
-      try{return decodeURIComponent(path.split('/').pop()||'').toLowerCase().replace(/\\.[^.]+$/,'').replace(/-thumb$/,'');}
+      try{return decodeURIComponent(path.split('/').pop()||'').toLowerCase().replace(/\.[^.]+$/,'').replace(/-thumb$/,'');}
       catch(e){return path.toLowerCase();}
     };
     const items=Array.from(g.querySelectorAll(':scope > .gallery-item'));
