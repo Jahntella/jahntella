@@ -63,7 +63,7 @@
       do {first=songs[random(songs.length)];second=songs[random(songs.length)];tries++}
       while(tries<60&&(first.key===second.key||first.era===second.era||[first.key,second.key].sort().join('/')===previous));
       if(first.key===second.key)return;
-      pair=[first,second];previous=[first.key,second.key].sort().join('/');winner=null;activeBattleKey=null;share.disabled=true;
+      pair=[first,second];previous=[first.key,second.key].sort().join('/');winner=null;activeBattleKey=null;window.__jahntellaBattleProgressKey=null;share.disabled=true;
       cards.forEach((card,i)=>{const t=pair[i];card.querySelector('img').src=t.art;card.querySelector('img').alt=t.title+' cover';card.querySelector('.battle-era').textContent=t.era+' Era';card.querySelector('h3').textContent=t.title;card.querySelector('.battle-vote').setAttribute('aria-label','Pick '+t.title+' as your favorite');});
       outcome.textContent='Which song wins your heart?';
     };
@@ -82,6 +82,7 @@
       if(typeof window.jahntellaSelectSiteTrack==='function'){
         window.__jahntellaBattleSuppressKey=t.key;
         activeBattleKey=t.key;
+        window.__jahntellaBattleProgressKey=t.key;
         showdown(i);
         window.jahntellaSelectSiteTrack(t.key,true);
         outcome.textContent='Now playing '+t.title+'. Pick your fave when you’re ready!';
@@ -119,7 +120,7 @@
     });
     window.addEventListener('jahntella:trackstarted',({detail})=>{
       // Playing a song outside this battle returns to normal Radio celebrations.
-      if(activeBattleKey&&detail?.key!==activeBattleKey)activeBattleKey=null;
+      if(activeBattleKey&&detail?.key!==activeBattleKey){activeBattleKey=null;window.__jahntellaBattleProgressKey=null;}
     });
     cards.forEach((card,i)=>{
       const cover=card.querySelector('img');
