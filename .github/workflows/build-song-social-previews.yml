@@ -10,6 +10,7 @@ on:
       - 'JRedLightGo.png'
       - 'JSpotlight.png'
       - 'JTurnAround.png'
+      - 'JWhatsYourSign.png'
   workflow_dispatch:
 
 permissions:
