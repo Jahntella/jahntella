@@ -203,6 +203,18 @@ main > #surgeEraAlbum .exp60-shine-shell{
 <link rel="stylesheet" href="jahntella-video-hub.css?v=4-native-controls">
 <link rel="stylesheet" href="player-mobile-resume-layout.css?v=3-mobile-timeline">
 <link rel="stylesheet" href="synergy-era-coming-soon.css?v=10-no-cover-play-circles">
+<style id="jahntella-dedications-style">
+/* Compact tribute links on Synergy cards; Aubrey's Anxiety dedication stays visible. */
+.jahntella-dedication-trigger{display:inline-flex;align-items:center;justify-content:center;max-width:100%;min-height:38px;margin:8px 0 10px;padding:7px 14px;background:rgba(214,37,78,.14);border:1px solid rgba(255,163,186,.75);border-radius:999px;color:#ffe1eb;font:700 .83rem/1.25 inherit;letter-spacing:.01em;cursor:pointer}
+.jahntella-dedication-trigger:hover{background:rgba(214,37,78,.3)}
+.jahntella-dedication-trigger:focus-visible,.jahntella-dedication-dialog button:focus-visible{outline:3px solid #ffb8ce;outline-offset:3px}
+.jahntella-dedication-dialog{position:fixed;inset:0;width:min(calc(100% - 32px),540px);max-height:min(85vh,650px);margin:auto;padding:clamp(24px,5vw,42px);border:1px solid #e89bb1;border-radius:20px;background:linear-gradient(155deg,#3b0d23,#170813 85%);color:#fff;text-align:center;box-shadow:0 24px 90px #000a;overflow:auto}
+.jahntella-dedication-dialog::backdrop{background:rgba(8,0,13,.78);backdrop-filter:blur(5px)}
+.jahntella-dedication-dialog .dedication-eyebrow{display:block;color:#ffb4cb;font-size:.75rem;letter-spacing:.18em;font-weight:800;text-transform:uppercase}
+.jahntella-dedication-dialog h2{color:#fff;margin:12px auto 18px;font:700 clamp(1.7rem,5vw,2.5rem)/1.2 Georgia,serif}
+.jahntella-dedication-dialog p{color:#ffe4eb;font-size:1rem;line-height:1.75;margin:10px auto 18px}
+.jahntella-dedication-dialog .dedication-close{min-height:42px;border-radius:999px;padding:10px 22px;border:1px solid #ffb4cb;background:#8b2348;color:#fff;font-weight:800;cursor:pointer}
+</style>
 </head>
 <body>
   <div id="siteLoader" class="site-loader" aria-hidden="true">
@@ -742,7 +754,7 @@ main > #surgeEraAlbum .exp60-shine-shell{
         </button>
         <div><small>THE SYNERGY ERA · 03</small><h3>Spotlight</h3>
           <p>Every step, every fall, every lonely Friday night. The work in the dark before the spotlight.</p>
-          <p>♡ A special dedication to the legendary Irene Cara, whose music and spirit inspired this song. Your voice, passion, and message of believing in your dreams continue to shine. Thank you for showing generations of dreamers that the work, the courage, and the heart behind the spotlight matter. ♡</p>
+          <button type="button" class="jahntella-dedication-trigger" data-dedication="irene" aria-haspopup="dialog" aria-controls="jahntellaDedicationDialog">♡ Read My Dedication</button>
           <button class="play-button" type="button" data-track="spotlight">▶ Play Spotlight</button>
         </div>
       </article>
@@ -770,7 +782,7 @@ main > #surgeEraAlbum .exp60-shine-shell{
         </button>
         <div><small>THE SYNERGY ERA · 06</small><h3>You Saw Me</h3>
           <p>I wore red, but you saw me. A romantic slow dance about being seen for who you truly are. ♡</p>
-          <p>♡ A special dedication to Chris de Burgh, whose heartfelt storytelling, passion, and timeless romance inspired this song. Thank you for reminding us that the most beautiful moment is not simply being noticed, but being truly seen. Your music continues to inspire hearts across generations. ♡</p>
+          <button type="button" class="jahntella-dedication-trigger" data-dedication="chris" aria-haspopup="dialog" aria-controls="jahntellaDedicationDialog">♡ Read My Dedication</button>
           <button class="play-button" type="button" data-track="you-saw-me">▶ Play You Saw Me</button>
         </div>
       </article>
@@ -1627,5 +1639,38 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
 
 
 <script defer src="jahntella-video-hub.js?v=5-crisp-uploaded-posters"></script>
+<dialog id="jahntellaDedicationDialog" class="jahntella-dedication-dialog" aria-labelledby="jahntellaDedicationTitle" aria-describedby="jahntellaDedicationMessage">
+  <span class="dedication-eyebrow">♡ A note from Jahntella</span>
+  <h2 id="jahntellaDedicationTitle"></h2>
+  <p id="jahntellaDedicationMessage"></p>
+  <button type="button" class="dedication-close">♡ Close dedication</button>
+</dialog>
+<script id="jahntella-dedications-script">
+(function(){
+  const notes={
+    irene:{title:"For Irene Cara ♡",message:"♡ A special dedication to the legendary Irene Cara, whose music and spirit inspired this song. Your voice, passion, and message of believing in your dreams continue to shine. Thank you for showing generations of dreamers that the work, the courage, and the heart behind the spotlight matter. ♡"},
+    chris:{title:"For Chris de Burgh ♡",message:"♡ A special dedication to Chris de Burgh, whose heartfelt storytelling, passion, and timeless romance inspired this song. Thank you for reminding us that the most beautiful moment is not simply being noticed, but being truly seen. Your music continues to inspire hearts across generations. ♡"}
+  };
+  const dialog=document.getElementById('jahntellaDedicationDialog');
+  const title=dialog.querySelector('#jahntellaDedicationTitle');
+  const message=dialog.querySelector('#jahntellaDedicationMessage');
+  const close=dialog.querySelector('.dedication-close');
+  let opener=null;
+  document.addEventListener('click',function(event){
+    const trigger=event.target.closest('.jahntella-dedication-trigger');
+    if(!trigger||!notes[trigger.dataset.dedication])return;
+    event.preventDefault();
+    opener=trigger;
+    title.textContent=notes[trigger.dataset.dedication].title;
+    message.textContent=notes[trigger.dataset.dedication].message;
+    if(typeof dialog.showModal==='function')dialog.showModal();
+    else dialog.setAttribute('open','');
+    close.focus();
+  });
+  close.addEventListener('click',function(){dialog.close?dialog.close():dialog.removeAttribute('open')});
+  dialog.addEventListener('click',function(event){if(event.target===dialog)dialog.close()});
+  dialog.addEventListener('close',function(){if(opener&&opener.isConnected)opener.focus();opener=null});
+})();
+</script>
 </body>
 </html>
