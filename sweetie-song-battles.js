@@ -56,30 +56,32 @@
     if (featured) featured.before(wrap); else lounge.after(wrap);
     const cards=[...wrap.querySelectorAll('[data-battle-card]')],outcome=wrap.querySelector('.battle-outcome');
     const share=wrap.querySelector('[data-battle-share]');
-    let pair=[],winner=null,previous='';
+    let pair=[],winner=null,previous='',activeBattleKey=null;
     const random=n=>Math.floor(Math.random()*n);
     const choose=()=>{
       let first,second,tries=0;
       do {first=songs[random(songs.length)];second=songs[random(songs.length)];tries++}
       while(tries<60&&(first.key===second.key||first.era===second.era||[first.key,second.key].sort().join('/')===previous));
       if(first.key===second.key)return;
-      pair=[first,second];previous=[first.key,second.key].sort().join('/');winner=null;share.disabled=true;
+      pair=[first,second];previous=[first.key,second.key].sort().join('/');winner=null;activeBattleKey=null;share.disabled=true;
       cards.forEach((card,i)=>{const t=pair[i];card.querySelector('img').src=t.art;card.querySelector('img').alt=t.title+' cover';card.querySelector('.battle-era').textContent=t.era+' Era';card.querySelector('h3').textContent=t.title;card.querySelector('.battle-vote').setAttribute('aria-label','Pick '+t.title+' as your favorite');});
       outcome.textContent='Which song wins your heart?';
     };
     // Battle interactions use a unique overlay instead of the standard song-start reveal.
-    const showdown=i=>{
+    const showdown=(i,milestone=null)=>{
       if(!pair[i]||!pair[1-i])return;
       window.__jahntellaBattleSuppressUntil=Date.now()+4500;
       window.dispatchEvent(new CustomEvent('jahntella:battle-showdown',{detail:{
         pair:pair.map(t=>({key:t.key,title:t.title,art:t.art,era:t.era})),
-        winnerIndex:i
+        winnerIndex:i,
+        milestone
       }}));
     };
     const listen=i=>{
       const t=pair[i];
       if(typeof window.jahntellaSelectSiteTrack==='function'){
         window.__jahntellaBattleSuppressKey=t.key;
+        activeBattleKey=t.key;
         showdown(i);
         window.jahntellaSelectSiteTrack(t.key,true);
         outcome.textContent='Now playing '+t.title+'. Pick your fave when you’re ready!';
@@ -99,6 +101,26 @@
       try{await navigator.clipboard.writeText(text);outcome.textContent='♡ Your winning song and share message were copied! Paste them in any app to share.';}
       catch(e){window.prompt('Copy your Sweetie Song Battle message:',text);outcome.textContent='♡ Your pick is ready to share!';}
     };
+    // Reuse the player's real quarter, halfway and three-quarter events.
+    // Only run a battle if its currently playing track belongs to this matchup.
+    // The automatic visual winner does not replace the Sweetie's explicit vote.
+    const progressMoments={
+      'jahntella:radio-lyrics-reminder':25,
+      'jahntella:radio-midpoint':50,
+      'jahntella:radio-share-reminder':75
+    };
+    Object.entries(progressMoments).forEach(([eventName,milestone])=>{
+      window.addEventListener(eventName,({detail})=>{
+        if(!activeBattleKey||detail?.key!==activeBattleKey)return;
+        const index=pair.findIndex(t=>t.key===activeBattleKey);
+        if(index<0)return;
+        showdown(index,milestone);
+      });
+    });
+    window.addEventListener('jahntella:trackstarted',({detail})=>{
+      // Playing a song outside this battle returns to normal Radio celebrations.
+      if(activeBattleKey&&detail?.key!==activeBattleKey)activeBattleKey=null;
+    });
     cards.forEach((card,i)=>{
       const cover=card.querySelector('img');
       cover.setAttribute('role','button');
