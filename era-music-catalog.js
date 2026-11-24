@@ -218,4 +218,9 @@ window.JAHNTELLA_EXTRA_TRACKS.push({
   src:"You%20Saw%20Me.mp3", artwork:"JYouSawMe.png",
   era:"Synergy", number:6
 });
+window.JAHNTELLA_EXTRA_TRACKS.push({
+  key:"when-the-sun-comes-back", title:"When the Sun Comes Back",
+  src:"When%20The%20Sun%20Comes%20Back.mp3", artwork:"JWhenTheSunComesBack.png",
+  era:"Synergy", number:7
+});
 window.JAHNTELLA_TRACK_ORDER = ["fun-dipp", "pink-lips", "bite-lip", "gloss", "your-girl", "embrace-me", "we-come-together", "play-with-me", "carnival", "made-of-light", "candy-wrapper", "playground", "milk-shake", "tonight", "sweet-dreams", "we-are-1", "boots-smile-attitude", "midnight-rodeo", "redline", "smoke-show", "chasing-me", "coming-down", "you-and-me", "come-here-come-close", "touch", "pull-me-in", "strip", "what-you-do-to-me", "exist", "escape", "pink-petals", "obsessed-with-me", "kiss-me-like-a-secret", "pretty-little-problem", "cant-look-away", "knock-your-boots-off", "snap-me", "hold-my-hand-to-heaven", "read-my-lips", "viral-spiral", "hotter-in-person", "show-me-something-real"];
