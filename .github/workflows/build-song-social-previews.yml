@@ -11,6 +11,7 @@ on:
       - 'JSpotlight.png'
       - 'JTurnAround.png'
       - 'JWhatsYourSign.png'
+      - 'JYouSawMe.png'
   workflow_dispatch:
 
 permissions:
