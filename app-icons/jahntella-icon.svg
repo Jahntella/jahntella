@@ -1,7 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-<defs><radialGradient id="a" cx="50%" cy="24%" r="80%"><stop stop-color="#7e193c"/><stop offset="1" stop-color="#120015"/></radialGradient><linearGradient id="b" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0ee"/><stop offset=".48" stop-color="#ff86a3"/><stop offset="1" stop-color="#ff385c"/></linearGradient></defs>
-<rect width="512" height="512" rx="112" fill="url(#a)"/><circle cx="256" cy="256" r="207" fill="none" stroke="#ed557b" stroke-opacity=".5" stroke-width="5"/>
-<path d="M141 174 L173 123 224 153 256 97 288 153 339 123 371 174 361 194 151 194 Z" fill="none" stroke="url(#b)" stroke-width="10" stroke-linejoin="round"/>
-<path d="M333 215 v134 q0 75-77 75 q-78 0-78-76" stroke="url(#b)" stroke-width="33" stroke-linecap="round" fill="none"/>
-<path d="M260 433 q-45-27-45-51 q0-27 25-27 q13 0 20 12 q8-12 21-12 q25 0 25 27 q0 24-46 51" fill="#ff648d"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Jahntella World of Sweet crown and heart icon">
+<defs>
+<radialGradient id="bg" cx="50%" cy="30%" r="85%"><stop stop-color="#68102c"/><stop offset=".55" stop-color="#350619"/><stop offset="1" stop-color="#110410"/></radialGradient>
+<linearGradient id="pink" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd1db"/><stop offset=".22" stop-color="#ff72ae"/><stop offset=".44" stop-color="#ff146a"/><stop offset=".68" stop-color="#f43c87"/><stop offset="1" stop-color="#ffe2eb"/></linearGradient>
+<linearGradient id="metal" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff0f6"/><stop offset=".3" stop-color="#ffaac4"/><stop offset=".56" stop-color="#ff3b83"/><stop offset=".85" stop-color="#9e0d42"/><stop offset="1" stop-color="#ffe0ed"/></linearGradient>
+<filter id="glow" x="-35%" y="-35%" width="170%" height="170%"><feGaussianBlur stdDeviation="8"/></filter>
+<filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3"/></filter>
+</defs>
+<rect x="6" y="6" width="500" height="500" rx="108" fill="url(#bg)"/>
+<rect x="16" y="16" width="480" height="480" rx="98" fill="none" stroke="#ff4d95" stroke-opacity=".5" stroke-width="5"/>
+<rect x="25" y="25" width="462" height="462" rx="90" fill="none" stroke="#ffb3ce" stroke-opacity=".16" stroke-width="2"/>
+<path id="heart" d="M256 420 C215 377 114 291 104 217 C93 136 160 114 208 143 C229 155 246 174 256 189 C267 171 292 144 325 138 C390 124 430 167 418 237 C404 310 316 376 256 420 Z" fill="none" stroke="#ff368b" stroke-width="35" opacity=".65" filter="url(#glow)"/>
+<path d="M256 420 C215 377 114 291 104 217 C93 136 160 114 208 143 C229 155 246 174 256 189 C267 171 292 144 325 138 C390 124 430 167 418 237 C404 310 316 376 256 420 Z" fill="none" stroke="#680e37" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M256 420 C215 377 114 291 104 217 C93 136 160 114 208 143 C229 155 246 174 256 189 C267 171 292 144 325 138 C390 124 430 167 418 237 C404 310 316 376 256 420 Z" fill="none" stroke="url(#pink)" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M256 408 C216 363 130 291 118 215 C111 161 156 132 204 160 C227 172 245 199 256 211 C268 190 292 158 329 154 C389 145 414 185 402 241" fill="none" stroke="#ffe2ef" stroke-opacity=".65" stroke-width="5" stroke-linecap="round"/>
+<g transform="translate(139 106) rotate(-12 75 45)">
+<path d="M8 80 L2 25 L38 45 L67 7 L95 42 L141 23 L133 80 Z" fill="#ff3c85" opacity=".5" filter="url(#soft)"/>
+<path d="M8 80 L2 25 L38 45 L67 7 L95 42 L141 23 L133 80 Z" fill="url(#metal)" stroke="#ffdfeb" stroke-width="4" stroke-linejoin="round"/>
+<path d="M17 69 L125 69" fill="none" stroke="#930d43" stroke-width="7" stroke-linecap="round"/>
+<path d="M15 76 L127 76" fill="none" stroke="#fff1f5" stroke-width="4" stroke-linecap="round"/>
+<circle cx="2" cy="25" r="6" fill="#fff3f8"/><circle cx="67" cy="7" r="6" fill="#fff3f8"/><circle cx="141" cy="23" r="6" fill="#fff3f8"/>
+</g></svg>
