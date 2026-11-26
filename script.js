@@ -356,6 +356,7 @@
       if (button) button.textContent = active && playing ? `❚❚ Pause ${track.title}` : `▶ Play ${track.title}`;
     });
     persistSitePlayback(true);
+    window.dispatchEvent(new CustomEvent('jahntella:playbackstate',{detail:{key:currentKey,playing}}));
   };
 
   const stopOthers = selected => {
@@ -413,6 +414,7 @@
     ++transitionSerial;
     stopOthers(track.audio);
     currentKey = key;
+    window.dispatchEvent(new CustomEvent('jahntella:trackchange',{detail:{key,title:track.title,artwork:track.artwork}}));
     if (activePlaylist) playlistStatus();
     if (changing || options.fresh) currentCredited = false;
     if (typeof options.credited === "boolean") currentCredited = options.credited;
@@ -477,6 +479,27 @@
     activePlaylist=id;playlistPosition=0;
     selectTrack(data.songs[0],true,{fromPlaylist:true,fresh:true});
     return true;
+  };
+  // Reuse the original Jahntella Radio playback engine for Sweetie Space.
+  // Custom queues feed the existing player, preserving lock-screen metadata and audio behavior.
+  window.jahntellaAppRadio = {
+    getTracks: () => order.filter(key => tracks[key]?.audio).concat(
+      Object.keys(tracks).filter(key => !order.includes(key) && tracks[key]?.audio)
+    ).map(key => ({key, title:tracks[key].title, artwork:tracks[key].artwork, era:tracks[key].era || ''})),
+    getCurrentKey: () => currentKey,
+    playTrack: key => {
+      if (!tracks[key]?.audio) return false;
+      selectTrack(key,true,{fresh:true}); return true;
+    },
+    playQueue: (keys,name='My Sweetie Playlist') => {
+      if (!Array.isArray(keys)) return false;
+      const songs=[...new Set(keys)].filter(key => tracks[key]?.audio);
+      if (!songs.length) return false;
+      curatedPlaylists['sweetie-personal']={name:String(name).slice(0,60),songs};
+      activePlaylist='sweetie-personal';playlistPosition=0;
+      selectTrack(songs[0],true,{fromPlaylist:true,fresh:true});
+      return true;
+    }
   };
   window.jahntellaStopPlaylist = () => {
     activePlaylist=null;playlistPosition=-1;playlistStatus();
