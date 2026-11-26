@@ -1,0 +1,14 @@
+/* Installed-app welcome: only visible in standalone mode via JS. */
+.jahntella-app-welcome{position:relative;margin:0 auto 30px;padding:30px 20px 26px;max-width:1120px;border:1px solid rgba(255,129,166,.35);border-radius:24px;background:radial-gradient(circle at 90% 0%,rgba(239,70,124,.22),transparent 65%),linear-gradient(145deg,#310c25,#110817);color:#fff;box-shadow:0 12px 36px #0005}
+.jahntella-app-welcome h2{font-size:clamp(1.6rem,4vw,2.4rem);margin:6px 0;color:#fff}
+.jahntella-app-welcome .app-eyebrow{color:#ffacc9;letter-spacing:.19em;font-size:.73rem;text-transform:uppercase;font-weight:800}
+.jahntella-app-welcome p{color:#f5cedd;margin:7px 0 18px;max-width:640px;line-height:1.5}
+.jahntella-app-moods{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}
+.jahntella-app-moods button{border:1px solid rgba(255,174,197,.48);border-radius:16px;background:rgba(255,255,255,.065);padding:17px 10px;color:white;font:inherit;text-align:center;cursor:pointer;min-height:98px}
+.jahntella-app-moods button:hover,.jahntella-app-moods button:focus-visible{background:rgba(255,106,148,.23);outline:2px solid #ff98b9;outline-offset:2px}
+.jahntella-app-moods .mood-icon{display:block;font-size:1.8rem;margin-bottom:7px}
+.jahntella-app-moods strong{display:block;font-size:.93rem}
+.jahntella-app-welcome .app-shortcuts{display:flex;flex-wrap:wrap;gap:10px;margin:17px 0 0}
+.jahntella-app-welcome .app-shortcuts a{display:inline-block;background:#9c2552;color:white;padding:10px 14px;border-radius:999px;text-decoration:none;font-weight:750;font-size:.84rem}
+.jahntella-app-feedback{min-height:1.4rem;font-size:.86rem;color:#ffd9e6;margin-top:12px!important}
+@media(max-width:700px){.jahntella-app-welcome{border-radius:16px;margin:0 12px 20px;padding:23px 15px}.jahntella-app-moods{grid-template-columns:repeat(2,minmax(0,1fr))}}
