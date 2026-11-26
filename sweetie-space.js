@@ -170,8 +170,17 @@
       save();render();
     }
   }
+  let bootAttempts=0;
   const boot=()=>{
-    if(!app()?.getTracks)return;
+    // The tab bar must never depend on the music catalog being ready.
+    // The original player can load later on slower mobile connections.
+    if(!document.querySelector('.sweetie-bottom-nav'))nav();
+    if(root)return;
+    if(!app()?.getTracks){
+      if(bootAttempts++<60)window.setTimeout(boot,150);
+      else console.warn('Sweetie Space: radio catalog not available; refresh to retry.');
+      return;
+    }
     tracks=app().getTracks();trackMap=new Map(tracks.map(t=>[t.key,t]));store=read();
     const hero=document.getElementById('home');if(!hero||!hero.parentElement)return;
     root=el('section','sweetie-space');root.id='mySweetieSpace';root.tabIndex=-1;root.setAttribute('aria-labelledby','sweetieSpaceTitle');
@@ -207,10 +216,16 @@
       store.playlists.push({id:'p'+Date.now()+'-'+Math.random().toString(36).slice(2,7),name,keys:[]});
       save();message('Created '+name+'! Open All Songs to add tracks.');render();
     });
-    addCardHearts();render();nav();
+    addCardHearts();render();
     window.addEventListener('jahntella:trackchange',updateNowHeart);
     if(!available)message('Local storage is unavailable here; favorites may not persist.');
     if(location.hash==='#mySweetieSpace')root.scrollIntoView({block:'start'});
+    // When opening a new app session, do not restore an outdated scroll
+    // position from before the mood and Sweetie Space sections were inserted.
+    else if(standalone() && !location.hash && 
+      (performance.getEntriesByType('navigation')[0]?.type==='navigate')){
+      window.requestAnimationFrame(()=>window.scrollTo({top:0,left:0,behavior:'instant'}));
+    }
   };
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
