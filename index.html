@@ -4,6 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#120015">
+  <script>
+    // Installed apps should open at the beginning, not an old browser scroll offset.
+    if (window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true) {
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      window.addEventListener('pageshow', function () {
+        if (location.hash) return;
+        window.scrollTo(0, 0);
+        window.setTimeout(function(){if(!location.hash && window.scrollY < 650) window.scrollTo(0,0);}, 140);
+      });
+    }
+  </script>
   <link rel="manifest" href="/manifest.webmanifest?v=3-glossy">
   <meta name="application-name" content="Jahntella — World of Sweet">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -13,7 +24,7 @@
   <link rel="icon" type="image/png" href="/app-icons/jahntella-192.png?v=3-glossy">
   <link rel="stylesheet" href="/jahntella-app.css?v=1">
   <link rel="stylesheet" href="/jahntella-app-home.css?v=2-launch-layout">
-  <link rel="stylesheet" href="/sweetie-space.css?v=2-nav-safe">
+  <link rel="stylesheet" href="/sweetie-space.css?v=3-static-nav">
   <script defer src="/jahntella-app-home.js?v=1"></script>
   <script defer src="/jahntella-app.js?v=1"></script>
   <meta name="description" content="Explore Jahntella’s World of Sweet: six music eras, official songs, visuals, and the Sweeties community. Listen to Show Me Something Real and Tick Tock.">
@@ -1531,7 +1542,7 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
   <script defer src="era-music-catalog.js?v=10-losing-it"></script>
 <script defer src="surge-era-catalog.js?v=13-losing-it"></script>
   <script defer src="script.js?v=16-sweetie-space"></script>
-  <script defer src="/sweetie-space.js?v=3-startup-nav"></script>
+  <script defer src="/sweetie-space.js?v=4-static-nav"></script>
   <script defer src="exp57-gallery-lightbox.js?v=63.0"></script>
   <script defer src="exp60-shine-era-sneak-peek.js?v=66.0"></script>
 
@@ -1759,5 +1770,12 @@ window.JAHNTELLA_ALBUM2=Object.freeze({previewMode:false,plannedManualActivation
   dialog.addEventListener('close',function(){if(opener&&opener.isConnected)opener.focus();opener=null});
 })();
 </script>
+  <!-- Permanent app navigation: visible in installed mode even before radio scripts start. -->
+  <nav class="sweetie-bottom-nav" id="sweetieAppNav" aria-label="World of Sweet app navigation">
+    <button type="button" data-ss-nav="radio" aria-current="page"><span class="ss-nav-icon" aria-hidden="true">♫</span><span>Radio</span></button>
+    <button type="button" data-ss-nav="eras"><span class="ss-nav-icon" aria-hidden="true">✦</span><span>Six Eras</span></button>
+    <button type="button" data-ss-nav="space"><span class="ss-nav-icon" aria-hidden="true">♥</span><span>My Sweeties</span></button>
+    <button type="button" data-ss-nav="lounge"><span class="ss-nav-icon" aria-hidden="true">♬</span><span>Lounge</span></button>
+  </nav>
 </body>
 </html>
