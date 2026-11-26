@@ -129,22 +129,22 @@
   }
   function openSpace(){root.scrollIntoView({behavior:'smooth',block:'start'});root.focus({preventScroll:true});}
   function nav(){
-    if(!standalone())return;
-    const bar=el('nav','sweetie-bottom-nav');bar.setAttribute('aria-label','World of Sweet app navigation');
-    const tabs=[['radio','♫','Radio'],['eras','✦','Six Eras'],['space','♥','My Sweeties'],['lounge','♬','Lounge']];
-    for(const [key,icon,label] of tabs){
-      const b=el('button');b.type='button';b.dataset.ssNav=key;
-      b.append(el('span','ss-nav-icon',icon),el('span','',label));
-      b.addEventListener('click',()=>{
-        bar.querySelectorAll('button').forEach(t=>t.removeAttribute('aria-current'));b.setAttribute('aria-current','page');
-        if(key==='space'){openSpace();return;}
-        const target=document.getElementById(key==='eras'?'sweetEraAlbum':key==='lounge'?'sweetieLounge':'home');
-        if(target)target.scrollIntoView({behavior:'smooth',block:'start'});
-      });
-      bar.append(b);
-    }
-    bar.querySelector('button').setAttribute('aria-current','page');
-    document.body.append(bar);
+    const bar=document.getElementById('sweetieAppNav');
+    if(!bar || bar.dataset.wired==='true')return;
+    bar.dataset.wired='true';
+    bar.querySelectorAll('[data-ss-nav]').forEach(b=>b.addEventListener('click',()=>{
+      bar.querySelectorAll('button').forEach(t=>t.removeAttribute('aria-current'));
+      b.setAttribute('aria-current','page');
+      const key=b.dataset.ssNav;
+      if(key==='space'){
+        const section=document.getElementById('mySweetieSpace');
+        if(section){section.scrollIntoView({behavior:'smooth',block:'start'});section.focus({preventScroll:true});}
+        else message('Your music collection is loading. ♡');
+        return;
+      }
+      const id=key==='eras'?'sweetEraAlbum':key==='lounge'?'sweetieLounge':'home';
+      document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'});
+    }));
   }
   function act(e){
     const b=e.target.closest('[data-ss-action]');if(!b)return;
@@ -174,7 +174,7 @@
   const boot=()=>{
     // The tab bar must never depend on the music catalog being ready.
     // The original player can load later on slower mobile connections.
-    if(!document.querySelector('.sweetie-bottom-nav'))nav();
+    nav();
     if(root)return;
     if(!app()?.getTracks){
       if(bootAttempts++<60)window.setTimeout(boot,150);
