@@ -10,19 +10,19 @@
   "theme_color": "#120015",
   "icons": [
     {
-      "src": "/app-icons/jahntella-192.png",
+      "src": "/app-icons/jahntella-192.png?v=2-heart-crown",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/app-icons/jahntella-512.png",
+      "src": "/app-icons/jahntella-512.png?v=2-heart-crown",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/app-icons/jahntella-icon.svg",
+      "src": "/app-icons/jahntella-icon.svg?v=2-heart-crown",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
