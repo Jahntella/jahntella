@@ -12,3 +12,12 @@
 .jahntella-app-welcome .app-shortcuts a{display:inline-block;background:#9c2552;color:white;padding:10px 14px;border-radius:999px;text-decoration:none;font-weight:750;font-size:.84rem}
 .jahntella-app-feedback{min-height:1.4rem;font-size:.86rem;color:#ffd9e6;margin-top:12px!important}
 @media(max-width:700px){.jahntella-app-welcome{border-radius:16px;margin:0 12px 20px;padding:23px 15px}.jahntella-app-moods{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Installed app launch: start below the fixed logo/header instead of hiding
+   the welcome heading behind it on narrow Android screens. */
+@media(display-mode:standalone){
+  main > .jahntella-app-welcome{
+    margin-top:calc(104px + env(safe-area-inset-top,0px))!important;
+    scroll-margin-top:calc(120px + env(safe-area-inset-top,0px));
+  }
+}
