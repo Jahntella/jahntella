@@ -4,6 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#120015">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="application-name" content="Jahntella — World of Sweet">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Jahntella">
+  <link rel="apple-touch-icon" href="/assets/brand-logo.png">
+  <link rel="icon" type="image/svg+xml" href="/app-icons/jahntella-icon.svg">
+  <link rel="stylesheet" href="/jahntella-app.css?v=1">
+  <script defer src="/jahntella-app.js?v=1"></script>
   <meta name="description" content="Explore Jahntella’s World of Sweet: six music eras, official songs, visuals, and the Sweeties community. Listen to Show Me Something Real and Tick Tock.">
   <title>Jahntella™ — The World of Sweet</title>
   <meta property="og:type" content="website"><meta property="og:title" content="Jahntella — Six Eras. Infinite Feelings."><meta property="og:description" content="Sweet, Shine, Sparkle, Siren, Surge, Synergy. Explore the music and join the Sweeties."><meta property="og:url" content="https://jahntella.com/"><meta name="twitter:card" content="summary">
@@ -260,9 +269,23 @@ main > #surgeEraAlbum .exp60-shine-shell{
       <a href="#gallery">Gallery</a>
       <a href="#sweetiesSpotlight">Spotlight ♡</a>
       <a href="#connect">Connect</a>
+      <button type="button" class="jahntella-app-link" id="jahntellaAppOpen" aria-haspopup="dialog" aria-controls="jahntellaAppDialog">♡ Install App</button>
       <!-- Sweetville navigation temporarily hidden until relaunch. -->
     </nav>
   </header>
+
+  <dialog class="jahntella-app-dialog" id="jahntellaAppDialog" aria-labelledby="jahntellaAppTitle">
+    <div class="jahntella-app-dialog-content">
+      <img src="/app-icons/jahntella-icon.svg" alt="Jahntella app icon" width="84" height="84">
+      <h2 id="jahntellaAppTitle">World of Sweet ♡</h2>
+      <p id="jahntellaAppStatus" role="status" aria-live="polite">Keep Jahntella Radio one tap away.</p>
+      <ol id="jahntellaAppInstructions"></ol>
+      <div class="app-actions">
+        <button id="jahntellaAppInstall" type="button" hidden>Install Jahntella</button>
+        <button id="jahntellaAppClose" class="app-dismiss" type="button">Back to Music ♡</button>
+      </div>
+    </div>
+  </dialog>
 
   <main>
     <section class="hero-v5" id="home">
