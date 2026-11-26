@@ -110,13 +110,8 @@
       b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();toggleFavorite(k);});
       card.append(b);
     });
-    const player=document.getElementById('player'),title=document.getElementById('playerTitle');
-    if(player&&title&&!player.querySelector('.ss-now-heart')){
-      const b=el('button','ss-now-heart');b.type='button';b.textContent='♡ Save';
-      b.addEventListener('click',()=>{const key=app()?.getCurrentKey();if(key)toggleFavorite(key);});
-      title.insertAdjacentElement('afterend',b);
-    }
-    updateNowHeart();syncCardHearts();
+    // Keep the proven radio control grid untouched; cards and Sweetie Space own the save UI.
+    syncCardHearts();
   }
   function updateNowHeart(){
     const b=document.querySelector('.ss-now-heart');if(!b)return;
