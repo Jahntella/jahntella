@@ -19,11 +19,11 @@
     });
     if(active.id){
       selected=active.id;
-      status.textContent=records[active.id].name+' · Song '+(active.index+1)+' of '+active.total;
-      shareButton.classList.add('is-visible');
+      status.textContent=(records[active.id]?.name||'Your playlist')+' · Song '+(active.index+1)+' of '+active.total;
+      shareButton.classList.toggle('is-visible',Object.prototype.hasOwnProperty.call(labels,active.id));
     }else if(selected){
       status.textContent='Pick a playlist to play its songs in order.';
-      shareButton.classList.add('is-visible');
+      shareButton.classList.toggle('is-visible',Object.prototype.hasOwnProperty.call(labels,selected));
     }else{
       status.textContent='Choose a vibe and let the music play ♡';
     }
@@ -44,7 +44,7 @@
     });
   });
   shareButton.addEventListener('click',async()=>{
-    if(!selected||!records[selected])return;
+    if(!selected||!records[selected]||!Object.prototype.hasOwnProperty.call(labels,selected))return;
     const url=new URL(window.location.href);url.searchParams.set('playlist',selected);url.hash='sweetiePlaylistsMenu';
     const count=records[selected].songs?.length||4;
     const caption='💗 Listen to '+records[selected].name+' by Jahntella! '+count+' songs, one sweet vibe. '+url.href;
