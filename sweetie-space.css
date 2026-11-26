@@ -48,3 +48,16 @@
 .ss-now-heart{border:1px solid rgba(245,124,169,.8);border-radius:999px;background:#762247;color:white;font-size:.72rem;padding:5px 9px;margin-left:8px;cursor:pointer}
 .ss-now-heart[hidden]{display:none!important}
 .sweetie-space :is(button,input,select):focus-visible,.sweetie-bottom-nav button:focus-visible{outline:2px solid #ffb6d1;outline-offset:2px}
+
+/* Existing mobile radio uses a high-specificity fixed inset rule; override that
+   explicitly so it never hides the app tab bar. */
+@media(display-mode:standalone){
+  html:root body #player.player,
+  html:root body #player.player.visible{
+    bottom:calc(84px + env(safe-area-inset-bottom))!important;
+    inset:auto 8px calc(84px + env(safe-area-inset-bottom)) 8px!important;
+    z-index:2147483640!important;
+  }
+  .sweetie-bottom-nav{z-index:2147483639}
+  body{padding-bottom:calc(195px + env(safe-area-inset-bottom))!important}
+}
