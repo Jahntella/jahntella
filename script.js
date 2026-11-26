@@ -305,6 +305,35 @@
   };
 
   const currentTrack = () => currentKey ? tracks[currentKey] : null;
+  // Android/iOS media notifications: keep the actual song metadata current.
+  // Website branding alone otherwise appears instead of the playing track.
+  const mediaSessionAvailable = 'mediaSession' in navigator && typeof MediaMetadata !== 'undefined';
+  const publishMediaTrack = () => {
+    if (!mediaSessionAvailable) return;
+    const track = currentTrack();
+    if (!track) return;
+    const src = track.artwork ? new URL(track.artwork, document.baseURI).href : new URL('app-icons/jahntella-512.png', document.baseURI).href;
+    try {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: track.title,
+        artist: 'Jahntella',
+        album: track.era ? 'The ' + track.era + ' Era' : 'Jahntella Radio · World of Sweet',
+        artwork: [{src}]
+      });
+    } catch(e) {}
+  };
+  const updateMediaPosition = () => {
+    if (!mediaSessionAvailable || typeof navigator.mediaSession.setPositionState !== 'function') return;
+    const a = currentTrack()?.audio;
+    if (!a || !Number.isFinite(a.duration) || a.duration <= 0) return;
+    try {
+      navigator.mediaSession.setPositionState({
+        duration:a.duration,
+        playbackRate:a.playbackRate || 1,
+        position:Math.min(Math.max(0,a.currentTime||0),a.duration)
+      });
+    } catch(e) {}
+  };
   const setDurationDisplay = audio => { if (durationDisplay) durationDisplay.textContent = formatTime(audio?.duration); };
   const formatTime = seconds => {
     if (!Number.isFinite(seconds)) return "0:00";
@@ -314,6 +343,11 @@
   const setPlaying = playing => {
     toggle.textContent = playing ? "❚❚" : "▶";
     player.classList.toggle("playing", playing);
+    if (mediaSessionAvailable && currentTrack()) {
+      publishMediaTrack();
+      try { navigator.mediaSession.playbackState = playing ? 'playing' : 'paused'; } catch(e) {}
+      updateMediaPosition();
+    }
     Object.entries(tracks).forEach(([key, track]) => {
       const active = key === currentKey;
       track.recordWrap?.classList.toggle("is-spinning", playing && active);
@@ -400,6 +434,7 @@
     artwork.alt = "";
     artwork.setAttribute("aria-hidden", "true");
     artwork.src = track.artwork;
+    publishMediaTrack();
     player.classList.add("visible");
     Object.entries(tracks).forEach(([trackKey, item]) => item.card?.classList.toggle("is-active", trackKey === key));
     if (key === 'bite-lip' && changing) {
@@ -676,8 +711,8 @@
     track.audio.volume = Number(volume.value);
     track.audio.addEventListener("play", () => { if (currentTrack() === track) setPlaying(true); });
     track.audio.addEventListener("pause", () => { if (currentTrack() === track && !track.audio.ended) setPlaying(false); });
-    track.audio.addEventListener("loadedmetadata", () => { if (currentTrack() === track) setDurationDisplay(track.audio); });
-    track.audio.addEventListener("durationchange", () => { if (currentTrack() === track) setDurationDisplay(track.audio); });
+    track.audio.addEventListener("loadedmetadata", () => { if (currentTrack() === track) { setDurationDisplay(track.audio); updateMediaPosition(); } });
+    track.audio.addEventListener("durationchange", () => { if (currentTrack() === track) { setDurationDisplay(track.audio); updateMediaPosition(); } });
     track.audio.addEventListener("timeupdate", () => {
       if (currentTrack() !== track) return;
       progress.value = track.audio.duration ? (track.audio.currentTime / track.audio.duration) * 100 : 0;
@@ -713,7 +748,38 @@
     if (!track || !track.audio.duration) return;
     track.audio.currentTime = (Number(progress.value) / 100) * track.audio.duration;
     persistSitePlayback(true);
+    updateMediaPosition();
   });
+
+  // Hardware and Android notification controls act on Jahntella Radio itself.
+  if (mediaSessionAvailable) {
+    const handlers = {
+      play: () => {
+        const a = currentTrack()?.audio;
+        if (a) a.play().catch(()=>{});
+      },
+      pause: () => currentTrack()?.audio?.pause(),
+      previoustrack: () => moveTrack(-1),
+      nexttrack: () => moveTrack(1),
+      seekto: details => {
+        const a = currentTrack()?.audio;
+        if (!a || !Number.isFinite(details.seekTime)) return;
+        a.currentTime = Math.max(0, Math.min(details.seekTime, Number.isFinite(a.duration) ? a.duration : details.seekTime));
+        updateMediaPosition();
+      },
+      seekbackward: details => {
+        const a=currentTrack()?.audio;
+        if (a) { a.currentTime=Math.max(0,a.currentTime-(details.seekOffset||10)); updateMediaPosition(); }
+      },
+      seekforward: details => {
+        const a=currentTrack()?.audio;
+        if (a) { a.currentTime=Math.min(Number.isFinite(a.duration)?a.duration:Infinity,a.currentTime+(details.seekOffset||10)); updateMediaPosition(); }
+      }
+    };
+    Object.entries(handlers).forEach(([action,handler]) => {
+      try { navigator.mediaSession.setActionHandler(action,handler); } catch(e) {}
+    });
+  }
 
   const savedPlayback = readSitePlayback();
   let hasSavedShinePlayback = false;
