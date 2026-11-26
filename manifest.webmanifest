@@ -1,0 +1,43 @@
+{
+  "id": "/",
+  "name": "Jahntella — World of Sweet",
+  "short_name": "Jahntella",
+  "description": "Six eras. Infinite feelings. Listen to Jahntella Radio, explore songs and join the Sweeties.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#120015",
+  "theme_color": "#120015",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/app-icons/jahntella-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/brand-logo.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Jahntella Radio",
+      "short_name": "Radio",
+      "url": "/#sweetEraAlbum"
+    },
+    {
+      "name": "Music Lounge",
+      "short_name": "Lounge",
+      "url": "/#sweetieLounge"
+    },
+    {
+      "name": "Song Battles",
+      "short_name": "Battles",
+      "url": "/#sweetieSongBattles"
+    }
+  ]
+}
