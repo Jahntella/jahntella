@@ -21,7 +21,7 @@
      </div>
      <p class="jahntella-app-feedback" role="status" aria-live="polite">Select a mood to start a real Jahntella playlist.</p>
      <div class="app-shortcuts"><a href="#sweetEraAlbum">♫ Explore Six Eras</a><a href="#sweetieLounge">♡ Music Lounge</a><a href="#sweetieSongBattles">⚡ Song Battles</a></div>`;
-   hero.insertAdjacentElement('afterend',section);
+   hero.insertAdjacentElement('beforebegin',section);
    section.querySelectorAll('[data-app-mood]').forEach(button=>button.addEventListener('click',()=>{
      const id=button.getAttribute('data-app-mood');
      const existing=document.querySelector('[data-playlist-id="'+id+'"]');
