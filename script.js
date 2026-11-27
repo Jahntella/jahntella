@@ -1,5 +1,9 @@
 (() => {
   const SITE_PLAYBACK_KEY = "jahntellaSiteMusicV46";
+  const REPEAT_KEY = 'jahntellaRadioRepeatOneV1';
+  let repeatOne = false;
+  try { repeatOne = localStorage.getItem(REPEAT_KEY) === 'true'; } catch (error) {}
+
   const SHINE_PLAYBACK_KEY = "jahntellaShineEraPlaybackV74";
   const album2Config = window.JAHNTELLA_ALBUM2 || {};
   const album2PreviewMode = album2Config.previewMode === true;
@@ -170,6 +174,28 @@
   });
 
   const player = document.getElementById("player");
+  // A compact repeat-one button lives in the existing player subtitle,
+  // so the proven play/skip/seek grid does not need another column.
+  const nowPlayingLine = player?.querySelector('.now-playing');
+  const repeatButton = document.createElement('button');
+  repeatButton.id = 'playerRepeatOne';
+  repeatButton.type = 'button';
+  repeatButton.className = 'player-repeat-one';
+  repeatButton.textContent = '↻';
+  const updateRepeatButton = () => {
+    repeatButton.setAttribute('aria-pressed', String(repeatOne));
+    repeatButton.setAttribute('aria-label', repeatOne ? 'Repeat current song is on. Turn off repeat' : 'Repeat current song is off. Turn on repeat');
+    repeatButton.title = repeatOne ? 'Repeat One: On' : 'Repeat One: Off';
+    repeatButton.textContent = repeatOne ? '↻¹' : '↻';
+  };
+  updateRepeatButton();
+  nowPlayingLine?.append(repeatButton);
+  repeatButton.addEventListener('click', () => {
+    repeatOne = !repeatOne;
+    try { localStorage.setItem(REPEAT_KEY, String(repeatOne)); } catch (error) {}
+    updateRepeatButton();
+  });
+
   const toggle = document.getElementById("playerToggle");
   const prev = document.getElementById("playerPrev");
   const next = document.getElementById("playerNext");
@@ -744,8 +770,20 @@
       persistSitePlayback();
     });
     track.audio.addEventListener("ended", () => {
-      // Curated playlists play in their configured order.
       if (currentTrack() !== track) return;
+      // Repeat One takes priority over every curated/personal playlist and radio
+      // auto-advance; switching tracks manually still works normally.
+      if (repeatOne) {
+        track.audio.currentTime = 0;
+        updateMediaPosition();
+        track.audio.play().then(() => {
+          if (currentTrack() === track) setPlaying(true);
+        }).catch(() => {
+          if (currentTrack() === track) setPlaying(false);
+        });
+        return;
+      }
+      // Curated playlists play in their configured order.
       if (activePlaylist) {
         const songs=curatedPlaylists[activePlaylist].songs;
         if (playlistPosition+1<songs.length) {
