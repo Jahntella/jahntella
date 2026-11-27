@@ -1,0 +1,48 @@
+/* Repeat One: compact radio-bar control beside the Sweetie favorite heart.
+   Keep the existing player grid, progress bar and mobile safe area unchanged. */
+#player.player .now-playing .player-repeat-one {
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  flex:0 0 26px!important;
+  width:26px!important;
+  height:26px!important;
+  min-width:26px!important;
+  min-height:26px!important;
+  padding:0!important;
+  margin:0 0 0 5px!important;
+  border:1px solid rgba(255,167,196,.78)!important;
+  border-radius:50%!important;
+  background:rgba(130,25,79,.58)!important;
+  box-shadow:none!important;
+  color:#ffe0ef!important;
+  font-size:21px!important;
+  font-family:system-ui,sans-serif!important;
+  line-height:1!important;
+  letter-spacing:-2px!important;
+  cursor:pointer!important;
+  vertical-align:middle;
+  white-space:nowrap;
+}
+#player.player .now-playing .player-repeat-one[aria-pressed="true"] {
+  background:#ffd7e9!important;
+  color:#8d134a!important;
+  border-color:#fff5fa!important;
+  box-shadow:0 0 12px rgba(255,112,176,.65)!important;
+}
+#player.player .now-playing .player-repeat-one:focus-visible {
+  outline:2px solid #fff!important;
+  outline-offset:2px!important;
+}
+@media(max-width:380px) {
+  #player.player .now-playing {gap:3px!important;letter-spacing:0!important;font-size:9px!important}
+  #player.player .now-playing .player-repeat-one,
+  #player.player .now-playing .ss-now-heart {
+    flex-basis:23px!important;
+    min-width:23px!important;
+    width:23px!important;
+    min-height:23px!important;
+    height:23px!important;
+    margin-left:2px!important;
+  }
+}
