@@ -21,7 +21,7 @@
     return {favorites:f,playlists:p};
   };
   const read=()=>{try{return sanitize(JSON.parse(localStorage.getItem(KEY)||'{}'));}catch(e){available=false;return {favorites:[],playlists:[]};}};
-  const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(store));available=true;}catch(e){available=false;}};
+  const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(store));available=true;}catch(e){available=false;}window.dispatchEvent(new CustomEvent('jahntella:sweetiechange'));};
   const message=t=>{if(feedback)feedback.textContent=t;};
   const choose=which=>{tab=which;root.querySelectorAll('[data-ss-tab]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.ssTab===which)));render();};
   function row(track,context='catalog'){
