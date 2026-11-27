@@ -113,7 +113,11 @@
    note=node('p','sw-dashboard-note');note.setAttribute('role','status');note.setAttribute('aria-live','polite');root.append(note);
    root.append(node('p','sw-privacy','Only this device stores recent listening, favorites, and recommendations. No account or listening history is sent to Jahntella.'));
    const sweetie=document.getElementById('mySweetieSpace');
-   if(sweetie)sweetie.insertAdjacentElement('beforebegin',root);
+   const installed=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+   // Installed app: put the dashboard immediately after the mood welcome,
+   // before the full website hero. Regular web: keep it beside Sweetie Space.
+   if(installed)hero.insertAdjacentElement('beforebegin',root);
+   else if(sweetie)sweetie.insertAdjacentElement('beforebegin',root);
    else hero.insertAdjacentElement('afterend',root);
    render();
    window.addEventListener('jahntella:trackstarted',event=>{
