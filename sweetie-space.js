@@ -56,7 +56,7 @@
     for(const p of store.playlists){
       const card=el('section','ss-playlist'),top=el('div','ss-playlist-top'),title=el('strong','',p.name);
       const actions=el('div','ss-row-actions');
-      actions.append(makeButton('▶ Play','play-list',p.id),makeButton('Delete','delete-list',p.id));
+      actions.append(makeButton('▶ Play','play-list',p.id),makeButton('Rename','rename-list',p.id),makeButton('Delete','delete-list',p.id));
       top.append(title,actions);card.append(top,el('p','',p.keys.length+' song'+(p.keys.length===1?'':'s')));
       if(!p.keys.length)card.append(el('p','ss-empty','Choose songs from All Songs, then add them here.'));
       const list=el('div','ss-playlist-tracks');
@@ -170,6 +170,26 @@
       if(!p?.keys.length){message('Add a song to this playlist first.');return;}
       if(!app()?.playQueue(p.keys,p.name))message('Player unavailable. Please try again.');return;
     }
+    if(action==='backup'){
+      const data={format:'jahntella-sweetie-space',version:1,exportedAt:new Date().toISOString(),favorites:store.favorites,playlists:store.playlists};
+      const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+      const url=URL.createObjectURL(blob);
+      const link=document.createElement('a');
+      link.href=url;link.download='jahntella-my-sweetie-space.json';
+      document.body.append(link);link.click();link.remove();
+      window.setTimeout(()=>URL.revokeObjectURL(url),1000);
+      message('Backup created! Keep your file somewhere safe. ♡');
+      return;
+    }
+    if(action==='rename-list'){
+      const p=store.playlists.find(p=>p.id===key);if(!p)return;
+      const next=window.prompt('Rename this Sweetie playlist:',p.name);
+      if(next===null)return;
+      const name=next.trim().slice(0,50);
+      if(!name){message('Playlist name cannot be empty.');return;}
+      p.name=name;save();render();message('Playlist renamed to '+name+'. ♡');
+      return;
+    }
     if(action==='delete-list'){
       const p=store.playlists.find(p=>p.id===key);
       if(!p||!window.confirm('Delete your playlist "'+p.name+'"?'))return;
@@ -208,7 +228,17 @@
     contentEl=el('div');contentEl.id='ssContent';root.append(contentEl);
     feedback=el('p','ss-live');feedback.setAttribute('role','status');feedback.setAttribute('aria-live','polite');
     root.append(feedback);
-    root.append(el('p','ss-note','♡ Saved locally on this device. Clearing browser/app data or uninstalling may remove favorites and playlists; cloud sync is not enabled.'));
+    const backup=el('div','ss-backup');
+    backup.append(el('strong','', 'Keep your Sweetie collection safe ♡'));
+    backup.append(el('p','', 'Save a backup file to your phone before changing devices or clearing app data. You can restore it later.'));
+    const exportButton=makeButton('↓ Back Up Collection','backup');
+    const restoreLabel=el('label','ss-restore-label','↑ Restore Backup');
+    const restoreInput=el('input');restoreInput.type='file';restoreInput.accept='.json,application/json';
+    restoreInput.setAttribute('aria-label','Choose a Sweetie Space backup file');
+    restoreLabel.append(restoreInput);
+    backup.append(exportButton,restoreLabel);
+    root.append(backup);
+    root.append(el('p','ss-note','♡ Favorites and playlists are stored on this device only. Uninstalling or clearing app data may remove them; cloud sync is not enabled.'));
     hero.insertAdjacentElement('afterend',root);
     root.addEventListener('click',act);
     root.addEventListener('change',e=>{
@@ -219,6 +249,21 @@
         else message('That song is already in '+p.name+'.');
       }
       select.value='';
+    });
+    root.addEventListener('change',async e=>{
+      const input=e.target.closest('.ss-restore-label input[type="file"]');
+      if(!input || !input.files?.length)return;
+      const file=input.files[0];
+      input.value='';
+      if(file.size>1024*1024){message('That backup file is too large.');return;}
+      try{
+        const imported=JSON.parse(await file.text());
+        if(imported?.format!=='jahntella-sweetie-space'||imported?.version!==1)throw new Error('invalid backup');
+        if(!Array.isArray(imported.favorites)||!Array.isArray(imported.playlists))throw new Error('incomplete backup');
+        if(!window.confirm('Restore this backup? It will replace favorites and playlists saved on this device.'))return;
+        store=sanitize(imported);save();render();
+        message('Sweetie Space restored: '+store.favorites.length+' favorites and '+store.playlists.length+' playlists. ♡');
+      }catch(err){message('That file is not a valid Jahntella Sweetie Space backup.');}
     });
     root.addEventListener('submit',e=>{
       if(e.target.id!=='ssCreatePlaylist')return;
