@@ -91,3 +91,61 @@
     html body nav#sweetieAppNav.sweetie-bottom-nav{padding-bottom:calc(10px + env(safe-area-inset-bottom,0px))!important}
   }
 }
+
+/* Accessible save heart tucked into the existing Jahntella Radio subtitle. */
+#player .now-playing .ss-now-heart,
+#player.player .now-playing .ss-now-heart{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  flex:none!important;
+  vertical-align:middle;
+  width:26px!important;
+  height:26px!important;
+  min-height:26px!important;
+  padding:0!important;
+  margin:0 0 0 6px!important;
+  border:1px solid rgba(255,167,196,.8)!important;
+  background:rgba(141,24,76,.72)!important;
+  border-radius:50%!important;
+  color:#fff!important;
+  font-size:16px!important;
+  line-height:1!important;
+  box-shadow:none!important;
+  cursor:pointer;
+}
+#player .now-playing .ss-now-heart[aria-pressed="true"]{
+  color:#ff79a5!important;
+  background:rgba(255,235,246,.94)!important;
+}
+#player .now-playing .ss-now-heart[hidden]{display:none!important}
+#player .now-playing{min-width:0}
+#player .now-playing .ss-now-heart:focus-visible{outline:2px solid white;outline-offset:2px}
+/* On-device backup and restore controls. No account or cloud involved. */
+.sweetie-space .ss-backup{
+  margin:24px 0 14px;
+  padding:18px;
+  border:1px solid rgba(255,170,201,.44);
+  border-radius:16px;
+  background:rgba(255,255,255,.055);
+}
+.sweetie-space .ss-backup strong{display:block;font-size:1rem;color:#fff}
+.sweetie-space .ss-backup p{margin:9px 0 14px;color:#f4cddd;font-size:.86rem;line-height:1.55}
+.sweetie-space .ss-backup button,.sweetie-space .ss-restore-label{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:42px;margin:0 7px 9px 0;padding:9px 16px;
+  border-radius:999px;border:1px solid #d978a1;
+  background:#762044;color:white;cursor:pointer;font:inherit;
+  font-size:.87rem;font-weight:700;
+}
+.sweetie-space .ss-restore-label{position:relative;overflow:hidden}
+.sweetie-space .ss-restore-label input{
+  position:absolute;inset:0;opacity:0;width:100%;height:100%;
+  font-size:100px;cursor:pointer;
+}
+.sweetie-space .ss-restore-label:focus-within{outline:2px solid #ffe5f0;outline-offset:3px}
+@media(max-width:700px){
+ .sweetie-space .ss-row-actions{gap:5px}
+ .sweetie-space .ss-row-actions button{min-height:36px}
+ .sweetie-space .ss-backup{padding:14px}
+}
