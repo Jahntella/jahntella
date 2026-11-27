@@ -39,7 +39,6 @@
       store.playlists.forEach(p=>{const o=el('option','',p.name);o.value=p.id;select.append(o);});
       actions.append(select);
     }
-    if(context==='favorites')actions.append(makeButton('Remove','favorite',track.key));
     r.append(img,info,actions);return r;
   }
   const empty=text=>el('p','ss-empty',text);
@@ -110,15 +109,29 @@
       b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();toggleFavorite(k);});
       card.append(b);
     });
-    // Keep the proven radio control grid untouched; cards and Sweetie Space own the save UI.
-    syncCardHearts();
+    // Add the save control to the compact player's existing second line — do not alter its grid.
+    const player=document.getElementById('player');
+    const now=player?.querySelector('.now-playing');
+    if(now && !now.querySelector('.ss-now-heart')){
+      const button=el('button','ss-now-heart');
+      button.type='button';
+      button.addEventListener('click',event=>{
+        event.stopPropagation();
+        const key=app()?.getCurrentKey();
+        if(key)toggleFavorite(key);
+      });
+      now.append(button);
+    }
+    updateNowHeart();syncCardHearts();
   }
   function updateNowHeart(){
     const b=document.querySelector('.ss-now-heart');if(!b)return;
     const key=app()?.getCurrentKey();b.hidden=!valid(key);
     if(!valid(key))return;
     const active=store.favorites.includes(key);
-    b.textContent=active?'♥ Saved':'♡ Save';
+    b.textContent=active?'♥':'♡';
+    b.title=active?'Remove '+trackMap.get(key).title+' from favorites':'Save '+trackMap.get(key).title+' to favorites';
+    b.setAttribute('aria-pressed',String(active));
     b.setAttribute('aria-label',(active?'Remove':'Save')+' current song '+(trackMap.get(key)?.title||'')+(active?' from favorites':' to favorites'));
   }
   function toggleFavorite(key){
