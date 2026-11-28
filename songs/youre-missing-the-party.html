@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#260711">
+<title>You're Missing the Party — Jahntella | The Synergy Era</title>
+<link rel="canonical" href="https://jahntella.com/songs/youre-missing-the-party.html">
+<meta name="description" content="Listen to You're Missing the Party by Jahntella. A cheeky, funky 1980s-inspired female answer to the dance-floor classic Party All the Time.">
+<meta property="og:type" content="music.song">
+<meta property="og:site_name" content="Jahntella">
+<meta property="og:title" content="You're Missing the Party — Jahntella">
+<meta property="og:description" content="Flowers? Yes. Gold? Yes. But Sweetie, you're missing the party! ♡ An original, funky female answer inspired by Eddie Murphy and Rick James.">
+<meta property="og:url" content="https://jahntella.com/songs/youre-missing-the-party.html">
+<meta property="og:image" content="https://jahntella.com/JYouremissingtheparty.png">
+<meta property="og:image:secure_url" content="https://jahntella.com/JYouremissingtheparty.png">
+<meta property="og:image:alt" content="You're Missing the Party official cover art by Jahntella — The Synergy Era">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="You're Missing the Party — Jahntella">
+<meta name="twitter:description" content="You're missing the party, Sweetie! ♡">
+<meta name="twitter:image" content="https://jahntella.com/JYouremissingtheparty.png">
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;padding:28px 16px 55px;color:#fff;font:16px/1.55 Arial,Helvetica,sans-serif;text-align:center;background:radial-gradient(ellipse at 50% 5%,#ad1a42 0,#350916 48%,#0b0409 100%)}
+main{width:min(100%,535px)}
+.cover{display:block;width:min(100%,435px);height:auto;aspect-ratio:1;object-fit:contain;border:1px solid #ff95af;border-radius:16px;box-shadow:0 20px 48px #0008;margin:0 auto 22px}
+small{color:#ffb3c6;letter-spacing:.15em;font-weight:800}
+h1{font-size:clamp(2rem,7vw,3.2rem);line-height:1.13;margin:12px 0 14px}
+p{color:#ffdae4;margin:10px auto 20px}
+audio{display:block;width:100%;margin:20px auto 28px;accent-color:#df3c6b}
+.actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.actions a,.actions button{border:1px solid #ff9eb6;border-radius:999px;min-height:44px;padding:11px 18px;background:#a3224a;color:white;font:700 .88rem Arial,sans-serif;text-decoration:none;cursor:pointer}
+.actions a:hover,.actions button:hover{filter:brightness(1.15)}
+.actions a:focus-visible,.actions button:focus-visible{outline:3px solid white;outline-offset:3px}
+.actions .secondary{background:#2c0e1a}
+.help{font-size:.85rem;color:#f1bacc;line-height:1.6}
+</style>
+</head>
+<body>
+<main>
+<img class="cover" src="/JYouremissingtheparty.png" width="1254" height="1254" alt="Jahntella — You're Missing the Party official Synergy Era cover">
+<small>♡ THE SYNERGY ERA · ALBUM VI · TRACK 09</small>
+<h1>You're Missing the Party</h1>
+<p>Yes, you brought the flowers. Yes, you brought the gold. But, Sweetie, maybe you missed the point: she's just having fun on the dance floor. ♡</p>
+<audio controls preload="metadata" src="/YOU%27RE%20MISSING%20THE%20PARTY.mp3" aria-label="Play You're Missing the Party by Jahntella"></audio>
+<div class="actions">
+<a href="/?song=youre-missing-the-party#synergyEraPreview">♡ Jahntella Radio + Sweetie Space</a>
+<button type="button" id="copyPartyShare">♡ Copy link + Open Facebook</button>
+<a class="secondary" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjahntella.com%2Fsongs%2Fyoure-missing-the-party.html" target="_blank" rel="noopener noreferrer">Try Facebook Share</a>
+</div>
+<p class="help" id="partyShareFeedback" role="status" aria-live="polite">If Facebook doesn't show a Post button, open Facebook normally and paste the copied link into a new post.</p>
+</main>
+<script>
+document.getElementById('copyPartyShare').addEventListener('click',async()=>{
+  const url='https://jahntella.com/songs/youre-missing-the-party.html';
+  // Open on the original click, before awaiting clipboard access, to avoid popup blocking.
+  const popup=window.open('https://www.facebook.com/','_blank','noopener,noreferrer');
+  try{
+    await navigator.clipboard.writeText(url);
+    document.getElementById('partyShareFeedback').textContent='Song link copied! Paste it into your Facebook post. ♡';
+  }catch(error){
+    document.getElementById('partyShareFeedback').textContent='Copy this link into Facebook: '+url;
+  }
+  if(!popup)document.getElementById('partyShareFeedback').textContent+=' If Facebook did not open, please open it in another tab.';
+});
+</script>
+</body>
+</html>
