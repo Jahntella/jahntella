@@ -79,9 +79,9 @@ async function open(card,trigger){
  }
  parts.forEach(([heading,lines])=>{
   const group=document.createElement('section');group.className='eld-verse';
-  const h=document.createElement('h3');h.textContent=heading;
   const p=document.createElement('p');p.textContent=lines;
-  group.append(h,p);target.appendChild(group);
+  if(heading){const h=document.createElement('h3');h.textContent=heading;group.appendChild(h);}
+  group.appendChild(p);target.appendChild(group);
  });
 }
 function addToCard(card){
